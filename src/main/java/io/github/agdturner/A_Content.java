@@ -20,13 +20,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- *
+ * Java for generating some https://agdturner.github.io Website Content.
+ * 
  * @author Andy Turner
  */
 public class A_Content {
@@ -83,9 +83,9 @@ public class A_Content {
                 + "that introduce R and Python. I mostly program using Java, "
                 + "Maven and Netbeans. I am interested in developing dynamic "
                 + "spatial models and processing geographical data. These Web "
-                + "pages are hosted on GitHub, here is a link to my profile: "
-                + "<a href=\"http://github.com/agdturner\">"
-                + "http://github.com/agdturner</a>.");
+                + "pages are hosted on GitHub, here is a link to "
+                + "<a href=\"http://github.com/agdturner\">my Github "
+                + "profile</a>.");
         w.add(Web_ContentWriter.PET);
         w.add(Web_ContentWriter.DIVET);
         String title = domain + A_Strings.symbol_space + name
