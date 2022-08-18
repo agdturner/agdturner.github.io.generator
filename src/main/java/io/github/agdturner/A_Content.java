@@ -20,13 +20,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * Java for generating some https://agdturner.github.io Website Content.
- * 
+ *
  * @author Andy Turner
  */
 public class A_Content {
@@ -39,15 +41,21 @@ public class A_Content {
 
     /**
      * Main method
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String[] args) {
         A_Content hw = new A_Content();
         String domain = "agdturner.github.io";
-        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt", domain);
+        Path dirHome = Paths.get("C:", "Users", "agdtu", "src", "agdt", domain);
+        ArrayList<Path> subDirectories = new ArrayList<>();
+        Path dirCourses = Paths.get(dirHome.toString(), "courses");
+        Path dirPython = Paths.get(dirCourses.toString(), "python");
+        subDirectories.add(dirPython);
         try {
             // Home Page index
-            hw.writeIndex(domain, dir);
+            hw.writeIndex(domain, dirHome, subDirectories);
+            hw.writeIntroductionToPythonCourse(domain, dirHome, dirPython);
         } catch (IOException ex) {
             Logger.getLogger(A_Content.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,16 +63,13 @@ public class A_Content {
 
     /**
      * For initial write of Web content.
-     * 
+     *
      * @param domain The domain name as a String.
-     * @param name The name of the content.
-     * @param filename The filename for the content.
-     * @param dir The directory in which the content will be written in a 
-     * directory called "output".
-     * @param version The version of the content.
+     * @param dir The directory in which the content will be written.
+     * @param subdirs The subdirectories in the index.
      * @throws IOException If thrown.
      */
-    public void writeIndex(String domain, Path dir)
+    public void writeIndex(String domain, Path dir, ArrayList<Path> subdirs)
             throws IOException {
         String name = "Home";
         String filename = "index";
@@ -73,23 +78,136 @@ public class A_Content {
         }
         Web_ContentWriter w = new Web_ContentWriter();
         w.add(Web_ContentWriter.DIVST);
-        w.add(Web_ContentWriter.PST, 
+        w.add(Web_ContentWriter.H1ST,
                 "<img src=\"./images/a.turner.png\" alt=\"Andy Turner\" />"
                         .getBytes(),
-                Web_ContentWriter.PET);
+                Web_ContentWriter.H1ET);
         w.add(Web_ContentWriter.PST);
-        w.add("Welcome! I am a research officer based in the School of "
-                + "Geography at the University of Leeds. I teach on courses "
-                + "that introduce R and Python. I mostly program using Java, "
-                + "Maven and Netbeans. I am interested in developing dynamic "
-                + "spatial models and processing geographical data. These Web "
-                + "pages are hosted on GitHub, here is a link to "
+        w.add("I am a research officer based in the School of Geography at the "
+                + "University of Leeds. Amongst other things, I teach students "
+                + "how to program and use R and Python for processing "
+                + "geographical data and modelling. I mostly program using "
+                + "Java, Maven and Netbeans and am interested in developing "
+                + "dynamic spatial models and processing geographical data to "
+                + "help mitigate risk and make the world a safer, happier and "
+                + "healthier place for people and wildlife. These Web pages "
+                + "are hosted on GitHub, here is a link to "
                 + "<a href=\"http://github.com/agdturner\">my Github "
                 + "profile</a>.");
         w.add(Web_ContentWriter.PET);
+        // Links
+        int dirnc = dir.getNameCount();
+        w.add(Web_ContentWriter.ULST);
+        Iterator<Path> ite = subdirs.iterator();
+        while (ite.hasNext()) {
+            Path subdir = ite.next();
+            int subdirnc = subdir.getNameCount();
+            //String relpath = "";
+            String relpath = "";
+            //int depth = subdirnc - dirnc;
+            for (int i = dirnc; i < subdirnc; i++) {
+                w.add(Web_ContentWriter.ULST);
+                w.add(Web_ContentWriter.LIST);
+                String subdirname = subdir.getName(i).toString();
+                //relpath = relpath.concat("../");
+                relpath = relpath.concat(subdirname + "/");
+                if (i == subdirnc - 1) {
+                    w.add("<a href=\"" + relpath + "\">" + subdirname + "</a>");
+                } else {
+                    w.add(subdirname);
+                }
+            }
+            for (int i = dirnc; i < subdirnc; i++) {
+                w.add(Web_ContentWriter.LIET);
+                w.add(Web_ContentWriter.ULET);
+            }
+        }
+        w.add(Web_ContentWriter.ULET);
         w.add(Web_ContentWriter.DIVET);
         String title = domain + A_Strings.symbol_space + name
                 + A_Strings.symbol_space + "Page";
         w.writeHTML(dir, filename, title);
     }
+
+    /**
+     * For initial write of Web content.
+     *
+     * @param domain The domain name as a String.
+     * @param dir The directory in which the content will be written.
+     * @param subdirs The directories in the index.
+     * @throws IOException If thrown.
+     */
+    public void writeIntroductionToPythonCourse(String domain, Path dir,
+            Path subdir)
+            throws IOException {
+        String name = "Python";
+        String filename = "index";
+        if (!Files.exists(dir)) {
+            Files.createDirectories(dir);
+        }
+        Web_ContentWriter w = new Web_ContentWriter();
+        w.add(Web_ContentWriter.DIVST);
+        w.add(Web_ContentWriter.H1ST,
+                "Python".getBytes(),
+                Web_ContentWriter.H1ET);
+        w.add(Web_ContentWriter.PST);
+        w.add("Python is an easy to learn, powerful programming language. "
+                + "It has efficient high-level data structures and a simple "
+                + "but effective approach to object-oriented programming. "
+                + "Python’s elegant syntax and dynamic typing, together with "
+                + "its interpreted nature, make it an ideal language for "
+                + "scripting and rapid application development in many areas "
+                + "on most platforms.\n"
+                + "\n"
+                + "The Python interpreter and the extensive standard library "
+                + "are freely available in source or binary form for all major "
+                + "platforms from the Python web site, "
+                + "<a href=\"https://www.python.org/\">https://www.python.org/"
+                + "</a>"
+                + ", and may be freely distributed. The same site also "
+                + "contains distributions of and pointers to many free third "
+                + "party Python modules, programs and tools, and additional "
+                + "documentation.\n"
+                + "\n"
+                + "Python underwent a major revision from Python 2 to Python "
+                + "3. It is important to be aware of this and to know exactly "
+                + "what version of Python you are using and about any "
+                + "modifications you have made to your Python environment.\n"
+                + "\n"
+                + "A getting started tutorial is available on the Python web "
+                + "site,"
+                + "<a href=\"https://docs.python.org/3/tutorial/\">"
+                + "https://docs.python.org/3/tutorial/</a>"
+                + ". This is almost certainly the best place to start if you "
+                + "are a complete beginner and want to learn on your own. If "
+                + "you want to learn with others, there are plenty of courses "
+                + "to choose from. At the University of Leeds there are a "
+                + "number of courses and I currently teach some of them, "
+                + "<a href=\"https://www.geog.leeds.ac.uk/courses/computing/\">"
+                + "https://www.geog.leeds.ac.uk/courses/computing/</a>"
+                + ".");
+        w.add(Web_ContentWriter.PET);
+        // Links
+        w.add(Web_ContentWriter.ULST);
+        w.add(Web_ContentWriter.LIST);
+        int dirnc = dir.getNameCount();
+        int subdirnc = subdir.getNameCount();
+        //String relpath = "";
+        String relpath = "";
+        //int depth = subdirnc - dirnc;
+        for (int i = dirnc; i < subdirnc; i++) {
+            relpath = relpath.concat("../");
+            //relpath = relpath.concat(subdirname + "/");
+            if (i == subdirnc - 1) {
+                w.add("<a href=\"" + relpath + "\">" + dir + "</a>");
+            }
+        }
+        w.add(Web_ContentWriter.LIET);
+        w.add(Web_ContentWriter.ULET);
+        w.add(Web_ContentWriter.DIVET);
+        String title = domain + A_Strings.symbol_space + name
+                + A_Strings.symbol_space + "Page";
+        w.writeHTML(subdir, filename, title);
+    }
+
 }
