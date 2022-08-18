@@ -103,8 +103,7 @@ public class A_Content {
                 + ". They have been generated using some Java code in the "
                 + "repository: "
                 + w.getLink(gadgURL, gadgURL)
-                + "."
-                + "Here is a link to my Github profile: "
+                + ". Here is a link to my Github profile: "
                 + w.getLink(gaURL, gaURL)
                 + ". Below is a list of links to web site content.");
         w.add(Web_ContentWriter.PET);
