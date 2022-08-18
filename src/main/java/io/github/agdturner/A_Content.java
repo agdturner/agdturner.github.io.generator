@@ -90,10 +90,21 @@ public class A_Content {
                 + "Java, Maven and Netbeans and am interested in developing "
                 + "dynamic spatial models and processing geographical data to "
                 + "help mitigate risk and make the world a safer, happier and "
-                + "healthier place for people and wildlife. These Web pages "
-                + "are hosted on GitHub, here is a link to "
-                + "<a href=\"http://github.com/agdturner\">my Github "
-                + "profile</a>.");
+                + "healthier place for people and wildlife.");
+        w.add(Web_ContentWriter.PET);
+        w.add(Web_ContentWriter.PST);
+        w.add("These Web pages are hosted on GitHub in the repository: "
+                + "<a href=\"http://github.com/agdturner/agdturner.github.io\">"
+                + "http://github.com/agdturner/agdturner.github.io</a>"
+                + ". They have been generated using some Java code in the "
+                + "repository:"
+                + "<a href=\"http://github.com/agdturner/agdturner.github.io.generator\">"
+                + "http://github.com/agdturner/agdturner.github.io.generator</a>"
+                + "."
+                + "Here is a link to my Github profile:"
+                + "<a href=\"http://github.com/agdturner\">"
+                + "http://github.com/agdturner</a>"
+                + ". Below is a list of links to web site content.");
         w.add(Web_ContentWriter.PET);
         // Links
         int dirnc = dir.getNameCount();
@@ -157,34 +168,40 @@ public class A_Content {
                 + "Python’s elegant syntax and dynamic typing, together with "
                 + "its interpreted nature, make it an ideal language for "
                 + "scripting and rapid application development in many areas "
-                + "on most platforms.\n"
-                + "\n"
-                + "The Python interpreter and the extensive standard library "
+                + "on most platforms.");
+        w.add(Web_ContentWriter.PET);
+        w.add(Web_ContentWriter.PST);
+        w.add("The Python interpreter and the extensive standard library "
                 + "are freely available in source or binary form for all major "
                 + "platforms from the Python web site, "
-                + "<a href=\"https://www.python.org/\">https://www.python.org/"
+                + "<a href=\"https://www.python.org/\">"
+                + "https://www.python.org/"
                 + "</a>"
                 + ", and may be freely distributed. The same site also "
                 + "contains distributions of and pointers to many free third "
                 + "party Python modules, programs and tools, and additional "
-                + "documentation.\n"
-                + "\n"
-                + "Python underwent a major revision from Python 2 to Python "
+                + "documentation.");
+        w.add(Web_ContentWriter.PET);
+        w.add(Web_ContentWriter.PST);
+        w.add("Python underwent a major revision from Python 2 to Python "
                 + "3. It is important to be aware of this and to know exactly "
                 + "what version of Python you are using and about any "
-                + "modifications you have made to your Python environment.\n"
-                + "\n"
-                + "A getting started tutorial is available on the Python web "
+                + "modifications you have made to your Python environment.");
+        w.add(Web_ContentWriter.PET);
+        w.add(Web_ContentWriter.PST);
+        w.add("A getting started tutorial is available on the Python web "
                 + "site,"
                 + "<a href=\"https://docs.python.org/3/tutorial/\">"
-                + "https://docs.python.org/3/tutorial/</a>"
+                + "https://docs.python.org/3/tutorial/"
+                + "</a>"
                 + ". This is almost certainly the best place to start if you "
                 + "are a complete beginner and want to learn on your own. If "
                 + "you want to learn with others, there are plenty of courses "
                 + "to choose from. At the University of Leeds there are a "
                 + "number of courses and I currently teach some of them, "
                 + "<a href=\"https://www.geog.leeds.ac.uk/courses/computing/\">"
-                + "https://www.geog.leeds.ac.uk/courses/computing/</a>"
+                + "https://www.geog.leeds.ac.uk/courses/computing/"
+                + "</a>"
                 + ".");
         w.add(Web_ContentWriter.PET);
         // Links
