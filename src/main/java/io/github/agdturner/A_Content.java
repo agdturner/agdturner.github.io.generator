@@ -110,19 +110,16 @@ public class A_Content {
         w.add(Web_ContentWriter.PET);
         // Links
         int dirnc = dir.getNameCount();
-        w.add(Web_ContentWriter.ULST);
         Iterator<Path> ite = subdirs.iterator();
         while (ite.hasNext()) {
             Path subdir = ite.next();
             int subdirnc = subdir.getNameCount();
-            //String relpath = "";
             String relpath = "";
             //int depth = subdirnc - dirnc;
             for (int i = dirnc; i < subdirnc; i++) {
                 w.add(Web_ContentWriter.ULST);
                 w.add(Web_ContentWriter.LIST);
                 String subdirname = subdir.getName(i).toString();
-                //relpath = relpath.concat("../");
                 relpath = relpath.concat(subdirname + "/");
                 if (i == subdirnc - 1) {
                     w.add(w.getLink(relpath, 
@@ -136,7 +133,6 @@ public class A_Content {
                 w.add(Web_ContentWriter.ULET);
             }
         }
-        w.add(Web_ContentWriter.ULET);
         w.add(Web_ContentWriter.DIVET);
         String title = domain + A_Strings.symbol_space + name
                 + A_Strings.symbol_space + "Page";
