@@ -190,7 +190,7 @@ public class A_Content {
         w.add(Web_ContentWriter.PET);
         w.add(Web_ContentWriter.PST);
         w.add("A getting started tutorial is available on the Python web "
-                + "site,"
+                + "site, "
                 + "<a href=\"https://docs.python.org/3/tutorial/\">"
                 + "https://docs.python.org/3/tutorial/"
                 + "</a>"
