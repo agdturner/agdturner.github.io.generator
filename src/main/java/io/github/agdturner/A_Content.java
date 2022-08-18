@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uk.ac.leeds.ccg.generic.lang.Generic_String;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -47,15 +48,17 @@ public class A_Content {
     public static void main(String[] args) {
         A_Content hw = new A_Content();
         String domain = "agdturner.github.io";
-        Path dirHome = Paths.get("C:", "Users", "agdtu", "src", "agdt", domain);
+        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt", domain);
+        String gURL = "http://github.com/";
+        String gaURL = gURL + "agdturner/";
         ArrayList<Path> subDirectories = new ArrayList<>();
-        Path dirCourses = Paths.get(dirHome.toString(), "courses");
+        Path dirCourses = Paths.get(dir.toString(), "courses");
         Path dirPython = Paths.get(dirCourses.toString(), "python");
         subDirectories.add(dirPython);
         try {
             // Home Page index
-            hw.writeIndex(domain, dirHome, subDirectories);
-            hw.writeIntroductionToPythonCourse(domain, dirHome, dirPython);
+            hw.writeIndex(domain, dir, gaURL, subDirectories);
+            hw.writeIntroductionToPythonCourse(domain, dir, dirPython);
         } catch (IOException ex) {
             Logger.getLogger(A_Content.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,7 +72,7 @@ public class A_Content {
      * @param subdirs The subdirectories in the index.
      * @throws IOException If thrown.
      */
-    public void writeIndex(String domain, Path dir, ArrayList<Path> subdirs)
+    public void writeIndex(String domain, Path dir, String gaURL, ArrayList<Path> subdirs)
             throws IOException {
         String name = "Home";
         String filename = "index";
@@ -79,8 +82,8 @@ public class A_Content {
         Web_ContentWriter w = new Web_ContentWriter();
         w.add(Web_ContentWriter.DIVST);
         w.add(Web_ContentWriter.H1ST,
-                "<img src=\"./images/a.turner.png\" alt=\"Andy Turner\" />"
-                        .getBytes(),
+                ("<img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
+                        + "picture head and shoulders\" />").getBytes(),
                 Web_ContentWriter.H1ET);
         w.add(Web_ContentWriter.PST);
         w.add("I am a research officer based in the School of Geography at the "
@@ -93,17 +96,16 @@ public class A_Content {
                 + "healthier place for people and wildlife.");
         w.add(Web_ContentWriter.PET);
         w.add(Web_ContentWriter.PST);
+        String gadURL = gaURL + domain;
+        String gadgURL = gadURL + ".generator";
         w.add("These Web pages are hosted on GitHub in the repository: "
-                + "<a href=\"http://github.com/agdturner/agdturner.github.io\">"
-                + "http://github.com/agdturner/agdturner.github.io</a>"
+                + w.getLink(gadURL, gadURL)
                 + ". They have been generated using some Java code in the "
-                + "repository:"
-                + "<a href=\"http://github.com/agdturner/agdturner.github.io.generator\">"
-                + "http://github.com/agdturner/agdturner.github.io.generator</a>"
+                + "repository: "
+                + w.getLink(gadgURL, gadgURL)
                 + "."
-                + "Here is a link to my Github profile:"
-                + "<a href=\"http://github.com/agdturner\">"
-                + "http://github.com/agdturner</a>"
+                + "Here is a link to my Github profile: "
+                + w.getLink(gaURL, gaURL)
                 + ". Below is a list of links to web site content.");
         w.add(Web_ContentWriter.PET);
         // Links
@@ -123,9 +125,10 @@ public class A_Content {
                 //relpath = relpath.concat("../");
                 relpath = relpath.concat(subdirname + "/");
                 if (i == subdirnc - 1) {
-                    w.add("<a href=\"" + relpath + "\">" + subdirname + "</a>");
+                    w.add(w.getLink(relpath, 
+                            Generic_String.getCapitalFirstLetter(subdirname)));
                 } else {
-                    w.add(subdirname);
+                    w.add(Generic_String.getCapitalFirstLetter(subdirname));
                 }
             }
             for (int i = dirnc; i < subdirnc; i++) {
@@ -171,12 +174,11 @@ public class A_Content {
                 + "on most platforms.");
         w.add(Web_ContentWriter.PET);
         w.add(Web_ContentWriter.PST);
+        String pythonHome = "https://www.python.org/";
         w.add("The Python interpreter and the extensive standard library "
                 + "are freely available in source or binary form for all major "
                 + "platforms from the Python web site, "
-                + "<a href=\"https://www.python.org/\">"
-                + "https://www.python.org/"
-                + "</a>"
+                + w.getLink(pythonHome, pythonHome)
                 + ", and may be freely distributed. The same site also "
                 + "contains distributions of and pointers to many free third "
                 + "party Python modules, programs and tools, and additional "
@@ -189,19 +191,18 @@ public class A_Content {
                 + "modifications you have made to your Python environment.");
         w.add(Web_ContentWriter.PET);
         w.add(Web_ContentWriter.PST);
+        String python3DocsHome = "https://docs.python.org/3/";
+        String python3DocsTutorial = python3DocsHome + "tutorial/";
+        String geogCourseComputingHome = "https://www.geog.leeds.ac.uk/courses/computing/";
         w.add("A getting started tutorial is available on the Python web "
                 + "site, "
-                + "<a href=\"https://docs.python.org/3/tutorial/\">"
-                + "https://docs.python.org/3/tutorial/"
-                + "</a>"
+                + w.getLink(python3DocsTutorial, python3DocsTutorial)
                 + ". This is almost certainly the best place to start if you "
                 + "are a complete beginner and want to learn on your own. If "
                 + "you want to learn with others, there are plenty of courses "
                 + "to choose from. At the University of Leeds there are a "
                 + "number of courses and I currently teach some of them, "
-                + "<a href=\"https://www.geog.leeds.ac.uk/courses/computing/\">"
-                + "https://www.geog.leeds.ac.uk/courses/computing/"
-                + "</a>"
+                + w.getLink(geogCourseComputingHome, geogCourseComputingHome)
                 + ".");
         w.add(Web_ContentWriter.PET);
         // Links
@@ -216,7 +217,7 @@ public class A_Content {
             relpath = relpath.concat("../");
             //relpath = relpath.concat(subdirname + "/");
             if (i == subdirnc - 1) {
-                w.add("<a href=\"" + relpath + "\">" + dir + "</a>");
+                w.add(w.getLink(relpath, "Home"));
             }
         }
         w.add(Web_ContentWriter.LIET);
