@@ -206,8 +206,12 @@ public class A_Content {
         }
         Web_ContentWriter w = new Web_ContentWriter();
         writeH1(w, name);
-        w.add("<p>These learning resources may work fine on their own, but "
-                + "they were developed for teaching a group of students.</p>");
+        String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
+        w.add("<p>These learning resources were developed for teaching based "
+                + "the University of Leeds where typically a tutor was "
+                + "available to help learners. They are provided here as Open "
+                + "Educational Resources (" 
+                + w.getLink(cc0, "CCO Licence") + ").</p>");
         w.add("<h2>Course Outline</H2>");
         // Aims and Objectives
         w.add("<h3>Aims and Objectives</H3>");
@@ -254,16 +258,24 @@ public class A_Content {
         w.add("<li>Take time to develop your skills</li>");
         w.add("<li>Learners with more experience tend to make faster progress</li>");
         w.add("</ul>");
-        w.add("<li>Build up your skills and knowledge step by step");
+        w.add("<li>Build up your skills and knowledge gradually");
         w.add("<ul>");
+        w.add("<li>There is a lot to learn especially if you are new to "
+                + "programming</li>");
         w.add("<li>Practice is key to success</li>");
-        w.add("<li>Repetition can help a lot</li>");
-        w.add("<li>Taking breaks can help a lot</li>");
-        w.add("<li>Talking to others and asking you tutor question can help a "
-                + "lot</li>");
+        w.add("<li>Repeat reading and repeating tasks has helped others before "
+                + "and it may well help you.</li>");
+        w.add("<li>Try to lean new things when you are fresh and remember to "
+                + "take breaks.</li>");
+        w.add("<li>Talk to others without disturbing them. Work together if "
+                + "like.</li>");
+        w.add("<li>Ask for help in class or via email. If something is wrong "
+                + "with your code, then try to explain what you expect and "
+                + "what is instead happeneing and provide a copy of your "
+                + "code.</li>");
         w.add("</ul>");
-        w.add("<li>Test your understanding and test that code does what you "
-                + "expect</li>");
+        w.add("<li>Test your understanding and test your code does what you "
+                + "expect it to do.</li>");
         w.add("<li>Be experimental</li>");
         w.add("<li>Learn to interpret error messages</li>");
         w.add("<li>Don't be scared of errors, but don't ignore them!</li>");
@@ -275,6 +287,7 @@ public class A_Content {
         w.add("<ul>");
         w.add("<li>A portfolio from the practical tasks worth 30%.</li>");
         w.add("<li>An independent project worth 70%.</li>");
+        w.add("</ul>");
         w.add("</ul>");
         // Practicals
         w.add("<h3>Main Sections</h3>");
