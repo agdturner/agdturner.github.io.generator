@@ -199,19 +199,16 @@ public class A_Content {
      */
     public CourseContent writeIntroductionToPythonCourseIndex(String domain,
             Path dirCourse) throws IOException {
-        String name = "Introduction To Programming and Python Course";
+        String name = "Introduction to Programming and Python";
         String filename = "index";
         if (!Files.exists(dirCourse)) {
             Files.createDirectories(dirCourse);
         }
         Web_ContentWriter w = new Web_ContentWriter();
         writeH1(w, name);
-        String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
-        w.add("<p>These learning resources were developed for teaching based "
-                + "the University of Leeds where typically a tutor was "
-                + "available to help learners. They are provided here as Open "
-                + "Educational Resources (" 
-                + w.getLink(cc0, "CCO Licence") + ").</p>");
+        w.add("<p>These learning resources were developed for teaching a "
+                + "course at the University of Leeds where typically a tutor "
+                + "was available to help learners.</p>");
         w.add("<h2>Course Outline</H2>");
         // Aims and Objectives
         w.add("<h3>Aims and Objectives</H3>");
