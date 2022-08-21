@@ -180,11 +180,13 @@ public class A_Content {
         public ArrayList<String> names;
         public HashMap<String, String> lookup;
         public HashMap<String, Path> lookupPath;
+        public HashMap<String, String> lookupLink;
 
         public CourseContent() {
             names = new ArrayList<>();
             lookup = new HashMap<>();
             lookupPath = new HashMap<>();
+            lookupLink = new HashMap<>();
         }
     }
 
@@ -297,97 +299,52 @@ public class A_Content {
         w.add("<nav>");
         w.add("<ol>");
         CourseContent cc = new CourseContent();
-        ArrayList<String> names = cc.names;
-        HashMap<String, String> lookup = cc.lookup;
         String s;
+        String sname;
         s = "programming";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "python";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "github";
-        names.add(s);
-        lookup.put(s, "GitHub");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = "GitHub";
+        addPage(w, s, sname, cc);
         s = "variables";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm1";
-        names.add(s);
-        lookup.put(s, "ABM 1");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "containers";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm2";
-        names.add(s);
-        lookup.put(s, "ABM 2");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "branching";
-        names.add(s);
-        lookup.put(s, "Branching and Loops");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm3";
-        names.add(s);
-        lookup.put(s, "ABM 3");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = "Branching and Loops";
+        addPage(w, s, sname, cc);
         s = "functions";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm4";
-        names.add(s);
-        lookup.put(s, "ABM 4");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "classes";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm5";
-        names.add(s);
-        lookup.put(s, "ABM 5");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "io";
-        names.add(s);
-        lookup.put(s, "Input Output");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm6";
-        names.add(s);
-        lookup.put(s, "ABM 6");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = "Input/Output";
+        addPage(w, s, sname, cc);
         s = "modules";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm7";
-        names.add(s);
-        lookup.put(s, "ABM 7");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "exceptions";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm8";
-        names.add(s);
-        lookup.put(s, "ABM 8");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
         s = "gui";
-        names.add(s);
-        lookup.put(s, "GUI");
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
+        sname = "GUI";
+        addPage(w, s, sname, cc);
         s = "web";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, lookup.get(s)) + "</li>");
-        s = "abm9";
-        names.add(s);
-        lookup.put(s, Generic_String.getCapitalFirstLetter(s));
-        w.add("<li>" + w.getLink("./" + s, "ABM 9") + "</li>");
+        sname = Generic_String.getCapitalFirstLetter(s);
+        addPage(w, s, sname, cc);
+        for (int i = 1; i < 10; i++) {
+            s = "abm" + i;
+            sname = "ABM " + i;
+            addPage(w, s, sname, cc);
+        }
         w.add("</ol>");
         w.add("</nav>");
         w.add("</div>");
@@ -397,8 +354,17 @@ public class A_Content {
         return cc;
     }
 
+    void addPage(Web_ContentWriter w, String s, String linkName, CourseContent cc) {
+        cc.names.add(s);
+        cc.lookup.put(s, linkName);
+        String k = "../" + s;
+        w.add("<li>" + w.getLink(k, linkName) + "</li>");
+        cc.lookupLink.put(s, k);
+    }
+
     /**
-     * Start the main div and write the title of the page in h1 tags. 
+     * Start the main div and write the title of the page in h1 tags.
+     *
      * @param w The Web_ContentWriter.
      * @param name The title of the page.
      */
@@ -489,10 +455,10 @@ public class A_Content {
         // Write page
         w.writeHTML(cc.lookupPath.get(code), "index", name + " Page");
     }
-    
+
     /**
      * Adds navigation section.
-     * 
+     *
      * @param w The Web_ContentWriter.
      * @param dirCourse The course root directory.
      * @param cc The CourseContent.
@@ -504,13 +470,15 @@ public class A_Content {
         w.add(w.getLink(Paths.get(dirCourse.toString(), "index.html"), "Home"));
         if (c > 0) {
             String s = cc.names.get(c - 1);
-            Path p = Paths.get(cc.lookupPath.get(s).toString(), "index.html");
-            w.add(w.getLink(p, "Prev: " + cc.lookup.get(s)));
+            //Path p = Paths.get(cc.lookupPath.get(s).toString(), "index.html");
+            w.add(w.getLink(cc.lookupLink.get(s), "Prev: " + cc.lookup.get(s)));
+            //w.add(w.getLink(p, "Prev: " + cc.lookup.get(s)));
         }
         if (c < cc.names.size() - 1) {
             String s = cc.names.get(c + 1);
-            Path p = Paths.get(cc.lookupPath.get(s).toString(), "index.html");
-            w.add(w.getLink(p, "Next: " + cc.lookup.get(s)));
+            //Path p = Paths.get(cc.lookupPath.get(s).toString(), "index.html");
+            w.add(w.getLink(cc.lookupLink.get(s), "Prev: " + cc.lookup.get(s)));
+            //w.add(w.getLink(p, "Next: " + cc.lookup.get(s)));
         }
         w.add("</nav>");
         w.add("</div>");
@@ -534,39 +502,46 @@ public class A_Content {
         Web_ContentWriter w = new Web_ContentWriter();
         w.add("<div>");
         w.add("<h1>" + name + "</h1>");
-        String pythonHome = "https://www.python.org/";
-        w.add("<p>Python is a popular and powerful programming language. "
-                + "The Python interpreter and the extensive standard library "
-                + "are freely available in source or binary form for all major "
-                + "platforms from the Python web site, "
-                + w.getLink(pythonHome, pythonHome)
-                + ", and may be freely distributed. The same site also "
-                + "contains distributions of and pointers to many free third "
-                + "party Python modules, programs and tools, and additional "
-                + "documentation.</p>");
-        w.add("<p>Python underwent a major revision from Python 2 to Python 3. "
-                + "Much Python 2 code needed refactoring in order to work in "
-                + "Python 3 environments. It is sensible to know exactly which "
-                + "version of Python you are using and to keep a track of any "
-                + "modifications you have made to your Python environment. "
-                + "This is helpful in science to try to make results more "
-                + "reproducible, but also in programming sometimes you want to "
-                + "ask others for help or to submit a bug report and the "
-                + "helpers or developers will want to replicate the issue."
-                + "</p>");
-        w.add("<p>Computer programming languages are typically evolving over "
-                + "time like software do. Often development teams will support "
-                + "older versions before deprecating or making them obsolete "
-                + "and no longer supporting them. This encourages users to "
-                + "try and use newwer versions which are typically more "
-                + "capable or functional, but not always!</p>");
+
+        String pythonWikipedia = w.getLink(
+                "https://en.wikipedia.org/wiki/Python_(programming_language)",
+                "Python");
+        String pythonHome = w.getLink("https://www.python.org/",
+                "Python web site");
+        w.add("<p>" + pythonWikipedia + " is a popular and powerful "
+                + "programming language. The Python interpreter and the "
+                + "extensive standard library are freely available in source "
+                + "or binary form for all major platforms from " + pythonHome
+                + ", and may be freely distributed. The web site contains "
+                + "distributions of and pointers to many free third party "
+                + "Python modules, programs and tools, and additional "
+                        + "documentation.</p>");
+        w.add("<p>Python underwent a major revision from Python 2 to Python 3 "
+                + "in around 2008. Much Python 2 code needed refactoring in "
+                + "order to work in Python 3 environments. Python 2 is no "
+                + "longer supported, but it is sometimes still used. Python 3 "
+                + "is actively developed and a new stable version is released "
+                + "from time to time. On the 22nd of August 2022 Version "
+                + "3.10.6 was release.</p>");
+        w.add("<p>Third party software sometimes needs changes to work with "
+                + "the latest version. It is sensible to know exactly which "
+                + "version of Python and any third party modules you are "
+                + "using. This helps with reproducing results and diagnosing "
+                + "issues. Often programmers ask others for help and submit "
+                + "bug reports so others can replicate issues on their set up "
+                + "to try to diagnose and fix issues. In this way, programming "
+                + "is like being part of a community where it is normal to ask "
+                + "others for help. In this course, you are not expected to "
+                + "engage with the developer community, if you experience any "
+                + "problems you are encouraged to ask each other or your "
+                + "tutor for help.</p>");
         String python3DocsHome = "https://docs.python.org/3/";
         String python3DocsTutorial = python3DocsHome + "tutorial/";
-        w.add("<p>A getting started tutorial is available on the Python web "
-                + "site and this can be find via the following URL: "
-                + w.getLink(python3DocsTutorial, python3DocsTutorial)
-                + ". We will be going through much of the same in this "
-                + "course.</p>");
+        w.add("<p>The "
+                + w.getLink(python3DocsTutorial, "Getting started tutorial")
+                + "linked from the Python web site is as good a place as any "
+                + "to start learning Python. We will be covering a lot of the "
+                + "same basics in this course.</p>");
         w.add("</div>");
         // Add navigation
         addNav(w, dirCourse, cc, c);
