@@ -387,67 +387,68 @@ public class A_Content {
         String name = cc.lookup.get(code);
         Web_ContentWriter w = new Web_ContentWriter();
         writeH1(w, name);
-        w.add("<p>Programming is about instructing a computer to carry out a "
-                + "set of tasks. Typically these involve data that are "
-                + "seperate from the instructions, and their transfer, "
-                + "processing and output in visual and/or audio forms.</p>");
+        w.add("<p>Computer programming (programming, or coding) is about "
+                + "instructing a computer to carry out a set of tasks. "
+                + "Typically, these involve data that are transferred, "
+                + "processed and output in text, visual and audio forms "
+                + "according to the instructions provided.</p>");
+        w.add("<p>The first computers were humans. These days most computers "
+                + "are electrical machines with circuits that pass binary data "
+                + "through processing units.</p>");
         w.add("<p>Programming can be done via a visual interface that allows "
-                + "programmers to compose workflows made up of components that "
-                + "fit or connect together to represent some sequence of "
-                + "calculation and data processing. However, this course is "
+                + "the programmer to compose workflows made up of components "
+                + "that fit or connect together and to run these to perform "
+                + "calculations and produce output. However, this course is "
                 + "not about visual programming and is about programming using "
-                + "written instructions that are passed to an interpretter.</p>");
+                + "text commands written in the Python language. The commands "
+                + "are either entered at a prompt one after another or passed "
+                + "to the interpretter in a set of files.</p>");
         w.add("<p>There are a wide variety of computer programming languages "
-                + "which have varying syntax (rules) as to how to write "
-                + "instructions. Whilst this course focusses on Python "
-                + "programming, it is helpful to understand ome of the "
-                + "similarities and differences between Python and other "
-                + "commonly used similar languages.</p>");
-        w.add("<p>Nearly all modern computers use electrical charge to store "
-                + "and process data. Without going into too much detail, the "
-                + "charge can be used to change the state of data from a zero "
-                + "(0) to a one (1). A single bit of data is thus a 0 or a 1. "
-                + "Typically computers work on fixed size collections of bits "
-                + "called bytes. The number of bits in a byte limits how many "
-                + "different things can be expressed in a single byte. Bytes "
-                + "can be combined to express more, similar to how words in a "
-                + "natural language like English can express far more than the "
-                + "individual letters.</p>");
-        w.add("<p>Lower level languages have smaller numbers of different "
-                + "types of instruction, higher level languages can do much "
-                + "more, but these are ultimately compiled into the machine "
-                + "readable low level language when a program is run. Python "
-                + "is a high level language like Java, C# and C++.</p>");
-        w.add("<p>Sometimes programming is also called coding. Programming "
-                + "using a computer programming language and interpretter "
-                + "allows for the automation of tasks that may otherwise "
-                + "require the user to manually push buttons or be on hand to "
-                + "figure out what to do and set the next things going once a "
-                + "process has completed.</p>");
-        w.add("<p>If you are new to computer programming, then there may be "
-                + "many terms already in this page that are new or are "
-                + "unfamiliar to you. As with learning any language, this is "
-                + "not uncommon and some level of immersion and repetition "
-                + "will help you comprehend. You are not expected to know and "
-                + "undertstand everything to be able to move on. The meaining "
-                + "of some terms will become clearer the more they are used. "
-                + "Gradually you can fill in the gaps in your understanding as "
-                + "you go through the learning resources. Many of you will "
-                + "benefit going through some parts of these resources several "
-                + "times and perhaps go through everything more than once to "
-                + "gain a deeper understanding.</p>");
-        w.add("<p>In Python (like in Java) instructions or commands are "
-                + "entered at a prompt or passed in files to be interpretted. "
-                + "Commands entered at a prompt are run one at a time. When "
-                + "program files are run, typically multiple instructions are "
-                + "run and in some cases the program contains new instructions "
-                + "about how to process data which are interpretted too. Using "
-                + "a computer programming language and interpretter allows for "
-                + "the automation of tasks that may otherwise require the user "
-                + "to manually push buttons or be on hand to provide the next "
-                + "instruction. Sometimes programming is also called coding. "
-                + "Before we get on with some Python coding, let us learn a "
-                + "little bit more about that langauge.</p>");
+                + "which have varying syntax (rules). Python has many things "
+                + "in common with other languages and some differences. These "
+                + "learning resources will mention some similarities and "
+                + "differences that are useful to be aware of.</p>");
+        w.add("<p>The smallest amount of binary data is called a bit - one or "
+                + "the other state which is perhaps easiest to think of as a "
+                + "zero or a one.</p>");
+        w.add("<p>Typically computers work with fixed size collections of bits "
+                + "called bytes. The more more bits in a byte, the more "
+                + "different unique combinations there are. With each added "
+                + "bit there is a power of two more combinations. With 2 bits "
+                + "there are 4 possible combinations of zeros and ones. With 3 "
+                + "bits there are 8 combinations. With 4, 16... With 8, 256... "
+                + "Many encodings use 8 bits in a byte (as this allows for all "
+                + "English letters in both lower and upper case, every numeric "
+                + "digit 0 to 9, and a large number of mathematical and other "
+                + "symbols to be uniquely represented. To represent individual "
+                + "numbers, computers typically use more bits depending on the "
+                + "type of number. We will come back to numerical "
+                + "representations and calculations later.</p>");
+        w.add("<p>The lowest level languages are called machine languages and "
+                + "these tell the computer how to read instructions and "
+                + "transfer data. Higher level languages like Python have "
+                + "interpretters that translate more human readable code into "
+                + "the machine language.</p>");
+        w.add("<p>If you are new to computer programming, then you will be "
+                + "learning lots of new terms and concepts as well as learning "
+                + "the syntax of Python in this course. There is a lot to take "
+                + "on board and you will be most ready to learn these new "
+                + "things when you are well rested and able to concentrate. "
+                + "You are strongly encouraged to take breaks when you are "
+                + "learning and allow time for the concepts and new "
+                + "terminology to sink in. Taking breaks will almost certainly "
+                + "help you to learn faster on the whole as you tap you "
+                + "subconscious. Learning should be a joy, but it is not so "
+                + "much fun if you are not making progress which can happen if "
+                + "you try to work when you are tired. Learning to program "
+                + "requires practice and will inevitable involve making lots "
+                + "of mistakes - a bit like learning to play a musical "
+                + "instrument. Most learning computer programming learn best "
+                + "by doing practical exercises and reusing the code they have "
+                + "written.</p>");
+        w.add("<p>There is typically more to learn with the first computer "
+                + "programming language you learn. Once you can use one, it is "
+                + "much easier to learn another.</p>");
         w.add("</ul>");
         w.add("</div>");
         // Add navigation
@@ -477,7 +478,7 @@ public class A_Content {
         if (c < cc.names.size() - 1) {
             String s = cc.names.get(c + 1);
             //Path p = Paths.get(cc.lookupPath.get(s).toString(), "index.html");
-            w.add(w.getLink(cc.lookupLink.get(s), "Prev: " + cc.lookup.get(s)));
+            w.add(w.getLink(cc.lookupLink.get(s), "Next: " + cc.lookup.get(s)));
             //w.add(w.getLink(p, "Next: " + cc.lookup.get(s)));
         }
         w.add("</nav>");
@@ -502,7 +503,6 @@ public class A_Content {
         Web_ContentWriter w = new Web_ContentWriter();
         w.add("<div>");
         w.add("<h1>" + name + "</h1>");
-
         String pythonWikipedia = w.getLink(
                 "https://en.wikipedia.org/wiki/Python_(programming_language)",
                 "Python");
@@ -511,37 +511,174 @@ public class A_Content {
         w.add("<p>" + pythonWikipedia + " is a popular and powerful "
                 + "programming language. The Python interpreter and the "
                 + "extensive standard library are freely available in source "
-                + "or binary form for all major platforms from " + pythonHome
+                + "and binary form for all major platforms from " + pythonHome
                 + ", and may be freely distributed. The web site contains "
                 + "distributions of and pointers to many free third party "
                 + "Python modules, programs and tools, and additional "
-                        + "documentation.</p>");
+                + "documentation.</p>");
         w.add("<p>Python underwent a major revision from Python 2 to Python 3 "
-                + "in around 2008. Much Python 2 code needed refactoring in "
-                + "order to work in Python 3 environments. Python 2 is no "
-                + "longer supported, but it is sometimes still used. Python 3 "
-                + "is actively developed and a new stable version is released "
-                + "from time to time. On the 22nd of August 2022 Version "
-                + "3.10.6 was release.</p>");
-        w.add("<p>Third party software sometimes needs changes to work with "
-                + "the latest version. It is sensible to know exactly which "
-                + "version of Python and any third party modules you are "
-                + "using. This helps with reproducing results and diagnosing "
-                + "issues. Often programmers ask others for help and submit "
-                + "bug reports so others can replicate issues on their set up "
-                + "to try to diagnose and fix issues. In this way, programming "
-                + "is like being part of a community where it is normal to ask "
-                + "others for help. In this course, you are not expected to "
-                + "engage with the developer community, if you experience any "
-                + "problems you are encouraged to ask each other or your "
-                + "tutor for help.</p>");
+                + "in around 2008. There were changes that were not backwards "
+                + "compatible. As a result a lot of Python 2 code needed "
+                + "refactoring in order to work in Python 3 environments. "
+                + "This somewhat divided the community at the time. Python 2 "
+                + "is no longer supported in that the Python developers are no "
+                + "longer responding to issues reported against Python 2. "
+                + "On the 22nd of August 2022 Python 3.10.6 was released. "
+                + "With each main release of Python 3 there is a \"whatsnew\" "
+                + "Web page:"
+                + "</p>");
+        w.add("<ul>");
+        for (int i = 0; i < 11; i++) {
+            w.add("<li>" + w.getLink(
+                    "https://docs.python.org/3/whatsnew/3." + i + ".html",
+                    "Whatsnew Python 3." + i) + "</li>");
+        }
+        w.add("</ul>");
+        w.add("<p>On whatsnew Web pages, changes are marked against Python "
+                + "Enhancement Proposals (PEPs). These are community proposed "
+                + "and allow us to look ahead and see what might change in "
+                + "subsequent versions of Python. PEPs have their own Web site:"
+                + w.getLink("https://peps.python.org/",
+                        "https://peps.python.org/")
+                + "</p>");
+        w.add("<p>It is important to know exactly which version of Python you "
+                + "are using and what versions of any third party modules you "
+                + "are using. This helps with reproducing results and "
+                + "diagnosing issues.</p>");
+        w.add("<p>Programming and programming language development are "
+                + "community activities. It is normal to ask others for help "
+                + "and to provide others with help and work collaboratively "
+                + "to develop things. There are different types of forums for "
+                + "asking and anwering questions and different types of "
+                + "project that you might want to get involved with once you "
+                + "have gained some experience. In this course, you are "
+                + "discouraged from asking questions on any forums other than "
+                + "our own. But, you are encouraged to search for and use the "
+                + "posts others have made on forums you can access. These may "
+                + "help you complete tasks and understand better, but be sure "
+                + "to keep a track of what you use as it is expected that you "
+                + "refer to these in your academic work. You might want to "
+                + "create forum accounts so that you can up or down vote "
+                + "posts, but until you complete this course please do not "
+                + "make original posts asking for help or reply to posts to "
+                + "help others without first liaising with your tutor. Please "
+                + "ask your tutor for help if you get stuck. If you ask for "
+                + "help by email, it is often a good idea to attach your code, "
+                + "explain what you think should happen and describe what "
+                + "happens instead.</p>");
         String python3DocsHome = "https://docs.python.org/3/";
         String python3DocsTutorial = python3DocsHome + "tutorial/";
         w.add("<p>The "
-                + w.getLink(python3DocsTutorial, "Getting started tutorial")
-                + "linked from the Python web site is as good a place as any "
-                + "to start learning Python. We will be covering a lot of the "
-                + "same basics in this course.</p>");
+                + w.getLink(python3DocsTutorial, "getting started tutorial")
+                + "linked from the " + pythonHome + " is a good place to start "
+                + "learning Python. We will be covering a lot of the same "
+                + "things in this course, but we will be going about it "
+                + "in a more geographical way.</p>");
+        w.add("<p>In Python instructions or commands are entered at a prompt "
+                + "or passed in files to be interpretted. Commands entered at "
+                + "a prompt are run one at a time. When program files are run, "
+                + "typically multiple instructions are run. There is an order "
+                + "in which instructions run. In some cases the program files "
+                + "that are run contains new types of instructions. Sometimes "
+                + "programming is also called coding. Let us get going now "
+                + "with a bit of Python coding.</p>");
+        w.add("</div>");
+        w.add("<div>");
+        w.add("<p>To follow the instructions below, you need to have Python "
+                + "installed on your system. These instructions also assume "
+                + "that you are using a Windows Operating System.</p>");
+        w.add("<p>Open up a command window and enter: "
+                + "\"python --version\"</p>");
+        w.add("<p>This should output the version of Python your system is set "
+                + "up to use. If Python is not on your Path, then you will get "
+                + "an error message.</p>");
+        w.add("<p>Enter the command: \"python\"</p>");
+        w.add("<p>The prompt should change to look more like: \">>> \"</p>");
+        w.add("<p>This is the Read-Eval-Print Loop (REPL) environment for "
+                + "Python where user inputs are read and evaluated, and then "
+                + "the results are returned to the user. We call this \"the "
+                + "Python prompt\".");
+        w.add("<p>Enter: \"2 + 3\"</p>");
+        w.add("<p>You should see the result \"5\" printed.</p>");
+        w.add("<p>You can use this Python REPL environment to do some "
+                + "mathematical calculations.</p>");
+        w.add("<p>The symbol \"*\" is the symbol for multiplication.</p>");
+        w.add("<p>Try multiplying two numbers.</p>");
+        w.add("<p>\"/\" is the division operator. \"**\" is a power operator."
+                + "Have a little play.</p>");
+        w.add("<p>Each of these operators can also be accessed via a function "
+                + "in the \"operator\" module.</p>");
+        w.add("<p>Enter: \"operator.add(2, 3)\"</p>");
+        w.add("<p>You should get a \"NameError\" informing you that the "
+                + "interpretter does not know about the module named "
+                + "\"operator\"</p>");
+        w.add("<p>We have to \"import\" it if we want to use it. Before we do "
+                + "that, check what your Python environment does know about."
+                + "</p>");
+        w.add("<p>Enter: \"dir()\"</p>");
+        w.add("<p>This runs (or calls) the \"dir\" function. You can tell it "
+                + "is a function as after the name there is a start "
+                + "parenthesis \"(\". The function call is completed by the "
+                + "end parenthesis \")\". This function has no arguments - "
+                + "things that are passed to the function - as there is "
+                + "nothing between the start and end parentheses.</p>");
+        w.add("<p>You should get a list printed out that looks like:"
+                + "\"['__annotations__', '__builtins__', '__doc__', "
+                + "'__loader__', '__name__', '__package__', '__spec__']\"</p>");
+        w.add("<p>You can tell this is a list as it starts with \"[\" and ends "
+                + "with \"]\" and the elements are separated with commas "
+                + "(\",\").</p>");
+        w.add("<p>Enter: \"import operator\"</p>");
+        w.add("<p>This imports the \"operator\" module.</p>");
+        w.add("<p>Enter: \"dir()\"</p>");
+        w.add("<p>You should see the \"operator\" module in the list.</p>");
+        w.add("<p>Enter: \"operator.add(2, 3)\"</p>");
+        w.add("<p>You should see the result \"5\" printed.</p>");
+        w.add("<p>Enter: \"dir(operator)\"</p>");
+        w.add("<p>This lists all the functions in the \"operator\" module. It "
+                + "is quite a long list and contains \"add\", the function "
+                + "that we called to add the numbers 2 and 3. There are "
+                + "numerous functions that have a name starting and ending "
+                + "with \"__\". These are not supposed to be called directly, "
+                + "but they can be called.</p>");
+        w.add("<p>Enter: \"operator.__add__(2, 3)\"</p>");
+        w.add("<p>Python does not have a way of exerting access control on "
+                + "variables or functions, so it uses a naming convention to "
+                + "indicate to users that the variable or function should not "
+                + "be accessed from outside the module. Variables with names "
+                + "that start with a single underscore (\"_\") or double "
+                + "underscore \"__\" you generally should not be accessing or "
+                + "using directly.</p>");
+        w.add("<p>Enter: \"help(operator.add)\"</p>");
+        w.add("<p>This prints out some information about how to use the "
+                + "\"operator\" module \"add\" function.</p>");
+        w.add("<p>Enter: \"help()\"</p>");
+        w.add("<p>This enters the help system and the prompt changes to look "
+                + "like \"help> \".</p>");
+        w.add("<p>Read what is printed.</p>");
+        w.add("<p>Enter: \"modules\"</p>");
+        w.add("<p>Enter: \"operator\"</p>");
+        w.add("<p>This is the help documentation for the operator module. It "
+                + "is many lines long. Press and hold the <enter> key to get "
+                + "the next lines of the help documentation and let go after a "
+                + "few lines. Try pressing your <space bar> key to get the "
+                + "next page of the help documentation. Usually you can keep "
+                + "pressing your <space bar> key to scan through this help "
+                + "documentation until you exit. You can also press your <q> "
+                + "key to quit and return to the help system.</p>");
+        w.add("<p>Enter: \"q\"</p>");
+        w.add("<p>This should exit the help system and return you to the "
+                + "Python prompt.</p>");
+        w.add("<p>Call the \"quit\" function to quit the Python REPL i.e. "
+                + "Enter: \"quit()\"</p>");
+        w.add("<p>This should return you to the normal command prompt.</p>");
+//        w.add("<p></p>");
+//        w.add("<p></p>");
+//        w.add("<p></p>");
+//        w.add("<p>Enter: \"\"</p>");
+//        w.add("<p>Enter: \"\"</p>");
+//        w.add("<p>Enter: \"\"</p>");
+//        w.add("<p>Enter: \"\"</p>");
         w.add("</div>");
         // Add navigation
         addNav(w, dirCourse, cc, c);
