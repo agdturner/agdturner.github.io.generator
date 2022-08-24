@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uk.ac.leeds.ccg.generic.core.Generic_Strings;
 import uk.ac.leeds.ccg.generic.lang.Generic_String;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
@@ -222,129 +221,156 @@ public class A_Content {
         w.add("<li>Loops</li>");
         w.add("<li>Conditional statements</li>");
         w.add("<li>Classes, functions/methods</li>");
-        w.add("</ul>");
-        w.add("<li>Practice using Python to:");
+        w.add("<li>Object Orientated Programming</li>");
+        w.add("</ul></li>");
+        w.add("<li>Use Python to:");
         w.add("<ul>");
-        w.add("<li>Read data from and write data to files</li>");
-        w.add("<li>Use lists as data structures</li>");
+        w.add("<li>Read data from files and from the Web</li>");
+        w.add("<li>Write data to files</li>");
         w.add("<li>Handle coordinates in lists</li>");
         w.add("<li>Display spatial data</li>");
         w.add("<li>Process raster data</li>");
-        w.add("<li>Develop and a dynamic spatial simulation</li>");
+        w.add("<li>Develop and visualise a dynamic spatial simulation</li>");
         w.add("</ul></li>");
-        w.add("<li>Think computationally</li>");
-        w.add("<li>Practice and develop problem solving skills</li>");
+        w.add("<li>Practice:");
+        w.add("<ul>");
+        w.add("<li>Problem solving</li>");
+        w.add("<li>Computational thinking</li>");
+        w.add("<li>Object Orientated Programming</li>");
+        w.add("</ul></li>");
         w.add("<li>Understand generic programming tasks and how to go about "
-                + "these in Python:");
+                + "these in Python including:");
         w.add("<ul>");
-        w.add("<li>Tests</li>");
-        w.add("<li>Documentation</li>");
+        w.add("<li>Testing</li>");
+        w.add("<li>Documenting</li>");
         w.add("<li>Sharing</li>");
-        w.add("</ul>");
-        w.add("<li>Appreciate Python and be aware of its limitations</li>");
-        w.add("<li>Understand different ways to code and run Python</li>");
-        w.add("<li>Appreciate the utility and benefits of:");
+        w.add("</ul></li>");
+        w.add("<li>Familiarisation with:");
         w.add("<ul>");
-        w.add("<li>Integrated Development Environments</li>");
+        w.add("<li>Python language development</li>");
+        w.add("<li>Python limitations</li>");
+        w.add("<li>Jupyter Notebooks</li>");
         w.add("<li>Version control</li>");
-        w.add("</ul>");
+        w.add("<li>GitHub</li>");
+        w.add("</ul></li>");
         w.add("</ul>");
         // The learning journey
-        w.add("<h3>The Learning Journey</H3>");
+        w.add("<h3>The Learning Journey</h3>");
         w.add("<ul>");
-        w.add("<li>Go at your own pace:");
-        w.add("<ul>");
-        w.add("<li>Take time to develop your skills</li>");
-        w.add("<li>Learners with more experience tend to make faster progress</li>");
-        w.add("</ul>");
-        w.add("<li>Build up your skills and knowledge gradually");
-        w.add("<ul>");
+        w.add("<li>Take time to develop your understanding and practise your "
+                + "skills.</li>");
         w.add("<li>There is a lot to learn especially if you are new to "
-                + "programming</li>");
-        w.add("<li>Practice is key to success</li>");
-        w.add("<li>Repeat reading and repeating tasks has helped others before "
-                + "and it may well help you.</li>");
-        w.add("<li>Try to lean new things when you are fresh and remember to "
+                + "programming.</li>");
+        w.add("<li>Practise is essential.</li>");
+        w.add("<li>Repeat reading and repeating tasks is highly recommended."
+                + "</li>");
+        w.add("<li>Try to learn new things when you are fresh and remember to "
                 + "take breaks.</li>");
         w.add("<li>Talk to others without disturbing them. Work together if "
-                + "like.</li>");
-        w.add("<li>Ask for help in class or via email. If something is wrong "
-                + "with your code, then try to explain what you expect and "
-                + "what is instead happeneing and provide a copy of your "
-                + "code.</li>");
-        w.add("</ul>");
-        w.add("<li>Test your understanding and test your code does what you "
-                + "expect it to do.</li>");
-        w.add("<li>Be experimental</li>");
-        w.add("<li>Learn to interpret error messages</li>");
-        w.add("<li>Don't be scared of errors, but don't ignore them!</li>");
-        w.add("</ul>");
+                + "you like.</li>");
+        w.add("<li>Ask your tutor for help or clarification in class or via "
+                + "email.</li>");
+        w.add("<li>Test your understanding by testing that your code does what "
+                + "you expect it to do.</li>");
+        w.add("<li>Be experimental.</li>");
+        w.add("<li>Learn to interpret error messages.</li>");
+        w.add("</ul></li>");
         // Assignments and Assessments
         w.add("<h3>Assignments and Assessments</h3>");
-        w.add("<ul>");
-        w.add("<li>There are two assignments that are assessed:");
+        w.add("<p>There are two assignments that are assessed:</p>");
         w.add("<ul>");
         w.add("<li>A portfolio from the practical tasks worth 30%.</li>");
         w.add("<li>An independent project worth 70%.</li>");
         w.add("</ul>");
-        w.add("</ul>");
         // Practicals
         w.add("<h3>Main Sections</h3>");
-        w.add("<p>The sections continaing \"ABM\" are practicals that employ "
-                + "some of what is learned in the preceeding sections to "
-                + "gradually develop an Agent Based Model which is a "
-                + "two-dimensional (2D) spatial model of animals moving about "
-                + "and interacting with each other and the environment in "
-                + "which they are moving.</p>");
+        w.add("<p>The sections names starting \"ABM\" are practicals that "
+                + "develop an Agent Based Model. It is a simplistic model "
+                + "representing animals moving about in an environment, "
+                + "interacting with each other and the environment. (There is "
+                + "much that can be done to enhance the model and make it more "
+                + "realistic.)</p>");
         w.add("<nav>");
         w.add("<ol>");
         CourseContent cc = new CourseContent();
         String s;
         String sname;
+        // 1.
         s = "programming";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 2.
         s = "python";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 3.
         s = "github";
         sname = "GitHub";
         addPage(w, s, sname, cc);
+        // 4.
         s = "variables";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 5.
+        int abmi = 1;
+        addABMPage(w, abmi, cc);
+        // 6.
         s = "containers";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 7.
         s = "branching";
         sname = "Branching and Loops";
         addPage(w, s, sname, cc);
+        // 8.
+        abmi++;
+        addABMPage(w, abmi, cc);
+        // 9.
         s = "functions";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 10.
+        abmi++;
+        addABMPage(w, abmi, cc);
+        // 11.
         s = "classes";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 12.
+        abmi++;
+        addABMPage(w, abmi, cc);
+        // 13.
         s = "io";
         sname = "Input/Output";
         addPage(w, s, sname, cc);
+        // 14.
+        abmi++;
+        addABMPage(w, abmi, cc);
+        // 15.
         s = "modules";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 16.
+        abmi++;
+        addABMPage(w, abmi, cc);
+        // 17.
         s = "exceptions";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
+        // 18.
+        abmi++;
+        addABMPage(w, abmi, cc);
+        // 19.
         s = "gui";
         sname = "GUI";
         addPage(w, s, sname, cc);
+        // 20.
         s = "web";
         sname = Generic_String.getCapitalFirstLetter(s);
         addPage(w, s, sname, cc);
-        for (int i = 1; i < 10; i++) {
-            s = "abm" + i;
-            sname = "ABM " + i;
-            addPage(w, s, sname, cc);
-        }
+        // 21.
+        abmi++;
+        addABMPage(w, abmi, cc);
         w.add("</ol>");
         w.add("</nav>");
         w.add("</div>");
@@ -357,9 +383,12 @@ public class A_Content {
     void addPage(Web_ContentWriter w, String s, String linkName, CourseContent cc) {
         cc.names.add(s);
         cc.lookup.put(s, linkName);
-        String k = "../" + s;
-        w.add("<li>" + w.getLink(k, linkName) + "</li>");
-        cc.lookupLink.put(s, k);
+        w.add("<li>" + w.getLink(s, linkName) + "</li>");
+        cc.lookupLink.put(s, "../" + s);
+    }
+
+    void addABMPage(Web_ContentWriter w, int index, CourseContent cc) {
+        addPage(w, "abm" + index, "ABM " + index, cc);
     }
 
     /**
@@ -387,43 +416,56 @@ public class A_Content {
         String name = cc.lookup.get(code);
         Web_ContentWriter w = new Web_ContentWriter();
         writeH1(w, name);
-        w.add("<p>Computer programming (programming, or coding) is about "
-                + "instructing a computer to carry out a set of tasks. "
-                + "Typically, these involve data that are transferred, "
-                + "processed and output in text, visual and audio forms "
-                + "according to the instructions provided.</p>");
-        w.add("<p>The first computers were humans. These days most computers "
-                + "are electrical machines with circuits that pass binary data "
-                + "through processing units.</p>");
-        w.add("<p>Programming can be done via a visual interface that allows "
-                + "the programmer to compose workflows made up of components "
-                + "that fit or connect together and to run these to perform "
-                + "calculations and produce output. However, this course is "
-                + "not about visual programming and is about programming using "
-                + "text commands written in the Python language. The commands "
-                + "are either entered at a prompt one after another or passed "
-                + "to the interpretter in a set of files.</p>");
+        String cp = w.getLink(
+                "https://en.wikipedia.org/wiki/Computer_programming",
+                "Computer programming");
+        w.add("<p> " + cp + " (programming, or coding) is about instructing a "
+                + "computer to carry out a set of tasks. Typically, the tasks "
+                + "involve data that are transferred, processed and output in "
+                + "visual and audio forms.</p>");
+        w.add("<p>The first computers were human calculators. These days most "
+                + "computers are electrical machines with circuits. Desktop "
+                + "machines typically have a keyboard for user inputs, process "
+                + "binary data stored in a file system and have a graphical "
+                + "display. Machines are typically networked and can "
+                + "communicate with other similar machines on the "
+                + w.getLink("https://en.wikipedia.org/wiki/Internet",
+                        "Internet") + ".</p>");
+        w.add("<p>Programming can be done visually by arranging pre-built "
+                + "components that fit or connect together to form programs or "
+                + "workflows that can then be run to produce output. However, "
+                + "this course is not about visual programming, it is about "
+                + "programming using text commands written in a computer "
+                + "programming language and either entered at a prompt one "
+                + "after another or passed to an interpretter in a file or a "
+                + "set of files. (A file is an ordered collection of data that "
+                + "is registered with the computer operating system and can be "
+                + "persistently stored (made so that it is available in "
+                + "subsequent computer sessions).)</p>");
         w.add("<p>There are a wide variety of computer programming languages "
-                + "which have varying syntax (rules). Python has many things "
-                + "in common with other languages and some differences. These "
-                + "learning resources will mention some similarities and "
+                + "each defined by a specific syntax (rules). Like natural "
+                + "languages, computer languages can share a lot in common and "
+                + "can look completely different. These learning resources "
+                + "focus on Python and will mention some similarities and "
                 + "differences that are useful to be aware of.</p>");
         w.add("<p>The smallest amount of binary data is called a bit - one or "
-                + "the other state which is perhaps easiest to think of as a "
-                + "zero or a one.</p>");
+                + "the other state. Perhaps it is easiest to think of these "
+                + "states as being a zero or a one.</p>");
         w.add("<p>Typically computers work with fixed size collections of bits "
                 + "called bytes. The more more bits in a byte, the more "
                 + "different unique combinations there are. With each added "
                 + "bit there is a power of two more combinations. With 2 bits "
-                + "there are 4 possible combinations of zeros and ones. With 3 "
-                + "bits there are 8 combinations. With 4, 16... With 8, 256... "
-                + "Many encodings use 8 bits in a byte (as this allows for all "
+                + "there are 4 possible combinations of zeros and ones (00, "
+                + "01, 10, 11). With 3 bits there are 8 combinations (000, "
+                + "001, 010, 100, 011, 101, 110, 111). With 4, 16... With 8, "
+                + "256...</p>");
+        w.add("<p>Many encodings use 8 bits in a byte (as this allows for all "
                 + "English letters in both lower and upper case, every numeric "
-                + "digit 0 to 9, and a large number of mathematical and other "
-                + "symbols to be uniquely represented. To represent individual "
-                + "numbers, computers typically use more bits depending on the "
-                + "type of number. We will come back to numerical "
-                + "representations and calculations later.</p>");
+                + "digit 0 to 9, and 192 mathematical and other symbols to be "
+                + "uniquely represented. To represent individual numbers, "
+                + "computers typically use more bits depending on the type of "
+                + "number. We will come back to numerical representations and "
+                + "calculations later.</p>");
         w.add("<p>The lowest level languages are called machine languages and "
                 + "these tell the computer how to read instructions and "
                 + "transfer data. Higher level languages like Python have "
@@ -449,7 +491,6 @@ public class A_Content {
         w.add("<p>There is typically more to learn with the first computer "
                 + "programming language you learn. Once you can use one, it is "
                 + "much easier to learn another.</p>");
-        w.add("</ul>");
         w.add("</div>");
         // Add navigation
         addNav(w, dirCourse, cc, c);
@@ -468,7 +509,7 @@ public class A_Content {
     void addNav(Web_ContentWriter w, Path dirCourse, CourseContent cc, int c) {
         w.add("<div>");
         w.add("<nav>");
-        w.add(w.getLink(Paths.get(dirCourse.toString(), "index.html"), "Home"));
+        w.add(w.getLink("../index.html", "Home"));
         if (c > 0) {
             String s = cc.names.get(c - 1);
             //Path p = Paths.get(cc.lookupPath.get(s).toString(), "index.html");
