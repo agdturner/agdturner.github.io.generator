@@ -15,12 +15,18 @@
  */
 package io.github.agdturner.core;
 
-import uk.ac.leeds.ccg.web.core.Web_Strings;
+import uk.ac.leeds.ccg.data.id.Data_ID_int;
 
 /**
- *
+ * For defining unique identifiers of pages.
+ * 
  * @author Andy Turner
  */
-public class A_Strings extends Web_Strings {
+public class ReferenceID extends Data_ID_int {
+
+    private static final long serialVersionUID = 1L;
     
+    public ReferenceID(int i){
+        super(i);
+    }
 }
