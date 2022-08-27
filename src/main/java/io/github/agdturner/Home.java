@@ -52,10 +52,10 @@ public class Home extends Page {
      * @param args
      */
     public static void main(String[] args) {
-        String name = "Andy Turner " + Environment.domain + " Home Page";
+        String name = "Andy Turner " + Environment.DOMAIN + " Home Page";
         PageID id = new PageID(0);
         Home h = new Home(name, id);
-        //Path p = Paths.get(Environment.dir.toString(), "course");
+        //Path p = Paths.get(Environment.DIR.toString(), "course");
         Path p = Paths.get("courses");
         TreeNode<Path> dirCourses = new TreeNode<>(p);
         h.subdirs.add(dirCourses);
@@ -69,7 +69,7 @@ public class Home extends Page {
         dirCoursesJava.addChild(Paths.get(pJava.toString(), "GEOG5990M"));
         try {
             // Home Page index
-            h.write(Environment.dir);
+            h.write(Environment.DIR);
         } catch (IOException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,7 +78,7 @@ public class Home extends Page {
     /**
      * For initial write of Web content.
      *
-     * @param domain The domain name as a String.
+     * @param domain The DOMAIN name as a String.
      * @param dir The directory in which the content will be written.
      * @param subdirs The subdirectories in the index.
      * @throws IOException If thrown.
@@ -100,7 +100,7 @@ public class Home extends Page {
                 + "dynamic spatial models and processing geographical data to "
                 + "help mitigate risk and make the world a safer, happier and "
                 + "healthier place for people and wildlife.</p>");
-        String gadURL = Environment.gaURL + Environment.domain;
+        String gadURL = Environment.URL_GITHUB_AGDTURNER + Environment.DOMAIN;
         String gadgURL = gadURL + ".generator";
         w.add("<p>These Web pages are hosted on GitHub in the repository: "
                 + Web_ContentWriter.getLink(gadURL, gadURL)
@@ -108,11 +108,11 @@ public class Home extends Page {
                 + "repository: "
                 + Web_ContentWriter.getLink(gadgURL, gadgURL)
                 + ". Here is a link to my Github profile: "
-                + Web_ContentWriter.getLink(Environment.gaURL,
-                        Environment.gaURL)
+                + Web_ContentWriter.getLink(Environment.URL_GITHUB_AGDTURNER,
+                        Environment.URL_GITHUB_AGDTURNER)
                 + ". Below is a list of links to web site content.</p>");
         // Links
-        //int level00 = Environment.dir.getNameCount();
+        //int level00 = Environment.DIR.getNameCount();
         int level00 = 0;
         boolean startLeaf = true;
         for (TreeNode<Path> subdir : subdirs) {
@@ -192,7 +192,7 @@ public class Home extends Page {
 //            }
 //        }
         w.add(Web_ContentWriter.DIVET);
-        String title = Environment.domain + Strings.symbol_space + name
+        String title = Environment.DOMAIN + Strings.symbol_space + name
                 + Strings.symbol_space + "Page";
         w.writeHTML(dir, filename, title);
     }

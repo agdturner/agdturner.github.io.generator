@@ -19,6 +19,7 @@ import io.github.agdturner.core.PageID;
 import io.github.agdturner.course.CoursePageReferences;
 import java.io.IOException;
 import java.nio.file.Path;
+import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * For Python Intro Course Index Page.
@@ -42,9 +43,13 @@ public class PythonIntroCoursePageReferences extends CoursePageReferences {
     public void write(Path dir) throws IOException {
         writeH1(name);
         w.add("<ul>");
-        for (String reference : c.referenceToReferenceID.keySet()) {
+        for (String referenceName : c.referenceNameToReferenceID.keySet()) {
             StringBuilder sb = new StringBuilder();
-            sb.append("<li>").append(reference).append("</li>");
+            sb.append("<li>");
+            sb.append(Web_ContentWriter.getLink(c.referenceIDToReferenceURL.get(
+                    c.referenceNameToReferenceID.get(referenceName)),
+                    referenceName));
+            sb.append("</li>");
             w.add(sb.toString());
         }
         w.add("</ul>");

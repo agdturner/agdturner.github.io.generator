@@ -32,7 +32,7 @@ public abstract class CoursePageGeneral extends Page {
      * The Course.
      */
     protected final Course c;
-    
+
     /**
      * Create a new instance.
      *
@@ -72,8 +72,8 @@ public abstract class CoursePageGeneral extends Page {
     }
 
     /**
-     * Adds a reference to the appropriate course collections and returns a
-     * link to use in a Page.
+     * Adds a reference to the appropriate course collections and returns a link
+     * to use in a Page.
      *
      * @param linkName The name of the Wikipedia article and section (spaces are
      * replaced with underscores) and the text for the link returned.
@@ -84,8 +84,8 @@ public abstract class CoursePageGeneral extends Page {
     }
 
     /**
-     * Adds a reference to the appropriate course collections and returns a
-     * link to use in a Page.
+     * Adds a reference to the appropriate course collections and returns a link
+     * to use in a Page.
      *
      * @param linkName The name of the Wikipedia article and section (spaces are
      * replaced with underscores).
@@ -95,39 +95,45 @@ public abstract class CoursePageGeneral extends Page {
     public String addWikipediaReference(String linkName, String linkText) {
         String resourceName = "Wikipedia";
         String url = "https://en.wikipedia.org/wiki/" + linkName.replace(' ', '_');
-        return addWeb(url, linkName, linkText, resourceName);
-    }
-    
-    /**
-     * Adds a reference to the appropriate course collections and returns a
-     * link to use in a Page.
-     *
-     * @param linkName The name of the Wikipedia article and section (spaces are
-     * replaced with underscores) and the text for the link returned.
-     * @return A link to a Wikipedia article with the linkName.
-     */
-    public String addWebReference(String url, String linkName, String resourceName) {
-        return addWeb(url, linkName, linkName, resourceName);
+        return addWebReference(url, linkName, linkText, resourceName);
     }
 
     /**
-     * Adds a reference to the appropriate course collections and returns a
-     * link to use in a Page.
+     * Adds a reference to the appropriate course collections and returns a link
+     * to use in a Page.
      *
-     * @param linkName The name of the Wikipedia article and section (spaces are
-     * replaced with underscores).
-     * @param linkText The text for the link returned.
+     * @param url The url of the Web resource to reference.
+     * @param linkName The name for the link in the reference prepended with
+     * resourceName. This is also used as the link Text that is returned.
+     * @param resourceName Prepended to linkName (with a space added) for the
+     * reference.
      * @return A link to a Wikipedia article with the linkName.
      */
-    public String addWeb(String url, String linkName, String linkText, String resourceName) {
-        ReferenceID rID = new ReferenceID(c.iReference);
+    public String addWebReference(String url, String linkName, String resourceName) {
+        return addWebReference(url, linkName, linkName, resourceName);
+    }
+
+    /**
+     * Adds a reference to the appropriate course collections and returns a link
+     * to use in a Page.
+     *
+     * @param url The url of the Web resource to reference.
+     * @param linkName The name for the link in the reference prepended with
+     * resourceName.
+     * @param linkText The text for the link returned.
+     * @param resourceName Prepended to linkName (with a space added) for the
+     * reference.
+     * @return A link to a Wikipedia article with the linkName.
+     */
+    public String addWebReference(String url, String linkName, String linkText,
+            String resourceName) {
         String referenceName = resourceName + " " + linkName;
-        String r = Web_ContentWriter.getLink(url, linkText);
-        String reference = Web_ContentWriter.getLink(url, referenceName);
-        c.referenceIDs.add(rID);
-        c.referenceToReferenceID.put(reference, rID);
-        c.referenceIDToReference.put(rID, reference);
-        c.iReference++;
-        return r;
+        if (!c.referenceNameToReferenceID.containsKey(referenceName)) {
+            ReferenceID rID = new ReferenceID(c.iReference);
+            c.referenceNameToReferenceID.put(referenceName, rID);
+            c.referenceIDToReferenceURL.put(rID, url);
+            c.iReference++;
+        }
+        return Web_ContentWriter.getLink(url, linkText);
     }
 }

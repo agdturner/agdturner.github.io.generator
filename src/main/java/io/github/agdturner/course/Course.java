@@ -17,14 +17,13 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.PageID;
+import io.github.agdturner.core.ReferenceID;
 import io.github.agdturner.core.SectionID;
 import io.github.agdturner.core.TermID;
-import io.github.agdturner.core.ReferenceID;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -136,21 +135,17 @@ public class Course {
      * For storing an index of Terms and the SectionIDs they are in
      */
     public HashMap<TermID, TreeSet<SectionID>> index;
-    
-    /**
-     * A set of all the Reference IDs.
-     */
-    public HashSet<ReferenceID> referenceIDs;
 
     /**
-     * To look up a Reference from a ReferenceID
+     * To look up Reference ID from a Reference Name. This is an ordered 
+     * collection for writing out References. 
      */
-    public HashMap<ReferenceID, String> referenceIDToReference;
+    public TreeMap<String, ReferenceID> referenceNameToReferenceID;
 
     /**
-     * To look up a Reference from a ReferenceID
+     * For looking up Reference URLs from ReferenceIDs.
      */
-    public TreeMap<String, ReferenceID> referenceToReferenceID;
+    public HashMap<ReferenceID, String> referenceIDToReferenceURL;
 
     /**
      * For Page indexing.
@@ -183,7 +178,7 @@ public class Course {
         this.courseType = courseType;
         this.courseCode = courseCode;
         this.courseName = courseName;
-        this.courseDir = Paths.get(Environment.dirCourses.toString(),
+        this.courseDir = Paths.get(Environment.DIR_COURSES.toString(),
                 courseType, courseCode);
         pageIDs = new TreeSet<>();
         sectionIDs = new TreeSet<>();
@@ -197,9 +192,8 @@ public class Course {
         termIDToTerm = new HashMap<>();
         termIDToTerm = new HashMap<>();
         termToTermID = new TreeMap<>();
-        referenceIDs = new HashSet<>();
-        referenceIDToReference = new HashMap<>();
-        referenceToReferenceID = new TreeMap<>();
+        referenceNameToReferenceID = new TreeMap<>();
+        referenceIDToReferenceURL = new HashMap<>();
         iPage = 0;
         iSection = 0;
         iTerm = 0;

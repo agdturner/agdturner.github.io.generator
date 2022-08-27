@@ -241,7 +241,7 @@ public class PythonIntroCoursePageHome extends CoursePageHome {
         w.add("</ol>");
         w.add("</nav>");
         w.add("</div>");
-        String title = Environment.domain + Strings.symbol_space + name
+        String title = Environment.DOMAIN + Strings.symbol_space + name
                 + Strings.symbol_space + "Page";
         w.writeHTML(dir, filename, title);
     }

@@ -41,7 +41,6 @@ public class PythonIntroCoursePageProgramming extends CoursePageGeneral {
     public PythonIntroCoursePageProgramming(PageID id, PythonIntroCourse c) {
         super(NAME, id, c);
     }
-
     
     /**
      * For initial write of Web content.

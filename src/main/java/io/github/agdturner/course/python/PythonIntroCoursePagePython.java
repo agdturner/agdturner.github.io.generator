@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.PageID;
 import io.github.agdturner.course.CoursePageGeneral;
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class PythonIntroCoursePagePython extends CoursePageGeneral {
      * What {@link #name} will be set to.
      */
     private static final String NAME = "python";
-    
+
     /**
      * Create a new instance.
      *
@@ -47,12 +48,14 @@ public class PythonIntroCoursePagePython extends CoursePageGeneral {
     public void write(Path dir) throws IOException {
         writeH1(name);
         w.add("<p>"
-                + PythonIntroCourse.PYTHON_WIKIPEDIA
+                + addWikipediaReference("Python_(programming_language)",
+                        "Python")
                 + " is a popular and powerful programming language. The Python"
                 + " interpreter and the extensive standard library are freely"
                 + " available in source and binary form for all major platforms"
                 + " from "
-                + PythonIntroCourse.PYTHON_HOME
+                + addWebReference(Environment.URL_PYTHON, "Python Website",
+                        Environment.URL_PYTHON, "")
                 + ", and may be freely distributed. The web site contains"
                 + " distributions of and pointers to many free third party"
                 + " Python modules, programs and tools, and additional"
@@ -69,6 +72,8 @@ public class PythonIntroCoursePagePython extends CoursePageGeneral {
                 + " Web page:"
                 + "</p>");
         w.add("<ul>");
+        addWebReference("https://docs.python.org/3/whatsnew",
+                        "Python Documentation What's New", "", "");
         for (int i = 0; i < 11; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
@@ -79,7 +84,12 @@ public class PythonIntroCoursePagePython extends CoursePageGeneral {
                 + " Enhancement Proposals (PEPs). These are community proposed"
                 + " and allow us to look ahead and see what might change in"
                 + " subsequent versions of Python. PEPs have their own Web "
-                + "site: " + PythonIntroCourse.PYTHON_PEP_HOME + "</p>");
+                + "site: "
+                + addWebReference("https://peps.python.org/",
+                        "Python Enhancement Proposal Website",
+                        "https://peps.python.org/",
+                        "")
+                + "</p>");
         w.add("<p>It is important to know exactly which version of Python you"
                 + " are using and what versions of any third party modules you"
                 + " are using. This helps with reproducing results and"
@@ -105,15 +115,17 @@ public class PythonIntroCoursePagePython extends CoursePageGeneral {
                 + " help by email, it is often a good idea to attach your code,"
                 + " explain what you think should happen and describe what"
                 + " happens instead.</p>");
-        String python3DocsHome = "https://docs.python.org/3/";
+        String python3DocsHome = Environment.URL_PYTHON_DOCS + "3/";
         String python3DocsTutorial = python3DocsHome + "tutorial/";
         w.add("<p>The "
                 + Web_ContentWriter.getLink(python3DocsTutorial,
                         "getting started tutorial")
-                + " linked from the " + PythonIntroCourse.PYTHON_HOME + " is a"
-                + " good place to start learning Python. We will be covering a"
-                + " lot of the same things in this course, but we will be going"
-                + " about it in a more geographical way.</p>");
+                + " linked from the "
+                + addWebReference(Environment.URL_PYTHON, 
+                        "Python Website", Environment.URL_PYTHON, "")
+                + " is a good place to start learning Python. We will be"
+                + " covering a lot of the same things in this course, but we"
+                + " will be going about it in a more geographical way.</p>");
         w.add("<p>In Python instructions or commands are entered at a prompt"
                 + " or passed in files to be interpretted. Commands entered at"
                 + " a prompt are run one at a time. When program files are run,"

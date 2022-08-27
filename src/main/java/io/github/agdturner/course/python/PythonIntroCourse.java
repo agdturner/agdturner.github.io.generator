@@ -48,27 +48,6 @@ public abstract class PythonIntroCourse extends Course {
     public final int assignment2Weighting;
 
     /**
-     * For storing a link to the Wikipedia Python (Programming) article.
-     */
-    public static final String PYTHON_WIKIPEDIA = Web_ContentWriter.getLink(
-            "https://en.wikipedia.org/wiki/Python_(programming_language)",
-            "Python");
-
-    /**
-     * For storing a link to the Python Home Page.
-     */
-    public static final String PYTHON_HOME = Web_ContentWriter.getLink(
-            "https://www.python.org/",
-            "Python web site");
-
-    /**
-     * For storing a link to the Python Enhancement Project (PEP) Home Page.
-     */
-    public static final String PYTHON_PEP_HOME = Web_ContentWriter.getLink(
-            "https://peps.python.org/",
-            "https://peps.python.org/");
-
-    /**
      * Creates a new instance.
      *
      * @param courseCode What {@link #courseCode} is set to.
