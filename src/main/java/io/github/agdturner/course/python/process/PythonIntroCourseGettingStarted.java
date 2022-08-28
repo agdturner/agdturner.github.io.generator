@@ -21,24 +21,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Java for generating some https://agdturner.github.io Website Content.
+ * Java for generating https://agdturner.github.io Courses Python GettingStarted
+ * content.
  *
  * @author Andy Turner
  */
-public class PythonIntroCourseGEOG5995M extends PythonIntroCourse {
+public class PythonIntroCourseGettingStarted extends PythonIntroCourse {
     
     /**
      * Creates a new instance.
      *
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
-     * @param hasAssignments
+     * @param courseCode Is true if there are assignments and false otherwise.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public PythonIntroCourseGEOG5995M(String courseCode, String courseName,
-            boolean hasAssignments, int assignment1Weighting, 
-            int assignment2Weighting) {
+    public PythonIntroCourseGettingStarted(String courseCode, String courseName,
+            boolean hasAssignments, int assignment1Weighting, int assignment2Weighting) {
         super(courseCode, courseName, hasAssignments, assignment1Weighting, 
                 assignment2Weighting);
     }
@@ -49,17 +49,15 @@ public class PythonIntroCourseGEOG5995M extends PythonIntroCourse {
      * @param args
      */
     public static void main(String[] args) {
-        String courseName = "Programming for Social Science: Core Skills";
-        String courseCode = "GEOG5995M";
-        int assignment1Weighting = 30;
-        int assignment2Weighting = 70;
-        PythonIntroCourseGEOG5995M c = new PythonIntroCourseGEOG5995M(
-                courseCode, courseName, true, assignment1Weighting, 
-                assignment2Weighting);
+        String courseName = "Programming for Geographers";
+        String courseCode = "GettingStarted";
+        boolean assignments = false;
+        PythonIntroCourseGettingStarted c = new PythonIntroCourseGettingStarted(
+                courseCode, courseName, assignments, 0, 0);
         try {
             c.write(c.courseDir);
         } catch (IOException ex) {
-            Logger.getLogger(PythonIntroCourseGEOG5995M.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PythonIntroCourse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

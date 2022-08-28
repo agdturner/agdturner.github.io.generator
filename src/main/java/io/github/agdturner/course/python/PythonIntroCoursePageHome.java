@@ -111,13 +111,15 @@ public class PythonIntroCoursePageHome extends CoursePageHome {
         // Assignments and Assessments
         w.add("<h2>Assignments and Assessments</h2>");
         PythonIntroCourse pic = (PythonIntroCourse) c;
-        w.add("<p>There are two assignments that are assessed:</p>");
-        w.add("<ol>");
-        w.add("<li>A portfolio from the practical tasks worth "
-                + pic.assignment1Weighting + "%.</li>");
-        w.add("<li>An independent project worth  "
-                + pic.assignment2Weighting + "%.</li>");
-        w.add("</ol>");
+        if (pic.hasAssignments) {
+            w.add("<p>There are two assignments that are assessed:</p>");
+            w.add("<ol>");
+            w.add("<li>A portfolio from the practical tasks worth "
+                    + pic.assignment1Weighting + "%.</li>");
+            w.add("<li>An independent project worth  "
+                    + pic.assignment2Weighting + "%.</li>");
+            w.add("</ol>");
+        }
         // Practicals
         w.add("<h2>Main Sections</h2>");
         w.add("<p>The sections names starting \"ABM\" are practicals that "

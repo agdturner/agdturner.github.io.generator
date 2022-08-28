@@ -61,9 +61,10 @@ public class Home extends Page {
         h.subdirs.add(dirCourses);
         Path pPython = Paths.get(p.toString(), "python");
         TreeNode<Path> dirCoursesPython = dirCourses.addChild(pPython);
-        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5990M"));
-        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5995M"));
-        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5003M"));
+        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GettingStarted"));
+        //dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5990M"));
+        //dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5995M"));
+        //dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5003M"));
         Path pJava = Paths.get(p.toString(), "java");
         TreeNode<Path> dirCoursesJava = dirCourses.addChild(pJava);
         dirCoursesJava.addChild(Paths.get(pJava.toString(), "GEOG5990M"));

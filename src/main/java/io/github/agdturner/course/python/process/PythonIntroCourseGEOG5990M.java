@@ -15,7 +15,6 @@
  */
 package io.github.agdturner.course.python.process;
 
-import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.python.PythonIntroCourse;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -37,8 +36,8 @@ public class PythonIntroCourseGEOG5990M extends PythonIntroCourse {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
     public PythonIntroCourseGEOG5990M(String courseCode, String courseName,
-            int assignment1Weighting, int assignment2Weighting) {
-        super(courseCode, courseName, assignment1Weighting, 
+            boolean hasAssignments, int assignment1Weighting, int assignment2Weighting) {
+        super(courseCode, courseName, hasAssignments, assignment1Weighting, 
                 assignment2Weighting);
     }
 
@@ -54,7 +53,7 @@ public class PythonIntroCourseGEOG5990M extends PythonIntroCourse {
         int assignment1Weighting = 20;
         int assignment2Weighting = 80;
         PythonIntroCourseGEOG5990M c = new PythonIntroCourseGEOG5990M(
-                courseCode, courseName, assignment1Weighting,
+                courseCode, courseName, true, assignment1Weighting,
                 assignment2Weighting);
         try {
             c.write(c.courseDir);

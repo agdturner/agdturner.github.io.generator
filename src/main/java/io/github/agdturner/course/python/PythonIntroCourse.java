@@ -37,6 +37,8 @@ public abstract class PythonIntroCourse extends Course {
      */
     protected static final String COURSE_TYPE = "python";
 
+    public final boolean hasAssignments;
+    
     /**
      * The weighting given to Assignment 1.
      */
@@ -56,8 +58,10 @@ public abstract class PythonIntroCourse extends Course {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
     public PythonIntroCourse(String courseCode, String courseName,
-            int assignment1Weighting, int assignment2Weighting) {
+            boolean hasAssignments, int assignment1Weighting, 
+            int assignment2Weighting) {
         super(COURSE_TYPE, courseCode, courseName);
+        this.hasAssignments = hasAssignments;
         this.assignment1Weighting = assignment1Weighting;
         this.assignment2Weighting = assignment2Weighting;
     }
