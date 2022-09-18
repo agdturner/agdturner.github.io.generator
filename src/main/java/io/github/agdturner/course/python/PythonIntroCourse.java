@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python;
 
+import io.github.agdturner.Page;
 import io.github.agdturner.core.PageID;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.CoursePage;
@@ -38,7 +39,7 @@ public abstract class PythonIntroCourse extends Course {
     protected static final String COURSE_TYPE = "python";
 
     public final boolean hasAssignments;
-    
+
     /**
      * The weighting given to Assignment 1.
      */
@@ -58,7 +59,7 @@ public abstract class PythonIntroCourse extends Course {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
     public PythonIntroCourse(String courseCode, String courseName,
-            boolean hasAssignments, int assignment1Weighting, 
+            boolean hasAssignments, int assignment1Weighting,
             int assignment2Weighting) {
         super(COURSE_TYPE, courseCode, courseName);
         this.hasAssignments = hasAssignments;
@@ -87,12 +88,12 @@ public abstract class PythonIntroCourse extends Course {
             throws IOException {
         int i = 0;
         PageID id = new PageID(i);
-        
+
         // Home
         homePage = new PythonIntroCoursePageHome(courseName, id, this);
         homePage.write(courseDir);
         CoursePageGeneral page;
-        
+
         // Programming
         i++;
         id = new PageID(i);
@@ -104,7 +105,7 @@ public abstract class PythonIntroCourse extends Course {
         id = new PageID(i);
         page = new PythonIntroCoursePagePython(id, this);
         write(page, id, i);
-        
+
         // GitHub
         i++;
         id = new PageID(i);
@@ -224,7 +225,7 @@ public abstract class PythonIntroCourse extends Course {
         id = new PageID(i);
         indexPage = new PythonIntroCoursePageIndex("index", id, this);
         write(indexPage, id);
-        
+
         // References
         i++;
         id = new PageID(i);
@@ -237,10 +238,9 @@ public abstract class PythonIntroCourse extends Course {
         // Add navigation
         page.addNav(courseDir, i);
         // Write page
-        Path p = IO.getDir(courseDir, pageIDToNameA.get(id));
-        page.w.writeHTML(p, "index", pageIDToName.get(id) + " Page");
+        writePage(page, id);
     }
-    
+
     protected void write(CoursePage page, PageID id) throws IOException {
         page.write(courseDir);
         // Add navigation
@@ -250,7 +250,11 @@ public abstract class PythonIntroCourse extends Course {
         page.w.add("</nav>");
         page.w.add("</div>");
         // Write page
+        writePage(page, id);
+    }
+
+    protected void writePage(Page page, PageID id) throws IOException {
         Path p = IO.getDir(courseDir, pageIDToNameA.get(id));
-        page.w.writeHTML(p, "index", pageIDToName.get(id) + " Page");
+        page.w.writeHTML(p, "index", pageIDToName.get(id) + " Page", Page.getHeaderElements());
     }
 }

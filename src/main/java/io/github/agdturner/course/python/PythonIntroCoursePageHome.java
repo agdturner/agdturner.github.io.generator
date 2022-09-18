@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python;
 
+import io.github.agdturner.Page;
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.*;
 import io.github.agdturner.core.PageID;
@@ -244,7 +245,7 @@ public class PythonIntroCoursePageHome extends CoursePageHome {
         w.add("</nav>");
         w.add("</div>");
         String title = Environment.DOMAIN + Strings.symbol_space + name
-                + Strings.symbol_space + "Page";
-        w.writeHTML(dir, filename, title);
+                + Strings.symbol_space + "Page";        
+        w.writeHTML(dir, filename, title, Page.getHeaderElements());
     }
 }

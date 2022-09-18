@@ -18,43 +18,44 @@ package io.github.agdturner;
 import io.github.agdturner.core.PageID;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * A Web Page.
- * 
+ *
  * @author Andy Turner
  */
 public abstract class Page {
-    
+
     /**
      * The Web_ContentWriter.
      */
     public final Web_ContentWriter w;
-    
+
     /**
      * Page Name
      */
     public final String name;
-    
+
     /**
      * Page ID
      */
     public final PageID id;
-    
-    
+
     /**
      * Create a new instance.
      *
      * @param name What {@link #name} is set to.
      * @param id What {@link #id} is set to.
      */
-    public Page(String name, PageID id){
+    public Page(String name, PageID id) {
         this.w = new Web_ContentWriter();
         this.name = name;
         this.id = id;
     }
-    
+
     /**
      * For initial write of Web content.
      *
@@ -62,7 +63,7 @@ public abstract class Page {
      * @throws IOException If thrown.
      */
     public abstract void write(Path dir) throws IOException;
-    
+
     /**
      * Start the main div and write the title of the page in h1 tags.
      *
@@ -70,7 +71,21 @@ public abstract class Page {
      */
     public void writeH1(String name) {
         w.add("<div>");
+        w.add("""
+              <button onclick="swapStyleSheet()" id="style_button"></button>""");
         w.add("<h1>" + name + "</h1>");
     }
-    
+
+    public static List<String> getHeaderElements() {
+        ArrayList<String> r = new ArrayList<>();
+        r.add("""
+              <!-- Styling. -->
+              <link id="code_theme" rel="stylesheet" type="text/css" href="">
+              <script src="../../../../scripts/style.js"></script>
+              <script src="../../../../tools/highlight/highlight.min.js"></script>
+              <script>hljs.highlightAll();</script>
+              <link rel="stylesheet" href="../../../../css/style.css">""");
+        return r;
+    }
+
 }

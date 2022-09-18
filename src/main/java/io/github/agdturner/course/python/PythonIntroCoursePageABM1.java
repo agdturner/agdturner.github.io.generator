@@ -31,7 +31,7 @@ public class PythonIntroCoursePageABM1 extends CoursePageGeneral {
      * What {@link #name} will be set to.
      */
     private static final String NAME = "abm1";
-    
+
     /**
      * Create a new instance.
      *
@@ -45,7 +45,23 @@ public class PythonIntroCoursePageABM1 extends CoursePageGeneral {
     @Override
     public void write(Path dir) throws IOException {
         writeH1(name);
-        w.add("<p>ABM</p>");
+        w.add("<p>ABM 1</p>");
+        w.add("""
+              <pre><code class="language-python">
+              """);
+        w.add("""
+              for j in range(num_of_iterations):
+                  for i in range(num_of_agents):
+                      if random.random() < 0.5:
+                          agents[i][0] = (agents[i][0] + 1) % 100
+                      else:
+                          agents[i][0] = (agents[i][0] - 1) % 100
+                      if random.random() < 0.5:
+                          agents[i][1] = (agents[i][1] + 1) % 100
+                      else:
+                          agents[i][1] = (agents[i][1] - 1) % 100""");
+        w.add("""
+              </code></pre>""");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");
         w.add("</div>");

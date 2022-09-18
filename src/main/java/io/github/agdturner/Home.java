@@ -201,7 +201,7 @@ public class Home extends Page {
         w.add(Web_ContentWriter.DIVET);
         String title = Environment.DOMAIN + Strings.symbol_space + name
                 + Strings.symbol_space + "Page";
-        w.writeHTML(dir, filename, title);
+        w.writeHTML(dir, filename, title, null);
     }
 
 }
