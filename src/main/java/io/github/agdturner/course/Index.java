@@ -61,7 +61,7 @@ public class Index extends Page {
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1(label);
         w.add("<ul>");
         for (TermID termID : index.keySet()) {
             TreeSet<SectionID> sectionIDs = index.get(termID);

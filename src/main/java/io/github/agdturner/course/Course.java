@@ -194,15 +194,17 @@ public class Course {
      */
     public String getNavigationButtons() {
         StringBuilder sb = new StringBuilder("<div><nav>");
-        sb.append(Web_ContentWriter.getLinkButton(
-                Paths.get(homePage.p.toString(), "index.html"), homePage.name));
+        sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(homePage), homePage.label));
         for (Page page : coursePages) {
-            sb.append(Web_ContentWriter.getLinkButton(
-                    Paths.get(page.p.toString(), "index.html"), page.name));
+            sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(page), page.label));
         }
-        sb.append(Web_ContentWriter.getLinkButton(Paths.get(index.p.toString(), "index.html"), index.name));
-        sb.append(Web_ContentWriter.getLinkButton(Paths.get(references.p.toString(), "index.html"), references.name));
+        sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(index), index.label));
+        sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(references), references.label));
         sb.append("</nav></div>");
         return sb.toString();
+    }
+    
+    public String getLinkPathString(Page p) {
+        return "../" + p.name + "/index.html";
     }
 }

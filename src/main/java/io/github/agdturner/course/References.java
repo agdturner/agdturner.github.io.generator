@@ -53,7 +53,7 @@ public class References extends Page {
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1(label);
         w.add("<ul>");
         for (String referenceName : referenceNameToReferenceID.keySet()) {
             StringBuilder sb = new StringBuilder();

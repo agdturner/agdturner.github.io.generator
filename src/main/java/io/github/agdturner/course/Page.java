@@ -47,8 +47,8 @@ public abstract class Page extends io.github.agdturner.Page {
     }
 
     @Override
-    public void writeH1(String name) {
-        super.writeH1(name);
+    public void writeH1(String label) {
+        super.writeH1(label);
         w.add(c.getNavigationButtons());
     }
 
@@ -61,8 +61,7 @@ public abstract class Page extends io.github.agdturner.Page {
             sb.append(getLinkButtonNext(c.coursePages.get(0)));
         } else {
             sb.append(Web_ContentWriter.getLinkButton(
-                    Paths.get(c.homePage.p.toString(), "index.html"),
-                    c.homePage.name));
+                    c.getLinkPathString(c.homePage), c.homePage.label));
             int n = c.coursePages.size();
             if (this instanceof Index) {
                 sb.append(getLinkButtonPrev(c.coursePages.get(n - 1)));
@@ -73,7 +72,7 @@ public abstract class Page extends io.github.agdturner.Page {
                 if (this.id.id > 0) {
                     sb.append(getLinkButtonPrev(c.coursePages.get(this.id.id - 1)));
                 }
-                if (this.id.id < n - 2) {
+                if (this.id.id < n - 1) {
                     sb.append(getLinkButtonNext(c.coursePages.get(this.id.id + 1)));
                 } else {
                     sb.append(getLinkButtonNext(c.index));
@@ -92,8 +91,7 @@ public abstract class Page extends io.github.agdturner.Page {
     }
 
     protected String getLinkButton(Page p, String type) {
-        return Web_ContentWriter.getLinkButton(
-                Paths.get(p.p.toString(), "index.html"),
+        return Web_ContentWriter.getLinkButton(c.getLinkPathString(p),
                 type + p.label);
     }
 

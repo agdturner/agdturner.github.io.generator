@@ -98,5 +98,4 @@ public abstract class Page {
               <link rel="stylesheet" href="../../../../css/style.css">""");
         return r;
     }
-
 }
