@@ -28,16 +28,15 @@ public class ABM1 extends Page {
     /**
      * Create a new instance.
      *
-     * @param index The Page index.
      * @param c The Course.
      */
     public ABM1(PythonIntroCourse c) {
-        super("abm1", "ABM1", c);
+        super("abm1", "Agent Based Model Part 1", "ABM1", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM 1</p>");
         w.add("""
               <pre><code class="language-python">

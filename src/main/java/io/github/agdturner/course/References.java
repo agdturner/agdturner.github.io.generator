@@ -41,19 +41,20 @@ public class References extends Page {
     /**
      * Create a new instance.
      *
-     * @param name What {@link #name} is set to.
+     * @param filename What {@link #filename} is set to.
+     * @param title What {@link #title} is set to.
      * @param label What {@link #label} is set to.
      * @param c What {@code #c} is set to.
      */
-    public References(String name, String label, Course c) {
-        super(name, label, c);
+    public References(String filename, String title, String label, Course c) {
+        super(filename, title, label, c);
         referenceNameToReferenceID = new TreeMap<>();
         referenceIDToReferenceURL = new HashMap<>();
     }
     
     @Override
     public void write() {
-        writeH1(label);
+        writeH1();
         w.add("<ul>");
         for (String referenceName : referenceNameToReferenceID.keySet()) {
             StringBuilder sb = new StringBuilder();

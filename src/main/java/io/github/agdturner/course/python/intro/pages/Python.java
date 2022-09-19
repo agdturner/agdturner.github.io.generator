@@ -33,12 +33,12 @@ public class Python extends Page {
      * @param c The Course.
      */
     public Python(PythonIntroCourse c) {
-        super("python", "Python", c);
+        super("python", "Python", "Python", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>"
                 + addWikipediaReference("Python_(programming_language)",
                         "Python")

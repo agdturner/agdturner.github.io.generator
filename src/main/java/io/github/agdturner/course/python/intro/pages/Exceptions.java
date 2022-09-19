@@ -31,12 +31,12 @@ public class Exceptions extends Page {
      * @param c The Course.
      */
     public Exceptions(PythonIntroCourse c) {
-        super("exceptions", "Exceptions", c);
+        super("exceptions", "Exceptions", "Exceptions", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

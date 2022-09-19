@@ -31,12 +31,12 @@ public class Containers extends Page {
      * @param c The Course.
      */
     public Containers(PythonIntroCourse c) {
-        super("containers", "Containers", c);
+        super("containers", "Containers", "Containers", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>Containers</p>");
         w.add("""
               <pre><code class="language-python">

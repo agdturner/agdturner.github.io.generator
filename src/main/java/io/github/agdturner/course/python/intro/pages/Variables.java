@@ -31,12 +31,12 @@ public class Variables extends Page {
      * @param c The Course.
      */
     public Variables(PythonIntroCourse c) {
-        super("variables", "Variables", c);
+        super("variables", "Variables", "Variables", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

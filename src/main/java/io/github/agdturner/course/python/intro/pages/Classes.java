@@ -31,12 +31,12 @@ public class Classes extends Page {
      * @param c The Course.
      */
     public Classes(PythonIntroCourse c) {
-        super("classes", "Classes", c);
+        super("classes", "Classes", "Classes", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

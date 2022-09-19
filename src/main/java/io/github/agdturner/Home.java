@@ -17,15 +17,12 @@ package io.github.agdturner;
 
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.PageID;
-import io.github.agdturner.core.Strings;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uk.ac.leeds.ccg.generic.util.TreeNode;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -35,14 +32,11 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  */
 public class Home extends Page {
 
-    ArrayList<TreeNode<Path>> subdirs;
-
     /**
      * Create a new instance.
      */
-    public Home(String name, PageID id, Path p) {
-        super(name, "Home", id, p);
-        subdirs = new ArrayList<>();
+    public Home(String title, PageID id, Path p) {
+        super("home", title, "Home", id, p);
         if (!Files.exists(p)) {
             try {
                 Files.createDirectories(p);
@@ -166,8 +160,6 @@ public class Home extends Page {
 //        }
         // End Page
         w.add(Web_ContentWriter.DIVET);
-        String title = Environment.DOMAIN + Strings.symbol_space + name
-                + Strings.symbol_space + "Page";
         try {
             w.writeHTML(p, "index.html", title, null);
         } catch (IOException ex) {

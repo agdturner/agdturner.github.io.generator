@@ -32,12 +32,12 @@ public class Programming extends Page {
      * @param c The Course.
      */
     public Programming(PythonIntroCourse c) {
-        super("programming", "Programming", c);
+        super("programming", "Programming", "Programming", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>" 
                 + addWikipediaReference("Computer programming") 
                 + " (programming, or coding) is about instructing a"

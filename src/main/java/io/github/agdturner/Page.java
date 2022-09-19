@@ -15,11 +15,8 @@
  */
 package io.github.agdturner;
 
-import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.PageID;
-import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -37,12 +34,17 @@ public abstract class Page {
     public final Web_ContentWriter w;
 
     /**
-     * Page Name (used for filenames).
+     * Name used for filenames.
      */
-    public final String name;
+    public final String filename;
 
     /**
-     * Page Label (used for links).
+     * Used for Title and H1.
+     */
+    public final String title;
+
+    /**
+     * Used for links.
      */
     public final String label;
 
@@ -59,12 +61,16 @@ public abstract class Page {
     /**
      * Create a new instance.
      *
-     * @param name What {@link #name} is set to.
+     * @param filename What {@link #filename} is set to.
+     * @param title What {@link #title} is set to.
+     * @param label What {@link #label} is set to.
      * @param id What {@link #id} is set to.
+     * @param p What {@link #p} is set to.     * 
      */
-    public Page(String name, String label, PageID id, Path p) {
+    public Page(String filename, String title, String label, PageID id, Path p) {
         this.w = new Web_ContentWriter();
-        this.name = name;
+        this.filename = filename;
+        this.title = title;
         this.label = label;
         this.id = id;
         this.p = p;
@@ -80,11 +86,11 @@ public abstract class Page {
      *
      * @param name The title of the page.
      */
-    public void writeH1(String name) {
+    public void writeH1() {
         w.add("<div>");
         w.add("""
               <button onclick="swapStyleSheet()" id="style_button"></button>""");
-        w.add("<h1>" + name + "</h1>");
+        w.add("<h1>" + title + "</h1>");
     }
 
     public static List<String> getHeaderElements() {

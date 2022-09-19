@@ -31,12 +31,12 @@ public class IO extends Page {
      * @param c The Course.
      */
     public IO(PythonIntroCourse c) {
-        super("io", "IO", c);
+        super("io", "Input and Output", "IO", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

@@ -31,12 +31,12 @@ public class Branching extends Page {
      * @param c The Course.
      */
     public Branching(PythonIntroCourse c) {
-        super("branching", "Branching", c);
+        super("branching", "Branching", "Branching", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

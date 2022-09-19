@@ -31,12 +31,12 @@ public class ABM5 extends Page {
      * @param c The Course.
      */
     public ABM5(PythonIntroCourse c) {
-        super("abm5", "ABM5", c);
+        super("abm5", "Agent Based Model Part 5", "ABM5", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

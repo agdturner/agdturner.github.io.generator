@@ -36,19 +36,20 @@ public abstract class Page extends io.github.agdturner.Page {
     /**
      * Create a new instance.
      *
-     * @param name What {@link #name} is set to.
+     * @param filename What {@link #filename} is set to.
+     * @param title What {@link #title} is set to.
      * @param label What {@link #label} is set to.
      * @param c What {@code #c} is set to.
      */
-    public Page(String name, String label, Course c) {
-        super(name, label, new PageID(c.coursePages.size()),
-                Paths.get(c.courseDir.toString(), name));
+    public Page(String filename, String title, String label, Course c) {
+        super(filename, title, label, new PageID(c.coursePages.size()),
+                Paths.get(c.courseDir.toString(), filename));
         this.c = c;
     }
 
     @Override
-    public void writeH1(String label) {
-        super.writeH1(label);
+    public void writeH1() {
+        super.writeH1();
         w.add(c.getNavigationButtons());
     }
 

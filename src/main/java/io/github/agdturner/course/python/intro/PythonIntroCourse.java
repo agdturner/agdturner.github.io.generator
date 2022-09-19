@@ -33,18 +33,14 @@ import io.github.agdturner.course.python.intro.pages.GUI;
 import io.github.agdturner.course.python.intro.pages.Github;
 import io.github.agdturner.course.python.intro.pages.Home;
 import io.github.agdturner.course.python.intro.pages.IO;
-import io.github.agdturner.course.Index;
 import io.github.agdturner.course.python.intro.pages.Loops;
 import io.github.agdturner.course.python.intro.pages.Programming;
 import io.github.agdturner.course.python.intro.pages.Python;
-import io.github.agdturner.course.References;
 import io.github.agdturner.course.python.intro.pages.Variables;
 import io.github.agdturner.course.python.intro.pages.Web;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * Java for generating PythonIntro Course https://agdturner.github.io Website
@@ -139,7 +135,7 @@ public abstract class PythonIntroCourse extends Course {
 
     protected void writePage(Page page) {
         try {
-            page.w.writeHTML(page.p, "index", page.name + " Page", Page.getHeaderElements());
+            page.w.writeHTML(page.p, "index", page.title + " Page", Page.getHeaderElements());
         } catch (IOException ex) {
             Logger.getLogger(PythonIntroCourse.class.getName()).log(Level.SEVERE, null, ex);
         }

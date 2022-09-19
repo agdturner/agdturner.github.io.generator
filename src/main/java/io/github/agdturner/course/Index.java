@@ -48,12 +48,13 @@ public class Index extends Page {
     /**
      * Create a new instance.
      *
-     * @param name What {@link #name} is set to.
+     * @param filename What {@link #filename} is set to.
+     * @param title What {@link #title} is set to.
      * @param label What {@link #label} is set to.
      * @param c What {@code #c} is set to.
      */
-    public Index(String name, String label, Course c) {
-        super(name, label, c);
+    public Index(String filename, String title, String label, Course c) {
+        super(filename, title, label, c);
         termIDToTerm = new HashMap<>();
         termToTermID = new TreeMap<>();
         index = new HashMap<>();
@@ -61,7 +62,7 @@ public class Index extends Page {
     
     @Override
     public void write() {
-        writeH1(label);
+        writeH1();
         w.add("<ul>");
         for (TermID termID : index.keySet()) {
             TreeSet<SectionID> sectionIDs = index.get(termID);

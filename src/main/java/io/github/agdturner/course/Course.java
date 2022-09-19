@@ -155,8 +155,8 @@ public class Course {
         this.courseDir = Paths.get(Environment.DIR_COURSES.toString(),
                 courseType, courseCode);
         coursePages = new ArrayList<>();
-        index = new Index("index", "Index", this);
-        references = new References("references", "References", this);
+        index = new Index("index", "Index", "Index", this);
+        references = new References("references", "References", "References", this);
         pageIDs = new TreeSet<>();
         sectionIDs = new TreeSet<>();
         pageIDToSectionIDs = new TreeMap<>();
@@ -205,6 +205,6 @@ public class Course {
     }
     
     public String getLinkPathString(Page p) {
-        return "../" + p.name + "/index.html";
+        return "../" + p.filename + "/index.html";
     }
 }

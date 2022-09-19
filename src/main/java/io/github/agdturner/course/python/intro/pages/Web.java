@@ -31,12 +31,12 @@ public class Web extends Page {
      * @param c The Course.
      */
     public Web(PythonIntroCourse c) {
-        super("web", "Web", c);
+        super("web", "Web", "Web", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

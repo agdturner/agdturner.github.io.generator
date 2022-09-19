@@ -31,12 +31,12 @@ public class Functions extends Page {
      * @param c The Course.
      */
     public Functions(PythonIntroCourse c) {
-        super("functions", "Functions", c);
+        super("functions", "Functions", "Functions", c);
     }
     
     @Override
     public void write() {
-        writeH1(name);
+        writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

@@ -16,13 +16,8 @@
 package io.github.agdturner.course.python.intro.pages;
 
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
-import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.Page;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.Course;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * For Python Intro Course Home Page.
@@ -39,13 +34,12 @@ public class Home extends Page {
      * @param c What {@code #c} is set to.
      */
     public Home(String courseName, Course c) {
-        super("home", "Home", c);
+        super("home", courseName, "Home", c);
     }
     
     @Override
     public void write() {
-        String filename = "index";
-        writeH1(name);
+        writeH1();
         // Aims and Objectives
         w.add("<h2>Aims and Objectives</h2>");
         w.add("<ul>");
@@ -141,12 +135,5 @@ public class Home extends Page {
         w.add("</ol>");
         w.add("</nav>");
         w.add("</div>");
-        String title = Environment.DOMAIN + Strings.symbol_space + name
-                + Strings.symbol_space + "Page";        
-        try {
-            w.writeHTML(p, filename, title, Page.getHeaderElements());
-        } catch (IOException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
