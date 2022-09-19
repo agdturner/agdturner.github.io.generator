@@ -17,9 +17,8 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.PageID;
-import io.github.agdturner.core.ReferenceID;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.TermID;
+import io.github.agdturner.course.python.intro.pages.Home;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -59,23 +58,24 @@ public class Course {
     /**
      * For storing the course Home Page.
      */
-    public CoursePageHome homePage;
+    public Home homePage;
 
     /**
-     * The Course Pages (not the CoursePageHome)
+     * The Course Pages (other than the {@link #homePage}, {@link indexPage#index} and
+     * {@link #references}.
      */
-    public ArrayList<CoursePage> coursePages;
+    public final ArrayList<Page> coursePages;
 
     /**
      * For storing the course Index Page.
      */
-    public CoursePageIndex indexPage;
+    public final Index index;
 
     /**
      * For storing the course References Page.
      */
-    public CoursePageReferences referencesPage;
-
+    public final References references;
+    
     /**
      * A set of all the Page IDs.
      */
@@ -100,7 +100,7 @@ public class Course {
      * To look up a Section Name from a SectionID.
      */
     public TreeMap<SectionID, String> sectionIDToSectionName;
-    
+
     /**
      * To look up the name from the pageID.
      */
@@ -122,51 +122,25 @@ public class Course {
     public HashMap<PageID, String> pageIDToLink;
 
     /**
-     * To look up a Term from a TermID
-     */
-    public HashMap<TermID, String> termIDToTerm;
-
-    /**
-     * To look up TermIDs in Term order.
-     */
-    public TreeMap<String, TermID> termToTermID;
-
-    /**
-     * For storing an index of Terms and the SectionIDs they are in
-     */
-    public HashMap<TermID, TreeSet<SectionID>> index;
-
-    /**
-     * To look up Reference ID from a Reference Name. This is an ordered 
-     * collection for writing out References. 
-     */
-    public TreeMap<String, ReferenceID> referenceNameToReferenceID;
-
-    /**
-     * For looking up Reference URLs from ReferenceIDs.
-     */
-    public HashMap<ReferenceID, String> referenceIDToReferenceURL;
-
-    /**
      * For Page indexing.
      */
     public int iPage;
-    
+
     /**
      * For Section indexing.
      */
     public int iSection;
-    
+
     /**
      * For Term indexing.
      */
     public int iTerm;
-    
+
     /**
      * For Reference indexing.
      */
     public int iReference;
-    
+
     /**
      * Creates a new instance.
      *
@@ -180,6 +154,9 @@ public class Course {
         this.courseName = courseName;
         this.courseDir = Paths.get(Environment.DIR_COURSES.toString(),
                 courseType, courseCode);
+        coursePages = new ArrayList<>();
+        index = new Index("index", "Index", this);
+        references = new References("references", "References", this);
         pageIDs = new TreeSet<>();
         sectionIDs = new TreeSet<>();
         pageIDToSectionIDs = new TreeMap<>();
@@ -189,11 +166,6 @@ public class Course {
         pageIDToNameA = new HashMap<>();
         nameAToPageID = new HashMap<>();
         pageIDToLink = new HashMap<>();
-        termIDToTerm = new HashMap<>();
-        termIDToTerm = new HashMap<>();
-        termToTermID = new TreeMap<>();
-        referenceNameToReferenceID = new TreeMap<>();
-        referenceIDToReferenceURL = new HashMap<>();
         iPage = 0;
         iSection = 0;
         iTerm = 0;
@@ -217,4 +189,20 @@ public class Course {
         pageIDToLink.put(id, "../" + s);
     }
 
+    /**
+     * For getting all navigation buttons.
+     */
+    public String getNavigationButtons() {
+        StringBuilder sb = new StringBuilder("<div><nav>");
+        sb.append(Web_ContentWriter.getLinkButton(
+                Paths.get(homePage.p.toString(), "index.html"), homePage.name));
+        for (Page page : coursePages) {
+            sb.append(Web_ContentWriter.getLinkButton(
+                    Paths.get(page.p.toString(), "index.html"), page.name));
+        }
+        sb.append(Web_ContentWriter.getLinkButton(Paths.get(index.p.toString(), "index.html"), index.name));
+        sb.append(Web_ContentWriter.getLinkButton(Paths.get(references.p.toString(), "index.html"), references.name));
+        sb.append("</nav></div>");
+        return sb.toString();
+    }
 }

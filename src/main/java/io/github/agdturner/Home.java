@@ -21,6 +21,7 @@ import io.github.agdturner.core.Strings;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,54 +40,20 @@ public class Home extends Page {
     /**
      * Create a new instance.
      */
-    public Home(String name, PageID id) {
-        super(name, id);
+    public Home(String name, PageID id, Path p) {
+        super(name, "Home", id, p);
         subdirs = new ArrayList<>();
-    }
-
-    /**
-     * Main method
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        String name = "Andy Turner " + Environment.DOMAIN + " Home Page";
-        PageID id = new PageID(0);
-        Home h = new Home(name, id);
-//        Path p = Paths.get("courses");
-//        TreeNode<Path> dirCourses = new TreeNode<>(p);
-//        h.subdirs.add(dirCourses);
-//        Path pPython = Paths.get(p.toString(), "python");
-//        TreeNode<Path> dirCoursesPython = dirCourses.addChild(pPython);
-//        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GettingStarted"));
-//        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5990M"));
-//        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5995M"));
-//        dirCoursesPython.addChild(Paths.get(pPython.toString(), "GEOG5003M"));
-//        Path pJava = Paths.get(p.toString(), "java");
-//        TreeNode<Path> dirCoursesJava = dirCourses.addChild(pJava);
-//        dirCoursesJava.addChild(Paths.get(pJava.toString(), "GEOG5990M"));
-        try {
-            // Home Page index
-            h.write(Environment.DIR);
-        } catch (IOException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        if (!Files.exists(p)) {
+            try {
+                Files.createDirectories(p);
+            } catch (IOException ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-
-    /**
-     * For initial write of Web content.
-     *
-     * @param domain The DOMAIN name as a String.
-     * @param dir The directory in which the content will be written.
-     * @param subdirs The subdirectories in the index.
-     * @throws IOException If thrown.
-     */
+    
     @Override
-    public void write(Path dir) throws IOException {
-        String filename = "index";
-        if (!Files.exists(dir)) {
-            Files.createDirectories(dir);
-        }
+    public void write() {
         w.add("<div>");
         w.add("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" /></h1>");
@@ -131,10 +98,10 @@ public class Home extends Page {
 //                + ".</p>");
         w.add("<p>"
                 + Web_ContentWriter.getLink(myGeogHome,
-                        "My SoG Profile")
-                + " "
+                        "SoG Profile")
+                + " | "
                 + Web_ContentWriter.getLink(Environment.URL_GITHUB_AGDTURNER,
-                        "My Github Profile")
+                        "Github Profile")
                 + "</p>");
 //        w.add("<p>"
 //                + ". Below is a list of links to web site content.</p>");
@@ -201,7 +168,22 @@ public class Home extends Page {
         w.add(Web_ContentWriter.DIVET);
         String title = Environment.DOMAIN + Strings.symbol_space + name
                 + Strings.symbol_space + "Page";
-        w.writeHTML(dir, filename, title, null);
+        try {
+            w.writeHTML(p, "index.html", title, null);
+        } catch (IOException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Main method
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        String name = "Andy Turner " + Environment.DOMAIN + " Home Page";
+        PageID id = new PageID(0);
+        Home h = new Home(name, id, Paths.get(Environment.DIR.toString(), "index.html"));
     }
 
 }

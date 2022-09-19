@@ -15,9 +15,11 @@
  */
 package io.github.agdturner;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.PageID;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -35,9 +37,14 @@ public abstract class Page {
     public final Web_ContentWriter w;
 
     /**
-     * Page Name
+     * Page Name (used for filenames).
      */
     public final String name;
+
+    /**
+     * Page Label (used for links).
+     */
+    public final String label;
 
     /**
      * Page ID
@@ -45,25 +52,29 @@ public abstract class Page {
     public final PageID id;
 
     /**
+     * Path to the file.
+     */
+    public final Path p;
+
+    /**
      * Create a new instance.
      *
      * @param name What {@link #name} is set to.
      * @param id What {@link #id} is set to.
      */
-    public Page(String name, PageID id) {
+    public Page(String name, String label, PageID id, Path p) {
         this.w = new Web_ContentWriter();
         this.name = name;
+        this.label = label;
         this.id = id;
+        this.p = p;
     }
-
+    
     /**
-     * For initial write of Web content.
-     *
-     * @param dir The directory in which the content will be written.
-     * @throws IOException If thrown.
+     * For writing the page to file.
      */
-    public abstract void write(Path dir) throws IOException;
-
+    public abstract void write();
+    
     /**
      * Start the main div and write the title of the page in h1 tags.
      *
@@ -81,8 +92,8 @@ public abstract class Page {
         r.add("""
               <!-- Styling. -->
               <link id="code_theme" rel="stylesheet" type="text/css" href="">
-              <script src="../../../../scripts/style.js"></script>
-              <script src="../../../../tools/highlight/highlight.min.js"></script>
+              <script src="/scripts/style.js"></script>
+              <script src="/tools/highlight/highlight.min.js"></script>
               <script>hljs.highlightAll();</script>
               <link rel="stylesheet" href="../../../../css/style.css">""");
         return r;
