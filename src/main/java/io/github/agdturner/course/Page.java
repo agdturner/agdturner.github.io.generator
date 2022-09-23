@@ -15,10 +15,14 @@
  */
 package io.github.agdturner.course;
 
+import io.github.agdturner.WebPage;
 import io.github.agdturner.core.PageID;
 import io.github.agdturner.core.ReferenceID;
+import io.github.agdturner.core.SectionID;
+import io.github.agdturner.core.TermID;
 import io.github.agdturner.course.python.intro.pages.Home;
 import java.nio.file.Paths;
+import java.util.TreeSet;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -26,7 +30,7 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  *
  * @author Andy Turner
  */
-public abstract class Page extends io.github.agdturner.Page {
+public abstract class Page extends WebPage {
 
     /**
      * The Course.
@@ -45,60 +49,99 @@ public abstract class Page extends io.github.agdturner.Page {
         super(filename, title, label, new PageID(c.coursePages.size()),
                 Paths.get(c.courseDir.toString(), filename));
         this.c = c;
-    }
-
-    @Override
-    public void writeH1() {
-        super.writeH1();
-        w.add(c.getNavigationButtons());
+        this.c.addPage(w, id, label, filename);
     }
 
     /**
-     * Adds navigation section at the bottom of the page.
+     * Write the header including: the dark/light style button and navigation.
      */
-    public String getNavigation() {
-        StringBuilder sb = new StringBuilder("<div><nav>");
+    public void writeHeader() {
+        w.add("<header>");
+        w.add("""
+               <button id="style_button" onclick="swapStyle()"></button>""");
+        w.add(c.getNavigationLinks("nav"));
+        w.add("</header>");
+    }
+
+    /**
+     * For navigation to the next and optionally previous page.
+     *
+     * @param linkClass The class for navigation links.
+     * @param addPrevious If true, this also adds links to the previous page.
+     */
+    public String getLinks(String linkClass, boolean addPrevious) {
+        StringBuilder sb = new StringBuilder("<div>\n<p>");
         if (this instanceof Home) {
-            sb.append(getLinkButtonNext(c.coursePages.get(0)));
+            sb.append(getLinkNext(c.coursePages.get(0), linkClass));
         } else {
-            sb.append(Web_ContentWriter.getLinkButton(
-                    c.getLinkPathString(c.homePage), c.homePage.label));
             int n = c.coursePages.size();
             if (this instanceof Index) {
-                sb.append(getLinkButtonPrev(c.coursePages.get(n - 1)));
-                sb.append(getLinkButtonNext(c.references));
+                if (addPrevious) {
+                    sb.append(getLinkPrev(c.coursePages.get(n - 1), linkClass));
+                    sb.append("</p>\n<p>");
+                    sb.append(getLinkNext(c.references, linkClass));
+                }
             } else if (this instanceof References) {
-                sb.append(getLinkButtonPrev(c.index));
+                sb.append(getLinkPrev(c.index, linkClass));
             } else {
-                if (this.id.id > 0) {
-                    sb.append(getLinkButtonPrev(c.coursePages.get(this.id.id - 1)));
+                if (addPrevious) {
+                    if (this.id.id > 0) {
+                        sb.append(getLinkPrev(c.coursePages.get(this.id.id - 1),
+                                linkClass));
+                        sb.append("</p>\n<p>");
+                    } else if (this.id.id == 0) {
+                        sb.append(getLinkPrev(c.homePage, linkClass));
+                        sb.append("</p>\n<p>");
+                    }
                 }
                 if (this.id.id < n - 1) {
-                    sb.append(getLinkButtonNext(c.coursePages.get(this.id.id + 1)));
+                    sb.append(getLinkNext(c.coursePages.get(this.id.id + 1),
+                            linkClass));
                 } else {
-                    sb.append(getLinkButtonNext(c.index));
+                    sb.append(getLinkNext(c.index, linkClass));
                 }
             }
         }
+        sb.append("</p>\n</div>");
         return sb.toString();
     }
-    
-    protected String getLinkButtonNext(Page p) {
-        return getLinkButton(p, "Next: ");
+
+    /**
+     * Gets a link to the next page in the series.  
+     * @param p The page.
+     * @param linkClass The class for the link element.
+     * @return a link to the next page in the series.
+     */
+    protected String getLinkNext(Page p, String linkClass) {
+        return getLink(p, "next", linkClass, "Next: ");
     }
 
-    protected String getLinkButtonPrev(Page p) {
-        return getLinkButton(p, "Prev: ");
+    /**
+     * Gets a link to the previous page in the series.  
+     * @param p The page.
+     * @param linkClass The class for the link element.
+     * @return a link to the next page in the series.
+     */
+    protected String getLinkPrev(Page p, String linkClass) {
+        return getLink(p, "previous", linkClass, "Prev: ");
     }
 
-    protected String getLinkButton(Page p, String type) {
-        return Web_ContentWriter.getLinkButton(c.getLinkPathString(p),
-                type + p.label);
+    /**
+     * Gets a link to a page in the series.  
+     * @param p The page.
+     * @param id The id for the link element.
+     * @param linkClass  The class for the link element.
+     * @param prepend
+     * @return a link to a page in the series.
+     */
+    protected String getLink(Page p, String id, String linkClass, String prepend) {
+        return Web_ContentWriter.getLink(c.getLinkPathString(p), id,
+                linkClass, prepend + p.label);
     }
 
     /**
      * Adds a reference to the appropriate course collections and returns a link
-     * to use in a Page.
+     * to use in a WebPage.
      *
      * @param linkName The name of the Wikipedia article and section (spaces are
      * replaced with underscores) and the text for the link returned.
@@ -110,7 +153,7 @@ public abstract class Page extends io.github.agdturner.Page {
 
     /**
      * Adds a reference to the appropriate course collections and returns a link
-     * to use in a Page.
+     * to use in a WebPage.
      *
      * @param linkName The name of the Wikipedia article and section (spaces are
      * replaced with underscores).
@@ -125,13 +168,13 @@ public abstract class Page extends io.github.agdturner.Page {
 
     /**
      * Adds a reference to the appropriate course collections and returns a link
-     * to use in a Page.
+     * to use in a WebPage.
      *
      * @param url The url of the Web resource to reference.
      * @param linkName The name for the link in the reference prepended with
      * resourceName. This is also used as the link Text that is returned.
      * @param resourceName Prepended to linkName (with a space added) for the
-     * reference.
+     * reference if it is not null.
      * @return A link to a Wikipedia article with the linkName.
      */
     public String addWebReference(String url, String linkName, String resourceName) {
@@ -140,26 +183,53 @@ public abstract class Page extends io.github.agdturner.Page {
 
     /**
      * Adds a reference to the appropriate course collections and returns a link
-     * to use in a Page.
+     * to use in a WebPage.
      *
      * @param url The url of the Web resource to reference.
      * @param linkName The name for the link in the reference prepended with
      * resourceName.
      * @param linkText The text for the link returned.
      * @param resourceName Prepended to linkName (with a space added) for the
-     * reference.
+     * reference if it is not null.
      * @return A link to a Wikipedia article with the linkName.
      */
     public String addWebReference(String url, String linkName, String linkText,
             String resourceName) {
-        String referenceName = resourceName + " " + linkName;
+        String referenceName = "";
+        if (resourceName != null) {
+            referenceName += resourceName + " ";
+        }
+        referenceName += linkName;
         if (!c.references.referenceNameToReferenceID.containsKey(referenceName)) {
-            ReferenceID rID = new ReferenceID(c.iReference);
+            ReferenceID rID = new ReferenceID(c.references.referenceNameToReferenceID.size());
             c.references.referenceNameToReferenceID.put(referenceName, rID);
             c.references.referenceIDToReferenceURL.put(rID, url);
-            c.iReference++;
         }
         return Web_ContentWriter.getLink(url, linkText);
+    }
+
+    /**
+     * If this term is already in the index, then the section ID is added to the
+     * set of SectionIDs stored against the TermID for this term. Otherwise a
+     * new TermID for this term is created and a new set of SectionIDs is
+     * initialised with the sectionID added to it and this is added to the
+     * index.
+     *
+     * @param term The term to add.
+     * @param sectionID The section to link to.
+     */
+    public void addToIndex(String term, SectionID sectionID) {
+        if (c.index.termToTermID.containsKey(term)) {
+            TermID key = c.index.termToTermID.get(term);
+            c.index.index.get(key).add(sectionID);
+        } else {
+            TreeSet<SectionID> sections = new TreeSet<>();
+            sections.add(sectionID);
+            TermID key = new TermID(c.index.index.size());
+            c.index.index.put(key, sections);
+            c.index.termIDToTerm.put(key, term);
+            c.index.termToTermID.put(term, key);
+        }
     }
 
 }

@@ -36,8 +36,8 @@ public class ABM2 extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
-        w.add("<p>ABM 2</p>");
         w.add("""
               <pre><code class="language-python">
               """);

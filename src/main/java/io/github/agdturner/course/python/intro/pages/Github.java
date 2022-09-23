@@ -36,6 +36,7 @@ public class Github extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<p>GitHub</p>");
 //        w.add("<p></p>");

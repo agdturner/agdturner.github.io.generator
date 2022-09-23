@@ -21,15 +21,14 @@ import io.github.agdturner.core.TermID;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * For course index pages.
- * 
+ *
  * @author Andy Turner
  */
 public class Index extends Page {
-    
+
     /**
      * To look up a Term from a TermID
      */
@@ -44,7 +43,7 @@ public class Index extends Page {
      * For storing an index of Terms and the SectionIDs they are in
      */
     public HashMap<TermID, TreeSet<SectionID>> index;
-    
+
     /**
      * Create a new instance.
      *
@@ -59,9 +58,10 @@ public class Index extends Page {
         termToTermID = new TreeMap<>();
         index = new HashMap<>();
     }
-    
+
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<ul>");
         for (TermID termID : index.keySet()) {
@@ -73,12 +73,12 @@ public class Index extends Page {
                 String sectionName = c.sectionIDToSectionName.get(sectionID);
                 PageID pageID = c.sectionIDToPageID.get(sectionID);
                 String pageName = c.pageIDToName.get(pageID);
-                sb.append(" " + pageName);
+                sb.append(" " + c.pageIDToLink.get(pageID));
             }
             w.add(sb.toString());
         }
         w.add("</ul>");
         w.add("</div>");
     }
-    
+
 }

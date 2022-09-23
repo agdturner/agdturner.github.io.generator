@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -34,57 +35,77 @@ public class Programming extends Page {
     public Programming(PythonIntroCourse c) {
         super("programming", "Programming", "Programming", c);
     }
-    
+
     @Override
     public void write() {
+        writeHeader();
         writeH1();
-        w.add("<p>" 
-                + addWikipediaReference("Computer programming") 
-                + " (programming, or coding) is about instructing a"
-                + " computer to carry out a set of tasks. Typically, the tasks"
-                + " involve data that are transferred, processed and output in"
-                + " visual and audio forms.</p>");
-        w.add("<p>The first computers were human calculators. These days most"
-                + " computers are electrical machines with circuits. Desktop"
-                + " machines typically have a keyboard for user inputs, process"
-                + " binary data stored in a file system and have a graphical"
-                + " display. Machines are typically networked and can"
-                + " communicate with other similar machines on the "
+        //w.add("<div>");
+        w.add("<h2>Introduction</h2>");
+        w.add("<p>"
+                + addWikipediaReference("Computer programming")
+                + " (coding) is about instructing a computer to carry out a set"
+                + " of tasks. Data can be input, processed and output. Outputs"
+                + " may also be visual displays and sounds, and a computer can"
+                + " be used to control other things like motors and"
+                + " sensors.</p>");
+        w.add("<p>Current desktop or laptop machines typically have a keyboard"
+                + " and a mouse for user input and a visual display screen."
+                + " They have smaller amounts of faster more volitile data"
+                + " storage (memory), and larger amounts of more persistent"
+                + " data storage (disk) that store files in a "
+                + addWikipediaReference("File_system", "file system")
+                + ". The machines may have microphones and cameras, and the"
+                + " screen may be a touch screen. The machines are typically"
+                + " networked and can communicate with other machines on the "
                 + addWikipediaReference("Internet")
-                + ".</p>");
+                + ". The basic functioning of the machine is done by an "
+                + addWikipediaReference("Operating_system", "operating system")
+                + " that is loaded onto the machine and configured to run when"
+                + " it is "
+                + addWikipediaReference("Booting", "booted")
+                + ". Additional "
+                + addWikipediaReference("Software", "software")
+                + " can be added and run on the operating system to extend the"
+                + " machines capability. This includes things like"
+                + " interpretters or virtual machines which allow users to run"
+                + " programs written in specific"
+                + addWikipediaReference("Programming_language",
+                        "computer programming language")
+                + "s.</p>");
         w.add("<p>Programming can be done visually by arranging pre-built"
-                + " components that fit or connect together to form programs or"
-                + " workflows that can then be run to produce output. However,"
-                + " this course is not about visual programming, it is about"
-                + " programming using text commands written in a computer "
-                + addWikipediaReference("Programming_language")
-                + " and either entered at a "
-                + addWikipediaReference("Command-line_interface#Command_prompt",
-                        "Command Prompt")
-                + " one after another or passed to an interpretter in a file or a"
-                + " set of files. (A file is an ordered collection of data that"
-                + " is registered with the computer operating system and can be"
-                + " persistently stored (made so that it is available in"
-                + " subsequent computer sessions).)</p>");
+                + " components that fit or connect together to form workflows"
+                + " that can be run. However, this course is not about visual"
+                + " programming, it is about programming using text"
+                + " based command instructions written in "
+                + addWikipediaReference("Python_(programming_language)",
+                        "Python")
+                + ".</p>");
         w.add("<p>There are a wide variety of computer programming languages"
                 + " each defined by a specific syntax (rules). Like natural"
-                + " languages, computer languages can share a lot in common and"
-                + " can look completely different. These learning resources"
-                + " focus on Python and will mention some similarities and"
-                + " differences that are useful to be aware of.</p>");
-        w.add("<p>The smallest amount of binary data is called a bit - one or"
-                + " the other state. Perhaps it is easiest to think of these"
-                + " states as being a zero or a one.</p>");
+                + " languages, computer languages can look similar and very"
+                + " different. Whilst these learning resources focus on Python,"
+                + " occasionally similarities and differences between Python"
+                + " and other languages are explained.</p>");
+        w.add("<h2>Data</h2>");        
+        w.add("<p>The smallest amount of binary data is called a bit. It is a"
+                + " unit that is in one of two possible states. Perhaps it is"
+                + " easiest to think of these states as being positive or"
+                + " negative, true or false, or one (1) or zero (0). Let's use"
+                + " 0 or 1 for now.</p>");
         w.add("<p>Typically computers work with fixed size collections of bits"
-                + " called " 
-                + addWikipediaReference("Byte", "bytes") 
-                + ". The more more bits in a byte, the more"
-                + " different unique combinations there are. With each added"
-                + " bit there is a power of two more combinations. With 2 bits"
-                + " there are 4 possible combinations of zeros and ones (00,"
-                + " 01, 10, 11). With 3 bits there are 8 combinations (000,"
-                + " 001, 010, 100, 011, 101, 110, 111). With 4, 16... With 8,"
-                + " 256...</p>");
+                + " called "
+                + addWikipediaReference("Byte", "bytes")
+                + ". The more more bits in a byte, the more different unique"
+                + " combinations or arrangements of bits in the byte there are."
+                + " With each added bit there is a power of two more"
+                + " combinations. With 2 bits there are 4 possible combinations"
+                + " (00, 01, 10, 11). With 3 bits there are 8 combinations"
+                + " (000, 001, 010, 100, 011, 101, 110, 111). With 4, 16..."
+                + " With 8, 256...</p>");
+        SectionID sid = new SectionID(c.sectionIDs.size());
+        c.addSection(sid, id, title);
+        addToIndex("binary", sid);
         w.add("<p>Many encodings use 8 bits in a byte (as this allows for all"
                 + " English letters in both lower and upper case, the ten"
                 + " numeric digits 0 to 9, and 192 mathematical and other"
@@ -92,11 +113,7 @@ public class Programming extends Page {
                 + " numbers, computers typically use more bits depending on the"
                 + " type of number. We will come back to numerical"
                 + " representations and calculations later.</p>");
-        w.add("<p>The lowest level languages are called machine languages and"
-                + " these tell the computer how to read instructions and"
-                + " transfer data. Higher level languages like Python have"
-                + " interpretters that translate more human readable code into"
-                + " the machine language.</p>");
+        w.add("<h2>Learning to Program</h2>");
         w.add("<p>If you are new to computer programming, then you will be"
                 + " learning lots of new terms and concepts as well as learning"
                 + " the syntax of Python in this course. There is a lot to take"
@@ -105,19 +122,39 @@ public class Programming extends Page {
                 + " You are strongly encouraged to take breaks when you are"
                 + " learning and allow time for the concepts and new"
                 + " terminology to sink in. Taking breaks will almost certainly"
-                + " help you to learn faster on the whole as you tap you"
+                + " help you to learn faster on the whole as you tap your"
                 + " subconscious. Learning should be a joy, but it is not so"
                 + " much fun if you are not making progress which can happen if"
-                + " you try to work when you are tired. Learning to program"
-                + " requires practice and will inevitable involve making lots"
-                + " of mistakes - a bit like learning to play a musical"
-                + " instrument. Most learning computer programming learn best"
-                + " by doing practical exercises and reusing the code they have"
+                + " you try to work when you are tired. When you are not tired,"
+                + " sometimes you might struggle to understand something. This"
+                + " is perfectly normal, sometimes things take a bit of time to"
+                + " understand.</p>");
+        w.add("<p>Learning to program requires practice and will inevitably"
+                + " involve making lots of mistakes - not bad mistakes, good"
+                + " mistakes - ones which you can learn from. In some ways"
+                + " learning to program is a bit like learning to write, or"
+                + " learning to play a musical instrument. Most learning"
+                + " computer programming learn best by doing practical"
+                + " exercises, and to an extent, reusing the code they have"
                 + " written.</p>");
         w.add("<p>There is typically more to learn with the first computer"
-                + " programming language you learn. Once you can use one, it is"
-                + " much easier to learn another.</p>");
-//        w.add("<p></p>");
+                + " programming language you learn. Once you can program well"
+                + " in one language, it is generally much easier to learn"
+                + " another language. Once you know two languages well, you"
+                + " might turn to one to do some things and another to do other"
+                + " things. Or, you might prefer a particular language for a"
+                + " time. High level languages are typically evolving - they"
+                + " evolve or die. As they evolve, there are typically better"
+                + " ways of doing things. So code written in a langauge to do"
+                + " something might look different in the future than it does"
+                + " now, and likewise, old code can sometimes look different to"
+                + " how things are done now according to the documentation. In"
+                + " general though, there are often several ways and perhaps"
+                + " even several good ways to achieve the same thing with a"
+                + " program. Different ways can be compared, but in general we"
+                + " should aim for easy to understand, easy to maintain,"
+                + " efficient, reliable, well tested and well documented code"
+                + " that helps make the world a better place.</p>");
         w.add("</div>");
     }
 }

@@ -54,6 +54,7 @@ public class References extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<ul>");
         for (String referenceName : referenceNameToReferenceID.keySet()) {
@@ -67,5 +68,6 @@ public class References extends Page {
         }
         w.add("</ul>");
         w.add("</div>");
+        
     }
 }

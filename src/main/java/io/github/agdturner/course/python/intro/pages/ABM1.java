@@ -36,12 +36,11 @@ public class ABM1 extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<p>ABM 1</p>");
         w.add("""
               <pre><code class="language-python">
-              """);
-        w.add("""
               for j in range(num_of_iterations):
                   for i in range(num_of_agents):
                       if random.random() < 0.5:
@@ -51,8 +50,7 @@ public class ABM1 extends Page {
                       if random.random() < 0.5:
                           agents[i][1] = (agents[i][1] + 1) % 100
                       else:
-                          agents[i][1] = (agents[i][1] - 1) % 100""");
-        w.add("""
+                          agents[i][1] = (agents[i][1] - 1) % 100
               </code></pre>""");
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

@@ -36,6 +36,7 @@ public class Web extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");

@@ -122,26 +122,6 @@ public class Course {
     public HashMap<PageID, String> pageIDToLink;
 
     /**
-     * For Page indexing.
-     */
-    public int iPage;
-
-    /**
-     * For Section indexing.
-     */
-    public int iSection;
-
-    /**
-     * For Term indexing.
-     */
-    public int iTerm;
-
-    /**
-     * For Reference indexing.
-     */
-    public int iReference;
-
-    /**
      * Creates a new instance.
      *
      * @param courseType What {@link #courseType} is set to.
@@ -155,21 +135,18 @@ public class Course {
         this.courseDir = Paths.get(Environment.DIR_COURSES.toString(),
                 courseType, courseCode);
         coursePages = new ArrayList<>();
-        index = new Index("index", "Index", "Index", this);
-        references = new References("references", "References", "References", this);
         pageIDs = new TreeSet<>();
-        sectionIDs = new TreeSet<>();
-        pageIDToSectionIDs = new TreeMap<>();
-        sectionIDToPageID = new TreeMap<>();
-        sectionIDToSectionName = new TreeMap<>();
         pageIDToName = new HashMap<>();
         pageIDToNameA = new HashMap<>();
         nameAToPageID = new HashMap<>();
         pageIDToLink = new HashMap<>();
-        iPage = 0;
-        iSection = 0;
-        iTerm = 0;
-        iReference = 0;
+        index = new Index("index", "Index", "Index", this);
+        references = new References("references", "References", "References", 
+                this);
+        sectionIDs = new TreeSet<>();
+        pageIDToSectionIDs = new TreeMap<>();
+        sectionIDToPageID = new TreeMap<>();
+        sectionIDToSectionName = new TreeMap<>();
     }
 
     /**
@@ -185,22 +162,41 @@ public class Course {
         pageIDToName.put(id, linkName);
         pageIDToNameA.put(id, s);
         nameAToPageID.put(s, id);
-        w.add("<li>" + Web_ContentWriter.getLink(s, linkName) + "</li>");
-        pageIDToLink.put(id, "../" + s);
+        String link = Web_ContentWriter.getLink("../" + linkName + "/index.html", s);
+        pageIDToLink.put(id, link);
     }
+    
+    /**
+     * Add a section for the index.
+     * @param sid The Section ID.
+     * @param pid The Page ID.
+     * @param sectionName The name of the section.
+     */
+    public void addSection(SectionID sid, PageID pid, String sectionName){
+        sectionIDToPageID.put(sid, pid);
+        sectionIDToSectionName.put(sid, sectionName);
+    }
+    
 
     /**
      * For getting all navigation buttons.
      */
-    public String getNavigationButtons() {
-        StringBuilder sb = new StringBuilder("<div><nav>");
-        sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(homePage), homePage.label));
+    public String getNavigationLinks(String linkClass) {
+        StringBuilder sb = new StringBuilder("<div>\n<nav>\n");
+        sb.append(Web_ContentWriter.getLink(getLinkPathString(homePage), 
+                homePage.filename, linkClass, homePage.label));
+        sb.append(" ");
         for (Page page : coursePages) {
-            sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(page), page.label));
+            sb.append(Web_ContentWriter.getLink(getLinkPathString(page), 
+                    page.filename, linkClass, page.label));
+            sb.append(" ");
         }
-        sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(index), index.label));
-        sb.append(Web_ContentWriter.getLinkButton(getLinkPathString(references), references.label));
-        sb.append("</nav></div>");
+        sb.append(Web_ContentWriter.getLink(getLinkPathString(index), 
+                index.filename, linkClass, index.label));
+        sb.append(" ");
+        sb.append(Web_ContentWriter.getLink(getLinkPathString(references),
+                references.filename, linkClass, references.label));
+        sb.append("\n</nav>\n</div>");
         return sb.toString();
     }
     

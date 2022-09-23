@@ -39,8 +39,10 @@ import io.github.agdturner.course.python.intro.pages.Python;
 import io.github.agdturner.course.python.intro.pages.Variables;
 import io.github.agdturner.course.python.intro.pages.Web;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * Java for generating PythonIntro Course https://agdturner.github.io Website
@@ -121,21 +123,17 @@ public abstract class PythonIntroCourse extends Course {
 
     protected final void write(Page page) {
         page.write();
+        // Write footer
         // Add navigation
-        page.w.add(page.getNavigation());
-//        // Add navigation
-//        page.w.add("<div>");
-//        page.w.add("<nav>");
-//        page.w.add(Web_ContentWriter.getLink("../index.html", "Home"));
-//        page.w.add("</nav>");
-//        page.w.add("</div>");
+        page.w.add("<footer>");
+        page.w.add(page.getLinks("nav", false));
+        page.w.add("<p>Date last modified: " + LocalDate.now().toString() + ".</p>");
+        String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
+        page.w.add("<p>" + Web_ContentWriter.getLink(cc0, "CC0 Licence") + "</p>");
+        page.w.add("</footer>");
         // Write page
-        writePage(page);
-    }
-
-    protected void writePage(Page page) {
         try {
-            page.w.writeHTML(page.p, "index", page.title + " Page", Page.getHeaderElements());
+            page.w.writeHTML(page.p, "index", page.title + " Page", Page.getHeadElements());
         } catch (IOException ex) {
             Logger.getLogger(PythonIntroCourse.class.getName()).log(Level.SEVERE, null, ex);
         }

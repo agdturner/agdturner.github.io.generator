@@ -47,7 +47,7 @@ public class GettingStarted extends PythonIntroCourse {
      * @param args
      */
     public static void main(String[] args) {
-        String courseName = "Introduction to Python Programming for Geography and Social Science";
+        String courseName = "Programming for Geography: Python 1";
         String courseCode = "GettingStarted";
         boolean assignments = false;
         GettingStarted c = new GettingStarted(courseCode, courseName, 

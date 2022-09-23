@@ -30,7 +30,7 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  *
  * @author Andy Turner
  */
-public class Home extends Page {
+public class Home extends WebPage {
 
     /**
      * Create a new instance.
@@ -158,7 +158,7 @@ public class Home extends Page {
 //            }
 //            w.add("</ul>");
 //        }
-        // End Page
+        // End WebPage
         w.add(Web_ContentWriter.DIVET);
         try {
             w.writeHTML(p, "index.html", title, null);

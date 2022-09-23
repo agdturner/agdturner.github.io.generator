@@ -35,28 +35,29 @@ public class Python extends Page {
     public Python(PythonIntroCourse c) {
         super("python", "Python", "Python", c);
     }
-    
+
     @Override
     public void write() {
+        writeHeader();
         writeH1();
+        String pythonWebsiteLink = addWebReference(Environment.URL_PYTHON,
+                "Python Website", "Python Website", "");
         w.add("<p>"
                 + addWikipediaReference("Python_(programming_language)",
                         "Python")
-                + " is a popular and powerful programming language. The Python"
-                + " interpreter and the extensive standard library are freely"
-                + " available in source and binary form for all major platforms"
-                + " from "
-                + addWebReference(Environment.URL_PYTHON, "Python Website",
-                        Environment.URL_PYTHON, "")
-                + ", and may be freely distributed. The web site contains"
-                + " distributions of and pointers to many free third party"
-                + " Python modules, programs and tools, and additional"
+                + " is a popular and powerful interpretted programming"
+                + " language. The Python interpreter and the extensive standard"
+                + " library are freely available in source and binary form for"
+                + " all major platforms from the " + pythonWebsiteLink
+                + ", and may be freely distributed. The " + pythonWebsiteLink
+                + " contains distributions of and pointers to many free third"
+                + " party Python modules, programs and tools, and additional"
                 + " documentation.</p>");
         w.add("<p>Python underwent a major revision from Python 2 to Python 3"
                 + " in around 2008. There were changes that were not backwards"
                 + " compatible. As a result a lot of Python 2 code needed"
-                + " refactoring in order to work in Python 3 environments."
-                + " This somewhat divided the community at the time. Python 2"
+                + " changing/fixing (refactoring) in order to work in Python 3"
+                + " environments. This somewhat divided the community. Python 2"
                 + " is no longer supported in that the Python developers are no"
                 + " longer responding to issues reported against Python 2."
                 + " On the 22nd of August 2022 Python 3.10.6 was released."
@@ -65,7 +66,7 @@ public class Python extends Page {
                 + "</p>");
         w.add("<ul>");
         addWebReference("https://docs.python.org/3/whatsnew",
-                        "Python Documentation What's New", "", "");
+                "Python Documentation What's New", "", "");
         for (int i = 0; i < 11; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
@@ -113,7 +114,7 @@ public class Python extends Page {
                 + Web_ContentWriter.getLink(python3DocsTutorial,
                         "getting started tutorial")
                 + " linked from the "
-                + addWebReference(Environment.URL_PYTHON, 
+                + addWebReference(Environment.URL_PYTHON,
                         "Python Website", Environment.URL_PYTHON, "")
                 + " is a good place to start learning Python. We will be"
                 + " covering a lot of the same things in this course, but we"

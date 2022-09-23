@@ -36,6 +36,7 @@ public class Containers extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<p>Containers</p>");
         w.add("""

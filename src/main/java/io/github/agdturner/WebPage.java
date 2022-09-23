@@ -22,11 +22,11 @@ import java.util.List;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * A Web Page.
+ * A Web WebPage.
  *
  * @author Andy Turner
  */
-public abstract class Page {
+public abstract class WebPage {
 
     /**
      * The Web_ContentWriter.
@@ -49,7 +49,7 @@ public abstract class Page {
     public final String label;
 
     /**
-     * Page ID
+     * WebPage ID
      */
     public final PageID id;
 
@@ -67,7 +67,7 @@ public abstract class Page {
      * @param id What {@link #id} is set to.
      * @param p What {@link #p} is set to.     * 
      */
-    public Page(String filename, String title, String label, PageID id, Path p) {
+    public WebPage(String filename, String title, String label, PageID id, Path p) {
         this.w = new Web_ContentWriter();
         this.filename = filename;
         this.title = title;
@@ -80,28 +80,24 @@ public abstract class Page {
      * For writing the page to file.
      */
     public abstract void write();
-    
-    /**
-     * Start the main div and write the title of the page in h1 tags.
-     *
-     * @param name The title of the page.
-     */
+
     public void writeH1() {
         w.add("<div>");
-        w.add("""
-              <button onclick="swapStyleSheet()" id="style_button"></button>""");
         w.add("<h1>" + title + "</h1>");
     }
-
-    public static List<String> getHeaderElements() {
+    
+    public static List<String> getHeadElements() {
         ArrayList<String> r = new ArrayList<>();
         r.add("""
               <!-- Styling. -->
-              <link id="code_theme" rel="stylesheet" type="text/css" href="">
+              <!-- The following href is blank, but will be populated once the
+              DOM is fully loaded. -->
+              <link id="css" rel="stylesheet" type="text/css" href="">\
               <script src="/scripts/style.js"></script>
+              <!-- The following are used for stying code. -->
               <script src="/tools/highlight/highlight.min.js"></script>
               <script>hljs.highlightAll();</script>
-              <link rel="stylesheet" href="../../../../css/style.css">""");
+              <link id="code_theme" rel="stylesheet" type="text/css" href="">""");
         return r;
     }
 }

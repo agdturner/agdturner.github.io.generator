@@ -36,6 +36,7 @@ public class ABM3 extends Page {
     
     @Override
     public void write() {
+        writeHeader();
         writeH1();
         w.add("<p>ABM</p>");
 //        w.add("<p></p>");
