@@ -30,7 +30,7 @@ public class GettingStarted extends PythonIntroCourse {
      *
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
-     * @param courseCode Is true if there are assignments and false otherwise.
+     * @param hasAssignments Is true if there are assignments and false otherwise.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */

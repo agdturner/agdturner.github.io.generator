@@ -26,7 +26,8 @@ public class Environment {
     
     public static final String DOMAIN = "agdturner.github.io";
     
-    public static final Path DIR = Paths.get("C:", "Users", "agdtu", "src", "agdt", DOMAIN);
+    //public static final Path DIR = Paths.get("C:", "Users", "agdtu", "src", "agdt", DOMAIN);
+    public static final Path DIR = Paths.get("C:", "Users", "geoagdt", "src", "agdt", DOMAIN);
     
     public static final Path DIR_COURSES = Paths.get(DIR.toString(), "courses");
 
