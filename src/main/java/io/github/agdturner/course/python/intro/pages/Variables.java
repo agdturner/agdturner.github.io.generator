@@ -39,11 +39,11 @@ public class Variables extends Page {
         writeHeader();
         writeH1();
         //w.add("<div>");
-        w.add("<h2>Introduction</h2>");
+        w.add("<h2>1. Introduction</h2>");
         w.add("<p>After considering basic syntax, this section focuses on "
                 + "variables</p>");
-        w.add("<h3>Basic Python Syntax</h3>");
-        w.add("<h4>Statements</h4>");
+        w.add("<h3>1.1. Basic Python Syntax</h3>");
+        w.add("<h4>1.1.1. Statements</h4>");
         w.add("<p>Multiple statements on a single line are separated with"
                 + " semicolons. Yet, it is unusual though to have lines with"
                 + " multiple statements.</p>");
@@ -56,7 +56,7 @@ public class Variables extends Page {
         w.add("a = 1");
         w.add("</code></pre></p>");
 
-        w.add("<h4>Comments</h4>");
+        w.add("<h4>1.1.2. Comments</h4>");
         w.add("<p>The # symbol is the start of a comment.</p>");
 
         w.add("<pre><code class=\"language-python\">");
@@ -79,7 +79,7 @@ public class Variables extends Page {
         w.add("\"\"\"");
         w.add("</code></pre>");
 
-        w.add("<h4>Code layout: code blocks</h4>");
+        w.add("<h4>1.1.3. Code layout: code blocks</h4>");
         w.add("<p>Blank lines are allowed and indeed help structure code into"
                 + " blocks. It is good practice to start each code block with a"
                 + " comment that outlines what the code block is for. For"
@@ -114,21 +114,32 @@ public class Variables extends Page {
         w.add("<pre><code class=\"language-python\">");
         w.add("# if a is greater than b, then print a");
         w.add("if a > b: # This line has the same indent as the comment above.");
-        w.add("print a # This line is indented one standard step further.");
+        w.add("    print a # This line is indented one standard step further.");
         w.add("print(\"done\") # This line is dedented to the previous level.");
         w.add("</code></pre>");
 
-        w.add("Let us give names to some other language features:");
-        w.add("<ul>");
-        w.add("<li>delimiters - are things that separate and include indents,"
-                + " semicolons and commas</li>");
+        w.add("<h4>1.1.4. Delimeters</h4>");
+        w.add("<li>Delimeters separate bits of code. Newlines and"
+                + " indenting/dedenting at the start of a line are special"
+                + " kinds of delimiter-ish things, as are quoation marks"
+                + " (', \"), the hash symbol (#) and \\\n (which typically"
+                + " represents a new line. Some delimeters also act as"
+                + " operators):\n"
+                + "(       )       [       ]       {       }\n"
+                + ",       :       .       ;       @       =       ->\n"
+                + "+=      -=      *=      /=      //=     %=      @=\n"
+                + "&=      |=      ^=      >>=     <<=     **=</li>");
+        w.add("<h4>1.1.5. Keywords</h4>");
         w.add("<li>keywords - are reserved terms that can't be used for"
                 + " anything else like variable names (e.g. if, for, import)"
                 + "</li>");
+        w.add("<h4>1.1.5. Identifiers</h4>");
         w.add("<li>identifiers - for the most part, these are names of "
                 + "variables</li>");
+        w.add("<h4>1.1.5. Literals</h4>");
         w.add("<li>literals - these are specific numerical or text"
                 + " values.</li>");
+        w.add("<h4>1.1.5. Operators</h4>");
         w.add("<li>operators - these are mathematical symbols (e.g. +, -, *,"
                 + " /, %)</li>");
         w.add("</ul>");
@@ -136,18 +147,24 @@ public class Variables extends Page {
         w.add("<pre><code class=\"language-python\">");
         w.add("# if a is greater than b, then print a");
         w.add("if a > b: # This line has the same indent as the comment above.");
-        w.add("print a # This line is indented one standard step further.");
+        w.add("    print a # This line is indented one standard step further.");
         w.add("print(\"done\") # This line is dedented to the previous level.");
         w.add("</code></pre>");
 
         w.add("<pre><code class=\"language-python\">");
-        w.add("if a < 10 :\n"
+        w.add("if a > b :\n"
                 + "    print (a)\n"
                 + "print (\"done\")");
         w.add("</code></pre>");
 
         w.add("<pre><code class=\"language-python\">");
-        w.add("if a < 10 :\n"
+        w.add("if a > b :\n"
+                + "    print (a)\n"
+                + "    print (\"done\")");
+        w.add("</code></pre>");
+
+        w.add("<pre><code class=\"language-python\">");
+        w.add("for a in range(0, 10) :\n"
                 + "    print (a)\n"
                 + "    print (\"done\")");
         w.add("</code></pre>");
