@@ -129,9 +129,8 @@ public class Python extends Page {
                 + " with a bit of Python coding.</p>");
         w.add("</div>");
         w.add("<div>");
-        w.add("<p>To follow the instructions below, you need to have Python"
-                + " installed on your system. These instructions also assume"
-                + " that you are using a Windows Operating System.</p>");
+        w.add("<p>To follow the instructions, you should have Python"
+                + " installed on your system.</p>");
         w.add("<p>Open up a command window and enter:"
                 + " \"python --version\"</p>");
         w.add("<p>This should output the version of Python your system is set"

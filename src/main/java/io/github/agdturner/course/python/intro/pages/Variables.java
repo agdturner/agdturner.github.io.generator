@@ -42,51 +42,46 @@ public class Variables extends Page {
         w.add("<h2>1. Introduction</h2>");
         w.add("<p>Variables can be thought of as labels that are assigned"
                 + " values which may change. The following code is comprised of"
-                + " two statements. The first initialises a variable (x) and"
-                + " assigns it the value 0. The second calls the print function"
-                + " and passes this the variable x as a parameter.</p>");
-        
+                + " two statements. The first initialises a variable which is"
+                + " given the label x and assigned the value 0. The second"
+                + " calls the print function with x passed in as a parameter."
+                + "</p>");
+
         w.add("<pre><code class=\"language-python\">");
         w.add("x = 0");
         w.add("print(x)");
         w.add("</code></pre>");
-        
-        w.add("<p>The output from running this code is that the value is"
-                + " printed to the standard output:</p>");
-        
+
+        w.add("<p>The output from running this code is:</p>");
+
         w.add("<pre><code>");
         w.add("0");
         w.add("</code></pre>");
-        
-        w.add("<p>This section introduces some syntax and focuses on"
-                + " variables</p>");
-        w.add("<h3>1.1. Basic Python Syntax</h3>");
-        w.add("<h4>1.1.1. Statements</h4>");
+
+        w.add("<p>Let's come back to variables shortly...</p>");
+        w.add("<h2>2. Basic Python Syntax</h3>");
+        w.add("<h3>2.1. Statements</h3>");
         w.add("<p>Multiple statements on a single line are separated with"
-                + " semicolons (;). Yet, it is unusual though to have lines with"
-                + " multiple statements.</p>");
+                + " semicolons (;).</p>");
         w.add("<p>Python does not have a special symbol to end a statement"
                 + " like many languages do.</p>");
-        w.add("<p>The following is a Python statement that sets the variable a"
-                + " equal to the number 1:</p>");
-
-
-        w.add("<h4>1.1.2. Comments</h4>");
+        w.add("<h3>2.2. Comments</h3>");
         w.add("<p>The # symbol is the start of a comment.</p>");
 
         w.add("<pre><code class=\"language-python\">");
         w.add("# This entire line is a comment");
-        w.add("a = 1 # This part of the line is a comment");
+        w.add("x = 0 # This part of the line is a comment");
+        w.add("print(x) # Print out the value of x");
         w.add("</code></pre>");
 
         w.add("<p>Between triple quotes everything is a comment. There are two"
                 + " types of triple quote, those using single quotation marks,"
                 + " and those using double quotation marks. Triple double"
-                + " quotes (\"\"\") are typically used for documentation."
-                + " Triple single quotes (''') are often used to comment out"
-                + " sections of code when debugging (debugging is a coding term"
-                + " for the activity of resolving issues to do with code not"
-                + " doing what is wanted).</p>");
+                + " quotes (\"\"\") are typically used for documentation"
+                + " sections. Triple single quotes (''') are often used to"
+                + " comment out sections of code when "
+                + addWikipediaReference("Debugging",
+                        "debugging") + ".</p>");
 
         w.add("<pre><code class=\"language-python\">");
         w.add("\"\"\"");
@@ -94,77 +89,91 @@ public class Variables extends Page {
         w.add("\"\"\"");
         w.add("</code></pre>");
 
-        w.add("<h4>1.1.3. Code layout: code blocks</h4>");
-        w.add("<p>Blank lines are allowed and indeed help structure code into"
+        w.add("<h3>2.3. Code layout: code blocks</h4>");
+        w.add("<p>Blank lines are allowed and can help structure code into"
                 + " blocks. It is good practice to start each code block with a"
                 + " comment that outlines what the code block is for. For"
                 + " example:</p>");
 
         w.add("<pre><code class=\"language-python\">");
-        w.add("# Initialise a and b");
-        w.add("a = 2");
-        w.add("b = 4");
-        w.add("print(a)");
-        w.add("print(b)");
+        w.add("# Initialise x and y");
+        w.add("x = 2");
+        w.add("y = 4");
+        w.add("print(x)");
+        w.add("print(y)");
         w.add("");
-        w.add("# Calculate a to the power of b");
-        w.add("c = a ** b");
-        w.add("print(c)");
+        w.add("# Calculate x to the power of y");
+        w.add("x ** y");
         w.add("</code></pre>");
 
-        w.add("Indentation is syntax in Python. Indentation refers to the blank"
-                + " space (sometimes called white space - as code backgrounds"
-                + " were normally white in colour). It is what precedes text on"
-                + " a line. It is good to be consistent with indentation and to"
-                + " an extent, Python forces this. It is important to know that"
-                + " indentation can effect what code does. Also, care must be"
-                + " taken with spaces and tabs as these are different and can"
-                + " appear identical. With Python it is recommended not to use"
-                + " tabs at all in source code and to use multiple spaces"
-                + " instead. It is easier to see differences if the indents and"
-                + " dedents (where the indent is less than on the preceeding"
-                + " statement. For example, here is a code block with a compund"
-                + " statement that is an if statement</p>");
+        w.add("<p>Indentation is syntax in Python. Indentation refers to the blank"
+                + " space that precedes text on a line. (It is sometimes called"
+                + " white space - as code backgrounds were normally white in"
+                + " colour). It is good to be consistent with indentation and"
+                + " to be aware that indentation can effect what code does."
+                + " Also, care must be taken with spaces and tabs as these are"
+                + " different, yet can appear identical. With Python it is"
+                + " recommended not to use tabs at all in source code and to"
+                + " use multiple spaces instead to indent. The following is a"
+                + " code block with an example <em>if</em> statement.</p>");
 
         w.add("<pre><code class=\"language-python\">");
-        w.add("# if a is greater than b, then print a");
-        w.add("if a > b: # This line has the same indent as the comment above.");
-        w.add("    print a # This line is indented one standard step further.");
+        w.add("# if x is greater than y, then print a");
+        w.add("if x > y: # This line has the same indent as the comment above.");
+        w.add("    print(x) # This line is indented one standard step further.");
         w.add("print(\"done\") # This line is dedented to the previous level.");
         w.add("</code></pre>");
 
-        w.add("<h4>1.1.4. Delimeters</h4>");
-        w.add("<li>Delimeters separate bits of code. Newlines and"
-                + " indenting/dedenting at the start of a line are special"
-                + " kinds of delimiter-ish things, as are quoation marks"
-                + " (', \"), the hash symbol (#) and \\\n (which typically"
-                + " represents a new line. Some delimeters also act as"
-                + " operators):\n"
-                + "(       )       [       ]       {       }\n"
+        w.add("<p>What this code does is test if the variable x is greater"
+                + " than the variable y and if so, then the value of x is"
+                + " printed. Much of the code is comment.</p>");
+
+        w.add("<h3>2.4. Delimiters, Literals and operators</h3>");
+        w.add("<p>Delimiters separate bits of code like blank lines and the"
+                + " colon (:) in the if statement. Some delimeters also act as"
+                + " operators. Here are some to look at:</p>");
+
+        w.add("pre>(       )       [       ]       {       }\n"
                 + ",       :       .       ;       @       =       ->\n"
                 + "+=      -=      *=      /=      //=     %=      @=\n"
-                + "&=      |=      ^=      >>=     <<=     **=</li>");
-        w.add("<h4>1.1.5. Keywords</h4>");
-        w.add("<li>keywords - are reserved terms that can't be used for"
-                + " anything else like variable names (e.g. if, for, import)"
-                + "</li>");
-        w.add("<h4>1.1.5. Identifiers</h4>");
-        w.add("<li>identifiers - for the most part, these are names of "
-                + "variables</li>");
-        w.add("<h4>1.1.5. Literals</h4>");
-        w.add("<li>literals - these are specific numerical or text"
-                + " values.</li>");
-        w.add("<h4>1.1.5. Operators</h4>");
-        w.add("<li>operators - these are mathematical symbols (e.g. +, -, *,"
-                + " /, %)</li>");
-        w.add("</ul>");
+                + "&=      |=      ^=      >>=     <<=     **=</pre>");
+
+        w.add("<p>You might have be able to guess what some of these do... To "
+                + "be more sure you can search online and run some tests.");
+        w.add("<h3>2.5. Identifiers and Keywords</h3>");
+        w.add("<p>Keywords are reserved terms that can't be used for other "
+                + " things like variable names (e.g. if, for, import).</p>");
+        w.add("<p>identifiers are for the most part names of variables</p>");
+        w.add("<p>For details see the "
+                + addWebReference("https://docs.python.org/3/reference/lexical_analysis.html",
+                        "Python documentation Lexical Analysis",
+                        "Python documentation Lexical Analysis")
+                + "</p>");
+        w.add("<p>Literals are specific numerical or text values.</p>");
+        w.add("<p>Operators are mathematical symbols (e.g. +, -, *, /, %)</p>");
+
+        w.add("<h4>2.7. Examples</h4>");
+        w.add("<p>The following code block is an if statement which has an else"
+                + " part. The way this works is that the expression is "
+                + " evaluated and if True, then x is printed otherwise y is"
+                + " printed.</p>");
 
         w.add("<pre><code class=\"language-python\">");
-        w.add("# if a is greater than b, then print a");
-        w.add("if a > b: # This line has the same indent as the comment above.");
-        w.add("    print a # This line is indented one standard step further.");
-        w.add("print(\"done\") # This line is dedented to the previous level.");
+        w.add("# if x is greater than y, then print x");
+        w.add("if x > y:");
+        w.add("    print(x)");
+        w.add("else:");
+        w.add("    print(y)");
+        w.add("print(\"done\")");
         w.add("</code></pre>");
+
+        w.add("<p>If the variable x was set to the value 10 and the variable"
+                + " y was set to the value 5, what would be the output from"
+                + " running this code?</p>");
+
+        w.add("<p>Test your understanding in a Python environment.</p>");
+        w.add("<p>Variables can be set equal to each other.</p>");
+        w.add("<p></p>");
 
         w.add("<pre><code class=\"language-python\">");
         w.add("if a > b :\n"
