@@ -40,21 +40,36 @@ public class Variables extends Page {
         writeH1();
         //w.add("<div>");
         w.add("<h2>1. Introduction</h2>");
-        w.add("<p>After considering basic syntax, this section focuses on "
-                + "variables</p>");
+        w.add("<p>Variables can be thought of as labels that are assigned"
+                + " values which may change. The following code is comprised of"
+                + " two statements. The first initialises a variable (x) and"
+                + " assigns it the value 0. The second calls the print function"
+                + " and passes this the variable x as a parameter.</p>");
+        
+        w.add("<pre><code class=\"language-python\">");
+        w.add("x = 0");
+        w.add("print(x)");
+        w.add("</code></pre>");
+        
+        w.add("<p>The output from running this code is that the value is"
+                + " printed to the standard output:</p>");
+        
+        w.add("<pre><code>");
+        w.add("0");
+        w.add("</code></pre>");
+        
+        w.add("<p>This section introduces some syntax and focuses on"
+                + " variables</p>");
         w.add("<h3>1.1. Basic Python Syntax</h3>");
         w.add("<h4>1.1.1. Statements</h4>");
         w.add("<p>Multiple statements on a single line are separated with"
-                + " semicolons. Yet, it is unusual though to have lines with"
+                + " semicolons (;). Yet, it is unusual though to have lines with"
                 + " multiple statements.</p>");
         w.add("<p>Python does not have a special symbol to end a statement"
                 + " like many languages do.</p>");
         w.add("<p>The following is a Python statement that sets the variable a"
                 + " equal to the number 1:</p>");
 
-        w.add("<pre><code class=\"language-python\">");
-        w.add("a = 1");
-        w.add("</code></pre></p>");
 
         w.add("<h4>1.1.2. Comments</h4>");
         w.add("<p>The # symbol is the start of a comment.</p>");
