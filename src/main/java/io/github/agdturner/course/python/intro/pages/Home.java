@@ -43,149 +43,135 @@ public class Home extends Page {
         writeHeader();
         writeH1();
         String url = "https://www.geog.leeds.ac.uk/people/a.turner/index.html";
-        w.add("<h2>Introduction</h2>");
-        w.add("<p>Welcome!</p>");
-        w.add("<p>These web pages are "
-                + addWikipediaReference("Open_educational_resources",
-                        "Open Educational Resources")
-                + " developed by "
-                + Web_ContentWriter.getLink(url, "Andy Turner")
-                + " and used for teaching at "
-                + Web_ContentWriter.getLink("https://www.leeds.ac.uk",
-                        "The University of Leeds")
-                + ". They support learning the basics of computer programming"
-                + " for applications in geography and social science and focus"
-                + " on the "
-                + addWikipediaReference("Python_(programming_language)",
-                        "Python programming language")
-                + " (Python).</p>");
-        w.add("<p>In the header of each web page is a navigation section"
-                + " which links to all the other web pages. The navigation"
-                + " section is essentially the same for all the web pages. To"
-                + " help know which page you are on, the link for that page has"
-                + " a solid outline, and in the main section there is a level 1"
-                + " heading containing the title of the page. At the bottom of"
-                + " each web page there is a footer section which links to the"
-                + " next page (until you are on the last page - a page of"
-                + " references). The page before last is an index page which"
-                + " links back to sections of web pages to help look things up"
-                + " within the pages.</p>");
-        w.add("<p>At the top of each page is a Style Button that can be"
-                + " used to change the style of the pages between 'light mode'"
-                + " and 'dark mode'. When active, and by default, 'light mode',"
-                + " sets the background of each page white. Contrastingly,"
-                + " 'dark mode', sets the background of each page black. Other"
-                + " things may be restyled to show up on the background."
-                + "</p>");
-        w.add("<p>The idea is that learners proceed by reading through the web"
-                + " pages in order, pausing to think, exploring links, taking"
-                + " breaks, perhaps talking with peers, and undertake practical"
-                + " exercises as directed.</p>");
-        w.add("<p>There are many links to other websites, particularly Python"
-                + " documentation which, once you get the hang of reading it,"
-                + " is a great way to learn about the language. However,"
-                + " you will also learn a lot by running code and writing your"
-                + " own code. It is hard to prescribe a blanace between reading"
-                + " and writing as eveyone is different, but most people learn"
-                + " fastest with about an even split of reading and writing to"
-                + " begin with.</p>");
-        w.add("<p>On courses with computer practical sessions in a classroom,"
-                + " students I teach work through these resources either on"
-                + " their, or in pairs and with ready access to help from"
-                + " tutors. Tutors may give practical demonstrations and help"
-                + " to speed up learning. Those learning remotely typically"
-                + " have access to other means to interact with tutors and"
-                + " peers. Yet, these resources can also be followed by anyone"
-                + " wanting to 'go it alone' and teach themselves. Anyway, I"
-                + " hope you find these resources helpful and that they help"
-                + " make the world a better place!</p>");
-        w.add("<p>Learning new things is tiring and can be very difficult or"
-                + " impossible if you are tired. When you are tired, but not"
-                + " too tired, you may be able to churn out work as a"
-                + " programmer, especially things you already know how to do"
-                + " and have practiced lots, but working tired can often be a"
-                + " waste of time as it can be easy to make mistakes and get"
-                + " things in a mess. Try to keep this in mind and manage your"
-                + " time and make good use of your special learning abilities"
-                + " when you have them. And very importantly - remember to take"
-                + " breaks and look after yourself. There is always more to"
-                + " learn and the more you know, the more you know you don't"
-                + " know and the more you realise how fast things are changing"
-                + " and how much more there is to learn. It is very hard to"
-                + " keep up with every change, so my advice is to focus on what"
-                + " you need. In the Python philosophy \"good enough\" is what"
-                + " you should strive for.</p>");
-        w.add("<h2>Syllabus</h2>");
-        w.add("<p>General computer programming concepts including:</p>");
-        w.add("<ul>");
-        w.add("<li>"
-                + addWikipediaReference("Variable_(computer_science)",
-                        "Variables")
-                + "</li>");
-        w.add("<li>"
-                + addWikipediaReference("Control_flow", "Control flow")
-                + "("
-                + addWikipediaReference("Conditional_(computer_programming)",
-                        "conditionals")
-                + ", "
-                + addWikipediaReference("For_loop", "for loops") + ")"
-                + "</li>");
-        w.add("<li>"
-                + addWikipediaReference("Class_(computer_programming)",
-                        "Classes")
-                + ", "
-                + addWikipediaReference("Function_(computer_programming)",
-                        "functions")
-                + "/"
-                + addWikipediaReference("Method_(computer_programming)",
-                        "methods")
-                + "</li>");
-        w.add("</ul>");
-        w.add("<p>Testing code works as expected and dealing with 'edge"
-                + " cases'.</p>");
-        w.add("<p>Documenting code, producing documentation for other"
-                + " programmers and documentation for software end users.</p>");
-        w.add("<p>Programming (particularly Python) language development.</p>");
-        w.add("<p>Python limitations.</p>");
-        w.add("<p>Jupyter Notebooks.</p>");
-        w.add("<p>Version control.</p>");
-        w.add("<p>GitHub.</p>");
-        w.add("<h2>Expectations</h2>");
-        w.add("<p>You will practice developing Python code to:</p>");
-        w.add("<ul>");
-        w.add("<li>Input data into programs from files and from the Web</li>");
-        w.add("<li>Output data to files.</li>");
-        w.add("<li>Use data structures to process "
-                + addWikipediaReference("Coordinate_system", "coordinates")
-                + ".</li>");
-        w.add("<li>Display spatial data using "
-                + addWebReference("https://matplotlib.org/", "matplotlib", null)
-                + ".</li>");
-        w.add("<li>Process raster data.</li>");
-        w.add("<li>Develop and visualise a dynamic spatial simulation "
-                + "controlled from and displayed within a "
-                + addWikipediaReference("Graphical_user_interface",
-                        "Graphical User Interface")
-                + ".</li>");
-        w.add("</ul>");
-        w.add("<h2>The Learning Journey</h2>");
-        w.add("<p>Learning to program involves practical problem solving and"
-                + " computational thinking. This can involve breaking a problem"
-                + " down into smaller tasks and repeating a basic workflow to "
-                + " accomplish each task. The workflow steps are: plan, write,"
-                + " test, and review.</p>");
-        w.add("<p>Take time to develop your understanding and practise your"
-                + " skills. There is a lot to learn especially if you are new"
-                + " to programming.</li>");
-        w.add("<p>Be experimental and remember to test your understanding and"
-                + " test that your code does what you expect it to do.</p>");
-        w.add("<p>The web pages with names starting \"ABM\" are a series of "
-                + " practicals that develop an Agent Based Model. It is a"
-                + " simplistic model representing animals moving about in an"
-                + " environment, interacting with each other and the "
-                + " environment. (There is much that can be done to enhance the"
-                + " model and make it more realistic.) Developing such a model"
-                + " </p>");
+        w.add("""
+              <h2>Introduction</h2>
+              <p>Welcome!</p>
+              <p>These web pages are""");
+        w.add(addWikipediaReference("Open_educational_resources",
+                        "Open Educational Resources"));
+        w.add(" developed by ");
+        w.add(Web_ContentWriter.getLink(url, "Andy Turner"));
+        w.add(" and used for teaching at ");
+        w.add(Web_ContentWriter.getLink("https://www.leeds.ac.uk",
+                        "The University of Leeds"));
+        w.add("""
+              . They support learning the basics of computer programming for
+              applications in geography and social science and focus on the""");
+        w.add(addWikipediaReference("Python_(programming_language)",
+                        "Python programming language"));
+        w.add("""
+              (Python).</p>
+              <p>In the header of each web page is a navigation section which
+               links to all the other web pages. The navigation section is
+              essentially the same for all the web pages. To help know which
+              page you are on, the link for that page has a solid outline, and
+              in the main section there is a level 1 heading containing the
+              title of the page. At the bottom of each web page there is a
+              footer section which links to the next page (until you are on the
+              references). The page before last is an index page which links
+              back to sections of web pages to help look things up within the
+              pages. At the top of each page is a Style Button that can be used
+              to change the style of the pages between 'light mode' and 'dark
+              mode'. When active, and by default, 'light mode', sets the
+              background of each page white. Contrastingly, 'dark mode', sets
+              the background of each page black. Other things may be restyled
+              to show up on the background.</p>
+              <p>The idea is that learners proceed by reading through the web
+              pages in order, pausing to think, exploring links, taking
+              breaks, perhaps talking with peers, and undertake practical
+              exercises as directed.</p>
+              <p>There are links to other websites, particularly the official""");
+        w.add(addWebReference("https://docs.python.org/3/",
+                "Python 3 Documentation", null));
+        w.add("""
+              which is the main way many programmers learn about the language.</p>
+              <p>You will learn a lot by running code provided and writing your
+              own code. Try to balance your division of time between theory and
+              practice so that you learn fast. An appropriate balance will 
+              depend on your experience and how you personally learn best.</p>
+              <p>On courses with computer practical sessions in a classroom,
+              working with others in pairs or small groups with ready access to
+              help from tutors is encouraged. Tutors may give practical
+              demonstrations and help speed up learning by talking things
+              through.</p>
+              <p>Learning new things is tiring and as tiredness increases,
+              learning decreases. So, try to manage your time and make good use
+              of your special learning abilities when you have them. And very
+              importantly - remember to take breaks and look after yourself
+              both mentally and physically.</p>
+              <h2>Syllabus</h2>
+              <p>General computer programming concepts including:</p>
+              <ul>
+              <li>""");
+        w.add(addWikipediaReference("Variable_(computer_science)",
+                        "Variables"));
+        w.add("</li>\n<li>");
+        w.add(addWikipediaReference("Control_flow", "Control flow"));
+        w.add("(");
+        w.add(addWikipediaReference("Conditional_(computer_programming)",
+                        "conditionals"));
+        w.add(",");
+        w.add(addWikipediaReference("For_loop", "for loops"));
+        w.add(")</li>\n<li>");
+        w.add(addWikipediaReference("Class_(computer_programming)",
+                        "Classes"));
+        w.add(",");
+        w.add(addWikipediaReference("Function_(computer_programming)",
+                        "functions"));
+        w.add("/");
+        w.add(addWikipediaReference("Method_(computer_programming)",
+                        "methods"));
+        w.add("""
+              </li>
+              <li>Testing and ensuring that code works as expected.</li>
+              <li>Documentation.</li>
+              <li>Python language development and limitations.</li>
+              <li>Jupyter Notebooks.</li>
+              <li>Version control.</li>
+              <li>GitHub.</li>
+              </ul>
+              <h2>Expectations</h2>
+              <p>You will practice developing Python code to:</p>
+              <ul>
+              <li>Input data into programs from files and from the Web</li>
+              <li>Output data to files.</li>
+              <li>Use data structures to process:""");
+        w.add(addWikipediaReference("Coordinate_system", "coordinates"));
+        w.add("""
+              .</li>
+              <li>Display spatial data using""");
+        w.add(addWebReference("https://matplotlib.org/", "matplotlib", null));
+        w.add("""
+              .</li>
+              <li>Process raster data.</li>
+              <li>Develop and visualise a dynamic spatial simulation "
+                + "controlled from and displayed within a""");
+        w.add(addWikipediaReference("Graphical_user_interface",
+                        "Graphical User Interface"));
+        w.add("""
+              .</li>
+              </ul>
+              <h2>The Learning Journey</h2>
+              <p>Learning to program involves practical problem solving and
+              computational thinking. This can involve breaking a problem
+              down into smaller tasks and repeating a basic workflow to
+              accomplish each task. The workflow steps are: plan, write,
+              test, and review.</p>
+              <p>Take time to develop your understanding and practise your
+              skills. There is a lot to learn especially if you are new to
+              programming.</p>
+              <p>Be experimental and remember to test your understanding and
+              test that your code does what you expect it to do.</p>
+              <p>The web pages with names starting \"ABM\" are a series of 
+              practical exercises that develop an Agent Based Model. It is a
+              simple model representing animals moving about in an environment,
+              interacing with each other and the environment. (There is much
+              that can be done to enhance the model and make it more realistic.)
+              The model is animated and run using a basic Graphical User
+              Interface. Data are read from files and are scraped from a Web
+              page to initialise the model, and data is output to files and
+              messages are provided to the user via the standard output.
+              </p>""");
         // Assignments and Assessments
         PythonIntroCourse pic = (PythonIntroCourse) c;
         if (pic.hasAssignments) {

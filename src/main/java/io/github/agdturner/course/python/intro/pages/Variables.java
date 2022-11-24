@@ -72,6 +72,10 @@ public class Variables extends Page {
         w.add("# This entire line is a comment");
         w.add("x = 0 # This part of the line is a comment");
         w.add("print(x) # Print out the value of x");
+        w.add("# Comments should be informative.");
+        w.add("# x = 1 # Commented code is not run.");
+        w.add("# x = 2 # Coders commonly comment out options.");
+        w.add("#print(x) # And sections of testing code.");
         w.add("</code></pre>");
 
         w.add("<p>Between triple quotes everything is a comment. There are two"
@@ -88,6 +92,12 @@ public class Variables extends Page {
         w.add("This is between triple quotes and is a comment.");
         w.add("\"\"\"");
         w.add("</code></pre>");
+
+        w.add("<p>It is good practise to leave a comment to indicate why a"
+                + " section of code has been commented out. Comments help"
+                + " make code more readable and understandable. It is not"
+                + " uncommon in good code for more than a third of it to be"
+                + " comments.</p>");
 
         w.add("<h3>2.3. Code layout: code blocks</h4>");
         w.add("<p>Blank lines are allowed and can help structure code into"
@@ -126,66 +136,119 @@ public class Variables extends Page {
 
         w.add("<p>What this code does is test if the variable x is greater"
                 + " than the variable y and if so, then the value of x is"
-                + " printed. Much of the code is comment.</p>");
+                + " printed. Without the variables x and y being set, then this"
+                + " this code will return an error indicating that. The"
+                + " function called print is a built in function. We will"
+                + " return to functions ad what is built in later...</p>");
 
         w.add("<h3>2.4. Delimiters, Literals and operators</h3>");
         w.add("<p>Delimiters separate bits of code like blank lines and the"
-                + " colon (:) in the if statement. Some delimeters also act as"
-                + " operators. Here are some to look at:</p>");
+                + " colon (:) in the if statement above. Some delimeters also"
+                + " act as operators. Here are some to look at:</p>");
 
-        w.add("pre>(       )       [       ]       {       }\n"
+        w.add("<pre>(       )       [       ]       {       }\n"
                 + ",       :       .       ;       @       =       ->\n"
                 + "+=      -=      *=      /=      //=     %=      @=\n"
                 + "&=      |=      ^=      >>=     <<=     **=</pre>");
 
-        w.add("<p>You might have be able to guess what some of these do... To "
-                + "be more sure you can search online and run some tests.");
-        w.add("<h3>2.5. Identifiers and Keywords</h3>");
-        w.add("<p>Keywords are reserved terms that can't be used for other "
-                + " things like variable names (e.g. if, for, import).</p>");
-        w.add("<p>identifiers are for the most part names of variables</p>");
-        w.add("<p>For details see the "
-                + addWebReference("https://docs.python.org/3/reference/lexical_analysis.html",
-                        "Python documentation Lexical Analysis",
-                        "Python documentation Lexical Analysis")
-                + "</p>");
-        w.add("<p>Literals are specific numerical or text values.</p>");
-        w.add("<p>Operators are mathematical symbols (e.g. +, -, *, /, %)</p>");
+        w.add("""
+              <p>The various types of bracket ((), [], {}) are parentheses (()),
+              square brackets ([]) and curly brackets ({}) also known as braces.
+              A lot of code uses brackets. Each open bracket ((, [, {) must be
+              matched with a closing bracket (), ], }). Commas (,), colons (:),
+              dots (.) and semicolons (;) are also common in code. Let's learn
+              more about these later... </p>""");
+        
+        w.add("""
+              <h3>2.5. Identifiers and Keywords</h3>
+              <p>Keywords are reserved terms that can't be used for other
+              things like variable names (e.g. else, for, if, import).</p>
+              <p>Attempting to use them as variable names results in syntax
+              errors as in the following where commands were entered at the
+              python prompt:</p>""");
+ 
+        w.add("""
+              <pre>
+              >>> if = 2
+                File "<stdin>", line 1
+                  if = 2
+                     ^
+              SyntaxError: invalid syntax
+              </pre>""");
+        
+        w.add("""
+              <p>Notice that the syntax error is pointing at the equals sign
+              (=). This is because the python interpreter is expecting a
+              conditional expression after the keyword (if). The actual issue
+              is that there was an attempt to use a keyword as a variable name.
+              </p>""");
+
+        w.add("""
+              <p>Identifiers are (for the most part) names of variables</p>
+              <p>Literals are specific numerical or text values.</p>
+              <p>Operators are mathematical symbols (e.g. +, -, *, /, %)</p>
+              <p>For more details of Python language lexicon, see the""");
+        w.add(addWebReference("https://docs.python.org/3/reference/lexical_analysis.html",
+                        "Python 3 Lexical Analysis Documentation",
+                        "Python 3 Lexical Analysis Documentation"));
+        w.add("</p>");
 
         w.add("<h4>2.7. Examples</h4>");
         w.add("<p>The following code block is an if statement which has an else"
-                + " part. The way this works is that the expression is "
+                + " condition. The way this works is that the expression is "
                 + " evaluated and if True, then x is printed otherwise y is"
                 + " printed.</p>");
 
         w.add("<pre><code class=\"language-python\">");
-        w.add("# if x is greater than y, then print x");
-        w.add("if x > y:");
-        w.add("    print(x)");
-        w.add("else:");
-        w.add("    print(y)");
-        w.add("print(\"done\")");
+        w.add("""
+              x = 0
+              y = 1
+              # if x is greater than y, then print x
+              if x > y:
+                  print(\"x\", x)
+              else:
+                  print(\"y\", y)
+              print(\"done\")""");
         w.add("</code></pre>");
 
-        w.add("<p>If the variable x was set to the value 10 and the variable"
-                + " y was set to the value 5, what would be the output from"
-                + " running this code?</p>");
+        w.add("<p>In this code, the print function takes in two arguments."
+                + " There are variables, comments, indentation and"
+                + " keywords.</p>");
 
-        w.add("<p>Test your understanding in a Python environment.</p>");
-        w.add("<p>Variables can be set equal to each other.</p>");
+        w.add("<h2>2. Variables types</h2>");        
+        w.add("<p>In Python, there are primitive and non-primitive variable"
+                + " types. The four primitive variable types are: Integers, "
+                + " Floats, Strings, and Booleans. Everyhing else is a"
+                + " non-primitive type. Variable declaration and assignment in"
+                + " Python are done in a single step where the type of a"
+                + " variable is not explicitly set, it is inferred by what is"
+                + " set. Variable labels can be reused and set to different"
+                + " values changing the type. This is known as dynamic"
+                + " typing. So, it is possible to set a variable as an Integer"
+                + " and then set it again to be a String or a List. The"
+                + " built in function caled type alows us to test the type of a"
+                + " variable.</p>");
+
+        w.add("""
+              <pre><code class=\"language-python\">
+              # Set x = 1 and print the type of x")
+              x = 1
+              print(type(x))
+              x = "1"
+              print(type(x))
+              </code></pre>""");
+
+        w.add("<p>The output from running the above is:</p>");
+        
+        w.add("""
+              <pre>
+              <class 'int'>
+              <class 'str'>
+              </pre>""");
+        
         w.add("<p></p>");
-
-        w.add("<pre><code class=\"language-python\">");
-        w.add("if a > b :\n"
-                + "    print (a)\n"
-                + "print (\"done\")");
-        w.add("</code></pre>");
-
-        w.add("<pre><code class=\"language-python\">");
-        w.add("if a > b :\n"
-                + "    print (a)\n"
-                + "    print (\"done\")");
-        w.add("</code></pre>");
+        
+        w.add("<p></p>");
 
         w.add("<pre><code class=\"language-python\">");
         w.add("for a in range(0, 10) :\n"
@@ -193,6 +256,7 @@ public class Variables extends Page {
                 + "    print (\"done\")");
         w.add("</code></pre>");
 
+        w.add("<p></p>");
         w.add("<p></p>");
         w.add("<p></p>");
         w.add("<p></p>");
