@@ -21,7 +21,7 @@ import io.github.agdturner.course.Course;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * For Python Intro Course Home Page.
+ * Python Intro Course Home Page.
  *
  * @author Andy Turner
  */
@@ -61,44 +61,45 @@ public class Home extends Page {
                         "Python programming language"));
         w.add("""
               (Python).</p>
-              <p>In the header of each web page is a navigation section which
-               links to all the other web pages. The navigation section is
-              essentially the same for all the web pages. To help know which
-              page you are on, the link for that page has a solid outline, and
-              in the main section there is a level 1 heading containing the
-              title of the page. At the bottom of each web page there is a
+              <p>In the header of each page is a common navigation section which
+              should indicate which page you are on with a solid outline, and
+              in the main section of the page is a level 1 heading containing
+              the title of the page. At the bottom of each page there is a
               footer section which links to the next page (until you are on the
-              references). The page before last is an index page which links
-              back to sections of web pages to help look things up within the
-              pages. At the top of each page is a Style Button that can be used
+              references - the last page). The page before last is an index page
+              which might be useful to look things up.</p>
+              <p>At the top of each page is a Style Button that can be used
               to change the style of the pages between 'light mode' and 'dark
               mode'. When active, and by default, 'light mode', sets the
               background of each page white. Contrastingly, 'dark mode', sets
-              the background of each page black. Other things may be restyled
-              to show up on the background.</p>
+              the background of each page black. Other things are restyled
+              to show up on the background. In dark mode links to external 
+              web resources appear with a dark red background as a warning as
+              these may not honour browser dark mode settings.</p>
               <p>The idea is that learners proceed by reading through the web
-              pages in order, pausing to think, exploring links, taking
-              breaks, perhaps talking with peers, and undertake practical
-              exercises as directed.</p>
+              pages in order, pausing to think, explore links, take
+              breaks, perhaps talking with peers, undertake practical
+              exercises as directed, and expriment.</p>
               <p>There are links to other websites, particularly the official""");
         w.add(addWebReference("https://docs.python.org/3/",
-                "Python 3 Documentation", null));
+                "Python 3 Documentation", "Python 3 Documentation"));
         w.add("""
-              which is the main way many programmers learn about the language.</p>
-              <p>You will learn a lot by running code provided and writing your
-              own code. Try to balance your division of time between theory and
-              practice so that you learn fast. An appropriate balance will 
-              depend on your experience and how you personally learn best.</p>
+              which is widely consulted to learn about the language.</p>
+              <p>The hope is that you will learn a lot and quickly by running 
+              code provided and writing your own code. Try to balance your 
+              division of time between theory and practice. An appropriate
+              balance will depend on your experience and how you personally 
+              learn best.</p>
               <p>On courses with computer practical sessions in a classroom,
               working with others in pairs or small groups with ready access to
-              help from tutors is encouraged. Tutors may give practical
-              demonstrations and help speed up learning by talking things
-              through.</p>
-              <p>Learning new things is tiring and as tiredness increases,
-              learning decreases. So, try to manage your time and make good use
-              of your special learning abilities when you have them. And very
-              importantly - remember to take breaks and look after yourself
-              both mentally and physically.</p>
+              help from tutors is encouraged. Tutors are there to discuss things
+              and provide practical demonstration to help you learn and avoid 
+              confusion.</p>
+              <p>Learning new things is tiring. With increasing tiredness comes 
+              decreased ability to learn. So, try to manage your time and make
+              good use of your special learning abilities when you have them. 
+              And most importantly - take breaks and look after yourself
+              mentally and physically.</p>
               <h2>Syllabus</h2>
               <p>General computer programming concepts including:</p>
               <ul>
@@ -110,46 +111,43 @@ public class Home extends Page {
         w.add("(");
         w.add(addWikipediaReference("Conditional_(computer_programming)",
                         "conditionals"));
-        w.add(",");
+        w.add("/");
         w.add(addWikipediaReference("For_loop", "for loops"));
         w.add(")</li>\n<li>");
+        w.add(addWikipediaReference("Function_(computer_programming)",
+                        "Functions"));
+        w.add("</li>\n<li>");
         w.add(addWikipediaReference("Class_(computer_programming)",
                         "Classes"));
-        w.add(",");
-        w.add(addWikipediaReference("Function_(computer_programming)",
-                        "functions"));
-        w.add("/");
-        w.add(addWikipediaReference("Method_(computer_programming)",
-                        "methods"));
         w.add("""
               </li>
-              <li>Testing and ensuring that code works as expected.</li>
-              <li>Documentation.</li>
-              <li>Python language development and limitations.</li>
-              <li>Jupyter Notebooks.</li>
-              <li>Version control.</li>
-              <li>GitHub.</li>
+              <li>Testing and ensuring that code works as expected</li>
+              <li>Developing documentation</li>
+              <li>Python language development and limitations</li>
+              <li>Jupyter Notebooks</li>
+              <li>Version control</li>
+              <li>""");
+        w.add(addWebReference("https://github.com/", "GitHub", "GitHub"));
+        w.add("""
+              </li>
               </ul>
               <h2>Expectations</h2>
-              <p>You will practice developing Python code to:</p>
+              <p>You will learn about:</p>
               <ul>
-              <li>Input data into programs from files and from the Web</li>
-              <li>Output data to files.</li>
-              <li>Use data structures to process:""");
+              <li>Data input and output</li>
+              <li>Using data structures to process""");
         w.add(addWikipediaReference("Coordinate_system", "coordinates"));
-        w.add("""
-              .</li>
-              <li>Display spatial data using""");
+        w.add("</li>\n<li>Displaying spatial data using");
         w.add(addWebReference("https://matplotlib.org/", "matplotlib", null));
         w.add("""
-              .</li>
-              <li>Process raster data.</li>
-              <li>Develop and visualise a dynamic spatial simulation "
-                + "controlled from and displayed within a""");
+              </li>
+              <li>Processing raster data stored in lists.</li>
+              <li>Developing a""");
         w.add(addWikipediaReference("Graphical_user_interface",
                         "Graphical User Interface"));
         w.add("""
-              .</li>
+              </li>
+              <li>Developing and visualising a simplistic Agent Based Model</li>
               </ul>
               <h2>The Learning Journey</h2>
               <p>Learning to program involves practical problem solving and
@@ -165,7 +163,7 @@ public class Home extends Page {
               <p>The web pages with names starting \"ABM\" are a series of 
               practical exercises that develop an Agent Based Model. It is a
               simple model representing animals moving about in an environment,
-              interacing with each other and the environment. (There is much
+              interacting with each other and the environment. (There is much
               that can be done to enhance the model and make it more realistic.)
               The model is animated and run using a basic Graphical User
               Interface. Data are read from files and are scraped from a Web
@@ -178,7 +176,8 @@ public class Home extends Page {
             w.add("<h2>Assignments and Assessments</h2>");
             w.add("<p>There are two assignments that are assessed:</p>");
             w.add("<ol>");
-            w.add("<li>A portfolio from the practical tasks worth "
+            w.add("<li>A portfolio culmination from completing the practical"
+                    + " tasks worth "
                     + pic.assignment1Weighting + "%.</li>");
             w.add("<li>An independent project worth  "
                     + pic.assignment2Weighting + "%.</li>");
