@@ -41,7 +41,7 @@ public class Programming extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>Introduction</h2>
+              <h2>1. Introduction</h2>
               <p>""");
         w.add(addWikipediaReference("Computer programming"));
         w.add("""
@@ -88,7 +88,7 @@ public class Programming extends Page {
               resources focus on Python, occasionally similarities and 
               differences between Python and other languages are pointed out.
               </p>
-              <h2>Data</h2>
+              <h2>2. Data</h2>
               <p>The smallest amount of binary data is called a bit. It is a
               unit that is in one of two possible states. Perhaps it is easiest 
               to think of these states as being positive or negative, true or 
@@ -115,7 +115,7 @@ public class Programming extends Page {
               uniquely represented. To represent individual numbers, computers 
               typically use more bits depending on the type of number. We will 
               come back to numerical representations and calculations later.</p>
-              <h2>Learning to Program</h2>
+              <h2>3. Learning to Program</h2>
               <p>If you are new to computer programming, then you will be
               learning lots of new terms and concepts as well as learning the 
               basics of Python in this course. There is a lot to take on board
@@ -132,14 +132,23 @@ public class Programming extends Page {
               two languages well, you might turn to one to do some things and 
               another to do other things. Or, you might prefer a particular 
               language for most things.</p>
-              <p>High level languages are typically evolving. As they evolve, 
-              there are typically better ways of doing things. So, code written 
-              in a langauge to do something might look different in the future.
-              Often, there are several ways to achieve the same thing.</p>
+              <p>High level languages evolve both new ways of doing things, and
+              new syntax for doing the same things - but perhaps with more 
+              compact or easier to understand expressions. This can mean that 
+              code written in an older version of a language appears different 
+              to code written using newer syntax. Anyway, often there are 
+              several ways to achieve the same or a similar thing, some might be 
+              computationally faster under all or particular circumstances, some
+              might be more memory efficient, some may work on a more diverse 
+              range of inputs, and in a range of cases all these different ways
+              might result in the same answers. In other cases, some ways might 
+              be more precise or accurate. For some things, there are many
+              variations in the source code, for others there is little.</p>
               <p>In general you are encouraged to produce easy to understand, 
               easy to maintain, efficient, reliable, well tested and well 
-              documented code that helps make the world a better place. Only a
-              fraction of the code used today is like this!</p>
+              documented code. Only a fraction of the code used today is like 
+              this and not all of it is used to make the world a better place!
+              </p>
               </div>""");
     }
 }

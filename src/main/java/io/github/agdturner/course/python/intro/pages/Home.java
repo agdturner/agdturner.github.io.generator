@@ -44,7 +44,7 @@ public class Home extends Page {
         writeH1();
         String url = "https://www.geog.leeds.ac.uk/people/a.turner/index.html";
         w.add("""
-              <h2>Introduction</h2>
+              <h2>1. Introduction</h2>
               <p>Welcome!</p>
               <p>These web pages are""");
         w.add(addWikipediaReference("Open_educational_resources",
@@ -100,7 +100,7 @@ public class Home extends Page {
               good use of your special learning abilities when you have them. 
               And most importantly - take breaks and look after yourself
               mentally and physically.</p>
-              <h2>Syllabus</h2>
+              <h2>2. Syllabus</h2>
               <p>General computer programming concepts including:</p>
               <ul>
               <li>""");
@@ -131,7 +131,7 @@ public class Home extends Page {
         w.add("""
               </li>
               </ul>
-              <h2>Expectations</h2>
+              <h2>3. Expectations</h2>
               <p>You will learn about:</p>
               <ul>
               <li>Data input and output</li>
@@ -149,7 +149,7 @@ public class Home extends Page {
               </li>
               <li>Developing and visualising a simplistic Agent Based Model</li>
               </ul>
-              <h2>The Learning Journey</h2>
+              <h2>4. The Learning Journey</h2>
               <p>Learning to program involves practical problem solving and
               computational thinking. This can involve breaking a problem
               down into smaller tasks and repeating a basic workflow to
@@ -173,7 +173,7 @@ public class Home extends Page {
         // Assignments and Assessments
         PythonIntroCourse pic = (PythonIntroCourse) c;
         if (pic.hasAssignments) {
-            w.add("<h2>Assignments and Assessments</h2>");
+            w.add("<h2>5. Assignments and Assessments</h2>");
             w.add("<p>There are two assignments that are assessed:</p>");
             w.add("<ol>");
             w.add("<li>A portfolio culmination from completing the practical"

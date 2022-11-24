@@ -40,7 +40,7 @@ public class Python extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        w.add("<h2>Introduction</h2>");
+        w.add("<h2>1. Introduction</h2>");
         String pythonWebsiteLink = addWebReference(Environment.URL_PYTHON,
                 "Python Website", "Python Website", "");
         w.add("<p>");
@@ -114,7 +114,7 @@ public class Python extends Page {
               is a good place to start learning Python. This course covers 
               much of that but in a slightly different geographically focussed
               way.</p>
-              <h2>Running Python</h2>
+              <h2>2. Running Python</h2>
               <p>Python instructions or commands are entered at a prompt or
               passed in files to be interpretted. There is an order in which 
               instructions run. Program files may contain new types of 
