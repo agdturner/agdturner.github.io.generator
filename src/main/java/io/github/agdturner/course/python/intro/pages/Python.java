@@ -42,7 +42,8 @@ public class Python extends Page {
         writeH1();
         w.add("<h2>1. Introduction</h2>");
         String pythonWebsiteLink = addWebReference(Environment.URL_PYTHON,
-                "Python Website", "Python Website", "");
+                "Python Website", "Python Website", 
+                "");
         w.add("<p>");
         w.add(addWikipediaReference("Python_(programming_language)",
                 "Python"));
@@ -50,7 +51,7 @@ public class Python extends Page {
               is a popular and powerful interpretted programming language. The 
               Python interpreter and the extensive standard library are freely 
               available in source and binary form for all major platforms from 
-              the """);
+              the""");
         w.add(pythonWebsiteLink);
         w.add(", and may be freely distributed. The ");
         w.add(pythonWebsiteLink);
@@ -70,7 +71,8 @@ public class Python extends Page {
               releases there are "whatsnew" Web pages:</p>
               <ul>""");
         w.add(addWebReference("https://docs.python.org/3/whatsnew",
-                "Python Documentation What's New", "", ""));
+                "Python Documentation What's New", "", 
+                ""));
         for (int i = 0; i < 12; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
@@ -109,19 +111,21 @@ public class Python extends Page {
                 "getting started tutorial"));
         w.add("linked from the");
         w.add(addWebReference(Environment.URL_PYTHON,
-                "Python Website", Environment.URL_PYTHON, ""));
+                "Python Website", Environment.URL_PYTHON, 
+                ""));
         w.add("""
               is a good place to start learning Python. This course covers 
               much of that but in a slightly different geographically focussed
               way.</p>
-              <h2>2. Running Python</h2>
+              <h2>2. Running Python from the Terminal or Command Prompt</h2>
               <p>Python instructions or commands are entered at a prompt or
               passed in files to be interpretted. There is an order in which 
               instructions run. Program files may contain new types of 
               instructions called functions that can be accessed and run from 
               other files of a program.</p>
               <p>These instructions assume that you have""");
-        w.add(addWebReference("https://www.anaconda.com/", "Anaconda", "Anaconda"));
+        w.add(addWebReference("https://www.anaconda.com/", 
+                "Anaconda", ""));
         w.add("""
               installed. When installing Anoconda, please choose 
               the option to add to your Path (which is not the default option).
@@ -198,9 +202,9 @@ public class Python extends Page {
               with a single underscore (\"_\") or double underscore \"__\" 
               should not be accessed or used directly.</p>
               <p>Enter:</p>
-              <pre>help(operator.add)</p>
-              <p>This prints out some information about how to use the"
-                + " \"operator\" module \"add\" function.</p>
+              <pre>help(operator.add)</pre>
+              <p>This prints out some information about how to use the operator
+              module add function.</p>
               <p>Enter:</p>
               <pre>help()</pre>
               <p>This enters the help system and the prompt changes to look 
@@ -209,22 +213,19 @@ public class Python extends Page {
               <p>Read what is printed.</p>
               <p>Enter:</p>
               <pre>modules</pre>
-              <p>This may take a while to build a list of available modules.
-              It takes longer the first time you run it.</p>
-              <p>Within a few minutes, a list of modules should be returned.
-              If you don't want to wait for this to be returned, then open 
-              another command prompt and do something else while you are
-              waiting.</p>
+              <p>This may take a few minutes to build a list of available 
+              modules. It takes longer to run the first time it is run.</p>
+              <p>A list of modules should be returned.</p>
               <p>At the help prompt enter:</p>
               <pre>operator</pre>
-              <p>This is the help documentation for the operator module. It is 
-              many lines long. Press and hold the <enter> key to get the next 
-              lines of the help documentation and let go after a few lines have 
-              appeared. Then try pressing the <space bar> key to get the next
-              page of the help documentation. Usually you can keep pressing the 
-              <space bar> key to scan through the help documentation until you
-              exit. You could also press your <q> key to quit and return to the
-              help system.</p>
+              <p>This should dispay the start of the help documentation for the 
+              operator module. Press the <enter> key to get the next line of the 
+              help documentation. Press and hold the <enter> key and the 
+              documentation should stream to the screen at a reading speed. 
+              Release the <enter> key after you have read a bit further. The 
+              <space bar> key streams the documentation a page at a time. The 
+              <q> key quits and should return you to the help system prompt.</p>
+              <p>Have a quick look at some documentation for other modules.</p>
               <p>Enter:</p>
               <pre>q</pre>
               <p>This should exit the help system and return you to the Python
@@ -351,7 +352,8 @@ public class Python extends Page {
               is that there was an attempt to use a keyword as a variable name.
               </p>
               <p>For more details of Python language lexicon, see the""");
-        w.add(addWebReference("https://docs.python.org/3/reference/lexical_analysis.html",
+        w.add(addWebReference(
+                "https://docs.python.org/3/reference/lexical_analysis.html",
                 "Python 3 Lexical Analysis Documentation",
                 "Python 3 Lexical Analysis Documentation"));
         w.add("""
@@ -382,9 +384,35 @@ public class Python extends Page {
               <p>Run the file of python commands using:</p>
               <pre>python test.py<pre>
               <p>There should be two lines of output printed to the console:
-              <pre>
+              </pre>
               y 1
               done
-              </pre>""");
+              </pre>
+              <h2>Jupyter Notebook</h2>
+              <p>Jupyter Notebook, is a REPL based system that embeds code into 
+              a Web based document containing other information: text, images, 
+              data, and links. Code is entered in cells which when run present
+              outputs within the document unless configured to appear in
+              separate windows. Code can be described in detail and 
+              distributed with associated data and visualizations. There are a 
+              variety of save options – including saving a document as Web page
+              or <a href="https://en.wikipedia.org/wiki/PDF">PDF</a>.</p>
+              <p>Jupyter Notebook was renamed from IPython Notebook as the 
+              project expanded to allow other REPL languages, including 
+              <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a>,
+              to be integrated.</p>
+              <p>Jupyter Notebooks comes bundled with Anaconda and can be 
+              downloaded separately from <a href="https://jupyter.org/">Jupyter</a>.</p>
+              <p>At the command prompt change to a directory where you can write
+              new files and enter:</p>
+              <pre>jupyter notbook</pre>
+              <p>Some messages should appear in the terminal or command window 
+              and a Web browser tab should open.</p>
+              <p>From the New drop down list, select:</p>
+              <pre>python 3 (ipykernel)</pre>
+              <p>The New button is highlighted with a red oval in the following 
+              image of the interface:</p>
+              <img src="jupyter1.png" alt="Jupyter Notebook interface" />
+              """);
     }
 }

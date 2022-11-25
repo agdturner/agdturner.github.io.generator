@@ -66,7 +66,7 @@ public class Variables extends Page {
               it again to be a String or a List or anything. The built in 
               function type allows us to test the type of a variable. The
               following code sets a variable called x to have the Integer value 
-              1, then sets it again to have the String value "1".</p>"
+              1, then sets it again to have the String value "1".</p>
               <pre><code class=\"language-python\">
               # Set x = 1 and print the type of x")
               x = 1
@@ -76,8 +76,8 @@ public class Variables extends Page {
               </code></pre>
               <p>The output from running this code is:</p>
               <pre>
-              <class 'int'>
-              <class 'str'>
+              &lt;class 'int'&gt;
+              &lt;class 'str'&gt;
               </pre>
               <p>The following code sets the variable x to be 1 and y to equal 
               x, it then adds 1 to the value of x and prints out y.</p>
@@ -87,7 +87,7 @@ public class Variables extends Page {
               x += 1
               print(y)
               </code></pre>
-              <p>The result of running this code is:</p>
+              <p>The output from running this code is:</p>
               <pre>1</pre>
               <p>So, y is only the value of x until x is given a new value.</p>
               <p>The following code: creates a list variable called a, sets 
@@ -99,7 +99,7 @@ public class Variables extends Page {
               a.append(1)
               print(b)
               </code></pre>
-              <p>The result of running this code is:</p>
+              <p>The output from running this code is:</p>
               <pre>[1]</pre>
               <p>So, a and b are still referring to the same thing.</p>""");
         
