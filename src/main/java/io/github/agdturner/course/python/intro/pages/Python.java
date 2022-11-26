@@ -427,12 +427,12 @@ public class Python extends Page {
               have a look and if you get an inkling of how it works, all the 
               better.</p>
               <h2>6. Integrated Development Environments</h2>
-              <h3>6.1. IDLE</p>
+              <h3>6.1. IDLE</h3>
               <p>The core Python language comes with IDLE - an Integrated 
               Development and Learning Environment. IDLE has an editor window,
               as well as a console window for REPL commands and for output from
               files. From your terminal command prompt or command window type:</p>
-              <pre>idle<pre>
+              <pre>idle</pre>
               <p>This should open up the IDLE console window that should look 
               something like the image below:</p>
               <img src="idle1.png" alt="The IDLE interface" />
@@ -461,7 +461,7 @@ public class Python extends Page {
               <p>You should see something like this:</p>
               <img src="spyder1.png" alt="The Spyder interface" />
               <p>The pane to the left is the editor pane. The pane to the top 
-              right is the inspector pane. The pane to the bottom left is the 
+              right is the inspector pane. The pane to the bottom right is the 
               console pane.</p>
               <p>From the menus, choose:</p>
               <pre>File -> Open...</pre>
