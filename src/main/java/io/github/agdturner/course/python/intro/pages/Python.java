@@ -491,7 +491,14 @@ public class Python extends Page {
               these things have been covered in much detail. If all this is new 
               to you and you don't know a better way, then for the time being
               it is recommended that you continue with using Spyder as your 
-              main tool for developing Python code.
+              main tool for developing Python code.</p>
+              <p>What has not been covered and what this course does not cover
+              is running python code within other software. 
+              <a href="https://www.qgis.org/">QGIS</a> for example 
+              provides a python environment which enables scripting and 
+              automation. 
+              <a href="https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html">Here is a tutorial is for getting started with using the
+              QGIS Python environment</a>.
               """);
     }
 }
