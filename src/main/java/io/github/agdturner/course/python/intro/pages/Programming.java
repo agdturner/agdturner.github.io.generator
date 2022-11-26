@@ -73,13 +73,13 @@ public class Programming extends Page {
         w.add(addWikipediaReference("Programming_language",
                                       "computer programming language"));
         w.add("""
-              interpretters and run time enviornments which allow programs 
+              interpretters and run time environments which allow programs 
               to be compiled and run.</p>
               <p>Programming can be done visually by arranging pre-built
               components that fit or connect together to form workflows that 
               can be run. However, this course is not about visual programming,
               it is about programming using text based command instructions 
-              written specifically in the """);
+              written specifically in the""");
         w.add(addWikipediaReference("Python_(programming_language)",
                         "Python programming language") + ".</p>");
         w.add("""
@@ -133,6 +133,18 @@ public class Programming extends Page {
               two languages well, you might use one to do some things and 
               another to do other things and you might be more confident to try
               another language.</p>
+              <p>Programming and programming language development are typically 
+              community activities. It is normal to ask others for help and to 
+              provide others with help and work collaboratively to develop 
+              things. There are different types of forums for asking and 
+              answering questions and different types of project that you might 
+              want to get involved with once you have gained some experience. 
+              Please refrain from asking questions on any forums unless you are 
+              encouraged to do so by your tutor. Please ask your tutor for help 
+              if you want it. If asking for help by email, it is often a good 
+              idea to attach your code, explain what you think should happen and 
+              describe what happens instead.</p>
+              <h2>4. Considerata</h2>
               <p>High level languages evolve. New functionality is added and 
               syntax can change to allow for more compact or easier to 
               understand expressions. This can mean that code written in an 

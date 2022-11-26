@@ -92,18 +92,7 @@ public class Python extends Page {
               </p>
               <p>It is important to know exactly which version of Python you are
               using and what versions of any third party modules you are using. 
-              This helps with reproducing results and diagnosing issues.</p>
-              <p>Programming and programming language development are
-              community activities. It is normal to ask others for help and to 
-              provide others with help and work collaboratively to develop 
-              things. There are different types of forums for asking and 
-              answering questions and different types of project that you might 
-              want to get involved with once you have gained some experience. 
-              Please refrain from asking questions on any forums unless you are 
-              encouraged to do so by your tutor. Please ask your tutor for help 
-              if you want it. If asking for help by email, it is often a good 
-              idea to attach your code, explain what you think should happen and 
-              describe what happens instead.</p>""");
+              This helps with reproducing results and diagnosing issues.</p>""");
         String python3DocsHome = Environment.URL_PYTHON_DOCS + "3/";
         String python3DocsTutorial = python3DocsHome + "tutorial/";
         w.add("<p>The");
@@ -115,7 +104,7 @@ public class Python extends Page {
                 ""));
         w.add("""
               is a good place to start learning Python. This course covers 
-              much of that but in a slightly different geographically focussed
+              much of that but in a slightly different geographically focused
               way.</p>
               <h2>2. Running Python from the Terminal or Command Prompt</h2>
               <p>Python instructions or commands are entered at a prompt or
@@ -127,9 +116,9 @@ public class Python extends Page {
         w.add(addWebReference("https://www.anaconda.com/", 
                 "Anaconda", ""));
         w.add("""
-              installed. When installing Anoconda, please choose 
-              the option to add to your Path (which is not the default option).
-              </p>
+              installed or available for use. When installing Anoconda, please 
+              choose the option to add to your Path (which is not the default 
+              option).</p>
               <p>Open up a terminal or command window and enter:</p>
               <pre>python --version</pre>
               <p>This should output the version of Python your system is set up
@@ -143,11 +132,15 @@ public class Python extends Page {
               where user inputs are read and evaluated, and then the results
               are returned to the user. We call this \"the Python prompt\".</p>
               <p>Enter:</p>
+              <pre>print("Hello World")</pre>
+              <p>You should see the following printed to the console:</p>
+              <pre>Hello World</pre>
+              <p>The Python REPL environment can act as a basic calculator. 
+              Enter:</p>
               <pre>2 + 3</pre>
               <p>You should see the result of adding the number 2 to the number
               3:</p>
               <pre>5</pre>
-              <p>The Python REPL environment can act as a basic calculator.</p>
               <p>Using the operator symbol for multiplication (*), try 
               multiplying two numbers.</p>
               <p>Have a little play perhaps also trying the operator symbol for
@@ -269,7 +262,7 @@ public class Python extends Page {
               code easier to read and understand. What is an appropriate amount
               of comment depends. Sometimes it is good to refer to other 
               information sources in comments.</p>
-              <h3>3.3. Code layout: code blocks</h3>
+              <h3>3.3. Code Layout</h3>
               <p>Blank lines are allowed and can help structure code into 
               blocks. It is good practice to start each code block with a
               comment that outlines what the code block is for. For example:
@@ -358,7 +351,7 @@ public class Python extends Page {
                 "Python 3 Lexical Analysis Documentation"));
         w.add("""
               </p>
-              <h4>2.7. Examples</h4>
+              <h4>3.6. Examples</h4>
               <p>The following code block is an if statement which has an else"
                 + " condition. The way this works is that the expression is "
                 + " evaluated and if True, then x is printed otherwise y is"
@@ -376,19 +369,22 @@ public class Python extends Page {
               <p>In this code, the print function is called with both one and 
               two arguments. There are variables, comments, indentation, 
               operators and keywords.</p>
-              <p>Copy the code above, paste it into a text document and save 
-              it with the filename "test.py". Open a terminal or command prompt
-              change to the directory where you saved the file 
-              (path_to_directory) using:</p>
-              <pre>cd path_to_directory<pre>
+              <h2>4. Running a file of Python commands</h2>
+              <p>Create a new text file called "HelloWorld.py". Add to it the 
+              following line:</p>
+              <pre>print("Hello World")</pre>
+              <p>Save the file. Open a terminal or command prompt. Change to the 
+              directory where you saved the file (path_to_directory) using:</p>
+              <pre>cd path_to_directory</pre>
               <p>Run the file of python commands using:</p>
-              <pre>python test.py<pre>
-              <p>There should be two lines of output printed to the console:
+              <pre>python HelloWorld.py</pre>
+              <p>You should see the following printed to the console:</p>
+              <pre>
+              Hello World
               </pre>
-              y 1
-              done
-              </pre>
-              <h2>Jupyter Notebook</h2>
+              <p>Try creating another file adding some python commands and 
+              running it.</p>
+              <h2>5. Jupyter Notebook</h2>
               <p>Jupyter Notebook, is a REPL based system that embeds code into 
               a Web based document containing other information: text, images, 
               data, and links. Code is entered in cells which when run present
@@ -413,6 +409,89 @@ public class Python extends Page {
               <p>The New button is highlighted with a red oval in the following 
               image of the interface:</p>
               <img src="jupyter1.png" alt="Jupyter Notebook interface" />
+              <p>The Python REPL environment should appear in another browser 
+              tab like shown in the following image:</p>
+              <img src="jupyter2.png" alt="Python REPL environment" />
+              <p>Try typing the following at the prompt and actioning run:</p>
+              <pre>print("Hello World")</pre>w
+              <p>The following is an image of the one this "Hello World" 
+              program has been run:</p>
+              <img src="jupyter3.png" alt="Python REPL environment" />
+              <p>Entire programs can be entered into cells as can 
+              <a href="https://www.markdownguide.org/basic-syntax/">markdown</a>
+              . Have a play...</p>
+              <p>Try downloading, opening and running the following example:
+              <a href="https://www.geog.leeds.ac.uk/courses/computing/practicals/python/running-python/examples/Example_Notebook.ipynb">
+              Example_Notebook.ipynb</a></p>
+              <p>You're not expected to understand the code at this stage, but 
+              have a look and if you get an inkling of how it works, all the 
+              better.</p>
+              <h2>6. Integrated Development Environments</h2>
+              <h3>6.1. IDLE</p>
+              <p>The core Python language comes with IDLE - an Integrated 
+              Development and Learning Environment. IDLE has an editor window,
+              as well as a console window for REPL commands and for output from
+              files. From your terminal command prompt or command window type:</p>
+              <pre>idle<pre>
+              <p>This should open up the IDLE console window that should look 
+              something like the image below:</p>
+              <img src="idle1.png" alt="The IDLE interface" />
+              <p>As well as the Python console prompt, there are some menus. 
+              Choose:</p>
+              <pre>File -> Open...</pre>
+              <p>Open your HelloWorld.py file. It should open the file in an 
+              editor window. This has other menu options. Under the Run menu, 
+              select:</p>
+              <pre>Run Module</pre>
+              <p>This should run the HelloWorld.py file, and output to the 
+              console in the other window.</p>
+              <p>Help for IDLE can be found on the
+              <a href="https://docs.python.org/3/library/idle.html">
+              IDLE page in the Python documentation</a>.</p>
+              <p>IDLE is a basic Integrated Development Environment (IDE). It is
+              useful there are more sophisticated IDEs for developing Python 
+              code.</p>
+              <p>Close down IDLE.<p>
+              <h3>6.2. Spyder</h3>
+              <p>Spyder (the Scientific PYthon Development EnviRonment) comes 
+              with Anaconda and can be downloaded from the 
+              <a href="https://www.spyder-ide.org/">Spyder Website</a>.
+              <p>From your terminal command prompt or command window type:</p>
+              <pre>spyder</pre>
+              <p>You should see something like this:</p>
+              <img src="spyder1.png" alt="The Spyder interface" />
+              <p>The pane to the left is the editor pane. The pane to the top 
+              right is the inspector pane. The pane to the bottom left is the 
+              console pane.</p>
+              <p>From the menus, choose:</p>
+              <pre>File -> Open...</pre>
+              <p>Open your HelloWorld.py file which should appear in the editor 
+              pane. From the menus, choose:</p>
+              <pre>Run -> Run</pre>
+              <p>If a popup box appears choose the default and this should run 
+              your program and output should apear in the console like in the 
+              following image:</p>
+              <img src="spyder2.png" alt="The Spyder interface showing the Hello World program successfully run" />
+              <p>Use the editor and add the following in line 2:</p>
+              <pre>x = y</pre>
+              <p>Try to run the file again. You should get an error. There 
+              should also be a mark against the code on line 2 on the left and 
+              on the right. Try hovering your mouse over the mark on the left. 
+              You should see something similar to the image below:</p>              
+              <img src="spyder2.png" alt="The Spyder interface showing an error." />
+              <p>For a full details of Spyder, see the 
+              <a href="https://docs.spyder-ide.org/current/index.html">
+              Spyder documentation</a></p>
+              <h2>6. Recap</h2>
+              <p>This section of the course has covered some of the basics of 
+              Python syntax and the evolution of the language. It has introduced 
+              some different ways of running python: using the REPL environment 
+              and the help system; running files of code from the command line; 
+              using Jupyter Notebooks, using IDLE and using Spyder. None of 
+              these things have been covered in much detail. If all this is new 
+              to you and you don't know a better way, then for the time being
+              it is recommended that you continue with using Spyder as your 
+              main tool for developing Python code.
               """);
     }
 }
