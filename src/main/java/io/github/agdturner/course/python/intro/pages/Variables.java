@@ -43,7 +43,7 @@ public class Variables extends Page {
               <h2>1. Introduction</h2>
               <p>Variables can be thought of as labels that are assigned values
               which may change. The following code is comprised of three 
-              statements. The first initialises a variable x and assigned it the 
+              statements. The first initialises a variable x and assigns it the 
               value 0. The second initialises a variable y and assigns it the 
               value of the x variable. The third statement prints out the value 
               of y.</p>

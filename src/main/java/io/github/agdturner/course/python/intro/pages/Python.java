@@ -42,7 +42,7 @@ public class Python extends Page {
         writeH1();
         w.add("<h2>1. Introduction</h2>");
         String pythonWebsiteLink = addWebReference(Environment.URL_PYTHON,
-                "Python Website", "Python Website", 
+                "Python Website", "Python Website",
                 "");
         w.add("<p>");
         w.add(addWikipediaReference("Python_(programming_language)",
@@ -52,26 +52,17 @@ public class Python extends Page {
               Python interpreter and the extensive standard library are freely 
               available in source and binary form for all major platforms from 
               the""");
-        w.add(pythonWebsiteLink);
-        w.add(", and may be freely distributed. The ");
-        w.add(pythonWebsiteLink);
+        w.add(pythonWebsiteLink + ", and may be freely distributed. The "
+                + pythonWebsiteLink + " contains distributions of and pointers"
+                + " to many free third party Python modules, programs and tools,"
+                + " and additional documentation.</p>");
         w.add("""
-              contains distributions of and pointers to many free third party 
-              Python modules, programs and tools, and additional documentation.
-              </p>
-              <p>Python underwent a major revision from Python 2 to Python 3 in
-              around 2008. There were changes that were not all backward 
-              compatible. As a result a lot of Python 2 code needed 
-              changing/fixing (refactoring) in order to work in Python 3 
-              environments. This somewhat divided the community. Python 2 is no 
-              longer supported in that the Python developers are no longer 
-              responding to issues reported against Python 2.</p>
               <p>On October 4, 2021 Python 3.10 was released. On November 24th, 
               2022 Python 3.11 was released. For each of these incremental 
-              releases there are "whatsnew" Web pages:</p>
+              releases there are Whatsnew Web Pages:</p>
               <ul>""");
         w.add(addWebReference("https://docs.python.org/3/whatsnew",
-                "Python Documentation What's New", "", 
+                "Python Documentation What's New", "",
                 ""));
         for (int i = 0; i < 12; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
@@ -80,10 +71,11 @@ public class Python extends Page {
         }
         w.add("</ul>");
         w.add("""
-              <p>On "whatsnew" Web pages, changes are marked against Python
-              Enhancement Proposals (PEPs). These are community proposed and 
-              allow us to look ahead and see what might change. PEPs have their 
-              own Web site:""");
+              <p>On Whatsnew Web Pages, changes are marked against Python
+              Enhancement Proposals (PEPs). Each PEP is numbered and 
+              collectively they allow us to look ahead to see what might change
+              and get involved in language development which is a somewhat open 
+              and well organised process. PEPs have their own Web site:""");
         w.add(addWebReference("https://peps.python.org/",
                 "Python Enhancement Proposal Website",
                 "https://peps.python.org/",
@@ -92,7 +84,28 @@ public class Python extends Page {
               </p>
               <p>It is important to know exactly which version of Python you are
               using and what versions of any third party modules you are using. 
-              This helps with reproducing results and diagnosing issues.</p>""");
+              This helps with reproducing results and diagnosing issues.</p>
+              <p>Python underwent a major revision from Python 2 to Python 3 in
+              around 2008. There were changes that were not all backward 
+              compatible. As a result a lot of Python 2 code needed 
+              changing/fixing (refactoring) in order to work as intended or at 
+              all in Python 3 environments. This somewhat divided the community. 
+              Python 2 is no longer supported in that Python developers are no
+              longer responding to issues reported against Python 2. Python 2
+              code may still be being maintained, and there might still be 
+              useful code written in Python 2 that could be translated to 
+              Python 3, but we will not look at the differences in this course.
+              </p>
+              <p>As high level computer programming languages like Python 
+              evolve, some ways of doing things are retired (deprecated). 
+              Deprecation gives advanced notice of retiring features allowing 
+              programmers that look after code to plan for succession.</p>
+              <p>It is important to be aware of the evolving nature of high 
+              level computer programming languages. New features of Python 3.11
+              will not work in Python 3.10. It is more likely that code written 
+              in Python 3.10 syntax will work in Python 3.11, but that is not 
+              always the case.</p>""");
+        
         String python3DocsHome = Environment.URL_PYTHON_DOCS + "3/";
         String python3DocsTutorial = python3DocsHome + "tutorial/";
         w.add("<p>The");
@@ -100,26 +113,37 @@ public class Python extends Page {
                 "getting started tutorial"));
         w.add("linked from the");
         w.add(addWebReference(Environment.URL_PYTHON,
-                "Python Website", Environment.URL_PYTHON, 
+                "Python Website", Environment.URL_PYTHON,
                 ""));
         w.add("""
               is a good place to start learning Python. This course covers 
-              much of that but in a slightly different geographically focused
+              many of the same things albeit in a more geographically focused
               way.</p>
-              <h2>2. Running Python from the Terminal or Command Prompt</h2>
-              <p>Python instructions or commands are entered at a prompt or
-              passed in files to be interpretted. There is an order in which 
-              instructions run. Program files may contain new types of 
-              instructions called functions that can be accessed and run from 
-              other files of a program.</p>
+              <p>The remainder of this page is a practical exercise which
+              introduces running Python code in different ways which can be 
+              useful to know as not all options might be available to you.</p>
+              
+              <h2>2. Running Python from the Command Prompt</h2>
+              <p>Python instructions also known as commands or statements, can 
+              be entered at what is called the Command Prompt, or they can be 
+              passed in files to be interpretted. There is a logical order in 
+              which the code is run. For code in files, the statements are 
+              executed from top to bottom. Program files may contain new types
+              of instructions called functions that can be accessed and run from 
+              other parts of a program. We will learn how to define our own 
+              functions later in the course, but we will start accessing 
+              functions almost straight away...</p>
               <p>These instructions assume that you have""");
-        w.add(addWebReference("https://www.anaconda.com/", 
+        w.add(addWebReference("https://www.anaconda.com/",
                 "Anaconda", ""));
         w.add("""
-              installed or available for use. When installing Anoconda, please 
-              choose the option to add to your Path (which is not the default 
+              installed or available for use. When installing Anoconda, choose
+              the option to add to your Path (which is not the default 
               option).</p>
-              <p>Open up a terminal or command window and enter:</p>
+              
+              <h3>2.1. Hello World</h3>
+              <p>Open up a Terminal or Command Window (which we will call 
+              Command Window) and enter:</p>
               <pre>python --version</pre>
               <p>This should output the version of Python your system is set up
               to use. If Python is not on your Path, then you should get an 
@@ -130,11 +154,13 @@ public class Python extends Page {
               <pre>>>></pre>
               <p>This is the Read-Eval-Print Loop (REPL) environment for Python
               where user inputs are read and evaluated, and then the results
-              are returned to the user. We call this \"the Python prompt\".</p>
-              <p>Enter:</p>
+              are returned to the user. We call this the Python Prompt.</p>
+              <p>Enter the following at the Python Prompt:</p>
               <pre>print("Hello World")</pre>
-              <p>You should see the following printed to the console:</p>
+              <p>You should see the following output:</p>
               <pre>Hello World</pre>
+              
+              <h3>2.2. Numberical calculations</h3>
               <p>The Python REPL environment can act as a basic calculator. 
               Enter:</p>
               <pre>2 + 3</pre>
@@ -143,10 +169,24 @@ public class Python extends Page {
               <pre>5</pre>
               <p>Using the operator symbol for multiplication (*), try 
               multiplying two numbers.</p>
-              <p>Have a little play perhaps also trying the operator symbol for
-              division (/)...</p>
+              <p>Use the operator symbol for division (/) to divide two 
+              numbers. Try dividing 3 by 2 and notice that the result is not an 
+              Integer, but a Float. Python has a huge range of Integer numbers. 
+              Float is a bit harder to explain. It is a floating point number 
+              which supports a subset of fractions or decimal numbers. We will 
+              worry about the details of this later. For the time being, cause 
+              an error by attempting a division by 0. Enter:</p>
+              <pre>1/0</pre>
+              <p>You should get the following error message:</p>
+              <pre>
+              Traceback (most recent call last):
+                File "<stdin>", line 1, in <module>
+              ZeroDivisionError: division by zero
+              </pre>
+              
+              <h3>2.3. Loading modules and Using functions</h3>
               <p>Mathematical operators can also be accessed via functions that
-              reside in the \"operator\" module.</p>
+              reside in the "operator" module.</p>
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
               <p>You should see the following error message:</p>
@@ -154,37 +194,46 @@ public class Python extends Page {
                 File "<stdin>", line 1, in <module>
               NameError: name 'operator' is not defined</pre>
               <p>The error is that the interpretter does not know about the
-              module named \"operator\"</p>
+              module named "operator"</p>
               <p>Enter:</p>
               <pre>dir()</pre>
-              <p>This runs (or calls) the \"dir\" function. You can tell it is
+              <p>This runs (or calls) the "dir" function. You can tell it is
               a function as after the name there are start and end parentheses
               (()). In this case, the function is passed no arguments as there
               is nothing between the start and end parentheses.</p>
               <p>You should get a list printed out that looks like:</p>
               <pre>['__annotations__', '__builtins__', '__doc__', '__loader__',
               '__name__', '__package__', '__spec__']</pre>
-              <p>You can tell this is a list as it starts with an open square
-              bracket ([) and ends with a closing square bracket (]), and each 
-              element is separated with a comma (,).</p>
+              <p>The list is alphabetically ordered and you can tell it is a 
+              list as it starts with an open square bracket ([) and ends with 
+              a closing square bracket (]), and each element is separated with a
+              comma (,). This is a list of modules that the current Python 
+              environment has loaded and from which functionality can be 
+              accessed. Later on we will learn how to install modules that are 
+              not available. What we are learning here is about loading modules
+              that are available.</p>
               <p>Enter:</p
               <pre>import operator</pre>
-              <p>This imports the \"operator\" module.</p>
+              <p>This imports or loads the "operator" module.</p>
               <p>Enter:</p>
               <pre>dir()</pre>
-              <p>This time, you should see the \"operator\" module in the list.
-              </p>
+              <p>Now, you should see the operator module in the list.</p>
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
-              <p>This time, you should see the result:</p>
+              <p>Now, you should not get the error, but see the result:</p>
               <pre>5</pre>
+              <p>The dot (.) is an operator called the dot operator. It 
+              instructs the Python interpretter to look inside the thing on the 
+              left to find the thing on the right. So, the expression looks 
+              inside the operator module for the add function, and passes into 
+              the add function two parameters, in this case the Integers 2 and 
+              3. The function returns the result which is then output.</p> 
               <p>Enter:</p>
               <pre>dir(operator)</pre>
-              <p>This lists all the functions in the \"operator\" module. It is
-              quite a long list that contains the \"add\" function that was
-              called to add the numbers 2 and 3.</p>
+              <p>This lists all the functions in the "operator" module. It is
+              quite a long list!</p>
               <p>Notice that there are numerous functions that have a name 
-              starting and ending with \"__\". These are not supposed to be 
+              starting and ending with "__". These are not supposed to be 
               called directly, but they can be.</p>
               <p>Enter:</p>
               <pre>operator.__add__(2, 3)</pre>
@@ -193,7 +242,10 @@ public class Python extends Page {
               indicate to users that the variable or function should not be 
               accessed from outside the module. Variables with names that start 
               with a single underscore (\"_\") or double underscore \"__\" 
-              should not be accessed or used directly.</p>
+              are not to be accessed or used directly.</p>
+              <p>Try using some other functions from the operator module.</p>
+
+              <h3>2.4. The Help System</h3>
               <p>Enter:</p>
               <pre>help(operator.add)</pre>
               <p>This prints out some information about how to use the operator
@@ -228,22 +280,54 @@ public class Python extends Page {
               <p>This should quit the Python REPL environment and return you 
               to the normal command prompt.</p>
               <p>Before learning how to run a file of Python commands, let us 
-              go through some basics of Python syntax.
+              go through some basics of Python syntax.</p>
+              
               <h2>3. Basic Python Syntax</h3>
-              <h3>3.1. Statements</h3>
-              <p>Multiple statements on a single line are separated with"
-                + " semicolons (;).</p>
-              <p>Python does not have a special symbol to end a statement"
-                + " like many languages do.</p>
-              <h3>3.2. Comments</h3>
+              <p>The syntax of a computer programming language are the rules 
+              about how it must be written.</p>
+              
+              <h3>3.1. Syntax Errors</h3>
+              <p>If a statement or expression is syntactically incorrect, and 
+              the Python interpretter attempts to interpret it, a syntax error 
+              is thrown.</p>
+              <p> It is possible to set a file of Python code containing 
+              incorrect syntax running. In general though, it is best to avoid 
+              syntax errors by ensuring all code is syntactically correct. At 
+              the Python prompt enter:</p>
+              <pre>x=</pre>
+              <p>You should get the following syntax error:</p>
+              <pre>
+              File "<stdin>", line 1
+                  x =
+                     ^
+              SyntaxError: invalid syntax
+              </pre>
+              <p>Notice how this attempts to indicate where the syntax error is.
+              Essentially, this is an incomplete expression. A lot of learning 
+              to code is about interpretting error messages and understanding 
+              what to do.</p>
+              
+              <h3>3.3. Statements</h3>
+              <p>Multiple statements on a single line are separated with 
+              semicolons (;). At the Python Prompt enter:</p>
+              <pre>y=1;x=y;print(x)</pre>
+              <p>The output of this is:</p>
+              <pre>1</pre>
+              <p>Statements might include many expressions and can be formulated 
+              over several lines. We will come across some examples shortly...
+              </p>
+              <p>Python does not have a special symbol to end a statement like 
+              many other languages do.</p>
+              
+              <h3>3.4. Comments</h3>
               <p>The # symbol is the start of a comment.</p>
-              <pre><code class=\"language-python\">
+              <pre>
               # This entire line is a comment
               x = 0 # This part of the line is a comment
               print(x) # Print out the value of x
               # Comments should be informative.
               # x = 1 # Commented code is not run.
-              </code></pre>
+              </pre>
               <p>Between triple quotes everything is a comment. There are two
               types of triple quote, those using single quotation marks, and 
               those using double quotation marks. Triple double quotes (\"\"\")
@@ -252,22 +336,23 @@ public class Python extends Page {
         w.add(addWikipediaReference("Debugging",
                 "debugging") + ".</p>");
         w.add("""
-              <pre><code class=\"language-python\">
+              <pre>
               \"\"\"
               This is between triple quotes and is a comment.
               \"\"\"
-              </code></pre>
+              </pre>
               <p>It is good practise to leave a comment to indicate why a
               section of code has been commented out. Comments aim to help make
               code easier to read and understand. What is an appropriate amount
               of comment depends. Sometimes it is good to refer to other 
               information sources in comments.</p>
-              <h3>3.3. Code Layout</h3>
+              
+              <h3>3.4. Code Layout</h3>
               <p>Blank lines are allowed and can help structure code into 
               blocks. It is good practice to start each code block with a
               comment that outlines what the code block is for. For example:
               </p>
-              <pre><code class=\"language-python\">
+              <pre>
               # Initialise x and y"
               x = 2
               y = 4
@@ -275,7 +360,7 @@ public class Python extends Page {
               print(y)
               # Calculate x to the power of y
               x ** y
-              </code></pre>
+              </pre>
               <p>Indentation is syntax in Python. Indentation refers to the 
               blank space that precedes text on a line. (It is sometimes called
               white space - as code backgrounds were normally white in colour).
@@ -286,12 +371,12 @@ public class Python extends Page {
               not to use tabs at all in source code and to use multiple spaces 
               instead to indent. The following is a code block with an example
               "if" statement:</p>
-              <pre><code class=\"language-python\">
+              <pre>
               # if x is greater than y, then print a
               if x > y: # This line has the same indent as the comment above.
                   print(x) # This line is indented one standard step further.
               print(\"done\") # This line is dedented to the previous level.
-              </code></pre>
+              </pre>
               <p>In the code above, if the variable x is greater than the 
               variable y, then the value of x is printed. If the variable x has 
               not been initialised, then there will be an error:</p>
@@ -304,7 +389,8 @@ public class Python extends Page {
               <pre><code class=\"language-python\">
               help(print)
               </code></pre>
-              <h3>3.4. Delimiters, Literals and operators</h3>
+              
+              <h3>3.5. Delimiters, Literals and Operators</h3>
               <p>Delimiters separate bits of code like blank lines and the
               colon (:) in the if statement above. Some delimeters also act as 
               operators. Here are some to look at:</p>
@@ -322,8 +408,9 @@ public class Python extends Page {
               </p>
               <p>Literals are specific numerical or text values.</p>
               <p>Operators are sequences of mathematical symbols that are a 
-              shorthand for functions (e.g. +, -, *, /, %)</p> 
-              <h3>3.5. Identifiers and Keywords</h3>
+              shorthand for functions (e.g. +, -, *, /, %)</p>
+              
+              <h3>3.6. Identifiers and Keywords</h3>
               <p>Identifiers are (for the most part) names of variables. They 
               are also used for function names, class names and module names.
               </p>
@@ -351,11 +438,25 @@ public class Python extends Page {
                 "Python 3 Lexical Analysis Documentation"));
         w.add("""
               </p>
-              <h4>3.6. Examples</h4>
-              <p>The following code block is an if statement which has an else"
-                + " condition. The way this works is that the expression is "
-                + " evaluated and if True, then x is printed otherwise y is"
-                + " printed.</p>
+              
+              <h4>3.7. Style</h4>
+              <p>The following code block is an "if statement" which has an 
+              "else" condition. This can be read as follows: If the variable x
+              is greater than the variable y, then  x is printed otherwise y is
+              printed.</p>
+              <pre>
+              x = 0
+              y = 1
+              # If x is greater than y, then print x, else print y.
+              if x > y:
+                  print("x", x)
+              else:
+                  print("y", y)
+              </pre>
+              <p>Notice that the print function is called with two arguments. 
+              There are variables, comments, indentation, operators and 
+              keywords. Styling can be used added to make it easier to 
+              identify different parts, read and understand code:</p>
               <pre><code class=\"language-python\">
               x = 0
               y = 1
@@ -366,9 +467,10 @@ public class Python extends Page {
                   print("y", y)
               print("done")
               </code></pre>
-              <p>In this code, the print function is called with both one and 
-              two arguments. There are variables, comments, indentation, 
-              operators and keywords.</p>
+              <p>The style does not change the meaning of the code. Code 
+              blocks presented subsequently, will tyically be styled as above.
+              </p>
+              
               <h2>4. Running a file of Python commands</h2>
               <p>Create a new text file called "HelloWorld.py". Add to it the 
               following line:</p>
@@ -417,7 +519,8 @@ public class Python extends Page {
               <p>The following is an image of the one this "Hello World" 
               program has been run:</p>
               <img src="jupyter3.png" alt="Python REPL environment" />
-              <p>Entire programs can be entered into cells as can 
+              <p>As you can see, the code in the Jupyter Notebook styles the 
+              code. Entire programs can be entered into cells as can 
               <a href="https://www.markdownguide.org/basic-syntax/">markdown</a>
               . Have a play...</p>
               <p>Try downloading, opening and running the following example:
@@ -426,7 +529,9 @@ public class Python extends Page {
               <p>You're not expected to understand the code at this stage, but 
               have a look and if you get an inkling of how it works, all the 
               better.</p>
+              
               <h2>6. Integrated Development Environments</h2>
+              
               <h3>6.1. IDLE</h3>
               <p>The core Python language comes with IDLE - an Integrated 
               Development and Learning Environment. IDLE has an editor window,
@@ -440,21 +545,24 @@ public class Python extends Page {
               Choose:</p>
               <pre>File -> Open...</pre>
               <p>Open your HelloWorld.py file. It should open the file in an 
-              editor window. This has other menu options. Under the Run menu, 
-              select:</p>
-              <pre>Run Module</pre>
+              editor window that looks something like:</p>
+              <img src="idle2.png" alt="The IDLE file editor window interface" />
+              <p>Notice again that like Jupyter Notebook, the code appearing in 
+              the IDLE editor window is styled.</a>
+              <p>The editor window has other menu options. Select:</p>
+              <pre>Run -> Run Module</pre>
               <p>This should run the HelloWorld.py file, and output to the 
-              console in the other window.</p>
-              <p>Help for IDLE can be found on the
-              <a href="https://docs.python.org/3/library/idle.html">
-              IDLE page in the Python documentation</a>.</p>
-              <p>IDLE is a basic Integrated Development Environment (IDE). It is
-              useful there are more sophisticated IDEs for developing Python 
-              code.</p>
+              console in the other window which should appear something like:</p>
+              <img src="idle3.png" alt="The IDLE interface having run the Hello World program" />
+              <p><a href="https://docs.python.org/3/library/idle.html">
+              IDLE Documentation</a>.</p>
+              <p>IDLE is an Integrated Development Environment (IDE).</p>
               <p>Close down IDLE.<p>
+              
               <h3>6.2. Spyder</h3>
-              <p>Spyder (the Scientific PYthon Development EnviRonment) comes 
-              with Anaconda and can be downloaded from the 
+              <p>Spyder (the Scientific PYthon Development EnviRonment) is a 
+              more sophisticated and IDE that comes with Anaconda and can be 
+              downloaded from the 
               <a href="https://www.spyder-ide.org/">Spyder Website</a>.
               <p>From your terminal command prompt or command window type:</p>
               <pre>spyder</pre>
@@ -471,34 +579,53 @@ public class Python extends Page {
               <p>If a popup box appears choose the default and this should run 
               your program and output should apear in the console like in the 
               following image:</p>
-              <img src="spyder2.png" alt="The Spyder interface showing the Hello World program successfully run" />
+              <img src="spyder2.png" alt="The Spyder interface showing the Hello
+              World program successfully run" />
               <p>Use the editor and add the following in line 2:</p>
               <pre>x = y</pre>
               <p>Try to run the file again. You should get an error. There 
               should also be a mark against the code on line 2 on the left and 
-              on the right. Try hovering your mouse over the mark on the left. 
-              You should see something similar to the image below:</p>              
-              <img src="spyder2.png" alt="The Spyder interface showing an error." />
-              <p>For a full details of Spyder, see the 
-              <a href="https://docs.spyder-ide.org/current/index.html">
-              Spyder documentation</a></p>
-              <h2>6. Recap</h2>
-              <p>This section of the course has covered some of the basics of 
-              Python syntax and the evolution of the language. It has introduced 
-              some different ways of running python: using the REPL environment 
-              and the help system; running files of code from the command line; 
-              using Jupyter Notebooks, using IDLE and using Spyder. None of 
-              these things have been covered in much detail. If all this is new 
-              to you and you don't know a better way, then for the time being
-              it is recommended that you continue with using Spyder as your 
-              main tool for developing Python code.</p>
-              <p>What has not been covered and what this course does not cover
-              is running python code within other software. 
-              <a href="https://www.qgis.org/">QGIS</a> for example 
-              provides a python environment which enables scripting and 
-              automation. 
-              <a href="https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html">Here is a tutorial is for getting started with using the
-              QGIS Python environment</a>.
+              on the right of the editor pane. Try hovering your mouse over the 
+              mark on the left. You should see something similar to the image 
+              below:</p>
+              <img src="spyder3.png" alt="The Spyder interface showing an error." />
+              <p><a href="https://docs.spyder-ide.org/current/index.html">
+              Spyder Documentation</a></p>
+              
+              <h2>6. Python Environments In GIS Software</h2>
+              <p>Python environments are provided as part of some Geographical 
+              Information System (GIS) software including
+              <a href="https://www.qgis.org/">QGIS</a> which is also Free and 
+              Open Source Software. Most of QGIS is written in 
+              <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a> and 
+              Python. There is a Plug In Architecture allowing others to write 
+              plugins which typically ad something to the interface and provide 
+              new functionality or scripted more automated ways to do things.
+              </p>
+              <p>Download <a href="./QGISExample.py">QGISExample.py</a>, read
+              the code and try to run it in QGIS following the instructions in
+              the comments at the top of the file which are also reproduced 
+              below:</p>
+              <p>This course does not cover plugin development for QGIS. For 
+              more details about QGIS development see:
+              <a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
+              https://www.qgis.org/en/site/getinvolved/development/development.html</a>
+              </p>
               """);
+        w.add("<p>" + addWebReference("https://qgis.org/pyqgis/", 
+                "QGIS Python API Documentation", "",
+                "") + "</p>");
+        w.add("""
+              <h2>7. Recap</h2>
+              <p>This section of the course introduced some basic Python syntax 
+              and considered the evolution of the language. It explored running
+              Python code in files, using the REPL environment and help system, 
+              Jupyter Notebooks, the IDLE and Spyder IDEs, and the Python 
+              environment in QGIS.</p>
+              <p>It introduced loading modules using an import statement, and 
+              accessing functionality via a dot operator. It introduced 
+              a conditional IF statement and a For Loop. (Conditional statements 
+              and loops will be gone through in more detail subsequently in the 
+              course.)</p>""");
     }
 }
