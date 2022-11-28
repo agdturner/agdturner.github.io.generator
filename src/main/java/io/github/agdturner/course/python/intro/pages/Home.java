@@ -42,20 +42,21 @@ public class Home extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        String url = "https://www.geog.leeds.ac.uk/people/a.turner/index.html";
         w.add("""
               <h2>1. Introduction</h2>
               <p>Welcome!</p>
               <p>These web pages are""");
         w.add(addWikipediaReference("Open_educational_resources",
                         "Open Educational Resources"));
-        w.add(" developed by ");
-        w.add(Web_ContentWriter.getLink(url, "Andy Turner"));
+        w.add(" developed by ");        
+        w.add(Web_ContentWriter.getLink(
+                "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
+                "Andy Turner"));
         w.add(" and used for teaching at ");
         w.add(Web_ContentWriter.getLink("https://www.leeds.ac.uk",
-                        "The University of Leeds"));
+                        "The University of Leeds") + ".");
         w.add("""
-              . They support learning the basics of computer programming for
+              They support learning the basics of computer programming for
               applications in geography and social science and focus on the""");
         w.add(addWikipediaReference("Python_(programming_language)",
                         "Python programming language"));
@@ -149,6 +150,7 @@ public class Home extends Page {
               </li>
               <li>Developing and visualising a simplistic Agent Based Model</li>
               </ul>
+              
               <h2>4. The Learning Journey</h2>
               <p>Learning to program involves practical problem solving and
               computational thinking. This can involve breaking a problem
@@ -169,11 +171,26 @@ public class Home extends Page {
               Interface. Data are read from files and are scraped from a Web
               page to initialise the model, and data is output to files and
               messages are provided to the user via the standard output.
-              </p>""");
+              </p>
+              
+              <h2>5. Platform/Software</h2>
+              <p>All the software used in this course is Free and Open Source
+              Software (FOSS) which is available to download and install on most
+              platforms.<p>
+              <p>The software is also available to staff and students at The 
+              University of Leeds (UoL) via it's Windows Virtual Desktop 
+              (UOL-WVD) which can be accessed via a Web browser and the 
+              following URL:
+              <a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>.
+              We will be making use of Anaconda - a data science platform, and 
+              QGIS Desktop - desktop Geographical Information System software.
+              These can be accessed via AppsAnywhere on the UOL-WVD.
+              </p>
+              """);
         // Assignments and Assessments
         PythonIntroCourse pic = (PythonIntroCourse) c;
         if (pic.hasAssignments) {
-            w.add("<h2>5. Assignments and Assessments</h2>");
+            w.add("<h2>6. Assignments and Assessments</h2>");
             w.add("<p>There are two assignments that are assessed:</p>");
             w.add("<ol>");
             w.add("<li>A portfolio culmination from completing the practical"

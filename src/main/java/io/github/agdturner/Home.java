@@ -51,14 +51,13 @@ public class Home extends WebPage {
         w.add("<div>");
         w.add("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" /></h1>");
-        String myGeogHome = "http://www.geog.leeds.ac.uk/people/a.turner/index.html";
         w.add("<p>I am a research officer based in the School of Geography"
                 + " (SoG) at the University of Leeds. I specialise in"
                 + " computational geography. I undertake consultancy and teach."
                 + "</p>");
-        String wikipediaJava = "https://en.wikipedia.org/wiki/Java_(programming_language)";
         w.add("<p>I mostly program using the "
-                + Web_ContentWriter.getLink(wikipediaJava,
+                + Web_ContentWriter.getLink(
+                        "https://en.wikipedia.org/wiki/Java_(programming_language)",
                         "Java programming language")
                 + " and try to keep up with changes as it evolves. I typically"
                 + " use: the most recent long term support version of the "
@@ -91,7 +90,8 @@ public class Home extends WebPage {
 //                + Web_ContentWriter.getLink(gadgURL, gadgURL)
 //                + ".</p>");
         w.add("<p>"
-                + Web_ContentWriter.getLink(myGeogHome,
+                + Web_ContentWriter.getLink(
+                        "http://www.geog.leeds.ac.uk/people/a.turner/index.html",
                         "SoG Profile")
                 + " | "
                 + Web_ContentWriter.getLink(Environment.URL_GITHUB_AGDTURNER,
