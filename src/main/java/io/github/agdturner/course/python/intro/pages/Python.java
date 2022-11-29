@@ -52,7 +52,7 @@ public class Python extends Page {
         w.add("<p>" +
                 addWikipediaReference("Python_(programming_language)",
                 "Python")
-                + "is a popular and powerful interpretted programming language."
+                + " is a popular and powerful interpretted programming language."
                 + " The language is supported and developed by the "
                 + psfLink + " with a mission to promote, protect, and advance"
                 + " the language, and to support and facilitate the growth of a"
@@ -141,7 +141,7 @@ public class Python extends Page {
         String python3DocsTutorial = python3DocsHome + "tutorial/";
         w.add("<p>The");
         w.add(Web_ContentWriter.getLink(python3DocsTutorial,
-                "getting started tutorial"));
+                "Getting Started Tutorial"));
         w.add("linked from the " + pythonWebsiteLink);
         w.add("""
               is a good place to start learning Python. This course covers 
@@ -445,8 +445,8 @@ public class Python extends Page {
               Operator Module functions (e.g. +, -, *, /, %)</p>
               
               <h3>3.6. Identifiers and Keywords</h3>
-              <p>Identifiers are (for the most part) names of variables. They 
-              are also used for function names, class names and module names.
+              <p>Identifiers are names of variables, modules, functions and 
+              classes.
               </p>
               <p>Keywords are reserved terms that can't be used for other
               things like variable names (e.g. else, for, if, import).</p>
@@ -716,9 +716,9 @@ public class Python extends Page {
               Jupyter Notebooks, the IDLE and Spyder IDEs, and the Python 
               environment in QGIS.</p>
               <p>It introduced loading modules using an import statement, and 
-              accessing functionality via a dot operator. It introduced examples 
-              of conditional IF statements and For Loops. (There will be more 
-              detail on conditional statements subsequently.)</p>
+              accessing functionality via a dot operator. It considered examples 
+              of IF Statements and For Loops. (There will be more detail on 
+              conditional statements and loops subsequently.)</p>
               <p>This has been a broad brush overview which you might like to 
               revisit once you are a bit more familiar with developing Python
               code and as you think about doing projects.</p> 
