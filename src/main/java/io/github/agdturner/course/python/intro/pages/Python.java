@@ -527,15 +527,12 @@ public class Python extends Page {
               a Web based document containing other information: text, images, 
               data, and links. Code is entered in cells which when run present
               outputs within the document unless configured to appear in
-              separate windows. Code can be described in detail and 
-              distributed with associated data and visualizations. There are a 
-              variety of save options – including saving a document as Web page
-              or <a href="https://en.wikipedia.org/wiki/PDF">PDF</a>.</p>
+              separate windows. Code can be described in detail and distributed
+              with associated data and visualizations.</p>
               <p>Jupyter Notebook was renamed from IPython Notebook as the 
-              project expanded to allow other REPL languages, including 
-              <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a>,
-              to be integrated.</p>
-              <p>Jupyter Notebooks comes bundled with Anaconda and can be 
+              <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a>
+              support was added.</p>
+              <p>Jupyter Notebook comes bundled with Anaconda and can be 
               downloaded separately from <a href="https://jupyter.org/">Jupyter</a>.</p>
               <p>At the command prompt change to a directory where you can write
               new files and enter:</p>
@@ -552,19 +549,17 @@ public class Python extends Page {
               <img src="jupyter2.png" alt="Python REPL environment" />
               <p>Try typing the following at the prompt and actioning run:</p>
               <pre>print("Hello World")</pre>
-              <p>The following is an image of the one this "Hello World" 
-              program has been run:</p>
+              <p>The result should be something like the following image:</p>
               <img src="jupyter3.png" alt="Python REPL environment" />
-              <p>As you can see, the code in the Jupyter Notebook styles the 
-              code. Entire programs can be entered into cells as can 
+              <p>Entire programs can be entered into cells as can 
               <a href="https://www.markdownguide.org/basic-syntax/">markdown</a>
-              . Have a play...</p>
-              <p>Download, read, open and run the following:
-              <a href="https://www.geog.leeds.ac.uk/courses/computing/practicals/python/running-python/examples/Example_Notebook.ipynb">
-              Example_Notebook.ipynb</a></p>
-              <p>You are not expected to fully understand the code at this 
-              stage, but hopfully you get an inkling of how it works.</p>
-              
+              .</p>
+              <p>At the end of this section we will briefly return to Jupyter 
+              Notebooks once we have learned about installing packages that are 
+              not available. This is to make use of some additional packages 
+              that help to create interactive maps that are not available in the 
+              Python environment provided in Anaconda.</p>
+                            
               <h2>6. Integrated Development Environments</h2>
               
               <p><a href="https://en.wikipedia.org/wiki/Integrated_development_environment">
@@ -676,18 +671,18 @@ public class Python extends Page {
               should change so that there is an additional pane in the Python 
               Console</li>
               </ol>
-              <p>Download <a href="./QGISExample.py">QGISExample.py</a>, read
-              the code and try to run it. Again, you are not expected to fully 
-              understand the code at this stage. (Further instructions and an 
-              outline of what to expect are provided in the comment at the top 
-              of source code.</p>
+              <p>Download <a href="./QGIS1.py">QGIS1.py</a>, read the source 
+              code and try to run it. As with the Jupyter Notebook example, you
+              are not expected to fully understand the code at this stage. 
+              (Instructions and an outline of what to expect are provided in the
+              multi-line comment at the top of source code.</p>
               <p>Notice that after the comments at the top of the file, there 
-              are a couple of import statements, some iface functionality is 
-              used and the code is organised into code blocks with comments that 
-              outline what each code block does. The import statements are a bit
-              more involved that what you have seen so far. In the code there is 
-              a For Loop which is used to iterate over the features in a layer.
-              From the layer both attribute and geometry is used.</p>
+              are some import statements, code is organised into code blocks 
+              with comments that outline what each code block does. The import 
+              statements are a bit more involved than what you have been shown 
+              so far. In the code there are For Loops which is used to iterate 
+              over the features in a layer. From the layer both attribute and 
+              geometry is used.</p>
               <p>Once the program has run the QGIS interface should look 
               something like:
               <img src="qgis2.png" alt="QGIS Python Console after having run QGISExample.py" />
@@ -708,8 +703,115 @@ public class Python extends Page {
         w.add("<p>" + addWebReference("https://qgis.org/pyqgis/", 
                 "QGIS Python API Documentation", "",
                 "") + "</p>");
+        
         w.add("""
-              <h2>8. Recap and Expectations</h2>
+              <h2>8. Python Environment Management and Installing Packages</h2>
+              <p>One of the criticisms levelled at Python is to do with 
+              dependency management. In Python terms, a dependency is a module 
+              that some other module needs in order to work. Now, suppose 
+              modules from two different packages depend on different versions 
+              of another module (and there is no common version of that 
+              module that they can both use for what is wanted). In this case, 
+              some way of using both versions of these dependencies is wanted. 
+              However, due to the way Python works, this is not straightforward,
+              and different Python environments called virtual Python 
+              environments have to be set and used.</p>
+              <p>Python has a simple and efficient way to set up, use, modify 
+              and delete virtual Python environments. There are several other 
+              reasons why you might want to set up virtual Python environments. 
+              One is that it is easy to pollute a Python environment and install 
+              packages that turn out not to be useful and that then get in the 
+              way using up resources and slowing things down. The issue is often 
+              not to do with a single package, but most packages depend on other 
+              packages and as mentioned at the start of this section, Python can 
+              be criticised currently in terms of dependency management. This 
+              is likely to improve in the future. Other languages have faced 
+              similar problems as they mature.</p>
+              <p>Conda is a package manager for Python and R packages produced 
+              by Anaconda. In addition to managing packages, Conda is also an
+              environment manager. With the Python environment that comes with
+              Anaconda, a slightly different way is recommended to create 
+              virtual Python environments and install packages than would be 
+              done in other Python environments.</p>
+              <!--
+              <p>This course does not detail how to set up, use, modify and 
+              delete virtual Python environments. This is for later in the 
+              learning journey. It is a good stage though to consider packages 
+              and installing them.</p>
+              -->
+              <p>Packaging code and delivering it to users via trusted 
+              repositories is a good thing for both developers and users.
+              <a href"https://packaging.python.org/en/latest/overview/">This is 
+              a link to a website all about packaging Python</a>.</p>
+              <p>Open a Command Window, change to a directory where you can 
+              write files and enter the following command to create a list of
+              Python packages available in the Python environment:</p>
+              <pre>pip list > piplist.txt</pre>
+              <p>It may take a minute or so to run, and it should output a list 
+              of names with version numbers like 
+              <a href="./piplist.txt">this</a>.</p>
+              <p>Enter the following command to create a similar list:</p>
+              <pre>conda list > condalist.txt</pre>
+              <p>Again, it may take a minute or so to run. The list is a bit 
+              longer and includes an additional column of information, like 
+              <a href="./condalist.txt">this</a>.</p>
+              
+              <p>Create a new conda environment in which to practice 
+              installing some extra packages. Create an explicit list of all the
+              conda packages using:</p>
+              <pre>conda list --explicit > spec-file.txt</pre>
+              <p>The create a new conda environment using:</p>
+              <pre>conda list --explicit > spec-file.txt</pre>
+              <p>Followed by:</p>
+              <pre>conda create --name myenv --file spec-file.txt</pre>
+
+              <p>We are going to risk polluting our Python environment and 
+              install some other software without first creating a virtual 
+              Python environment and using that. The first step is to update
+              the exising conda packages by running:</p>
+              <pre>conda update</pre>
+              <pre>conda install -c conda-forge geopandas</pre>
+              <pre>conda install -c conda-forge geoplot</pre>
+              <pre>conda install -c conda-forge contextily</pre>
+              <pre>conda install -c conda-forge bokeh</pre>
+              conda install -c conda-forge ipympl
+              https://github.com/geopandas/contextily
+              https://github.com/geopandas/geopandas
+              https://residentmario.github.io/geoplot/ Looks a bit abandoned!
+              https://github.com/SciTools/cartopy/
+              https://github.com/bokeh/bokeh                                                                                                                                                                        <a href="https://geopandas.org/">GeoPandas</a> which is available 
+              via 
+              <a href="https://pypi.org/">PyPI</a>.                            
+              The way to do this not in Conda is using <pre>pip</pre> is a bit 
+              involved, so let us use the following recommended command in a 
+              Command Window:</p>
+              <pre>conda install -c conda-forge geopandas</pre>
+              <p>This will take a while to run. So, maybe take a break or
+              read about installing packages using pip and installing packages 
+              via Conda:</p>
+              <ul>
+              <li><a href="https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing">
+              https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing</a></li>
+              <li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
+              https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a></li>
+              </ul>
+              <p>Once GeoPandas is installed, then you could look at what has 
+              changed in terms of packages using:</p>
+              <pre>conda list</pre>
+              <p>And comparing the output with last time.</p>
+              <p>Try to run the Jupyter Notebook that failed to run previously 
+              because Geopandas was not available.</p> 
+
+              <p>Download, open in Jupyter, read and run the following notebook:
+              <a href="https://www.geog.leeds.ac.uk/courses/computing/practicals/python/running-python/examples/Example_Notebook.ipynb">
+              Example_Notebook.ipynb</a></p>
+              <p>You are not expected to fully understand the code at this 
+              stage, but hopfully you get an inkling of how it works.</p>
+              """);
+        
+        
+        w.add("""
+              <h2>9. Recap and Expectations</h2>
               <p>This section of the course introduced some basic Python syntax 
               and considered the evolution of the language. It explored running
               Python code in files, using the REPL environment and help system, 
