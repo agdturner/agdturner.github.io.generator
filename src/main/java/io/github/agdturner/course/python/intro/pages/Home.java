@@ -47,19 +47,19 @@ public class Home extends Page {
               <p>Welcome!</p>
               <p>These web pages are""");
         w.add(addWikipediaReference("Open_educational_resources",
-                        "Open Educational Resources"));
-        w.add(" developed by ");        
+                "Open Educational Resources"));
+        w.add(" developed by ");
         w.add(Web_ContentWriter.getLink(
                 "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
                 "Andy Turner"));
         w.add(" and used for teaching at ");
         w.add(Web_ContentWriter.getLink("https://www.leeds.ac.uk",
-                        "The University of Leeds") + ".");
+                "The University of Leeds") + ".");
         w.add("""
               They support learning the basics of computer programming for
               applications in geography and social science and focus on the""");
         w.add(addWikipediaReference("Python_(programming_language)",
-                        "Python programming language"));
+                "Python programming language"));
         w.add("""
               (Python).</p>
               <p>In the header of each page is a common navigation section which
@@ -101,37 +101,53 @@ public class Home extends Page {
               good use of your special learning abilities when you have them. 
               And most importantly - take breaks and look after yourself
               mentally and physically.</p>
+              
               <h2>2. Syllabus</h2>
               <p>General computer programming concepts including:</p>
               <ul>
-              <li>""");
-        w.add(addWikipediaReference("Variable_(computer_science)",
-                        "Variables"));
-        w.add("</li>\n<li>");
-        w.add(addWikipediaReference("Control_flow", "Control flow"));
-        w.add("(");
-        w.add(addWikipediaReference("Conditional_(computer_programming)",
-                        "conditionals"));
-        w.add("/");
-        w.add(addWikipediaReference("For_loop", "for loops"));
-        w.add(")</li>\n<li>");
-        w.add(addWikipediaReference("Function_(computer_programming)",
-                        "Functions"));
-        w.add("</li>\n<li>");
-        w.add(addWikipediaReference("Class_(computer_programming)",
-                        "Classes"));
-        w.add("""
-              </li>
-              <li>Testing and ensuring that code works as expected</li>
-              <li>Developing documentation</li>
-              <li>Python language development and limitations</li>
-              <li>Jupyter Notebooks</li>
               <li>Version control</li>
-              <li>""");
-        w.add(addWebReference("https://github.com/", "GitHub", "GitHub"));
+              """);
+        w.add("<li>" + addWikipediaReference(
+                "Variable_(computer_science)",
+                "Variables"));
+        w.add("</li>\n<li>");
+        w.add(addWikipediaReference("Control_flow", 
+                "Control flow"));
+        w.add("(" + addWikipediaReference(
+                "Conditional_(computer_programming)", 
+                "conditionals") + "/"
+                + addWikipediaReference("For_loop", "for loops")
+                + ")</li>");
+        w.add("<li>" + addWikipediaReference(
+                "Function_(computer_programming)",
+                "Functions") + "</li>");
+        w.add("<li>" + addWikipediaReference(
+                "Class_(computer_programming)",
+                "Classes") + "</li>");
         w.add("""
-              </li>
+              <li>Python language development and limitations</li>
+              <li>Running Python code from the command line, in 
+              <a href="https://jupyter.org/">Jupyter</a> 
+              Notebooks, and in Integrated Development Environments</li>
+              <li>Python Environment Management using 
+              <a href="https://docs.conda.io/">Conda</a></li>
+              <li>Installing Python Packages</li>
+              <li>Using Python to automate
+              <a href="https://qgis.org/">QGIS</a> Desktop data processing.</li>
+              <li>Setting up a profile on 
+              <a href=""https://github.com/">GitHub</a></li>
+              <li>Testing:
+              <a href="https://docs.python.org/3/library/doctest.html">
+              DocTest</a>
+              and
+              <a href="https://en.wikipedia.org/wiki/Unit_testing">
+              unit testing</a></li>
+              <li>Developing documentation: documenting functions; 
+              <a href="https://docs.python.org/3/library/pydoc.html">PyDoc</a>
+              and
+              <a href="https://www.sphinx-doc.org/">Sphinx</a></li>
               </ul>
+              
               <h2>3. Expectations</h2>
               <p>You will learn about:</p>
               <ul>
@@ -145,7 +161,7 @@ public class Home extends Page {
               <li>Processing raster data stored in lists.</li>
               <li>Developing a""");
         w.add(addWikipediaReference("Graphical_user_interface",
-                        "Graphical User Interface"));
+                "Graphical User Interface"));
         w.add("""
               </li>
               <li>Developing and visualising a simplistic Agent Based Model</li>
@@ -177,14 +193,15 @@ public class Home extends Page {
               <p>All the software used in this course is Free and Open Source
               Software (FOSS) which is available to download and install on most
               platforms.<p>
-              <p>The software is also available to staff and students at The 
-              University of Leeds (UoL) via it's Windows Virtual Desktop 
-              (UOL-WVD) which can be accessed via a Web browser and the 
-              following URL:
+              <p>The software is available to University of Leeds staff and
+              students via AppsAnywhere on it's Academic Windows Virtual Desktop
+              which can be accessed via a Web browser and the following URL:
               <a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>.
-              We will be making use of Anaconda - a data science platform, and 
-              QGIS Desktop - desktop Geographical Information System software.
-              These can be accessed via AppsAnywhere on the UOL-WVD.
+              We will be making use of 
+              <a href="https://www.anaconda.com/">Anaconda</a> - a data science 
+              platform, and 
+              <a href="https://qgis.org/">QGIS</a> Desktop - Geographical 
+              Information System software.
               </p>
               """);
         // Assignments and Assessments

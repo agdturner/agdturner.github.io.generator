@@ -764,6 +764,8 @@ public class Python extends Page {
               will be introduced in due course.</p>
               
               <h2>8. Python Packages and Environment Management</h2>
+              
+              <h3>8.1. Packages<>
               <p>Packaging code and delivering it to users via repositories is 
               sensible for numerous reasons. The main reasons are to do with 
               security, availability, and understanding dependencies and 
@@ -778,48 +780,70 @@ public class Python extends Page {
                 "Packaging Python", ""));
         w.add("""
               <p>For those just beginning to learn to program, learning to 
-              package code is jumping a step ahead. However, it is good aready 
-              to be aware of packaging and repositories, to learn how to install
-              packages from repositories, and to understand about dependencies.
-              As mentioned, <a href="https://pypi.org/">PyPI</a> is a widely 
-              used repository for deploying packages to and for users to get 
-              packages from. Many packages are provided openly in accordance 
-              with a specified open source license. It is also possible to 
-              package, deploy to and use private packages with repositories.</p>
+              package code is jumping a step ahead. However, it can help to be 
+              aware of packaging and repositories, to learn how to install
+              packages from repositories into environents, and to understand 
+              about dependencies.</p>
+              <p>As mentioned, <a href="https://pypi.org/">PyPI</a> is a widely 
+              used repository, for deploying packages to, and for users to get 
+              packages from. Many packages are provided as open source software. 
+              It is also possible to have private packages.</p>
               <p>Often when installing a package, it is necessary to install a 
               number of other packages that are dependencies. In Python terms, 
               a dependency is a module that some other module needs in order to 
               work. Often the details are at the level of functions. As code is 
               refactored, sometimes module dependencies change and functions 
-              change. Function names may change, their specification of 
-              parameters may change, and the details of what is returned may 
-              change. Internally, functions may utilise other different 
-              functions, but this is not something that usually has consequences 
-              that result in incompatibility between different versions of the 
-              same modules.</p>              
+              change. A function's name may change, the specification of the 
+              parameters it expects may change, and the details of what is 
+              returned may change in ways such that some code no longer works.
+              Internally, functions may utilise other different functions, but 
+              if the interface does not change, then code that worked with 
+              previous version is likely to still work. Yet, the only way to 
+              know for sure is to test.</p>              
               <p>One of the criticisms levelled at Python is to do with 
               dependency management. Suppose modules from two different packages 
               depend on different versions of another module (and there is no 
-              common version of that module that contains all what both want). 
+              common version of that module that contains all that is wanted). 
               In this scenario, some way of using two different versions of 
-              these dependencies is wanted. This is not easy to organise due to 
-              how Python is designed. Currently, what this requires is to set up
-              and run two Python environments, one with each dependency version,
-              and to orchestrate communication between them. Such orchestration 
-              is for a more advanced level, but it is important to know about it 
-              and to know it can be done. Sometimes, it is worth instead finding 
-              out if one or other of the modules can be modified to use a later 
-              version of the dependency and getting involved to make this 
-              happen.</p>
-              <p>Anyway, learning about creating, activating, using, 
-              deactivating and deleting Python environments is important for 
-              another main reason: it is easy to pollute a Python environment by 
-              installing packages and their dependencies that turn out not to be 
-              useful and that then get in the way using up resources and slowing 
-              things down.</p>
+              these dependencies is wanted. This involves orchestration and is 
+              an advanced topic that is not covered in this course, but it can 
+              be helpful to know it can be done. In some cases, it is perhaps a 
+              better idea to investigate to try and find out if the modules 
+              needing an older version of the dependency can be modified to use 
+              the newer version. The way to do this is to read documentation, 
+              search online to see if others have come across this issue, and 
+              what solutions have been found or are being worked on. At some 
+              stage in the investigation, you might want to contact package 
+              developers and perhaps raise an issue with them. How best to do 
+              this all depends on what platforms the package developers are 
+              using. Again, this requires more knowledge of Python and software 
+              development than beginners have, so let us leave that tangent and 
+              return to learning about managing environments and installing
+              packages.</p>
+              <p>Learning about creating, activating, using, deactivating and 
+              deleting Python environments is important for other reasons: It is 
+              easy to pollute environments by installing packages (and their 
+              dependencies) that turn out not to be useful and that then get in
+              the way - using up resources and slowing things down. Also, the
+              process of setting up new environments involves some dependency 
+              conflict analysis which can result in environments that work 
+              when installing a new dependency in an existing enviornemnt can 
+              have undesirable side effects as a result of upgrading or 
+              downgrading dependencies. It is worth noting that uninstalling 
+              packages is often as cumbersome as setting up new environments.
+              Furthermore, for to facilitate reproducing scientific results and 
+              information used in policy making, it is good to be explic and 
+              clear about exactly what versions of all software were used to 
+              generate results as well as the process for doing this. (The more 
+              automated the process, the easier this is, which is another 
+              reason why it is important to learn how to program.</p>
+              <p>So, it is usual and good practice to set up and use different 
+              environments and so managing environments is a key topic.</p>
               <p>Conda is a package manager that comes with Anaconda. In 
               addition to managing packages, Conda is also an environment 
-              manager.</p>
+              manager. A key reference for Conda:
+              <A href="https://docs.conda.io/">https://docs.conda.io/</a>
+              </p>
               <p>Open a Command Window, change to a directory where you can 
               write files and enter the following command to create a list of
               Python packages available in the Python environment:</p>
@@ -875,8 +899,11 @@ public class Python extends Page {
               <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
               <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/">PyQt5</a></li>
               <ul>
-              <p>Install fiona, folium, geopandas and ipykernel with:</p>                                                                                                  package into myenv2:</p>
+              <p>Install fiona, folium, geopandas and ipykernel into myenv2:</p>
               <pre>conda install -c conda-forge folium fiona geopandas ipykernel</pre>
+              <!--
+              <pre>conda install -c conda-forge folium fiona=1.8.19 geopandas ipykernel</pre>
+              -->
               <p>Install PyQt5 with:</p>
               <pre>pip install pyqt5<pre>
               <p>Install myenv into the ipykernel so it is available via the 
