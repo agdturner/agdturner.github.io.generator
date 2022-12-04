@@ -121,15 +121,14 @@ public class Python extends Page {
               <p>As well as the core of the Python language - the language 
               specification and a reference implementation of an interpretter, 
               there is a vast ecosystem of third party libraries written in 
-              Python. Many of these are useful and most that are well used find 
-              their way into <a href="https://pypi.org/">PyPI</a> - a Python 
-              Package Index - a repository of third party Python packages. 
-              Installing Python packages from PyPI is relatively 
-              straightforward and we will learn about this in due course, but we
-              won't learn about packaging and depositing code on PyPI. Most of 
-              the things additional to the core langauge that we will be using 
-              are part of Anaconda which we will learn more about and start 
-              using shortly...</p>
+              Python. Many of these are useful and many are available via 
+              <a href="https://pypi.org/">PyPI</a> - a Python Package Index -
+              a repository of third party Python packages. In Section 8, there 
+              is an exercise involving installing Python packages from PyPI and 
+              links to details about how to package code and make it available 
+              via PyPI. Most of the additions to the core Python langauge that 
+              are used in this course are part of Anaconda which we will learn 
+              more about and start using shortly...</p>
               <p>The quality of third party code and indeed core Python code 
               varies. You should always be a bit careful about running code 
               written by others as it is quite easy to write malicious software
@@ -168,14 +167,23 @@ public class Python extends Page {
         w.add("""
               installed or available for use. When installing Anaconda, choose
               the option to add to your Path (which is not the default 
-              option).</p>
+              option), otherwise you should do that once the installation is 
+              complete.</p>
               
-              <h3>2.1. Hello World</h3>
-              <p>Open up a Terminal (Command Window) and enter:</p>
+              <h3>2.1. Python REPL</h3>
+              
+              <h4>2.1.1. Hello World</h4>
+              <p>Open a Console, Terminal or Command Window (what you use 
+              depends on your Operating System (OS), and from now on the 
+              instructions assume some form of Windows OS and shall use the term
+              Command Window when refering to this). Enter:</p>
               <pre>python --version</pre>
               <p>This should output the version of Python your system is set up
               to use. If Python is not on your Path, then you should get an 
-              error message.</p>
+              error message. (If that happens, it is likely that the install of 
+              Anaconda did not modify your Path and a Python executable is not
+              on your Path. To sort this out you will need to edit your Path 
+              or try again to install Anaconda - uninstaling it first.)</p>
               <p>Enter the following command to arrive at the Python Prompt:</p>
               <pre>python</pre>
               <p>The Python Prompt should look like:</p>
@@ -188,7 +196,7 @@ public class Python extends Page {
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
               
-              <h3>2.2. Numberical calculations</h3>
+              <h4>2.1.2. Numberical calculations</h4>
               <p>The Python REPL environment can act as a basic calculator. 
               Enter:</p>
               <pre>2 + 3</pre>
@@ -212,7 +220,7 @@ public class Python extends Page {
               ZeroDivisionError: division by zero
               </pre>
               
-              <h3>2.3. Loading Modules and Using Functions</h3>
+              <h3>2.2. Loading Modules and Using Functions</h3>
               <p>Mathematical operators can also be accessed via functions that
               reside in the Operator Module.</p>
               <p>Enter:</p>
@@ -273,7 +281,7 @@ public class Python extends Page {
               Python.</p>
               <p>Try using some other functions from the Operator Module.</p>
 
-              <h3>2.4. The Help System</h3>
+              <h3>2.3. The Help System</h3>
               <p>Enter:</p>
               <pre>help(operator.add)</pre>
               <p>This prints out some information about how to use the Operator
@@ -507,11 +515,11 @@ public class Python extends Page {
               </p>
               
               <h2>4. Running a file of Python commands</h2>
-              <p>Create a new text file called "HelloWorld.py". Add to it the 
-              following line:</p>
+              <p>Create a new ASCII text file, add to it the following line:</p>
               <pre>print("Hello World")</pre>
-              <p>Save the file. Open a terminal or command prompt. Change to the 
-              directory where you saved the file (path_to_directory) using:</p>
+              <p>Save the file with the name "HelloWorld.py". Open a Command 
+              Window. Change to the directory where you saved the file 
+              (path_to_directory) using:</p>
               <pre>cd path_to_directory</pre>
               <p>Run the file using:</p>
               <pre>python HelloWorld.py</pre>
@@ -519,11 +527,12 @@ public class Python extends Page {
               <pre>
               Hello World
               </pre>
-              <p>Try creating another file adding some python commands and 
+              <p>Try creating another file adding some Python commands and 
               running it.</p>
               <p>It is not necessary to run from the directory in which the 
-              file of Python commands is located if you provide the full path to
-              the file in the run command.</p>
+              file of Python commands is located if you provide a path to
+              the file in the run command. That path can be absolute (from the 
+              base) or relative (from the current directory).</p>
               
               <h2>5. Jupyter Notebook</h2>
               <p>Jupyter Notebook, is a REPL based system that embeds code into 
@@ -534,39 +543,47 @@ public class Python extends Page {
               in detail and distributed with associated data and visualizations.
               </p>
               <p>Jupyter Notebook was renamed from IPython Notebook as 
-              <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R (programming language)</a>
-              support was added.</p>
-              <p>Jupyter Notebook comes bundled with Anaconda and can be 
-              downloaded separately from <a href="https://jupyter.org/">Jupyter</a>.</p>
+              <a href="https://en.wikipedia.org/wiki/R_(programming_language)">
+              R (programming language)</a>
+              support was added. It comes bundled with Anaconda and can be 
+              downloaded separately from 
+              <a href="https://jupyter.org/">Jupyter</a>.</p>
+              <p>Key reference for Jupyter notebooks:
+              <a href="https://jupyter-notebook.readthedocs.io/">
+              https://jupyter-notebook.readthedocs.io/</a></p>
               <p>At the command prompt change to a directory where you can write
               new files and enter:</p>
               <pre>jupyter notbook</pre>
-              <p>Some messages should appear in the terminal or command window 
-              and a Web browser tab should open with the Jupyter Notebook 
-              Interface.</p>
+              <p>Some messages should appear in the Command Window and a Web 
+              browser tab should open with the Jupyter Notebook Interface.</p>
               <p>From the New Button drop down list of the Jupyter Notebook 
               Interface, select:</p>
               <pre>python 3 (ipykernel)</pre>
               <p>The New Button is highlighted with a red oval in the following 
               image of the interface:</p>
-              <img src="jupyter1.png" alt="Jupyter Notebook Interface" />
-              <p>The Python REPL environment should appear in another browser 
-              tab like shown in the following image:</p>
-              <img src="jupyter2.png" alt="Python REPL environment" />
+              <img src="jupyter1.png" alt="Jupyter Notebook Interface 1" />
+              <p>A Python REPL environment should appear in another browser tab
+              like shown in the following image:</p>
+              <img src="jupyter2.png" alt="Jupyter Notebook Interface 2" />
               <p>Try typing the following at the prompt and actioning run:</p>
               <pre>print("Hello World")</pre>
               <p>You should see something like:</p>
-              <img src="jupyter3.png" alt="Python REPL environment" />
+              <img src="jupyter3.png" alt="Jupyter Notebook Interface 3" />
               <p>Entire programs can be entered into cells as can 
               <a href="https://www.markdownguide.org/basic-syntax/">markdown</a>
               .</p>
-              <!--
-              <p>At the end of this section we will briefly return to Jupyter 
-              Notebooks once we have learned about installing packages that are 
-              not available. This is to make use of some additional packages 
-              that help to create interactive maps that are not available in the 
-              Python environment provided in Anaconda.</p>
-              -->
+              <p>In Section 8 there is a further exercise using Jupyter 
+              Notebooks. Because Jupyter Notebooks runs in the browser, it can 
+              utilise
+              <a href="https://en.wikipedia.org/wiki/JavaScript">Javascript</a>
+              - a programming language that all widely used modern Web browsers 
+              work with. This allows us to leverage Javascript from Python which 
+              can be very useful for generating interactive maps. Prior to that, 
+              there are some exercises on setting up environments and installing 
+              packages, as an easy way to get interactive maps working in a 
+              Jupyter notebook is to make use of additional packages that are 
+              not included in the Python environment provided currently in a 
+              default Anaconda install.</p>
               
               <h2>6. Integrated Development Environments</h2>
               
@@ -652,62 +669,44 @@ public class Python extends Page {
               </p>
               
               <h2>7. Python and GIS Software</h2>
-              <p>There is a wide variety of software regarded as Geographical
-              Information System (GIS) software. Generally, it is software that
-              helps with the creation, management, processing, modelling and 
-              visualisation of geographical data and information. Systems are 
-              often comprised of distinct server and client components that may 
-              operate independently. Nowadays, both server and client components
-              can be typically run on a standard specification desktop or laptop
-              machine, but in the past when machines were less computationally 
-              capable, server machines were typically located in server rooms, 
-              and clients software was installed on desktop or laptop machines.
-              Anyway, there are some characteristic differences in what GIS 
-              Server software does and what GIS Client or Desktop software 
-              does.</p>
-              <p>There are various initiatives developing GIS software utilising 
-              the Python programming language or supporting Python environment 
-              plugins that allow programatic access to GIS software 
-              funcionality. Reviewing all that is being developed is difficult 
-              as reviews are often quickly out of date as the pace of 
-              technology development is so fast that it requires considerable 
-              effort, expertise and knowledge of the huge number of initiatives.
-              The review difficulty is compounded as it is with most software 
-              review in that communities are divided into Open Source
-              communities which allow anyone to access the software source code,
-              and proprietary software communities that typically do not allow
-              non-developers access to software source code.</p>
-              <p>After a subsection on the Python and QGIS Desktop, this 
-              section concludes with another subsection about Python and other
-              GIS software and services.</p>
+              <p>Geographical Information System (GIS) software are used to 
+              create, manage, process, model, visualise and serve geographical 
+              data and information. Some GIS software allows users to automate 
+              tasks using a Python Application Program Interface to access the 
+              core GIS functionality which may or may not be written in a 
+              different programming language. Usually what this involves is the 
+              GIS software including a Python environment within it. Section 
+              7.1 introduces how to do this with QGIS Desktop software which 
+              also has a plugin architecture that allows for it's Graphical User 
+              Interface (GUI) to be extended by plugins written in Python. 
+              Section 7.2. considers some other open source GIS software written 
+              in Python.</p>
               
-              <h3>Python and QGIS Desktop</h3>
-              <p><a href="https://www.qgis.org/">QGIS</a> software sometimes 
-              called Quantum GIS is widely used both in and outwith academia. 
-              There are both server and client software components mostly 
-              written in 
+              <h3>QGIS Desktop</h3>
+              <p><a href="https://www.qgis.org/">QGIS</a> software, sometimes 
+              called Quantum GIS, is widely used both in and outwith academia. 
+              There are both server and client software mostly written in 
+              mixture of 
               <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>
-              and Python. The software is Free and Open Source Software and 
-              there is a thriving developer and user community.</p>
-              <p>This section provides a brief introduction to the QGIS 
-              Desktop Python Console and it's Application Program Interface 
-              (API):
-              """);
-        w.add(addWebReference("https://qgis.org/pyqgis/", 
-                              "QGIS Python API Documentation", "",
-                              "") + "</p>");
-        w.add("""
+              and Python. QGIS is Free and Open Source Software and there is a 
+              thriving developer and user community.</p>
               <p>If you are not already familiar with the QGIS Desktop Graphical 
               User Interface (GUI), then hopefully you can still follow along 
-              and appreciate the utility of the API. The QGIS Desktop GUI has a 
-              Menu, Panels and Toolbars. There is a plugin architecture allowing 
-              users to add additional functionality to the interface. (Behind 
-              this is a developer community that develops the plugins and a 
-              management system that provides a repository of plugins.)</p>
-              <p>Please download, install and start QGIS Desktop, or simply 
-              start it if you already have it available to you. A splash 
-              screen should appear as the software loads after which the GUI 
-              should appear. From the Menu select:</p>
+              and appreciate the utility of the QGIS Desktop Python Application 
+              Program Interface (API).</p>
+              """);
+        w.add("<p>" + addWebReference("https://qgis.org/pyqgis/", 
+                                            "QGIS Python API Documentation", "",
+                                            "") + "</p>");
+        w.add("""
+              <p>The QGIS Desktop GUI has a Menu, Panels and Toolbars. Please 
+              download, install and start QGIS Desktop, or simply 
+              start it if you already have it available to you. It can be 
+              downloaded via:
+              <a href="https://www.qgis.org/">https://www.qgis.org/</a>
+              </p>
+              <p>A splash screen should appear as the software loads, after 
+              which the GUI should appear. From the GUI Menu select:</p>
               <pre>Plugins > Python Console</pre>
               <p>You should see something like:</p>
               <img src="qgis1.png" alt="QGIS Python Console basic interface" />
@@ -719,39 +718,37 @@ public class Python extends Page {
               display area of the Python Console.</p>
               <p>To list the functionality of the QGIS interface, enter:</p>
               <pre>dir(iface)</pre>
-              <p>This functionality enables us to do everything in QGIS in a 
-              Python program or script that we could do by selecting from menus
-              and pressing buttons in the interface. It also gives greater 
-              control in data loading and processing and allows us to use 
-              additional functionality available in the Python environment 
-              provided.</p> 
+              <p>The QGIS Python API allows us to access all the functionality 
+              in the GUI programatically, gives greater control in data loading 
+              and processing, and allows us to use additional functionality 
+              available in the Python environment provided.</p> 
               <p>Locate and action the Python Console Show Editor Button.</p>
-              <p>The interface should change so that there is an additional part
-              in the Python Console.</p>
-              <p>Download <a href="./QGIS1.py">QGIS1.py</a>, read the source 
-              code and run the program following the instructions in the multi-
-              line comment at the top of source code. (An outline of what to 
-              expect is provided in that multi-line comment too.)</p>
-              <p>The import statements are at the top and code which is 
-              organised into code blocks with comments that outline what each 
-              code block does. The import statements start with the keyword 
-              "from" which details from which package the specified modules are 
-              imported. In the code there are some For Loops which start with 
-              the keyword "for". The first of these iterates over the fields in 
-              a layer. The others iterate over the features in a layer. The 
-              program accesses both attribute and geometry from a layer, and 
-              adds data into the QGIS Desktop GUI display.
+              <p>The Editor should appear on the right of the Python Console.
               </p>
+              <p>Download <a href="./QGIS1.py">QGIS1.py</a> -  a Python source 
+              code file written to be run in the QGIS Desktop Python Console.
+              Read the source code, and run the program following the 
+              instructions that are in the multi-line comment at the top of 
+              source code. (An outline of what to expect is provided in that 
+              multi-line comment too.)</p>
+              <p>The import statements are at the top (which is good practise). 
+              Code is organised into code blocks with comments that outline what 
+              each code block does (also good practise). The import statements 
+              start with the keyword "from" which details from which package the 
+              specified modules are imported. In the code there are some For 
+              Loops which start with the keyword "for". The first of these 
+              iterates over the fields in a layer. The others iterate over the 
+              features in a layer. The program accesses both attribute and 
+              geometry from a layer, and adds data into the QGIS Desktop GUI 
+              display.</p>
               <p>Once the program has run the QGIS interface should look 
               something like:
               <img src="qgis2.png" alt="QGIS Python Console after having run QGISExample.py" />
               </p>
-              <p>QGIS Desktop has a Plug In Architecture. Plugins typically 
-              extend the functionality of the interface and enhance it's
-              capabilities and can be written in both C++ and Python. This 
-              course does not cover plugin development for QGIS, but here are 
-              some links about QGIS development and developing QGIS Desktop 
-              plugins:
+              <p>As previously mentioned, QGIS Desktop has a plug in 
+              architecture. Plugins can be written in both C++ and Python. This 
+              course does not provide instructions for writing plugins, but here 
+              are some key links about that:
               </p>
               <ul>
               <li><a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
@@ -760,126 +757,145 @@ public class Python extends Page {
               PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a></li>
               </ul>
 
-              <h3>Python and GIS</3>
-              <p>Python code can be used to drive other similar GIS software via 
-              APIs including the proprietary ArcGIS Desktop software developed 
-              by the company <a href="https://www.esri.com/">ESRI</a>. This 
-              course does not teach about using this, but it is similar to the 
-              QGIS Python API introduced in the previous section. Here is the 
-              key reference: 
-              <a href="https://developers.arcgis.com/python/">ArcGIS Python API"</a>
-              </p>
+              <h3>Other GIS software written in Python</3>
               <p>As well as Python APIs for automating GIS software, there are 
               initiatives developing GIS software in Python using just the 
-              Python core language (and third party packages). There is not 
-              scope to look in detail at all of them, but some of them will be 
-              used in examples.</p>
+              Python core language (and third party packages). Some of these 
+              will be introduced in due course.</p>
               
-              <h2>8. Python Environment Management and Installing Packages</h2>
-              <p>Packaging code and delivering it to users via trusted 
-              repositories is a good thing for both developers and users.
-              <a href"https://packaging.python.org/en/latest/overview/">This is 
-              a link to a website all about packaging Python</a>. In this 
-              section we will learn how to install a package that is not 
-              available in Anaconda currently.</p>
+              <h2>8. Python Packages and Environment Management</h2>
+              <p>Packaging code and delivering it to users via repositories is 
+              sensible for numerous reasons. The main reasons are to do with 
+              security, availability, and understanding dependencies and 
+              utilisation of packages. Many software and code repositories are 
+              language specific, components within are packaged in standard 
+              ways, and there is some process of review and some policy about 
+              package availability and removal. A key reference for packaging 
+              Python code is:
+              """);
+        w.add(addWebReference(
+                "https://packaging.python.org/", 
+                "Packaging Python", ""));
+        w.add("""
+              <p>For those just beginning to learn to program, learning to 
+              package code is jumping a step ahead. However, it is good aready 
+              to be aware of packaging and repositories, to learn how to install
+              packages from repositories, and to understand about dependencies.
+              As mentioned, <a href="https://pypi.org/">PyPI</a> is a widely 
+              used repository for deploying packages to and for users to get 
+              packages from. Many packages are provided openly in accordance 
+              with a specified open source license. It is also possible to 
+              package, deploy to and use private packages with repositories.</p>
+              <p>Often when installing a package, it is necessary to install a 
+              number of other packages that are dependencies. In Python terms, 
+              a dependency is a module that some other module needs in order to 
+              work. Often the details are at the level of functions. As code is 
+              refactored, sometimes module dependencies change and functions 
+              change. Function names may change, their specification of 
+              parameters may change, and the details of what is returned may 
+              change. Internally, functions may utilise other different 
+              functions, but this is not something that usually has consequences 
+              that result in incompatibility between different versions of the 
+              same modules.</p>              
               <p>One of the criticisms levelled at Python is to do with 
-              dependency management. In Python terms, a dependency is a module 
-              that some other module needs in order to work. Suppose modules 
-              from two different packages depend on different versions of 
-              another module (and there is no common version of that module that 
-              contains all what is wanted). In this case, some way of using both 
-              versions of these dependencies is wanted, but this is not easy to 
-              organise as it currently requites creating two Python environments 
-              and communicate between them. Organising that is a bit advanced, 
-              but it is important to know about it and that it can be done. 
-              More useful at this stage is to learn about creating, activating, 
-              using, deactivating and deleting Python environments. Another 
-              reason why this is useful, is that it is easy to pollute a Python 
-              environment by installing packages and their dependencies that 
-              turn out not to be useful and that then get in the way using up 
-              resources and slowing things down.</p>
-              <p>Conda is a package manager for Python and R packages produced 
-              by Anaconda. In addition to managing packages, Conda is also an
-              environment manager. Managing Python environments not using conda 
-              is similar, but below we will use conda. The workflow we are about 
-              to follow is to: 1) Create a new environment, 2) Activate it, 3)
-              install the package not available in it, 4) use the pacakge, 5)
-              Deactivate the environment. First though, we are going to learn a 
-              bit more about environments and getting detailed information about 
-              them so that others can recreate them which is extremely useful 
-              for being able to reproduce issues and results.</p>
+              dependency management. Suppose modules from two different packages 
+              depend on different versions of another module (and there is no 
+              common version of that module that contains all what both want). 
+              In this scenario, some way of using two different versions of 
+              these dependencies is wanted. This is not easy to organise due to 
+              how Python is designed. Currently, what this requires is to set up
+              and run two Python environments, one with each dependency version,
+              and to orchestrate communication between them. Such orchestration 
+              is for a more advanced level, but it is important to know about it 
+              and to know it can be done. Sometimes, it is worth instead finding 
+              out if one or other of the modules can be modified to use a later 
+              version of the dependency and getting involved to make this 
+              happen.</p>
+              <p>Anyway, learning about creating, activating, using, 
+              deactivating and deleting Python environments is important for 
+              another main reason: it is easy to pollute a Python environment by 
+              installing packages and their dependencies that turn out not to be 
+              useful and that then get in the way using up resources and slowing 
+              things down.</p>
+              <p>Conda is a package manager that comes with Anaconda. In 
+              addition to managing packages, Conda is also an environment 
+              manager.</p>
               <p>Open a Command Window, change to a directory where you can 
               write files and enter the following command to create a list of
               Python packages available in the Python environment:</p>
               <pre>pip list > piplist.txt</pre>
-              <p>It may take a minute or so to run, and it should output a list 
-              of names with version numbers like 
-              <a href="./piplist.txt">this</a>.</p>
+              <p>It may take a minute or so to run, and it should output an 
+              ASCII text file containing a list of names with version numbers 
+              (that produced should be similar to 
+              <a href="./piplist.txt">piplist.txt</a>, but there may be 
+              differences).</p>
               <p>Enter the following command to create a similar list:</p>
               <pre>conda list > condalist.txt</pre>
-              <p>Again, it may take a minute or so to run. The list is a bit 
-              longer and includes an additional column of information, like 
-              <a href="./condalist.txt">this</a>.</p>
-              <p>At the Command Prompt enter:</p>
-              <pre>conda env list</p>
-              <p>This may take a moment to run and should return a list of 
-              available environments. The output should look something 
-              like:</p>
-              <pre># conda environments:
+              <p>Again, it may take a minute or so to run, and it should output
+              an ASCII text file (similar to  
+              <a href="./condalist.txt">condalist.txt</a>).</p>
               <p>Enter the following command to create an explicit list of all 
-              the conda packages:</p>
+              the conda packages sved in a file named "spec-file.txt":</p>
               <pre>conda list --explicit > spec-file.txt</pre>
-              <p>You can send this file or something similar to someone else so 
-              that they can replicate your environment on another resource. For 
-              more details of how to do that see:
+              <p>You or others can use this file or something similar to 
+              replicate the environment on another resource. For details of how
+              to do that see:
               <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">
               https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment</a>
               </p>
-              <!--
-              <p>The following command should create a new virtual Python 
-              environment called myenv, but it might take age:</p>
-              <pre>conda create --name myenv --file spec-file.txt</pre>
-              <p>This may take several minutes, maybe even an hour. While the
-              environment is being created progress should be visible in the 
-              Console Window. The environment being created is like a copy of 
-              all the packages installed in Anaconda which is partly why this 
-              process takes as long as it does.</p>
+              <p>Get a list of available environments - enter:</p>
+              <pre>conda env list</p>
+              <p>It should look something like:</p>
+              <pre># conda environments:
+              #
+              base                  *  C:\\ProgramData\\Anaconda3</pre>
+              <p>Often when creating an environment, it is for a specific 
+              purpose and only specific packages are installed. It is best to 
+              install packages together as the installer attempts to reolve 
+              conflicts and ensure the versions of the package dependencies 
+              installed will work. Anyway, let us install a default environment 
+              with just the core, enter:</p>
+              <pre>conda create --name myenv</pre>
               <p>Check it is listed:</p>
               <pre>conda env list</p>
               <p>You should see myenv in the list, something like:<p>
               <pre># conda environments:
               #
-              base                  *  C:\\ProgramData\\Anaconda3
-              myenv                   C:\\ProgramData\\Anaconda3\\envs\\myenv</pre>
-              -->
-              <p>Often when creating an environment, it is for a specific 
-              purpose and only specified packages are installed. Let us install 
-              a default environment with just the core, enter:</p>
-              <pre>conda create --name myenv2</pre>
-              <p>Check it is listed:</p>
-              <pre>conda env list</p>
-              <p>You should see myenv2 in the list, something like:<p>
-              <pre># conda environments:
-              #
-              base                  *  C:\\ProgramData\\Anaconda3
-              myenv2                   C:\\ProgramData\\Anaconda3\\envs\\myenv2</pre>
-              <p>Activate myenv2 by entering:</p>
-              <pre>conda activate myenv2</pre>
-              <p>The prompt should change to look like:</p>
-              <pre>(myenv2) M:\></pre>
-              <p>Install folium into myenv2:</p>
-              <pre>conda install -c conda-forge folium</p>
-              <p>Install ipykernel into myenv2:</p>
-              <pre>conda install -c anaconda ipykernel</p>
-              <p>Install myenv2 into the ipykernel so it is available to things 
-              like Jupyter Notebook.</p>  
-              <pre>python -m ipykernel install --user --name=myenv2</pre>
-              <p>Enter:</p>
-              <pre>jupyter notebook</pre>
-              <p>Select:<p>
-              <pre>New > myenv2</pre> 
-              <p>Copy in the following code and run it:</p>
+              base             *  C:\\ProgramData\\Anaconda3
+              myenv               C:\\ProgramData\\Anaconda3\\envs\\myenv</pre>
+              <p>Activate myenv by entering:</p>
+              <pre>conda activate myenv</pre>
+              <p>The prompt should change to have "(myenv)" prepended</p>
+              <p>Install the following into myenv using commands provided
+              below:</p>
+              <ul>
+              <li><a href="https://github.com/Toblerity/Fiona">fiona</a></li>
+              <li><a href="https://python-visualization.github.io/folium/">folium</a></li>
+              <li><a href="https://geopandas.org/">geopandas</a></li>
+              <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
+              <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/">PyQt5</a></li>
+              <ul>
+              <p>Install fiona, folium, geopandas and ipykernel with:</p>                                                                                                  package into myenv2:</p>
+              <pre>conda install -c conda-forge folium fiona geopandas ipykernel</pre>
+              <p>Install PyQt5 with:</p>
+              <pre>pip install pyqt5<pre>
+              <p>Install myenv into the ipykernel so it is available via the 
+              Jupyter Notebook interface.</p>  
+              <pre>python -m ipykernel install --user --name=myenv</pre>
+              <p>Download <a href="">Jupyter1.ipynb</a> and save it in a 
+              directory and start Jupyter Notebook so it can load the file.</p>
+              <p>Enter the following to run Jupyter Notebook:</p>
+              <pre>jupyter notebook --NotebookApp.max_buffer_size=1073741824</pre>
+              <p>This gives Jupyter Notebook twice as much memory as the current 
+              default to overcome memory errors.</p> 
+              <p>Wait for a Web browser tab to appear with the Jupyter Notebook 
+              interface. When it appears select:<p>
+              <pre>New > myenv</pre>
+              <p>Open Jupyter1.ipynb read and run it cell by cell.</p>
+              <p>If for some reason that does not work, then try something a bit 
+              simpler and copy the code below into a cell and run it.</p>
               <pre><code class=\"language-python\">
+              # Simple example code 
               import folium
               
               map = folium.Map(
@@ -899,11 +915,12 @@ public class Python extends Page {
               </code></pre>
               <p>This should produce a slippy map with an icon on it that looks 
               something like:</p>
-              <p>
-              <p>Close Jupyter Notebook and deactivate myenv by entering:</p>
-              <pre>deactivate myenv</pre>
-              <p>Run Jupyter Notebook in your default environment and you should 
-              get an error along the following lines:<>
+              <img src="jupyter4.png" alt="Jupyter Notebook Interface 4" />
+              <p>From the Jupyter Notebook choose:</p>
+              <pre>new > Python 3 (ipykernel)</pre>
+              <p>Try running the same code. Most likely, the folium package is 
+              not installed in your base environment you should get the 
+              following error:</p> 
               <pre>
                ---------------------------------------------------------------------------
                ModuleNotFoundError                       Traceback (most recent call last)
@@ -922,54 +939,17 @@ public class Python extends Page {
                
                ModuleNotFoundError: No module named 'folium' 
               </pre>
-              <p>So, folium is installed in myenv, but is not available in the 
-              default environment. This ends the demonstration of creating a 
-              virtual enviornment and instaling packages.</p> 
-                            
-              
-              <p>We are going to risk polluting our Python environment and 
-              install some other software without first creating a virtual 
-              Python environment and using that. The first step is to update
-              the existing conda packages by running:</p>
-              <pre>conda update</pre>
-              <pre>conda install -c conda-forge folium</pre>
-                            <pre>conda install -c conda-forge geopandas</pre>
-                                          <pre>conda install -c conda-forge geoplot</pre>
-              <pre>conda install -c conda-forge contextily</pre>
-              <pre>conda install -c conda-forge bokeh</pre>
-              conda install -c conda-forge ipympl
-              https://github.com/geopandas/contextily
-              https://github.com/geopandas/geopandas
-              https://residentmario.github.io/geoplot/ Looks a bit abandoned!
-              https://github.com/SciTools/cartopy/
-              https://github.com/bokeh/bokeh                                                                                                                                                                        <a href="https://geopandas.org/">GeoPandas</a> which is available 
-              via 
-              <a href="https://pypi.org/">PyPI</a>.                            
-              The way to do this not in Conda is using <pre>pip</pre> is a bit 
-              involved, so let us use the following recommended command in a 
-              Command Window:</p>
-              <pre>conda install -c conda-forge geopandas</pre>
-              <p>This will take a while to run. So, maybe take a break or
-              read about installing packages using pip and installing packages 
-              via Conda:</p>
+              <p>Exit Jupyter Notebook and deactivate myenv2 by entering:</p>
+              <pre>deactivate myenv2</pre>
+              <p>This ends the section on environment management and installing 
+              packages.</p> 
+              <p>Below are key references for installing pacakges using pip and conda:</p>
               <ul>
               <li><a href="https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing">
               https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing</a></li>
               <li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
               https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a></li>
               </ul>
-              <p>Once GeoPandas is installed, then you could look at what has 
-              changed in terms of packages using:</p>
-              <pre>conda list</pre>
-              <p>And comparing the output with last time.</p>
-              <p>Try to run the Jupyter Notebook that failed to run previously 
-              because Geopandas was not available.</p> 
-
-              <p>Download, open in Jupyter, read and run the following notebook:
-              <a href="https://www.geog.leeds.ac.uk/courses/computing/practicals/python/running-python/examples/Example_Notebook.ipynb">
-              Example_Notebook.ipynb</a></p>
-              <p>You are not expected to fully understand the code at this 
-              stage, but hopfully you get an inkling of how it works.</p>
               """);
         
         
