@@ -103,7 +103,7 @@ public class Home extends Page {
               mentally and physically.</p>
               
               <h2>2. Syllabus</h2>
-              <p>General computer programming concepts including:</p>
+              <p>General computer programming concepts and Python including:</p>
               <ul>
               <li>Version control</li>
               """);

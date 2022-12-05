@@ -558,7 +558,7 @@ public class Python extends Page {
               browser tab should open with the Jupyter Notebook Interface.</p>
               <p>From the New Button drop down list of the Jupyter Notebook 
               Interface, select:</p>
-              <pre>python 3 (ipykernel)</pre>
+              <pre>Python 3 (ipykernel)</pre>
               <p>The New Button is highlighted with a red oval in the following 
               image of the interface:</p>
               <img src="jupyter1.png" alt="Jupyter Notebook Interface 1" />
@@ -757,15 +757,13 @@ public class Python extends Page {
               PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a></li>
               </ul>
 
-              <h3>Other GIS software written in Python</3>
+              <h3>Other GIS software written in Python</h3>
               <p>As well as Python APIs for automating GIS software, there are 
               initiatives developing GIS software in Python using just the 
               Python core language (and third party packages). Some of these 
               will be introduced in due course.</p>
               
               <h2>8. Python Packages and Environment Management</h2>
-              
-              <h3>8.1. Packages<>
               <p>Packaging code and delivering it to users via repositories is 
               sensible for numerous reasons. The main reasons are to do with 
               security, availability, and understanding dependencies and 

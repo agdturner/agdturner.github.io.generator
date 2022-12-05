@@ -183,8 +183,8 @@ public class Programming extends Page {
               these different ways might result in the same results or 
               behaviours. In other cases, some ways might be more precise or 
               accurate or result in different behaviours. For some programming 
-              tasks, implementation detail are likley to vary a lot, for others,
-              there only subtle differences are likely.</p>
+              tasks, implementation detail are likley to vary a lot, for others
+              only subtle differences are likely.</p>
               <p>In learning to program, and in programming generally, code 
               review is an important way to transfer skills and knowledge, and 
               to develop good practises and improve code bases.</p>
@@ -194,11 +194,11 @@ public class Programming extends Page {
               this!</p>
               <p>Please also bear in mind that not all code is used to make the 
               world a better place. Take care to think about the trustworthiness 
-              of anything you run, review code before you run it - just in case 
-              the code is nefarious.</p>
+              of anything you run and if approriate, review code before you run 
+              it.</p>
               <p>Please adhere to the terms and conditions of software licenses.
-              Also bear in mind that in academia it is important to keep track 
-              of what we use, and to not plagiarise (present other's work as our 
-              own).</p>""");
+              Also bear in mind that for academic work, it is important to keep 
+              track of what is used so as not to plagiarise (present other's 
+              work as our own).</p>""");
     }
 }
