@@ -865,8 +865,8 @@ public class Python extends Page {
               <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">
               https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment</a>
               </p>
-              <p>Get a list of available environments - enter:</p>
-              <pre>conda env list</p>
+              <p>Get a list of available environments. Enter:</p>
+              <pre>conda env list</pre>
               <p>It should look something like:</p>
               <pre># conda environments:
               #
@@ -878,9 +878,9 @@ public class Python extends Page {
               installed will work. Anyway, let us install a default environment 
               with just the core, enter:</p>
               <pre>conda create --name myenv</pre>
-              <p>Check it is listed:</p>
-              <pre>conda env list</p>
-              <p>You should see myenv in the list, something like:<p>
+              <p>Check it is listed. Enter:</p>
+              <pre>conda env list</pre>
+              <p>Below, myenv is in the list:<p>
               <pre># conda environments:
               #
               base             *  C:\\ProgramData\\Anaconda3
@@ -896,18 +896,19 @@ public class Python extends Page {
               <li><a href="https://geopandas.org/">geopandas</a></li>
               <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
               <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/">PyQt5</a></li>
-              <ul>
+              </ul>
               <p>Install fiona, folium, geopandas and ipykernel into myenv2:</p>
               <pre>conda install -c conda-forge folium fiona geopandas ipykernel</pre>
               <!--
               <pre>conda install -c conda-forge folium fiona=1.8.19 geopandas ipykernel</pre>
               -->
               <p>Install PyQt5 with:</p>
-              <pre>pip install pyqt5<pre>
+              <pre>pip install pyqt5</pre>
               <p>Install myenv into the ipykernel so it is available via the 
               Jupyter Notebook interface.</p>  
               <pre>python -m ipykernel install --user --name=myenv</pre>
-              <p>Download <a href="">Jupyter1.ipynb</a> and save it in a 
+              <p>Download
+              <a href="./Jupyter1.ipynb">Jupyter1.ipynb</a> and save it in a 
               directory and start Jupyter Notebook so it can load the file.</p>
               <p>Enter the following to run Jupyter Notebook:</p>
               <pre>jupyter notebook --NotebookApp.max_buffer_size=1073741824</pre>
@@ -941,11 +942,11 @@ public class Python extends Page {
               <p>This should produce a slippy map with an icon on it that looks 
               something like:</p>
               <img src="jupyter4.png" alt="Jupyter Notebook Interface 4" />
-              <p>From the Jupyter Notebook choose:</p>
+              <p>From the Jupyter Notebook interface choose:</p>
               <pre>new > Python 3 (ipykernel)</pre>
               <p>Try running the same code. Most likely, the folium package is 
-              not installed in your base environment you should get the 
-              following error:</p> 
+              not installed in your base environment and the following error is
+              thrown:</p> 
               <pre>
                ---------------------------------------------------------------------------
                ModuleNotFoundError                       Traceback (most recent call last)
@@ -975,23 +976,30 @@ public class Python extends Page {
               <li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
               https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a></li>
               </ul>
-              """);
-        
-        
-        w.add("""
+
               <h2>9. Recap and Expectations</h2>
               <p>This section of the course introduced some basic Python syntax 
               and considered the evolution of the language. It explored running
               Python code in files, using the REPL environment and help system, 
               Jupyter Notebooks, the IDLE and Spyder IDEs, and the Python 
               environment in QGIS.</p>
-              <p>It introduced loading modules using an import statement, and 
-              accessing functionality via a dot operator. It considered examples 
+              <p>It introduced loading modules using import statements, and 
+              accessing functionality via a dot operator. There are examples 
               of IF Statements and For Loops. (There will be more detail on 
               conditional statements and loops subsequently.)</p>
+              <p>It has introduced reproducibility and versioning, packaging, 
+              managing Python/Conda environments, and installing packages in 
+              them.</p>
+              <p>There are a couple of useful examples of running Python, one 
+              automated some QGIS Desktop processing, another utilised Jupyter 
+              Notebook and browser based display using folium which utilised 
+              Javascript capabilities of the Web browser.</p>
               <p>This has been a broad brush overview which you might like to 
               revisit once you are a bit more familiar with developing Python
-              code and as you think about doing projects.</p> 
+              code and as you think about doing projects.</p>
+              <p>Much of this will be revisited in more detail in the course.
+              Which I am hoping you are starting to enjoy and to realise how 
+              useful it will be to learn more...</p>
               """);
     }
 }
