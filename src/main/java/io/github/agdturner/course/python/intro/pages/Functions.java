@@ -63,10 +63,10 @@ public class Functions extends Page {
 
 
         def divide(x, y):
-    """
     A function to divide x by y.
-
-    Parameters
+   
+\"\"\"
+                  Parameters
     ----------
     x : Fraction
         A decimal number.
@@ -78,7 +78,7 @@ public class Functions extends Page {
     Fraction
         x divided by y
 
-    """
+    \"\"\"
     return x / y
 
 # Set x = 1/2.
@@ -89,7 +89,7 @@ y = Fraction(1, 3)
 print(y)
 # Call the function and print the result.
 print(divide(x, y))
-        """)
+        """);
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");
         w.add("</div>");
