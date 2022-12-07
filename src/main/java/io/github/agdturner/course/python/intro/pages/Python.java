@@ -71,15 +71,16 @@ public class Python extends Page {
                 + "<p>A particularly useful documentation page for beginners is"
                 + " the " + python3ReferenceLink + ".</p>");
         w.add("""
-              <p>On October 4, 2021 Python 3.10 was released. On November 24th, 
-              2022 Python 3.11 was released. On the 4th of December Python 3.12
-              was released. For each incremental releases there are Whatsnew Web 
-              Pages:</p>
+              <p>
+              On October 4, 2021 Python 3.10 was released.
+              On November 24th, 2022 Python 3.11 was released.
+              <!--On <date> Python 3.12 was released.-->
+              For each incremental releases there are Whatsnew Web Pages:</p>
               <ul>""");
         w.add(addWebReference("https://docs.python.org/3/whatsnew",
                 "Python Documentation What's New", "",
                 ""));
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 12; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
                     "Whatsnew Python 3." + i) + "</li>");
@@ -951,43 +952,72 @@ public class Python extends Page {
               </p>
               <p>Get a list of available environments. Enter:</p>
               <pre>conda env list</pre>
-              <p>It should look something like:</p>
+              <p>The list is displayed and should look something like:</p>
               <pre># conda environments:
               #
               base                  *  C:\\ProgramData\\Anaconda3</pre>
               <p>Often when creating an environment, it is for a specific 
-              purpose and only specific packages are installed. It is best to 
-              install packages together as the installer attempts to reolve 
+              purpose and only specific packages are installed. It is advised to
+              install packages together as the installer attempts to resolve 
               conflicts and ensure the versions of the package dependencies 
-              installed will work. Anyway, let us install a default environment 
-              with just the core, enter:</p>
-              <pre>conda create --name myenv</pre>
-              <p>Check it is listed. Enter:</p>
-              <pre>conda env list</pre>
-              <p>Below, myenv is in the list:<p>
-              <pre># conda environments:
-              #
-              base             *  C:\\ProgramData\\Anaconda3
-              myenv               C:\\ProgramData\\Anaconda3\\envs\\myenv</pre>
-              <p>Activate myenv by entering:</p>
-              <pre>conda activate myenv</pre>
+              installed will work together. You are instructed to install a 
+              default environment with just the core of the version of Python 
+              that comes with Anaconda, then install on this environment all the 
+              packages needed for this course. Altogether you need about 2GB of 
+              space in the location where you install the environment. 
+              Installation onto OneDrive is not advised. On University of Leeds 
+              shared computers or on the Windows Virtual Desktop, it is 
+              recommended that you organise to install onto the M:\\ drive e.g.
+              into:
+              """);
+        String envPath = "M:\\" + this.c.courseCode + "\\envs";  
+        w.add(envPath);
+        w.add("<p>Create the directory in which to store the environment.</p>");
+        envPath = envPath + "\\myenv";
+        w.add("<p>Create the environment giving it a name added to the end of "
+                + "the directory path. Enter:</p>");
+        w.add("<pre>conda create -p " + envPath + "</pre>");
+        w.add("<p>The -p option is the option to use a path to get conda to "
+                + "install the environment in a particular location. The path "
+                + "example given here is for Windows if using Linux or MacOS, "
+                + "then the path will be different. By default conda creates "
+                + "environments in a directory called envs located wherever "
+                + "Anaconda is installed."
+                + "Confirm the environment creation by pressing the <y> key "
+                + "when prompted. When the environment creating is complete, "
+                + "which should just take a few seconds. Check the newly "
+                + "created environment is listed. Enter:</p>");
+        w.add("<pre>conda env list</pre>");
+        w.add("<p>You should see something like what is shown below. The "
+                + "details can vary depending on where the environment was "
+                + "installed:<p>");
+        w.add("<pre># conda environments:");
+        w.add("#");
+        w.add("base             *  C:\\ProgramData\\Anaconda3");
+        w.add("myenv               " + envPath + "</pre>");
+        w.add("<p>Conda environments are registered/listed in the .conda "
+                + "directory in your home directory in a file with the name "
+                + "environments.txt</p>");        
+        w.add("<p>Assuming you named your environment myenv, activate it by"
+                + " entering:</p>");
+        w.add("<pre>conda activate " + envPath + "</pre>");
+        w.add("""
               <p>The prompt should change to have "(myenv)" prepended</p>
-              <p>Install the following into myenv using commands provided
-              below:</p>
+              <p>Next step is to install a set of packages including:</p>
               <ul>
-              <li><a href="https://github.com/Toblerity/Fiona">fiona</a></li>
-              <li><a href="https://python-visualization.github.io/folium/">folium</a></li>
-              <li><a href="https://geopandas.org/">geopandas</a></li>
+              <li><a href="https://contextily.readthedocs.io/en/latest/">Contextily</a></li>
+              <li><a href="https://github.com/Toblerity/Fiona">Fiona</a></li>
+              <li><a href="https://python-visualization.github.io/folium/">Folium</a></li>
+              <li><a href="https://geopandas.org/">Geopandas</a></li>
+              <li><a href="https://readthedocs.org/projects/pip/">pip</a></li>
               <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
               <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/">PyQt5</a></li>
               </ul>
-              <p>Install fiona, folium, geopandas and ipykernel into myenv2:</p>
-              <pre>conda install -c conda-forge folium fiona geopandas ipykernel</pre>
-              <!--
-              <pre>conda install -c conda-forge folium fiona=1.8.19 geopandas ipykernel</pre>
-              -->
+              <p>Install these as well as ipykernel and spyder-kernels=2.2. Enter:</p>
+              <pre>conda install -c conda-forge contextily fiona folium geopandas pip pysal ipykernel spyder spyder-kernels=2.2</pre>
               <p>Install PyQt5 with:</p>
               <pre>pip install pyqt5</pre>
+              <>
               <p>Install myenv into the ipykernel so it is available via the 
               Jupyter Notebook interface.</p>  
               <pre>python -m ipykernel install --user --name=myenv</pre>
@@ -1071,21 +1101,26 @@ public class Python extends Page {
               environment in QGIS.</p>
               <p>It introduced loading modules using import statements, and 
               accessing functionality via a dot operator. There are examples 
-              of IF Statements and For Loops. (There will be more detail on 
-              conditional statements and loops subsequently.)</p>
-              <p>It has introduced reproducibility and versioning, packaging, 
-              managing Python/Conda environments, and installing packages in 
+              of IF Statements and For Loops.</p>
+              <p>It introduced reproducibility and versioning, packaging, 
+              managing Python/Conda environments and installing packages in 
               them.</p>
-              <p>There are a couple of useful examples of running Python, one 
-              automated some QGIS Desktop processing, another utilised Jupyter 
-              Notebook and browser based display using folium which utilised 
-              Javascript capabilities of the Web browser.</p>
+              <p>Some example code has been provided. This is quite good code in
+              that there are plentiful comments and it does some things that 
+              are of interest geographically. The example that automated some 
+              QGIS Desktop processing demonstrates how to access functionality 
+              from within QGIS. A thread of practal instructions will build on 
+              this. The Jupyter Notebook based example utilised Javascript 
+              capabilities of the Web browser and leveraged some bespoke Python 
+              GIS tools called fiona and geopandas.</p>
               <p>This has been a broad brush overview which you might like to 
               revisit once you are a bit more familiar with developing Python
               code and as you think about doing projects.</p>
-              <p>Much of this will be revisited in more detail in the course.
-              Which I am hoping you are starting to enjoy and to realise how 
-              useful it will be to learn more...</p>
+              <p>Much of this will be revisited in more detail in due course.
+              You are not expected to remember all the details, but hopefully 
+              you are gaining confidence that you are on a good learning path 
+              and are enjoying the learning journey and are keen to learn 
+              more...</p>
               """);
     }
 }
