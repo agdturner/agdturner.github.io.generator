@@ -61,18 +61,25 @@ public class Python extends Page {
         w.add("<p>The core standard library and interpretters are freely"
                 + " available in source and binary forms for all major"
                 + " platforms from the " + pythonWebsiteLink + ", and may be"
-                + " freely distributed. There are various Python interpretter"
-                + " that read source code written in Python and translates this"
+                + " freely distributed. There are various Python interpretters"
+                + " that read source code written in Python and translate it"
                 + " into machine instructions. We won't concern ourselves with"
-                + " the differences here.</p>"
+                + " the differences in this course.</p>"
                 + "<p>The Python Website contains distributions of and pointers"
                 + " to many Free and Open Source third party Python modules,"
                 + " programs, tools, and additional documentation.</p>"
                 + "<p>A particularly useful documentation page for beginners is"
                 + " the " + python3ReferenceLink + ".</p>");
         w.add("""
-              <p>
-              On October 4, 2021 Python 3.10 was released.
+              <h2>2. Python 3</h2>
+              <p>Python 3 was first released in 2008. Most third party packages 
+              written in Python 2 needed major modifications in order to work as
+              intended or at all in Python 3 environments. For several years 
+              Python 2 and Python 3 were both developed, but eventually in 
+              January 2020 development and maintenance of Python 2 ceased. We 
+              will not look at the differences between Python 2 and Python 3 in 
+              this course and will focus just on Python 3.</p>
+              <p>On October 4, 2021 Python 3.10 was released.
               On November 24th, 2022 Python 3.11 was released.
               <!--On <date> Python 3.12 was released.-->
               For each incremental releases there are Whatsnew Web Pages:</p>
@@ -87,99 +94,40 @@ public class Python extends Page {
         }
         w.add("</ul>");
         w.add("""
-              <p>On Whatsnew Web Pages, changes are marked against Python
-              Enhancement Proposals (PEPs). Each PEP is numbered and 
-              collectively they allow us to look ahead to see what might change
-              and get involved in language development. PEPs have their own 
-              Web site:""");
+              <p>On Whatsnew Web Pages, changes are marked against numbered 
+              Python Enhancement Proposals (PEPs) which allow us to look ahead 
+              to see what might change and get involved in language development. 
+              PEPs have their own Web site:""");
         w.add(addWebReference("https://peps.python.org/",
                 "Python Enhancement Proposal Website",
                 "https://peps.python.org/",
                 ""));
         w.add("""
               </p>
-              <p>For reproducing results and diagnosing issues. It is important 
-              to know exactly which version of Python you are using and what 
-              versions of any third party modules you are using.</p>
-              <p>Python underwent a major revision from Python 2 to Python 3 in
-              around 2008. There were changes that were not all backward 
-              compatible. As a result a lot of Python 2 code needed modifying
-              (refactoring) in order to work as intended or at all in Python 3 
-              environments. Tools were written to help refactor code, but 
-              nontheless, work was needed to make the change. In a way it gave 
-              an incentive to improve code sustainability and the writing of 
-              tests and what got left behind was perhpas of lesser use, but 
-              anyway this was a trying time for the community. Python 2 is no 
-              longer supported in that Python Software Foundation Python 
-              language developers and supporters are no longer responding to 
-              issues reported against Python 2. Python 2 code may still be in 
-              use. We will not look at the differences in this course. It is 
-              unclear whether Python 4 will materialise although the Python 
-              developers have been considering another major change.</p>
-              <p>As Python evolves, some ways of doing things are gracefully 
-              retired (deprecated) as opposed to suddenly changing without 
-              warning. So, deprecation gives advanced notice of retiring 
-              features of a language allowing code developers and maintainers 
-              to plan ahead. The can do the same with code in the packages they
-              develop which often change at a much faster pace than the
-              language itself. Deprecation is a common part of modern high level
-              languages. In low level languages like
-              <a href="https://en.wikipedia.org/wiki/C_(programming_language)">
-              C</a> which are much simpler, there is rarely deprecation in the 
-              core of the language.
-              </p>
-              <p>It is important to be aware of the evolving nature of computer 
-              programming languages. New features of Python 3.11 will not work 
-              in Python 3.10. It is more likely that code written in Python 3.10
-              syntax will work in Python 3.11 environments, but that is not 
-              always the case.</p>
+              <p>New features of say Python 3.11 will not work in Python 3.10. 
+              Code written and tested with a Python 3.10 interpretter is not 
+              guaranteed to work in a Python 3.11.</p>              
+              <p>So, for reproducing results and diagnosing issues. It is 
+              important to know and sometimes provide information about exactly
+              which version of: Python you have tested with; and, third party 
+              dependecies are used.</p>
+              
               <p>As well as the core of the Python language - the language 
               specification and a reference implementation of an interpretter
               (<a href="https://github.com/python/cpython">cpython</a>), 
               there is a vast ecosystem of third party packages that extend the 
-              language, and other iterpretters written in other languages. We 
-              will not concern ourselves with Python interpretters, but it is 
-              important to know that Python typically leverages other languages 
-              to interpret what is written in Python syntax into more machine 
-              like instructions.</p>
+              language. There are also other interpretters written in other 
+              languages, but we will not concern ourselves with these.</p>
+
               <p>Many third party Python packages are useful and many are 
-              available via 
-              <a href="https://pypi.org/">PyPI</a> - a Python Package Index -
-              a repository of third party Python packages. In Section 8, there 
-              is an exercise that involves installing Python packages from PyPI 
-              and that links to details about how to package code and make it 
-              available via PyPI.</p>
+              available via the
+              <a href="https://pypi.org/">PyPI</a> Python Package Index.</p>
+              <p>In Section 9, there is an exercise that involves installing 
+              Python packages from PyPI and that links to details about how to 
+              package code and make it available via PyPI.</p>
               <p>Most of the additions to the core Python language used in this 
-              course are part of Anaconda which we will learn more about and 
-              start using shortly...</p>
-              <p>First, some brief words of caution and wisdom. The quality code 
-              varies. Most code is written for a particular reason or use case 
-              scenario, so when it is reused for other things it is not 
-              guaranteed to work although often there is some sureity. The only 
-              way to be sure is to test.</p>
-              <p>Running code without inspecting or understanding it is risky. 
-              Think critically about where code is coming from. Some 
-              professionally developed code does not set a good example,
-              especially in terms of being rich in comments that make it easier 
-              to read and understand. Some professionally developed code or code 
-              posted on forums might look quite different to code you are 
-              encouraged to produce (with less checking/testing code and 
-              fewer comments.) Programming well is not coding that makes how 
-              something works difficult to comprehend, but coding that makes 
-              comprehension easy!
-              </p>
-              <p>It is quite straightforward to write malicious software and 
-              code that could cause data breaches and data loss, and damage 
-              computer systems - perhaps leaving them more open to further 
-              attack. However, doing this is bad, so please do not be tempted,
-              and try not to become a victim. Computers, computer programming 
-              languages, the packages that effectively extend them, and the 
-              software developed for end users that have little or no knowledge 
-              of the underlying language are part of modern life. So, to adapt a 
-              phrase of the great 
-              <a href="https://en.wikipedia.org/wiki/Helen_Keller">
-              Helen Keller</a> - programming is a daring adventure or nothing at
-              all!
+              course are distributed as part of Anaconda which we will learn 
+              more about and start using shortly...</p>
               """);
         
         String python3DocsHome = Environment.URL_PYTHON_DOCS + "3/";
@@ -195,47 +143,38 @@ public class Python extends Page {
               through that learning material too.</p>
               <p>The following sections of this Web page comprise practical 
               exercises to get you running Python code in different ways. All 
-              these ways are useful to know about in general and for this 
-              course.</p>
+              these ways are useful to know about.</p>
               
-              <h2>2. Running Python from the Command Prompt</h2>
+              <h2>3. Running Python from the Command Prompt</h2>
               <p>Python instructions also known as commands or statements, can 
-              typically be entered at a Terminal or Command Window sometimes 
-              and what we will refer to as the Command Prompt. They can also be
-              passed in files to be interpretted as explained in Section 5.</p>
-              <p>Check if you have a version of Python on your path. At the 
-              Command Prompt enter:</p>
+              typically be entered in a Terminal or Command Window. They can 
+              also be passed in files to be interpretted as explained in Section 
+              6.</p>
+              <p>Check if you have a version of Python on your path. In a 
+              Terminal or Command Window enter the following at the prompt:</p>
               <pre>python --version</pre>
               <p>If the command cannot be found, then this means that the system 
               or some other software installed is not depending on a version of 
               Python. If a version of Python is already on your system then 
-              the version of Python should be reported. The plan is not to 
-              interfere with any version of Python already on your system.
-              Checking is a good idea before installing Anaconda as one of the 
-              install options might change the default Python version and 
-              result in unexpected system behaviour. It is also good to know 
-              about other existing Python versions on your system. So, try to 
-              keep this in mind.</p>
-              <p>Once Anaconda is installed, the instructions in these course 
-              materials will direct you to use the Anaconda Prompt rather than 
-              the generic Command Prompt.</p>
-              <p>There are one or more version of Anaconda available to 
-              University of Leeds staff and students via AppsAnywhere on it's 
-              Academic Windows Virtual Desktop which can be accessed via a 
-              Web browser and the following URL:
-              <a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>.
-              <a href="https://www.anaconda.com/">Anaconda</a> is a data science 
-              platform. If you want, download and install it choosing the 
-              default options. Typically this will install into your user home 
-              directory if you do not have permission to install elsewhere. This 
-              option can be changed if your home directory does not have 
-              sufficient space.</p>
+              the version of Python should be reported.</p>
+              <p><a href="https://www.anaconda.com/">Anaconda</a> is a data 
+              science platform. If you want, download and install it choosing 
+              the default options so as not to interfere with any version of
+              python already installed on your system. Typically this will by
+              default install into your user home directory if you do not have 
+              permission to install elsewhere.</p>
+              <p>Anaconda is also available at the University of Leeds via the 
+              Windows Virtual Desktop which can be accessed via the following
+              URL:<p>
+              <p><a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>
+              </p>
+              <p>Once logged in load Anaconda via AppsAnywhere.</p>
+                            
+              <h3>3.1. Python REPL</h3>
               
-              <h3>2.1. Python REPL</h3>
-              
-              <h4>2.1.1. Hello World</h4>
-              <p>From the Anaconda Install open the Anaconda Prompt. It should 
-              look something like:</p>
+              <h4>3.1.1. Hello World</h4>
+              <p>Open the Anaconda Prompt. It should provide a prompt that looks
+              something like:</p>
               <pre>(base) C:\\></pre>
               <p>"(base)" is the activated Python environment and "C:\" is the 
               current directory. Enter:</p>
@@ -255,7 +194,7 @@ public class Python extends Page {
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
               
-              <h4>2.1.2. Numberical calculations</h4>
+              <h4>3.1.2. Numberical calculations</h4>
               <p>The Python REPL environment can act as a basic calculator. 
               Enter:</p>
               <pre>2 + 3</pre>
@@ -279,7 +218,7 @@ public class Python extends Page {
               ZeroDivisionError: division by zero
               </pre>
               
-              <h3>2.2. Loading Modules and Using Functions</h3>
+              <h3>3.2. Loading Modules and Using Functions</h3>
               <p>Mathematical operators can also be accessed via functions that
               reside in the Operator Module.</p>
               <p>Enter:</p>
@@ -340,7 +279,7 @@ public class Python extends Page {
               Python.</p>
               <p>Try using some other functions from the Operator Module.</p>
 
-              <h3>2.3. The Help System</h3>
+              <h3>3.3. The Help System</h3>
               <p>Enter:</p>
               <pre>help(operator.add)</pre>
               <p>This prints out some information about how to use the Operator
@@ -374,11 +313,11 @@ public class Python extends Page {
               <p>Before learning how to run a file of Python commands, let us 
               consider a bit more basic Python syntax.</p>
               
-              <h2>3. Basic Python Syntax</h3>
+              <h2>4. Basic Python Syntax</h3>
               <p>The syntax of a computer programming language are the rules 
               about how it must be written.</p>
               
-              <h3>3.1. Syntax Errors</h3>
+              <h3>4.1. Syntax Errors</h3>
               <p>If a statement or expression is syntactically incorrect, and 
               the Python interpretter attempts to interpret it, a syntax error 
               is thrown. (N.B. The Divide by Zero Error we encountered earlier 
@@ -404,7 +343,7 @@ public class Python extends Page {
               lot of learning to code is about interpretting error messages of 
               one kind or another.</p>
               
-              <h3>3.2. Statements</h3>
+              <h3>4.2. Statements</h3>
               <p>Multiple statements on a single line are separated with 
               semicolons (;). At the Python Prompt enter:</p>
               <pre>y=1;x=y;print(x)</pre>
@@ -416,7 +355,7 @@ public class Python extends Page {
               <p>Python does not have a special symbol to end a statement like 
               many other languages do.</p>
               
-              <h3>3.3. Comments</h3>
+              <h3>4.3. Comments</h3>
               <p>The # symbol is the start of a comment.</p>
               <pre>
               # This entire line is a comment
@@ -446,7 +385,7 @@ public class Python extends Page {
               shortly. Sometimes in source code comments, it is good to refer to
               other information sources in comments.</p>
               
-              <h3>3.4. Code Layout</h3>
+              <h3>4.4. Code Layout</h3>
               <p>Blank lines are allowed and can help structure code into 
               blocks. It is good practice to start each code block with a
               comment that outlines what the code block is for. For example:
@@ -489,7 +428,7 @@ public class Python extends Page {
               help(print)
               </code></pre>
               
-              <h3>3.5. Delimiters, Literals and Operators</h3>
+              <h3>4.5. Delimiters, Literals and Operators</h3>
               <p>Delimiters separate bits of code, like blank lines and the
               colon (:) in the If Statement example above. Some delimeters also 
               act as operators. Here is a list from the Python Reference 
@@ -511,7 +450,7 @@ public class Python extends Page {
               <p>Operators are sequences of symbols that are shorthand for 
               Operator Module functions (e.g. +, -, *, /, %)</p>
               
-              <h3>3.6. Identifiers and Keywords</h3>
+              <h3>4.6. Identifiers and Keywords</h3>
               <p>Identifiers are names of variables, modules, functions and 
               classes.
               </p>
@@ -540,7 +479,7 @@ public class Python extends Page {
         w.add("""
               </p>
               
-              <h4>3.7. Style</h4>
+              <h4>4.7. Style</h4>
               <p>The following code block is an If Statement which has an 
               Else Condition. This can be read as follows: If the variable x
               is greater than the variable y, then x is printed, otherwise y is
@@ -573,7 +512,7 @@ public class Python extends Page {
               typically be styled as above.
               </p>
               
-              <h2>4. Running a file of Python commands</h2>
+              <h2>5. Running a file of Python commands</h2>
               <p>Create a new ASCII text file, add to it the following line:</p>
               <pre>print("Hello World")</pre>
               <p>Save the file with the name "HelloWorld.py". Open a Command 
@@ -599,7 +538,7 @@ public class Python extends Page {
               base of the file system) or relative (from the current 
               directory).</p>
               
-              <h2>5. Jupyter Notebook</h2>
+              <h2>6. Jupyter Notebook</h2>
               <p>Jupyter Notebook, is a REPL based system that embeds code into 
               a document containing other information: text, images, data, and 
               links. Code is entered in cells which when run present outputs 
@@ -650,7 +589,7 @@ public class Python extends Page {
               not included in the Python environment provided currently in a 
               default Anaconda install.</p>
               
-              <h2>6. Integrated Development Environments</h2>
+              <h2>7. Integrated Development Environments</h2>
               
               <p><a href="https://en.wikipedia.org/wiki/Integrated_development_environment">
               Integrated Development Environment</a>s (IDEs) are software tools 
@@ -658,7 +597,7 @@ public class Python extends Page {
               section introduces IDLE and Spyder - IDEs that come with Anaconda.
               </p>
               
-              <h3>6.1. IDLE</h3>
+              <h3>7.1. IDLE</h3>
               <p>The core Python language comes with IDLE - an Integrated 
               Development and Learning Environment. IDLE has an editor window,
               as well as a console window for REPL commands and for output from
@@ -685,7 +624,7 @@ public class Python extends Page {
               <p>IDLE is an Integrated Development Environment (IDE).</p>
               <p>Close down IDLE.<p>
               
-              <h3>6.2. Spyder</h3>
+              <h3>7.2. Spyder</h3>
               <p>Spyder (the Scientific PYthon Development EnviRonment) is a 
               more sophisticated and IDE that comes with Anaconda and can be 
               downloaded from the 
@@ -718,7 +657,7 @@ public class Python extends Page {
               <p><a href="https://docs.spyder-ide.org/current/index.html">
               Spyder Documentation</a></p>
               
-              <h3>6.3 Other IDEs</h3>
+              <h3>7.3 Other IDEs</h3>
               <p>There are other IDEs that support Python code development. If 
               you are already familiar with an IDE that supports Python code 
               development, then you might like to give it a try. Other IDEs that 
@@ -733,7 +672,7 @@ public class Python extends Page {
               .
               </p>
               
-              <h2>7. Python and GIS Software</h2>
+              <h2>8. Python and GIS Software</h2>
               <p>Geographical Information System (GIS) software are used to 
               create, manage, process, model, visualise and serve geographical 
               data and information. Some GIS software allows users to automate 
@@ -747,7 +686,7 @@ public class Python extends Page {
               Section 7.2. considers some other open source GIS software written 
               in Python.</p>
               
-              <h3>QGIS Desktop</h3>
+              <h3>8.1. QGIS Desktop</h3>
               <p><a href="https://www.qgis.org/">QGIS</a> software, sometimes 
               called Quantum GIS, is widely used both in and outwith academia. 
               There are both server and client software mostly written in 
@@ -822,13 +761,13 @@ public class Python extends Page {
               PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a></li>
               </ul>
 
-              <h3>Other GIS software written in Python</h3>
+              <h3>8.2. Other GIS software written in Python</h3>
               <p>As well as Python APIs for automating GIS software, there are 
               initiatives developing GIS software in Python using just the 
               Python core language (and third party packages). Some of these 
               will be introduced in due course.</p>
               
-              <h2>8. Python Packages and Environment Management</h2>
+              <h2>9. Python Packages and Environment Management</h2>
               <p>Packaging code and delivering it to users via repositories is 
               sensible for numerous reasons. The main reasons are to do with 
               security, availability, and understanding dependencies and 
@@ -927,7 +866,7 @@ public class Python extends Page {
               for Conda:
               <a href="https://docs.conda.io/">https://docs.conda.io/</a>
               </p>
-              <p>Open an Anaonda Prompt, change to a directory where you can 
+              <p>Open an Anaconda Prompt, change to a directory where you can 
               write files and enter the following command to create a list of
               Python packages available in the Python environment:</p>
               <pre>pip list > piplist.txt</pre>
@@ -970,7 +909,7 @@ public class Python extends Page {
               recommended that you organise to install onto the M:\\ drive e.g.
               into:
               """);
-        String envPath = "M:\\" + this.c.courseCode + "\\envs";  
+        String envPath = "M:\\" + c.getCourseCode1() + "\\envs";  
         w.add(envPath);
         w.add("<p>Create the directory in which to store the environment.</p>");
         envPath = envPath + "\\myenv";
@@ -1093,34 +1032,31 @@ public class Python extends Page {
               https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a></li>
               </ul>
 
-              <h2>9. Recap and Expectations</h2>
+              <h2>10. Recap and Expectations</h2>
               <p>This section of the course introduced some basic Python syntax 
               and considered the evolution of the language. It explored running
-              Python code in files, using the REPL environment and help system, 
-              Jupyter Notebooks, the IDLE and Spyder IDEs, and the Python 
+              Python code: using the REPL environment and help system; in files;  
+              Jupyter Notebooks; the IDLE and Spyder IDEs; and the Python 
               environment in QGIS.</p>
               <p>It introduced loading modules using import statements, and 
-              accessing functionality via a dot operator. There are examples 
-              of IF Statements and For Loops.</p>
-              <p>It introduced reproducibility and versioning, packaging, 
-              managing Python/Conda environments and installing packages in 
-              them.</p>
+              accessing functionality via a dot operator. There are example 
+              IF Statements and For Loops which we will learn about again 
+              shortly.</p>
+              <p>Versioning and packaging were introduced, as was managing 
+              Python/Conda environments and installing packages in them.</p>
               <p>Some example code has been provided. This is quite good code in
-              that there are plentiful comments and it does some things that 
-              are of interest geographically. The example that automated some 
-              QGIS Desktop processing demonstrates how to access functionality 
-              from within QGIS. A thread of practal instructions will build on 
-              this. The Jupyter Notebook based example utilised Javascript 
-              capabilities of the Web browser and leveraged some bespoke Python 
-              GIS tools called fiona and geopandas.</p>
+              that there are plentiful comments, and the code also does some 
+              interesting things: The code that automated some QGIS Desktop 
+              processing demonstrates how to access functionality from within 
+              QGIS. The Jupyter Notebook based example utilised Javascript 
+              capabilities of the Web browser and leveraged some widely used 
+              Python GIS tools.</p>
               <p>This has been a broad brush overview which you might like to 
               revisit once you are a bit more familiar with developing Python
               code and as you think about doing projects.</p>
-              <p>Much of this will be revisited in more detail in due course.
-              You are not expected to remember all the details, but hopefully 
-              you are gaining confidence that you are on a good learning path 
-              and are enjoying the learning journey and are keen to learn 
-              more...</p>
+              <p>You are not expected to remember all the details, but hopefully 
+              you are gaining confidence that you are on a good learning path, 
+              and you are enjoying the learning journey.</p>
               """);
     }
 }

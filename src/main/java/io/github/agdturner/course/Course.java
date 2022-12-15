@@ -22,6 +22,7 @@ import io.github.agdturner.course.python.intro.pages.Home;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -40,9 +41,9 @@ public class Course {
     public final String courseType;
 
     /**
-     * For storing the course Code e.g. GEOG5990.
+     * For storing the course number e.g. 5003, 5990, 5995.
      */
-    public final String courseCode;
+    public final int courseNumber;
 
     /**
      * For storing the course Name. e.g. "Programming for Geographical
@@ -55,6 +56,12 @@ public class Course {
      */
     public final Path courseDir;
 
+    /**
+     * For storing the academic year. 202223 is the academic year that begins in 
+     * 2022 and ends in 2023.
+     */
+    public final String academicYear;
+    
     /**
      * For storing the course Home Page.
      */
@@ -128,12 +135,13 @@ public class Course {
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
      */
-    public Course(String courseType, String courseCode, String courseName) {
+    public Course(String courseType, int courseNumber, String courseName, String academicYear) {
         this.courseType = courseType;
-        this.courseCode = courseCode;
+        this.courseNumber = courseNumber;
         this.courseName = courseName;
+        this.academicYear = academicYear;
         this.courseDir = Paths.get(Environment.DIR_COURSES.toString(),
-                courseType, courseCode);
+                courseType, getCourseCode1());
         coursePages = new ArrayList<>();
         pageIDs = new TreeSet<>();
         pageIDToName = new HashMap<>();
@@ -149,6 +157,14 @@ public class Course {
         sectionIDToSectionName = new TreeMap<>();
     }
 
+    public final String getCourseCode1() {
+        return "GEOG" + courseNumber; 
+    }
+
+    public String getCourseCode2() {
+        return "GEOG-" + courseNumber + "M"; 
+    }
+    
     /**
      * For adding a General Page to the Course.
      *

@@ -35,10 +35,11 @@ public class GEOG5990M extends PythonIntroCourse {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public GEOG5990M(String courseCode, String courseName,
-            boolean hasAssignments, int assignment1Weighting, int assignment2Weighting) {
-        super(courseCode, courseName, hasAssignments, assignment1Weighting, 
-                assignment2Weighting);
+    public GEOG5990M(int courseNumber, String courseName, String academicYear,
+            boolean hasAssignments, int assignment1Weighting, 
+            int assignment2Weighting) {
+        super(courseNumber, courseName, academicYear, hasAssignments, 
+                assignment1Weighting, assignment2Weighting);
     }
 
     /**
@@ -49,11 +50,11 @@ public class GEOG5990M extends PythonIntroCourse {
     public static void main(String[] args) {
         String courseName = "Programming for Geographical Information Analysis:"
                 + " Core Skills";
-        String courseCode = "GEOG5990M";
+        int courseNumber = 5990;
         int assignment1Weighting = 20;
         int assignment2Weighting = 80;
         GEOG5990M c = new GEOG5990M(
-                courseCode, courseName, true, assignment1Weighting,
+                courseNumber, courseName,  "202223", true, assignment1Weighting,
                 assignment2Weighting);
     }
 

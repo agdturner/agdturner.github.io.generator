@@ -40,6 +40,7 @@ import io.github.agdturner.course.python.intro.pages.Variables;
 import io.github.agdturner.course.python.intro.pages.Web;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -72,15 +73,17 @@ public abstract class PythonIntroCourse extends Course {
     /**
      * Creates a new instance.
      *
-     * @param courseCode What {@link #courseCode} is set to.
+     * @param courseNumber What {@link #courseNumber} is set to.
      * @param courseName What {@link #courseName} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public PythonIntroCourse(String courseCode, String courseName,
-            boolean hasAssignments, int assignment1Weighting,
+    public PythonIntroCourse(int courseNumber, String courseName,
+            String academicYear,
+            boolean hasAssignments,  
+            int assignment1Weighting,
             int assignment2Weighting) {
-        super(COURSE_TYPE, courseCode, courseName);
+        super(COURSE_TYPE, courseNumber, courseName, academicYear);
         this.hasAssignments = hasAssignments;
         this.assignment1Weighting = assignment1Weighting;
         this.assignment2Weighting = assignment2Weighting;
