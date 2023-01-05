@@ -48,10 +48,10 @@ public class Home extends Page {
               <h2>1. Introduction</h2>
               <p>Welcome to the course website.</p>
               """);
-//        w.add("<p>The timetable for the course is linked from the");
-//        w.add("<a href=\"" + moduleCataloguePage + "\">"
-//                + "University of Leeds " + c.getCourseCode1() 
-//                + " Module Catalogue Page</a></p>");
+        w.add("<p>The timetable for the course is linked from the");
+        w.add("<a href=\"" + moduleCataloguePage + "\">"
+                + "University of Leeds " + c.getCourseCode1() 
+                + " Module Catalogue Page</a>.</p>");
 //        w.add("These Web pages are");
 //        w.add(addWikipediaReference("Open_educational_resources",
 //                "Open Educational Resources"));
@@ -59,14 +59,6 @@ public class Home extends Page {
 //        w.add(Web_ContentWriter.getLink(
 //                "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
 //                "Andy Turner"));
-//        w.add("to introduce programming concepts and the Python programming "
-//                + "language for geography to students based at ");
-//        w.add(Web_ContentWriter.getLink("https://www.leeds.ac.uk",
-//                "The University of Leeds") + " on the module " );
-//        w.add("" + c.getCourseCode2() + " some details of which including the "
-//                + "timetable can be found via:</p>");
-//        w.add("<p><a href=\"" + moduleCataloguePage + "\">" 
-//                + moduleCataloguePage + "</a></p>");
         w.add("""
               <p>At the top of each page is a Style Button to change between 
               Light Mode and Dark Mode. In Light Mode, the background of pages 
