@@ -195,6 +195,7 @@ public class Programming extends Page {
               licenses. Also keep in mind that for academic work, it is 
               important to keep track of what you consult and avoid plagiarism 
               (presenting other's work as your own).</p>
+              </div>
               """);
     }
 }

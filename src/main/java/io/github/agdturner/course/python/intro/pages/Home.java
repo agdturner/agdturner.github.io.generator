@@ -196,5 +196,6 @@ public class Home extends Page {
                     + pic.assignment2Weighting + "%.</li>");
             w.add("</ol>");
         }
+        w.add("</div>");
     }
 }

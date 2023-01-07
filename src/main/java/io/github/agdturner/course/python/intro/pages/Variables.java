@@ -249,10 +249,10 @@ public class Variables extends Page {
               <pre><code class=\"language-python\">x = 1
               def f1 ():
                   x = 2
-                  print("b", x) # Prints: b 2     
-              print("a", x) # Prints: a 1
+                  print("b", x)     
+              print("a", x)
               f1()
-              print("c", x) # Prints: c 1</code></pre>
+              print("c", x)</code></pre>
               <p>The output should be:</p>
               <pre>a 1
               b 2
@@ -271,10 +271,10 @@ public class Variables extends Page {
               def f1 ():
                   global x
                   x = 2
-                  print("b", x) # Prints: b 2              
-              print("a", x) # Prints: a 1
+                  print("b", x)           
+              print("a", x)
               f1()
-              print("c", x) # Prints: c 1</code></pre>
+              print("c", x)</code></pre>
               <p>The output should be:</p>
               <pre>a 1
               b 2
@@ -286,22 +286,7 @@ public class Variables extends Page {
               no return statement. We will learn about documenting functions
               later in the course.
               """);
-        
-        w.add("<p></p>");
-
-        w.add("<pre><code class=\"language-python\">");
-        w.add("for a in range(0, 10) :\n"
-                + "    print (a)\n"
-                + "    print (\"done\")");
-        w.add("</code></pre>");
-
-        w.add("<p></p>");
-        w.add("<p></p>");
-        w.add("<p></p>");
-        w.add("<p>The following commands allow us to use spyder with a custom"
-                + "environment, but this swells the environment to about 2GB in "
-                + "size.</p>"
-                + "<pre>conda install -c conda-forge spyder-kernels=2.2</pre></p>");
+        w.add("</div>");
 
     }
 }
