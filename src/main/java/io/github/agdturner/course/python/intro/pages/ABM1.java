@@ -235,11 +235,28 @@ public class ABM1 extends Page {
               <p>If you manage to develop the code and get it running and 
               producing the correct answer, then great. Don't worry if you 
               didn't get it working but gave it a try. The start of the next 
-              practical in this series begins with a recap...</p>
+              practical in this series begins with a recap. Before moving on 
+              though, let's review the code and make a further change:</p>
+              <ul>
+              <li>There is a lot of repetition in the code, in that there are 
+              sections of code doing similar things.</li>
+              <li>The code is not very agent based it is simply coordinates and 
+              no behaviour.</li>
+              <li>The space the coordinates are currently moving about in is 
+              unbounded, which may or may not be appropriate.</li>
+              <li>The coordinates made initially start in the same place and 
+              as there is only one move each, they are not likely to be very 
+              different after this.</li>
+              </ul>
+              <p>As a final challenge for this practical, change your 
+              coordinate initialisation to randomly intialise the coordinates to 
+              have values in the range [0, 99] using the function randint() from 
+              the random module. Take time to comment your code so you can 
+              understand it later.</p>
               
-              <h2>5. Synchronize to GitHub</h2>
-              <p>As a final step add and commit to your local git repository and 
-              assuming you are using GitHub - push your changes to GitHub.</p>
+              <h2>5. Commit to your code repository</h2>
+              <p>Add and commit to your local git repository and assuming you 
+              are using GitHub - push your changes to GitHub.</p>
               """);
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");

@@ -57,9 +57,9 @@ public class Containers extends Page {
               when we come to use them in practise when developing our basic
               ABM code.</p>
               
-              <h2>3. Sequences, Tuples and Ranges</h2>
+              <h2>3. Sequences, Tuples, Ranges, Lists</h2>
               
-              <h3>Sequences</h3>
+              <h3>3.1. Sequences</h3>
               <p>A list is a sequence as is a Byte and a String. A Byte in 
               Python is a sequence of eight zeros and ones which can represent 
               the integers between 0 and 255. We do not use Bytes much in this 
@@ -107,7 +107,7 @@ public class Containers extends Page {
               <p>Search and replace is a common String operation as is finding 
               out if a string starts or ends with a particular String
               
-              <h3>Tuples</h3>
+              <h3>3.2. Tuples</h3>
               A Tuple is also a sequence. Tuple elements (items) are separated 
               with commas. An empty tuple can be made using parentheses. Tuples 
               can be added to and nested. Like Strings, Tuples are immutable in 
@@ -123,7 +123,7 @@ public class Containers extends Page {
               <pre>>>> a = ()
               >>> print(len(a)) # Print the length of a
               0
-              >>> singleton = 'hello', # <-- note trailing comma
+              >>> singleton = 'hello', # <-- Note the trailing comma.
               >>> print(len(singleton)) # Print the length of singleton
               1
               >>> b = (1, "two", 4) # Pack 3 things into b
@@ -139,41 +139,47 @@ public class Containers extends Page {
               <p>Consider the following code snippet which generates part of a 
               <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
               Fibonacci series</a> of Integers:</p>
-              <pre><code class="language-python"># Fibonacci series - the sum of two elements defines the next
+              <pre><code class="language-python"># Fibonacci series - the sum of the last two numbers in a sequence defines the next
               a, b = 0, 1
               print(a)
               while b < 10:
                   print(b)
                   a, b = b, a+b
-              print(b)<code></pre>
+              print(b)</code></pre>
               <p>The While Statement is a loop with an expression that is 
               evaluated each time around the loop. While the expression (b < 10)
               evaluates to True the loop continues to run, when it evaluates 
               to False, the program continues by executing the next line after 
               the loop.</p>
               
-              <h3>
+              <h3>3.3. Ranges</h3>
               <p>Ranges are a special type of immutable sequence. They are 
               created as follows:
-              <pre><code class="language-python">range(start, stop, step) # start and step are optional and default to 0 and 1 repectively<code></pre>
-              <p>start, stop and step should be Integers. The range function 
-              generates numbers up to but not including stop, for example:</p>
-              <pre><code class="language-python">range(4) # generates 0,1,2,3
-              range(2,8,2) # generates 2,4,6
-              range(0,-5,-1) # generates 0,-1,-2,-3,-4<pre><code></pre>
-              <p>Another way to create a tuple is to use the tuple constructor 
-              giving this an argument which is a sequence or producer of a 
-              sequence like range:</p>
+              <pre><code class="language-python">range(start, stop, step) # start and step are optional and default to 0 and 1 repectively</code></pre>
+              <p>The parameters: start, stop and step should be Integers. The 
+              range function generates numbers up to but not including stop, 
+              for example:</p>
+              <pre><code class="language-python">r = range(4) # generates 0,1,2,3
+              print(r)
+              r = range(2,8,2) # generates 2,4,6
+              print(r)
+              r = range(0,-5,-1) # generates 0,-1,-2,-3,-4
+              print(r)</pre></code>
+              <p>Try the code for yourself and have a play around. See if you 
+              can generate the sequence: -10, -5, 0, 5, 10.</p>
+              <p>Another way to create a Tuple is to use the Tuple constructor 
+              tuple() giving this an argument which is a sequence or producer of
+              a sequence like range:</p>
               <code class="language-python">a = tuple(range(5))
               print(a)
-              type(a)<code></pre>
+              type(a)</code></pre>
               <p>Produces:</p>
               <pre>(0,1,2,3,4)
               <class 'range'></pre>
               <p>Note that simply assigning a label does not work, the 
               constructor has to be used:</p>
               <code class="language-python">a = range(5)
-              print(a)<code></pre>
+              print(a)</code></pre>
               <p>Produces:</p>
               <pre>'range(0,5)'</pre>
               <p>There are functions that work with sequences such as min() and 
@@ -183,16 +189,16 @@ public class Containers extends Page {
               parts of the sequence. For a sequence of Boolean values (True or 
               False) the function any() will return True if any of the items in 
               the sequence are True.</p>
-              <code class="language-python">a = (1, 6, 9, 0, 6)
+              <pre><code class="language-python">a = (1, 6, 9, 0, 6)
               print(min(a))
               print(max(a))
-              print(a.index(6,0,4)) # Print the first index of item equal to 6 at or after index 0 and before index 4<code></pre>
+              print(a.index(6,0,4)) # Print the first index of item equal to 6 at or after index 0 and before index 4
               print(a.count(6)) # Print the count of items equal to 6 in a.
               b = (True, False)
               print(any(b)) # Print if any of the items in b are True.</code></pre>
               <p>Again copy this code into a file and have a play around.</p>
               
-              <h2>3. Lists</h2>
+              <h3>3.4. Lists</h3>
               <p>We have already come across lists which are commonly used in 
               Python. They are essentially the mutable form of tuples. Lists 
               have an order, different types of thing can be stored in them, 
@@ -224,7 +230,7 @@ public class Containers extends Page {
               a[:2] # First two values.
               a[-2:] # Last two values.</pre>
               <p>Slices can be used with mutable sequences like lists for 
-              assignment as well. Consider the following two examples:</p>
+              assignment. Consider the following two examples:</p>
               <pre>>>> a = [0,1,2,3,4]
               >>> b = [10,20,30]
               >>> a[1:3] = b
@@ -244,38 +250,38 @@ public class Containers extends Page {
               >>> b = [10,20,30,40,50]
               >>> c = zip(a,b)
               >>> d = list(c)
-              >>> d
+              >>> print(d)
               [(1,10),(2,20),(3,30),(4,40),(5,50)]</pre>
-              <p>This has varous uses which we will come onto a bit later...</p>
+              <p>The zip() function pairs up the values by index. If the 
+              sequences have different lengths then the paired up list is the 
+              length of the shorter sequence and does not contain the end of the 
+              longer sequence.</p>
               <p>A final thing on lists for the time being is that command line 
               arguments are a list in Python. So, when a Python program is run 
-              at the command line, you can pass information into it. Indeed, 
-              when running a Python program from the command line, this is done.
-              For instance consider:</p>
-              <pre>python helloworld.py</pre>
-              <p>This command passes the filename helloworld.py to the Python
+              from the command line, information can be passed in. For instance 
+              consider:</p>
+              <pre>python HelloWorld.py</pre>
+              <p>This command passes the filename HelloWorld.py to the Python
               interpretter which then loads the file of commands to execute. 
-              More elements can be passed into a program in this way and these 
-              elements are called "command line arguments". They are typically 
-              used to pass some key parameters to a program so the program can 
-              use these. In this way software can be configured and run in 
-              different ways without having to modify the code.</p>
-              <p>A Python program can record command line arguments. The first 
-              argument is the main program file to be run, but the arguments 
-              following this and separated by a space are provided in a list 
-              that can be accessed from within the program. For example, for:</p>
+              More command line arguments can be passed in this way, with each 
+              one separated by a space. In this way software can be configured 
+              and run in different ways without having to modify the code.</p>
+              <p>A Python program recieves the command line arguments as a list. 
+              The first item in the list is the name o the program file to be 
+              run. For example, the following is a python run command that 
+              passes in four arguments:</p>
               <pre>python model.py arg1 arg2 arg3</pre>
               <p>Inside the program, these are made available in a list called 
-              sys.argv where argv[0] is the script name (model.py in this case),
-              after this, argv[1] is a String representation of arg1, argv[2] 
-              is a String representation of arg2, and so on...</p>
+              sys.argv, where sys.argv[0] is "model.py", sys.argv[1] is "arg1", 
+              sys.argv[2] is "arg2", and so on...</p>
 
-              <h2>4. Arrays</h2>
-              <p>Arrays can be very large and are used instead of lists for 
-              efficiency when storing and processing collections of basic 
-              types (characters, integers and floating point numbers). If you 
+              <h2>4. Arrays, Sets, Dictionaries</h2>
+              
+              <h3>4.1. Arrays</h3>
+              <p>Arrays are suited to storing and processing large collections 
+              of basic types (bytes, integers and floating point numbers). If you 
               know how many elements the collection will contain, then declaring 
-              this when the array is initialised will typically improve 
+              this when initialising the array will typically improve 
               efficiency.</p>
               <p>Python arrays are in the 
               <a href="https://docs.python.org/3/library/array.html">array 
@@ -285,33 +291,38 @@ public class Containers extends Page {
               a = array.array('i',[0,0,0,0]) # Signed int type 'i'
               a.insert(3, 21) # Insert in position 3 the value 21
               print(a[3]) # Print the value at position 3</code></pre>
-              <p>Arrays are quite specialist and are not so easy to use, so 
-              perhaps don't spend time playing around with these and move on
-              especially if this is you are new to Python and this is your first 
-              use of this particular learning resource.</p>
               
-              <h2>5. Sets</h2>
+              <h3>4.2. Sets</h3>
               <p>Sets are unordered collections. Adding something into a set 
               which already contains that thing will not change the set. They 
               are mostly used to test if something is or is not already 
-              contained in the collection. Sets are created with curly braces:
-              </p> 
-              <pre><code class="language-python">a = {} # Empty set import array
+              contained in the collection. Sets are created using the 
+              <a href="https://docs.python.org/3/library/stdtypes.html#set">
+              set()</a> constructor, for example:</p>
+              <pre><code class="language-python">a = set() # Empty set
               a.add("apple") # Add "apple" to a
-              a.add("apple") # Add "apple" to a
-              # As "apple" was already in a, it will still be of length 1</code></pre>
+              a.add("orange") # Add "orange" to a
+              if "orange" in a:
+                  print('"orange" is in a')</code></pre>
+              <p>Traditional mathemetical set functions like union() and 
+              intersection() are available for sets which can also be compared.
+              Two sets are equal if they contain all of the same elements</p> 
                             
-              <h2>6. Dictionaries</h2>
+              <h3>4.3. Dictionaries</h3>
               <p>Dictionaries hold keys and value pairs. The keys are unique
               the values can be anything. Dictionaries can be sorted by the 
               keys. The keys can be treated a bit like a set. Dictionaries can 
-              be created using curly braces and colons to separate the keys 
-              which are given first and the values which are given second. 
-              Different paris are separated with commas. Alternatively the 
+              be created using curly braces and colons to separate the keys,
+              which are given first, and the values, which are given second. 
+              Different pairs are separated with commas. Alternatively the 
               <a href="https://docs.python.org/3/library/stdtypes.html#dict">
-              dict()</a> constructor can be used:</p>
-              <pre><code class="language-python">nickname = {thomas: tom, samuel: sam, samson: sam}
-              nickname2 = dict([(thomas, tom), (samuel, sam), (samson, sam)])</code></pre>
+              dict()</a> constructor can be used, for example:</p>
+              <pre><code class="language-python">nickname = {"thomas": "tom", "samuel": "sam", "samson": "sam"}
+              alias = dict([("rm", "remove"), ("cd", "change directory"), ("ls", "list")])
+              print(alias.get("rm")) # <-- This should print 'remove'.
+              </code></pre>
+              <p>Again there are functions that help with modifying and 
+              processing dictionaries.</p>
               """);
         w.add("</div>");
     }

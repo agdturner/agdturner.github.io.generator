@@ -50,7 +50,7 @@ public class Home extends Page {
               """);
         w.add("<p>The timetable for the course is linked from the");
         w.add("<a href=\"" + moduleCataloguePage + "\">"
-                + "University of Leeds " + c.getCourseCode1() 
+                + "University of Leeds " + c.getCourseCode1()
                 + " Module Catalogue Page</a>.</p>");
 //        w.add("These Web pages are");
 //        w.add(addWikipediaReference("Open_educational_resources",
@@ -75,32 +75,27 @@ public class Home extends Page {
 //              exercises as directed, and expriment.</p>
         w.add("<p>The official " + addWebReference("https://docs.python.org/3/",
                 "Python 3 Documentation", "Python 3 Documentation") + " is"
-                + " often referred to for details about the " 
+                + " often referred to for details about the "
                 + addWikipediaReference("Python_(programming_language)",
-                "Python programming language") + ".</p>");
-        
+                        "Python programming language") + ".</p>");
+
         w.add("""
               <h2>2. Syllabus</h2>
               <p>General computer programming concepts and Python including:</p>
               <ul>
-              <li>Version control</li>
               """);
-        w.add("<li>" + addWikipediaReference(
-                "Variable_(computer_science)",
-                "Variables"));
-        w.add("</li>\n<li>");
-        w.add(addWikipediaReference("Control_flow", 
-                "Control flow"));
-        w.add("(" + addWikipediaReference(
-                "Conditional_(computer_programming)", 
-                "conditionals") + "/"
-                + addWikipediaReference("For_loop", "for loops")
+        w.add("<li>" + addWikipediaReference("Version_control",
+                "Version control") + "</li>");
+        w.add("<li>" + addWikipediaReference("Variable_(computer_science)",
+                "Variables") + "</li>");
+        w.add("<li>" + addWikipediaReference("Control_flow", "Control flow")
+                + "(" + addWikipediaReference(
+                        "Conditional_(computer_programming)", "conditionals") 
+                + "/" + addWikipediaReference("For_loop", "for loops") 
                 + ")</li>");
-        w.add("<li>" + addWikipediaReference(
-                "Function_(computer_programming)",
+        w.add("<li>" + addWikipediaReference("Function_(computer_programming)",
                 "Functions") + "</li>");
-        w.add("<li>" + addWikipediaReference(
-                "Class_(computer_programming)",
+        w.add("<li>" + addWikipediaReference("Class_(computer_programming)",
                 "Classes") + "</li>");
         w.add("""
               <li>Python language development and limitations</li>
