@@ -52,38 +52,39 @@ public class Python extends Page {
         w.add("<p>" +
                 addWikipediaReference("Python_(programming_language)",
                 "Python")
-                + " is a popular and powerful interpretted programming language."
-                + " The language is supported and developed by the "
-                + psfLink + " with a mission to promote, protect, and advance"
-                + " the language, and to support and facilitate the growth of a"
-                + " diverse and international community of Python programmers."
-                + "</p>");
+                + " is a popular and powerful high-level interpretted "
+                + "programming language supported and developed by the "
+                + psfLink + " that has a mission to promote, protect, and"
+                + " advance the language, and support and facilitate the growth"
+                + " of a diverse and international community of Python "
+                + "programmers.</p>");
         w.add("<p>The core standard library and interpretters are freely"
                 + " available in source and binary forms for all major"
                 + " platforms from the " + pythonWebsiteLink + ", and may be"
                 + " freely distributed. There are various Python interpretters"
                 + " that read source code written in Python and translate it"
-                + " into machine instructions. We won't concern ourselves with"
-                + " differences between the various interpretters in this"
+                + " into machine instructions. Details of interpretters is"
+                + " regarded as an advanced topic and is not covered in this"
                 + " course.</p>"
                 + "<p>The Python Website contains distributions of and pointers"
-                + " to many Free and Open Source third party Python modules,"
-                + " programs, tools, and additional documentation.</p>"
-                + "<p>A particularly useful documentation page for beginners is"
-                + " the " + python3ReferenceLink + ".</p>");
+                + " to many Free and Open Source third party Python code, tools,"
+                + " and additional documentation.</p>"
+                + "<p>A particularly useful documentation page for beginners"
+                        + " learning the Python langauge is the "
+                + python3ReferenceLink + ".</p>");
         w.add("""
               <h2>2. Python 3</h2>
-              <p>Python 3 was first released in 2008. Many third party packages 
-              written in Python 2 needed refactoring to work with Python 3 
-              interpretters. For several years Python 2 and Python 3 were both 
-              developed, but eventually in January 2020 development and 
-              maintenance of Python 2 ceased. We will not look at the 
-              differences between Python 2 and Python 3 in this course and will 
-              focus just on Python 3.</p>
+              <p>Python 3 was first released in 2008. Much third party code 
+              needed refactoring to work with Python 3. For several years Python 
+              2 and Python 3 were both developed, but eventually in January 2020 
+              development and maintenance of Python 2 ceased. We will not look 
+              at the differences between Python 2 and Python 3 in this course 
+              and will focus just on Python 3.</p>
               <p>On October 4, 2021 Python 3.10 was released.
               On November 24th, 2022 Python 3.11 was released.
               <!--On <date> Python 3.12 was released.-->
-              For each incremental release there are Whatsnew Web Pages:</p>
+              For each major incremental Python 3 release there is a Whatsnew 
+              Web Page that introduces what is new:</p>
               <ul>""");
         w.add(addWebReference("https://docs.python.org/3/whatsnew",
                 "Python Documentation What's New", "",
@@ -96,9 +97,10 @@ public class Python extends Page {
         w.add("</ul>");
         w.add("""
               <p>On Whatsnew Web Pages, changes are marked against numbered 
-              Python Enhancement Proposals (PEPs) which allow us to look ahead 
-              to see what might change and get involved in language development. 
-              PEPs have their own Web site:""");
+              Python Enhancement Proposals (PEPs). PEPs allow the community of 
+              Python users to look ahead and see what might change and get 
+              involved in language development. PEPs have their own Web 
+              site:""");
         w.add(addWebReference("https://peps.python.org/",
                 "Python Enhancement Proposal Website",
                 "https://peps.python.org/",
@@ -107,14 +109,23 @@ public class Python extends Page {
               </p>
               <p>New language features will not work with older interpretters,
               and code tested with older interpretters might not necessarily 
-              work the same on newer interpretters as some language features
-              may be removed (through a process of deprecation).</p>              
-              <p>So, for reproducing results and diagnosing issues. It is 
-              important to know and sometimes provide information about exactly
-              which versions of everything are used.</p>
+              work the same on newer interpretters as some language features may 
+              be changed or removed (through a process of deprecation). Changes 
+              are typically well thought through and often standardise things, 
+              or add flexibility or enhancement capabilities, but sometimes the 
+              changes in syntax necessitate changes in third part code. In a way 
+              this is good as it ensures that Python libraries evolve or die  
+              in a survival of the fittest evolutionary way that may have long 
+              term benefits. It also keeps programmers employed, and adds 
+              greater importance on producing well documented and well tested 
+              code. But lack of backwards compatability can be a worry and 
+              result in complicated requirements. Also, for ensuring 
+              reproducibility of results and diagnosing issues, it is therefore 
+              important to provide information about exactly which versions of 
+              everything are used.</p>
               
-              <p>There is a vast ecosystem of third party Python packages. Many
-              are made available via the
+              <p>There is a vast ecosystem developing third party Python code. 
+              Much of this is made available as packages via the
               <a href="https://pypi.org/">PyPI</a> Python Package Index.</p>
               <p>In Section 9, there is an exercise that involves installing 
               Python packages from PyPI and that links to details about how to 
@@ -131,8 +142,8 @@ public class Python extends Page {
               is a good place to start learning Python. In your own study time,
               you might like to make your way through that learning material 
               too.</p>
-              <p>The following sections of this Web page comprise practical 
-              exercises to get you running Python code in different ways.</p>
+              <p>Now for some practical exercises to get you running Python code
+              in different ways...</p>
               
               <h2>3. Running Python</h2>
               <p>Python instructions also known as commands or statements, can 
@@ -181,7 +192,7 @@ public class Python extends Page {
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
               
-              <h4>3.1.2. Numberical calculations</h4>
+              <h4>3.1.2. Numerical calculations</h4>
               <p>The Python REPL environment can act as a basic calculator. 
               Enter:</p>
               <pre>2 + 3</pre>
@@ -322,7 +333,7 @@ public class Python extends Page {
               modules. It takes longer to run the first time it is run.</p>
               <p>At the help prompt enter:</p>
               <pre>operator</pre>
-              <p>This should dispay the start of the help documentation for the 
+              <p>This should display the start of the help documentation for the 
               Operator Module. Press the <enter> key to see the next line of the 
               documentation. Press and hold the <enter> key and the 
               documentation should stream to the screen. The <space> bar key 
@@ -399,13 +410,13 @@ public class Python extends Page {
               This is between triple quotes and is a comment.
               \"\"\"
               </pre>
-              <p>It is good practise to leave a comment to indicate why a
-              section of code has been commented out. Comments aim to help make
-              code easier to read and understand. What is an appropriate amount
-              of comment depends, but to start with try to write plenty of 
-              comments as it helps you learn. We will see some examples in 
-              shortly. Sometimes in source code comments, it is good to refer to
-              other information sources in comments.</p>
+              <p>Comments aim to help make code easier to read and understand. 
+              What is an appropriate amount of comment depends, but to start 
+              with try to write plenty of comments as it helps you learn. It is 
+              often helpful to refer to other information sources in comments. 
+              It is sensible to add a comment to indicate why a section of code 
+              is commented out, and not assume that you will remember why at a
+              later date.</p>
               
               <h3>4.4. Code Layout</h3>
               <p>Blank lines are allowed and can help structure code into 

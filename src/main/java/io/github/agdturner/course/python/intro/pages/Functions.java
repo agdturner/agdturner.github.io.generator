@@ -168,80 +168,136 @@ public class Functions extends Page {
               associated variables or together at the end.</p>
               <pre><code class="language-python">def func(a,b,*c,d,**e) # d has to be a kwarg.
               def func(a,b,d,*c,**e) # abd,bd,or d can be kwargs.</code></pre>
+              <p>For more on unpacking operators see: <a href="https://peps.python.org/pep-0448/">PEP-0448</p>
+              <p>Another useful summary reference is the 
+              <a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">
+              Python documentation: Outline of how to get output from a function documentation</a></p>
               
-              <h3>2.4. Nested Functions</h3>
-              <p>It is possible to nest functions inside of other functions 
-              although. This is fairly unusual, but there are occasions when 
-              this can be useful.</p>
+              <h2>3. Scope</h2>
+              <p>The scope of a variable is from where in the code it can be 
+              accessed. Scope was introduced in 
+              <a href="../Variables/index.html#3">Variables Section 3</a> when 
+              functions were first considered where there is an explanation of 
+              changing a variable scope using the Global Keyword (global). To 
+              recap, consider the following code:</p>
+              <pre><code class="language-python">b = 10
+              def my_function():
+                  print(b) # Prints 10;
+              print(b) # Prints 10.
+              my_function()
+              print(b) # Prints 10.</code></pre>
+              <p>The variable b is declared and initialised prior to any call 
+              to my_function() and the variable can be accessed from within 
+              my_function(). However, assigning a local variables within a 
+              function that has the same name as a variable already accessible
+              from the function creates a new variable. So, to force a local 
+              assignment to a global variable, use the global keyword as 
+              follows:
+              <pre><code class="language-python">b = 10
+              def a ():
+                  global b
+                  b = 20
+                  print(b) # Prints 20.
+              print(b) # Prints 10.
+              a()
+              print(b) # Prints 20 as the function changes the global b.</code></pre>
+              <p>With nested functions there are situations where non local 
+              and non global variables are wanted in the inner function such 
+              that the outer function and inner function have the same variable 
+              and this does not change any variable with the same name in the 
+              broader scope from where the function is called. To do this the 
+              Nonlocal Keyword (nonlocal) can be used, as in the following 
+              example:</p>
+              <pre><code class="language-python">a = 1
+              def f1():
+                  a = 2
+                  def f2():
+                      nonlocal a
+                      a = 3
+                      print(a) # Prints 3.
+                  f2()
+                  print (a) # Prints 3.
+              f1()
+              print(a) # Prints 1.</code></pre>
               
-              <h2>3. Documentation Functions<h2>
-              <p></p>
+              <h2>4. Function Complexity</h2>
+              <p>As shown above, functions can be nested inside other functions. 
+              This can hide those inner functions so that they can't be called 
+              directly (which can reduce how complicated things are when viewing 
+              functionality from the outside - which can be a good thing). Inner 
+              functions can help with unpacking parameters or dealing with 
+              different types of parameter input to the outer function. Python 
+              also allows for functions themselves to be passed into and 
+              returned from other functions. So a nested inner function can be 
+              returned as the output of an outer function. This is powerful, but 
+              utilising this power is more of an advanced topic, so details of 
+              this are intentionally omitted for now.</p>
               
+              <h2>5. Style and Documenting Functions</h2>
               
+              <h3>5.1. Style</h3>
+              <p>Good Python style is set out in 
+              <a href="https://www.python.org/dev/peps/pep-0008/">PEP-0008</a>
+              which is worth finding time to read.</p>
+              <p>The main styl elements are:
+              <ul>
+              <li>Use 4 spaces per indent</li>
+              <li>Insert blank lines before function definitions and to separate 
+              logical code units.</li>
+              <li>function_names and variable_names should be lower case with 
+              underscores separating words (snake case) as shown.</li>
+              <li>ClassNames should be mostly lower case, but with capitalised 
+              first letters of name parts (camel case) as shown.</li>
+              <li>CONSTANT_NAMES should be upper case and snake case.</li>
+              <li>Keep lines to 79 characters or less.</li>
+              <li>Add spaces after commas</li>
+              <li>Indent comments to the level of the code referred to.</li>
+              </ul>
               
-              SUMMARY
-               Parameters:
-              Undefaulted parameters
-              Defaulted parameters
-              *tuple_name
-              Forced keyword parameters
-              **dict_name
-              Arguments:
-              Positional arguments
-              Keyword arguments
-              Unpacked lists, tuples, or dicts may be anywhere
+              <h3>5.2. Documenting Functions</h3>
+              <p>Docstrings are automatically extracted to describe code. They 
+              are triple-double quote enclosed comments after, for example, 
+              function declarations. For functions these should ideally have a 
+              short description of what the function does which is typically 
+              written like a command to the function more than as a description 
+              of what the function does. It should also list what the parameters
+              are and what if anything is returned from the function. For 
+              example:</p>
+              <pre><code class="language-python">def add (num1, num2):
+                  \"""
+                  Add two numbers.
               
+                  Keyword arguments:
+                  num1 -- an integer or double number (no default)
+                  num2 -- an integer or double number (no default)
               
+                  Returns:
+                  The sum of the numbers.
+                  \"""
+                  return num1 + num2</code></pre>
+              <p>For details on docstrings see 
+              <a href="https://www.python.org/dev/peps/pep-0257/">PEP-0257</a>
+              </p>
+              <p>The help system will display docstrings. So, where "x" is a 
+              function or module the following will display the docstring:</p>
+              <pre>help(x)</pre>
+              <p>The docstring can also be printed using:</p>
+              <pre>print(x.__doc__)</pre>
+              <p><a href="https://docs.python.org/3/library/doctest.html">
+              PyDoc</a> is the documentation system distributed with Python.
+              It supports the generation of a webpage from documentation, and 
+              can be run from the Anaconda Prompt using:</p>
+              <pre>pydoc -w filename</pre>
+              <p>Where the filename is missing the ".py" part.</p>
+              <p>There are other tools for helping to generate documentation, 
+              including
+              <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which 
+              comes with Anaconda.</p>
               
-              
-              <pre><code class=\"language-python\">
-              from fractions import Fraction
-              
-              def add(x, y):
-                  return x + y
-              
-              def multiply(x, y):
-                  r = 0
-                  for i in range(x):
-                      r = add(r, y)
-                  return r
-              
-              print(multiply(5, 7))
-              </code></pre>
-              <p></p>
-              <h2>Documentation</h2>
-              w.add("<pre><code class=\"language-python\">");
-              from fractions import Fraction
-
-
-        def divide(x, y):
-    A function to divide x by y.
-   
-\"\"\"
-                  Parameters
-    ----------
-    x : Fraction
-        A decimal number.
-    y : Fraction
-        DESCRIPTION.
-
-    Returns
-    -------
-    Fraction
-        x divided by y
-
-    \"\"\"
-    return x / y
-
-# Set x = 1/2.
-x = Fraction(1, 2)
-print(x)
-# Set y = 1/3.
-y = Fraction(1, 3)
-print(y)
-# Call the function and print the result.
-print(divide(x, y))
-        """);
+              <h2>Next</h2>
+              <p>Let us apply some of what we have learned to enhance our Agent
+              Based Modelling Code.</p>
+              """);
 //        w.add("<p></p>");
 //        w.add("<p>Enter: \"\"</p>");
         w.add("</div>");
