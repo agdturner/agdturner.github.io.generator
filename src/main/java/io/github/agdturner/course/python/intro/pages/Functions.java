@@ -294,7 +294,7 @@ public class Functions extends Page {
               <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which 
               comes with Anaconda.</p>
               
-              <h2>Next</h2>
+              <h2>6. Next</h2>
               <p>Let us apply some of what we have learned to enhance our Agent
               Based Modelling Code.</p>
               """);

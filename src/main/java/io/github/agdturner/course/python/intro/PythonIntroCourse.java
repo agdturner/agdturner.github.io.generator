@@ -26,6 +26,7 @@ import io.github.agdturner.course.python.intro.pages.ABM6;
 import io.github.agdturner.course.python.intro.pages.ABM7;
 import io.github.agdturner.course.python.intro.pages.ABM8;
 import io.github.agdturner.course.python.intro.pages.Branching;
+import io.github.agdturner.course.python.intro.pages.Classes;
 import io.github.agdturner.course.python.intro.pages.Containers;
 import io.github.agdturner.course.python.intro.pages.Exceptions;
 import io.github.agdturner.course.python.intro.pages.Functions;
@@ -104,6 +105,7 @@ public abstract class PythonIntroCourse extends Course {
         coursePages.add(new ABM2(this));
         coursePages.add(new Functions(this));
         coursePages.add(new ABM3(this));
+        coursePages.add(new Classes(this));
         coursePages.add(new ABM4(this));
         coursePages.add(new IO(this));
         coursePages.add(new ABM5(this));
