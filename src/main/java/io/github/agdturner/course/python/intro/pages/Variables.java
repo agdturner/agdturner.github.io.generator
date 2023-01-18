@@ -291,6 +291,16 @@ public class Variables extends Page {
               does. The function takes in no arguments (parameters) and there is 
               no return statement. We will learn about functions in more detail
               and how to document them a bit later in the course...</p>
+              
+              <h2>4. Deleting variables</h2>
+              <p>Variables can be deleted using the Del Function (del()) in the 
+              builtin module.</p>
+              <p>Variables are usually deleted to free up resources. The 
+              following code snippe shows how to initialise a variable called 
+              and then delete it:<p>
+              <pre>a = 1
+              del(a)
+              print(a) # <-- Results in: NameError: name 'a' is not defined</pre>
               """);
         w.add("</div>");
 

@@ -138,10 +138,10 @@ public class ABM2 extends Page {
               first loop, and there will be a second loop to adjust the 
               coordinates (move the agents).<p>
               <p>In your local code repository src directory create a new 
-              directory called "abm2". Open Spyder and use save as to save your 
-              "model.py" file into the abm2 directory. Then, at the top of the 
-              file below the import statements and setting the random seed add 
-              the following:</p>
+              directory called "abm2". Open Spyder and use "save as" to save 
+              your "model.py" file into the abm2 directory. Then, towards the 
+              top of the file (below the import statements and setting of the 
+              random seed) add the following:</p>
               <pre># Create a list to store agents
               agents = []</pre>
               <p>Now to add coordinates to this list: First add one pair after 
