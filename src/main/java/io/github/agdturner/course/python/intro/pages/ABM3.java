@@ -85,11 +85,11 @@ public class ABM3 extends Page {
               x1 = 3
               y1 = 4
               # Calculate the difference in the x coordinates.
-              diff_x = x0 - x1
+              dx = x0 - x1
               # Calculate the difference in the y coordinates.
-              diff_y = y0 - y1
+              dy = y0 - y1
               # Square the differences and add the squares
-              ssd = (diff_x * diff_x) + (diff_y * diff_y)
+              ssd = (dx * dx) + (dy * dy)
               print("ssd", ssd)
               # Calculate the square root
               distance = ssd ** 0.5
@@ -441,16 +441,16 @@ public class ABM3 extends Page {
               the agents can interact with it. To keep the model simple, let's 
               restrict the movement of agents to stay within a rectangluar area
               by limiting the x and y coordinates using the following code:</p>
-              <pre># Bounds for restricting agents movement
-              # The minimum an agents x coordinate can be
+              <pre># Variables for constraining movement.
+              # The minimum x coordinate.
               x_min = 0
-              # The minimum an agents y coordinate can be
+              # The minimum y coordinate.
               y_min = 0
-              # The maximum an agents x coordinate can be
+              # The maximum x coordinate.
               x_max = 99
-              # The maximum an agents y coordinate can be
+              # The maximum y coordinate.
               y_max = 99
-              # Keep agents in bounds.
+              # Apply movement constraints.
               if agents[i][0] < x_min:
                   agents[i][0] = x_min
               if agents[i][1] < y_min:
