@@ -46,8 +46,14 @@ public class Classes extends Page {
               a human. In Python classes can be embedded throughout programs, 
               but it is good practice to organise classes in modules.</p>
               <p>Modules are source code files, the name of the module is given 
-              by the filename which should be a short word all in lowercase. The 
-              name of a class should start with a capital letter and should be 
+              by the filename which should be a short word all in lowercase. 
+              Modules are best placed in a directory alongside the main script 
+              that is run. If they are simply placed in the same directory as 
+              the script that is run, then there can be difficulties resulting 
+              from name collisions with modules in the standard library that 
+              have the same name as other bespoke modules. We will encounter a 
+              problem like this later in the course.</p>
+              <p>The name of a class should start with a capital letter and be 
               in CamelCase (with capitalised letters of each word making up the 
               name of the class). It is helpful to organise code into modules as 
               having all code in one file becomes cumbersome.</p>

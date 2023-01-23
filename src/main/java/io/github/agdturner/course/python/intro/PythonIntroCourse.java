@@ -25,6 +25,8 @@ import io.github.agdturner.course.python.intro.pages.ABM5;
 import io.github.agdturner.course.python.intro.pages.ABM6;
 import io.github.agdturner.course.python.intro.pages.ABM7;
 import io.github.agdturner.course.python.intro.pages.ABM8;
+import io.github.agdturner.course.python.intro.pages.ABM9;
+import io.github.agdturner.course.python.intro.pages.Assignments;
 import io.github.agdturner.course.python.intro.pages.Branching;
 import io.github.agdturner.course.python.intro.pages.Classes;
 import io.github.agdturner.course.python.intro.pages.Containers;
@@ -35,6 +37,7 @@ import io.github.agdturner.course.python.intro.pages.Github;
 import io.github.agdturner.course.python.intro.pages.Home;
 import io.github.agdturner.course.python.intro.pages.IO;
 import io.github.agdturner.course.python.intro.pages.Loops;
+import io.github.agdturner.course.python.intro.pages.Modules;
 import io.github.agdturner.course.python.intro.pages.Programming;
 import io.github.agdturner.course.python.intro.pages.Python;
 import io.github.agdturner.course.python.intro.pages.Variables;
@@ -109,12 +112,15 @@ public abstract class PythonIntroCourse extends Course {
         coursePages.add(new ABM4(this));
         coursePages.add(new IO(this));
         coursePages.add(new ABM5(this));
+        coursePages.add(new Modules(this));
         coursePages.add(new ABM6(this));
         coursePages.add(new Exceptions(this));
         coursePages.add(new ABM7(this));
         coursePages.add(new GUI(this));
-        coursePages.add(new Web(this));
         coursePages.add(new ABM8(this));
+        coursePages.add(new Web(this));
+        coursePages.add(new ABM9(this));
+        coursePages.add(new Assignments(this));
         /**
          * Write Pages.
          */

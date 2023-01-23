@@ -117,8 +117,10 @@ public class IO extends Page {
                   a.append("Coding is fun!");
               # Open a file for writing
               f = open("a.out", 'w')
+              # Write lines to the file
               for line in a:
                   f.write(line)
+              # Close the file
               f.close()</code></pre>
               <p>Note the additional 'w' parameter passed into the Open 
               Function which prepares the file a.out to be written to. Writing 

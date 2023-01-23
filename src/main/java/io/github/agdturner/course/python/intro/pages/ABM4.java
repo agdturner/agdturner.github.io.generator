@@ -96,7 +96,7 @@ public class ABM4 extends Page {
               override the __str__ method in the Agent class. To do this, define 
               the method __str__() in the Agent class as follows:</p>
               <pre><code class=\"language-python\">def __str__(self):
-                  return self.__class__.__name__ + "(x=" + str(self.x) \
+                  return self.__class__.__name__ + "(x=" + str(self.x) \\
                       + ", y=" + str(self.y) + ")"</pre></code>
               <p>Note that this has to be indented at the right level in the 
               Agent class. Also note that it returns a String which includes 
@@ -166,8 +166,7 @@ public class ABM4 extends Page {
               to "agents[i].y". Make a further change in section of code for 
               plotting agents from:
               </p>
-              <pre><code class=\"language-python\">
-              # Plot the coordinate with the largest x red
+              <pre><code class=\"language-python\"># Plot the coordinate with the largest x red
               lx = max(agents, key=operator.itemgetter(0))
               plt.scatter(lx[0], lx[1], color='red')
               # Plot the coordinate with the smallest x blue
@@ -180,8 +179,7 @@ public class ABM4 extends Page {
               sy = min(agents, key=operator.itemgetter(1))
               plt.scatter(sy[0], sy[1], color='green')</code></pre>
               <p>To:</p>
-              <pre><code class=\"language-python\">
-              # Plot the coordinate with the largest x red
+              <pre><code class=\"language-python\"># Plot the coordinate with the largest x red
               lx = max(agents, key=operator.attrgetter('x'))
               plt.scatter(lx.x, lx.y, color='red')
               # Plot the coordinate with the smallest x blue
@@ -254,11 +252,12 @@ public class ABM4 extends Page {
                   agents.append(agentframework.Agent())
               
               TypeError: __init__() missing 1 required positional argument: 'i'</pre>
-              <p>This error indicates that a positional argument is missing when 
-              constructing an instance of the Agent class. Change model.py to 
-              add the missing argument "i". Modify the Agent class __str__ 
-              method to add the unique characteristic of each Agent to the 
-              returned String.</p>
+              <p>The error is that an expected argument is missing when 
+              constructing an Agent instance. Change model.py to add the missing 
+              argument "i". Modify the Agent class __str__ method to add the 
+              unique characteristic of each Agent to the returned String.</p>
+              <p>Commit your code to your local repository and assuming you are 
+              using GitHub - push your changes to GitHub.</p>
               """);
 //              <p></p>
 //              <pre></pre>

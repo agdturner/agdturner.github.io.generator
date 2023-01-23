@@ -410,8 +410,8 @@ public class ABM3 extends Page {
               function to sort or order the data values.</p>
               <p>Learning how to calculate these kinds of statistics from first 
               principles is a good way to develop programming skills, so if 
-              you want the extra practise then have a go. Try to think about how 
-              you would test your code before you start.</p>
+              you want the extra practise then have a go. Think about testing
+              to ensure your code produces correct results.</p>
               <p>Replace the get_max_distance() in model.py with the new faster 
               version.</p>
               <p>Commit changed to your local repository and assuming you are 

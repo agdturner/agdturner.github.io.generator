@@ -16,9 +16,6 @@
 package io.github.agdturner.course.python.intro.process;
 
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Java for generating some https://agdturner.github.io Website Content.
