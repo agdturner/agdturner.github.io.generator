@@ -56,7 +56,7 @@ public class Modules extends Page {
               <h2>2. Importing</h2>
               <p>A couple of different types of import statement should now be 
               familiar. The following imports a module and then access the Agent
-              class within it to construct an instance of that class:<p>
+              class within it to construct an instance of that class:</p>
               <pre><code class=\"language-python\">import agentframework
               a = agentframework.Agent()</code></pre>
               <p>This is a very explicit style. There is little ambiguity about 
@@ -118,7 +118,7 @@ public class Modules extends Page {
               Python to recognise that the subdirectories are sub-packages. This
               allows the following import statement to work so long as there is 
               a class called Agent within the agentframework module:</p>
-              <pre><code class=\"language-python\">import abm.general.agentframework.Agent
+              <pre><code class=\"language-python\">import abm.general.agentframework.Agent</code></pre>
               <p>The base __init__.py file can also include a specially named 
               list which will import all the listed subpackages if a star 
               import statement is used. For example, the following could be the 
@@ -133,13 +133,11 @@ public class Modules extends Page {
               <pre>python -m packagename</pre>
               
               <h2>3. Standard Libraries</h2>
-              <p>Browse <a href="https://docs.python.org/3/library/functions.html">
-              The Builtin Functions List</a> and
+              <p>The <a href="https://docs.python.org/3/library/functions.html">
+              Builtin Functions List</a> and the
               <a href="https://docs.python.org/3/py-modindex.html">
-              The Python Module Index</a>. It is worth spending 
-              a little time to get acquainted with what is there. Here are some
-              particularly useful libraries with a summary of what they are 
-              useful for:
+              Python Module Index</a> contain numerous libraries useful for 
+              geographical data processing, including:
               <ul>
               <li><a href="https://docs.python.org/3/library/difflib.html">
               difflib</a> - for comparing text documents.</li>
@@ -171,7 +169,7 @@ public class Modules extends Page {
               <li><a href="https://docs.python.org/3/library/collections.html">
               collections</a> - for storing and organising multiple things.</li>
               <li><a href="https://docs.python.org/3/library/collections.html#collections.Counter">
-              Counter</a> - for counting things.</li>
+              counter</a> - for counting things.</li>
               <li><a href="https://docs.python.org/3/library/tk.html">
               tkinter</a> - for developing Graphical User Interfaces (windows, menus, buttons, sliders etc.)</li>
               <li><a href="https://docs.python.org/3/library/turtle.html">
@@ -185,9 +183,9 @@ public class Modules extends Page {
               </ul>
               
               <h2>3. External Libraries</h2>
-              <p>Anaconda comes bundled with some useful external libraries. The
-              package lists vary depending on the underlying operating system.
-              Details can be found via the following URL:
+              <p>Anaconda comes bundled with some useful external libraries. 
+              Exactly what it comes with varies with the version and underlying 
+              operating system. Details can be found via the following URL:
               <a href="https://docs.anaconda.com/anaconda/packages/pkg-docs/">
               https://docs.anaconda.com/anaconda/packages/pkg-docs/</a></p>
               <p>There are many more libraries that might be useful for 
@@ -195,29 +193,53 @@ public class Modules extends Page {
               <p>As mentioned previously a large number of libraries are 
               available via:
               <a href="https://pypi.python.org/pypi">
-              The PyPi Python Package Index</a>.
+              PyPi - Python Package Index</a>.</p>
+              
+              <h3>3.1. General utility</h3>
               <p>The following is a list of some widely used libraries:</p>
               <ul>
-              <li><a href="http://www.numpy.org/">NUMPY</a> is useful for 
+              <li><a href="http://www.numpy.org/">numpy</a> is useful for 
               mathematics and statistics, especially multi-dimensional array 
               manipulation.</li>
-              <li><a href="http://pandas.pydata.org/">PANDAS</a> build on NUMPY
+              <li><a href="http://pandas.pydata.org/">panda</a> build on NUMPY
               and is useful for a range of other things including time series 
               analysis.</li>
-              <li><a href="http://scikit-learn.org/">SCIKIT-LEARN</a> again 
+              <li><a href="http://scikit-learn.org/">scikit-learn</a> again 
               founded on numpy is useful is useful for scientific analysis and 
               machine learning.</li>
               <li><a href="https://beautiful-soup-4.readthedocs.io/">
-              BEAUTIFUL SOUP</a> is useful for pulling data out of HTML and XML 
+              beautiful-soup</a> is useful for pulling data out of HTML and XML 
               files.</li>
-              <li><a href="http://www.nltk.org/">NLTK</a> is a Natural Language 
+              <li><a href="http://www.nltk.org/">nltk</a> is a Natural Language 
               Toolkit for parsing and analysing text.</li>
-              <li><a href="http://www.celeryproject.org/">CELERY</a> is useful 
+              <li><a href="http://www.celeryproject.org/">celery</a> is useful 
               for distributed computing (splitting up programs and running them 
               on multiple computers).</li>
               </ul>
+              
+              <h3>3.2. Geospatial</h3>
+              <p>Some of these were used in the introduction to the course:</p>
+              <ul>
+              <li><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/">
+              PyQGIS</a> - <a href="https://www.qgis.org/">QGIS</a> API.</li>
+              <li><a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm">
+              ArcPY</a> - <a href="https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview">ArcGIS Pro</a> API.</li>
+              <li><a href="https://github.com/Toblerity/Fiona">Fiona</a> - reads
+              and writes geographic data files.</li>
+              <li><a href="https://geopandas.org/">Geopandas</a> - extends the 
+              datatypes used by pandas to include geometry (and has support for 
+              many geometry operations).</li>
+              <li><a href="https://geopy.readthedocs.io/en/stable/">GeoPy</a> - 
+              a client for several popular geocoding web services.</li>
+              <li><a href="https://contextily.readthedocs.io/en/latest/">
+              Contextily</a> - for retrieving tile maps from the internet, then 
+              adding them to matplotlib figures or writing them to files.</li>
+              <li><a href="https://python-visualization.github.io/folium/">
+              Folium</a> - for visualising data on an interactive javascript
+              map.</li>
+              </ul>
               <p>For details on installing packages see the section on 
-              <a href="../../python/index.html#9">Python Packages and Environment Management</a>.</p>
+              <a href="../python/index.html#9">Python Packages and Environment Management</a>.</p>
               
               """);
 //              <pre></pre>

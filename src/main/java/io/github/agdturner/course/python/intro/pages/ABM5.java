@@ -163,7 +163,10 @@ public class ABM5 extends Page {
                       self.store += 10</code></pre>
               <p>Think about what this code does and adapt it so that if the 
               value of environment[self.y][self.x] <= 10 then the Agent 
-              instance stores what there is.</p>
+              instance stores what there is. If two or more agents are at the 
+              same location and there is less at the location for all the agents
+              to have 10, then those that are processed first will be getting 
+              more. We will worry about this later.</p>
               <p>In model.py call the new eat function after the move function
               and run the file. You should be able to see that the environment 
               in the plot has changed around where the agents have been plotted,
@@ -181,11 +184,14 @@ public class ABM5 extends Page {
               <p>Define another function that adds up all the store values in 
               all the agents.</p>
               <p>Print out these sums and check that the total amount of 
-              resource in the system is not changing after each iteration of the 
-              model.</p>   
+              resource and store in the system is not changing after each
+              iteration of the model.</p>   
               <p>Define a function to write out the values of environment to a 
               file at the end of the the iterations.</p>
-              <p>After completing all the coding tasks, and assuming you are 
+              <p>Try setting some of the model parameters towards the start of 
+              the program using keyboard input using something like:</p>
+              <pre><code class=\"language-python\">n_agents = int(input("Set n_agents: Key in a positive integer then press <ENTER>:"))</code></pre>
+              <p>Commit your code to your local repository, and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
 //              <pre></pre>

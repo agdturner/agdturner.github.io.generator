@@ -31,7 +31,7 @@ public class Assignments extends Page {
      * @param c The Course.
      */
     public Assignments(PythonIntroCourse c) {
-        super("modules", "Modules", "Modules", c);
+        super("assignments", "Assignments", "Assignments", c);
     }
     
     @Override
