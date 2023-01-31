@@ -39,14 +39,14 @@ public class ABM4 extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>Up to now, our agents are lists of two items - the coordinates 
               defining their location. More attributes could be added to the 
               list to represent other characteristics of the agents, but it is 
               almost certainly easier to define them a class for an agent and 
               use this instead.</p>
               
-              <h2>2. Define an Agent class</h2>
+              <h2 id="2">2. Define an Agent class</h2>
               <p>In your local code repository src directory create a new 
               directory called "abm4". Open Spyder and use "save as" to save 
               your "model.py" file from abm3 into the abm4 directory.</p>
@@ -201,7 +201,7 @@ public class ABM4 extends Page {
               GitHub yet, but remember to do so before the end of your coding 
               session (assuming you are using GitHub).</p>
               
-              <h2>3. Separation of Concerns</h2>
+              <h2 id="3">3. Separation of Concerns</h2>
               <p>Define a method called move in the Agent class as follows:</p>
               <pre>def move(self, x_min, y_min, x_max, y_max):</pre>
               <p>Cut the code from the "# Move agents" loop that moves an agent 
@@ -220,7 +220,7 @@ public class ABM4 extends Page {
               This is a reasonable separation of concerns for an Agent Based 
               Model.</p>
                
-              <h2>4. Give each agent a unique name</h2>
+              <h2 id="4">4. Give each agent a unique name</h2>
               <p>It is possible that two Agent class instances might be located 
               at the same coordinates, and it would be helpful to distinguish 
               them further.</p>

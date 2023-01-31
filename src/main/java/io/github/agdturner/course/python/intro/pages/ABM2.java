@@ -40,7 +40,7 @@ public class ABM2 extends Page {
         writeH1();
         
         w.add("""
-              <h2>1. Recap</h2>
+              <h2 id="1">1. Recap</h2>
               <p>Your ABM code should look something like the following:</p>
               <pre><code class=\"language-python\">import random
               import math
@@ -129,7 +129,7 @@ public class ABM2 extends Page {
               distance 5.0
               distance 5.0</pre></code>
               
-              <h2>2. Using Lists</h2>
+              <h2 id="2">2. Using Lists</h2>
               <p>Rather than handle each coordinate individually, they are going 
               to be stored in lists of length 2, with the first item being x and 
               the second item being y. All the coordinate pairs are also going 
@@ -170,7 +170,7 @@ public class ABM2 extends Page {
               initialisation. Can you think of a way to remove the need for them 
               and do the initialition more simply?</p>
               
-              <h2>3. Plotting</h2>
+              <h2 id="3">3. Plotting</h2>
               <p>Now plot the coordinates using matplotlib by adding the 
               following import statements to those at the top of your file:
               </p>
@@ -198,7 +198,7 @@ public class ABM2 extends Page {
               repository and assuming you are using GitHub - push your changes 
               to GitHub.</p>
               
-              <h2>4. Using Loops</h2>
+              <h2 id="4">4. Using Loops</h2>
               <p>This section provides guidance on how to restructure your code 
               so that all the agent initialisation happens first, all the moving 
               happens second, and all the plotting happens third. There will be 
@@ -225,7 +225,7 @@ public class ABM2 extends Page {
               <p>Add and commit to your local git repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               
-              <h2>5. More Plotting</h2>
+              <h2 id="5">5. More Plotting</h2>
               <p>As a further exercise, overplot the coordinate points with: the 
               smallest x coordinate using the colour blue; the largest y 
               coordinate using the colour yellow; and the smallest y coordinate 
@@ -233,7 +233,7 @@ public class ABM2 extends Page {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               
-              <h2>6. Code Review and Looking Forward</h2>
+              <h2 id="6">6. Code Review and Looking Forward</h2>
               <p>If you managed to complete all parts, then it should be 
               straight forward to modify your code to run for different numbers
               of agent.</p>

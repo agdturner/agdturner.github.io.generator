@@ -39,7 +39,7 @@ public class Functions extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>So far, we've been using functions from the builtin module, 
               which is automatically loaded in most cases. We've also accessed 
               functions in other modules using import statements. We'll now 
@@ -54,9 +54,9 @@ public class Functions extends Page {
               in code, making code smaller, and easier to understand and 
               maintain.</p>
               
-              <h2>2. Parameters</h2>
+              <h2 id="2">2. Parameters</h2>
               
-              <h3>2.1. Positional Parameters</h3>
+              <h3 id="2.1">2.1. Positional Parameters</h3>
               <p>Functions can be parameterised; that is, made more generic and 
               flexible by allowing things to be passed in as arguments. These 
               things can be variables and other function. If a variable passed 
@@ -103,7 +103,7 @@ public class Functions extends Page {
               <p>Because of this, parameters with defaults come after any 
               undefaulted parameters.</p>
               
-              <h3>2.2. Keyword Arguments (kwargs)</h3>
+              <h3 id="2.2">2.2. Keyword Arguments (kwargs)</h3>
               <p>Arguments can also be named, these are called keyword arguments 
               or kwargs. Note that this use of the term keyword has nothing to 
               do with the generic use for words you can't use as identifiers.
@@ -120,7 +120,7 @@ public class Functions extends Page {
               <p>Parameters can be forced into being kwargs by putting a * to 
               the left of the kwarg.</p>
               
-              <h3>2.3. Flexibility using Tuples and Dictionaries</h3>
+              <h3 id="2.3">2.3. Flexibility using Tuples and Dictionaries</h3>
               <p>More positional arguments can be allowed using *tuple_name, as 
               in the following example:</p>
               <pre><code class="language-python">def sum (num1, num2, *others):
@@ -176,7 +176,7 @@ public class Functions extends Page {
               <a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">
               Python documentation: Outline of how to get output from a function documentation</a></p>
               
-              <h2>3. Scope</h2>
+              <h2 id="3">3. Scope</h2>
               <p>The scope of a variable is from where in the code it can be 
               accessed. Scope was introduced in 
               <a href="../Variables/index.html#3">Variables Section 3</a> when 
@@ -223,7 +223,7 @@ public class Functions extends Page {
               f1()
               print(a) # Prints 1.</code></pre>
               
-              <h2>4. Function Complexity</h2>
+              <h2 id="4">4. Function Complexity</h2>
               <p>As shown above, functions can be nested inside other functions. 
               This can hide those inner functions so that they can't be called 
               directly. This can help reduce how complicated things appear and 
@@ -242,7 +242,7 @@ public class Functions extends Page {
               more simply have variables as parameters and return only variables
               albeit packaged in a Tuple.</p>
               
-              <h3>4.1. Decorators</h3>
+              <h3 id="4.1">4.1. Decorators</h3>
               <p>Decorators can be added prior to the def keyword of a function
               to apply other functions to the outputs of a function. The syntax 
               for these makes use of the At Symbol (@) which is followed 
@@ -303,7 +303,7 @@ public class Functions extends Page {
               run_time, agents = create_agents(n_agents)
               print(run_time, "seconds to create", n_agents, "agents.")</code></pre>
               
-              <h3>4.2. Lamdas
+              <h3 id="4.2">4.2. Lamdas
               <p>Lamda functions are small anonymous functions in Python. They
               can take any number of arguments, but can only have one 
               expression. For example:</p>
@@ -312,9 +312,9 @@ public class Functions extends Page {
               
               print(x(1, 2)) # <-- Prints 0.5.</code></pre>
               
-              <h2>5. Style and Documenting Functions</h2>
+              <h2 id="5">5. Style and Documenting Functions</h2>
               
-              <h3>5.1. Style</h3>
+              <h3 id="5.1">5.1. Style</h3>
               <p>Good Python style is set out in 
               <a href="https://www.python.org/dev/peps/pep-0008/">PEP-0008</a>
               which is worth finding time to read.</p>
@@ -333,7 +333,7 @@ public class Functions extends Page {
               <li>Indent comments to the level of the code referred to.</li>
               </ul>
               
-              <h3>5.2. Documenting Functions</h3>
+              <h3 id="5.2">5.2. Documenting Functions</h3>
               <p>Docstrings are automatically extracted to describe code. They 
               are triple-double quote enclosed comments after, for example, 
               function declarations. For functions these should ideally have a 
@@ -373,7 +373,7 @@ public class Functions extends Page {
               <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which 
               comes with Anaconda.</p>
               
-              <h2>6. Next</h2>
+              <h2 id="6">6. Next</h2>
               <p>Let us apply some of what we have learned to enhance our Agent
               Based Modelling Code.</p>
               """);

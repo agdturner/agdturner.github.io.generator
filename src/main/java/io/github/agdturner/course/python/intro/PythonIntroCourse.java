@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.Page;
 import io.github.agdturner.course.python.intro.pages.ABM1;
@@ -43,6 +44,7 @@ import io.github.agdturner.course.python.intro.pages.Python;
 import io.github.agdturner.course.python.intro.pages.Variables;
 import io.github.agdturner.course.python.intro.pages.Web;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.logging.Level;
@@ -82,12 +84,12 @@ public abstract class PythonIntroCourse extends Course {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public PythonIntroCourse(int courseNumber, String courseName,
+    public PythonIntroCourse(Environment env, int courseNumber, String courseName,
             String academicYear,
             boolean hasAssignments,  
             int assignment1Weighting,
-            int assignment2Weighting) {
-        super(COURSE_TYPE, courseNumber, courseName, academicYear);
+            int assignment2Weighting, Path local) {
+        super(env, COURSE_TYPE, courseNumber, courseName, academicYear);
         this.hasAssignments = hasAssignments;
         this.assignment1Weighting = assignment1Weighting;
         this.assignment2Weighting = assignment2Weighting;
@@ -124,15 +126,15 @@ public abstract class PythonIntroCourse extends Course {
         /**
          * Write Pages.
          */
-        write(homePage);
+        write(homePage, local);
         for (int j = 0; j < coursePages.size(); j ++) {
-            write(coursePages.get(j));
+            write(coursePages.get(j), local);
         }
-        write(index);
-        write(references);
+        write(index, local);
+        write(references, local);
     }
 
-    protected final void write(Page page) {
+    protected final void write(Page page, Path local) {
         page.write();
         // Write footer
         // Add navigation
@@ -144,7 +146,7 @@ public abstract class PythonIntroCourse extends Course {
         page.w.add("</footer>");
         // Write page
         try {
-            page.w.writeHTML(page.p, "index", page.title + " Page", Page.getHeadElements());
+            page.w.writeHTML(page.p, "index", page.title + " Page", Page.getHeadElements(local));
         } catch (IOException ex) {
             Logger.getLogger(PythonIntroCourse.class.getName()).log(Level.SEVERE, null, ex);
         }

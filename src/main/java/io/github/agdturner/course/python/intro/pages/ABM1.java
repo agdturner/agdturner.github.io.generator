@@ -39,7 +39,7 @@ public class ABM1 extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction to ABM</h2>
+              <h2 id="1">1. Introduction to ABM</h2>
               <p>In a series of practicals we are going to develop a simple 
               spatial agent-based model (ABM). Spatial agent based modelling is 
               widely used in social and ecological sciences. The model will 
@@ -90,7 +90,7 @@ public class ABM1 extends Page {
               The model will be visualised as an animation as it runs. Outputs 
               from the model will be saved in files.</p>
               
-              <h2>2. Practical task</h2>
+              <h2 id="2">2. Practical task</h2>
               <p>Represent two agents with two dimensional spatial locations 
               given by cartesian coordinates (x and y), get them to move 
               randomly and calculate the distance between them.</p>
@@ -129,7 +129,7 @@ public class ABM1 extends Page {
               make sure it is working. In this case, testing involved printing 
               something out.</p>
               
-              <h2>3. Randomly changing variable values</h2>
+              <h2 id="3">3. Randomly changing variable values</h2>
               <p>To do this, we will make use of the
               <a href="https://docs.python.org/3/library/random.html">Random 
               Package (random)</a>
@@ -210,7 +210,7 @@ public class ABM1 extends Page {
               having initialised x1 and y1 add code to randomly change these 
               values and print them out.</p>
               
-              <h2>4. Calculate the Euclidean distance</h2>
+              <h2 id="4">4. Calculate the Euclidean distance</h2>
               <p>In this section we are going to use the 
               <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">
               Pythogorean theorem</a> to calculate the distance between pairs of 
@@ -254,7 +254,7 @@ public class ABM1 extends Page {
               the random module. Take time to comment your code so you can 
               understand it later.</p>
               
-              <h2>5. Commit to your code repository</h2>
+              <h2 id="5">5. Commit to your code repository</h2>
               <p>Add and commit to your local git repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);

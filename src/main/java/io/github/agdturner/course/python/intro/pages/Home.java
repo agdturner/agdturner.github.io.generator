@@ -18,7 +18,6 @@ package io.github.agdturner.course.python.intro.pages;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 import io.github.agdturner.course.Course;
-import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * Python Intro Course Home Page.
@@ -46,9 +45,9 @@ public class Home extends Page {
                 + c.academicYear + "&M=" + c.getCourseCode2();
         w.add("""
               <h2>1. Introduction</h2>
-              <p>Welcome to the course website.</p>
+              <p>Welcome to the course website!</p>
               """);
-        w.add("<p>The timetable for the course is linked from the");
+        w.add("<p>The course timetable is linked from the");
         w.add("<a href=\"" + moduleCataloguePage + "\">"
                 + "University of Leeds " + c.getCourseCode1()
                 + " Module Catalogue Page</a>.</p>");
@@ -62,87 +61,153 @@ public class Home extends Page {
         w.add("""
               <p>At the top of each page is a Style Button to change between 
               Light Mode and Dark Mode. In Light Mode, the background of pages 
-              is lighter. In Dark Mode links to other websites appear with a 
-              dark grey background.</p>
-              <p>Below the Style Button is a Navigation Section. The bottom 
-              of each page links to the next page (the last page links back to
-              this Home Page.</p>
+              is lighter. <!--In Dark Mode links to other websites appear with a 
+              dark grey background.--></p>
+              <p>Below the Style Button is a Navigation Section. Essentially, 
+              the idea is for you - students taking the course, to work your way 
+              through all the pages as linked from the Navigation Section. The 
+              general progression is from left to right. Within each page, 
+              sections are numbered, and there are Index and References pages at 
+              the end to help.</p>
+              <p>If you have feedback about the website, especially if you 
+              encounter problems or spot any errors or inconsistencies, then 
+              please let your tutor know.
+              </p>
               """);
-//        w.add("""
-//              <p>The idea is that learners proceed by reading through the web
-//              pages in order, pausing to think, explore links, take
-//              breaks, perhaps talking with peers, undertake practical
-//              exercises as directed, and expriment.</p>
-        w.add("<p>The official " + addWebReference("https://docs.python.org/3/",
-                "Python 3 Documentation", "Python 3 Documentation") + " is"
-                + " often referred to for details about the "
-                + addWikipediaReference("Python_(programming_language)",
-                        "Python programming language") + ".</p>");
 
         w.add("""
-              <h2>2. Syllabus</h2>
-              <p>General computer programming concepts and Python including:</p>
+              <h2 id="2">2. Syllabus</h2>
+              
+              <p>General computer programming concepts, including:</p>
               <ul>
               """);
-        w.add("<li>" + addWikipediaReference("Version_control",
-                "Version control") + "</li>");
-        w.add("<li>" + addWikipediaReference("Variable_(computer_science)",
-                "Variables") + "</li>");
-        w.add("<li>" + addWikipediaReference("Control_flow", "Control flow")
-                + "(" + addWikipediaReference(
-                        "Conditional_(computer_programming)", "conditionals") 
-                + "/" + addWikipediaReference("For_loop", "for loops") 
+        w.add("<li>"
+                + addWikipediaReference("Version_control", "Version control")
+                + "</li>");
+        w.add("<li>"
+                + addWikipediaReference("Variable_(computer_science)",
+                        "Variables") + "</li>");
+        w.add("<li>"
+                + addWikipediaReference("Control_flow", "Control flow")
+                + "("
+                + addWikipediaReference("Conditional_(computer_programming)",
+                        "conditionals")
+                + "/"
+                + addWikipediaReference("For_loop", "for loops")
                 + ")</li>");
-        w.add("<li>" + addWikipediaReference("Function_(computer_programming)",
-                "Functions") + "</li>");
-        w.add("<li>" + addWikipediaReference("Class_(computer_programming)",
-                "Classes") + "</li>");
+        w.add("<li>"
+                + addWikipediaReference("Function_(computer_programming)",
+                        "Functions")
+                + " and "
+                + addWikipediaReference("Functional_programming",
+                        "Functional Programming")
+                + "</li>");
+        w.add("<li>"
+                + addWikipediaReference("Class_(computer_programming)",
+                        "Classes")
+                + " and "
+                + addWikipediaReference("Object-oriented_programming",
+                        "Object Orientated Programming")
+                + "</li>");
+        w.add("</ul>");
+
+        w.add("<p>"
+                + addWikipediaReference("Python_(programming_language)",
+                        "Python programming language")
+                + " specifics:</p>");
+        w.add("<ul>");
+        w.add("<li>Python language development and limitations</li>");
+        w.add("<li>Structuring and organising Python code in "
+                + addWebReference(
+                        "https://docs.python.org/3/tutorial/classes.html",
+                        "Classes", null) + ", "
+                + addWebReference(
+                        "https://docs.python.org/3/tutorial/modules.html",
+                        "Modules", null) + ", and "
+                + addWebReference(
+                        "https://docs.python.org/3/tutorial/modules#packages.html",
+                        "Packages", null) + ".</li>");
+        w.add("<li>Using the Python Read Evaluate Print Loop (REPL) "
+                + "environment</li>");
+        w.add("<li>Running Python code from the command line, in  "
+                + addWebReference("https://jupyter.org/", "Jupyter", null)
+                + " Notebooks, and from within the "
+                + addWebReference("https://docs.python.org/3/library/idle.html",
+                        "IDLE", null)
+                + " and "
+                + addWebReference("https://www.spyder-ide.org/", "Spyder", null)
+                + " Integrated Development Environments.</li>");
+        w.add("<li>Python Environment Management using "
+                + addWebReference("https://docs.conda.io/", "Conda", null)
+                + " and "
+                + addWebReference("https://docs.python.org/3/library/venv.html",
+                        "Venv", null)
+                + "</li>");
+        w.add("<li>Using the "
+                + addWebReference("https://docs.python.org/3/library/",
+                        "Python Standard Library", null)
+                + ", and third party Python packages available via "
+                + addWebReference("https://pypi.org/",
+                        "PyPI - the Python Package Index",
+                        null)
+                + "</a></li>");
+        w.add("<li>Using Python to automate "
+                + addWebReference("https://qgis.org/", "QGIS", null)
+                + " Desktop - geospatial data processing software.</li>");
+        w.add("<li>Developing documentation: "
+                + "<a href=\"https://peps.python.org/pep-0257/#what-is-a-docstring\">"
+                + "docstring</a>, "
+                + addWebReference("https://docs.python.org/3/library/pydoc.html",
+                        "Pydoc", null)
+                + " and "
+                + addWebReference("https://www.sphinx-doc.org/", "Sphinx", null)
+                + "</li>");
+        w.add("<li>"
+                + addWebReference(
+                        "https://docs.python.org/3/library/doctest.html",
+                        "Doctest", null)
+                + "</li>");
+        w.add("<li>"
+                + addWikipediaReference("Unit_testing", "Unit testing")
+                + " using "
+                + addWebReference(
+                        "https://docs.python.org/3/library/unittest.html",
+                        "Unittest", null)
+                + " and "
+                + addWebReference(
+                        "https://docs.pytest.org/", "Pytest", null)
+                + "</li></ul>");
         w.add("""
-              <li>Python language development and limitations</li>
-              <li>Running Python code from the command line, in 
-              <a href="https://jupyter.org/">Jupyter</a> 
-              Notebooks, and in Integrated Development Environments</li>
-              <li>Python Environment Management using 
-              <a href="https://docs.conda.io/">Conda</a></li>
-              <li>Installing Python Packages</li>
-              <li>Using Python to automate
-              <a href="https://qgis.org/">QGIS</a> Desktop data processing.</li>
-              <li>Setting up a profile on 
-              <a href=""https://github.com/">GitHub</a></li>
-              <li>Testing:
-              <a href="https://docs.python.org/3/library/doctest.html">
-              doctest</a>
-              and
-              <a href="https://en.wikipedia.org/wiki/Unit_testing">
-              unit testing</a></li>
-              <li>Developing documentation: documenting functions; 
-              <a href="https://docs.python.org/3/library/pydoc.html">PyDoc</a>
-              and
-              <a href="https://www.sphinx-doc.org/">Sphinx</a></li>
-              </ul>
+              <h2 id="3">3. Expectations</h2>
               
-              <h2>3. Expectations</h2>
               <p>You will learn about:</p>
               <ul>
-              <li>Input and outputs</li>
-              <li>Processing geographical features (geometry and related 
-              attribute) data.</li>
-              <li>Visualising spatial data using
+              <li>Program input and output</li>
+              <li>Developing Python code (planning, writing, testing, 
+              organising)</li>
+              <!--<li>Processing geographical features (geometry and related 
+              attribute) data.</li>-->
               """);
-        w.add(addWebReference("https://matplotlib.org/", "matplotlib", null));
+        w.add("<li>Visualising spatial data using "
+                + addWebReference("https://matplotlib.org/", "Matplotlib",
+                        null)
+                + "</li>");
+        w.add("<li>Processing raster data stored in lists.</li>");
+        w.add("<li>Using "
+                + addWebReference("https://github.com/", "GitHub", null)
+                + "</li>");
+        w.add("<li>Developing "
+                + addWikipediaReference("Graphical_user_interface",
+                        "Graphical User Interface") + "s"
+                + "</li>");
+        w.add("<li>Developing and visualising a basic spatial "
+                + addWikipediaReference("Agent-based_model",
+                        "Agent Based Model") + "s"
+                + "</li>");
         w.add("""
-              </li>
-              <li>Processing raster data stored in lists.</li>
-              <li>Developing""");
-        w.add(addWikipediaReference("Graphical_user_interface",
-                "Graphical User Interface") + "s");
-        w.add("""
-              </li>
-              <li>Developing and visualising a basic spatial Agent Based 
-              Model</li>
               </ul>
               
-              <h2>4. The Learning Journey</h2>
+              <h2 id="4">4. The Learning Journey</h2>
               <p>Learning to program involves practical problem solving and
               computational thinking. This often involves breaking a problem
               down into smaller tasks and repeating basic workflows to
@@ -163,7 +228,7 @@ public class Home extends Page {
               provided to the user via the standard output.
               </p>
               
-              <h2>5. Platform/Software</h2>
+              <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is Free and Open Source
               Software (FOSS) which is available to download and install on 
               Linux, Windows and MacOS.<p>
@@ -181,9 +246,11 @@ public class Home extends Page {
         // Assignments and Assessments
         PythonIntroCourse pic = (PythonIntroCourse) c;
         if (pic.hasAssignments) {
-            w.add("<h2>6. Assignments and Assessments</h2>");
-            w.add("<p>There are two assignments that are assessed:</p>");
-            w.add("<ol>");
+            w.add("""
+                  <h2 id="6">6. Assignments and Assessments</h2>
+                  <p>There are two assignments that are assessed:</p>
+                  <ol>
+                  """);
             w.add("<li>A portfolio culmination from completing the practical"
                     + " tasks worth "
                     + pic.assignment1Weighting + "%.</li>");

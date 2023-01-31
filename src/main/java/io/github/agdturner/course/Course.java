@@ -36,6 +36,11 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 public class Course {
 
     /**
+     * The Environment.
+     */
+    public final Environment env;
+    
+    /**
      * For storing the course Type e.g. python.
      */
     public final String courseType;
@@ -135,13 +140,13 @@ public class Course {
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
      */
-    public Course(String courseType, int courseNumber, String courseName, String academicYear) {
+    public Course(Environment env, String courseType, int courseNumber, String courseName, String academicYear) {
+        this.env = env;
         this.courseType = courseType;
         this.courseNumber = courseNumber;
         this.courseName = courseName;
         this.academicYear = academicYear;
-        this.courseDir = Paths.get(Environment.DIR_COURSES.toString(),
-                courseType, getCourseCode1());
+        this.courseDir = Paths.get(env.dir.toString(), getCourseCode1());
         coursePages = new ArrayList<>();
         pageIDs = new TreeSet<>();
         pageIDToName = new HashMap<>();

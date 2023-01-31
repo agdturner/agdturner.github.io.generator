@@ -86,7 +86,7 @@ public abstract class WebPage {
         w.add("<h1>" + title + "</h1>");
     }
     
-    public static List<String> getHeadElements() {
+    public static List<String> getHeadElements(Path dir) {
         ArrayList<String> r = new ArrayList<>();
         r.add("""
               <!-- Styling. -->

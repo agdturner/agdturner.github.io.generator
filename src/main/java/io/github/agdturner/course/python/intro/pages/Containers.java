@@ -39,7 +39,7 @@ public class Containers extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>In this section we are going to consider some basic types of 
               data structure for storing collections of things in Python. 
               Similar structures are available in most high level languages, but 
@@ -57,9 +57,9 @@ public class Containers extends Page {
               when we come to use them in practise when developing our basic
               ABM code.</p>
               
-              <h2>3. Sequences, Tuples, Ranges, Lists</h2>
+              <h2 id="2">2. Sequences, Tuples, Ranges, Lists</h2>
               
-              <h3>3.1. Sequences</h3>
+              <h3 id="2.1">2.1. Sequences</h3>
               <p>A list is a sequence as is a Byte and a String. A Byte in 
               Python is a sequence of eight zeros and ones which can represent 
               the integers between 0 and 255. We do not use Bytes much in this 
@@ -107,7 +107,7 @@ public class Containers extends Page {
               <p>Search and replace is a common String operation as is finding 
               out if a string starts or ends with a particular String
               
-              <h3>3.2. Tuples</h3>
+              <h3 id="2.2">2.2. Tuples</h3>
               A Tuple is also a sequence. Tuple elements (items) are separated 
               with commas. An empty tuple can be made using parentheses. Tuples 
               can be added to and nested. Like Strings, Tuples are immutable in 
@@ -152,7 +152,7 @@ public class Containers extends Page {
               to False, the program continues by executing the next line after 
               the loop.</p>
               
-              <h3>3.3. Ranges</h3>
+              <h3 id="2.3">2.3. Ranges</h3>
               <p>Ranges are a special type of immutable sequence. They are 
               created as follows:
               <pre><code class="language-python">range(start, stop, step) # start and step are optional and default to 0 and 1 repectively</code></pre>
@@ -198,7 +198,7 @@ public class Containers extends Page {
               print(any(b)) # Print if any of the items in b are True.</code></pre>
               <p>Again copy this code into a file and have a play around.</p>
               
-              <h3>3.4. Lists</h3>
+              <h3 id="2.4">2.4. Lists</h3>
               <p>We have already come across lists which are commonly used in 
               Python. They are essentially the mutable form of tuples. Lists 
               have an order, different types of thing can be stored in them, 
@@ -275,9 +275,9 @@ public class Containers extends Page {
               sys.argv, where sys.argv[0] is "model.py", sys.argv[1] is "arg1", 
               sys.argv[2] is "arg2", and so on...</p>
 
-              <h2>4. Arrays, Sets, Dictionaries</h2>
+              <h2 id="4">4. Arrays, Sets, Dictionaries</h2>
               
-              <h3>4.1. Arrays</h3>
+              <h3 id="4.1">4.1. Arrays</h3>
               <p>Arrays are suited to storing and processing large collections 
               of basic types (bytes, integers and floating point numbers). If you 
               know how many elements the collection will contain, then declaring 
@@ -292,7 +292,7 @@ public class Containers extends Page {
               a.insert(3, 21) # Insert in position 3 the value 21
               print(a[3]) # Print the value at position 3</code></pre>
               
-              <h3>4.2. Sets</h3>
+              <h3 id="4.2">4.2. Sets</h3>
               <p>Sets are unordered collections. Adding something into a set 
               which already contains that thing will not change the set. They 
               are mostly used to test if something is or is not already 
@@ -308,7 +308,7 @@ public class Containers extends Page {
               intersection() are available for sets which can also be compared.
               Two sets are equal if they contain all of the same elements</p> 
                             
-              <h3>4.3. Dictionaries</h3>
+              <h3 id="4.3">4.3. Dictionaries</h3>
               <p>Dictionaries hold keys and value pairs. The keys are unique
               the values can be anything. Dictionaries can be sorted by the 
               keys. The keys can be treated a bit like a set. Dictionaries can 

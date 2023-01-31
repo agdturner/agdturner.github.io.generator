@@ -39,7 +39,7 @@ public class ABM3 extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Recap</h2>
+              <h2 id="1">1. Recap</h2>
               <p>Your ABM code should look something like the following:</p>
               <pre><code class=\"language-python\">import random
               import math
@@ -130,9 +130,9 @@ public class ABM3 extends Page {
               directory called "abm3". Open Spyder and use "save as" to save 
               your "model.py" file into the abm3 directory.</p>
               
-              <h2>2. Distance Calculations</h2>
+              <h2 id="2">2. Distance Calculations</h2>
               
-              <h3>2.1 Define a Function</h3>
+              <h3 id="2.1">2.1 Define a Function</h3>
               <p>Change the distance calculation code into a function called 
               get_distance: Use the def keyword and specify four input 
               parameters (x0, y0, x1, y1). Recall that the function declaration 
@@ -145,7 +145,7 @@ public class ABM3 extends Page {
               change the comment that describes the function into a docstring 
               and clarify what the inputs and outputs are.</p>
               
-              <h3>2.2 Calculate the maximum distance</h3>
+              <h3 id="2.2">2.2 Calculate the maximum distance</h3>
               <p>Consider a two dimensional matrix organised in rows and columns
               where the cells are distances between an agent for the row and an
               agent for the column, and the rows and the columns represent all 
@@ -239,7 +239,7 @@ public class ABM3 extends Page {
               the best place to move them is just after the variable n_agents 
               is initialised.</p>
               
-              <h2>3. Timing</h2>
+              <h2 id="3">3. Timing</h2>
               <p>We will use the time module to test the efficiency of code and 
               see how well it scales for some larger numbers of agents. Add the 
               following import statement along with the others:</p>
@@ -372,7 +372,7 @@ public class ABM3 extends Page {
               <img src="../../resources/abm3/Figure_2.png" 
               alt="Another graph of time (y axis) and n_agents (x axis)" /></p>
               
-              <h2>4. Other distance statistics</h2>
+              <h2 id="4">4. Other distance statistics</h2>
               <p>In calculating the maximum distance, a lower bound of 0 was 
               used to initialise the max_distance variable. If you were trying 
               to calculate the minimum distance, then an upper bound would be 
@@ -417,7 +417,7 @@ public class ABM3 extends Page {
               <p>Commit changed to your local repository and assuming you are 
               using GitHub - push your changes there.</p>
                                                           
-              <h2>5. Movement</h2>
+              <h2 id="5">5. Movement</h2>
               <p>Currently, our program moves all agents once, but we want them 
               to move a number of times. As well as moving, we'll want them to 
               maybe do other things iteratively depending on the environment at 

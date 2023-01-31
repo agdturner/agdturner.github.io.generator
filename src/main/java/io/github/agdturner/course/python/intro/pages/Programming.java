@@ -41,7 +41,7 @@ public class Programming extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>""");
         w.add(addWikipediaReference("Computer programming"));
         w.add("""
@@ -84,7 +84,7 @@ public class Programming extends Page {
               differences between Python and other languages are pointed out.
               </p>
               
-              <h2>2. Data</h2>
+              <h2 id="2">2. Data</h2>
               <p>In most modern computers, data is encoded in a binary form
               where the smallest units called bits are in one of two possible 
               states. Let us label these one (1) and zero (0).</p>
@@ -125,7 +125,7 @@ public class Programming extends Page {
               represent geometry and angles and also when calculating 
               statistics.</p>
               
-              <h2>3. Learning to Program</h2>
+              <h2 id="3">3. Learning to Program</h2>
               <p>If you have done little or no programming before, then other 
               learners may progress faster than you. Please do not worry about 
               this and take time to develop your understanding. Try to take 
@@ -162,7 +162,7 @@ public class Programming extends Page {
               and details of what the issue is. A key skill in programming is 
               learning how to ask for help.</p>
               
-              <h2>4. Language Evolution, Deprecation and Versions</h2>
+              <h2 id="4">4. Language Evolution, Deprecation and Versions</h2>
               <p>As languages evolve, often new functionality is added and new 
               types of expression (new syntax) are supported. These changes are 
               driven by what users want and what is available in other 
@@ -178,7 +178,7 @@ public class Programming extends Page {
               in the any language can start to look quite different over time.
               </p>
 
-              <h2>5. Considerata</h2>
+              <h2 id="5">5. Considerata</h2>
               <p>Programatically, with any given language, there are often 
               several different ways to achieve the same or a similar thing. 
               Sometimes independent programming efforts produce (almost) 

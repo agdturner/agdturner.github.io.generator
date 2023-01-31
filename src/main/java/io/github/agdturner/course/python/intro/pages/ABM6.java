@@ -39,7 +39,7 @@ public class ABM6 extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction and Preparation</h2>
+              <h2 id="1">1. Introduction and Preparation</h2>
               <p>To get the agents in the model communicating they need a way of 
               referring to each other, to get values of some variables and to 
               set values of some variables. Communication will depend on 
@@ -52,7 +52,7 @@ public class ABM6 extends Page {
               "my_modules" in abm6 and use "save as" to save your 
               "agentframework.py" and "io.py" files there.</p>
               
-              <h2>2. Sharing</h2>
+              <h2 id="2">2. Sharing</h2>
               <p>What we are actually going to implement is a sharing mechanism 
               where each agent shares their store equally amongst all agents 
               within a given radius. The algorithm is as follows:</p>
@@ -140,19 +140,17 @@ public class ABM6 extends Page {
               statements and play around to gain a good understanding of how 
               the code works.</p>
               
-              <h2>3. Coding Tasks</h2>
+              <h2 id="3">3. Coding Tasks</h2>
               <p>Create some more variable results by randomly setting the 
               store of each agent in initialisation to be a value between 0 and 
               100.</p>
               <p>Change the eat function so that if an agent store reaches 100, 
               then half the store is released back to the environment.</p>
               """);
-        
 //              <pre></pre>
 //              <pre><code class=\"language-python\"></code></pre>
 //              <p></p>
 //              <pre></pre>
-//              
         w.add("</div>");
     }
 }

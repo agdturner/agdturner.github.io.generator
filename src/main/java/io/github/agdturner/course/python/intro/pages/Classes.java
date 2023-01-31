@@ -39,7 +39,7 @@ public class Classes extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>Classes are templates for making objects which offer a way to 
               combine attributes (data/state) and functionality. Objects are 
               instances of a class, like you are an instance of a thing known as 
@@ -58,7 +58,7 @@ public class Classes extends Page {
               name of the class). It is helpful to organise code into modules as 
               having all code in one file becomes cumbersome.</p>
               
-              <h2>2. Class Definitions, Constructors, Attributes and Methods</h2>
+              <h2 id="2">2. Class Definitions, Constructors, Attributes and Methods</h2>
               <p>A class is defined using the keyword "class" followed by the 
               name of the class, some parentheses and a colon, for example:</p>
               <pre>class Agent():</pre>
@@ -118,7 +118,7 @@ public class Classes extends Page {
                       self.y = y
               </code></pre>
               
-              <h2>3. Inheritance</h2>
+              <h2 id="3">3. Inheritance</h2>
               <p>All classes effectively inherit (attributes and methods) from 
               the Metaclass called "type" in Python. A Metaclass is like a 
               factory for producing classes. We will not concern ourselves with 
@@ -172,7 +172,7 @@ public class Classes extends Page {
               <a href="https://docs.python.org/3/tutorial/classes.html#multiple-inheritance">
               The Python Tutorial on Classes Section on Multiple Inheritance</a>.</p>
               
-              <h2>4. Access Control</h2>
+              <h2 id="4">4. Access Control</h2>
               <p>Python does not have a way to declare the accessibility of 
               variables or functions as is common in other languages.</p>
               <p>Instead it uses a convention that variables that have a name 
@@ -232,7 +232,7 @@ public class Classes extends Page {
               <a href="https://docs.python.org/3/library/functions.html#property">
               The Python Library Documentation Chapter on Functions Section on Property</a>.</p>
               
-              <h2>5. Customisation</h2>
+              <h2 id="5">5. Customisation</h2>
               This __str__ method can be overriden to help the print function to 
               represent the instance of a class as a String. By default the 
               memory address of the class instance is printed, but rarely is 
@@ -258,7 +258,7 @@ public class Classes extends Page {
               <a href="https://docs.python.org/3/reference/datamodel.html#basic-customization
               The Python 3 Language Reference Data Model Chapter Section on Basic Customization</a>.</p> 
               
-              <h2>6. Further learning</h2>
+              <h2 id="6">6. Further learning</h2>
               <p>For a more in depth consideration of classes, see:
               <a href="https://docs.python.org/3/tutorial/classes.html">The Python Tutorial on Classes</a>.</p>
               """);

@@ -39,7 +39,7 @@ public class Github extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p><a href="http://www.github.com">GitHub</a> is a
               <a href="https://en.wikipedia.org/wiki/Git">Git</a>
               based code hosting platform for version control and collaboration. 
@@ -60,7 +60,7 @@ public class Github extends Page {
               and create a basic Website which form part of the 
               assignments/assessment</p>
               
-              <h2>2. Getting Started with GitHub</h2>
+              <h2 id="2">2. Getting Started with GitHub</h2>
               <p>Complete the
               <a href="https://docs.github.com/en/get-started/quickstart/hello-world">
               Hello World Tutorial</a>.</p>
@@ -138,7 +138,7 @@ public class Github extends Page {
               is possible to back track and without having to do all this 
               yourself.</p>
               
-              <h2>3. Python Code Repository Setup</h3>
+              <h2 id="3">3. Python Code Repository Setup</h3>
               <p>Create a new repository on GitHub which will be your code 
               repository for this course, call it something simple (you can 
               rename it later), include a README and a LICENSE and in .gitignore
@@ -164,13 +164,13 @@ public class Github extends Page {
               .gitignore settings for Python will not push this directory to 
               GitHub which is what we want.</p> 
               
-              <h2>4. GitHub Pages</h2>
+              <h2 id="4">4. GitHub Pages</h2>
               <p>In this section you are instructed to create another repository 
               on GitHub - your GitHub Pages Website. Follow the
               <a href="https://docs.github.com/en/pages/quickstart">
               GitHub Pages Quickstart Tutorial</a></p>
               
-              <h2>5. Taking Stock</h2>
+              <h2 id="5">5. Taking Stock</h2>
               <p>The benefits of using GitHub and the command line interface for 
               git might not yet be clear and this may seem a complicated 
               distraction, but it is important to be aware of current 

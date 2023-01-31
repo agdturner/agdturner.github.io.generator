@@ -32,6 +32,11 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  */
 public class Home extends WebPage {
 
+    public static final String URL_GITHUB_AGDTURNER = Environment.URL_GITHUB + "agdturner/";
+    public static final String DOMAIN = "agdturner.github.io";
+    public static final Path DIR = Paths.get("C:", "Users", "agdtu", "src", "agdt", DOMAIN);
+    //public static final Path DIR = Paths.get("C:", "Users", "geoagdt", "src", "agdt", DOMAIN);
+    
     /**
      * Create a new instance.
      */
@@ -94,7 +99,7 @@ public class Home extends WebPage {
                         "http://www.geog.leeds.ac.uk/people/a.turner/index.html",
                         "SoG Profile")
                 + " | "
-                + Web_ContentWriter.getLink(Environment.URL_GITHUB_AGDTURNER,
+                + Web_ContentWriter.getLink(URL_GITHUB_AGDTURNER,
                         "Github Profile")
                 + "</p>");
 //        w.add("<p>"
@@ -173,9 +178,9 @@ public class Home extends WebPage {
      * @param args
      */
     public static void main(String[] args) {
-        String name = "Andy Turner " + Environment.DOMAIN + " Home Page";
+        String name = "Andy Turner " + DOMAIN + " Home Page";
         PageID id = new PageID(0);
-        Home h = new Home(name, id, Paths.get(Environment.DIR.toString(), "index.html"));
+        Home h = new Home(name, id, Paths.get(DIR.toString(), "index.html"));
     }
 
 }

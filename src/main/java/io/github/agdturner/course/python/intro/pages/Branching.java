@@ -39,7 +39,7 @@ public class Branching extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>
               Python supports looping (when some part of the code is executed 
               repeatedly a number of times, or until some condition is reached) 
@@ -51,10 +51,7 @@ public class Branching extends Page {
               interactivity with users and often speeds up processing. This
               section of the course focuses on loops and branching.</p>
               
-              <h2>2. Loops</h3>
-              
-              
-              <h3>Branching</h3>
+              <h2 id="2">2. Branching</h2>
               <p>A simple control flow is to branch based upon a condition which
               evaluates to either True or False. So, if the condition is True, 
               then the program follows one path, otherwise it follows another 
@@ -123,7 +120,7 @@ public class Branching extends Page {
               """);
         w.add("""
               
-              <h3>Match-case Statement</h3>
+              <h3 id="3">Match-case Statement</h3>
               <p>Python 3.10 (2021) introduced the match-case statement which 
               provides an implementation of a "switch" for Python which has long
               been available in most other high level langauges.</p>

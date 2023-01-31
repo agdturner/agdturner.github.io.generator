@@ -38,9 +38,10 @@ public class Assignments extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        w.add("<p>ABM</p>");
-//        w.add("<p></p>");
-//        w.add("<p>Enter: \"\"</p>");
+        w.add("""
+              <h2 id="1">1. Assignment 1</h2>");
+              <h2 id="2">2. Assignment 2</h2>");
+              """);
         w.add("</div>");
     }
 }

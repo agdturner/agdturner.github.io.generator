@@ -39,7 +39,7 @@ public class Modules extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>A module is usually a single file that may contain classes, 
               functions and variables. It should be imported to make these 
               things accessible and those things are then referred to using the 
@@ -53,7 +53,7 @@ public class Modules extends Page {
               packages which are not imported automatically. These need to be 
               imported in order to be used.</p>
               
-              <h2>2. Importing</h2>
+              <h2 id="2">2. Importing</h2>
               <p>A couple of different types of import statement should now be 
               familiar. The following imports a module and then access the Agent
               class within it to construct an instance of that class:</p>
@@ -104,7 +104,7 @@ public class Modules extends Page {
                   # Imports needed for running.
                   function_name()</code></pre>
                             
-              <h2>2. Packages</h2>
+              <h2 id="3">3. Packages</h2>
               <p>Consider the following package file structure:</p>
               <pre><code class=\"language-python\">/abm
                   __init__.py
@@ -132,7 +132,7 @@ public class Modules extends Page {
               issued at the prompt:</p>
               <pre>python -m packagename</pre>
               
-              <h2>3. Standard Libraries</h2>
+              <h2 id="4">4. Standard Libraries</h2>
               <p>The <a href="https://docs.python.org/3/library/functions.html">
               Builtin Functions List</a> and the
               <a href="https://docs.python.org/3/py-modindex.html">
@@ -182,7 +182,7 @@ public class Modules extends Page {
               random</a> - for sampling and doing things randomly.</li>
               </ul>
               
-              <h2>3. External Libraries</h2>
+              <h2 id="5">5. External Libraries</h2>
               <p>Anaconda comes bundled with some useful external libraries. 
               Exactly what it comes with varies with the version and underlying 
               operating system. Details can be found via the following URL:
@@ -195,7 +195,7 @@ public class Modules extends Page {
               <a href="https://pypi.python.org/pypi">
               PyPi - Python Package Index</a>.</p>
               
-              <h3>3.1. General utility</h3>
+              <h3 id="5.1">5.1. General utility</h3>
               <p>The following is a list of some widely used libraries:</p>
               <ul>
               <li><a href="http://www.numpy.org/">numpy</a> is useful for 
@@ -217,7 +217,7 @@ public class Modules extends Page {
               on multiple computers).</li>
               </ul>
               
-              <h3>3.2. Geospatial</h3>
+              <h3 id="5.2">5.2. Geospatial</h3>
               <p>Some of these were used in the introduction to the course:</p>
               <ul>
               <li><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/">

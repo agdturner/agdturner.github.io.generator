@@ -15,8 +15,11 @@
  */
 package io.github.agdturner.course.python.intro.process;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,11 +39,11 @@ public class GEOG5003M extends PythonIntroCourse {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public GEOG5003M(int courseNumber, String courseName, String academicYear,
+    public GEOG5003M(Environment env, int courseNumber, String courseName, String academicYear,
             boolean hasAssignments, int assignment1Weighting, 
-            int assignment2Weighting) {
-        super(courseNumber, courseName, academicYear, hasAssignments, 
-                assignment1Weighting, assignment2Weighting);
+            int assignment2Weighting, Path local) {
+        super(env, courseNumber, courseName, academicYear, hasAssignments, 
+                assignment1Weighting, assignment2Weighting, local);
     }
 
     /**
@@ -53,8 +56,16 @@ public class GEOG5003M extends PythonIntroCourse {
                 + " Core Skills";
         int assignment1Weighting = 30;
         int assignment2Weighting = 70;
-        GEOG5003M c = new GEOG5003M(
+        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");
+        Path local = Paths.get("courses", "computing");
+        //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
+        //String  domain = "agdturner.github.io";
+        String  domain = "www.geog.leeds.ac.uk";
+        Environment env = new Environment(domain, dir);
+        //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
+        //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
+        GEOG5003M c = new GEOG5003M(env,
                 5003, courseName, "202223", true, assignment1Weighting, 
-                assignment2Weighting);
+                assignment2Weighting, local);
     }
 }

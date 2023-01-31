@@ -39,7 +39,7 @@ public class ABM5 extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction and Preparation</h2>
+              <h2 id="1">1. Introduction and Preparation</h2>
               <p>The next step in developing our Agent Based Model is to load 
               some spatial data to represent a varied environment in which the 
               agents interact. The model will be changed so that the agents 
@@ -54,7 +54,7 @@ public class ABM5 extends Page {
               used to store the model data separately to the program source 
               code.</p>
               
-              <h2>2. Input Data</h2>
+              <h2 id="2">2. Input Data</h2>
               <p>Download/save into your newly created input data directory the 
               text file:
               <a href="../../resources/abm5/in.txt">in.txt</a></p>
@@ -110,7 +110,7 @@ public class ABM5 extends Page {
               <p>Let's regard each row as aligning with a y-coordinate and each 
               column as aligning with an x-coordinate.</p>
               
-              <h2>3. Plot environment</h2>
+              <h2 id="3">3. Plot environment</h2>
               <p>To plot the agents on the environment add the following at the 
               start of the plotting section:</p>
               <pre>plt.imshow(environment)</pre>
@@ -126,7 +126,7 @@ public class ABM5 extends Page {
               <p><img src="../../resources/abm5/Figure_2.png" 
                 alt="A plot of agents on a limited part of the environment." /></p>
               
-              <h2>4. Agent-Environment Interaction</h2>
+              <h2 id="4">4. Agent-Environment Interaction</h2>
               <p>Let us imagine that the environment values represent resources 
               that can be eaten/stored by agents.</a>
               <p>Add environment as a parameter to the Agent class constructor.
@@ -178,7 +178,7 @@ public class ABM5 extends Page {
               increased.</p>
               <p>Commit your code to your local repository.</p>
               
-              <h2>5. Coding Tasks</h2>
+              <h2 id="5">5. Coding Tasks</h2>
               <p>Define a function in model.py that adds up all the values in 
               environment.</p>
               <p>Define another function that adds up all the store values in 

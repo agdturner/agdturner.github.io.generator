@@ -24,19 +24,21 @@ import java.nio.file.Paths;
  */
 public class Environment {
     
-    public static final String DOMAIN = "agdturner.github.io";
+    public final String domain;
     
-    public static final Path DIR = Paths.get("C:", "Users", "agdtu", "src", "agdt", DOMAIN);
-    //public static final Path DIR = Paths.get("C:", "Users", "geoagdt", "src", "agdt", DOMAIN);
+    public final Path dir;
     
-    public static final Path DIR_COURSES = Paths.get(DIR.toString(), "courses");
-
     public static final String URL_GITHUB = "http://github.com/";
-
-    public static final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
     
     public static final String URL_PYTHON = "https://www.python.org/";
 
     public static final String URL_PYTHON_DOCS = "https://docs.python.org/";
     
+    /**
+     * Create a new instance.
+     */
+    public Environment(String domain, Path dir) {
+        this.domain = domain;
+        this.dir = Paths.get(dir.toString(), domain);
+    }
 }

@@ -39,7 +39,7 @@ public class IO extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2>1. Introduction</h2>
+              <h2 id="1">1. Introduction</h2>
               <p>There are a variety of functions to help with Input and Output 
               (IO), including the builtins
               <a href="https://docs.python.org/3/library/functions.html#input">input()</a>
@@ -58,9 +58,9 @@ public class IO extends Page {
               <a href="https://docs.python.org/3/library/tempfile.html">tempfile</a>, and
               <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.</p>
               
-              <h2>2. Builtins and Standard IO</h2>
+              <h2 id="2">2. Builtins and Standard IO</h2>
               
-              <h3>2.1. The Input Function</h3>
+              <h3 id="2.1">2.1. The Input Function</h3>
               <p>The Input Function reads input from the Standard Input (stdin) 
               which is usually the keyboard. This continues until the <ENTER> 
               (or <RETURN>) key is pressed. The function returns a String 
@@ -70,7 +70,7 @@ public class IO extends Page {
               <pre><code class=\"language-python\">n_agents = input("Key in a positive integer between 10 and 100 to set the number of agents then press the <ENTER> or <RETURN> key:")
               print("The input detected is:", n_agents)</code></pre>
               
-              <h3>2.2. Streams</h3>
+              <h3 id="2.2">2.2. Streams</h3>
               <p>The Print Function writes to the Standard Output (stdout) which 
               is usually the screen.</p>
               <p>Streams are a name given to a flow of data, so stdin and stdout
@@ -93,7 +93,7 @@ public class IO extends Page {
               <p>It is also possible to pipe the stdout of one program to the 
               stdin of another program using the pipe symbol "|".</p>
               
-              <h3>2.3. Open</h3>
+              <h3 id="2.3">2.3. Open</h3>
               <p>The following code uses the Builtin Open Function to open a 
               file in the current directory called "a.in" and reads this 
               one line at a time streming the output to the screen before then 
@@ -131,7 +131,7 @@ public class IO extends Page {
               <a href="https://docs.python.org/3/library/functions.html#open">
               The Python Documentation Functions Chapter Open Section</a></p>
 
-              <h3>2.3. File formats</h3>
+              <h3 id="2.4">2.4. File formats</h3>
               <p>All files are binary files, but some binary files are known as 
               text files which are typically delimited into lines using a 
               newline character. To read other types of binary file, it is 
@@ -149,14 +149,14 @@ public class IO extends Page {
               <p>In terms of text file formats, there are several types of 
               commonly used text file formats.</p>
               
-              <h4>2.3.1. CSV Format</h4>
+              <h4 id="2.3.1">2.3.1. CSV Format</h4>
               <p>CSV files are comma separated variable files. The variables 
               may be numeric or Strings. There can be a complication if String 
               variables also contain commas when the entire String is usually 
               enclosed in quotation marks, and again there are difficulties if 
               quotation marks or apostrophes are in the Strings.</p>
               
-              <h4>2.3.2. JSON Format</h4>
+              <h4 id="2.3.2">2.3.2. JSON Format</h4>
               <p>JSON was originally designed to capture JavaScript objects. It
               stored data as text attribute and value pairs. Values can include 
               more complex entities made up of further attribute-value pairs.
@@ -176,7 +176,7 @@ public class IO extends Page {
                   }]
               }</pre>
               
-              <h4>2.3.3. Markup</h4>
+              <h4 id="2.3.3">2.3.3. Markup</h4>
               <p>Markup is essentially tags and content. Tags often note the 
               ontological context of the data, making the value have meaning: 
               that is determining its semantic content. Examples formats 
@@ -191,7 +191,7 @@ public class IO extends Page {
               Geographical Markup Language (GML)</a> - a standard developed by 
               the Open Geospatial Consortium.</p>
               
-              <h3>2.4. Reading and Writing Data-Text Files</h3>
+              <h3 id="2.4">2.4. Reading and Writing Data-Text Files</h3>
               <p>Because it is easy to forget to close an open file, it has 
               become good practice to set up a Context Manager using the With 
               Keyword (with), which temporarily deals with how some code runs. 
@@ -228,7 +228,7 @@ public class IO extends Page {
               something else is check for data that might otherwise be sitting 
               in a buffer...</p>
               
-              <h4>2.4.1. CSV Module</h4>
+              <h4 id="2.4.1">2.4.1. CSV Module</h4>
               <p>It is easier to read and write CSV format files using code 
               written specifically to do this which is in the CSV Module (csv).
               </p>
@@ -253,7 +253,7 @@ public class IO extends Page {
               <p>The optional delimiter parameter specified here delimits using 
               a space instead of the default comma.</p>
               
-              <h4>2.4.2. JSON Module</h4>
+              <h4 id="2.4.2">2.4.2. JSON Module</h4>
               <p>The following code can be used to read a JSON file:</p>
               <pre><code class=\"language-python\">import json
               f = open('data.json')
@@ -266,7 +266,7 @@ public class IO extends Page {
               json.dump(data, f)
               f.close()</code></pre>
               
-              <h4>2.4.3. Serialisation/Deserialisation</h4>
+              <h4 id="2.4.3">2.4.3. Serialisation/Deserialisation</h4>
               <p>Serialisation is the converting of program data into data 
               stored typically in a file. Deserialisation is the opposite 
               process that converts data back into working code. Essentially 
@@ -275,7 +275,7 @@ public class IO extends Page {
               <a href="https://docs.python.org/3/library/pickle.html">pickle</a>
               </p>
               
-              <h4>2.4.4. Handling HTML/XML</h4>
+              <h4 id="2.4.4">2.4.4. Handling HTML/XML</h4>
               <p>The Python standard library for processing HTML and XML is:
               <a href="https://docs.python.org/3/library/markup.html">
               markup</a>, but there are often better third party tools for 
@@ -284,7 +284,7 @@ public class IO extends Page {
               Beautiful Soup</a> - a Python library for pulling data out of HTML
               and XML files.
               
-              <h3>3. OS and File Systems</h3>
+              <h3 id="3">3. OS and File Systems</h3>
               <p>The OS Module 
               (<a href="https://docs.python.org/3/library/os.html">os</a>) 
               allows for interaction with the underlying Operating System (OS), 

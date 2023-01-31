@@ -15,7 +15,10 @@
  */
 package io.github.agdturner.course.python.intro.process;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Java for generating some https://agdturner.github.io Website Content.
@@ -33,11 +36,11 @@ public class GEOG5995M extends PythonIntroCourse {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public GEOG5995M(int courseNumber, String courseName, String academicYear,
+    public GEOG5995M(Environment env, int courseNumber, String courseName, String academicYear,
             boolean hasAssignments, int assignment1Weighting,
-            int assignment2Weighting) {
-        super(courseNumber, courseName, academicYear, hasAssignments,
-                assignment1Weighting, assignment2Weighting);
+            int assignment2Weighting, Path local) {
+        super(env, courseNumber, courseName, academicYear, hasAssignments,
+                assignment1Weighting, assignment2Weighting, local);
     }
 
     /**
@@ -50,7 +53,15 @@ public class GEOG5995M extends PythonIntroCourse {
         int courseNumber = 5995;
         int assignment1Weighting = 30;
         int assignment2Weighting = 70;
-        GEOG5995M c = new GEOG5995M(courseNumber, courseName, "202223",
-                true, assignment1Weighting, assignment2Weighting);
+        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");        
+        Path local = Paths.get("courses", "computing");
+        //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
+        //String  domain = "agdturner.github.io";
+        String  domain = "www.geog.leeds.ac.uk";
+        Environment env = new Environment(domain, dir);
+        //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
+        //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
+        GEOG5995M c = new GEOG5995M(env, courseNumber, courseName, "202223",
+                true, assignment1Weighting, assignment2Weighting, local);
     }
 }
