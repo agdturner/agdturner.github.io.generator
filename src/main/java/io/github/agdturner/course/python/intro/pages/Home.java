@@ -59,19 +59,18 @@ public class Home extends Page {
 //                "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
 //                "Andy Turner"));
         w.add("""
-              <p>At the top of each page is a Style Button to change between 
-              Light Mode and Dark Mode. In Light Mode, the background of pages 
-              is lighter. <!--In Dark Mode links to other websites appear with a 
-              dark grey background.--></p>
-              <p>Below the Style Button is a Navigation Section. Essentially, 
-              the idea is for you - students taking the course, to work your way 
-              through all the pages as linked from the Navigation Section. The 
-              general progression is from left to right. Within each page, 
-              sections are numbered, and there are Index and References pages at 
-              the end to help.</p>
-              <p>If you have feedback about the website, especially if you 
-              encounter problems or spot any errors or inconsistencies, then 
-              please let your tutor know.
+              <p>The website is a set of webpages and file based resources. At 
+              the top of each webpage is a Style Button that can be used to 
+              change between a lighter and darker style. Below that is a 
+              Navigation Section which outlines the current page. Each webpage 
+              links to the next at the end. Index and Reference webpages are 
+              provided. Essentially, the idea is for you - students taking the 
+              course - to read through the webpages trying out code yourself 
+              and undertaking practical exercises. You may find it helpful to 
+              re-read parts and re-do exercises.</p>
+              <p>If you encounter issues with the website, then please provide 
+              feedback to get these sorted. If you are struggling to comprehend 
+              parts, then please don't struggle for too long and ask for help.
               </p>
               """);
 
@@ -116,8 +115,8 @@ public class Home extends Page {
                         "Python programming language")
                 + " specifics:</p>");
         w.add("<ul>");
-        w.add("<li>Python language development and limitations</li>");
-        w.add("<li>Structuring and organising Python code in "
+        w.add("<li>Language development and limitations</li>");
+        w.add("<li>Structuring and organising code into "
                 + addWebReference(
                         "https://docs.python.org/3/tutorial/classes.html",
                         "Classes", null) + ", "
@@ -127,9 +126,8 @@ public class Home extends Page {
                 + addWebReference(
                         "https://docs.python.org/3/tutorial/modules#packages.html",
                         "Packages", null) + ".</li>");
-        w.add("<li>Using the Python Read Evaluate Print Loop (REPL) "
-                + "environment</li>");
-        w.add("<li>Running Python code from the command line, in  "
+        w.add("<li>Using the Read Evaluate Print Loop (REPL) environment</li>");
+        w.add("<li>Running programs from the command line, in  "
                 + addWebReference("https://jupyter.org/", "Jupyter", null)
                 + " Notebooks, and from within the "
                 + addWebReference("https://docs.python.org/3/library/idle.html",
@@ -145,8 +143,8 @@ public class Home extends Page {
                 + "</li>");
         w.add("<li>Using the "
                 + addWebReference("https://docs.python.org/3/library/",
-                        "Python Standard Library", null)
-                + ", and third party Python packages available via "
+                        "Standard Library", null)
+                + ", and third party packages available via "
                 + addWebReference("https://pypi.org/",
                         "PyPI - the Python Package Index",
                         null)
@@ -154,15 +152,17 @@ public class Home extends Page {
         w.add("<li>Using Python to automate "
                 + addWebReference("https://qgis.org/", "QGIS", null)
                 + " Desktop - geospatial data processing software.</li>");
-        w.add("<li>Developing documentation: "
+        w.add("<li>Code comments, "
                 + "<a href=\"https://peps.python.org/pep-0257/#what-is-a-docstring\">"
-                + "docstring</a>, "
+                + "docstring</a>s and print statements to ease comprehension "
+                + "and use.</li>");
+        w.add("<li>Producing documentation using "
                 + addWebReference("https://docs.python.org/3/library/pydoc.html",
                         "Pydoc", null)
                 + " and "
                 + addWebReference("https://www.sphinx-doc.org/", "Sphinx", null)
                 + "</li>");
-        w.add("<li>"
+        w.add("<li>Testing code using print statements and "
                 + addWebReference(
                         "https://docs.python.org/3/library/doctest.html",
                         "Doctest", null)
@@ -182,9 +182,13 @@ public class Home extends Page {
               
               <p>You will learn about:</p>
               <ul>
+              <li>Data encoding</li>
               <li>Program input and output</li>
               <li>Developing Python code (planning, writing, testing, 
               organising)</li>
+              <li>The Python parts of the 
+              <a href="https://www.anaconda.com/">Anaconda</a> data science 
+              platform</li>
               <!--<li>Processing geographical features (geometry and related 
               attribute) data.</li>-->
               """);
@@ -196,36 +200,52 @@ public class Home extends Page {
         w.add("<li>Using "
                 + addWebReference("https://github.com/", "GitHub", null)
                 + "</li>");
-        w.add("<li>Developing "
+        w.add("<li>Developing a "
                 + addWikipediaReference("Graphical_user_interface",
-                        "Graphical User Interface") + "s"
+                        "Graphical User Interface")
                 + "</li>");
         w.add("<li>Developing and visualising a basic spatial "
                 + addWikipediaReference("Agent-based_model",
-                        "Agent Based Model") + "s"
+                        "Agent Based Model")
                 + "</li>");
         w.add("""
               </ul>
-              
-              <h2 id="4">4. The Learning Journey</h2>
-              <p>Learning to program involves practical problem solving and
-              computational thinking. This often involves breaking a problem
-              down into smaller tasks and repeating basic workflows to
-              accomplish tasks.</p>
-              <p>Take time to develop your understanding and practise your
-              skills. There is a lot to learn especially if you are new to
+              <p>Developing a computer program to do something typically 
+              involves some problem solving and computational thinking. Often it 
+              is helpful to break a task into smaller subtasks and to consider 
+              if there is an order to these. Often a good solution involves 
+              doing things repeatedly employing variables that may change with 
+              each repetition. Often it is helpful to use a framework for 
+              testing from the outset and to test often as the code develops.  
+              </p>
+              <p>There is quite a lot of terminology for you to learn as well as 
+              learning how things work. Some of the terminology is generic to 
+              programming, some is more specific to Python.</p>
+              <p>There is a lot to learn especially if you are new to 
               programming.</p>
-              <p>Be experimental and remember to test your understanding and
-              test code does what you expect it to do.</p>
-              <p>The web pages with names starting \"ABM\" are a series of 
-              practical exercises that develop an basic spatial Agent Based 
-              Model that represents some animals moving about in an environment,
-              interacting with each other and the environment. One of the 
-              outputs of running the model is an animation. A very basic 
-              Graphical User Interface is developed for users to run the model.
-              Data are read from files and are scraped from a Web page to 
-              initialise the model, and data is output to files and messages are 
-              provided to the user via the standard output.
+
+              <h2 id="4">4. The Learning Journey</h2>
+              <p>Take time to develop your understanding and practise your new 
+              programming skills.</p>
+              <p>Be experimental and remember to test your understanding by 
+              testing code does what you expect it to. But, be cautious and 
+              do not run code from anywhere especially without first
+              comprehending what it does.</p>
+              <p>If some code does not do what you expected it to do, then treat
+              it as a learning experience and not as a bad failure. A key to 
+              coding is learning to be able to interpret errors messages and 
+              understand what caused them. Errors are not something to fear, 
+              they are something not to ignore!</p>
+              <p>In this website, the webpages with names starting \"ABM\" are a 
+              series that gradually develop a basic spatial Agent Based Model. 
+              The ABM can be regarded as a simplistic representation of animals 
+              moving about in an environment, interacting with each other and 
+              the environment. The ABM practicals implement some of the theory 
+              which is detailed in the other webpages. By the end of the course, 
+              you should have some ABM model code that: produces an animation; 
+              can be operated from a basic Graphical User Interface; reads in 
+              data from local files and files on the Web; and, outputs data 
+              files and messages for the user.
               </p>
               
               <h2 id="5">5. Platform/Software</h2>
@@ -251,11 +271,14 @@ public class Home extends Page {
                   <p>There are two assignments that are assessed:</p>
                   <ol>
                   """);
-            w.add("<li>A portfolio culmination from completing the practical"
-                    + " tasks worth "
+            w.add("<li>A portfolio which you develop by attempting the practical "
+                    + "exercises worth "
                     + pic.assignment1Weighting + "%.</li>");
             w.add("<li>An independent project worth  "
-                    + pic.assignment2Weighting + "%.</li>");
+                    + pic.assignment2Weighting + "%. You should have about the"
+                            + " right level of knowledge to start thinking"
+                            + " about this project when you are about half way"
+                            + " through the course.</li>");
             w.add("</ol>");
         }
         w.add("</div>");
