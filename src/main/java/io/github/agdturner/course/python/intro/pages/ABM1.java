@@ -209,6 +209,10 @@ public class ABM1 extends Page {
               the value of y0 and print out the modified value. Then, after 
               having initialised x1 and y1 add code to randomly change these 
               values and print them out.</p>
+              <p>Change the coordinate initialisation to randomly intialise the 
+              coordinates to have values in the range [0, 99] using the function 
+              randint() from the random module. Take time to comment your code
+              so you can understand it later.</p>
               
               <h2 id="4">4. Calculate the Euclidean distance</h2>
               <p>In this section we are going to use the 
@@ -230,9 +234,11 @@ public class ABM1 extends Page {
               function (<a href="https://docs.python.org/3/library/math.html?highlight=sqrt#math.sqrt">math.sqrt()</a>).</p>
               <p>In the next practical we will modify our code to use lists to
               store coordinate pairs and turn the distance calculation into a 
-              function. We will also use for loops to create and move the 
+              function. We will also use For Loops to create and move the 
               coordinates.</p>
-              <p>If you manage to develop the code and get it running and 
+              
+              <h2 id="5">5. Review and Save</h2>
+              <p>If you managed to develop the code and get it running and 
               producing the correct answer, then great. Don't worry if you 
               didn't get it working but gave it a try. The start of the next 
               practical in this series begins with a recap. Before moving on 
@@ -240,7 +246,7 @@ public class ABM1 extends Page {
               <ul>
               <li>There is a lot of repetition in the code, in that there are 
               sections of code doing similar things.</li>
-              <li>The code is not very agent based it is simply coordinates and 
+              <li>The code is not very agent based, it is simply coordinates and 
               no behaviour.</li>
               <li>The space the coordinates are currently moving about in is 
               unbounded, which may or may not be appropriate.</li>
@@ -248,13 +254,6 @@ public class ABM1 extends Page {
               as there is only one move each, they are not likely to be very 
               different after this.</li>
               </ul>
-              <p>As a final challenge for this practical, change your 
-              coordinate initialisation to randomly intialise the coordinates to 
-              have values in the range [0, 99] using the function randint() from 
-              the random module. Take time to comment your code so you can 
-              understand it later.</p>
-              
-              <h2 id="5">5. Commit to your code repository</h2>
               <p>Add and commit to your local git repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
