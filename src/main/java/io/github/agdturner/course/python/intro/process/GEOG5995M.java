@@ -37,10 +37,14 @@ public class GEOG5995M extends PythonIntroCourse {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
     public GEOG5995M(Environment env, int courseNumber, String courseName, String academicYear,
-            boolean hasAssignments, int assignment1Weighting,
-            int assignment2Weighting, Path local) {
+            boolean hasAssignments, 
+            String assignment1Name, String assignment1DueDate, int assignment1Weighting,
+            String assignment2Name, String assignment2DueDate, int assignment2Weighting,
+            Path local) {
         super(env, courseNumber, courseName, academicYear, hasAssignments,
-                assignment1Weighting, assignment2Weighting, local);
+                assignment1Name, assignment1DueDate, assignment1Weighting, 
+                assignment2Name, assignment2DueDate, assignment2Weighting, 
+                local);
     }
 
     /**
@@ -53,6 +57,10 @@ public class GEOG5995M extends PythonIntroCourse {
         int courseNumber = 5995;
         int assignment1Weighting = 30;
         int assignment2Weighting = 70;
+        String assignment1Name = "Assignment 1 Portfolio";
+        String assignment1DueDate = "23rd March 2023";
+        String assignment2Name = "Assignment 2 Independent Project";
+        String assignment2DueDate = "11th May 2023";
         Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");        
         Path local = Paths.get("courses", "computing");
         //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
@@ -62,6 +70,9 @@ public class GEOG5995M extends PythonIntroCourse {
         //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
         //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
         GEOG5995M c = new GEOG5995M(env, courseNumber, courseName, "202223",
-                true, assignment1Weighting, assignment2Weighting, local);
+                true,
+                assignment1Name, assignment1DueDate, assignment1Weighting,
+                assignment2Name, assignment2DueDate, assignment2Weighting,
+                local);
     }
 }

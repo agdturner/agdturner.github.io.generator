@@ -72,10 +72,31 @@ public abstract class PythonIntroCourse extends Course {
     public final int assignment1Weighting;
 
     /**
+     * The name for Assignment 1.
+     */
+    public final String assignment1Name;
+    
+    /**
+     * The date for Assignment 1.
+     */
+    public final String assignment1DueDate;
+    
+    /**
      * The weighting given to Assignment 2.
      */
     public final int assignment2Weighting;
 
+    /**
+     * The name for Assignment 2.
+     */
+    public final String assignment2Name;
+    
+    /**
+     * The date for Assignment 2.
+     */
+    public final String assignment2DueDate;
+    
+    
     /**
      * Creates a new instance.
      *
@@ -84,14 +105,23 @@ public abstract class PythonIntroCourse extends Course {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
-    public PythonIntroCourse(Environment env, int courseNumber, String courseName,
-            String academicYear,
+    public PythonIntroCourse(Environment env, int courseNumber, 
+            String courseName,            String academicYear,
             boolean hasAssignments,  
+            String assignment1Name,
+            String assignment1DueDate,
             int assignment1Weighting,
-            int assignment2Weighting, Path local) {
+            String assignment2Name,
+            String assignment2DueDate,
+            int assignment2Weighting,
+            Path local) {
         super(env, COURSE_TYPE, courseNumber, courseName, academicYear);
         this.hasAssignments = hasAssignments;
+        this.assignment1Name = assignment1Name;
+        this.assignment1DueDate = assignment1DueDate;
         this.assignment1Weighting = assignment1Weighting;
+        this.assignment2Name = assignment2Name;
+        this.assignment2DueDate = assignment2DueDate;
         this.assignment2Weighting = assignment2Weighting;
         /**
          * Initialise Course Pages.

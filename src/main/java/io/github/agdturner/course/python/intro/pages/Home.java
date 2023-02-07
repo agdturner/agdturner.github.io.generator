@@ -77,11 +77,12 @@ public class Home extends Page {
         w.add("""
               <h2 id="2">2. Syllabus</h2>
               
-              <p>General computer programming concepts, including:</p>
+              <p>General computer programming language concepts, including:</p>
               <ul>
               """);
-        w.add("<li>"
-                + addWikipediaReference("Version_control", "Version control")
+        w.add("<li>The notion of an "
+                + addWikipediaReference("API",
+                        "Application Programming Interface (API)")
                 + "</li>");
         w.add("<li>"
                 + addWikipediaReference("Variable_(computer_science)",
@@ -93,6 +94,10 @@ public class Home extends Page {
                         "conditionals")
                 + "/"
                 + addWikipediaReference("For_loop", "for loops")
+                + "/"
+                + addWikipediaReference("While_loop", "while loops")
+                + "/"
+                + addWikipediaReference("Thread_(computing)", "threads")
                 + ")</li>");
         w.add("<li>"
                 + addWikipediaReference("Function_(computer_programming)",
@@ -106,7 +111,7 @@ public class Home extends Page {
                         "Classes")
                 + " and "
                 + addWikipediaReference("Object-oriented_programming",
-                        "Object Orientated Programming")
+                        "Object Oriented Programming")
                 + "</li>");
         w.add("</ul>");
 
@@ -126,7 +131,9 @@ public class Home extends Page {
                 + addWebReference(
                         "https://docs.python.org/3/tutorial/modules#packages.html",
                         "Packages", null) + ".</li>");
-        w.add("<li>Using the Read Evaluate Print Loop (REPL) environment</li>");
+        w.add("<li>Using the "
+                + addWikipediaReference("Read%E2%80%93eval%E2%80%93print_loop",
+                        "Read Evaluate Print Loop (REPL)") + " environment</li>");
         w.add("<li>Running programs from the command line, in  "
                 + addWebReference("https://jupyter.org/", "Jupyter", null)
                 + " Notebooks, and from within the "
@@ -182,17 +189,24 @@ public class Home extends Page {
               
               <p>You will learn about:</p>
               <ul>
+              """);
+        w.add("<li>"
+                + addWikipediaReference("Version_control", "Version control")
+                + "</li>");
+        w.add("""
               <li>Data encoding</li>
               <li>Program input and output</li>
+              <!--
               <li>Developing Python code (planning, writing, testing, 
               organising)</li>
               <li>The Python parts of the 
               <a href="https://www.anaconda.com/">Anaconda</a> data science 
               platform</li>
-              <!--<li>Processing geographical features (geometry and related 
-              attribute) data.</li>-->
+              <li>Processing geographical features (geometry and related 
+              attribute) data.</li>
+              -->
               """);
-        w.add("<li>Visualising spatial data using "
+        w.add("<li>Visualisation using "
                 + addWebReference("https://matplotlib.org/", "Matplotlib",
                         null)
                 + "</li>");
@@ -229,29 +243,43 @@ public class Home extends Page {
               programming skills.</p>
               <p>Be experimental and remember to test your understanding by 
               testing code does what you expect it to. But, be cautious and 
-              do not run code from anywhere especially without first
-              comprehending what it does.</p>
+              do not run code from a potentially untrustworthy source or 
+              without comprehending fully what it does.</p>
               <p>If some code does not do what you expected it to do, then treat
-              it as a learning experience and not as a bad failure. A key to 
-              coding is learning to be able to interpret errors messages and 
-              understand what caused them. Errors are not something to fear, 
-              they are something not to ignore!</p>
+              it as a learning experience. A key to coding is learning to be 
+              able to interpret errors messages and understand what caused them. 
+              Errors are not something to fear, but they are something not to 
+              ignore!</p>
               <p>In this website, the webpages with names starting \"ABM\" are a 
               series that gradually develop a basic spatial Agent Based Model. 
-              The ABM can be regarded as a simplistic representation of animals 
+              This ABM can be regarded as a simplistic representation of animals 
               moving about in an environment, interacting with each other and 
-              the environment. The ABM practicals implement some of the theory 
-              which is detailed in the other webpages. By the end of the course, 
-              you should have some ABM model code that: produces an animation; 
-              can be operated from a basic Graphical User Interface; reads in 
-              data from local files and files on the Web; and, outputs data 
-              files and messages for the user.
-              </p>
+              the environment. Developing the ABM by following instructions puts 
+              into practise some of the theory detailed in the other webpages. 
+              By the end of the instructions, you should have ABM model code 
+              that: produces an animation; that can be operated from a basic 
+              Graphical User Interface; reads in data from local files and from 
+              the Web; and, outputs data files and messages for the user. You 
+              should also at that stage be confident in how to go about 
+              developing the model further without instructions. Whilst you 
+              might like to spend time doing that. Your main challenge for this
+              module is to undertake an independent project - something done on
+              your own with perhaps additional guidance from your tutor. The 
+              project will involve applying what you have learned to develop
+              some software or a program without detailed instructions.</p>
+              
               
               <h2 id="5">5. Platform/Software</h2>
-              <p>All the software used in this course is Free and Open Source
-              Software (FOSS) which is available to download and install on 
-              Linux, Windows and MacOS.<p>
+              <p>All the software used in this course is 
+              """);
+        w.add(addWikipediaReference("Free_and_open-source_software",
+                "Free and Open Source Software (FOSS)") + " which is "
+                + "available to download and install on "
+                + addWikipediaReference("Linux", "Linux") + ", "
+                + addWikipediaReference("Microsoft_Windows",
+                        "Microsoft Windows") + ", and "
+                + addWikipediaReference("MacOS", "macOS") + ".<p>");
+        w.add("""
               <p>The software is available to University of Leeds staff and
               students via AppsAnywhere and the Academic Windows Virtual Desktop
               which can be accessed via a Web browser and the following URL:
@@ -271,14 +299,18 @@ public class Home extends Page {
                   <p>There are two assignments that are assessed:</p>
                   <ol>
                   """);
-            w.add("<li>A portfolio which you develop by attempting the practical "
-                    + "exercises worth "
-                    + pic.assignment1Weighting + "%.</li>");
-            w.add("<li>An independent project worth  "
-                    + pic.assignment2Weighting + "%. You should have about the"
-                            + " right level of knowledge to start thinking"
-                            + " about this project when you are about half way"
-                            + " through the course.</li>");
+            w.add("<li>" + pic.assignment1Name + " worth "
+                    + pic.assignment1Weighting + "% of the overal mark and due "
+                    + pic.assignment1DueDate + " - developed by completing "
+                    + "practical exercises by following instructions.</li>");
+
+            w.add("<li>" + pic.assignment1Name + " worth "
+                    + pic.assignment1Weighting + "% of the overal mark and due "
+                    + pic.assignment1DueDate + " - developed by applying what "
+                    + "you have learned to a task for which there are no "
+                    + "detailed instructions. You should have sufficent "
+                    + "knowledge to begin this assignment from about half way "
+                    + "through the course.</li>");
             w.add("</ol>");
         }
         w.add("</div>");

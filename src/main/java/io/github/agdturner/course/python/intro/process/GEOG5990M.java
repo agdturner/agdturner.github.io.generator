@@ -36,10 +36,17 @@ public class GEOG5990M extends PythonIntroCourse {
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
      */
     public GEOG5990M(Environment env, int courseNumber, String courseName, String academicYear,
-            boolean hasAssignments, int assignment1Weighting, 
+            boolean hasAssignments,
+            String assignment1Name,
+            String assignment1DueDate,
+            int assignment1Weighting,
+            String assignment2Name,
+            String assignment2DueDate,
             int assignment2Weighting, Path local) {
-        super(env, courseNumber, courseName, academicYear, hasAssignments, 
-                assignment1Weighting, assignment2Weighting, local);
+        super(env, courseNumber, courseName, academicYear, hasAssignments,
+                assignment1Name, assignment1DueDate, assignment1Weighting,
+                assignment2Name, assignment2DueDate, assignment2Weighting,
+                local);
     }
 
     /**
@@ -53,17 +60,23 @@ public class GEOG5990M extends PythonIntroCourse {
         int courseNumber = 5990;
         int assignment1Weighting = 20;
         int assignment2Weighting = 80;
-        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");        
+        String assignment1Name = "Assignment 1 Portfolio";
+        String assignment1DueDate = "23rd March 2023";
+        String assignment2Name = "Assignment 2 Independent Project";
+        String assignment2DueDate = "11th May 2023";
+        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");
         Path local = Paths.get("courses", "computing");
         //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
-        String  domain = "agdturner.github.io";
+        String domain = "agdturner.github.io";
         //String  domain = "www.geog.leeds.ac.uk";
         Environment env = new Environment(domain, dir);
         //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
         //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
-        GEOG5990M c = new GEOG5990M(env, courseNumber, courseName,  "202223", 
-                true, assignment1Weighting, assignment2Weighting, local);
+        GEOG5990M c = new GEOG5990M(env, courseNumber, courseName, "202223",
+                true,
+                assignment1Name, assignment1DueDate, assignment1Weighting,
+                assignment2Name, assignment2DueDate, assignment2Weighting,
+                local);
     }
 
-    
 }

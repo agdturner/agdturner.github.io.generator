@@ -47,42 +47,39 @@ public class Python extends Page {
         String python3ReferenceLink = addWebReference(
                 "https://docs.python.org/3/reference/",
                 "Python 3 Language Reference", "");
-        String psfLink = addWebReference("https://www.python.org/psf/", 
+        String psfLink = addWebReference("https://www.python.org/psf/",
                 "Python Software Foundation", "");
-        w.add("<p>" +
-                addWikipediaReference("Python_(programming_language)",
-                "Python")
-                + " is a popular and powerful high-level interpretted "
-                + "programming language supported and developed by the "
+        w.add("<p>"
+                + addWikipediaReference("Python_(programming_language)",
+                        "Python")
+                + " is a popular and powerful high-level programming language "
+                + "supported and developed by the "
                 + psfLink + " that has a mission to promote, protect, and"
                 + " advance the language, and support and facilitate the growth"
                 + " of a diverse and international community of Python "
                 + "programmers.</p>");
-        w.add("<p>The core standard library and interpretters are freely"
+        w.add("<p>The core standard library and interpreters are freely"
                 + " available in source and binary forms for all major"
                 + " platforms from the " + pythonWebsiteLink + ", and may be"
-                + " freely distributed. There are various Python interpretters"
-                + " that read source code written in Python and translate it"
-                + " into machine instructions. Details of interpretters is"
-                + " regarded as an advanced topic and is not covered in this"
-                + " course.</p>"
-                + "<p>The Python Website contains distributions of and pointers"
-                + " to many Free and Open Source third party Python code, tools,"
-                + " and additional documentation.</p>"
-                + "<p>A particularly useful documentation page for beginners"
-                        + " learning the Python langauge is the "
+                + " freely distributed. There are various interpreters that"
+                + " translate Python source code into machine instructions."
+                + " The need for interpretation is what classifies Python as a"
+                + " high-level language.</p>"
+                + "<p>The " + pythonWebsiteLink + " contains distributions of"
+                + " and pointers to many Free and Open Source third party"
+                + " Python code, tools, and additional documentation.</p>"
+                + "<p>A particularly useful page for beginners is the "
                 + python3ReferenceLink + ".</p>");
         w.add("""
               <h2 id="2">2. Python 3</h2>
-              <p>Python 3 was first released in 2008. Much third party code 
-              needed refactoring to work with Python 3. For several years Python 
-              2 and Python 3 were both developed, but eventually in January 2020 
-              development and maintenance of Python 2 ceased. We will not look 
-              at the differences between Python 2 and Python 3 in this course 
-              and will focus just on Python 3.</p>
-              <p>On October 4, 2021 Python 3.10 was released.
-              On November 24th, 2022 Python 3.11 was released.
-              <!--On <date> Python 3.12 was released.-->
+              <p>Python 3 was first released in 2008. For several years Python 
+              2 and Python 3 were both developed and supported, but eventually 
+              in January 2020 development and maintenance of Python 2 ceased. 
+              We will not look at the differences between Python 2 and Python 3 
+              in this course and will focus just on Python 3.</p>
+              <p>Python 3.10 was released 2021-10-04.
+              Python 3.11 was released 2022-10-24.
+              Python 3.12 is due for release 2023-10-02.
               For each major incremental Python 3 release there is a Whatsnew 
               Web Page that introduces what is new:</p>
               <ul>""");
@@ -100,38 +97,40 @@ public class Python extends Page {
               Python Enhancement Proposals (PEPs). PEPs allow the community of 
               Python users to look ahead and see what might change and get 
               involved in language development. PEPs have their own Web 
-              site:""");
+              site:
+              """);
         w.add(addWebReference("https://peps.python.org/",
                 "Python Enhancement Proposal Website",
                 "https://peps.python.org/",
                 ""));
         w.add("""
               </p>
-              <p>New language features will not work with older interpretters,
-              and code tested with older interpretters might not necessarily 
-              work the same on newer interpretters as some language features may 
-              be changed or removed (through a process of deprecation). Changes 
-              are typically well thought through and often standardise things, 
-              or add flexibility or enhancement capabilities, but sometimes the 
-              changes in syntax necessitate changes in third part code. In a way 
-              this is good as it ensures that Python libraries evolve or die  
-              in a survival of the fittest evolutionary way that may have long 
-              term benefits. It also keeps programmers employed, and adds 
-              greater importance on producing well documented and well tested 
-              code. But lack of backwards compatability can be a worry and 
-              result in complicated requirements. Also, for ensuring 
-              reproducibility of results and diagnosing issues, it is therefore 
-              important to provide information about exactly which versions of 
-              everything are used.</p>
-              
+              <p>As with all programming languages, Python evolves through 
+              versions. As well as adding new things, some things may change 
+              from one version to the next - which can necessitate changes in 
+              third party code. There are few changes to the Application 
+              Programming Interface (API) - the syntax, names, and details of 
+              function inputs and outputs that are not backwards compatible. 
+              However, there there were some of these in the transition from 
+              Python 2 to Python 3 and there are occasionally others between 
+              minor versions of Python 3.</p>
+              <p>New language features will not work with older interpreters,
+              and code tested with older interpreters might not necessarily 
+              work the same on newer interpreters - due to API changes. This is 
+              important to bear in mind - for reproducibility of results and 
+              diagnosing issues, it is important to provide information about 
+              exactly which versions of everything are used.</p>
               <p>There is a vast ecosystem developing third party Python code. 
               Much of this is made available as packages via the
-              <a href="https://pypi.org/">PyPI</a> Python Package Index.</p>
+        """);
+        w.add(addWebReference("https://pypi.org/",
+                "Python Package Index (PyPI)", ""));
+        w.add("""
               <p>In Section 9, there is an exercise that involves installing 
               Python packages from PyPI and that links to details about how to 
               package code and make it available via PyPI.</p>
               """);
-        
+
         String python3DocsHome = Environment.URL_PYTHON_DOCS + "3/";
         String python3DocsTutorial = python3DocsHome + "tutorial/";
         w.add("<p>The");
@@ -742,8 +741,8 @@ public class Python extends Page {
               available in the Python environment provided. The following is a 
               key reference:</p> 
               """);
-        w.add("<p>" + addWebReference("https://qgis.org/pyqgis/", 
-                        "QGIS Python API Documentation", "", "") + "</p>");
+        w.add("<p>" + addWebReference("https://qgis.org/pyqgis/",
+                "QGIS Python API Documentation", "", "") + "</p>");
         w.add("""
               <p>In the Python Console, locate and action the Show Editor 
               Button. The Editor should appear on the right of the Python 
@@ -791,7 +790,7 @@ public class Python extends Page {
               packaging Python code is:
               """);
         w.add(addWebReference(
-                "https://packaging.python.org/", 
+                "https://packaging.python.org/",
                 "Packaging Python", ""));
         w.add("""
               <p>For those just beginning to learn to program, learning to 
@@ -902,7 +901,7 @@ public class Python extends Page {
               recommended that you organise to install onto the M:\\ drive e.g.
               into:
               """);
-        String envPath = "M:\\" + c.getCourseCode1() + "\\envs";  
+        String envPath = "M:\\" + c.getCourseCode1() + "\\envs";
         w.add(envPath);
         w.add("<p>Create the directory in which to store the environment.</p>");
         envPath = envPath + "\\myenv";
@@ -929,7 +928,7 @@ public class Python extends Page {
         w.add("myenv               " + envPath + "</pre>");
         w.add("<p>Conda environments are registered/listed in the .conda "
                 + "directory in your home directory in a file with the name "
-                + "environments.txt</p>");        
+                + "environments.txt</p>");
         w.add("<p>Assuming you named your environment myenv, activate it by"
                 + " entering:</p>");
         w.add("<pre>conda activate " + envPath + "</pre>");
