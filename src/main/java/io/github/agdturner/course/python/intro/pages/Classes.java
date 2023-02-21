@@ -56,7 +56,9 @@ public class Classes extends Page {
               <p>The name of a class should start with a capital letter and be 
               in CamelCase (with capitalised letters of each word making up the 
               name of the class). It is helpful to organise code into modules as 
-              having all code in one file becomes cumbersome.</p>
+              having all code in one file becomes cumbersome. Details about 
+              modules are provided a little later in the course. This part 
+              focuses on classes.</p>
               
               <h2 id="2">2. Class Definitions, Constructors, Attributes and Methods</h2>
               <p>A class is defined using the keyword "class" followed by the 
@@ -96,8 +98,7 @@ public class Classes extends Page {
               <pre><code class=\"language-python\">class Agent():
                   def __init__(self, x, y):
                       self.x = x
-                      self.y = y
-              </code></pre>
+                      self.y = y</code></pre>
               <p>Note that there is a difference between self.x and x. The 
               attribute is self.x and within the class this is refered to as 
               self.x, whereas x is the variable lable for the first parameter 
@@ -115,8 +116,7 @@ public class Classes extends Page {
               <pre><code class=\"language-python\">class Agent():
                   def __init__(self, x = 0, y = 0):
                       self.x = x
-                      self.y = y
-              </code></pre>
+                      self.y = y</code></pre>
               
               <h2 id="3">3. Inheritance</h2>
               <p>All classes effectively inherit (attributes and methods) from 
@@ -227,7 +227,7 @@ public class Classes extends Page {
               
                   @x.deleter
                   def x(self):
-                      del self._x
+                      del self._x</code></pre>
               <p>Details of this are provided in:
               <a href="https://docs.python.org/3/library/functions.html#property">
               The Python Library Documentation Chapter on Functions Section on Property</a>.</p>

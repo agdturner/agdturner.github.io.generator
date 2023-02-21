@@ -40,11 +40,11 @@ public class GUI extends Page {
         writeH1();
         w.add("""
               <h2 id="1">1. Introduction</h2>
-              <p>A Graphical User Interface (GUI) can be comprised of 
-              rectangular Windows and Panels (parts of Windows), Data display, 
-              Menus, and various things called Widgets (Buttons, Sliders, and 
-              other things a user might interact with using a mouse or keyboard.
-              Some GUIs can be driven by voice commands.</p>
+              <p>A Graphical User Interface (GUI) is typically comprised of 
+              rectangular windows and panels (parts of windows), a panal for 
+              data display, menus, and various things called widgets (buttons, 
+              sliders, and other things a user might interact with using a mouse 
+              or keyboard.</p>
               <p>There are various alternatives for GUI development in Python.
               In this section, we briefly look at 
               <a href="https://docs.python.org/3/library/tkinter.html">

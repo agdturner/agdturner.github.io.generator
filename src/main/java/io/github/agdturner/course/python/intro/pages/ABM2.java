@@ -174,16 +174,16 @@ public class ABM2 extends Page {
               <p>Now plot the coordinates using matplotlib by adding the 
               following import statements to those at the top of your file:
               </p>
-              <pre>import matplotlib
+              <pre><code class=\"language-python\">import matplotlib
               from matplotlib import pyplot as plt
-              import operator</pre>
+              import operator</code></pre>
               <p>And adding the following code to the end of your file:</p>
-              <pre># Plot the agents
+              <pre><code class=\"language-python\"># Plot the agents
               plt.scatter(agents[0][0], agents[0][1], color='black')
               plt.scatter(agents[1][0], agents[1][1], color='black')
               plt.show()
               # Get the coordinates with the largest x-coordinate 
-              print(max(agents, key=operator.itemgetter(0)))</pre>
+              print(max(agents, key=operator.itemgetter(0)))</code></pre>
               <p>Have a look at
               <a href="https://matplotlib.org/stable/api/pyplot_summary.html">
               the documentation for pyplot on the matplotlib site</a></p>
@@ -211,9 +211,9 @@ public class ABM2 extends Page {
               this equal to 10. Then create a For Loop that uses this to create 
               10 agents, replacing the code that creates a single agent. The 
               code you want is:</p>
-              <pre>n_agents = 10
-              for i in range(10):
-                  agents.append([random.randint(0, 99), random.randint(0, 99)])</pre>
+              <pre><code class=\"language-python\">n_agents = 10
+              for i in range(n_agents):
+                  agents.append([random.randint(0, 99), random.randint(0, 99)])</code></pre>
               <p>Check that your code still runs.</p>
               <p>Using the same For Loop construction, modify the code to move
               the agents. Recall that agents[0] is the first agent, so if using 

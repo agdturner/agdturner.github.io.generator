@@ -91,13 +91,13 @@ public class Functions extends Page {
               <p>Positional parameters or positional arguments are given in 
               order from left to right, so in the following add function num1 is 
               the first argument and num2 is the second argument:</p>
-              <pre>def add(num1, num2):
+              <pre><code class="language-python">def add(num1, num2):
                   return num1 + num2              
-              print(add(20,30)) # Prints 50</pre>
+              print(add(20,30)) # Prints 50</code></pre>
               <p>Default values can be specified as follows:</p>
-              <pre>def add(num1 = 0, num2 = 0):
+              <pre><code class="language-python">def add(num1 = 0, num2 = 0):
                   return num1 + num2              
-              print(add(3)) # Prints 3</pre>
+              print(add(3)) # Prints 3</code></pre>
               <p>As arguments are ordered left to right, in the example, num1 
               gets 3, and num2 gets nothing and so is set to the default value 
               0.</p>
@@ -150,22 +150,33 @@ public class Functions extends Page {
               print(add(1,*a, 2)) # Prints 13</code></pre>
               <p>The same can be done with dictionaries using **dict_name (where 
               ** is the dictionary (un)packing operator), which will make a 
-              dictionary from unallocated kwargs:</p>
-              <pre><code class="language-python">def print_details(a, **details):
-                  first = details["first"]
-                  surname = details["surname"]
-                  print (first + " " + surname + " has " + a + " pounds")
-              print_details("5", first="George", surname="Formby") # Prints George Formby has 5 pounds</code></pre>
-              <p>The ** dictionary operator can be used to generate kwargs:</p>
-              <pre><code class="language-python">def print_details(a, first, surname):
-                  print (first + " " + surname + " has " + a + " pounds")
-              d = {"first":"George","surname":"Formby"}
-              print_details("5",**d) # Prints George Formby has 5 pounds</code></pre>
+              dictionary from unallocated kwargs. The following code:</p>
+              <pre><code class="language-python">def f1(a, **details):
+                  print(a)
+                  print(details)
+              
+              f1(1, b=2, c=3)</code></pre>
+              <p>Produces:</p>
+              <pre>1
+              {'b': 2, 'c': 3}</pre>
+              <p>The ** dictionary operator can be used to generate kwargs.
+              The following code:</p>
+              <pre><code class="language-python">def f1(a, b, c):
+                  print(a)
+                  print(b)
+                  print(c)
+              
+              d = {'b':2, 'c':3}
+              f1(1,**d)</code></pre>
+              <p>Produces:</p>
+              <pre>1
+              2
+              3</pre>
               <p>Similar to with standard arguments, *tuple_name arguments must 
               come before **dict_name arguments (if both are used). *tuple_name 
               must come after positional parameters and **dict_name after other
               kwargs. It is, therefore usual to place them after their 
-              associated variables or together at the end. Try the following 
+              associated variables or together at the end. The following 
               code:</p>
               <pre><code class="language-python">def f1(a, b=2, *args, **kwargs):
                   print(a, b)
@@ -176,6 +187,10 @@ public class Functions extends Page {
               d = {'c': 100, 'd': 200}
               
               f1(1, 3, *l, **d)</code></pre>
+              <p>Produces:</p>
+              <pre>1 3
+              (10, 20, 30)
+              {'c': 100, 'd': 200}</pre>
               <p>Note that the kwargs packed into the dictionary cannot have 
               name collisions with the other arguments. So, the following:</p>
               <pre><code class="language-python">def f1(a, b=2, *args, **kwargs):

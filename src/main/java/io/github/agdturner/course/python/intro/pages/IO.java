@@ -40,12 +40,12 @@ public class IO extends Page {
         writeH1();
         w.add("""
               <h2 id="1">1. Introduction</h2>
-              <p>There are a variety of functions to help with Input and Output 
+              <p>There are a numerous functions to help with Input and Output 
               (IO), including the builtins
               <a href="https://docs.python.org/3/library/functions.html#input">input()</a>
               and 
               <a href="https://docs.python.org/3/library/functions.html#open">open()</a>,
-              and functions in the libraries: 
+              and those in the following standard libraries: 
               <a href="https://docs.python.org/3/library/fileinput.html">fileinput</a>,
               <a href="https://docs.python.org/3/library/os.html">os</a>,
               <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a>,
@@ -56,18 +56,21 @@ public class IO extends Page {
               <a href="https://docs.python.org/3/library/markup.html">markup</a>,
               <a href="https://docs.python.org/3/library/internet.html">internet</a>,
               <a href="https://docs.python.org/3/library/tempfile.html">tempfile</a>, and
-              <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.</p>
+              <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.
+              There are also a large number of third party libraries that can 
+              help to read and write data in particular formats.</p>
               
               <h2 id="2">2. Builtins and Standard IO</h2>
               
               <h3 id="2.1">2.1. The Input Function</h3>
               <p>The Input Function reads input from the Standard Input (stdin) 
-              which is usually the keyboard. This continues until the <ENTER> 
-              (or <RETURN>) key is pressed. The function returns a String 
+              which is usually the keyboard. This continues until the &lt;ENTER&gt; 
+              (or &lt;RETURN&gt;) key is pressed. The function returns a String 
               (without a newline character). If there is a prompt String 
               provided as a parameter to the Input Function, this is printed to
               the current prompt line. Run the following and provide input:</p>
-              <pre><code class=\"language-python\">n_agents = input("Key in a positive integer between 10 and 100 to set the number of agents then press the <ENTER> or <RETURN> key:")
+              <pre><code class=\"language-python\">n_agents = input("Key in a positive integer between 10 and 100 to set the"
+              + " number of agents then press the <ENTER> or <RETURN> key:")
               print("The input detected is:", n_agents)</code></pre>
               
               <h3 id="2.2">2.2. Streams</h3>
@@ -83,7 +86,7 @@ public class IO extends Page {
               from stdin.txt into a.py as it runs:</p>
               <pre>python a.py < stdin.txt</pre>
               <p>The following will send output from running a.py into stdout.txt:</p>
-              <pre>python a.py > stdout.txt</pre>
+              <pre>python a.py &gt; stdout.txt</pre>
               <p>This would overwrite stdout.txt if it already existed. To 
               append to the end of any existing stdout.txt, the following could 
               be used:</p> 
@@ -96,19 +99,20 @@ public class IO extends Page {
               <h3 id="2.3">2.3. Open</h3>
               <p>The following code uses the Builtin Open Function to open a 
               file in the current directory called "a.in" and reads this 
-              one line at a time streming the output to the screen before then 
+              one line at a time streaming the output to the screen before then 
               closing the file:</p>
               <pre><code class=\"language-python\">f = open("a.in")
               for line in f:
                   print(line)
               f.close()</code></pre>
-              <p>The Close Function (close) closes the file and releases 
-              resources.</p>
+              <p>The Close Function closes the file and releases resources.</p>
               <p>There are helpful functions to read all lines of a file into a 
               list which is sometimes preferable. However, if a file is large 
-              and not everything is wanted, then this can be expensive in terms 
-              of using up available memory, so often it is better to parse a 
-              file line by line.</p>
+              and not everything is wanted, then this can be expensive and can 
+              use up more than the amount of memory available resulting in a
+              <a href="https://docs.python.org/3/library/exceptions.html#MemoryError">
+              MemoryError</a>. So, often it is better to parse a file in 
+              portions, such as line by line.</p>
               <p>Files are also opened for writing in a similar way. Writing to 
               a file can be done as follows:</p>
               <pre><code class=\"language-python\"># Create something to write
@@ -229,8 +233,8 @@ public class IO extends Page {
               in a buffer...</p>
               
               <h4 id="2.4.1">2.4.1. CSV Module</h4>
-              <p>It is easier to read and write CSV format files using code 
-              written specifically to do this which is in the CSV Module (csv).
+              <p>It is easier to read and write CSV format files using functions
+              written specifically to do this from the CSV Module (csv).
               </p>
               <p>The following is an example of reading data using csv:</p>
               <pre><code class=\"language-python\">import csv
@@ -250,7 +254,7 @@ public class IO extends Page {
               for row in data:
                   writer.writerow(row) # List of values.
               f.close()</code></pre>
-              <p>The optional delimiter parameter specified here delimits using 
+              <p>The optional delimiter kwarg specified here delimits using 
               a space instead of the default comma.</p>
               
               <h4 id="2.4.2">2.4.2. JSON Module</h4>
