@@ -516,8 +516,8 @@ public class Python extends Page {
               contains variables, comments, indentation, operators and 
               keywords. Styling can be used added to make it easier to 
               identify different parts, read and understand code. The following 
-              is the same code, but styled to make different things in the code 
-              easier to identify:</p>
+              is the same code, but coloured to make different things in the 
+              code easier to identify:</p>
               <pre><code class=\"language-python\">x = 0
               y = 1
               # if x is greater than y, then print x
