@@ -39,7 +39,7 @@ public class ABM5 extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2 id="1">1. Introduction and Preparation</h2>
+              <h2 id="1">1. Introduction and Preparation  </h2>
               <p>The next step in developing our Agent Based Model is to load 
               some spatial data to represent a varied environment in which the 
               agents interact. The model will be changed so that the agents 
