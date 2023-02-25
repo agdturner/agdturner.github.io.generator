@@ -60,7 +60,7 @@ public class Web extends Page {
               the other end to the client socket.</p>
               <p>In Python, to open a socket to a server from a client, the 
               following code can be used:</p>
-              <pre><code class=\"language-python\">import socket
+              <pre><code class="language-python">import socket
               
               socket_1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
               socket_1.connect(("localhost", 5555)) # Address tuple
@@ -72,7 +72,7 @@ public class Web extends Page {
               <p>The following code sets up a server socket to listen on the 
               same port, the server code is set to receive 30 bytes of data and 
               then print this after converting the bytes to a String:</p>
-              <pre><code class=\"language-python\">import socket
+              <pre><code class="language-python">import socket
               
               serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
               serversocket.bind(('localhost', 5555))
@@ -195,7 +195,7 @@ public class Web extends Page {
               
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
         w.add("</div>");

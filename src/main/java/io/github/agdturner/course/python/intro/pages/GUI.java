@@ -65,7 +65,7 @@ public class GUI extends Page {
               <h2 id="2">2. Getting Started with TkInter</h2>
               <p>The following code sets up a simple canvas for a GUI 
               and a main loop that waits for interactions with it:</p>
-              <pre><code class=\"language-python\">import tkinter
+              <pre><code class="language-python">import tkinter
               
               root = tkinter.Tk() # Main window.
               
@@ -76,7 +76,7 @@ public class GUI extends Page {
               tkinter.mainloop() # Wait for interactions.</code></pre>
               <p>The following defines a function called run and registers this 
               to run when the command that is added to GUI menu is actioned.</p>
-              <pre><code class=\"language-python\">import tkinter
+              <pre><code class="language-python">import tkinter
               def run():
                   pass
               
@@ -109,7 +109,7 @@ public class GUI extends Page {
               called "state".
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
         w.add("</div>");

@@ -57,7 +57,7 @@ public class Modules extends Page {
               <p>A couple of different types of import statement should now be 
               familiar. The following imports a module and then access the Agent
               class within it to construct an instance of that class:</p>
-              <pre><code class=\"language-python\">import agentframework
+              <pre><code class="language-python">import agentframework
               a = agentframework.Agent()</code></pre>
               <p>This is a very explicit style. There is little ambiguity about 
               which Agent class is to be used (if other imported modules have 
@@ -65,14 +65,14 @@ public class Modules extends Page {
               name with an Agent class, there is not going to be a problem.</p>
               <p>If there is nothing else called Agent then the following can be 
               used:</p>
-              <pre><code class=\"language-python\">from agentframework import Agent
+              <pre><code class="language-python">from agentframework import Agent
               a = Agent()</code></pre>
               <p>The advantages of this is that it can involve slightly less 
               typing and this imports just one class from a module rather than 
               an entire module which is more memory efficent.</p>
               <p>You may see imports of everything in a module using the Star
               Operator (*), for example:</p>
-              <pre><code class=\"language-python\">from agentframework import *</code></pre>
+              <pre><code class="language-python">from agentframework import *</code></pre>
               <p>This saves having to import multiple classes, but it is 
               dangerous as imported classes might replace classes you have 
               imported elsewhere.</p>
@@ -83,7 +83,7 @@ public class Modules extends Page {
               explicit.</p>
               <p>The As Keyword (as) can be used to alias a module which helps 
               to save typing, for example:</p>
-              <pre><code class=\"language-python\">import agentframework as af
+              <pre><code class="language-python">import agentframework as af
               from af import Agent as A
               a = A()</code></pre>
               <p>When importing, Python will import parent packages (but not 
@@ -100,13 +100,13 @@ public class Modules extends Page {
               isolated code. Scripts are run with the global __name__ variable 
               set to "__main__", so adding the following code in a module allows 
               it to run as a script without contaminating the environment:</p>
-              <pre><code class=\"language-python\">if __name__ == "__main__":
+              <pre><code class="language-python">if __name__ == "__main__":
                   # Imports needed for running.
                   function_name()</code></pre>
                             
               <h2 id="3">3. Packages</h2>
               <p>Consider the following package file structure:</p>
-              <pre><code class=\"language-python\">/abm
+              <pre><code class="language-python">/abm
                   __init__.py
                   /general
                       __init__.py
@@ -118,7 +118,7 @@ public class Modules extends Page {
               Python to recognise that the subdirectories are sub-packages. This
               allows the following import statement to work so long as there is 
               a class called Agent within the agentframework module:</p>
-              <pre><code class=\"language-python\">import abm.general.agentframework.Agent</code></pre>
+              <pre><code class="language-python">import abm.general.agentframework.Agent</code></pre>
               <p>The base __init__.py file can also include a specially named 
               list which will import all the listed subpackages if a star 
               import statement is used. For example, the following could be the 
@@ -126,7 +126,7 @@ public class Modules extends Page {
               <pre>__all__ = ["models", "general"]</pre>
               <p>For which the following import statement would import both the 
               general and models subpackages:</p>
-              <pre><code class=\"language-python\">from abm import *</code></pre>
+              <pre><code class="language-python">from abm import *</code></pre>
               <p>Packages can be set to run as applications by placing startup 
               code in a file called __main__.py and the following command is 
               issued at the prompt:</p>
@@ -243,7 +243,7 @@ public class Modules extends Page {
               
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
 //              

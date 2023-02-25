@@ -40,12 +40,12 @@ public class IO extends Page {
         writeH1();
         w.add("""
               <h2 id="1">1. Introduction</h2>
-              <p>There are a numerous functions to help with Input and Output 
-              (IO), including the builtins
+              <p>There are numerous functions to help with Input and Output 
+              (IO), including the Builtin Module functions:
               <a href="https://docs.python.org/3/library/functions.html#input">input()</a>
               and 
               <a href="https://docs.python.org/3/library/functions.html#open">open()</a>,
-              and those in the following standard libraries: 
+              and those in the following standard library modules: 
               <a href="https://docs.python.org/3/library/fileinput.html">fileinput</a>,
               <a href="https://docs.python.org/3/library/os.html">os</a>,
               <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a>,
@@ -57,51 +57,51 @@ public class IO extends Page {
               <a href="https://docs.python.org/3/library/internet.html">internet</a>,
               <a href="https://docs.python.org/3/library/tempfile.html">tempfile</a>, and
               <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.
-              There are also a large number of third party libraries that can 
-              help to read and write data in particular formats.</p>
+              There are also various third party libraries that make it easy to
+              read and write data in specific file formats.</p>
               
               <h2 id="2">2. Builtins and Standard IO</h2>
               
-              <h3 id="2.1">2.1. The Input Function</h3>
-              <p>The Input Function reads input from the Standard Input (stdin) 
-              which is usually the keyboard. This continues until the &lt;ENTER&gt; 
-              (or &lt;RETURN&gt;) key is pressed. The function returns a String 
-              (without a newline character). If there is a prompt String 
-              provided as a parameter to the Input Function, this is printed to
-              the current prompt line. Run the following and provide input:</p>
-              <pre><code class=\"language-python\">n_agents = input("Key in a positive integer between 10 and 100 to set the"
-              + " number of agents then press the <ENTER> or <RETURN> key:")
+              <h3 id="2.1">2.1. Standard Input</h3>
+              <p>The builtin module function input() reads input from the 
+              Standard Input (stdin) which is usually the keyboard. This 
+              continues until the &lt;ENTER&gt; (or &lt;RETURN&gt;) key is 
+              pressed. The function returns a String (without a newline 
+              character). A String provided as a parameter is displayed to 
+              prompt user input. Run the following and enter some keyboard 
+              input:</p>
+              <pre><code class="language-python">n_agents = input("Key in a positive integer between 10 and 100 to set the"
+              + " number of agents then press the &lt;ENTER&gt; or &lt;RETURN&gt; key:")
               print("The input detected is:", n_agents)</code></pre>
               
               <h3 id="2.2">2.2. Streams</h3>
-              <p>The Print Function writes to the Standard Output (stdout) which 
-              is usually the screen.</p>
-              <p>Streams are a name given to a flow of data, so stdin and stdout
-              are streams. Also, the Standard Error (stderr) is a stream - one 
-              where error messages from programs are sent: again, usually the 
-              screen by default.</p>
+              <p>The builtin module function print() writes to the Standard 
+              Output (stdout) which is usually the screen.</p>
+              <p>Stdin and stdout are streams - flows of data. Standard Error 
+              (stderr) is also a stream - one where error messages go. Like 
+              stdout, stderr is usually written to the screen by default.</p>
               <p>The streams stdin and stdout can be redirected to come from a 
               file (in the case of stdin), or go to a file (in the case of 
               stdout). From the Anaconda Prompt the following will stream data 
               from stdin.txt into a.py as it runs:</p>
-              <pre>python a.py < stdin.txt</pre>
+              <pre>python a.py &lt; stdin.txt</pre>
               <p>The following will send output from running a.py into stdout.txt:</p>
               <pre>python a.py &gt; stdout.txt</pre>
               <p>This would overwrite stdout.txt if it already existed. To 
               append to the end of any existing stdout.txt, the following could 
-              be used:</p> 
-              <pre>python a.py >> stdout.txt</pre>
+              be used:</p>
+              <pre>python a.py &gt;&gt; stdout.txt</pre>
               <p>To stream data in and out, the following can be used:</p>
-              <pre>python a.py < stdin.txt > stdout.txt</pre>
-              <p>It is also possible to pipe the stdout of one program to the 
-              stdin of another program using the pipe symbol "|".</p>
+              <pre>python a.py &lt; stdin.txt &gt; stdout.txt</pre>
+              <p>The stdout of one program can be piped to the stdin of another 
+              program using the pipe symbol '|'.</p>
               
               <h3 id="2.3">2.3. Open</h3>
-              <p>The following code uses the Builtin Open Function to open a 
+              <p>The following code uses the Builtin Module function open() to open a 
               file in the current directory called "a.in" and reads this 
               one line at a time streaming the output to the screen before then 
               closing the file:</p>
-              <pre><code class=\"language-python\">f = open("a.in")
+              <pre><code class="language-python">f = open("a.in")
               for line in f:
                   print(line)
               f.close()</code></pre>
@@ -115,7 +115,7 @@ public class IO extends Page {
               portions, such as line by line.</p>
               <p>Files are also opened for writing in a similar way. Writing to 
               a file can be done as follows:</p>
-              <pre><code class=\"language-python\"># Create something to write
+              <pre><code class="language-python"># Create something to write
               a = []
               for i in range(10):
                   a.append("Coding is fun!");
@@ -206,7 +206,7 @@ public class IO extends Page {
               the items get parsed, which in this case involves using them to 
               generate Float numbers and storing them in a list. The stored list 
               of Float numbers is then stored in another list called data:</p>
-              <pre><code class=\"language-python\">with open("data.txt") as f:
+              <pre><code class="language-python">with open("data.txt") as f:
               data = []
               for line in f:
                   parsed_line = str.split(line,",")
@@ -237,7 +237,7 @@ public class IO extends Page {
               written specifically to do this from the CSV Module (csv).
               </p>
               <p>The following is an example of reading data using csv:</p>
-              <pre><code class=\"language-python\">import csv
+              <pre><code class="language-python">import csv
               f = open('data.csv', newline='')
               reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
               for row in reader: # A list of rows
@@ -248,7 +248,7 @@ public class IO extends Page {
               only puts quotation marks around non numeric data, but also 
               converts some number formats into Floats.</p>
               <p>The following is an example of writing data using csv:</p>
-              <pre><code class=\"language-python\">import csv
+              <pre><code class="language-python">import csv
               f = open('data.csv', 'w', newline='')
               writer = csv.writer(f, delimiter=' ')
               for row in data:
@@ -259,13 +259,13 @@ public class IO extends Page {
               
               <h4 id="2.4.2">2.4.2. JSON Module</h4>
               <p>The following code can be used to read a JSON file:</p>
-              <pre><code class=\"language-python\">import json
+              <pre><code class="language-python">import json
               f = open('data.json')
               data = json.load(f)
               f.close()
               print(data)</code></pre>
               <p>The following code can be used to write a JSON file:</p>
-              <pre><code class=\"language-python\">import json
+              <pre><code class="language-python">import json
               f = open('data.json', 'w')
               json.dump(data, f)
               f.close()</code></pre>
@@ -299,7 +299,7 @@ public class IO extends Page {
               programs. The mapping object "os.environ" allows for accessing 
               environment information from a Python program. For example, the 
               following will print the PATH:</p>
-              <pre><code class=\"language-python\">import os
+              <pre><code class="language-python">import os
               print(os.environ["PATH"])</code></pre>
               <p>For more info on getting and setting OS environment variables, 
               see:
@@ -330,7 +330,7 @@ public class IO extends Page {
               """);
 //              <p></p>
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
         w.add("</div>");
     }
 }

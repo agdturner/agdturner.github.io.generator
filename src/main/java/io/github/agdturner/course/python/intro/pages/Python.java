@@ -518,7 +518,7 @@ public class Python extends Page {
               identify different parts, read and understand code. The following 
               is the same code, but coloured to make different things in the 
               code easier to identify:</p>
-              <pre><code class=\"language-python\">x = 0
+              <pre><code class="language-python">x = 0
               y = 1
               # if x is greater than y, then print x
               if x > y:
@@ -957,7 +957,7 @@ public class Python extends Page {
               <p>Open Jupyter1.ipynb read and run it cell by cell.</p>
               <p>If for some reason that does not work, then try something a bit 
               simpler and copy the code below into a cell and run it.</p>
-              <pre><code class=\"language-python\"># Simple example code 
+              <pre><code class="language-python"># Simple example code 
               import folium
               
               map = folium.Map(

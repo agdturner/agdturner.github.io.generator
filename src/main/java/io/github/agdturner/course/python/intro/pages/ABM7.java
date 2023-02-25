@@ -51,9 +51,9 @@ public class ABM7 extends Page {
               <p>A matplotlib animation requires us to have a figure that is
               cleared and redrawn, and to make use of the animation module. Add 
               the following import statement:</p>
-              <pre><code class=\"language-python\">from matplotlib import animation as anim</code></pre>
+              <pre><code class="language-python">from matplotlib import animation as anim</code></pre>
               <p>After initialising agents add the following code block:</p>
-              <pre><code class=\"language-python\"># Initialise fig and carry_on
+              <pre><code class="language-python"># Initialise fig and carry_on
               fig = matplotlib.pyplot.figure(figsize=(7, 7))
               ax = fig.add_axes([0, 0, 1, 1])
               carry_on = True</code></pre>
@@ -62,7 +62,7 @@ public class ABM7 extends Page {
               fig at the start of the function and at the end of the function 
               return fig. Leave the plt.show() command at the end of the code:
               </p>
-              <pre><code class=\"language-python\">def plot():
+              <pre><code class="language-python">def plot():
                   fig.clear()
                   plt.ylim(y_min, y_max)
                   plt.xlim(x_min, x_max)
@@ -86,7 +86,7 @@ public class ABM7 extends Page {
               that has a parameter called frames. At the end of this call the 
               plot function. Declare the carry_on global function and add a 
               random stopping condition:</p>
-              <pre><code class=\"language-python\">def update(frames):
+              <pre><code class="language-python">def update(frames):
                   # Model loop
                   global carry_on
                   #for ite in range(n_iterations):
@@ -127,7 +127,7 @@ public class ABM7 extends Page {
                   plot()</code></pre>
               <p>Define a function called gen_function and create the animation 
               using the following:</p>
-              <pre><code class=\"language-python\">def gen_function():
+              <pre><code class="language-python">def gen_function():
                   a = 0
                   while (a < n_iterations) & (carry_on) :
                       yield a			# Returns control and waits next call.
@@ -204,9 +204,9 @@ public class ABM7 extends Page {
               <p>To output animations in the
               <a href="https://en.wikipedia.org/wiki/GIF">GIF image format</a>,
               add the following import statement:
-              <pre><code class=\"language-python\">from matplotlib.animation import PillowWriter</code></pre>
+              <pre><code class="language-python">from matplotlib.animation import PillowWriter</code></pre>
               <p>And add the following code after the plt.show() line:</p>
-              <pre><code class=\"language-python\"># Write out the animation as a GIF
+              <pre><code class="language-python"># Write out the animation as a GIF
               animation.save('../../data/output/out.gif', writer=PillowWriter(fps=3))
               </code></pre>
               <p>The fps argument is the number of frames per second.</p>
@@ -223,7 +223,7 @@ public class ABM7 extends Page {
               </ul>
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
         w.add("</div>");

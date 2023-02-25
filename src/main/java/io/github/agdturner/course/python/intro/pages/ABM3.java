@@ -41,7 +41,7 @@ public class ABM3 extends Page {
         w.add("""
               <h2 id="1">1. Recap</h2>
               <p>Your ABM code should look something like the following:</p>
-              <pre><code class=\"language-python\">import random
+              <pre><code class="language-python">import random
               import math
               import matplotlib
               from matplotlib import pyplot as plt
@@ -121,13 +121,12 @@ public class ABM3 extends Page {
               distance 5.0</pre>
               <p>And the following plot:</p>
               <img src="../../resources/abm2/Figure_1.png" alt="ABM2 Output Plot" />
-              <p>Some of the print statements have been turned into comments in 
-              the source code to reduce the amount of text output in the 
-              console. The text output in the console shows a single change in 
-              coordinates values for each pair of coordinates in the list.</p> 
-              <p>From a user perspective, understanding the text output in the 
-              console could be made easier if additional print statements were 
-              added.</p>
+              <p>Some of the print statements in the code presented above have 
+              been turned into comments. This reduces the amount of text output
+              in the console which is desirable as now things have been tested, 
+              this output is no longer very useful and it slows down the program
+              execution. The text output in the console is a print of the agent 
+              coordinates before and then after a single move.</p> 
               <p>In your local code repository src directory create a new 
               directory called "abm3". Open Spyder and use "save as" to save 
               your "model.py" file into the abm3 directory.</p>
@@ -138,56 +137,50 @@ public class ABM3 extends Page {
               <p>Change the distance calculation code into a function called 
               get_distance: Use the def keyword and specify four input 
               parameters (x0, y0, x1, y1). Recall that the function declaration 
-              ends with a colon (:). You must indent the code of the function 
-              that comes after the function definition for it to be regarded as
-              part of the function. At the end of the function code, return the 
-              distance calculated. After the function write a statement to call 
-              it and print out the result.</p>
+              ends with a colon ':'. The code of the function must be indented. 
+              Return the distance calculated as the last statement of the 
+              function using the keyword 'return' followed by the name of the 
+              variable. After the function write a statement to call it and 
+              print out the distance returned.</p>
               <p>Run the code to test it works</p>
               <p>If your code calculates the square root in two ways, then 
               simplify it by removing one of these ways. You may want to 
               simplify the code in other ways too...</p>
-              <p>Next, change the comment that describes the function into a 
+              <p>Change the comment that describes the function into a 
               docstring. Clarify what the inputs and outputs are in the 
               docstring.</p>
               
               <h3 id="2.2">2.2 Calculate the maximum distance</h3>
-              <p>Imagine a two dimensional matrix organised in rows and columns
-              where each row and each column represents a coordinate. If the row 
-              coordinates are in the same sequence as the column coordinates, 
-              then the distance for the same index of row and column will be 
-              zero, and the potentially non-zero cells of the matrix should be 
-              symmetrical about this zero diagonal.</p>
-              <p>So, to calculate the maximum distance between a collection of 
-              coordinates, there is only a need to calculate distances for one
-              of the potentially non-zero parts of this matrix. (In other words,
-              if we know the distance between A and B, this is the same as the 
-              distance between B and A.)</p> 
-              <p>Anyway, to calculate the maximum distance, we can use nested 
-              loops. An outer loop to go through all the agents, and an inner 
+              <p>Imagine a two dimensional matrix of distances where each 
+              distance is the distance between the cooridnate for a row and the 
+              coordinate for a column. If all the coordinates for the rows and 
+              columns are the same and in the same order, then the matrix is 
+              symetrical about a diagonal where all the distances are zero.</p>
+              <p>The maximum distance between any two agents is the maximum 
+              distance in this matrix. Nested loops can be used to calculate it.
+              An outer loop to go through all the agents, and an inner 
               loop to go through all agents. Within the inner loop we can use 
-              the function get_distance() to calculate the distance, and the 
-              max() function to calculate a maximum. To use the max function we 
-              should input the distance from get_distance() as well as the 
-              current maximum, and set the current maximum to be the output from 
-              this. Some code for doing this is as follows:</p>
-              <pre><code class=\"language-python\">max_distance = 0
+              the function get_distance() to calculate the distance between a 
+              pair of coordinates, and the max() function to calculate the
+              maximum distance encountered yet. Some code for doing this is as 
+              follows:</p>
+              <pre><code class="language-python">max_distance = 0 # Initialise max_distance
               for a in agents:
                   for b in agents:
                       distance = get_distance(a[0], a[1], b[0], b[1])
                       print("distance between", a, b, distance)
                       max_distance = max(max_distance, distance)
                       print("max_distance", max_distance)</code></pre>
-              <p>If you add the above code to the end of your program and 
-              examine the output, you should see that some zero distances are 
-              calculated. These will either be where an agent is located at the 
-              same place as another agent, or where the calculation is for the 
-              same agent.</p>
+              <p>Add the code to the end of your program, run it and examine the 
+              output. In calculating the maximum distance, you should see that
+              some zero distances are calculated. These will either be where an 
+              agent is located at the same place as another agent, or where the 
+              calculation is for the same agent.</p>
               <p>Recall that there are two main ways to iterate over the items 
               in a list. As above, and alternatively using the list indexes. It 
-              is common to use range() to get a sequence of indexes. So, the 
+              is common to use range() to get a sequence of indexes, and the 
               looping can also be done as follows:</p>
-              <pre><code class=\"language-python\">max_distance = 0
+              <pre><code class="language-python">max_distance = 0
               for i in range(len(agents)):
                   a = agents[i]
                   for j in range(len(agents)):
@@ -201,19 +194,15 @@ public class ABM3 extends Page {
               of the agents list. (Also, as len(agents) is the same as n_agents,
               we could alternatively be using n_agents as a parameter for the 
               range function. This would save a calculation and be slightly more 
-              efficient. However, later on we might be changing the length of 
-              the agents list and the efficiency gained by this optimisation is 
-              insignificant. It may also be slightly more efficient to store the 
-              sequence given by range(len(agents)) rather than recalculate this 
-              for each iteration of the inner loop. But, let us not worry too 
-              much about optimising the code with these changes for now.)</p>
+              efficient. As the length of the agents list is something that we 
+              may want to change, keep using len(agents) for now...</p>
               <p>Define a function called get_max_distance that uses the 
               above code and returns the max_distance. This is like the exercise 
               of defining get_distance(). It is good to practise turning code 
               into functions as it is a key programming skill.</p>
               <p>Your get_distance function should look something like the 
               following:</p>
-              <pre><code class=\"language-python\">def get_distance(x0, y0, x1, y1):
+              <pre><code class="language-python">def get_distance(x0, y0, x1, y1):
                   \"""
                   Calculate the Euclidean distance between (x0, y0) and (x1, y1).
               
@@ -274,7 +263,7 @@ public class ABM3 extends Page {
               maximum distance between agents.
               </li>
               </ol>
-              <p>Let's begin with the first of these things:</p>
+              <p>Begin with the first of these things:</p>
               <ul>
               <li>Save your source code file with a new name, for example 
               "timing.py".</li>
@@ -333,9 +322,9 @@ public class ABM3 extends Page {
               <p><img src="../../resources/abm3/Figure_1.png" 
               alt="A graph of time (y axis) and n_agents (x axis)" /></p>
               <p>Let's now attempt to optimise the calculation of 
-              max_distance(): Modify your loop so that it runs for just once, 
-              for n_agents = 3. Add the following print statement to the inner 
-              loop of get_max_distance():</p>
+              max_distance(): Modify your code so that n_agents = 3, and add the 
+              following print statement to the inner loop of get_max_distance():
+              </p>
               <pre>print("i", i, "j", j)</pre>
               <p>Run the code and you should see the following printed in the 
               text output:</p>
@@ -348,35 +337,48 @@ public class ABM3 extends Page {
               i 2 j 0
               i 2 j 1
               i 2 j 2</pre>
-              <li>In the inner loop of get_max_distance() add an If Statement to
-              exclude when i = j in the calculation (Hint: use the Not Equals 
-              Operator (!=)). Run the program again and compare the output with
-              the previous run:</li>
+              <li>Change what is in the inner loop of get_max_distance() to be 
+              within an If Statement that is only run when i does not equals j
+              using the Not Equals operator '!='. The if statement will look 
+              like:</p>
+              <pre><code class="language-python">if i != j:</code></pre>
+              Run the program again and you 
+              should see the following printed in the text output:</li>
               <pre>i 0 j 1
               i 0 j 2
               i 1 j 0
               i 1 j 2
               i 2 j 0
               i 2 j 1</pre>
+              <p>Compare the output with the previous run. There is less output 
+              as when the indexes are the same, the calculations are skipped.
+              </p>
               <p>Comment out the print statement and run the code for 1000 
               agents. Compare the processing time with/without the if statement.
               </p>
               <p>The timing with the If Statement is about the same. It may be 
               slower - as calculating whether on not to do the calculation is 
               about as much computation as doing the calculation.</p>
-              <p>Modify the If Statement so that it only considers the distance 
-              between <em>a</em> and <em>b</em> and not <em>b</em> and 
-              <em>a</em> by changing the operator in the If Statement 
-              condition. (Hints: Set n_agents to a small number and uncomment 
-              the Print Statement to test. Try the Less Than (<) or Greater Than 
-              (>) operator).</p>
-              <p>Do some timings again running for n_agents = 1000, (after 
-              commenting out the Print Statement). You should get the same 
-              max_distance result calculated previously, but the processing time 
-              should be roughly half.</p>
+              <p>Modify the code again so that n_agents = 3, the print statement 
+              that was commented out is not commented out again, and so that the
+              operator in the If Statement is a Less Than '@lt;' operator):</p>
+              <pre><code class="language-python">if i < j:</code></pre>
+              <p>Run the program again and you should get the following output:
+              </p>
+              <pre>i 0 j 1
+              i 0 j 2
+              i 1 j 2</pre>
+              <p>Understand that the maximum distance can be calculated by 
+              finding the maximum distance between the coordinates as indexed. 
+              It may help you understand if you run for n_agents = 5 or 10.</p>               
+              <p>Comment out the print statement and record timings again for
+              n_agents = 1000. You should get the same max_distance result 
+              calculated previously, but the processing time should be roughly 
+              half.</p>
               <p>There is a faster way which involves modifying the loops and 
               removing the If Statement. Can you work out how to do it? (Hint: 
-              Change the range function of the inner For Loop to begin at i).
+              Change the range function of the inner For Loop to begin at 
+              i + 1).
               </p>
               <p>Once you've given this a try, compare your answer with
               <a href="../../resources/abm3/timing2.py">this one</a> in which
@@ -387,74 +389,77 @@ public class ABM3 extends Page {
               
               <h2 id="4">4. Other distance statistics</h2>
               <p>In calculating the maximum distance, a lower bound of 0 was 
-              used to initialise the max_distance variable. If you were trying 
-              to calculate the minimum distance, then an upper bound would be 
-              wanted, or the initial minimum distance would have to be set to be 
-              between any two non identical agents. The upper bound of the 
-              distance between two agents in Euclidean space is theoretically 
+              used to initialise the max_distance variable. To calculate the 
+              minimum distance, then either an upper bound is wanted, or the 
+              initial minimum distance should be set to be a distance between 
+              any two non identical agents. The upper bound of the distance 
+              between two agents in Euclidean space is theoretically 
               infinite. From the math module the following can be used for 
               positive infinity:</p>
               <pre>math.inf</pre>
               <p>Write a function that calculates the minumum distance between 
-              all the agents.</p>
-              <p>Suppose, you wanted to know both the minimum and maximum 
-              distances, then it would be faster to have a single function that 
-              calculates both these statistics in the same loops, returning the 
-              result in a Tuple. At some stage, not necessarily right away, but 
-              working on your own, attempt this and compile a brief document 
-              that compares the timings. Save the document and commit this to 
-              your repository along with your code. This code and the 
-              accompanying will be summatively assessed as part of the portfolio 
-              submission for Assignment 1.</p>
-              <p>There may be other statistics that you might want to generate 
-              such as the average distance. The 
+              all the agents and record timings of how long it takes to 
+              calculate both the maximum and minimum distances using the two 
+              different functions.</p>
+              <p>For Assignment 1, working on your own, change your code so that 
+              it calculates both the minimum and maximum distances in a single 
+              function and returns the result in a Tuple. Change the code so 
+              that the maximum and minumum distances are calculated using the 
+              same set of nested loops which you should find is a lot faster. 
+              Write a brief document about the timings, save it and commit this 
+              to your repository along with your code.
+              </p>
+              <p>As well as the maximum and minimum distance, you might want to
+              calculate other statistics, such as the average distance. The 
               <a href="https://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic mean</a> 
               average can be calculated with one run through the data. To 
               calculate the
               <a href="https://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a>, 
-              it is first necessary to known the arithmetic mean. So, it is 
+              it is first necessary to know the arithmetic mean. So, it is 
               necessary in calculating the standard deviation to iterate over 
               the data values a second time. The 
               <a href="https://en.wikipedia.org/wiki/Median">median</a>
               and
               <a hre="https://en.wikipedia.org/wiki/Mode_(statistics)">mode</a>
-              could be calculated with a single run through the data, but for 
-              these two statistics, it might be easier to use an inbuilt 
-              function to sort or order the data values.</p>
-              <p>Learning how to calculate these kinds of statistics from first 
+              could be calculated with a single run through the data. For 
+              calculating the median the data needs to be sorted, and for 
+              calculating the mode it might be best to use a dictionary to store 
+              the count. However as distance is a continuous, the mode is 
+              probably not a very useful statistic.</p>
+              <p>Learning how to calculate these summary statistics from first 
               principles is a good way to develop programming skills, so if 
-              you want the extra practise then have a go. Think about testing
-              to ensure your code produces correct results.</p>
+              you want the extra practise then have a go. Perhaps try 
+              calculating a truncated mean of distances ignoring the 10% of 
+              highest and lowest distances. Think about how you would test to 
+              ensure your code produces correct results.</p>
               <p>Replace the get_max_distance() in model.py with the new faster 
-              version.</p>
-              <p>Commit changed to your local repository and assuming you are 
+              version you have developed.</p>
+              <p>Commit changes to your local repository and assuming you are 
               using GitHub - push your changes there.</p>
                                                           
               <h2 id="5">5. Movement</h2>
               <p>Currently, our program moves all agents once, but we want them 
-              to move a number of times. As well as moving, we'll want them to 
-              maybe do other things iteratively depending on the environment at 
-              a location and the what other agents are nearby (and possibly what 
-              they are doing). So, after setting n_agents, initialise a new 
+              to move a number of times. As well as moving, the agents are going 
+              to be doing other things iteratively depending on attributes of 
+              the environment at their location, and interaction with other 
+              nearby agents. So, after setting n_agents, initialise a new 
               variable called n_iterations and set it equal to 1000.</p>
-              <p>Create a new For Loop to loop through moving agents n_iteration 
-              times.</p>
-              <p>What we'll want is that in each iteration all the agents move 
-              and possibly interact. So, we don't want to move one agent a 
-              number of times and then move the next a number of times, we want 
-              to move all agents once, and then move all agents again. (We can 
-              worry about whether the order of movement matters later.) So, the 
-              iteration For Loop should be an outer loop and the loop for moving 
-              the agents wants to be within it.</p>
+              <p>Create a new outer For Loop to loop through moving agents 
+              n_iteration times. An outer loop rather than an inner loop as 
+              what is wanted is that in each iteration all the agents move 
+              and possibly interact in turn. A bit like in a roll play game, it 
+              does not work if one player makes all their moves before another 
+              player gets a turn.</p>
               <p>The agents are moving randomly, and the more of them there are, 
-              the more spread out they are likely to become. Edge effects are a 
-              major issue in geographical modelling. Our agents currently have a 
+              the more spread out they are likely to become. Edge effects can be 
+              a major issue in geographical modelling. Our agents currently have a 
               theoretically infinite two dimensional (2D) area to move in. What 
               we want to do soon is to load in some 2D environment data so that 
-              the agents can interact with it. To keep the model simple, let's 
-              restrict the movement of agents to stay within a rectangluar area
-              by limiting the x and y coordinates using the following code:</p>
-              <pre># Variables for constraining movement.
+              the agents can interact with it. To keep the model simple, the 
+              movement of agents is going to be restricted so that they stay 
+              within a rectangluar area by limiting the x and y coordinates 
+              using the following code:</p>
+              <pre><code class="language-python"># Variables for constraining movement.
               # The minimum x coordinate.
               x_min = 0
               # The minimum y coordinate.
@@ -472,12 +477,13 @@ public class ABM3 extends Page {
                   agents[i][0] = x_max
               if agents[i][1] > y_max:
                   agents[i][1] = y_max</code></pre>
-              <p>The variables x_min, y_min, y_max, and y_max can be initialised 
-              outside of the loop (perhaps best placed with all the other 
-              initialised variables towards the top of the code). The correction 
-              code should be added at the end of the loop where each agents is 
-              moved. There is no need to loop through the agents again to 
-              apply the correction.<p>
+              <p>The variables x_min, y_min, y_max, and y_max are to be 
+              initialised outside of the loop (perhaps best placed with all the 
+              other initialised variables towards the top of the code). The 
+              correction code is to become part of the loop that moves the 
+              agents. There is no need to loop through the agents again to 
+              apply the correction, which would also work, but would be slightly 
+              less efficient.<p>
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);

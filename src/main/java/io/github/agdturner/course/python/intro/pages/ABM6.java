@@ -66,7 +66,7 @@ public class ABM6 extends Page {
               <p>Change the Agent contructor function to include the 
               agents list and add an attribute for storing the shares as 
               follows:</p>
-              <pre><code class=\"language-python\">def __init__(self, agents, i, environment, nrows, ncols):
+              <pre><code class="language-python">def __init__(self, agents, i, environment, nrows, ncols):
                       self.agents = agents
                       self.store_shares = 0</code></pre>
               <p>Change model.py so that agents are initialised passing in the 
@@ -83,7 +83,7 @@ public class ABM6 extends Page {
               "geometry.get_distance").</p>
               <p>Import the geometry module into agentframework and add the 
               following method:</p>
-              <pre><code class=\"language-python\">def share(self, neighbourhood):
+              <pre><code class="language-python">def share(self, neighbourhood):
               # Create a list of agents in neighbourhood
               neighbours = []
               #print(self.agents[self.i])
@@ -109,7 +109,7 @@ public class ABM6 extends Page {
               store_shares attribute of all neighbours.</p>
               <p>Replace the model loop in the model.py file with the following:
               </p>
-              <pre><code class=\"language-python\"># Model loop
+              <pre><code class="language-python"># Model loop
               for ite in range(n_iterations):
                   print("Iteration", ite)
                   # Move agents
@@ -148,7 +148,7 @@ public class ABM6 extends Page {
               then half the store is released back to the environment.</p>
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
         w.add("</div>");

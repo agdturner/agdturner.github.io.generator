@@ -64,7 +64,7 @@ public class ABM5 extends Page {
               values.</p>
               <p>Create a new source code file named "io.py" in the abm5 
               directory, add the following lines:</p>
-              <pre><code class=\"language-python\">import csv
+              <pre><code class="language-python">import csv
               
               # Read input data
               f = open('../../data/input/in.txt', newline='')
@@ -98,7 +98,7 @@ public class ABM5 extends Page {
               being imported instead. Create a directory called my_modules and 
               move io.py and agentframework.py into it. Change the respective 
               import statements in model.py to be:</p>
-              <pre><code class=\"language-python\">from my_modules import agentframework
+              <pre><code class="language-python">from my_modules import agentframework
               from my_modules import io</code></pre>
               <p>Your code is hopefully now correct and should run without 
               error, but if you still get a confusing error and you are using 
@@ -133,7 +133,7 @@ public class ABM5 extends Page {
               Set a class attribute in the same way as for the 
               parameter/variable i, and add a store attribute setting this equal 
               to zero. The __init__ method should be something like:</p>
-              <pre><code class=\"language-python\">def __init__(self, i, environment):
+              <pre><code class="language-python">def __init__(self, i, environment):
               \"""
               The constructor method.
 
@@ -157,7 +157,7 @@ public class ABM5 extends Page {
               <p>In model.py when you instantiate Agent objects be sure to pass 
               in the parameters/arguments in the correct order.</p>
               <p>In the Agent class define the following function:</p>
-              <pre><code class=\"language-python\">def eat(self):
+              <pre><code class="language-python">def eat(self):
                   if self.environment[self.y][self.x] > 10:
                       self.environment[self.y][self.x] -= 10
                       self.store += 10</code></pre>
@@ -190,12 +190,12 @@ public class ABM5 extends Page {
               file at the end of the the iterations.</p>
               <p>Try setting some of the model parameters towards the start of 
               the program using keyboard input using something like:</p>
-              <pre><code class=\"language-python\">n_agents = int(input("Set n_agents: Key in a positive integer then press <ENTER>:"))</code></pre>
+              <pre><code class="language-python">n_agents = int(input("Set n_agents: Key in a positive integer then press <ENTER>:"))</code></pre>
               <p>Commit your code to your local repository, and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
 //              

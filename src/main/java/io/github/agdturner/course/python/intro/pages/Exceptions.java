@@ -50,7 +50,7 @@ public class Exceptions extends Page {
               <p>If it is suspected that code might generate an exception, a 
               try-except compound statement can be used.</p>
               <p>Consider the following example:</p>
-              <pre><code class=\"language-python\"># Catch an excpetion
+              <pre><code class="language-python"># Catch an excpetion
               import random
               try:
                   a = 1/random.random()
@@ -68,7 +68,7 @@ public class Exceptions extends Page {
               types of exception, for example, the following example will only 
               run the except cluase if the exception thrown is a 
               ZeroDivisionError:</p>
-              <pre><code class=\"language-python\"># Catch a specific exception:
+              <pre><code class="language-python"># Catch a specific exception:
               import random
               try:
                   a = 1/random.random()
@@ -91,14 +91,14 @@ public class Exceptions extends Page {
               in a couple of ways:</p>
               <ol>
               <li>The except clause can contain a tuple of types, for example:
-              <pre><code class=\"language-python\">import random
+              <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
               except (ZeroDivisionError, SystemError) :
                   a = 0
               print("Done")</code></pre></li>
               <li>Using multiple except clauses, for example:
-              <pre><code class=\"language-python\">import random
+              <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
               except (ZeroDivisionError, SystemError) :
@@ -114,7 +114,7 @@ public class Exceptions extends Page {
               exception can help provide diagnostics and with debugging.</p>
               <p>The user can raise exceptions, for example, the following code 
               raises a ZeroDivisionError exception:</p>
-              <pre><code class=\"language-python\">a = random.random()
+              <pre><code class="language-python">a = random.random()
               if a == 0:
                   raise ZeroDivisionError
               else:
@@ -126,7 +126,7 @@ public class Exceptions extends Page {
               <p>If there is something that should be run only if exceptions are
               not raised, the add an Else Clause (else) to the Try-Except, for 
               example:</p>
-              <pre><code class=\"language-python\">import random
+              <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
               except:
@@ -138,7 +138,7 @@ public class Exceptions extends Page {
               <p>If there is something that should be run, whether an exception 
               is raised or not, then add a Finally Clause (finally) to the 
               Try-Except, for example:</p>
-              <pre><code class=\"language-python\">import random
+              <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
               except:
@@ -163,10 +163,10 @@ public class Exceptions extends Page {
               <h2 id="5">5. System Exit Calls</h2>
               <p>To exit the system at any point, call the Exit Function (exit) 
               from the Sys Module (sys). For example:</p>
-              <pre><code class=\"language-python\">import sys
+              <pre><code class="language-python">import sys
               sys.exit()</code></pre>
               <p>This has an arg option:</p>
-              <pre><code class=\"language-python\">sys.exit(arg)</code></pre>
+              <pre><code class="language-python">sys.exit(arg)</code></pre>
               <p>Where arg is a number that the system will report. Zero is 
               usually regarded as exiting with no issues.</p>
               <p>For more on this, see: 
@@ -177,7 +177,7 @@ public class Exceptions extends Page {
               a special module on system error codes.</p>
               """);
 //              <pre></pre>
-//              <pre><code class=\"language-python\"></code></pre>
+//              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
 //              
