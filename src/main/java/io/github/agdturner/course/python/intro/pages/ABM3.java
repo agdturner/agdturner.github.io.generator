@@ -43,8 +43,7 @@ public class ABM3 extends Page {
               <p>Your ABM code should look something like the following:</p>
               <pre><code class="language-python">import random
               import math
-              import matplotlib
-              from matplotlib import pyplot as plt
+              import matplotlib.pyplot as plt
               import operator
               
               # Set the pseudo-random seed for reproducibility

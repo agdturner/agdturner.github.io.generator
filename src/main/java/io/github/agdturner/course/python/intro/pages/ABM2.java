@@ -174,8 +174,7 @@ public class ABM2 extends Page {
               <p>Now plot the coordinates using matplotlib by adding the 
               following import statements to those at the top of your file:
               </p>
-              <pre><code class=\"language-python\">import matplotlib
-              from matplotlib import pyplot as plt
+              <pre><code class=\"language-python\">import matplotlib.pyplot as plt
               import operator</code></pre>
               <p>And adding the following code to the end of your file:</p>
               <pre><code class=\"language-python\"># Plot the agents

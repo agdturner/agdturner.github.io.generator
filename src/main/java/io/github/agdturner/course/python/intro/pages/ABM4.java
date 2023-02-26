@@ -66,10 +66,10 @@ public class ABM4 extends Page {
               syntactically correct and will run.</p>
               <p>In the model.py file reduce n_iterations to 10, and add the 
               following import statement:</p>
-              <pre><code class="language-python">import agentframework</code></pre>
+              <pre><code class="language-python">import agentframework as af</code></pre>
               <p>At the start of the "# Initialise agents" code section add the 
               following lines:</p>
-              <pre><code class="language-python">a = agentframework.Agent()
+              <pre><code class="language-python">a = af.Agent()
               print("type(a)", type(a))</code></pre>
               <p>Run model.py and examine the output which should contain the 
               following line:</p>
@@ -118,7 +118,7 @@ public class ABM4 extends Page {
               agents = []
               for i in range(n_agents):
                   # Create an agent
-                  agents.append(agentframework.Agent())
+                  agents.append(af.Agent())
                   print(agents[i])
               print(agents)</code></pre>
               <p>Run model.py and you should get similar output to the 
