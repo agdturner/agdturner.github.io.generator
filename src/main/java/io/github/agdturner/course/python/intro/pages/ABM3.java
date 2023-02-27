@@ -471,7 +471,7 @@ public class ABM3 extends Page {
               if agents[i][0] < x_min:
                   agents[i][0] = x_min
               if agents[i][1] < y_min:
-                  agents[i][0] = y_min
+                  agents[i][1] = y_min
               if agents[i][0] > x_max:
                   agents[i][0] = x_max
               if agents[i][1] > y_max:
