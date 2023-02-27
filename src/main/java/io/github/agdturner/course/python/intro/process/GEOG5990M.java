@@ -64,8 +64,8 @@ public class GEOG5990M extends PythonIntroCourse {
         String assignment1DueDate = "23rd March 2023";
         String assignment2Name = "Assignment 2 Independent Project";
         String assignment2DueDate = "11th May 2023";
-        //Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");
-        Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
+        Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");
+        //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
         Path local = Paths.get("courses", "computing");
         //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
         String domain = "agdturner.github.io";

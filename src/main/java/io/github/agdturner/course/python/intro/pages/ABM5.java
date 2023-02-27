@@ -162,18 +162,13 @@ public class ABM5 extends Page {
                   self.i = i
                   self.x = random.randint(n_cols/3 - 1, 2 * n_cols / 3)
                   self.y = random.randint(n_rows/3 - 1, 2 * n_rows / 3)</code></pre>
-              <p>In model.py, change the initialisation of x_max and y_max as 
-              follows:</p>
-              <pre><code class="language-python"># The maximum x coordinate.
-              x_max = n_cols - 1
-              # The maximum y coordinate.
-              y_max = n_rows - 1</code></pre>
               <p>The output plot should now look like:</p>
               <img src="../../resources/abm5/Figure_3.png" 
                 alt="A plot of agents on the environment in the middle." />
               <p>Note that although the random seed has not changed, the pattern 
               of agent locations has changed. This is because the calls to 
-              random.randint have significantly different limits.</p>
+              random.randint have significantly different limits producing 
+              different numbers for coordinates.</p>
               
               <h2 id="4">4. Agent-Environment Interaction</h2>
               <p>Imagine that the environment values represent resources that 
@@ -223,13 +218,13 @@ public class ABM5 extends Page {
               location and there is less resource at the location for all the 
               agents to have 10. Those agents processed first will get more! 
               Keep this in mind and write a comment in your source code about 
-              it. Write a docstring for the method.</p>
-              <p>In model.py call the new eat function after the move function
+              it. Write a docstring for the method eat().</p>
+              <p>In model.py call the method eat after the move function
               and run the program. The environment in the plot should have 
               changed around where the agents are plotted, but this is difficult 
               to see.</p>
-              <p>To zoom into the plot, change the plot limits as follows:
-              </p>
+              <p>Change the plot limits for a closer look at the centre of the 
+              environment as follows:</p>
               <pre><code class="language-python">plt.ylim(y_max / 3, y_max * 2 / 3)
               plt.xlim(x_max / 3, x_max * 2 / 3)</code></pre>
               <p>Run the program again and you should get the following image:
@@ -237,13 +232,13 @@ public class ABM5 extends Page {
               <img src="../../resources/abm5/Figure_4.png" 
               alt="A plot of agents on a limited part of the environment with part of it eaten away and the agents centralised." />
               <p>Note that two of the agents have moved to the right beyond the 
-              zoomed area.</p> 
+              limited area.</p> 
               <p>Increase n_iterations to 100 and run again and you should get 
               the following image:</p>
               <img src="../../resources/abm5/Figure_5.png" 
                 alt="A plot of agents on a limited part of the environment with part of it eaten away." />
-              <p>Note that some of the agents are no longer in this zoom window.
-              </p>
+              <p>Note also that there is a checkerboard effect. This should make 
+              sense if you think about how the agents move.</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               
@@ -258,9 +253,11 @@ public class ABM5 extends Page {
               <p>Define a function to write out the values of environment to a 
               file and call this function after the main model loop.</p>
               <!--
-              <p>Try setting some of the model parameters towards the start of 
-              the program using keyboard input using something like:</p>
+              <p>Set some of the model parameters towards the start of 
+              the program using keyboard input such like:</p>
               <pre><code class="language-python">n_agents = int(input("Set n_agents: Key in a positive integer then press <ENTER>:"))</code></pre>
+              <p>Get agents to optional stay still or moving left, right, up or down and not just diagonally.</p>
+              <p>Get agents to move or eat but not both in an iteration.</p>
               -->
               <p>Commit your code to your local repository, and assuming you are 
               using GitHub - push your changes to GitHub.</p>
