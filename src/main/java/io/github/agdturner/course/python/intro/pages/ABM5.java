@@ -143,8 +143,9 @@ public class ABM5 extends Page {
                 alt="A plot of agents on a limited part of the environment." />
               <p>Currently, the agents are being initialised in a corner of the 
               environment. Change the code so that they are initialised in the 
-              middle as follows: Change the constructor function of an agent so 
-              that it also passes in the n_rows and n_cols parameters:</p> 
+              middle by modifying the constructor method. A good way to do this 
+              is to pass in n_rows and n_cols and use these parameters to 
+              initialise the x and y coordinates as follows:</p> 
               <pre><code class="language-python">def __init__(self, i, n_rows, n_cols):
                   \"""
                   The constructor method.
@@ -162,20 +163,34 @@ public class ABM5 extends Page {
                   None.
                   \"""
                   self.i = i
-                  self.x = random.randint(n_cols/3 - 1, 2 * n_cols / 3)
-                  self.y = random.randint(n_rows/3 - 1, 2 * n_rows / 3)</code></pre>
-              <p>The output plot should now look like:</p>
+                  tnc = int(n_cols / 3)
+                  self.x = random.randint(tnc - 1, (2 * tnc) - 1)
+                  tnr = int(n_rows / 3)    
+                  self.y = random.randint(tnr - 1, (2 * tnr) - 1)</code></pre>
+              <p>When calling the constuctor method pass in the variables n_rows 
+              and ncols. Run model.py. The output plot should look like the 
+              following:</p>
               <img src="../../resources/abm5/Figure_3.png" 
                 alt="A plot of agents on the environment in the middle." />
               <p>Note that although the random seed has not changed, the pattern 
-              of agent locations has changed. This is because the calls to 
-              random.randint have significantly different limits producing 
-              different numbers for coordinates.</p>
+              of agent locations is different. This is because the calls to 
+              random.randint are different and produce different coordinates. 
+              The pattern could be kept the same if 100 was added to the x and 
+              y values. The following code would do this and effectively 
+              initialise agents in the central third of a similar rectangular 
+              environment irrespective of the number of rows and columns:</p>
+              <pre><code class="language-python">tnc = int(n_cols / 3)
+              self.x = random.randint(0, tnc - 1) + tnc
+              tnr = int(n_rows / 3)
+              self.y = random.randint(0, tnr - 1) + tnr</code></pre>
               
               <h2 id="4">4. Agent-Environment Interaction</h2>
               <p>Imagine that the environment values represent resources that 
-              can be eaten/stored by agents.</a>
-              <p>Change the __init__ method of the Agent class to:</p>
+              can be eaten/stored by Agent class instances (agents).</a>
+              <p>Change the constructor method of the Agent class again so that 
+              environment is also expected to be passed in and keep a reference 
+              to this as a class attribute. Also create a store attribute and 
+              set this equal to zero:</p>
               <pre><code class="language-python">def __init__(self, i, environment, n_rows, n_cols):
               \"""
               The constructor method.
@@ -201,36 +216,18 @@ public class ABM5 extends Page {
               self.x = random.randint(n_cols/3 - 1, 2 * n_cols / 3)
               self.y = random.randint(n_rows/3 - 1, 2 * n_rows / 3)
               self.store = 0</code></pre>
-              <p>This passes in environment as a parameter and sets a class 
-              attribute in the same way as was done for the 
-              parameter/variable/attribute i. A store attribute has also been 
-              added and set equal to zero. The store attribute is going to be 
-              used to keep a record of how much each Agent class instance has 
-              eaten.</p>
-              <p>Change how the Agent class objects are instantiated in model.py
-              by passing in the parameters/arguments either as kwargs or in the 
-              correct order.</p>
+              <p>Change model.py so that environment is passed in correctly as 
+              agents are initialised.</p>
               <p>In the Agent class define the following method:</p>
               <pre><code class="language-python">def eat(self):
                   if self.environment[self.y][self.x] &gt;= 10:
                       self.environment[self.y][self.x] -= 10
                       self.store += 10</code></pre>
-              <p>This method checks the value of the environment where the Agent
-              class instance is located and if this is greater than or equal to 
-              10, the value of the environment where the Agent class instance is 
-              located is reduced by 10 and 10 is added to the store attribute of 
-              the Agent class instance.</p>
-              <p>Provide an Else clause for the If Statement so that if the 
-              value of environment where the Agent class instance is located is 
-              less than or equal to 10 then the Agent instance then what there 
-              is gets removed from the environment and added to the store of the 
-              Agent instance.</p>
-              <p>Consider what happens when two or more Agent class instances 
-              (agents) are at the same location and there is less resource at 
-              the location for all the agents to have 10...</p>
-              <p>Those agents processed first will get more, which is perhaps 
-              not what is wanted. Keep this in mind and write a comment in your 
-              source code about it. Write a docstring for the method eat().</p>
+              <p>This method checks the value of the environment where the agent
+              is located and if this is greater than or equal to 10, the value 
+              of the environment where the agent is located is reduced by 10 and 
+              10 is added to the store attribute of the agent.</p>
+              <p>Write a docstring for the method eat().</p>
               <p>In model.py call the method eat() after the move function
               and run the program. The environment in the plot should have 
               changed around where the agents are plotted, but this is difficult 
@@ -249,12 +246,23 @@ public class ABM5 extends Page {
               the following image:</p>
               <img src="../../resources/abm5/Figure_5.png" 
                 alt="A plot of agents on a limited part of the environment with part of it eaten away." />
-              <p>Note that there is a checkerboard effect. Does this make sense
-              (think about how the agents move)?</p>
+              <p>Note that there is a checkerboard effect. This is a consequence 
+              of how the agents move!</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               
               <h2 id="5">5. Further Assignment 1 Coding Tasks</h2>
+              <p>For the method eat() in the Agent class, detail an Else clause 
+              for the If Statement so that if the value of environment where the 
+              agent is located is less than or equal to 10 then what is there is 
+              removed and added to the store of the agent. Test this works and 
+              write a brief document about the testing. Consider what happens 
+              when two or more agents are at the same location and there is less 
+              resource at the location for all the agents to have 10... Those 
+              agents processed first will get more... And if we always process 
+              agents in the same order, then some agents will eat more as 
+              resources become limited... Keep this in mind and write a comment 
+              in your source code about it. 
               <p>Define a function in model.py that adds up all the values in 
               environment.</p>
               <p>Define another function that adds up all the store values in 
