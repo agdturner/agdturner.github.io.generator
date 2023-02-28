@@ -131,9 +131,11 @@ public class ABM5 extends Page {
               <p>A plot should be produced that looks like:</p>
               <p><img src="../../resources/abm5/Figure_1.png" 
                 alt="A plot of agents on the environment." /></p>
-              <p>Notice that the plot y-axis has flipped. Limit the plot axes 
-              and flip the y-axis back by adding the following code before the 
-              plot.show() function is called:</p>
+              <p>The pattern of agent locations is the same, although the plot 
+              y-axis has flipped and the x-axis and y-axis now have the same 
+              increments so the the pattern is more squashed along the x-axis. 
+              Limit the plot axes and flip the y-axis back by adding the 
+              following code before the plot.show() function is called:</p>
               <pre><code class="language-python">plt.ylim(y_min, y_max)
               plt.xlim(x_min, x_max)</code></pre>
               <p>The output plot should now look like:</p>
@@ -173,10 +175,7 @@ public class ABM5 extends Page {
               <h2 id="4">4. Agent-Environment Interaction</h2>
               <p>Imagine that the environment values represent resources that 
               can be eaten/stored by agents.</a>
-              <p>Add environment as a parameter to the Agent class constructor.
-              Set a class attribute in the same way as was done for the 
-              parameter/variable i, and add a store attribute setting this equal 
-              to zero. Your __init__ method should be as follows:</p>
+              <p>Change the __init__ method of the Agent class to:</p>
               <pre><code class="language-python">def __init__(self, i, environment, n_rows, n_cols):
               \"""
               The constructor method.
@@ -202,24 +201,37 @@ public class ABM5 extends Page {
               self.x = random.randint(n_cols/3 - 1, 2 * n_cols / 3)
               self.y = random.randint(n_rows/3 - 1, 2 * n_rows / 3)
               self.store = 0</code></pre>
-              <p>Where Agent class objects are instantiated in model.py, pass 
-              in the parameters/arguments either as kwargs or in the correct 
-              order.</p>
-              <p>In the Agent class define the following function:</p>
+              <p>This passes in environment as a parameter and sets a class 
+              attribute in the same way as was done for the 
+              parameter/variable/attribute i. A store attribute has also been 
+              added and set equal to zero. The store attribute is going to be 
+              used to keep a record of how much each Agent class instance has 
+              eaten.</p>
+              <p>Change how the Agent class objects are instantiated in model.py
+              by passing in the parameters/arguments either as kwargs or in the 
+              correct order.</p>
+              <p>In the Agent class define the following method:</p>
               <pre><code class="language-python">def eat(self):
                   if self.environment[self.y][self.x] &gt;= 10:
                       self.environment[self.y][self.x] -= 10
                       self.store += 10</code></pre>
-              <p>Think about what this code is for and adapt it so that if the 
-              value of environment[self.y][self.x] is less than or equal to 10 
-              then the Agent instance stores what there is and this is removed 
-              from the environment.</p>
-              <p>Consider what happens when two or more agents are at the same 
-              location and there is less resource at the location for all the 
-              agents to have 10. Those agents processed first will get more! 
-              Keep this in mind and write a comment in your source code about 
-              it. Write a docstring for the method eat().</p>
-              <p>In model.py call the method eat after the move function
+              <p>This method checks the value of the environment where the Agent
+              class instance is located and if this is greater than or equal to 
+              10, the value of the environment where the Agent class instance is 
+              located is reduced by 10 and 10 is added to the store attribute of 
+              the Agent class instance.</p>
+              <p>Provide an Else clause for the If Statement so that if the 
+              value of environment where the Agent class instance is located is 
+              less than or equal to 10 then the Agent instance then what there 
+              is gets removed from the environment and added to the store of the 
+              Agent instance.</p>
+              <p>Consider what happens when two or more Agent class instances 
+              (agents) are at the same location and there is less resource at 
+              the location for all the agents to have 10...</p>
+              <p>Those agents processed first will get more, which is perhaps 
+              not what is wanted. Keep this in mind and write a comment in your 
+              source code about it. Write a docstring for the method eat().</p>
+              <p>In model.py call the method eat() after the move function
               and run the program. The environment in the plot should have 
               changed around where the agents are plotted, but this is difficult 
               to see.</p>
@@ -237,12 +249,12 @@ public class ABM5 extends Page {
               the following image:</p>
               <img src="../../resources/abm5/Figure_5.png" 
                 alt="A plot of agents on a limited part of the environment with part of it eaten away." />
-              <p>Note also that there is a checkerboard effect. This should make 
-              sense if you think about how the agents move.</p>
+              <p>Note that there is a checkerboard effect. Does this make sense
+              (think about how the agents move)?</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               
-              <h2 id="5">5. Assignment 1 Coding Tasks</h2>
+              <h2 id="5">5. Further Assignment 1 Coding Tasks</h2>
               <p>Define a function in model.py that adds up all the values in 
               environment.</p>
               <p>Define another function that adds up all the store values in 
