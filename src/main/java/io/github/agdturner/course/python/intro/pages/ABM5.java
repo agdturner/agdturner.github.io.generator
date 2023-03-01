@@ -102,7 +102,7 @@ public class ABM5 extends Page {
               instead of the module you have just created.</p>
               <p>To overcome this error there is a need to package the module. 
               This involves creating a directory, moving io.py into it and 
-              modifying the import statement. In the src directory, create a 
+              modifying the import statement. In the abm5 directory, create a 
               directory called "my_modules" and move both io.py and 
               agentframework.py into it. Change the respective import statements 
               in model.py to be:</p>
