@@ -81,10 +81,10 @@ public class Home extends Page {
               <p>General computer programming language concepts, including:</p>
               <ul>
               """);
-        w.add("<li>The notion of an "
-                + addWikipediaReference("API",
-                        "Application Programming Interface (API)")
-                + "</li>");
+//        w.add("<li>The notion of an "
+//                + addWikipediaReference("API",
+//                        "Application Programming Interface (API)")
+//                + "</li>");
         w.add("<li>"
                 + addWikipediaReference("Variable_(computer_science)",
                         "Variables") + "</li>");
@@ -157,37 +157,37 @@ public class Home extends Page {
                         "PyPI - the Python Package Index",
                         null)
                 + "</a></li>");
-        w.add("<li>Using Python to automate "
-                + addWebReference("https://qgis.org/", "QGIS", null)
-                + " Desktop - geospatial data processing software.</li>");
-        w.add("<li>Code comments, "
+//        w.add("<li>Using Python to automate "
+//                + addWebReference("https://qgis.org/", "QGIS", null)
+//                + " Desktop - geospatial data processing software.</li>");
+        w.add("<li>Including code comments and "
                 + "<a href=\"https://peps.python.org/pep-0257/#what-is-a-docstring\">"
-                + "docstring</a>s and print statements to ease comprehension "
-                + "and use.</li>");
-        w.add("<li>Producing documentation using "
-                + addWebReference("https://docs.python.org/3/library/pydoc.html",
-                        "Pydoc", null)
-                + " and "
-                + addWebReference("https://www.sphinx-doc.org/", "Sphinx", null)
-                + "</li>");
-        w.add("<li>Testing code using print statements and "
-                + addWebReference(
-                        "https://docs.python.org/3/library/doctest.html",
-                        "Doctest", null)
-                + "</li>");
-        w.add("<li>"
-                + addWikipediaReference("Unit_testing", "Unit testing")
-                + " using "
-                + addWebReference(
-                        "https://docs.python.org/3/library/unittest.html",
-                        "Unittest", null)
-                + " and "
-                + addWebReference(
-                        "https://docs.pytest.org/", "Pytest", null)
-                + "</li></ul>");
+                + "docstrings</a> to ease comprehension and use.</li>");
+//        w.add("<li>Producing documentation using "
+//                + addWebReference("https://docs.python.org/3/library/pydoc.html",
+//                        "Pydoc", null)
+//                + " and "
+//                + addWebReference("https://www.sphinx-doc.org/", "Sphinx", null)
+//                + "</li>");
+        w.add("<li>Testing code using print statements.</li>");
+//        w.add("<li>Testing code using print statements and "
+//                + addWebReference(
+//                        "https://docs.python.org/3/library/doctest.html",
+//                        "Doctest", null)
+//                + "</li>");
+//        w.add("<li>"
+//                + addWikipediaReference("Unit_testing", "Unit testing")
+//                + " using "
+//                + addWebReference(
+//                        "https://docs.python.org/3/library/unittest.html",
+//                        "Unittest", null)
+//                + " and "
+//                + addWebReference(
+//                        "https://docs.pytest.org/", "Pytest", null)
+//                + "</li>");
+        w.add("</ul>");
         w.add("""
               <h2 id="3">3. Expectations</h2>
-              
               <p>You will learn about:</p>
               <ul>
               """);
@@ -195,8 +195,7 @@ public class Home extends Page {
                 + addWikipediaReference("Version_control", "Version control")
                 + "</li>");
         w.add("""
-              <li>Encoding data</li>
-              <li>Data formats</li>
+              <li>Data encoding and data formats</li>
               <li>Program input and output</li>
               <!--
               <li>Developing Python code (planning, writing, testing, 
@@ -230,9 +229,10 @@ public class Home extends Page {
               computational thinking. It is often helpful to break a task into 
               smaller subtasks, and to think about the order in which to do 
               things. Often good solutions involve doing a sequence of things 
-              repeatedly on some data stored in a data structure. Often it is 
+              repeatedly on some data stored in a data structure.</p>
+              <!--<p>Often it is 
               helpful to use a framework for testing from the outset and to test 
-              often as the code develops.</p>
+              often as the code develops.</p>-->
               <p>There is quite a lot of terminology to learn, some is generic 
               to programming, some is more specific to Python.</p>
               <p>There is a lot to learn especially if you are new to 
@@ -250,29 +250,28 @@ public class Home extends Page {
               <p>If code does not do what you expected it to, then treat it as
               a learning opportunity and try to understand what is going on.</p>
               <p>One of the keys to coding is learning to be able to interpret 
-              errors messages and understand what caused them. Errors are not 
-              something to fear, but they are something not to ignore!</p>
+              errors messages - understand what caused them. Errors should not 
+              be ignored!</p>
               <p>The webpages with names starting \"ABM\" are sequence of 
               practicals that gradually develop a basic spatial Agent Based 
-              Model (ABM). The ABM can be regarded as a simplistic 
-              representation of animals moving about in an environment, 
-              interacting with each other and the environment.</p>
+              Model (ABM). The ABM can be regarded as a simple model of animals 
+              moving about in an environment, interacting with each other and 
+              the environment.</p>
               <p>Developing the ABM by following instructions puts into practise 
-              some of the theory detailed in other webpages. By the end of these 
+              much of the theory detailed in other webpages. By the end of these 
               practicals, you should have ABM model code that:</p>
               <ul>
               <li>produces an animation, data files and messages;</li>
               <li>reads in data from local files and from the Web; and</li>
               <li>has a basic Graphical User Interface.</li>
               </ul>
-              <p>You should then have sufficient knowledge and skill to develop
-              the model further without detailed instructions. Whilst you might 
-              learn a lot trying to do that, save time for the main challenge in
-              this module, which is to undertake an independent project based on 
-              a task set by your tutor. The task will involve applying what you 
-              have learned to develop some software. There will be a 
-              specification for the software, but no detailed instructions about 
-              how to develop it.</p>
+              <p>At that stage, you should have sufficient knowledge and skill 
+              to develop the model further without detailed instructions. Also, 
+              you will then be challenged to undertake an independent project.
+              The independent project will involve applying what you have 
+              learned to develop some software. There will be a specification 
+              for the software, but no detailed instructions about how to 
+              develop it.</p>
               
               <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is 
@@ -309,9 +308,9 @@ public class Home extends Page {
                     + pic.assignment1DueDate + " - developed by completing "
                     + "practical exercises by following instructions.</li>");
 
-            w.add("<li>" + pic.assignment1Name + " worth "
-                    + pic.assignment1Weighting + "% of the overal mark and due "
-                    + pic.assignment1DueDate + " - developed by applying what "
+            w.add("<li>" + pic.assignment2Name + " worth "
+                    + pic.assignment2Weighting + "% of the overal mark and due "
+                    + pic.assignment2DueDate + " - developed by applying what "
                     + "you have learned to a software development task for "
                     + "which there is a specification, but no detailed "
                     + "instructions to follow. You should have sufficent "

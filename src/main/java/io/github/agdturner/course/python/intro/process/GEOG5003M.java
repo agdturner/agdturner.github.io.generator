@@ -34,7 +34,7 @@ public class GEOG5003M extends PythonIntroCourse {
      * @param courseName What {@link #courseName} is set to.
      * @param academicYear What {@link #academicYear} is set to.
      * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
-     * @param assignment1Weighting What {@link #assignment1Weighting} is set to.
+     * @param assignment2Weighting What {@link #assignment1Weighting} is set to.
      */
     public GEOG5003M(Environment env, int courseNumber, String courseName, String academicYear,
             boolean hasAssignments,
@@ -61,14 +61,14 @@ public class GEOG5003M extends PythonIntroCourse {
         int assignment1Weighting = 30;
         int assignment2Weighting = 70;
         String assignment1Name = "Assignment 1 Portfolio";
-        String assignment1DueDate = "23rd March 2023";
+        String assignment1DueDate = "28th April 2023";//23rd March 2023";
         String assignment2Name = "Assignment 2 Independent Project";
-        String assignment2DueDate = "11th May 2023";
+        String assignment2DueDate = "12th May 2023";//11th May 2023";
         Path dir = Paths.get("C:", "Users", "agdtu", "src", "agdt");
-        Path local = Paths.get("courses", "computing");
         //Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
-        //String  domain = "agdturner.github.io";
-        String  domain = "www.geog.leeds.ac.uk";
+        Path local = Paths.get("courses", "computing");
+        String domain = "agdturner.github.io";
+        //String  domain = "www.geog.leeds.ac.uk";
         Environment env = new Environment(domain, dir);
         //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
         //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";

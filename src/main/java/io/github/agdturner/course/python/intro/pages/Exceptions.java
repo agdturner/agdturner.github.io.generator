@@ -73,7 +73,7 @@ public class Exceptions extends Page {
               type. It is possible to be more specific and catch particular 
               types of exception, for example, the following example will only 
               run the except clause if the exception thrown is a 
-              ZeroDivisionError:</p>
+              ZeroDivisionError type exception:</p>
               <pre><code class="language-python"># Catch a specific exception:
               import random
               try:
@@ -125,9 +125,9 @@ public class Exceptions extends Page {
               exception from the builtin module.</p>
               
               <h2 id="4">4. Else and Finally</h2>
-              <p>If there is something that should be run only if exceptions are
-              not raised, then add an Else Clause (else) to the Try-Except, for 
-              example:</p>
+              <p>To run something only if exceptions are not raised, add an Else 
+              Clause 'else' to the try-except compound statement, for example:
+              </p>
               <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
@@ -137,9 +137,9 @@ public class Exceptions extends Page {
                   print(a)
                   # Exceptions here are raised.
               print("Done")</code></pre>
-              <p>If there is something that should be run, whether an exception 
-              is raised or not, then add a Finally Clause (finally) to the 
-              Try-Except, for example:</p>
+              <p>To run code whether an exception is raised or not, then add a 
+              Finally Clause 'finally' try-except compound statement, for 
+              example:</p>
               <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
@@ -149,8 +149,9 @@ public class Exceptions extends Page {
                   if a == None:
                       a = -1
               print("Done")</code></pre>
+              <!--
               <p>In executing the finally clause, any exceptions encountered are 
-              saved, to be re-raised after the finally has run. Finally clauses 
+              raised after the finally has run.</p> Finally clauses 
               are always executed, even if there is a Return Statement (return) 
               in the try or except clauses.<p>
               <p>Exceptions raised in executing the finally clause are nested 
@@ -161,6 +162,7 @@ public class Exceptions extends Page {
               Continue Keyword (continue) can be used to execute the finally 
               clause before restarting the loop, and the Break Keyword (break)
               can be used to execute the finally clause.</p>
+              -->
 
               <h2 id="5">5. System Exit Calls</h2>
               <p>To exit the system at any point, call the function exit() 
