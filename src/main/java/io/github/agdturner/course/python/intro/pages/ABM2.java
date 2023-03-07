@@ -42,7 +42,7 @@ public class ABM2 extends Page {
         w.add("""
               <h2 id="1">1. Recap</h2>
               <p>Your ABM code should look something like the following:</p>
-              <pre><code class=\"language-python\">import random
+              <pre><code class="language-python">import random
               import math
               
               # Set the pseudo-random seed for reproducibility
@@ -127,7 +127,7 @@ public class ABM2 extends Page {
               y1 61
               ssd 25
               distance 5.0
-              distance 5.0</pre></code>
+              distance 5.0</pre>
               
               <h2 id="2">2. Using Lists</h2>
               <p>Rather than handle each coordinate individually, they are going 
@@ -142,12 +142,12 @@ public class ABM2 extends Page {
               your "model.py" file into the abm2 directory. Then, towards the 
               top of the file (below the import statements and setting of the 
               random seed) add the following:</p>
-              <pre># Create a list to store agents
-              agents = []</pre>
+              <pre><code class="language-python"># Create a list to store agents
+              agents = []</pre></code>
               <p>Now to add coordinates to this list: First add one pair after 
               initialising y0 and x0, by adding the following:
               </p>
-              <pre>agents.append([x0,y0]) # Append to the list agents</pre>
+              <pre><code class="language-python">agents.append([x0,y0]) # Append to the list agents</pre></code>
               <p>Notice the extra square brackets, which add the coordinates as 
               a list which is then appended to the agents list. So agents[0][0] 
               is the x coordinate of the first coordinate pair in the agents 
@@ -159,7 +159,7 @@ public class ABM2 extends Page {
               </p>
               <p>Now, about those first two assignments. At the moment the code 
               is:</p>
-              <pre><code class=\"language-python\"># Initialise variable x0
+              <pre><code class="language-python"># Initialise variable x0
               x0 = random.randint(0, 99)
               print("x0", x0)
               # Initialise variable y0
@@ -174,10 +174,10 @@ public class ABM2 extends Page {
               <p>Now plot the coordinates using matplotlib by adding the 
               following import statements to those at the top of your file:
               </p>
-              <pre><code class=\"language-python\">import matplotlib.pyplot as plt
+              <pre><code class="language-python">import matplotlib.pyplot as plt
               import operator</code></pre>
               <p>And adding the following code to the end of your file:</p>
-              <pre><code class=\"language-python\"># Plot the agents
+              <pre><code class="language-python"># Plot the agents
               plt.scatter(agents[0][0], agents[0][1], color='black')
               plt.scatter(agents[1][0], agents[1][1], color='black')
               plt.show()
@@ -210,7 +210,7 @@ public class ABM2 extends Page {
               this equal to 10. Then create a For Loop that uses this to create 
               10 agents, replacing the code that creates a single agent. The 
               code you want is:</p>
-              <pre><code class=\"language-python\">n_agents = 10
+              <pre><code class="language-python">n_agents = 10
               for i in range(n_agents):
                   agents.append([random.randint(0, 99), random.randint(0, 99)])</code></pre>
               <p>Check that your code still runs.</p>
