@@ -64,15 +64,13 @@ public class Home extends Page {
               change between a lighter and darker style. Below that is a 
               Navigation Section which outlines the current page. Each webpage 
               links to the next at the end. Index and Reference webpages are 
-              provided. Essentially, the idea is for you - students taking the 
-              course - to read through the webpages trying out code yourself 
-              and undertaking practical exercises. You may find it helpful to 
-              re-read parts and re-do exercises.</p>
+              provided. Essentially, the idea is that you - students taking the 
+              course - read through the webpages trying out code and undertaking 
+              practical exercises as directed.</p>
               <p>If you encounter issues with the website, then please provide 
               feedback so that these can be resolved. If you are struggling to 
               comprehend things, then please don't struggle for long and ask 
-              your tutor for help.
-              </p>
+              your tutor for help.</p>
               """);
 
         w.add("""
@@ -225,33 +223,34 @@ public class Home extends Page {
                 + "</li>");
         w.add("""
               </ul>
-              <p>Computer programming typically involves problem solving and 
-              computational thinking. It is often helpful to break a task into 
-              smaller subtasks, and to think about the order in which to do 
-              things. Often good solutions involve doing a sequence of things 
-              repeatedly on some data stored in a data structure.</p>
+              <p>Computer programming mostly involves computational thinking, 
+              planning, problem solving and testing. It is often helpful to 
+              break a task into smaller subtasks, and to think about the order 
+              in which to do things. Often good solutions involve doing a 
+              sequence of things repeatedly on some data stored in a data 
+              structure.</p>
               <!--<p>Often it is 
               helpful to use a framework for testing from the outset and to test 
               often as the code develops.</p>-->
-              <p>There is quite a lot of terminology to learn, some is generic 
-              to programming, some is more specific to Python.</p>
-              <p>There is a lot to learn especially if you are new to 
-              programming.</p>
+              <p>If you are new to computer programming, there is quite a lot of 
+              terminology to get used to, some is generic to programming, some 
+              is more specific to Python.</p>
+              <p>There are some key concept to understand which may take several 
+              attempts to learn fully.</p>
 
               <h2 id="4">4. The Learning Journey</h2>
-              <p>Take time to develop your understanding and practise your new 
-              programming skills.</p>
-              <p>Be experimental and test your understanding by testing code 
-              does what you expect it to.</p>
+              <p>It can take years to become good at programming. Develop your 
+              understanding through practise and by reading.</p>
+              <p>Be experimental - test your understanding by testing code does 
+              what you expect it to. If code does not do what you expect, try to
+              understand why - treat it as a learning opportunity.</p>
+              <p>One of the keys to coding is learning to be able to interpret 
+              errors messages - understand what caused them. Errors should not 
+              be ignored!</p>
               <p>Be cautious and do not run code that you do not fully trust. 
               Think about the source of the code and whether you comprehend it 
               sufficiently to know it won't do anything malicious before trying 
               it out.</p>
-              <p>If code does not do what you expected it to, then treat it as
-              a learning opportunity and try to understand what is going on.</p>
-              <p>One of the keys to coding is learning to be able to interpret 
-              errors messages - understand what caused them. Errors should not 
-              be ignored!</p>
               <p>The webpages with names starting \"ABM\" are sequence of 
               practicals that gradually develop a basic spatial Agent Based 
               Model (ABM). The ABM can be regarded as a simple model of animals 
@@ -261,17 +260,17 @@ public class Home extends Page {
               much of the theory detailed in other webpages. By the end of these 
               practicals, you should have ABM model code that:</p>
               <ul>
-              <li>produces an animation, data files and messages;</li>
+              <li>has a basic Graphical User Interface (GUI);</li>
               <li>reads in data from local files and from the Web; and</li>
-              <li>has a basic Graphical User Interface.</li>
+              <li>produces an animation, data files and messages.</li>
               </ul>
               <p>At that stage, you should have sufficient knowledge and skill 
-              to develop the model further without detailed instructions. Also, 
-              you will then be challenged to undertake an independent project.
-              The independent project will involve applying what you have 
-              learned to develop some software. There will be a specification 
-              for the software, but no detailed instructions about how to 
-              develop it.</p>
+              to develop the model further without detailed instructions and you
+              will be challenged to undertake an independent project to apply 
+              what you have learned to develop something different. For the 
+              independent project, there will be a specification for the 
+              software, some ideas of how to approach the task, but no detailed 
+              instructions.</p>
               
               <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is 
