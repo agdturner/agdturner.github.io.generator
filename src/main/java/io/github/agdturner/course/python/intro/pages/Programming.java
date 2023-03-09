@@ -43,56 +43,57 @@ public class Programming extends Page {
         w.add("""
               <h2 id="1">1. Introduction</h2>
               <p>""");
-        w.add(addWikipediaReference("Computer programming"));
-        w.add("""
-              (coding) is about instructing computing machines (computers) to 
-              carry out tasks where data is typically input, processed and 
-              output.</p> 
-              <p>Contemporary desktop and laptop computers typically have a 
-              keyboard and mouse for user input, a visual display screen, 
-              smaller amounts of faster more volatile data storage (memory), and 
-              larger amounts of more persistent data storage (disk) that 
-              is organised using a""");
-        w.add(addWikipediaReference("File_system",
-                "file system") + ".");
-        w.add("""
-              Computers may have inbuilt or perpherally connected devices such 
-              as microphones and cameras, and the screen may be a touch screen. 
-              Networked computers can typically communicate using standard """);
-        w.add(addWikipediaReference("Internet", "internet") + " protocols.");
-        w.add("The basic functioning of a computer is handled by an ");
-        w.add(addWikipediaReference("Operating_system",
-                "operating system"));
-        w.add(" upon which additional ");
-        w.add(addWikipediaReference("Software", "software"));
-        w.add(" can be installed, including software that interprets ");
-        w.add(addWikipediaReference("Programming_language",
-                "programming language"));
-        w.add(" source code - a human readable form of computer instructions.");
-        w.add("""
-              </p>
-              <p>Programming can be done visually by arranging and connecting 
-              pre-built components into executable workflows. However, this 
-              course is about programming using text based command instructions
-              that have a formal syntax. Some computer languages look similar, 
-              some look very different. This course is mostly based on the """);
-        w.add(addWikipediaReference("Python_(programming_language)",
-                "Python programming language") + " (Python).");
+        w.add(c.references.getReference("Computer Programming", 
+                "Computer programming")
+                + " (coding) is the process of designing and building an"
+                + " executable computer program - a set of instruction that"
+                + " are fetched and executed sequentially.</p>");
+        w.add("<p>Contemporary desktop and laptop computers typically have a"
+                + " keyboard and mouse for user input, a visual display screen,"
+                + " smaller amounts of faster more volatile data storage"
+                + " (memory), and larger amounts of more persistent data"
+                + " storage (disk) that is organised using a "
+                + c.references.getReference("File System") 
+                + ". Computers may have inbuilt or perpherally connected"
+                + " devices such as microphones and cameras, and the screen"
+                + " may be a touch screen. Networked computers can typically"
+                + " communicate using standard " 
+                + c.references.getReference("Internet")
+                + " protocols. The basic functioning of a computer is handled"
+                + " by an "
+                + c.references.getReference("Operating System")
+                + " upon which additional "
+                + c.references.getReference("Software")
+                + " can be installed, including software that interprets "
+                + c.references.getReference("Programming Language")
+                + " source code into machine instructions.</p>");
+        w.add("<p>Programming can be done visually by arranging and connecting"
+                + " pre-built components into executable workflows. However,"
+                + " this course is about programming using text based command"
+                + " instructions that have a formal syntax. Some computer"
+                + " languages look similar, some look very different. This"
+                + " course is mostly based on the "
+                + c.references.getReference("Python",
+                "Python programming language")
+                + " (Python).");
         
         SectionID sid = new SectionID(c.sectionIDs.size());
         c.addSection(sid, id, title + " data");
-        addToIndex("binary", sid);
+        addToIndex("Binary", sid);
 
         w.add("""
               <h2 id="2">2. Data</h2>
               
-              <h2 id="2.1">2.1 Binary and encoding</h2>
-              <p>In most modern computers, data is encoded in a binary form
-              where the smallest units called bits are in one of two possible 
-              states: 0 or 1.</p>
-              <p>Typically computers work with fixed size collections of bits
-              called""");
-        w.add(addWikipediaReference("Byte", "bytes") + ".");
+              <h3 id="2.1">2.1 Bits and Bytes</h3>
+              """);
+        w.add("<p>In most modern computers, data is encoded in binary: the"
+                + " smallest unit is a "
+                + c.references.getReference("Bit", "bit")
+                + " which is in one of two possible states: 0 or 1.</p>");
+        w.add("<p>Typically computers work with fixed size collections of bits"
+                + " called "
+                + c.references.getReference("Byte", "bytes")
+                + ".");
         w.add("""
               The more bits there are in a byte, the more different unique 
               combinations or arrangements of bits there can be. With each added 
@@ -104,12 +105,13 @@ public class Programming extends Page {
               <p>7 bits in a byte allows for (128 combinations) which is 
               suffient to represent all the letters in the English alphabet in 
               both lower and upper case, the ten numeric digits 0 to 9, and 
-              64 other symbols. 7 bit bytes is the basis of
+              64 other symbols.</p>
               """);
-        w.add(addWikipediaReference("ASCII", "ASCII") + " - a commonly used "
-                + "data encoding which is the basis of some text file formats."
-                + "</p>");
-        w.add("<p>" + addWikipediaReference("Unicode", "Unicode") + " is "
+        w.add("<p>7 bit bytes is the basis of " 
+                + c.references.getReference("ASCII", "ASCII") 
+                + " - a data encoding which is the basis of some text file "
+                + "formats.</p>");
+        w.add("<p>" + c.references.getReference("Unicode", "Unicode") + " is "
                 + "another commonly used encoding. As of Unicode format "
                 + "version 15.0, there are 149,186 characters that are "
                 + "uniquely encoded, including various alphabets, mathematical "
@@ -119,10 +121,10 @@ public class Programming extends Page {
               <p>Commonly, there are multiples of 8 bits in a byte, but there 
               can be any number.</p>
               
-              <h3 id="2.1">2.1 File Formats</h3>
+              <h3 id="2.2">2.2 File Formats</h3>
               """);
         w.add("<p>Data stored in a file is often stored in standard " 
-                + addWikipediaReference("File_format", "file format")
+                + c.references.getReference("File Format", "file format")
                 + " - typically based on a versioned specification which "
                 + "details what encodings are used and how the data is "
                 + "organised.</p>");
@@ -132,13 +134,13 @@ public class Programming extends Page {
         w.add("<p>Often the suffix of a filename indicates the file format, "
                 + "for example the file format of a file named \"index.html\" "
                 + "is expected to be in " 
-                + addWikipediaReference("HTML", "HTML") + " format. Some file "
-                + "formats contain an identifying code (known as a "
-                + addWikipediaReference("File_format#Magic_number", 
-                        "magic number") + " at the start indicating the file "
-                + "format.</p>");
+                + c.references.getReference("HTML") 
+                + " format. Some file formats contain an identifying code"
+                + " (known as a "
+                + c.references.getReference("Magic Number", "magic number") 
+                + " typically at the start of the file.</p>");
         w.add("""
-              <h3 id="2.1">2.1 Encoding Numbers</h3>
+              <h3 id="2.3">2.3 Integers and Floating Point</h3>
               <p>Each integer number in a range is typically represented using a 
               single byte with a length sufficient to represent all those 
               integers in the range. The encoding will detail how this is done 
@@ -152,20 +154,21 @@ public class Programming extends Page {
               greater towards the centre of the range which with standard 
               floating point numbers is zero.</p>
               """);
-        w.add("<p>" + addWikipediaReference("Floating-point_arithmetic", 
-                "Floating point arithmetic") + " has been standardised. The "
-                + "result of a calculation is rounded to the nearest value in "
-                + "the range. So, sometimes a calculation is accurate, "
-                + "other times it is rounded either up or down. It is "
-                + "important to be aware that there can be significant error "
-                + "in this standardised arithmetic.</p>");
-        w.add("<p>" + addWikipediaReference(
-                "Single-precision_floating-point_format",
-                "Single precision floating point format") + " is a standard "
+        w.add("<p>" + c.references.getReference("Floating-point", 
+                "Floating point arithmetic") 
+                + " has been standardised. The result of a calculation is"
+                + " rounded to the nearest value in the range. So, in some"
+                + " instances a calculation is accurate, other times it is"
+                + " rounded either up or down. It is important to be aware that"
+                + " there can be significant error in this standardised"
+                + " arithmetic.</p>");
+        w.add("<p>" + c.references.getReference(
+                "Single-precision Floating-point",
+                "Single precision floating point") + " is a standard "
                 + "encoding that uses 32 bits per number.</p>");
-        w.add("<p>" + addWikipediaReference(
-                "Double-precision_floating-point_format",
-                "Double precision floating point format") + " is a standard "
+        w.add("<p>" + c.references.getReference(
+                "Double-precision Floating-point",
+                "Double precision floating point") + " is a standard "
                 + "encoding that uses 64 bits per number.</p>");
         w.add("""
               <h2 id="3">3. Learning to Program</h2>
@@ -179,7 +182,8 @@ public class Programming extends Page {
               They can help conceptually.</p>
               """);
         w.add("<p>Save your work often and use " 
-                + addWikipediaReference("Version_control", "version control") 
+                + c.references.getReference("Version Control", 
+                        "version control") 
                 + " as this avoids losing work and provides a track of "
                 + " progress that you and others might find useful.</p>");
         w.add("""
@@ -242,7 +246,7 @@ public class Programming extends Page {
               languages become unsupported over time.</p>
               """);
         w.add("<p>Supporting "
-              + addWikipediaReference("Backward_compatibility", 
+              + c.references.getReference("Backward Compatibility", 
                       "backward compatibility") + " - interoperability with "
               + "older versions - has both costs and benefits. These are "
               + "weighed up seriously by those developing languages, and "

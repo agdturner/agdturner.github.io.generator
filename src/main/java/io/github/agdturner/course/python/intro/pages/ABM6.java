@@ -201,7 +201,7 @@ public class ABM6 extends Page {
               plt.savefig(filename)
               plt.show()
               plt.close()
-              images.append(imageio.v2.imread(filename))</code></pre>
+              images.append(imageio.imread(filename))</code></pre>
               <p>The code will now: create plots; save these as images to png 
               format files; show and close them rapidly; then reload the png 
               format file using imageio and append the image to the images 

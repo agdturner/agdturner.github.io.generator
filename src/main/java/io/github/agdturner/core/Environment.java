@@ -28,12 +28,6 @@ public class Environment {
     
     public final Path dir;
     
-    public static final String URL_GITHUB = "http://github.com/";
-    
-    public static final String URL_PYTHON = "https://www.python.org/";
-
-    public static final String URL_PYTHON_DOCS = "https://docs.python.org/";
-    
     /**
      * Create a new instance.
      */

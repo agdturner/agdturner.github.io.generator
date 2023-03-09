@@ -41,20 +41,14 @@ public class Python extends Page {
         writeHeader();
         writeH1();
         w.add("<h2 id=\"1\">1. Introduction</h2>");
-        String pythonWebsiteLink = addWebReference(Environment.URL_PYTHON,
-                "Python Website", "Python Website",
-                "");
-        String python3ReferenceLink = addWebReference(
-                "https://docs.python.org/3/reference/",
-                "Python 3 Language Reference", "");
-        String pythonStandardLibraryLink = addWebReference(
-                "https://docs.python.org/3/library/",
-                "Python Standard Library", "");
-        String psfLink = addWebReference("https://www.python.org/psf/",
-                "Python Software Foundation", "");
+        String pythonWebsiteLink = c.references.getReference("The Python Website");
+        String python3ReferenceLink = c.references.getReference(
+                "Python 3 Language Reference");
+        String pythonStandardLibraryLink = c.references.getReference("Python Standard Library");
+        String psfLink = c.references.getReference(
+                "Python Software Foundation");
         w.add("<p>"
-                + addWikipediaReference("Python_(programming_language)",
-                        "Python")
+                + c.references.getReference("Python")
                 + " is a popular and powerful high-level programming language "
                 + "supported and developed by the "
                 + psfLink + " - an organisation with a mission to promote,"
@@ -63,13 +57,13 @@ public class Python extends Page {
                 + "community of python programmers.</p>");
         w.add("<p>The " + pythonStandardLibraryLink + " and various Python"
                 + " source code interpreters are freely available in source"
-                + " and binary forms for all major platforms from the " 
+                + " and binary forms for all major platforms from "
                 + pythonWebsiteLink + ", and these may be freely distributed."
                 + " Python interpreters translate Python source code into"
                 + " machine instructions that work at a much lower level."
                 + " The need for interpretation is what classifies Python as a"
                 + " high-level language.</p>"
-                + "<p>The " + pythonWebsiteLink + " contains distributions of"
+                + "<p> " + pythonWebsiteLink + " contains distributions of"
                 + " and pointers to many Free and Open Source third party"
                 + " Python source code libraries, tools, and additional"
                 + " documentation.</p>"
@@ -87,9 +81,8 @@ public class Python extends Page {
               Python 3.12 is due for release in October 2023.
               For each major incremental Python 3 release there is a
               """);
-        w.add(addWebReference("https://docs.python.org/3/whatsnew",
-                "What's New", "",
-                "") + " webpage that introduces what is new:</p>");
+        w.add(c.references.getReference("Python What's New")
+                + " webpage that introduces what is new:</p>");
         w.add("<ul>");
         for (int i = 0; i < 12; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
@@ -97,16 +90,13 @@ public class Python extends Page {
                     "Whatsnew Python 3." + i) + "</li>");
         }
         w.add("</ul>");
-        w.add("""
-              <p>On these webpages, changes are marked against numbered 
-              Python Enhancement Proposals (PEPs). PEPs allow the community of 
-              Python users to look ahead and see what might change and get 
-              involved in language development. PEPs have their own website:
-              """);
-        w.add(addWebReference("https://peps.python.org/",
-                "Python Enhancement Proposal Website",
-                "https://peps.python.org/",
-                ""));
+        w.add("<p>On these webpages, changes are marked against numbered"
+                + " Python Enhancement Proposals (PEPs). PEPs allow the"
+                + " community of Python users to look ahead and see what might"
+                + " change and get involved in language development. PEPs have"
+                + " their own website:"
+                + c.references.getReference(
+                        "Python Enhancement Proposal Website"));
         w.add("""
               </p>
               <p>As with all programming languages, python evolves through 
@@ -123,58 +113,60 @@ public class Python extends Page {
               reproducibility of results and diagnosing issues when it can be
               key to know exactly which versions of everything have been used.
               </p>
-              <p>There is a vast ecosystem of third party python libraries. 
-              Much of this is made available as packages via the
-        """);
-        w.add(addWebReference("https://pypi.org/",
-                "Python Package Index (PyPI)", ""));
+              """);
+        w.add("<p>There is a vast ecosystem of third party python libraries."
+                + " Much of this is made available as packages via the "
+                + c.references.getReference("PyPI",
+                        "Python Package Index (PyPI)")
+                + "</p>");
         w.add("""
               <p>In Section 9, there is an exercise that involves installing 
               Python packages from PyPI and that links to details about how to 
               package code and make it available via PyPI.</p>
               """);
 
-        String python3DocsHome = Environment.URL_PYTHON_DOCS + "3/";
-        String python3DocsTutorial = python3DocsHome + "tutorial/";
-        w.add("<p>The");
-        w.add(Web_ContentWriter.getLink(python3DocsTutorial,
-                "Getting Started Tutorial"));
-        w.add("linked from the " + pythonWebsiteLink);
+        w.add("<p>The"
+                + c.references.getReference("Python Tutorial")
+                + " is a good place to start learning Python. In your private"
+                + " study time, you might like to make your way through that"
+                + " learning material too.</p>");
         w.add("""
-              is a good place to start learning Python. In your own study time,
-              you might like to make your way through that learning material 
-              too.</p>
               <p>Now for some practical exercises to get you running Python code
               in different ways...</p>
               
               <h2 id="3">3. Running Python</h2>
-              <p>Python instructions also known as commands or statements, can 
-              be entered one at a time at a
-              <a href="https://en.wikipedia.org/wiki/Command-line_interface">
-              command-line interface</a> or passed in a file.</p>
-              <p>Check if there is a version of python on your 
-              <a href="https://en.wikipedia.org/wiki/PATH_(variable)">path</a>
-              by running a Terminal or Command Window and entering the following 
-              at the prompt:</p>
-              <pre>python --version</pre>
-              <p>If the python command cannot be found, then it is most likely 
-              that python is not installed. If a version of python is available, 
-              then the version of python should be reported.</p>
-              <p><a href="https://www.anaconda.com/">Anaconda</a> is a data 
-              science platform. It contains: conda - an environment manager; a 
-              python interpretter; some commonly used third party python 
-              packages; and, some useful additional tools. It is available at 
-              the University of Leeds via AppsAnywhere using machines on campus 
-              or remotely using a Windows Virtual Desktop which can be accessed 
-              via the following URL:<p>
-              <p><a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>
-              </p>
-              <p>You can also download and install Anaconda on your own device. 
-              If you do this, then choosing the default options should avoid 
-              interfering with any other version of Python already installed on 
-              your system. By default, Anaconda installs into your user home 
-              directory.</p>
+              """);
+        w.add("<p>Python instructions also known as commands or statements, can"
+                + " be entered one at a time at a "
+                + c.references.getReference("Command Line Interface",
+                "command-line interface")
+                + " or passed in a file.</p>");
+        w.add("<p>Check if there is a version of Python on your "
+                + c.references.getReference("PATH")
+                + " by running a Terminal or Command Window and entering the"
+                + " following at the prompt:</p>");
+        w.add("<pre>python --version</pre>");
+        w.add("<p>If the python command cannot be found, then it is most likely"
+                + " that python is not installed. If a version of python is"
+                + " available, then the version of python should be reported."
+                + "</p>");
+        w.add("<p>" + c.references.getReference("Anaconda")
+                + " is a data science platform. It contains: conda - an"
+                + " environment manager; a Python interpretter; some commonly"
+                + " used third party Python packages; and, some useful"
+                + " additional tools. It is available at the University of"
+                + " Leeds via AppsAnywhere using machines on campus or remotely"
+                + " using a Windows Virtual Desktop which can be accessed via"
+                + " the following URL:<p>");
+        w.add("<p><a href=\"https://wvd.leeds.ac.uk\">"
+                + "https://wvd.leeds.ac.uk</a></p>");
+        w.add("<p>You can also download and install Anaconda on your own"
+                + " device. If you do this, then choosing the default options"
+                + " should avoid interfering with any other version of Python"
+                + " already installed on your system. By default, Anaconda"
+                + " installs into your user home directory.</p>");
                             
+        w.add("""
               <h3 id="3.1">3.1. Python REPL</h3>
               
               <h4>3.1.1. Hello World</h4>
@@ -190,10 +182,11 @@ public class Python extends Page {
               <p>You should arrive at the python prompt looking something like:
               </p>
               <pre>>>></pre>
-              <p>This is the 
-              <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">
-              Read-Eval-Print Loop</a> (REPL) environment for python.
-              Enter:</p>
+              """);
+        w.add("<p>This is the "
+                + c.references.getReference("Read Evaluate Print Loop", "REPL")
+                + " environment for Python. Enter:</p>");
+        w.add("""
               <pre>print("Hello World")</pre>
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
@@ -404,7 +397,7 @@ public class Python extends Page {
               those using double quotation marks. Triple double quotes (\"\"\")
               are typically used for documentation. Triple single quotes (''') 
               are often used to comment out sections of code when""");
-        w.add(addWikipediaReference("Debugging",
+        w.add(c.references.getReference("Debugging",
                 "debugging") + ".</p>");
         w.add("""
               <pre>
@@ -494,11 +487,10 @@ public class Python extends Page {
               conditional expression after the keyword 'if'. The error has come 
               about because of the attempt to use a keyword as a variable name.
               </p>
-              <p>For more details of python language lexicon, see the""");
-        w.add(addWebReference(
-                "https://docs.python.org/3/reference/lexical_analysis.html",
-                "Python 3 Lexical Analysis Documentation",
-                "Python 3 Lexical Analysis Documentation"));
+              """);
+        w.add("<p>For more details of Python language lexicon, see the "
+                + c.references.getReference(
+                        "Python Lexical Analysis Documentation"));
         w.add("""
               </p>
               
@@ -736,8 +728,8 @@ public class Python extends Page {
               available in the Python environment provided. The following is a 
               key reference:</p> 
               """);
-        w.add("<p>" + addWebReference("https://qgis.org/pyqgis/",
-                "QGIS Python API Documentation", "", "") + "</p>");
+        w.add("<p>" + c.references.getReference("QGIS Python API Documentation")
+                + "</p>");
         w.add("""
               <p>In the Python Console, locate and action the Show Editor 
               Button. The Editor should appear on the right of the Python 
@@ -781,12 +773,12 @@ public class Python extends Page {
               repositories are language specific or software specific (like QGIS
               Desktop Plugins), components within the repositories are packaged 
               in standard ways, and there is some process of review and some 
-              policy about package availability and removal. A key reference for 
-              packaging Python code is:
+              policy about package availability and removal. For details on 
+              packaging Python code see the following:
               """);
-        w.add(addWebReference(
-                "https://packaging.python.org/",
-                "Packaging Python", ""));
+        w.add(c.references.getReference("Python Packaging User Guide")
+                + " - a collection of tutorials and references to help you "
+                + "distribute and install Python packages with modern tools.");
         w.add("""
               <p>For those just beginning to learn to program, learning to 
               package code is jumping a step ahead. However, it helps to be 
@@ -794,10 +786,15 @@ public class Python extends Page {
               offset, and to learn about managing Python Environments, 
               installing packages into them and understand a few key things 
               about dependencies.</p>
-              <p>As mentioned, <a href="https://pypi.org/">PyPI</a> is a widely 
-              used repository. Developers deploy packages there for users. Many 
-              are provided as Free and Open Source Software, although private 
-              proprietary packages are also supported.</p>
+              """);
+        w.add("<p>As mentioned, "
+                + c.references.getReference("PyPI")
+                + " is a widely used repository. Developers deploy packages"
+                + " there for users. Many are provided as "
+                + c.references.getReference("Free and Open Source Software")
+                + ", although private proprietary packages are also supported."
+                + "</p>");
+        w.add("""
               <p>When installing a package, by default package dependencies are
               installed at the same time. In Python terms, a dependency is a 
               package, module or function that some other code needs in order to 

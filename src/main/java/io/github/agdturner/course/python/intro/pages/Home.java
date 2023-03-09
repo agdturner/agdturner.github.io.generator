@@ -41,18 +41,16 @@ public class Home extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        String moduleCataloguePage = "https://webprod3.leeds.ac.uk/catalogue/dynmodules.asp?Y="
-                + c.academicYear + "&M=" + c.getCourseCode2();
         w.add("""
               <h2>1. Introduction</h2>
               <p>Welcome to the course website!</p>
               """);
-        w.add("<p>The course timetable is linked from the");
-        w.add("<a href=\"" + moduleCataloguePage + "\">"
-                + "University of Leeds " + c.getCourseCode1()
-                + " Module Catalogue Page</a>.</p>");
+        w.add("<p>The course timetable is linked from the"
+                + c.references.getReference(
+                        c.getCourseCode1() + " Module Catalogue Page")
+                + "</p>");
 //        w.add("These Web pages are");
-//        w.add(addWikipediaReference("Open_educational_resources",
+//        w.add(c.references.getReference("Open_educational_resources",
 //                "Open Educational Resources"));
 //        w.add("developed by");
 //        w.add(Web_ContentWriter.getLink(
@@ -80,107 +78,96 @@ public class Home extends Page {
               <ul>
               """);
 //        w.add("<li>The notion of an "
-//                + addWikipediaReference("API",
+//                + c.references.getReference("API",
 //                        "Application Programming Interface (API)")
 //                + "</li>");
+        w.add("<li>" + c.references.getReference("Variables") + "</li>");
         w.add("<li>"
-                + addWikipediaReference("Variable_(computer_science)",
-                        "Variables") + "</li>");
-        w.add("<li>"
-                + addWikipediaReference("Control_flow", "Control flow")
+                + c.references.getReference("Control Flow")
                 + "("
-                + addWikipediaReference("Conditional_(computer_programming)",
-                        "conditionals")
+                + c.references.getReference("Conditionals", "conditionals")
                 + "/"
-                + addWikipediaReference("For_loop", "for loops")
+                + c.references.getReference("For Loop", "for loops")
                 + "/"
-                + addWikipediaReference("While_loop", "while loops")
-                + "/"
-                + addWikipediaReference("Thread_(computing)", "threads")
+                + c.references.getReference("While Loop", "while loops")
                 + ")</li>");
         w.add("<li>"
-                + addWikipediaReference("Function_(computer_programming)",
-                        "Functions")
+                + c.references.getReference("Functions")
                 + " and "
-                + addWikipediaReference("Functional_programming",
-                        "Functional Programming")
+                + c.references.getReference("Functional Programming")
                 + "</li>");
         w.add("<li>"
-                + addWikipediaReference("Class_(computer_programming)",
-                        "Classes")
+                + c.references.getReference("Class", "Classes")
                 + " and "
-                + addWikipediaReference("Object-oriented_programming",
+                + c.references.getReference("Object-oriented_programming",
                         "Object Oriented Programming")
                 + "</li>");
         w.add("</ul>");
 
         w.add("<p>"
-                + addWikipediaReference("Python_(programming_language)",
+                + c.references.getReference("Python_(programming_language)",
                         "Python programming language")
                 + " specifics:</p>");
         w.add("<ul>");
         w.add("<li>Language development and limitations</li>");
         w.add("<li>Structuring and organising code into "
-                + addWebReference(
-                        "https://docs.python.org/3/tutorial/classes.html",
-                        "Classes", null) + ", "
-                + addWebReference(
-                        "https://docs.python.org/3/tutorial/modules.html",
-                        "Modules", null) + ", and "
-                + addWebReference(
-                        "https://docs.python.org/3/tutorial/modules#packages.html",
-                        "Packages", null) + ".</li>");
+                + c.references.getReference(
+                        "Python Documentation Classes Tutorial", "Classes")
+                + ", "
+                + c.references.getReference(
+                        "Python Documentation Modules Tutorial",
+                        "Modules")
+                + ", and "
+                + c.references.getReference("Python Packages", "Packages")
+                + ".</li>");
         w.add("<li>Using the "
-                + addWikipediaReference("Read%E2%80%93eval%E2%80%93print_loop",
-                        "Read Evaluate Print Loop (REPL)") + " environment</li>");
-        w.add("<li>Running programs from the command line, in  "
-                + addWebReference("https://jupyter.org/", "Jupyter", null)
-                + " Notebooks, and from within the "
-                + addWebReference("https://docs.python.org/3/library/idle.html",
-                        "IDLE", null)
+                + c.references.getReference("Read Evaluate Print Loop",
+                        "Read Evaluate Print Loop (REPL)") 
+                + " environment</li>");
+        w.add("<li>Running programs from the command line, "
+                + c.references.getReference("The Jupyter Notebook")
+                + ", "
+                + c.references.getReference("Python IDLE")
                 + " and "
-                + addWebReference("https://www.spyder-ide.org/", "Spyder", null)
-                + " Integrated Development Environments.</li>");
+                + c.references.getReference("Spyder")
+                + ".</li>");
         w.add("<li>Python Environment Management using "
-                + addWebReference("https://docs.conda.io/", "Conda", null)
+                + c.references.getReference("Conda")
                 + " and "
-                + addWebReference("https://docs.python.org/3/library/venv.html",
-                        "Venv", null)
+                + c.references.getReference("Python Venv")
                 + "</li>");
         w.add("<li>Using the "
-                + addWebReference("https://docs.python.org/3/library/",
-                        "Standard Library", null)
+                + c.references.getReference("Python Standard Library")
                 + ", and third party packages available via "
-                + addWebReference("https://pypi.org/",
-                        "PyPI - the Python Package Index",
-                        null)
+                + c.references.getReference("PyPI", 
+                        "PyPI - the Python Package Index")
                 + "</a></li>");
 //        w.add("<li>Using Python to automate "
-//                + addWebReference("https://qgis.org/", "QGIS", null)
+//                + c.references.getReference("https://qgis.org/", "QGIS", null)
 //                + " Desktop - geospatial data processing software.</li>");
         w.add("<li>Including code comments and "
-                + "<a href=\"https://peps.python.org/pep-0257/#what-is-a-docstring\">"
-                + "docstrings</a> to ease comprehension and use.</li>");
+                + c.references.getReference("Python Docstring", "docstrings")
+                + " to ease comprehension and use.</li>");
 //        w.add("<li>Producing documentation using "
-//                + addWebReference("https://docs.python.org/3/library/pydoc.html",
+//                + c.references.getReference("https://docs.python.org/3/library/pydoc.html",
 //                        "Pydoc", null)
 //                + " and "
-//                + addWebReference("https://www.sphinx-doc.org/", "Sphinx", null)
+//                + c.references.getReference("https://www.sphinx-doc.org/", "Sphinx", null)
 //                + "</li>");
         w.add("<li>Testing code using print statements.</li>");
 //        w.add("<li>Testing code using print statements and "
-//                + addWebReference(
+//                + c.references.getReference(
 //                        "https://docs.python.org/3/library/doctest.html",
 //                        "Doctest", null)
 //                + "</li>");
 //        w.add("<li>"
-//                + addWikipediaReference("Unit_testing", "Unit testing")
+//                + c.references.getReference("Unit_testing", "Unit testing")
 //                + " using "
-//                + addWebReference(
+//                + c.references.getReference(
 //                        "https://docs.python.org/3/library/unittest.html",
 //                        "Unittest", null)
 //                + " and "
-//                + addWebReference(
+//                + c.references.getReference(
 //                        "https://docs.pytest.org/", "Pytest", null)
 //                + "</li>");
         w.add("</ul>");
@@ -190,7 +177,7 @@ public class Home extends Page {
               <ul>
               """);
         w.add("<li>"
-                + addWikipediaReference("Version_control", "Version control")
+                + c.references.getReference("Version_control")
                 + "</li>");
         w.add("""
               <li>Data encoding and data formats</li>
@@ -206,20 +193,17 @@ public class Home extends Page {
               -->
               """);
         w.add("<li>Visualisation using "
-                + addWebReference("https://matplotlib.org/", "Matplotlib",
-                        null)
+                + c.references.getReference("Matplotlib")
                 + "</li>");
         w.add("<li>Processing raster data stored in lists.</li>");
         w.add("<li>Using "
-                + addWebReference("https://github.com/", "GitHub", null)
+                + c.references.getReference("GitHub")
                 + "</li>");
         w.add("<li>Developing a "
-                + addWikipediaReference("Graphical_user_interface",
-                        "Graphical User Interface")
+                + c.references.getReference("Graphical User Interface")
                 + "</li>");
         w.add("<li>Developing and visualising a basic spatial "
-                + addWikipediaReference("Agent-based_model",
-                        "Agent Based Model")
+                + c.references.getReference("Agent Based Model")
                 + "</li>");
         w.add("""
               </ul>
@@ -278,13 +262,15 @@ public class Home extends Page {
               <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is 
               """);
-        w.add(addWikipediaReference("Free_and_open-source_software",
-                "Free and Open Source Software (FOSS)") + " which is "
-                + "available to download and install on "
-                + addWikipediaReference("Linux", "Linux") + ", "
-                + addWikipediaReference("Microsoft_Windows",
-                        "Microsoft Windows") + ", and "
-                + addWikipediaReference("MacOS", "macOS") + ".<p>");
+        w.add(c.references.getReference("Free and Open Source Software",
+                "Free and Open Source Software (FOSS)") 
+                + " which is available to download and install on "
+                + c.references.getReference("Linux") 
+                + ", "
+                + c.references.getReference("Microsoft_Windows") 
+                + ", and "
+                + c.references.getReference("MacOS")
+                + ".<p>");
         w.add("""
               <p>The software is available at the University of Leeds via 
               AppsAnywhere and the Academic Windows Virtual Desktop which can be 

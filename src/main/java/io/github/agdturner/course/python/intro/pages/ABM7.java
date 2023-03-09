@@ -89,7 +89,7 @@ public class ABM7 extends Page {
               filename = '../../data/output/images/image' + str(ite) + '.png'
               plt.savefig(filename)
               plt.show
-              images.append(imageio.v2.imread(filename))
+              images.append(imageio.imread(filename))
               return fig</code></pre>
               <p>Change the model loop code block into a function called update
               that has a parameter called frames. At the end of this call the 

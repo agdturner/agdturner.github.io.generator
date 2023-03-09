@@ -17,9 +17,9 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.WebPage;
 import io.github.agdturner.core.PageID;
-import io.github.agdturner.core.ReferenceID;
 import io.github.agdturner.core.SectionID;
 import io.github.agdturner.core.TermID;
+import io.github.agdturner.course.Reference;
 import io.github.agdturner.course.python.intro.pages.Home;
 import java.nio.file.Paths;
 import java.util.TreeSet;
@@ -137,75 +137,6 @@ public abstract class Page extends WebPage {
     protected String getLink(Page p, String id, String linkClass, String prepend) {
         return Web_ContentWriter.getLink(c.getLinkPathString(p), id,
                 linkClass, prepend + p.label);
-    }
-
-    /**
-     * Adds a reference to the appropriate course collections and returns a link
-     * to use in a WebPage.
-     *
-     * @param linkName The name of the Wikipedia article and section (spaces are
-     * replaced with underscores) and the text for the link returned.
-     * @return A link to a Wikipedia article with the linkName.
-     */
-    public String addWikipediaReference(String linkName) {
-        return addWikipediaReference(linkName, linkName);
-    }
-
-    /**
-     * Adds a reference to the appropriate course collections and returns a link
-     * to use in a WebPage.
-     *
-     * @param linkName The name of the Wikipedia article and section (spaces are
-     * replaced with underscores).
-     * @param linkText The text for the link returned.
-     * @return A link to a Wikipedia article with the linkName.
-     */
-    public String addWikipediaReference(String linkName, String linkText) {
-        String resourceName = "Wikipedia";
-        String url = "https://en.wikipedia.org/wiki/" + linkName.replace(' ', '_');
-        return addWebReference(url, linkName, linkText, resourceName);
-    }
-
-    /**
-     * Adds a reference to the appropriate course collections and returns a link
-     * to use in a WebPage.
-     *
-     * @param url The url of the Web resource to reference.
-     * @param linkName The name for the link in the reference prepended with
-     * resourceName. This is also used as the link Text that is returned.
-     * @param resourceName Prepended to linkName (with a space added) for the
-     * reference if it is not null.
-     * @return A link to a Wikipedia article with the linkName.
-     */
-    public String addWebReference(String url, String linkName, String resourceName) {
-        return addWebReference(url, linkName, linkName, resourceName);
-    }
-
-    /**
-     * Adds a reference to the appropriate course collections and returns a link
-     * to use in a WebPage.
-     *
-     * @param url The url of the Web resource to reference.
-     * @param linkName The name for the link in the reference prepended with
-     * resourceName.
-     * @param linkText The text for the link returned.
-     * @param resourceName Prepended to linkName (with a space added) for the
-     * reference if it is not null.
-     * @return A link to a Wikipedia article with the linkName.
-     */
-    public String addWebReference(String url, String linkName, String linkText,
-            String resourceName) {
-        String referenceName = "";
-        if (resourceName != null) {
-            referenceName += resourceName + " ";
-        }
-        referenceName += linkName;
-        if (!c.references.referenceNameToReferenceID.containsKey(referenceName)) {
-            ReferenceID rID = new ReferenceID(c.references.referenceNameToReferenceID.size());
-            c.references.referenceNameToReferenceID.put(referenceName, rID);
-            c.references.referenceIDToReferenceURL.put(rID, url);
-        }
-        return Web_ContentWriter.getLink(url, linkText);
     }
 
     /**

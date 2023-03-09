@@ -32,7 +32,7 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  */
 public class Home extends WebPage {
 
-    public static final String URL_GITHUB_AGDTURNER = Environment.URL_GITHUB + "agdturner/";
+    public static final String URL_GITHUB_AGDTURNER = "http://www.github.com/agdturner/";
     public static final String DOMAIN = "agdturner.github.io";
     public static final Path DIR = Paths.get("C:", "Users", "agdtu", "src", "agdt", DOMAIN);
     //public static final Path DIR = Paths.get("C:", "Users", "geoagdt", "src", "agdt", DOMAIN);

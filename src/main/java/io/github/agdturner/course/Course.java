@@ -162,10 +162,16 @@ public class Course {
         sectionIDToSectionName = new TreeMap<>();
     }
 
+    /**
+     * @return "GEOG" + courseNumber
+     */
     public final String getCourseCode1() {
         return "GEOG" + courseNumber; 
     }
 
+    /**
+     * @return "GEOG-" + courseNumber + "M"
+     */
     public String getCourseCode2() {
         return "GEOG-" + courseNumber + "M"; 
     }
