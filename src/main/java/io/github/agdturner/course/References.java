@@ -437,9 +437,6 @@ public class References extends Page {
         description = "a control flow statement that allows code to be "
                 + "executed repeatedly until a condition evaluates as false";
         referenceNameToReference.put(name, new Reference(url, description));
-        
-        
-        referenceNameToReference.put(name, new Reference(url, description));
     }
     
     /**
@@ -495,8 +492,9 @@ public class References extends Page {
             StringBuilder sb = new StringBuilder();
             sb.append("<li>");
             sb.append(Web_ContentWriter.getLink(r.url, name));
+            sb.append(" - ");
             sb.append(r.description);
-            sb.append("</li>");
+            sb.append(".</li>");
             w.add(sb.toString());
         }
         w.add("</ul>");
