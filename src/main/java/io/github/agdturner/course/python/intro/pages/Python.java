@@ -397,8 +397,7 @@ public class Python extends Page {
               those using double quotation marks. Triple double quotes (\"\"\")
               are typically used for documentation. Triple single quotes (''') 
               are often used to comment out sections of code when""");
-        w.add(c.references.getReference("Debugging",
-                "debugging") + ".</p>");
+        w.add(c.references.getReference("Debugging", "debugging") + ".</p>");
         w.add("""
               <pre>
               \"\"\"

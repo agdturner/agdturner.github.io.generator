@@ -81,11 +81,11 @@ public class Home extends Page {
 //                + c.references.getReference("API",
 //                        "Application Programming Interface (API)")
 //                + "</li>");
-        w.add("<li>" + c.references.getReference("Variables") + "</li>");
+        w.add("<li>" + c.references.getReference("Variable", "Variables") + "</li>");
         w.add("<li>"
                 + c.references.getReference("Control Flow")
                 + "("
-                + c.references.getReference("Conditionals", "conditionals")
+                + c.references.getReference("Conditional", "conditionals")
                 + "/"
                 + c.references.getReference("For Loop", "for loops")
                 + "/"
@@ -99,14 +99,12 @@ public class Home extends Page {
         w.add("<li>"
                 + c.references.getReference("Class", "Classes")
                 + " and "
-                + c.references.getReference("Object-oriented_programming",
-                        "Object Oriented Programming")
+                + c.references.getReference("Object Oriented Programming")
                 + "</li>");
         w.add("</ul>");
 
         w.add("<p>"
-                + c.references.getReference("Python_(programming_language)",
-                        "Python programming language")
+                + c.references.getReference("Python")
                 + " specifics:</p>");
         w.add("<ul>");
         w.add("<li>Language development and limitations</li>");
@@ -177,7 +175,7 @@ public class Home extends Page {
               <ul>
               """);
         w.add("<li>"
-                + c.references.getReference("Version_control")
+                + c.references.getReference("Version Control")
                 + "</li>");
         w.add("""
               <li>Data encoding and data formats</li>
@@ -185,13 +183,12 @@ public class Home extends Page {
               <!--
               <li>Developing Python code (planning, writing, testing, 
               organising)</li>
-              <li>The Python parts of the 
-              <a href="https://www.anaconda.com/">Anaconda</a> data science 
-              platform</li>
-              <li>Processing geographical features (geometry and related 
-              attribute) data.</li>
-              -->
               """);
+        w.add("<li>The Python parts of the "
+                + c.references.getReference("Anaconda")
+                + " data science platform</li>");
+        w.add("<li>Processing geographical features (geometry and related"
+                + " attribute) data.</li>-->");
         w.add("<li>Visualisation using "
                 + c.references.getReference("Matplotlib")
                 + "</li>");
@@ -267,7 +264,7 @@ public class Home extends Page {
                 + " which is available to download and install on "
                 + c.references.getReference("Linux") 
                 + ", "
-                + c.references.getReference("Microsoft_Windows") 
+                + c.references.getReference("Microsoft Windows") 
                 + ", and "
                 + c.references.getReference("MacOS")
                 + ".<p>");

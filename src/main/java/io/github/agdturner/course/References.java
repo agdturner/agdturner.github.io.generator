@@ -138,12 +138,19 @@ public class References extends Page {
         description = "a named container of data";
         referenceNameToReference.put(name, new Reference(url, description));
         
-        name = "Double-precision Floating-point";
-        url = getWikipediaURL("Double-precision_floating-point_format");
-        description = " a computer number format, usually occupying 64 bits in "
-                + "computer memory";
+        name = "Debugging";
+        url = getWikipediaURL("Debugging");
+        description = "the process of finding and resolving bugs (defects or "
+                + "problems that prevent correct operation) within computer "
+                + "programs, software, or systems";
         referenceNameToReference.put(name, new Reference(url, description));
                 
+        name = "Double-precision Floating-point";
+        url = getWikipediaURL("Double-precision_floating-point_format");
+        description = "a computer number format, usually occupying 64 bits in "
+                + "computer memory";
+        referenceNameToReference.put(name, new Reference(url, description));
+
         name = "File Format";
         url = getWikipediaURL("File_format");
         description = "a standard way that information is encoded for storage "
@@ -158,7 +165,7 @@ public class References extends Page {
                 
         name = "Floating-point";
         url = getWikipediaURL("Floating-point_arithmetic");
-        description = " arithmetic that represents real numbers approximately, "
+        description = "arithmetic that represents real numbers approximately, "
                 + "using an integer with a fixed precision, called the "
                 + "significand, scaled by an integer exponent of a fixed base";
         referenceNameToReference.put(name, new Reference(url, description));
