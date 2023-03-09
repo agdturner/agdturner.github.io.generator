@@ -47,6 +47,9 @@ public class Python extends Page {
         String python3ReferenceLink = addWebReference(
                 "https://docs.python.org/3/reference/",
                 "Python 3 Language Reference", "");
+        String pythonStandardLibraryLink = addWebReference(
+                "https://docs.python.org/3/library/",
+                "Python Standard Library", "");
         String psfLink = addWebReference("https://www.python.org/psf/",
                 "Python Software Foundation", "");
         w.add("<p>"
@@ -58,25 +61,24 @@ public class Python extends Page {
                 + " protect, and advance the language, and support and"
                 + " facilitate the growth of a diverse and international "
                 + "community of python programmers.</p>");
-        w.add("<p>The python standard library and various python interpreters"
-                + " are freely available in source and binary forms for all"
-                + " major platforms from the " + pythonWebsiteLink + ", and"
-                + " these may be freely distributed. Python interpreters"
-                + " translate python source code which is easy for humans to"
-                + " understand into machine instructions that move and process"
-                + " data and operate computer devices at a much lower level."
-                + " The need for interpretation is what classifies python as a"
+        w.add("<p>The " + pythonStandardLibraryLink + " and various Python"
+                + " source code interpreters are freely available in source"
+                + " and binary forms for all major platforms from the " 
+                + pythonWebsiteLink + ", and these may be freely distributed."
+                + " Python interpreters translate Python source code into"
+                + " machine instructions that work at a much lower level."
+                + " The need for interpretation is what classifies Python as a"
                 + " high-level language.</p>"
                 + "<p>The " + pythonWebsiteLink + " contains distributions of"
                 + " and pointers to many Free and Open Source third party"
-                + " python source code libraries, tools, and additional"
+                + " Python source code libraries, tools, and additional"
                 + " documentation.</p>"
                 + "<p>A particularly useful page for beginners is the "
                 + python3ReferenceLink + ".</p>");
         w.add("""
               <h2 id="2">2. Python 3</h2>
               <p>Python 3 was first released in 2008. For several years both 
-              python 2 and python 3 were developed and supported, but eventually 
+              Python 2 and Python 3 were developed and supported, but eventually 
               in January 2020 development and maintenance of Python 2 ceased. 
               We will not look at the differences between Python 2 and Python 3 
               in this course and will focus just on Python 3.</p>
