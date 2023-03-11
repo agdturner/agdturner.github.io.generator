@@ -18,6 +18,7 @@ package io.github.agdturner.course.python.intro.pages;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 import io.github.agdturner.course.Course;
+import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * Python Intro Course Home Page.
@@ -46,11 +47,13 @@ public class Home extends Page {
               <p>Welcome to the course website!</p>
               """);
         w.add("<p>The course timetable is linked from the"
-                + c.references.getReference(
+                + Web_ContentWriter.getLink(
+                        "https://webprod3.leeds.ac.uk/catalogue/dynmodules.asp?Y="
+                + c.academicYear + "&M=" + c.getCourseCode2(), 
                         c.getCourseCode1() + " Module Catalogue Page")
                 + "</p>");
 //        w.add("These Web pages are");
-//        w.add(c.references.getReference("Open_educational_resources",
+//        w.add(c.index.getReference("Open_educational_resources",
 //                "Open Educational Resources"));
 //        w.add("developed by");
 //        w.add(Web_ContentWriter.getLink(
@@ -61,10 +64,10 @@ public class Home extends Page {
               the top of each webpage is a Style Button that can be used to 
               change between a lighter and darker style. Below that is a 
               Navigation Section which outlines the current page. Each webpage 
-              links to the next at the end. Index and Reference webpages are 
-              provided. Essentially, the idea is that you - students taking the 
-              course - read through the webpages trying out code and undertaking 
-              practical exercises as directed.</p>
+              links to the next and at the end there is an index. Essentially, 
+              the idea is that you - students taking the course - read through 
+              the webpages trying out code and undertaking practical exercises 
+              as directed.</p>
               <p>If you encounter issues with the website, then please provide 
               feedback so that these can be resolved. If you are struggling to 
               comprehend things, then please don't struggle for long and ask 
@@ -78,33 +81,33 @@ public class Home extends Page {
               <ul>
               """);
 //        w.add("<li>The notion of an "
-//                + c.references.getReference("API",
+//                + c.index.getReference("API",
 //                        "Application Programming Interface (API)")
 //                + "</li>");
-        w.add("<li>" + c.references.getReference("Variable", "Variables") + "</li>");
+        w.add("<li>" + c.index.getReference("Variable", "Variables") + "</li>");
         w.add("<li>"
-                + c.references.getReference("Control Flow")
+                + c.index.getReference("Control Flow")
                 + "("
-                + c.references.getReference("Conditional", "conditionals")
+                + c.index.getReference("Conditional", "conditionals")
                 + "/"
-                + c.references.getReference("For Loop", "for loops")
+                + c.index.getReference("For Loop", "for loops")
                 + "/"
-                + c.references.getReference("While Loop", "while loops")
+                + c.index.getReference("While Loop", "while loops")
                 + ")</li>");
         w.add("<li>"
-                + c.references.getReference("Functions")
+                + c.index.getReference("Functions")
                 + " and "
-                + c.references.getReference("Functional Programming")
+                + c.index.getReference("Functional Programming")
                 + "</li>");
         w.add("<li>"
-                + c.references.getReference("Class", "Classes")
+                + c.index.getReference("Class", "Classes")
                 + " and "
-                + c.references.getReference("Object Oriented Programming")
+                + c.index.getReference("Object Oriented Programming")
                 + "</li>");
         w.add("</ul>");
 
         w.add("<p>"
-                + c.references.getReference("Python")
+                + c.index.getReference("Python")
                 + " specifics:</p>");
         w.add("<ul>");
         w.add("<li>Language development and limitations</li>");
@@ -119,20 +122,20 @@ public class Home extends Page {
                 + c.references.getReference("Python Packages", "Packages")
                 + ".</li>");
         w.add("<li>Using the "
-                + c.references.getReference("Read Evaluate Print Loop",
+                + c.index.getReference("Read Evaluate Print Loop",
                         "Read Evaluate Print Loop (REPL)") 
                 + " environment</li>");
-        w.add("<li>Running programs from the command line, "
-                + c.references.getReference("The Jupyter Notebook")
+        w.add("<li>Running programs via the command line, "
+                + c.references.getReference("Jupyter Notebook")
                 + ", "
-                + c.references.getReference("Python IDLE")
+                + c.references.getReference("IDLE")
                 + " and "
                 + c.references.getReference("Spyder")
                 + ".</li>");
         w.add("<li>Python Environment Management using "
                 + c.references.getReference("Conda")
                 + " and "
-                + c.references.getReference("Python Venv")
+                + c.index.getReference("Python Venv")
                 + "</li>");
         w.add("<li>Using the "
                 + c.references.getReference("Python Standard Library")
@@ -144,7 +147,7 @@ public class Home extends Page {
 //                + c.references.getReference("https://qgis.org/", "QGIS", null)
 //                + " Desktop - geospatial data processing software.</li>");
         w.add("<li>Including code comments and "
-                + c.references.getReference("Python Docstring", "docstrings")
+                + c.index.getReference("Python Docstring", "docstrings")
                 + " to ease comprehension and use.</li>");
 //        w.add("<li>Producing documentation using "
 //                + c.references.getReference("https://docs.python.org/3/library/pydoc.html",
@@ -175,7 +178,7 @@ public class Home extends Page {
               <ul>
               """);
         w.add("<li>"
-                + c.references.getReference("Version Control")
+                + c.index.getReference("Version Control")
                 + "</li>");
         w.add("""
               <li>Data encoding and data formats</li>
@@ -197,10 +200,10 @@ public class Home extends Page {
                 + c.references.getReference("GitHub")
                 + "</li>");
         w.add("<li>Developing a "
-                + c.references.getReference("Graphical User Interface")
+                + c.index.getReference("Graphical User Interface")
                 + "</li>");
         w.add("<li>Developing and visualising a basic spatial "
-                + c.references.getReference("Agent Based Model")
+                + c.index.getReference("Agent Based Model")
                 + "</li>");
         w.add("""
               </ul>
@@ -259,14 +262,14 @@ public class Home extends Page {
               <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is 
               """);
-        w.add(c.references.getReference("Free and Open Source Software",
+        w.add(c.index.getReference("Free and Open Source Software",
                 "Free and Open Source Software (FOSS)") 
                 + " which is available to download and install on "
-                + c.references.getReference("Linux") 
+                + c.index.getReference("Linux") 
                 + ", "
-                + c.references.getReference("Microsoft Windows") 
+                + c.index.getReference("Microsoft Windows") 
                 + ", and "
-                + c.references.getReference("MacOS")
+                + c.index.getReference("MacOS")
                 + ".<p>");
         w.add("""
               <p>The software is available at the University of Leeds via 

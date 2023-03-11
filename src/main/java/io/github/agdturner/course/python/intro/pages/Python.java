@@ -17,6 +17,7 @@ package io.github.agdturner.course.python.intro.pages;
 
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.core.Environment;
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.Page;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
@@ -40,15 +41,19 @@ public class Python extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        w.add("<h2 id=\"1\">1. Introduction</h2>");
-        String pythonWebsiteLink = c.references.getReference("The Python Website");
+        Section s;
+        s = addSection("1.", "Introduction", 2);
+        w.add(s.sectionHTML);
+        String pythonWebsiteLink = c.references.getReference(
+                "Python Website");
         String python3ReferenceLink = c.references.getReference(
                 "Python 3 Language Reference");
-        String pythonStandardLibraryLink = c.references.getReference("Python Standard Library");
+        String pythonStandardLibraryLink = c.references.getReference(
+                "Python Standard Library");
         String psfLink = c.references.getReference(
                 "Python Software Foundation");
         w.add("<p>"
-                + c.references.getReference("Python")
+                + c.index.getReference("Python")
                 + " is a popular and powerful high-level programming language "
                 + "supported and developed by the "
                 + psfLink + " - an organisation with a mission to promote,"
@@ -57,20 +62,23 @@ public class Python extends Page {
                 + "community of python programmers.</p>");
         w.add("<p>The " + pythonStandardLibraryLink + " and various Python"
                 + " source code interpreters are freely available in source"
-                + " and binary forms for all major platforms from "
+                + " and binary forms for all major platforms from the "
                 + pythonWebsiteLink + ", and these may be freely distributed."
                 + " Python interpreters translate Python source code into"
                 + " machine instructions that work at a much lower level."
                 + " The need for interpretation is what classifies Python as a"
                 + " high-level language.</p>"
-                + "<p> " + pythonWebsiteLink + " contains distributions of"
+                + "<p>The " + pythonWebsiteLink + " contains distributions of"
                 + " and pointers to many Free and Open Source third party"
                 + " Python source code libraries, tools, and additional"
                 + " documentation.</p>"
                 + "<p>A particularly useful page for beginners is the "
                 + python3ReferenceLink + ".</p>");
+        
+        s = addSection("2.", "Python 3", 2);
+        
+        w.add(s.sectionHTML);
         w.add("""
-              <h2 id="2">2. Python 3</h2>
               <p>Python 3 was first released in 2008. For several years both 
               Python 2 and Python 3 were developed and supported, but eventually 
               in January 2020 development and maintenance of Python 2 ceased. 
@@ -116,7 +124,7 @@ public class Python extends Page {
               """);
         w.add("<p>There is a vast ecosystem of third party python libraries."
                 + " Much of this is made available as packages via the "
-                + c.references.getReference("PyPI",
+                + c.references.getReference("PyPI", 
                         "Python Package Index (PyPI)")
                 + "</p>");
         w.add("""
@@ -130,19 +138,18 @@ public class Python extends Page {
                 + " is a good place to start learning Python. In your private"
                 + " study time, you might like to make your way through that"
                 + " learning material too.</p>");
-        w.add("""
-              <p>Now for some practical exercises to get you running Python code
-              in different ways...</p>
-              
-              <h2 id="3">3. Running Python</h2>
-              """);
+        w.add("<p>Running Python code in different ways...</p>");
+        
+        s = addSection("3.", "Running Python", 2);
+        
+        w.add(s.sectionHTML);
         w.add("<p>Python instructions also known as commands or statements, can"
                 + " be entered one at a time at a "
-                + c.references.getReference("Command Line Interface",
-                "command-line interface")
+                + c.index.getReference("Command Line Interface",
+                "command-line interface", s.sid)
                 + " or passed in a file.</p>");
         w.add("<p>Check if there is a version of Python on your "
-                + c.references.getReference("PATH")
+                + c.index.getReference("PATH", s.sid)
                 + " by running a Terminal or Command Window and entering the"
                 + " following at the prompt:</p>");
         w.add("<pre>python --version</pre>");
@@ -166,9 +173,10 @@ public class Python extends Page {
                 + " already installed on your system. By default, Anaconda"
                 + " installs into your user home directory.</p>");
                             
+        s = addSection("3.1.", "Python REPL", 3);
+        
+        w.add(s.sectionHTML);
         w.add("""
-              <h3 id="3.1">3.1. Python REPL</h3>
-              
               <h4>3.1.1. Hello World</h4>
               <p>Open an Anaconda Prompt. On Windows the prompt should look 
               something like:</p>
@@ -184,7 +192,8 @@ public class Python extends Page {
               <pre>>>></pre>
               """);
         w.add("<p>This is the "
-                + c.references.getReference("Read Evaluate Print Loop", "REPL")
+                + c.index.getReference("Read Evaluate Print Loop", "REPL", 
+                        s.sid)
                 + " environment for Python. Enter:</p>");
         w.add("""
               <pre>print("Hello World")</pre>
@@ -382,8 +391,13 @@ public class Python extends Page {
               examples of these shortly...</p>
               <p>Python does not have a special symbol to end a statement like 
               many other languages do.</p>
-              
-              <h3 id="4.3">4.3. Comments</h3>
+              """);
+         
+        s = addSection("4.3.", "Comments", 3);
+        
+        w.add(s.sectionHTML);
+       
+        w.add("""
               <p>The # symbol is the start of a comment.</p>
               <pre>
               # This entire line is a comment
@@ -392,12 +406,15 @@ public class Python extends Page {
               # Comments should be informative.
               # x = 1 # Commented code is not run.
               </pre>
-              <p>Between triple quotes everything is a comment. There are two
-              types of triple quote, those using single quotation marks, and 
-              those using double quotation marks. Triple double quotes (\"\"\")
-              are typically used for documentation. Triple single quotes (''') 
-              are often used to comment out sections of code when""");
-        w.add(c.references.getReference("Debugging", "debugging") + ".</p>");
+              """);
+        w.add("<p>Between triple quotes everything is a comment. There are two"
+                + " types of triple quote, those using single quotation marks,"
+                + " and those using double quotation marks. Triple double"
+                + " quotes (\"\"\" are typically used for documentation. Triple"
+                + " single quotes (''') are often used to comment out sections"
+                + " of code when "
+                + c.index.getReference("Debugging", "debugging", s.sid)
+                + ".</p>");
         w.add("""
               <pre>
               \"\"\"
@@ -556,23 +573,25 @@ public class Python extends Page {
               the file in the python command. That path can be absolute (from 
               the base of the file system) or relative (from the current 
               directory.</p>
-              
-              <h2 id="6">6. Jupyter Notebook</h2>
-              <p>Jupyter Notebook, is a REPL based system that embeds code into 
-              a document containing other information: text, images, data, and 
-              links. Code is entered in cells which when run present outputs 
-              within the document which is displayed in a Web browser (unless 
-              ouputs are configured to appear in separate windows). Jupyter 
-              Notebook is useful as code can be described in detail and 
-              distributed with associated data and visualizations.</p>
-              <p>Jupyter Notebook was renamed from IPython Notebook as 
-              <a href="https://en.wikipedia.org/wiki/R_(programming_language)">
-              R</a> programming langauge support was added. It comes bundled 
-              with Anaconda and can be downloaded separately from 
-              <a href="https://jupyter.org/">Jupyter</a>.</p>
-              <p>Key reference for Jupyter Notebook:
-              <a href="https://jupyter-notebook.readthedocs.io/">
-              https://jupyter-notebook.readthedocs.io/</a></p>
+              """);
+        
+        s = addSection("6.", "Jupyter Notebook", 2);
+        
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.references.getReference("Jupyter Notebook")
+                + ", is a REPL based system that embeds code into a document"
+                + " containing other information: text, images, data, and"
+                + " links. Code is entered in cells which when run present"
+                + " outputs within the document which is displayed in a Web"
+                + " browser (unless ouputs are configured to appear in separate"
+                + "windows). Jupyter Notebook is useful as code can be"
+                + " described in detail and distributed with associated data"
+                + " and visualizations.</p>");
+        w.add("<p>Jupyter Notebook comes bundled with Anaconda and can be "
+                + "downloaded separately from:"
+                + "<a href=\"https://jupyter.org/\">Jupyter</a>.</p>");
+        w.add("""
               <p>At the Anaconda Prompt change to a directory where you can 
               write new files and enter:</p>
               <pre>jupyter notbook</pre>
@@ -608,14 +627,25 @@ public class Python extends Page {
               about Python environment management. First though, let's explore
               running Python in other ways... Before launching into that, 
               consider if you should take a short break...</p>
-              
-              <h2 id="7">7. Integrated Development Environments</h2>
-              <p><a href="https://en.wikipedia.org/wiki/Integrated_development_environment">
-              Integrated Development Environment</a>s (IDEs) are software tools 
-              used to make writing code and developing software easier. This 
-              section introduces IDLE and Spyder - IDEs that come with Anaconda.
-              </p>
-              
+              """);
+        
+        s = addSection("7.", "Integrated Development Environments", 2);
+        
+        w.add(s.sectionHTML);
+        
+        w.add("<p>" 
+                + c.index.getReference(
+                        "Integrated Development Environment",
+                        "Integrated Development Environments", s.sid)
+                + "(IDEs) are software tools used to make writing code and "
+                + "developing software easier. This section introduces "
+                + c.references.getReference("IDLE")
+                + " and " 
+                + c.references.getReference("Spyder")
+                + "- IDEs that come with "
+                + c.references.getReference("Anaconda")
+                + ".</p>");
+        w.add("""
               <h3 id="7.1">7.1. IDLE</h3>
               <p>Python comes with IDLE - an Integrated Development and Learning 
               Environment. IDLE has an editor window, and a console window for 
@@ -790,7 +820,7 @@ public class Python extends Page {
                 + c.references.getReference("PyPI")
                 + " is a widely used repository. Developers deploy packages"
                 + " there for users. Many are provided as "
-                + c.references.getReference("Free and Open Source Software")
+                + c.index.getReference("Free and Open Source Software")
                 + ", although private proprietary packages are also supported."
                 + "</p>");
         w.add("""

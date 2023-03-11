@@ -17,9 +17,10 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.WebPage;
 import io.github.agdturner.core.PageID;
+import io.github.agdturner.core.Section;
 import io.github.agdturner.core.SectionID;
 import io.github.agdturner.core.TermID;
-import io.github.agdturner.course.Reference;
+import io.github.agdturner.course.IndexTerm;
 import io.github.agdturner.course.python.intro.pages.Home;
 import java.nio.file.Paths;
 import java.util.TreeSet;
@@ -35,7 +36,7 @@ public abstract class Page extends WebPage {
     /**
      * The Course.
      */
-    protected final Course c;
+    public final Course c;
 
     /**
      * Create a new instance.
@@ -83,6 +84,11 @@ public abstract class Page extends WebPage {
                 }
             } else if (this instanceof References) {
                 sb.append(getLinkPrev(c.index, linkClass));
+                if (addPrevious) {
+                    sb.append(getLinkPrev(c.coursePages.get(n - 1), linkClass));
+                    sb.append("</p>\n<p>");
+                    sb.append(getLinkNext(c.references, linkClass));
+                }
             } else {
                 if (addPrevious) {
                     if (this.id.id > 0) {
@@ -100,6 +106,9 @@ public abstract class Page extends WebPage {
                 } else {
                     sb.append(getLinkNext(c.index, linkClass));
                 }
+//                } else {
+//                    sb.append(getLinkNext(c.references, linkClass));
+//                }
             }
         }
         sb.append("</p>\n</div>");
@@ -107,7 +116,8 @@ public abstract class Page extends WebPage {
     }
 
     /**
-     * Gets a link to the next page in the series.  
+     * Gets a link to the next page in the series.
+     *
      * @param p The page.
      * @param linkClass The class for the link element.
      * @return a link to the next page in the series.
@@ -117,7 +127,8 @@ public abstract class Page extends WebPage {
     }
 
     /**
-     * Gets a link to the previous page in the series.  
+     * Gets a link to the previous page in the series.
+     *
      * @param p The page.
      * @param linkClass The class for the link element.
      * @return a link to the next page in the series.
@@ -127,10 +138,11 @@ public abstract class Page extends WebPage {
     }
 
     /**
-     * Gets a link to a page in the series.  
+     * Gets a link to a page in the series.
+     *
      * @param p The page.
      * @param id The id for the link element.
-     * @param linkClass  The class for the link element.
+     * @param linkClass The class for the link element.
      * @param prepend
      * @return a link to a page in the series.
      */
@@ -138,7 +150,7 @@ public abstract class Page extends WebPage {
         return Web_ContentWriter.getLink(c.getLinkPathString(p), id,
                 linkClass, prepend + p.label);
     }
-
+    
     /**
      * If this term is already in the index, then the section ID is added to the
      * set of SectionIDs stored against the TermID for this term. Otherwise a
@@ -146,21 +158,27 @@ public abstract class Page extends WebPage {
      * initialised with the sectionID added to it and this is added to the
      * index.
      *
-     * @param term The term to add.
-     * @param sectionID The section to link to.
+     * @param name The reference name.
+     * @param sectionID The SectionID to add.
      */
-    public void addToIndex(String term, SectionID sectionID) {
-        if (c.index.termToTermID.containsKey(term)) {
-            TermID key = c.index.termToTermID.get(term);
-            c.index.index.get(key).add(sectionID);
-        } else {
-            TreeSet<SectionID> sections = new TreeSet<>();
-            sections.add(sectionID);
-            TermID key = new TermID(c.index.index.size());
-            c.index.index.put(key, sections);
-            c.index.termIDToTerm.put(key, term);
-            c.index.termToTermID.put(term, key);
-        }
+    public void addToIndex(String name, SectionID sectionID) {
+        c.index.termToIndexTerm.get(name).sids.add(sectionID);
     }
 
+    /**
+     * Adds section to references and returns a section heading HTML fragment.
+     * @param inPageID HTML id.
+     * @param sectionName Section name.
+     * @param level For heading.
+     * @return Section heading HTML fragment
+     */
+    public Section addSection(String inPageID, String sectionName, int level) {
+        SectionID sid = new SectionID(c.sectionIDs.size(), this, inPageID);
+        c.sectionIDs.add(sid);
+        c.addSection(sid, id, title + " " + inPageID + " " + sectionName);
+        return new Section(sid, "<h" + level + " id=\"" + inPageID + "\">" 
+                + inPageID + ". " + sectionName + "</h" + level + ">");
+    }
+    
+    
 }

@@ -16,6 +16,7 @@
 package io.github.agdturner;
 
 import io.github.agdturner.core.PageID;
+import java.io.Serializable;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,9 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  *
  * @author Andy Turner
  */
-public abstract class WebPage {
+public abstract class WebPage implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * The Web_ContentWriter.
@@ -119,4 +122,6 @@ public abstract class WebPage {
               <link id="css2" rel="stylesheet" type="text/css" href="">""");
         return r;
     }
+    
+   
 }

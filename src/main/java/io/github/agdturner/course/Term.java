@@ -18,16 +18,11 @@ package io.github.agdturner.course;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * A POJO for a Reference (for a Web resource).
+ * A POJO for a term.
  *
  * @author Andy Turner
  */
-public class Reference {
-
-    /**
-     * The url of the resource.
-     */
-    public String url;
+public class Term {
 
     /**
      * The description of the resource.
@@ -35,19 +30,32 @@ public class Reference {
     public String description;
 
     /**
-     * Create a new instance
-     *
-     * @param url What {@link #url is set to}.
-     * @param description What {@link #description is set to}.
+     * The url lookup for the term.
      */
-    public Reference(String url, String description) {
-        this.url = url;
-        this.description = description;
+    public String url;
+
+
+    /**
+     * Create a new instance.
+     */
+    public Term() {
     }
     
     /**
+     * Create a new instance.
+     *
+     * @param description What {@link #description} is set to.
+     * @param url What {@link #url} is set to.
+     */
+    public Term(String description, String url) {
+        this.description = description;
+        this.url = url;
+    }
+    
+    /**
+     * Uses {@link #url} and linkText for a link.
      * @param linkText
-     * @return A link.
+     * @return A HTML link.
      */
     public String getLink(String linkText) {
         return Web_ContentWriter.getLink(url, linkText);

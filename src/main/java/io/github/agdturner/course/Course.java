@@ -230,4 +230,6 @@ public class Course {
     public String getLinkPathString(Page p) {
         return "../" + p.filename + "/index.html";
     }
+    
+    
 }
