@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,33 +39,34 @@ public class Variables extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        //w.add("<div>");
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>Python "
+                + c.index.getReference("Variable", "variables", s.sid)
+                + " are a combination of an identifier (a name) and a value - "
+                + "either a primitive or a more complex object.</p>");
+        w.add("<p>When passed as parameters into functions, variables are"
+                + " handled differently depending on whether they are"
+                + " primitives or more complex objects. The main difference is"
+                + " to do with whether the variable is duplicated when it is"
+                + " passed into the function as a parameter (known as '"
+                + c.index.getReference("Call By Value", s.sid)
+                + "') or whether a shared object is passed in (known as '"
+                + c.index.getReference("Call By Sharing", s.sid)
+                + "').</p>");
+        s = addSection("2", "Variables Types", 2);
+        w.add(s.sectionHTML);
+        w.add("In Python, variable names can be reused to refer to different"
+                + " types of value. The function 'type()' in the"
+                + c.index.getReference("Python Builtins", "builtins module",
+                        s.sid)
+                + " can be used to get the type of a variable. For example, the"
+                + " following code initialises a variable named 'x' to have the"
+                + " Integer value '1', then assigns the name x to a String"
+                + " value \"1\". After each assignment the type of the variable"
+                + " is printed.</p>");
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>Python variables are a combination of an identifying label (a 
-              name) and a value - either a primitive or a more complex object
-              (the object may be comprised of multiple primitive variables and 
-              other objects).</p>
-              <p>Variables work a bit differently depending on whether they are 
-              primitives or objects. The main difference is to do with whether 
-              the variable is duplicated when it is passed into a function as a 
-              parameter (known as 'pass by value') or whether a reference or 
-              pointer is passed in which refers to the value of the variable 
-              (known as 'pass by reference').</p>
-              
-              <h2 id="2">2. Variables/types</h2>
-              In Python, variable labels/names can be reused to refer to 
-              different types of value. This is known as dynamic typing. It 
-              allows for a variable to be initialised with one type of value and 
-              then later to be assigned a different type of value. The function 
-              'type()' in the 
-              (<a href="https://docs.python.org/3/library/builtins.html">
-              builtins</a> module)
-              can be used to test and reporting the type of a variable. For 
-              example, the following code initialises a variable called x to 
-              have the Integer value 1, then sets it again to have the String 
-              value "1", after each assignment the type of the variable is 
-              printed.</p>
               <pre><code class="language-python"># Set x = 1 and print the type of x")
               x = 1
               print(type(x))
@@ -74,31 +76,43 @@ public class Variables extends Page {
               <pre>&lt;class 'int'&gt;
               &lt;class 'str'&gt;</pre>
               <p>Again, try this yourself.</p>
-              <p>In declarative programming languages, the type of a variable 
-              is declared. If the language is statically typed, then the 
-              variable is not permitted to change type. In python, the type of 
-              a variable is not declared, and variable labels can be reassigned 
-              to refer to different types of thing. The main benefits of this 
-              are that code can be more succinct and application programming 
-              interfaces can be more stable. However, with dynamic typing it is 
-              easier to accidentally re-use a variable name, it can make 
-              debugging code harder, and it can make developing tools to help 
-              write code harder. Testing the type of a variable can help 
-              mitigate some of the issues, but doing this a lot makes code 
-              overly verbose and inefficient.</p>
-                            
-              <h3 id="2.1">2.1. Primitives</h3>
-              <p>The four primitive variable types in python are: Integers, 
-              Floats, Strings, and Booleans. Integers are whole numbers. Floats 
-              are a special subset of fractions. Strings are essentially blocks 
-              of text. Booleans are True or False and also equate to 0 or 1.</p>
-              <p>Integers are virtually unbounded in python although there is 
-              limit to the size of an Integer that a system can handle related 
-              to the amount of memory available.</p>
-              <p>Floats have a Maximum Value and a Minimum Normal Value 
-              (smallest number &gt; 0). These can be ascertained from the 
-              <a href="https://docs.python.org/3/library/sys.html">sys module</a>
-              and can also be set to postive or negative infinity:</a>
+              """);
+        w.add("<p>In declarative programming languages, the type of a variable"
+                + " is declared and this typically prevents the name being"
+                + " assigned to a value not of that type. In Python, the"
+                + " type of a variable is not declared. The main benefit of"
+                + " this is that "
+                + c.index.getReference("API", "APIs")
+                + " can be more stable. However, without type safety, it is"
+                + " easier to make mistakes and accidentally re-use a variable"
+                + " name. It can also make"
+                + c.index.getReference("Debugging", "debugging", s.sid)
+                + " code harder, and it can make developing tools to help write"
+                + " code harder. Being able to test the type of a variable"
+                + " helps mitigate these things, but adding code to test the"
+                + " type of variables a lot is cumbersome and it makes code a"
+                + " lot less succinct and can make it significantly less"
+                + " efficient.</p>");
+        s = addSection("2.1", "Primitives", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>The four primitive variable types in Python are: Integers,"
+                + " Floats, Strings, and Booleans. Integers are whole numbers."
+                + " Floats are "
+                + c.index.getReference("Double-precision Floating-point", s.sid)
+                + " numbers - a special subset of fractions. Strings are"
+                + " essentially blocks of text (or sequences of single"
+                + " character length Strings). Booleans are True or False and"
+                + " also equate to 0 or 1.</p>");
+        w.add("""
+              <p>Integers are virtually unbounded in Python. The limit for the 
+              largest number is based on the available memory.</p>
+              """);
+        w.add("<p>Floats have a 'Maximum Value' and a 'Minimum Normal Value'"
+                + " (smallest number &gt; 0). These can be ascertained from the"
+                + c.index.getReference("Python Sys Module", s.sid)
+                + " (sys). There are Float values for positive and negative"
+                + " infinity:</p>");
+        w.add("""
               <pre><code class="language-python">import sys
               
               # Exploring Float max and min values.
@@ -141,90 +155,87 @@ public class Variables extends Page {
               max + d/2 1.7976931348623157e+308
               max + d inf
               min2 2.2250754194454158e-293</pre>
-              <p>Float is very useful, but programmers must bear in mind 
-              the approximate nature of calculations with these numbers.</p>
-              <p>The standard library has two very useful number types that 
-              provide more calculation precision and can represent many more
-              rational numbers:</p>
-              <ul>
-              <li><a href="https://docs.python.org/3/library/decimal.html">decimal</a></li>
-              <li><a href="https://docs.python.org/3/library/fractions.html">fractions</a></li>
-              </ul>
+              """);
+        w.add("<p>Float is very useful, but it is important to bear in mind"
+                + " the approximate nature of "
+                + c.index.getReference("Floating-point", 
+                        "Floating Point Arithmetic", s.sid)
+                + " which can result in significant calculation error.</p>");
+        w.add("<p>The "
+                + c.references.getReference("Python Standard Library")
+                + " has two modules that provide for more accurate arithmetic:"
+                + c.index.getReference("Python Decimal Module", s.sid)
+                + "; "
+                + c.index.getReference("Python Fractions Module", s.sid)
+                + ".</p>");
+        w.add("""
               <p>Strings can be assigned using; double or single quotes, and the 
-              str() constructor function (which can for example create a String 
-              from an Integer. Strings can be compared and checked for equality.
-              Consider the following code:</p>
+              constructor function str() (which can for example create a String 
+              from an Integer). Strings can be compared and checked for
+              equality using the operator '=='. Consider and run the following 
+              code:</p>
               <pre><code class="language-python">s = "A"
               s2 = "a"
               s3 = "B"
-              print(s == s)  # True
-              print(s == s2) # False (case sensitive)
-              print(s == s3) # False
-              print(s > s2)  # False
-              print(s < s2)  # True
-              print(str(3))  # 3
+              print(s == s)  # Prints True
+              print(s == s2) # Prints False (case sensitive)
+              print(s == s3) # Prints False
+              print(s > s2)  # Prints False
+              print(s < s2)  # Prints True
+              print(str(3))  # Prints 3
               </code></pre>
-              <p>Some code to explore Boolean:</p>
+              <p>Consider and run the following code to explore Boolean:</p>
               <pre><code class="language-python">t = True
               f = False                            
-              print("t == t", t == t)             # True
-              print("f == f", f == f)             # True
-              print("t == 1", t == 1)             # True
-              print("f == 0", f == 0)             # True
-              print("t != f", t != f)             # True
-              print("not t", not t)               # False
-              print("not f", not f)               # True
-              print("t and f", t and f)           # False
-              print("t and not f", t and not f)   # True
-              print("t or f", t or f)             # True
-              print("not (t or f)", not (t or f)) # False</code></pre>
-              
+              print("t == t", t == t)             # Prints True
+              print("f == f", f == f)             # Prints True
+              print("t == 1", t == 1)             # Prints True
+              print("f == 0", f == 0)             # Prints True
+              print("t != f", t != f)             # Prints True
+              print("not t", not t)               # Prints False
+              print("not f", not f)               # Prints True
+              print("t and f", t and f)           # Prints False
+              print("t and not f", t and not f)   # Prints True
+              print("t or f", t or f)             # Prints True
+              print("not (t or f)", not (t or f)) # Prints False</code></pre>
+              """);
+        w.add("""
               <h3>2.2. Objects</h3>
-              <p>The following code sets the variable x to be 1 and y to equal 
-              x, it then adds 1 to the value of x and prints out y.</p>
-              <pre><code class="language-python">
-              x = 0    # Set x equal to 0
-              y = x    # Set y equal to x
-              x = 1    # Set x to a different value
-              print(y) # 0 (y no longer equals x)
-              </code></pre>
-              <p>So, y only has the same value as x until x is assigned another 
-              value.</p>
-              <p>The following code: creates a list variable called a, sets 
-              b to equal a, appends the Integer 1 to the list a, and then prints 
-              out b.</p>
+              <p>Any variable that is not of a primitive type is a more complex
+              object. A list is not a primitive type. The following code
+              creates a list variable, assigns a new identifier to that list, 
+              appends a primitive value to the list, then prints out the list 
+              using one of the identifiers.</p>
               <pre><code class="language-python">
               a = [] # Assign a to equal a new empty List.
               b = a  # Set b to equal a
               a.append(1) # Append the Integer 1 to the List a
-              print(b) # [1]
+              print(b) # Prints [1]
               </code></pre>
-              <p>The output from running this code is:</p>
-              <pre>[1]</pre>
-              <p>So, a and b are still referring to the same thing, the same 
-              list. That is because appending to the list does not change the 
-              references to the list, it changes what is in the list.</p>
-              <p>Try running this code and then modify it to append another 
-              thing to the list and print out a and b to check they are still 
-              the same.</p>
-              <p>Now, if a is reassigned, then b will still refer to the list 
-              containing the Integer 1 (and whatever else was appended to it).
-              Have a play around to help this make sense.</p>
-              
-              <h2 id="3">3. Functions, Variable Scope and the Global Keyword</h2>
-              <p>The scope of a variable is from where in the code it can be 
-              accessed. The keyword 'global' can modify the scope.</p>
-              <p>Consider the following code:</p>
+              """);
+        s = addSection("3", "Variable Scope and the Global Keyword", 2);
+        w.add(s.sectionHTML);        
+        w.add("<p>The "
+                + c.index.getReference("Scope", "scope", s.sid)
+                + " of a variable is from where in the code it can be accessed."
+                + " The "
+                + c.index.getReference("Python Keywords", "keyword", s.sid)
+                + " 'global' can modify the scope.</p>");
+        w.add("""
+              <p>Consider the following:</p>
               <pre><code class="language-python">x = 1
               if x == 1:
                   y = 2
-              print(y)</code></pre>
-              <p>That outputs:</p>
-              <pre>2</pre>
-              <p>The code in the If Statement is executed as the condition 
-              x == 1 evaluates as True. If the conidtion were to evaluate as 
-              False, then the interpreter would skip to the end of the If 
-              Statement, as in the following code:</p>
+              print(y) # Prints 2</code></pre>
+              """);
+        w.add("<p>The code in the "
+                + c.index.getReference("Python If Statement", "If Statement",
+                        s.sid)
+                + " is executed as the condition 'x == 1' evaluates as 'True'."
+                + " If the condition were to evaluate as 'False', then the"
+                + " interpreter would skip to the end of the statement, as in"
+                + " the following code:</p>");
+        w.add("""
               <pre><code class="language-python">x = 1
               if x == 0:
                   y = 2
@@ -271,22 +282,28 @@ public class Variables extends Page {
               c 2</pre>
               <p>Try the code yourself and play around to test your 
               understanding.</p>
-              <p>More details about functions will be provided shortly as they 
-              are a key aspect of programming...</p>
-              
-              <h2 id="4">4. Deleting variables</h2>
-              <p>Variables can be deleted using the keyword 'del' 
-              followed by the name of the variable or a Tuple of variables to 
-              delete.</p>
+              """);
+        w.add("<p>More details about Python "
+               + c.index.getReference("Function", "functions", s.sid)
+               + " is provided <a href=\"../functions#9\">Functions</a>"
+               + "...</p>");
+        s = addSection("4", "Deleting variables", 2);
+        w.add(s.sectionHTML);        
+        
+        w.add("<p>Variables can be deleted using the keyword 'del' followed by"
+                + " the name of the variable or a "
+                + c.index.getReference("Python Tuple", "Tuple")
+                + " of variables to delete.</p>");
+        w.add("""
               <p>Deleting variables can free up resources that can be used by 
               other things. The following code snippets shows how to initialise 
               a variable called and then delete it:<p>
               <pre><code class="language-python">a = 1
               del a # <-- deletes a
-              #print(a) # <-- Would result in: NameError: name 'a' is not defined
+              #print(a) # <-- Would result in: NameError: name 'a' is not defined.
               b = 2
               c = 3
-              del(b, c) # <-- deletes b and c</code></pre>
+              del(b, c) # <-- Deletes b and c.</code></pre>
               """);
         w.add("</div>");
 

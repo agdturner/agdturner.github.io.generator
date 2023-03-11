@@ -58,6 +58,12 @@ public class Index extends Page {
                 + "collective entities such as organizations or groups)";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "API";
+        url = getWikipediaURL("Application_Programming_Interface");
+        description = "an interface allowing some software to interoperate "
+                + "with other software";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "ASCII";
         url = getWikipediaURL("ASCII");
         description = "a character encoding standard for electronic "
@@ -85,6 +91,20 @@ public class Index extends Page {
                 + " consists of eight bits";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+name = "Call By Sharing";
+        url = getWikipediaURL("Evaluation_strategy#Call_by_sharing");
+        description = " an evaluation strategy where a parameter is shared "
+                + "such that changes that are not reassignments are changes to "
+                + "a shared object. If there is a reassignment in the function "
+                + "then the object is no longer shared and what is in the "
+                + "function is distinct from the object in the calling scope";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Call By Value";
+        url = getWikipediaURL("Evaluation_strategy#Call_by_value");
+        description = "the value in the callers scope remains unchanged";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Class";
         url = getWikipediaURL("Class_(computer_programming)");
         description = "an extensible program-code-template for creating "
@@ -128,6 +148,14 @@ public class Index extends Page {
                 + "programs, software, or systems";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Deprecation";
+        url = getWikipediaURL("Deprecation");
+        description = "the discouragement of use of some terminology, feature, "
+                + "design, or practice, typically because it has been "
+                + "superseded or is no longer considered efficient or safe, "
+                + "without completely removing it or prohibiting its use";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Double-precision Floating-point";
         url = getWikipediaURL("Double-precision_floating-point_format");
         description = "a computer number format, usually occupying 64 bits in "
@@ -172,7 +200,7 @@ public class Index extends Page {
                 + "by applying and composing functions";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
-        name = "Functions";
+        name = "Function";
         url = getWikipediaURL("Function_(computer_programming)");
         description = "a sequence of program instructions that performs a "
                 + "specific task";
@@ -226,6 +254,12 @@ public class Index extends Page {
                 + "system families developed and marketed by Microsoft";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Name Binding";
+        url = getWikipediaURL("Name_binding");
+        description = "the association of entities (data and/or code) with "
+                + "identifiers";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Object Oriented Programming";
         url = getWikipediaURL("Object-oriented_programming");
         description = "a programming paradigm based on the concept of "
@@ -241,7 +275,7 @@ public class Index extends Page {
                 + "resources, and provides common services for computer "
                 + "programs";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
         name = "PATH";
         url = getWikipediaURL("PATH_(variable)");
         description = "an environment variable on Unix-like operating systems, "
@@ -259,6 +293,29 @@ public class Index extends Page {
         description = "a high-level, general-purpose programming language";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python Builtins";
+        url = "https://docs.python.org/3/library/builtins.html";
+        description = "a Python module that provides direct access to all "
+                + "'built-in' identifiers (see Python Built-in Functions and "
+                + "Python Built-in Constants for documentation";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python Built-in Constants";
+        url = "https://docs.python.org/3/library/constants.html#built-in-consts";
+        description = "constants that are always available";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python Built-in Functions";
+        url = "https://docs.python.org/3/library/functions.html#built-in-funcs";
+        description = "functions and types that are always available";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
+        name = "Python Decimal Module";
+        url = "https://docs.python.org/3/library/decimal.html";
+        description = "provides support for fast correctly rounded decimal "
+                + "floating point arithmetic";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python Docstring";
         url = "https://peps.python.org/pep-0257/#what-is-a-docstring";
         description = "a string literal that occurs as the first statement in "
@@ -267,13 +324,42 @@ public class Index extends Page {
                 + "object";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python Venv";
+        name = "Python Fractions Module";
+        url = "https://docs.python.org/3/library/fractions.html";
+        description = "provides support for rational number arithmetic";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python If Statement";
+        url = "https://docs.python.org/3/reference/compound_stmts.html#if";
+        description = "used for conditional execution";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python Keywords";
+        url = "https://docs.python.org/3/reference/lexical_analysis.html#keywords";
+        description = "reserved words that cannot be used as ordinary "
+                + "identifiers (names of variables, functions, classes,"
+                + " modules and packages)";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
+        name = "Python Tuple";
+        url = "https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences";
+        description = "a number of values separated by commas";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python Venv Module";
         url = "https://docs.python.org/3/library/venv.html";
-        description = "a Python module that supports creating lightweight "
+        description = "supports creating lightweight "
                 + "\"virtual environments\", each with their own independent "
                 + "set of Python packages installed in their site directories";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python Sys Module";
+        url = "https://docs.python.org/3/library/sys.html";
+        description = "provides access to some variables used or maintained by "
+                + "the interpreter and to functions that interact strongly "
+                + "with the interpreter";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                      
         name = "Read Evaluate Print Loop";
         url = getWikipediaURL("Read%E2%80%93eval%E2%80%93print_loop");
         description = "also termed an interactive toplevel or language shell, "
@@ -282,6 +368,11 @@ public class Index extends Page {
                 + "the result to the user";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Scope";
+        url = getWikipediaURL("Scope_(computer_science)");
+        description = "the part of a program where a name binding is valid";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Single-precision Floating-point";
         url = getWikipediaURL("Single-precision_floating-point_format");
         description = " a computer number format, usually occupying 32 bits in "
@@ -291,6 +382,13 @@ public class Index extends Page {
         name = "Software";
         url = getWikipediaURL("Software");
         description = "computer programs and associated documentation and data";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Syntax Error";
+        url = getWikipediaURL("Syntax_error");
+        description = "an error in the syntax of a sequence of characters or"
+                + " tokens that is intended to be written in a particular"
+                + " programming language";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Unicode";

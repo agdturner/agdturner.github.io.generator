@@ -42,7 +42,7 @@ public class Python extends Page {
         writeHeader();
         writeH1();
         Section s;
-        s = addSection("1.", "Introduction", 2);
+        s = addSection("1", "Introduction", 2);
         w.add(s.sectionHTML);
         String pythonWebsiteLink = c.references.getReference(
                 "Python Website");
@@ -69,14 +69,13 @@ public class Python extends Page {
                 + " The need for interpretation is what classifies Python as a"
                 + " high-level language.</p>"
                 + "<p>The " + pythonWebsiteLink + " contains distributions of"
-                + " and pointers to many Free and Open Source third party"
-                + " Python source code libraries, tools, and additional"
-                + " documentation.</p>"
+                + " and pointers to many third party Python libraries, tools,"
+                + " and additional documentation.</p>"
                 + "<p>A particularly useful page for beginners is the "
                 + python3ReferenceLink + ".</p>");
-        
-        s = addSection("2.", "Python 3", 2);
-        
+
+        s = addSection("2", "Python 3", 2);
+
         w.add(s.sectionHTML);
         w.add("""
               <p>Python 3 was first released in 2008. For several years both 
@@ -102,18 +101,22 @@ public class Python extends Page {
                 + " Python Enhancement Proposals (PEPs). PEPs allow the"
                 + " community of Python users to look ahead and see what might"
                 + " change and get involved in language development. PEPs have"
-                + " their own website:"
+                + " their own website: "
                 + c.references.getReference(
-                        "Python Enhancement Proposal Website"));
+                        "Python Enhancement Proposal Website")
+                + "</p>");
+        w.add("<p>As with all programming languages, Python evolves through"
+                + " versions. As well as adding new things (such as new kinds"
+                + " of expression and new functions), things may also change"
+                + " from one version to the next. Though there are few "
+                + c.index.getReference("API",
+                        "Application Programming Interface", s.sid)
+                + " (API) changes - changes to the syntax, names, and details"
+                + " of function inputs and outputs that are not "
+                + c.index.getReference("Backward Compatibility",
+                        "backward compatible", s.sid)
+                + ".</p>");
         w.add("""
-              </p>
-              <p>As with all programming languages, python evolves through 
-              versions. As well as adding new things, some things may change 
-              from one version to the next - which can necessitate changes in 
-              third party code. There are few changes to the Application 
-              Programming Interface (API) - the syntax, names, and details of 
-              function inputs and outputs that are not backwards compatible, 
-              but there are occasionally some.</p>
               <p>New language features will not work with older interpreters,
               and code tested with older interpreters might not necessarily 
               work the same as before with newer interpreters - due to API 
@@ -124,13 +127,14 @@ public class Python extends Page {
               """);
         w.add("<p>There is a vast ecosystem of third party python libraries."
                 + " Much of this is made available as packages via the "
-                + c.references.getReference("PyPI", 
+                + c.references.getReference("PyPI",
                         "Python Package Index (PyPI)")
                 + "</p>");
         w.add("""
-              <p>In Section 9, there is an exercise that involves installing 
-              Python packages from PyPI and that links to details about how to 
-              package code and make it available via PyPI.</p>
+              <p>In <a href="#9">Section 9</a>, there is an exercise that 
+              involves installing Python packages from PyPI and that links to 
+              details about how to package code and make it available via 
+              PyPI.</p>
               """);
 
         w.add("<p>The"
@@ -139,14 +143,14 @@ public class Python extends Page {
                 + " study time, you might like to make your way through that"
                 + " learning material too.</p>");
         w.add("<p>Running Python code in different ways...</p>");
-        
-        s = addSection("3.", "Running Python", 2);
-        
+
+        s = addSection("3", "Running Python", 2);
+
         w.add(s.sectionHTML);
         w.add("<p>Python instructions also known as commands or statements, can"
                 + " be entered one at a time at a "
                 + c.index.getReference("Command Line Interface",
-                "command-line interface", s.sid)
+                        "command-line interface", s.sid)
                 + " or passed in a file.</p>");
         w.add("<p>Check if there is a version of Python on your "
                 + c.index.getReference("PATH", s.sid)
@@ -172,9 +176,9 @@ public class Python extends Page {
                 + " should avoid interfering with any other version of Python"
                 + " already installed on your system. By default, Anaconda"
                 + " installs into your user home directory.</p>");
-                            
-        s = addSection("3.1.", "Python REPL", 3);
-        
+
+        s = addSection("3.1", "Python REPL", 3);
+
         w.add(s.sectionHTML);
         w.add("""
               <h4>3.1.1. Hello World</h4>
@@ -192,7 +196,7 @@ public class Python extends Page {
               <pre>>>></pre>
               """);
         w.add("<p>This is the "
-                + c.index.getReference("Read Evaluate Print Loop", "REPL", 
+                + c.index.getReference("Read Evaluate Print Loop", "REPL",
                         s.sid)
                 + " environment for Python. Enter:</p>");
         w.add("""
@@ -392,11 +396,11 @@ public class Python extends Page {
               <p>Python does not have a special symbol to end a statement like 
               many other languages do.</p>
               """);
-         
-        s = addSection("4.3.", "Comments", 3);
-        
+
+        s = addSection("4.3", "Comments", 3);
+
         w.add(s.sectionHTML);
-       
+
         w.add("""
               <p>The # symbol is the start of a comment.</p>
               <pre>
@@ -484,14 +488,21 @@ public class Python extends Page {
               <p>Literals are specific numerical or text values.</p>
               <p>Operators are sequences of symbols that are shorthand for 
               some operator module functions (e.g. +, -, *, /, %)</p>
-              
-              <h3 id="4.6">4.6. Identifiers and Keywords</h3>
-              <p>Identifiers are names of variables, functions, classes, 
-              modules and packages.</p>
-              <p>Keywords are reserved words - terms that can't be used for
-              identifiers (e.g. else, for, if, import).</p>
-              <p>Attempting to use them as variable names typically results in 
-              syntax errors. Enter the following at the python prompt:</p>
+              """);
+        s = addSection("4.6", "Identifiers and Keywords", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>Identifiers are names of variables, functions, classes,"
+                + " modules and packages.</p>");
+        w.add("<p>"
+                + c.index.getReference("Python Keywords", s.sid)
+                + " (keywords) are reserved words - terms that can't be used"
+                + " for identifiers.</p>");
+        w.add("<p>Attempting to "
+                + c.index.getReference("Name Binding", "use them", s.sid) 
+                + " as variable names typically results in "
+                + c.index.getReference("Syntax Error", "syntax errors", s.sid)
+                + ". Enter the following at the Python prompt:</p>");
+        w.add("""
               <pre>if = 2</pre>
               <p>This should result in:</p>
               <pre>File "<stdin>", line 1
@@ -499,7 +510,7 @@ public class Python extends Page {
                      ^
               SyntaxError: invalid syntax</pre>
               <p>Notice that the syntax error is pointing at the equals sign
-              '='. This is because the python interpreter is expecting a
+              '='. This is because the Python interpreter is expecting a
               conditional expression after the keyword 'if'. The error has come 
               about because of the attempt to use a keyword as a variable name.
               </p>
@@ -574,9 +585,9 @@ public class Python extends Page {
               the base of the file system) or relative (from the current 
               directory.</p>
               """);
-        
-        s = addSection("6.", "Jupyter Notebook", 2);
-        
+
+        s = addSection("6", "Jupyter Notebook", 2);
+
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.references.getReference("Jupyter Notebook")
@@ -628,19 +639,19 @@ public class Python extends Page {
               running Python in other ways... Before launching into that, 
               consider if you should take a short break...</p>
               """);
-        
-        s = addSection("7.", "Integrated Development Environments", 2);
-        
+
+        s = addSection("7", "Integrated Development Environments", 2);
+
         w.add(s.sectionHTML);
-        
-        w.add("<p>" 
+
+        w.add("<p>"
                 + c.index.getReference(
                         "Integrated Development Environment",
                         "Integrated Development Environments", s.sid)
                 + "(IDEs) are software tools used to make writing code and "
                 + "developing software easier. This section introduces "
                 + c.references.getReference("IDLE")
-                + " and " 
+                + " and "
                 + c.references.getReference("Spyder")
                 + "- IDEs that come with "
                 + c.references.getReference("Anaconda")

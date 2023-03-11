@@ -16,7 +16,6 @@
 package io.github.agdturner.course.python.intro.pages;
 
 import io.github.agdturner.core.Section;
-import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -42,7 +41,7 @@ public class Programming extends Page {
         writeHeader();
         writeH1();
         w.add("""
-              <h2 id="1">1. Introduction</h2>
+              <h2 id="1.">1. Introduction</h2>
               <p>""");
         w.add(c.index.getReference("Computer Programming", 
                 "Computer programming")
@@ -78,7 +77,7 @@ public class Programming extends Page {
                 "Python programming language")
                 + " (Python).");
         
-        w.add("<h2 id=\"2\">2. Data</h2>");
+        w.add("<h2 id=\"2.\">2. Data</h2>");
         Section s;
         s = addSection("2.1", "Bits and Bytes", 3);
         w.add(s.sectionHTML);
@@ -235,7 +234,7 @@ public class Programming extends Page {
               is written the way it is, but no language is perfect and there may
               well be a better way...</p>
               """);
-        s = addSection("4.", "Language Evolution, Deprecation and Versions", 2);
+        s = addSection("4", "Language Evolution, Deprecation and Versions", 2);
         w.add(s.sectionHTML);
         w.add("""
               <p>High level computer programming languages like Python are 
@@ -265,15 +264,17 @@ public class Programming extends Page {
               major new versions of a language. Minor versions may add new 
               language features. Minor-minor version changes are usually 
               associated with bug fixes.</p>
-              <p>Deprecation is a common part of modern high level languages. 
-              This is a process whereby specific functionality is gracefully 
-              phased out/retired. When no longer available, code that 
-              relied on deprecated functionality will no longer work (except 
-              with old versions of source code language interpreters).</p>
-              <p>So, it is important to know what version of a language code has 
-              been tested with. And it is useful to be aware that code written 
-              in a language can start to look quite different over time.</p>
-
+              """);
+        w.add("<p>" +
+                c.index.getReference("Deprecation", s.sid)
+                 + " is a common part of modern high level languages and third"
+                 + " party software. It is part of a process of phasing things"
+                 + " out. Things are first marked as deprecated in a version,"
+                 + " then in subsequent versions the things are removed.</p>");
+        w.add("<p>It is important to know what version of a language and any"
+                + " third party components a program has been tested with."
+                + "</p>");
+        w.add("""
               <h2 id="5">5. Considerata</h2>
               <p>With any language, there are often several ways to achieve the 
               same or a similar thing. Some ways may work faster, can handle 

@@ -27,6 +27,8 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  */
 public class Home extends Page {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a new instance.
      *
@@ -46,32 +48,32 @@ public class Home extends Page {
               <h2>1. Introduction</h2>
               <p>Welcome to the course website!</p>
               """);
-        w.add("<p>The course timetable is linked from the"
+        w.add("<p>The course timetable is linked from the "
                 + Web_ContentWriter.getLink(
                         "https://webprod3.leeds.ac.uk/catalogue/dynmodules.asp?Y="
-                + c.academicYear + "&M=" + c.getCourseCode2(), 
+                        + c.academicYear + "&M=" + c.getCourseCode2(),
                         c.getCourseCode1() + " Module Catalogue Page")
                 + "</p>");
-//        w.add("These Web pages are");
-//        w.add(c.index.getReference("Open_educational_resources",
-//                "Open Educational Resources"));
-//        w.add("developed by");
-//        w.add(Web_ContentWriter.getLink(
-//                "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
-//                "Andy Turner"));
+        w.add("<p>These website is maintained by "
+                + Web_ContentWriter.getLink(
+                        "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
+                        "Andy Turner")
+                + " and comprises a set of webpages and file based resources."
+                        + "</p>");
         w.add("""
-              <p>The website is a set of webpages and file based resources. At 
-              the top of each webpage is a Style Button that can be used to 
+              <p>At the top of each webpage is a Style Button that can be used to 
               change between a lighter and darker style. Below that is a 
               Navigation Section which outlines the current page. Each webpage 
-              links to the next and at the end there is an index. Essentially, 
-              the idea is that you - students taking the course - read through 
-              the webpages trying out code and undertaking practical exercises 
-              as directed.</p>
-              <p>If you encounter issues with the website, then please provide 
-              feedback so that these can be resolved. If you are struggling to 
-              comprehend things, then please don't struggle for long and ask 
-              your tutor for help.</p>
+              links to the next and at the end there is an index and a page of 
+              references.</p>
+              <p>Essentially, the idea is that you - students taking the course
+              - read through the webpages trying out code and undertaking 
+              practical exercises as directed.</p>
+              <p>Please contact your tutor by email or us the module Discussion 
+              tool in  
+              <a href="https://minerva.leeds.ac.uk/">Minerva</a> if you want 
+              help or clarification or there is a problem with these resources.
+              </p>
               """);
 
         w.add("""
@@ -95,7 +97,7 @@ public class Home extends Page {
                 + c.index.getReference("While Loop", "while loops")
                 + ")</li>");
         w.add("<li>"
-                + c.index.getReference("Functions")
+                + c.index.getReference("Function", "Functions")
                 + " and "
                 + c.index.getReference("Functional Programming")
                 + "</li>");
@@ -123,7 +125,7 @@ public class Home extends Page {
                 + ".</li>");
         w.add("<li>Using the "
                 + c.index.getReference("Read Evaluate Print Loop",
-                        "Read Evaluate Print Loop (REPL)") 
+                        "Read Evaluate Print Loop (REPL)")
                 + " environment</li>");
         w.add("<li>Running programs via the command line, "
                 + c.references.getReference("Jupyter Notebook")
@@ -135,12 +137,12 @@ public class Home extends Page {
         w.add("<li>Python Environment Management using "
                 + c.references.getReference("Conda")
                 + " and "
-                + c.index.getReference("Python Venv")
+                + c.index.getReference("Python Venv Module")
                 + "</li>");
         w.add("<li>Using the "
                 + c.references.getReference("Python Standard Library")
                 + ", and third party packages available via "
-                + c.references.getReference("PyPI", 
+                + c.references.getReference("PyPI",
                         "PyPI - the Python Package Index")
                 + "</a></li>");
 //        w.add("<li>Using Python to automate "
@@ -201,10 +203,10 @@ public class Home extends Page {
                 + "</li>");
         w.add("<li>Developing a "
                 + c.index.getReference("Graphical User Interface")
-                + "</li>");
+                + " (GUI)</li>");
         w.add("<li>Developing and visualising a basic spatial "
                 + c.index.getReference("Agent Based Model")
-                + "</li>");
+                + " (ABM)</li>");
         w.add("""
               </ul>
               <p>Computer programming mostly involves computational thinking, 
@@ -228,46 +230,59 @@ public class Home extends Page {
               what you expect it to. If code does not do what you expect, try to
               understand why - treat it as a learning opportunity.</p>
               <p>One of the keys to coding is learning to be able to interpret 
-              errors messages - understand what caused them. Errors should not 
-              be ignored!</p>
+              errors messages - understand what caused them. If your program 
+              generates an exception and error message, then figure out what the
+              issue is and resolve before trying to implement code that does 
+              something else. Ignoring errors is a bad idea. In general, the 
+              more changes made to a program, the harder it becomes resolve an 
+              issue.</p>
               <p>Be cautious and do not run code that you do not fully trust. 
-              Think about the source of the code and whether you comprehend it 
-              sufficiently to know it won't do anything malicious before trying 
-              it out.</p>
-              <p>The webpages with names starting \"ABM\" are sequence of 
-              practicals that gradually develop a basic spatial Agent Based 
-              Model (ABM). The ABM can be regarded as a simple model of animals 
-              moving about in an environment, interacting with each other and 
-              the environment.</p>
-              <p>Developing the ABM by following instructions puts into practise 
-              much of the theory detailed in other webpages. By the end of these 
-              practicals, you should have ABM model code that:</p>
-              <ul>
-              <li>has a basic Graphical User Interface (GUI);</li>
+              Think about the code does that you want to try: Do you comprehend 
+              it sufficiently to know it won't do anything malicious before 
+              trying it out?</p>
+              """);
+        w.add("<p>The webpages with names starting \"ABM\" are a sequence of"
+                + " practicals for the development of a basic spatial "
+                + c.index.getReference("Agent Based Model", "ABM")
+                + ". The ABM can be regarded as a simple model of animals"
+                + " moving about in an environment, interacting with each other"
+                + " and the environment.</p>");
+        w.add("<p>Developing the ABM by following instructions puts into"
+                + " practise much of the theory detailed in other webpages. By"
+                + " the end of these practicals, you should have ABM model code"
+                + " that:</p>");
+        w.add("<ul>");
+        w.add("<li>has a basic "
+                + c.index.getReference("Graphical User Interface", "GUI")
+                + ";</li>");
+        w.add("""
               <li>reads in data from local files and from the Web; and</li>
-              <li>produces an animation, data files and messages.</li>
+              <li>produces an animation, data files and user friendly messages.
+              </li>
               </ul>
               <p>At that stage, you should have sufficient knowledge and skill 
-              to develop the model further without detailed instructions. You
-              will then be challenged to undertake an independent project to 
-              apply what you have learned to develop some different software - 
-              there will be a specification, some guidance for approaching the 
-              task, but no detailed instructions.</p>
+              to develop the model further without detailed instructions.</p>
+              <p>You are then to undertake an independent project to apply what 
+              you have learned to develop some different software - there will 
+              be a specification, some guidance for approaching the task, but no
+              detailed instructions to follow.</p>
               <p>Do not expect to master the Python language by the end of this 
               course. It can take many years of experience to learn all about a 
-              language. Try to enjoy the journey, the challenges and the rewards
-              - even elementry programming skills and knowledge are empowering  useful 
-              things to acquire!</p>
+              language. Try to enjoy the learning journey, the challenges and 
+              the rewards.</p>
+              <p>Gaining elementry programming skills and knowledge is 
+              empowering in a world where there skills are in high demand and 
+              with which you can make a difference.</p>
               
               <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is 
               """);
         w.add(c.index.getReference("Free and Open Source Software",
-                "Free and Open Source Software (FOSS)") 
-                + " which is available to download and install on "
-                + c.index.getReference("Linux") 
+                "Free and Open Source Software")
+                + " (FOSS) which is available to download and install on "
+                + c.index.getReference("Linux")
                 + ", "
-                + c.index.getReference("Microsoft Windows") 
+                + c.index.getReference("Microsoft Windows")
                 + ", and "
                 + c.index.getReference("MacOS")
                 + ".<p>");

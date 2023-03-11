@@ -168,9 +168,9 @@ public class ABM4 extends Page {
               items in lists (as agents are no longer lists, but are instances 
               of the class Agent). So, change the following line of code in 
               the get_max_distance() function:</p> 
-              <pre>distance = get_distance(a[0], a[1], b[0], b[1])</pre>
+              <pre><code class="language-python">distance = get_distance(a[0], a[1], b[0], b[1])</code></pre>
               <p>To be:</p>
-              <pre>distance = get_distance(a.x, a.y, b.x, by)</pre>
+              <pre><code class="language-python">distance = get_distance(a.x, a.y, b.x, by)</code></pre>
               <p>Examine the code change and appreciate that there is no longer 
               a need to remember which item in the list refers to a particular 
               coordinate.</p>
