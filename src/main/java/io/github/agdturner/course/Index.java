@@ -329,6 +329,12 @@ name = "Call By Sharing";
         description = "provides support for rational number arithmetic";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Python Help System";
+        url = "https://docs.python.org/3/library/functions.html#help";
+        description = null;
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        
         name = "Python If Statement";
         url = "https://docs.python.org/3/reference/compound_stmts.html#if";
         description = "used for conditional execution";
@@ -340,7 +346,13 @@ name = "Call By Sharing";
                 + "identifiers (names of variables, functions, classes,"
                 + " modules and packages)";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-                
+        
+        name = "Python Operator Module";
+        url = "https://docs.python.org/3/library/operator.html";
+        description = "exports a set of efficient functions corresponding to "
+                + "the intrinsic operators of Python";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python Tuple";
         url = "https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences";
         description = "a number of values separated by commas";

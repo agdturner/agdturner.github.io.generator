@@ -137,7 +137,7 @@ public class Python extends Page {
               PyPI.</p>
               """);
 
-        w.add("<p>The"
+        w.add("<p>The "
                 + c.references.getReference("Python Tutorial")
                 + " is a good place to start learning Python. In your private"
                 + " study time, you might like to make your way through that"
@@ -166,14 +166,12 @@ public class Python extends Page {
                 + " environment manager; a Python interpretter; some commonly"
                 + " used third party Python packages; and, some useful"
                 + " additional tools. It is available at the University of"
-                + " Leeds via AppsAnywhere using machines on campus or remotely"
-                + " using a Windows Virtual Desktop which can be accessed via"
-                + " the following URL:<p>");
-        w.add("<p><a href=\"https://wvd.leeds.ac.uk\">"
-                + "https://wvd.leeds.ac.uk</a></p>");
+                + " Leeds via 'AppsAnywhere' using machines on campus or "
+                + "'<a href=\"https://wvd.leeds.ac.uk\">Windows Virtual Desktop"
+                + "</a>'");
         w.add("<p>You can also download and install Anaconda on your own"
-                + " device. If you do this, then choosing the default options"
-                + " should avoid interfering with any other version of Python"
+                + " device. If you do this, then choose the default options"
+                + " to avoid interfering with any other version of Python"
                 + " already installed on your system. By default, Anaconda"
                 + " installs into your user home directory.</p>");
 
@@ -191,11 +189,11 @@ public class Python extends Page {
               <p>This should inform you about the version of python that came 
               with Anaconda. Enter:</p>
               <pre>python</pre>
-              <p>You should arrive at the python prompt looking something like:
-              </p>
+              <p>You should arrive at the 'Python Prompt' that looks something 
+              like:</p>
               <pre>>>></pre>
               """);
-        w.add("<p>This is the "
+        w.add("<p>This is a "
                 + c.index.getReference("Read Evaluate Print Loop", "REPL",
                         s.sid)
                 + " environment for Python. Enter:</p>");
@@ -203,24 +201,23 @@ public class Python extends Page {
               <pre>print("Hello World")</pre>
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
-              
-              <h4>3.1.2. Numerical calculations</h4>
-              <p>The python REPL environment can act as a basic calculator. 
+              """);
+        s = addSection("3.1.2", "Numerical calculations", 4);
+
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>The Python Prompt can be used for some basic calculations. 
               Enter:</p>
               <pre>2 + 3</pre>
               <p>You should see the result of adding the number 2 to the number
-              3 output:</p>
+              3:</p>
               <pre>5</pre>
-              <p>The plus (+) symbol is the operator for addition. The 
-              operator for multiplication is the asterix (*) symbol, try 
+              <p>The plus symbol '+' is the operator for addition. The 
+              operator for multiplication is the asterix '*' symbol, try 
               multiplying two numbers.</p>
-              <p>The operator symbol for division is the forward slash (/) 
+              <p>The operator symbol for division is the forward slash '/' 
               symbol. Try dividing 3 by 2. Notice that the result is not an 
               integer.</p>
-              <p>In pytho, two types of number are often used: Integers and 
-              Floats. Python Integers have a huge range. We will worry more 
-              about what a Float is later. For the time being, think of it as a 
-              decimal number.</p>
               <p>Run the following command:</p>
               <pre>1 / 0</pre>
               <p>You should get the following Divide by Zero Error message:</p>
@@ -229,8 +226,7 @@ public class Python extends Page {
                 File "<stdin>", line 1, in <module>
               ZeroDivisionError: division by zero
               </pre>
-              <p>Have a play using the python REPL to do some numerical 
-              calculations: Try calculating bigger and bigger numbers that are 
+              <p>Have a play: Try calculating bigger and bigger numbers that are 
               powers of 2. Enter:</p>
               <pre>2 ** 64</pre>
               <p>This calculates 2 to the power of 64 - an integer number with 
@@ -240,7 +236,7 @@ public class Python extends Page {
               with 301030 digits. This may take noticeably more time to 
               calculate and display.</p>
               <p>To calculate how many digits are in a number, it can be 
-              converted to a string using the function 'str()', the result of 
+              converted to a String using the function 'str()', the result of 
               which we can pass into the function 'len()' which gives the 
               length. Enter:</p>
               <pre>len(str(2 ** 1000000))</pre>
@@ -261,22 +257,26 @@ public class Python extends Page {
               the power of'. Enter:<p>
               <pre>1/(2**1074)</pre>
               <pre>1/(2**1075)</pre>
-              <p>This demonstrates that these types of calculations are 
-              approximations - ones that use a floating point arithmetic which 
-              rounds to the nearest value that can be represented in a specific 
-              way. We will look at floating point rounding and other types of 
-              numbers in python a bit later in the course.</p>
-              
-              <h3 id="3.2">3.2. Loading Modules and Using Functions</h3>
-              <p>Mathematical operators can also be accessed via functions that
-              reside in the operator module.</p>
+              """);
+        w.add("<p>This demonstrates that these types of calculations are "
+                + "approximations - ones that use "
+                + c.index.getReference("Floating-point", "floating point arithmetic", s.sid)
+                + " which rounds to the nearest value that can be represented"
+                + " in a specific way.</p>");
+        s = addSection("3.2", "Loading Modules and Using Functions", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>Mathematical operators can also be accessed via functions "
+                + "that reside in the "
+                + c.index.getReference("Python Operator Module", s.sid)
+                + "</p>");
+        w.add("""
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
               <p>You should see the following error message:</p>
               <pre>Traceback (most recent call last):
                 File "<stdin>", line 1, in <module>
               NameError: name 'operator' is not defined</pre>
-              <p>The error is that the interpretter does not know about the
+              <p>The error is that the interpreter does not know about the
               Operator Module. Notice the similarity with this error message 
               and the divide by zero error message.</p>
               <p>Enter:</p>
@@ -328,22 +328,25 @@ public class Python extends Page {
               python.</p>
               <p>Have a play and use some other functions from the operator 
               module.</p>
-
-              <h3 id="3.3">3.3. The Help System</h3>
-              <p>At the python prompt, enter:</p>
+              """);
+        s = addSection("3.3", "The Help System", 3);
+        w.add(s.sectionHTML);
+        w.add(c.index.getReference("Python Help System", "", s.sid));
+        w.add("""
+              <p>At the Python Prompt, enter:</p>
               <pre>help(operator.add)</pre>
               <p>This prints out some information about how to use the operator
               module add function.</p>
               <p>Enter the following to enter the help system:</p>
               <pre>help()</pre>
-              <p>The prompt should change to look like:</p>
+              <p>The prompt should change to the 'Help Prompt' and look like:</p>
               <pre>help> </pre>
               <p>Read what is printed.</p>
               <p>Enter:</p>
               <pre>modules</pre>
               <p>It may take a few minutes to report a list of available 
               modules.</p>
-              <p>At the help prompt enter:</p>
+              <p>At the Help Prompt enter:</p>
               <pre>operator</pre>
               <p>This should display the start of the help documentation for the 
               operator module. Press the &lt;enter&gt; key to see the next line 
@@ -352,20 +355,25 @@ public class Python extends Page {
               key streams the documentation a page at a time. The &lt;q&gt; key 
               quits and should return you to the prompt.</p>
               <p>Have a look at some documentation for other modules.</p>
-              <p>To exit the help system and return you to the python prompt, 
+              <p>To exit the help system and return you to the Python Prompt, 
               enter:</p>
               <pre>q</pre>
-              <p>Before learning how to run a file of python commands, let us 
-              consider a bit more basic python syntax.</p>
-              
-              <h2 id="4">4. Basic Python Syntax</h3>
+              <p>Before learning how to run a file of Python commands, let us 
+              consider a bit more basic Python syntax.</p>
+              """);
+        s = addSection("4", "Basic Python Syntax", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>The syntax of a computer programming language are the rules 
               about how it must be written.</p>
-              
-              <h3 id="4.1">4.1. Syntax Errors</h3>
-              <p>If a statement or expression is syntactically incorrect, and 
-              the Python interpreter attempts to interpret it, a syntax error 
-              should be raised.</p>
+              """);
+        s = addSection("4.1", "Syntax Errors", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>If a statement or expression is syntactically incorrect, and"
+                + " the Python interpreter attempts to interpret it, a "
+                + c.index.getReference("Syntax Error", "syntax error", s.sid)
+                + " gets raised.</p>");
+        w.add("""
               <p>At the python prompt enter:</p>
               <pre>x=</pre>
               <p>You should get the following syntax error:</p>
@@ -413,10 +421,13 @@ public class Python extends Page {
               """);
         w.add("<p>Between triple quotes everything is a comment. There are two"
                 + " types of triple quote, those using single quotation marks,"
-                + " and those using double quotation marks. Triple double"
-                + " quotes (\"\"\" are typically used for documentation. Triple"
-                + " single quotes (''') are often used to comment out sections"
-                + " of code when "
+                + " and those using double quotation marks.</p>");
+        w.add("<p>Triple double quotes '\"\"\"' are used for "
+                + c.index.getReference("Python Docstring", "docstrings", s.sid)
+                + " - a form of source documentation that will be detailed"
+                + " later in the course.</p>");
+        w.add("<p>Triple single quotes \"'''\" are useful for commenting out"
+                + " sections of code when "
                 + c.index.getReference("Debugging", "debugging", s.sid)
                 + ".</p>");
         w.add("""
