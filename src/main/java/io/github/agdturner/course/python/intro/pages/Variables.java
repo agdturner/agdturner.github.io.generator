@@ -42,76 +42,39 @@ public class Variables extends Page {
         Section s;
         s = addSection("1", "Introduction", 2);
         w.add(s.sectionHTML);
-        w.add("<p>Python "
-                + c.index.getReference("Variable", "variables", s.sid)
-                + " are a combination of an identifier (a name) and a value - "
-                + "either a primitive or a more complex object.</p>");
-        w.add("<p>When passed as parameters into functions, variables are"
-                + " handled differently depending on whether they are"
-                + " primitives or more complex objects. The main difference is"
-                + " to do with whether the variable is duplicated when it is"
-                + " passed into the function as a parameter (known as '"
-                + c.index.getReference("Call By Value", s.sid)
-                + "') or whether a shared object is passed in (known as '"
-                + c.index.getReference("Call By Sharing", s.sid)
-                + "').</p>");
-        s = addSection("2", "Variables Types", 2);
+        w.add("<p>"
+                + c.index.getReference("Variable", "Variables", s.sid)
+                + " are a combination of an identifier (a name) and a value"
+                + ".</p>");        
+        
+        s = addSection("2", "Python Variables", 2);
         w.add(s.sectionHTML);
-        w.add("In Python, variable names can be reused to refer to different"
-                + " types of value. The function 'type()' in the"
-                + c.index.getReference("Python Builtins", "builtins module",
-                        s.sid)
-                + " can be used to get the type of a variable. For example, the"
-                + " following code initialises a variable named 'x' to have the"
-                + " Integer value '1', then assigns the name x to a String"
-                + " value \"1\". After each assignment the type of the variable"
-                + " is printed.</p>");
-        w.add("""
-              <pre><code class="language-python"># Set x = 1 and print the type of x")
-              x = 1
-              print(type(x))
-              x = "1"
-              print(type(x))</code></pre>
-              <p>The output from running this code is:</p>
-              <pre>&lt;class 'int'&gt;
-              &lt;class 'str'&gt;</pre>
-              <p>Again, try this yourself.</p>
-              """);
-        w.add("<p>In declarative programming languages, the type of a variable"
-                + " is declared and this typically prevents the name being"
-                + " assigned to a value not of that type. In Python, the"
-                + " type of a variable is not declared. The main benefit of"
-                + " this is that "
+        w.add("<p>In Python, the 'type' of a variable does not have to be "
+                + "declared. The type is effectively inferred by the value of "
+                + "the variable (if it needs to be).</p>");
+        w.add("<p>Identifiers in Python can be reassigned, so a variable name "
+                + "can be reused to refer to a different type of thing, it "
+                + "does not even have to be a variable! A benefit of this is "
+                + "that "
                 + c.index.getReference("API", "APIs")
-                + " can be more stable. However, without type safety, it is"
-                + " easier to make mistakes and accidentally re-use a variable"
-                + " name. It can also make"
-                + c.index.getReference("Debugging", "debugging", s.sid)
-                + " code harder, and it can make developing tools to help write"
-                + " code harder. Being able to test the type of a variable"
-                + " helps mitigate these things, but adding code to test the"
-                + " type of variables a lot is cumbersome and it makes code a"
-                + " lot less succinct and can make it significantly less"
-                + " efficient.</p>");
-        s = addSection("2.1", "Primitives", 3);
-        w.add(s.sectionHTML);
+                + " can be more stable (as there is no need to specify exactly"
+                + " what types of things are input and output from functions)."
+                + " A downside is that, it is easier to make mistakes and "
+                + " accidentally re-use an identifier with unintended"
+                + " consequences.");
         w.add("<p>The four primitive variable types in Python are: Integers,"
-                + " Floats, Strings, and Booleans. Integers are whole numbers."
-                + " Floats are "
+                + " Floats, Strings, and Booleans.</p>"
+                + "<p>Integers are whole numbers and are unbounded in Python. "
+                + "The largest Integer that can be used is constrained only by "
+                + "the amount of available memory.</p>"
+                + "<p>Floats are "
                 + c.index.getReference("Double-precision Floating-point", s.sid)
-                + " numbers - a special subset of fractions. Strings are"
-                + " essentially blocks of text (or sequences of single"
-                + " character length Strings). Booleans are True or False and"
-                + " also equate to 0 or 1.</p>");
-        w.add("""
-              <p>Integers are virtually unbounded in Python. The limit for the 
-              largest number is based on the available memory.</p>
-              """);
-        w.add("<p>Floats have a 'Maximum Value' and a 'Minimum Normal Value'"
-                + " (smallest number &gt; 0). These can be ascertained from the"
-                + c.index.getReference("Python Sys Module", s.sid)
-                + " (sys). There are Float values for positive and negative"
-                + " infinity:</p>");
+                + " numbers - a special subset of fractions. These have a "
+                + "'Maximum Value' and a 'Minimum Normal Value' (smallest "
+                + "number &gt; 0) which can be ascertained from the "
+                + c.index.getReference("Python sys", "sys", s.sid)
+                + " module. There are Float values for positive and negative"
+                + " infinity. Consider and run the following code:</p>");
         w.add("""
               <pre><code class="language-python">import sys
               
@@ -163,17 +126,19 @@ public class Variables extends Page {
                 + " which can result in significant calculation error.</p>");
         w.add("<p>The "
                 + c.references.getReference("Python Standard Library")
-                + " has two modules that provide for more accurate arithmetic:"
-                + c.index.getReference("Python Decimal Module", s.sid)
+                + " has two modules that provide for more accurate arithmetic: "
+                + c.index.getReference("Python decimal", "decimal", s.sid)
                 + "; "
-                + c.index.getReference("Python Fractions Module", s.sid)
+                + c.index.getReference("Python fractions", "fractions", s.sid)
                 + ".</p>");
+        w.add("<p>Strings are essentially blocks of text (or sequences of "
+                + "single character length Strings). Strings can be assigned "
+                + "using; double or single quotes, or the constructor function "
+                + c.index.getReference("Python str", "str", s.sid)
+                + " (which can for example create a String from an Integer). "
+                + "Strings can be compared and checked for equality using the "
+                + "operator '=='. Consider and run the following code:</p>");
         w.add("""
-              <p>Strings can be assigned using; double or single quotes, and the 
-              constructor function str() (which can for example create a String 
-              from an Integer). Strings can be compared and checked for
-              equality using the operator '=='. Consider and run the following 
-              code:</p>
               <pre><code class="language-python">s = "A"
               s2 = "a"
               s3 = "B"
@@ -184,7 +149,9 @@ public class Variables extends Page {
               print(s < s2)  # Prints True
               print(str(3))  # Prints 3
               </code></pre>
-              <p>Consider and run the following code to explore Boolean:</p>
+              <p>Booleans are 'True' or 'False' and also equate to '0' or '1'.
+              </p>
+              <p>Consider and run the following code:</p>
               <pre><code class="language-python">t = True
               f = False                            
               print("t == t", t == t)             # Prints True
@@ -200,26 +167,46 @@ public class Variables extends Page {
               print("not (t or f)", not (t or f)) # Prints False</code></pre>
               """);
         w.add("""
-              <h3>2.2. Objects</h3>
-              <p>Any variable that is not of a primitive type is a more complex
-              object. A list is not a primitive type. The following code
-              creates a list variable, assigns a new identifier to that list, 
-              appends a primitive value to the list, then prints out the list 
-              using one of the identifiers.</p>
-              <pre><code class="language-python">
-              a = [] # Assign a to equal a new empty List.
-              b = a  # Set b to equal a
-              a.append(1) # Append the Integer 1 to the List a
-              print(b) # Prints [1]
-              </code></pre>
+              <p>More complex objects have state given by multiple primitives 
+              variables. Objects can also be comprised of multiple other 
+              objects as defined by a class.</p>
               """);
-        s = addSection("3", "Variable Scope and the Global Keyword", 2);
-        w.add(s.sectionHTML);        
+        w.add("<p>The type of any object can be got using the function "
+                + c.index.getReference("Python type", "type", s.sid)
+                + " from the "
+                + c.index.getReference("Python builtins", "builtins", s.sid)
+                + " module. Consider and run the following code that "
+                + "initialises a variable named 'x' with the Integer value "
+                + "'1', then prints out the type of the variable 'x', then "
+                + "reassigns 'x' to have a String value, then again prints out "
+                + "the type of the variable 'x'.</p>");
+        w.add("""
+              <pre><code class="language-python"># Set x = 1 and print the type of x")
+              x = 1
+              print(type(x)) # Prints &lt;class 'int'&gt;
+              x = "1"
+              print(type(x)) # Prints &lt;class 'str'&gt;</code></pre>
+              <p>The output from running this code is:</p>
+              <pre>&lt;class 'int'&gt;
+              &lt;class 'str'&gt;</pre>
+              """);
+        
+        s = addSection("3", "Functions, Variable Scope and the Global Keyword", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>When passed as parameters into functions, variables are"
+                + " handled differently depending on their type. Primitives are"
+                + " duplicated when passed into the function as a parameter"
+                + " (known as '"
+                + c.index.getReference("Call By Value", s.sid)
+                + "'). Non-primitves are shared when passed into the function"
+                + " (known as '"
+                + c.index.getReference("Call By Sharing", s.sid)
+                + "').</p>");
         w.add("<p>The "
                 + c.index.getReference("Scope", "scope", s.sid)
                 + " of a variable is from where in the code it can be accessed."
                 + " The "
-                + c.index.getReference("Python Keywords", "keyword", s.sid)
+                + c.index.getReference("Python keyword", "keyword", s.sid)
                 + " 'global' can modify the scope.</p>");
         w.add("""
               <p>Consider the following:</p>
@@ -229,8 +216,7 @@ public class Variables extends Page {
               print(y) # Prints 2</code></pre>
               """);
         w.add("<p>The code in the "
-                + c.index.getReference("Python If Statement", "If Statement",
-                        s.sid)
+                + c.index.getReference("Python if", "If Statement", s.sid)
                 + " is executed as the condition 'x == 1' evaluates as 'True'."
                 + " If the condition were to evaluate as 'False', then the"
                 + " interpreter would skip to the end of the statement, as in"
@@ -244,6 +230,8 @@ public class Variables extends Page {
               <pre>NameError: name 'y' is not defined</pre>
               <p>This is because y does not get initialised and so cannot be 
               passed into the print function.</p>
+              """);
+        w.add("""
               <p>Consider the following code:</p>
               <pre><code class="language-python">x = 1
               def my_function():
@@ -280,19 +268,13 @@ public class Variables extends Page {
               <pre>a 1
               b 2
               c 2</pre>
-              <p>Try the code yourself and play around to test your 
-              understanding.</p>
               """);
-        w.add("<p>More details about Python "
-               + c.index.getReference("Function", "functions", s.sid)
-               + " is provided <a href=\"../functions#9\">Functions</a>"
-               + "...</p>");
+        
         s = addSection("4", "Deleting variables", 2);
         w.add(s.sectionHTML);        
-        
         w.add("<p>Variables can be deleted using the keyword 'del' followed by"
                 + " the name of the variable or a "
-                + c.index.getReference("Python Tuple", "Tuple")
+                + c.index.getReference("Python tuple", "tuple", s.sid)
                 + " of variables to delete.</p>");
         w.add("""
               <p>Deleting variables can free up resources that can be used by 

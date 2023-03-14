@@ -70,13 +70,31 @@ public class References extends Page {
         description = "Python’s Integrated Development and Learning "
                 + "Environment";
         nameToTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Jupyter";
+        url = "https://jupyter.org/about";
+        description = "a non-profit, open-source project supporting "
+                + "interactive data science and scientific computing across "
+                + "all programming languages";
+        nameToTerm.put(name, new IndexTerm(description, url));
 
+        name = "Jupyter Notebook";
+        url = "https://jupyter-notebook.readthedocs.io/en/stable/notebook.html";
+        description = "a web-based application for developing, documenting, "
+                + "and executing code, and communicating results";
+        nameToTerm.put(name, new IndexTerm(description, url));
+                
         name = "Matplotlib";
         url = "https://matplotlib.org/";
         description = "a library for creating static, animated, and "
                 + "interactive visualizations in Python";
         nameToTerm.put(name, new IndexTerm(description, url));
 
+        name = "PIP";
+        url = getWikipediaURL("https://pip.pypa.io");
+        description = "the Python Package Installer";
+        nameToTerm.put(name, new IndexTerm(description, url));
+        
         name = "PyPI";
         url = getWikipediaURL("https://pypi.org/");
         description = "the Python Package Index";
@@ -136,6 +154,11 @@ public class References extends Page {
                 + "distributions and it's reference manual";
         nameToTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python Website";
+        url = "https://www.python.org/";
+        description = null;
+        nameToTerm.put(name, new IndexTerm(description, url));
+
         name = "Python What's New";
         url = "https://docs.python.org/3/whatsnew";
         description = "The \"What’s New in Python\" documentation tours "
@@ -143,9 +166,9 @@ public class References extends Page {
                 + "versions.";
         nameToTerm.put(name, new IndexTerm(description, url));
 
-        name = "QGIS Python API Documentation";
-        url = "https://qgis.org/pyqgis/";
-        description = null;
+        name = "QGIS";
+        url = "https://qgis.org/";
+        description = "Quantum Geographical Infromation System Software";
         nameToTerm.put(name, new IndexTerm(description, url));
 
         name = "Spyder";
@@ -153,15 +176,9 @@ public class References extends Page {
         description = "a web-based application for developing, documenting,"
                 + " and an integrated development environment for Python";
         nameToTerm.put(name, new IndexTerm(description, url));
-
-        name = "Jupyter Notebook";
-        url = "https://jupyter-notebook.readthedocs.io/en/stable/notebook.html";
-        description = "a web-based application for developing, documenting, "
-                + "and executing code, and communicating results";
-        nameToTerm.put(name, new IndexTerm(description, url));
-
-        name = "Python Website";
-        url = "https://www.python.org/";
+        
+        name = "Spyder Documentation";
+        url = "https://docs.spyder-ide.org/current/index.html";
         description = null;
         nameToTerm.put(name, new IndexTerm(description, url));
     }

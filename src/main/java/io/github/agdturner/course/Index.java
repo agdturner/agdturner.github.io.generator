@@ -77,6 +77,12 @@ public class Index extends Page {
                 + "that allows for interoperability with an older legacy "
                 + "system";
         termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Beautiful Soup";
+        url = "https://beautiful-soup-4.readthedocs.io/";
+        description = "a Python library for pulling data out of HTML and XML "
+                + "files";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Bit";
         url = getWikipediaURL("Bit");
@@ -84,16 +90,28 @@ public class Index extends Page {
                 + " digital communications. A bit represents a logical state"
                 + " having one of two possible values";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
+        name = "Bug";
+        url = getWikipediaURL("Bug_(engineering)");
+        description = "a defect in the design, manufacture or operation of "
+                + "machinery, circuitry, electronics, hardware, or software "
+                + "that produces undesired results or impedes operation";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Byte";
         url = getWikipediaURL("Byte");
         description = "a unit of digital information that most commonly"
                 + " consists of eight bits";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
-name = "Call By Sharing";
+        name = "C++";
+        url = getWikipediaURL("C%2B%2B");
+        description = "a high-level, general-purpose programming language";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
+        name = "Call By Sharing";
         url = getWikipediaURL("Evaluation_strategy#Call_by_sharing");
-        description = " an evaluation strategy where a parameter is shared "
+        description = "an evaluation strategy where a parameter is shared "
                 + "such that changes that are not reassignments are changes to "
                 + "a shared object. If there is a reassignment in the function "
                 + "then the object is no longer shared and what is in the "
@@ -141,6 +159,13 @@ name = "Call By Sharing";
         description = "a named container of data";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "CSS";
+        url = getWikipediaURL("CSS");
+        description = "a style sheet language used for describing the "
+                + "presentation of a document written in a markup language "
+                + "such as HTML or XML";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
         name = "Debugging";
         url = getWikipediaURL("Debugging");
         description = "the process of finding and resolving bugs (defects or "
@@ -206,7 +231,21 @@ name = "Call By Sharing";
                 + "specific task";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
-        name = "Graphical User Interface";
+        name = "Geographical Information System (GIS)";
+        url = getWikipediaURL("Geographic_information_system");
+        description = "(GIS) a system comprising people, computational resources, "
+                + "software and data that stores, manages, analyzes, edits, "
+                + "outputs, and visualizes geographic data";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Glitch";
+        url = getWikipediaURL("Glitch");
+        description = "a short-lived fault in a system, such as a transient "
+                + "fault that corrects itself, making it difficult to "
+                + "troubleshoot";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
+        name = "GUI";
         url = getWikipediaURL("Graphical_user_interface");
         description = "a form of user interface that primarily uses actionable "
                 + "graphical icons";
@@ -218,9 +257,23 @@ name = "Call By Sharing";
                 + "be displayed in a web browser";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
-        name = "Integrated Development Environment";
+        name = "HTTP";
+        url = getWikipediaURL("HTTP");
+        description = "an application layer protocol in the Internet protocol "
+                + "suite model for distributed, collaborative, hypermedia "
+                + "information systems";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "HTTPS";
+        url = getWikipediaURL("HTTPS");
+        description = "is an extension of HTTP that uses encryption for secure "
+                + "communication over a computer network";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                      
+        name = "IDE";
         url = getWikipediaURL("Integrated_development_environment");
-        description = "software tools used to make writing code and developing "
+        description = "and Integrated Development Environment - a collection of "
+                + "software tools used to make writing code and developing "
                 + "software easier";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
@@ -231,6 +284,14 @@ name = "Call By Sharing";
                 + "communicate between networks and devices";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "JavaScript";
+        url = getWikipediaURL("Javascript");
+        description = "a high-level programming language that is one of the "
+                + "core technologies of the World Wide Web. All major Web "
+                + "browsers have a dedicated JavaScript engine to execute code "
+                + "on users' devices";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
         name = "Linux";
         url = getWikipediaURL("Linux");
         description = "a family of open-source Unix-like operating systems";
@@ -239,13 +300,19 @@ name = "Call By Sharing";
         name = "MacOS";
         url = getWikipediaURL("macOS");
         description = "a group of several proprietary Unix operating systems "
-                + "developed and marketed by Apple";
+                + "developed and marketed by Apple Inc";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Magic Number";
         url = getWikipediaURL("File_format#Magic_number");
         description = "file type metadata incorporated into the file - usually "
                 + "at the start";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Markdown";
+        url = getWikipediaURL("Markdown");
+        description = "a lightweight markup language for creating formatted "
+                + "text using a plain-text editor";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Microsoft Windows";
@@ -260,6 +327,13 @@ name = "Call By Sharing";
                 + "identifiers";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Network Socket";
+        url = getWikipediaURL("Network_socket");
+        description = " a software structure within a network node of a "
+                + "computer network that serves as an endpoint for sending and "
+                + "receiving data across the network";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
         name = "Object Oriented Programming";
         url = getWikipediaURL("Object-oriented_programming");
         description = "a programming paradigm based on the concept of "
@@ -282,22 +356,37 @@ name = "Call By Sharing";
                 + "DOS, OS/2, and Microsoft Windows, specifying a set of "
                 + "directories where executable programs are located";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
+        name = "Port";
+        url = getWikipediaURL("Port_(computer_networking)");
+        description = "a number assigned to uniquely identify a connection "
+                + "endpoint and to direct data to a specific service";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Programming Language";
         url = getWikipediaURL("Programming_language");
         description = "a system of notation for writing computer programs";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
+        name = "PyQGIS";
+        url = "https://qgis.org/pyqgis/";
+        description = "QGIS Python API";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "PyQGIS Developer Cookbook";
+        url = "https://docs.qgis.org/latest/en/docs/pygqis_developer_cookbook/";
+        description = "a tutorial and a reference guide to the PyQGIS API";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python";
         url = getWikipediaURL("Python_(programming_language)");
         description = "a high-level, general-purpose programming language";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python Builtins";
+        name = "Python builtins";
         url = "https://docs.python.org/3/library/builtins.html";
-        description = "a Python module that provides direct access to all "
-                + "'built-in' identifiers (see Python Built-in Functions and "
-                + "Python Built-in Constants for documentation";
+        description = "an always loaded module that provides direct access to "
+                + "all 'built-in' identifiers";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
         name = "Python Built-in Constants";
@@ -310,74 +399,133 @@ name = "Call By Sharing";
         description = "functions and types that are always available";
         termToIndexTerm.put(name, new IndexTerm(description, url));
                 
-        name = "Python Decimal Module";
+        name = "Python decimal";
         url = "https://docs.python.org/3/library/decimal.html";
-        description = "provides support for fast correctly rounded decimal "
-                + "floating point arithmetic";
+        description = "a standard library module providing support for "
+                + "fast correctly rounded decimal floating point arithmetic";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
-        name = "Python Docstring";
-        url = "https://peps.python.org/pep-0257/#what-is-a-docstring";
-        description = "a string literal that occurs as the first statement in "
-                + "a module, function, class, or method definition. Such a "
-                + "docstring becomes the __doc__ special attribute of that "
-                + "object";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-
-        name = "Python Fractions Module";
-        url = "https://docs.python.org/3/library/fractions.html";
-        description = "provides support for rational number arithmetic";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-        
-        name = "Python Help System";
-        url = "https://docs.python.org/3/library/functions.html#help";
-        description = null;
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-        
-        
-        name = "Python If Statement";
-        url = "https://docs.python.org/3/reference/compound_stmts.html#if";
-        description = "used for conditional execution";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-
-        name = "Python Keywords";
-        url = "https://docs.python.org/3/reference/lexical_analysis.html#keywords";
-        description = "reserved words that cannot be used as ordinary "
-                + "identifiers (names of variables, functions, classes,"
-                + " modules and packages)";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-        
-        name = "Python Operator Module";
-        url = "https://docs.python.org/3/library/operator.html";
-        description = "exports a set of efficient functions corresponding to "
-                + "the intrinsic operators of Python";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-        
-        name = "Python Tuple";
-        url = "https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences";
-        description = "a number of values separated by commas";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-        
-        name = "Python Venv Module";
-        url = "https://docs.python.org/3/library/venv.html";
-        description = "supports creating lightweight "
-                + "\"virtual environments\", each with their own independent "
-                + "set of Python packages installed in their site directories";
-        termToIndexTerm.put(name, new IndexTerm(description, url));
-
-        name = "Python Sys Module";
-        url = "https://docs.python.org/3/library/sys.html";
-        description = "provides access to some variables used or maintained by "
-                + "the interpreter and to functions that interact strongly "
-                + "with the interpreter";
+        name = "Python delimiters";
+        url = "https://docs.python.org/3/reference/lexical_analysis.html#delimiters";
+        description = "a String that separates parts";
         termToIndexTerm.put(name, new IndexTerm(description, url));
                       
-        name = "Read Evaluate Print Loop";
+        name = "Python dict";
+        url = "https://docs.python.org/3/library/stdtypes.html#dict";
+        description = "a mapping object that maps unique keys to values";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python docstring";
+        url = "https://peps.python.org/pep-0257/#what-is-a-docstring";
+        description = "a string literal comment that occurs as the first "
+                + "statement in a module, function, class, or method "
+                + "definition. This becomes the __doc__ special attribute of "
+                + "that object";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python fractions";
+        url = "https://docs.python.org/3/library/fractions.html";
+        description = "a standard library module providing support for "
+                + "rational number arithmetic";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python lists";
+        url = "https://docs.python.org/3/library/stdtypes.html#lists";
+        description = "mutable sequences, typically used to store collections "
+                + "of homogeneous items";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python help";
+        url = "https://docs.python.org/3/library/functions.html#help";
+        description = "a function that starts the help system";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python if";
+        url = "https://docs.python.org/3/reference/compound_stmts.html#if";
+        description = "a compound statement used for conditional execution";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python keyword";
+        url = "https://docs.python.org/3/reference/lexical_analysis.html#keywords";
+        description = "a reserved word that cannot be used as an "
+                + "ordinary identifier (names of variable, function, class, "
+                + "module or package)";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python NameError";
+        url = "https://docs.python.org/3/library/exceptions.html#NameError";
+        description = "exception raised when a local or global name is "
+                + "not found";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python operator";
+        url = "https://docs.python.org/3/library/operator.html";
+        description = "a standard library module that exports a set of "
+                + "functions corresponding to the intrinsic operators of "
+                + "Python";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python print";
+        url = "https://docs.python.org/3/library/functions.html#print";
+        description = "a function from the builtins module for printing to the "
+                + "screen";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python ranges";
+        url = "https://docs.python.org/3/library/stdtypes.html#ranges";
+        description = "an immutable sequence of numbers, commonly used for "
+                + "looping a specific number of times in for loops";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                      
+        name = "Python Requests";
+        url = "https://requests.readthedocs.io/";
+        description = "a third party HTTP library for Python";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                      
+        name = "Python str";
+        url = "https://docs.python.org/3/library/functions.html#func-str";
+        description = "function from the builtins module for creating Strings";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python SyntaxError";
+        url = "https://docs.python.org/3/library/exceptions.html#SyntaxError";
+        description = "exception raised when the parser encounters a "
+                + "syntax error";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python sys";
+        url = "https://docs.python.org/3/library/sys.html";
+        description = "a standard library module that provides access "
+                + "to some variables used or maintained by the interpreter and "
+                + "to functions that interact strongly with the interpreter";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                      
+        name = "Python tuple";
+        url = "https://docs.python.org/3/library/stdtypes.html#tuples";
+        description = "immutable sequences, typically used to store "
+                + "collections of heterogeneous data";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python type";
+        url = "https://docs.python.org/3/library/functions.html#type";
+        description = "function from the builtins module for getting the type "
+                + "of an identifier";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python venv";
+        url = "https://docs.python.org/3/library/venv.html";
+        description = "a standard library module that supports creating "
+                + "lightweight \"virtual environments\", each with their own "
+                + "independent set of Python packages installed in their site "
+                + "directories";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "REPL";
         url = getWikipediaURL("Read%E2%80%93eval%E2%80%93print_loop");
-        description = "also termed an interactive toplevel or language shell, "
-                + "is a simple interactive computer programming environment "
-                + "that takes single user inputs, executes them, and returns "
-                + "the result to the user";
+        description = "a Read Evaluate Print Loop also termed an interactive "
+                + "toplevel or language shell, a simple interactive computer "
+                + "programming environment that takes single user inputs, "
+                + "executes them, and returns the result to the user";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Scope";
@@ -396,6 +544,14 @@ name = "Call By Sharing";
         description = "computer programs and associated documentation and data";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Software Bug";
+        url = getWikipediaURL("Software_bug");
+        description = "an error, flaw or fault in the design, development, or "
+                + "operation of computer software that causes it to produce an "
+                + "incorrect or unexpected result, or to behave in unintended "
+                + "ways";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Syntax Error";
         url = getWikipediaURL("Syntax_error");
         description = "an error in the syntax of a sequence of characters or"
@@ -403,11 +559,25 @@ name = "Call By Sharing";
                 + " programming language";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "TCP/IP";
+        url = getWikipediaURL("Internet_protocol_suite");
+        description = "a framework for organizing the set of communication "
+                + "protocols used in the Internet and similar computer "
+                + "networks according to functional criteria";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Unicode";
         url = getWikipediaURL("Unicode");
         description = "an information technology standard for the consistent "
                 + "encoding, representation, and handling of text expressed in "
                 + "most of the world's writing systems";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "URL";
+        url = getWikipediaURL("URL");
+        description = "Uniform Resource Locator - a reference to a Web "
+                + "resource that specifies its location and the protocol for "
+                + "retrieving it";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Variable";
@@ -425,6 +595,22 @@ name = "Call By Sharing";
                 + "web sites, or other collections of information.";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Web Accessibility";
+        url = getWikipediaURL("Web_accessibility");
+        description = "the inclusive practice of ensuring there are no "
+                + "barriers that prevent interaction with, or access to, "
+                + "websites on the World Wide Web by people with physical "
+                + "disabilities, situational disabilities, and socio-economic "
+                + "restrictions on bandwidth and speed";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "World Wide Web";
+        url = getWikipediaURL("World_Wide_Web");
+        description = "commonly known as the Web, is an information system "
+                + "enabling documents and other web resources to be accessed "
+                + "over the Internet";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
         name = "While Loop";
         url = getWikipediaURL("While_loop");
         description = "a control flow statement that allows code to be "

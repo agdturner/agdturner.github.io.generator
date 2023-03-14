@@ -124,9 +124,8 @@ public class Home extends Page {
                 + c.references.getReference("Python Packages", "Packages")
                 + ".</li>");
         w.add("<li>Using the "
-                + c.index.getReference("Read Evaluate Print Loop",
-                        "Read Evaluate Print Loop (REPL)")
-                + " environment</li>");
+                + c.index.getReference("REPL", "Read Evaluate Print Loop")
+                + " (REPL) environment</li>");
         w.add("<li>Running programs via the command line, "
                 + c.references.getReference("Jupyter Notebook")
                 + ", "
@@ -137,7 +136,7 @@ public class Home extends Page {
         w.add("<li>Python Environment Management using "
                 + c.references.getReference("Conda")
                 + " and "
-                + c.index.getReference("Python Venv Module")
+                + c.index.getReference("Python venv", "venv")
                 + "</li>");
         w.add("<li>Using the "
                 + c.references.getReference("Python Standard Library")
@@ -149,7 +148,7 @@ public class Home extends Page {
 //                + c.references.getReference("https://qgis.org/", "QGIS", null)
 //                + " Desktop - geospatial data processing software.</li>");
         w.add("<li>Including code comments and "
-                + c.index.getReference("Python Docstring", "docstrings")
+                + c.index.getReference("Python docstring", "docstrings")
                 + " to ease comprehension and use.</li>");
 //        w.add("<li>Producing documentation using "
 //                + c.references.getReference("https://docs.python.org/3/library/pydoc.html",
@@ -182,8 +181,15 @@ public class Home extends Page {
         w.add("<li>"
                 + c.index.getReference("Version Control")
                 + "</li>");
+        w.add("<li>Data encoding and "
+                + c.index.getReference("File Format", "file formats")
+                + "</li>");
+        w.add("<li>Python data structures ("
+                + c.index.getReference("Python lists", "lists")
+                + ", "
+                + c.index.getReference("Python dict", "dictionaries")
+                + "</li>");
         w.add("""
-              <li>Data encoding and data formats</li>
               <li>Program input and output</li>
               <!--
               <li>Developing Python code (planning, writing, testing, 
@@ -202,7 +208,7 @@ public class Home extends Page {
                 + c.references.getReference("GitHub")
                 + "</li>");
         w.add("<li>Developing a "
-                + c.index.getReference("Graphical User Interface")
+                + c.index.getReference("GUI", "Graphical User Interface")
                 + " (GUI)</li>");
         w.add("<li>Developing and visualising a basic spatial "
                 + c.index.getReference("Agent Based Model")
@@ -253,7 +259,7 @@ public class Home extends Page {
                 + " that:</p>");
         w.add("<ul>");
         w.add("<li>has a basic "
-                + c.index.getReference("Graphical User Interface", "GUI")
+                + c.index.getReference("GUI")
                 + ";</li>");
         w.add("""
               <li>reads in data from local files and from the Web; and</li>
@@ -286,18 +292,16 @@ public class Home extends Page {
                 + ", and "
                 + c.index.getReference("MacOS")
                 + ".<p>");
-        w.add("""
-              <p>The software is available at the University of Leeds via 
-              AppsAnywhere and the Academic Windows Virtual Desktop which can be 
-              accessed via a Web browser and the following URL:
-              <a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>.
-              This includes: 
-              <a href="https://www.anaconda.com/">Anaconda</a> - a data science 
-              platform,
-              <a href="https://qgis.org/">QGIS</a> Desktop - Geographical 
-              Information System software, and various third party Python 
-              packages.</p>
-              """);
+        w.add("<p>The software is available via 'AppsAnywhere' at the "
+                + "University of Leeds which is accessible remotely via the "
+                + "'Academic' <a href=\"https://wvd.leeds.ac.uk\">"
+                + "University Windows Virtual Desktop</a>. The software "
+                + "includes: "
+                + c.references.getReference("Anaconda")
+                + " - a data science platform, "
+                + c.references.getReference("QGIS")
+                + " Desktop - Geographical Information System software, and "
+                + "various third party Python packages.</p>");
         // Assignments and Assessments
         PythonIntroCourse pic = (PythonIntroCourse) c;
         if (pic.hasAssignments) {
@@ -309,7 +313,7 @@ public class Home extends Page {
             w.add("<li>" + pic.assignment1Name + " worth "
                     + pic.assignment1Weighting + "% of the overal mark and due "
                     + pic.assignment1DueDate + " - developed by completing "
-                    + "practical exercises by following instructions.</li>");
+                    + "the ABM practicals.</li>");
 
             w.add("<li>" + pic.assignment2Name + " worth "
                     + pic.assignment2Weighting + "% of the overal mark and due "
@@ -320,6 +324,8 @@ public class Home extends Page {
                     + "to follow. You should have sufficent knowledge and "
                     + "skill to sensibly begin this assignment from about half "
                     + "way through the course.</li>");
+            w.add("<p>See the module page on Minerva for details of the "
+                    + "assignments and how they are assessed.</p>");
             w.add("</ol>");
         }
         w.add("</div>");

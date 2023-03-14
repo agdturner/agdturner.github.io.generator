@@ -40,7 +40,9 @@ public class Assignments extends Page {
         writeH1();
         w.add("""
               <h2 id="1">1. Assignment 1</h2>");
+              <p></p>
               <h2 id="2">2. Assignment 2</h2>");
+              <p></p>
               """);
         w.add("</div>");
     }

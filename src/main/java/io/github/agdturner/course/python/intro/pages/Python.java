@@ -147,28 +147,30 @@ public class Python extends Page {
         s = addSection("3", "Running Python", 2);
 
         w.add(s.sectionHTML);
-        w.add("<p>Python instructions also known as commands or statements, can"
-                + " be entered one at a time at a "
+        w.add("<p>Python instructions also known as 'commands' or 'statements',"
+                + " can be entered one at a time at a "
                 + c.index.getReference("Command Line Interface",
                         "command-line interface", s.sid)
                 + " or passed in a file.</p>");
-        w.add("<p>Check if there is a version of Python on your "
+        w.add("<p>Check if there is a version of Python already on your "
                 + c.index.getReference("PATH", s.sid)
-                + " by running a Terminal or Command Window and entering the"
-                + " following at the prompt:</p>");
+                + " by running a 'Terminal' or 'Command Window' and entering"
+                + " the following at the prompt:</p>");
         w.add("<pre>python --version</pre>");
-        w.add("<p>If the python command cannot be found, then it is most likely"
-                + " that python is not installed. If a version of python is"
-                + " available, then the version of python should be reported."
-                + "</p>");
+        w.add("<p>If 'python' cannot be found, then it is most likely"
+                + " that Python is not installed. If a version of Python is"
+                + " available, then the version of it should be reported.</p>");
         w.add("<p>" + c.references.getReference("Anaconda")
-                + " is a data science platform. It contains: conda - an"
-                + " environment manager; a Python interpretter; some commonly"
-                + " used third party Python packages; and, some useful"
+                + " is a data science platform. It contains:"
+                + c.references.getReference("Conda")
+                + " - an environment manager; a Python interpreter; some"
+                + " commonly used third party Python packages; and, some useful"
                 + " additional tools. It is available at the University of"
-                + " Leeds via 'AppsAnywhere' using machines on campus or "
-                + "'<a href=\"https://wvd.leeds.ac.uk\">Windows Virtual Desktop"
-                + "</a>'");
+                + " Leeds via 'AppsAnywhere' using machines on campus or the "
+                + "'Academic' "
+                + "<a href=\"https://wvd.leeds.ac.uk\">"
+                + "University Windows Virtual Desktop"
+                + ".</a>");
         w.add("<p>You can also download and install Anaconda on your own"
                 + " device. If you do this, then choose the default options"
                 + " to avoid interfering with any other version of Python"
@@ -180,22 +182,21 @@ public class Python extends Page {
         w.add(s.sectionHTML);
         w.add("""
               <h4>3.1.1. Hello World</h4>
-              <p>Open an Anaconda Prompt. On Windows the prompt should look 
+              <p>Open an Anaconda prompt. On Windows the prompt should look 
               something like:</p>
               <pre>(base) C:\\></pre>
-              <p>Here, "(base)" is the activated Python environment and "C:\" is 
+              <p>Here, 'base' is the activated Python environment and 'C:\\' is 
               the current drive and directory. Enter:</p>
               <pre>python --version</pre>
-              <p>This should inform you about the version of python that came 
+              <p>This should inform you about the version of Python that came 
               with Anaconda. Enter:</p>
               <pre>python</pre>
-              <p>You should arrive at the 'Python Prompt' that looks something 
+              <p>You should arrive at the 'Python prompt' that looks something 
               like:</p>
               <pre>>>></pre>
               """);
         w.add("<p>This is a "
-                + c.index.getReference("Read Evaluate Print Loop", "REPL",
-                        s.sid)
+                + c.index.getReference("REPL", s.sid)
                 + " environment for Python. Enter:</p>");
         w.add("""
               <pre>print("Hello World")</pre>
@@ -206,7 +207,7 @@ public class Python extends Page {
 
         w.add(s.sectionHTML);
         w.add("""
-              <p>The Python Prompt can be used for some basic calculations. 
+              <p>The Python prompt can be used for some basic calculations. 
               Enter:</p>
               <pre>2 + 3</pre>
               <p>You should see the result of adding the number 2 to the number
@@ -244,7 +245,7 @@ public class Python extends Page {
               times more digits. This takes significantly longer to compute in 
               this way. Enter:</p>
               <pre>len(str(2 ** 10000000))</pre>
-              <p>While waiting for an answer, open another Anaconda Prompt to 
+              <p>While waiting for an answer, open another Anaconda prompt to 
               look at some small numbers close to zero. Enter:
               <pre>1 / 10</pre>
               <pre>1 / 100</pre>
@@ -267,8 +268,8 @@ public class Python extends Page {
         w.add(s.sectionHTML);
         w.add("<p>Mathematical operators can also be accessed via functions "
                 + "that reside in the "
-                + c.index.getReference("Python Operator Module", s.sid)
-                + "</p>");
+                + c.index.getReference("Python operator", "operator", s.sid)
+                + " module.</p>");
         w.add("""
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
@@ -277,7 +278,7 @@ public class Python extends Page {
                 File "<stdin>", line 1, in <module>
               NameError: name 'operator' is not defined</pre>
               <p>The error is that the interpreter does not know about the
-              Operator Module. Notice the similarity with this error message 
+              operator module. Notice the similarity with this error message 
               and the divide by zero error message.</p>
               <p>Enter:</p>
               <pre>dir()</pre>
@@ -291,62 +292,63 @@ public class Python extends Page {
               <p>The list is alphabetically ordered and you can tell it is a 
               list as it starts with an open square bracket '[' and ends with 
               a closing square bracket ']', and each element is separated with a
-              comma ','. In the list are the modules that the current python 
-              environment has access to and from which functionality can be 
-              used.</p>
+              comma ','. In the list are module identifiers that the current 
+              Python environment has access to (and from which functionality can 
+              be used directly).</p>
               <p>Enter:</p
               <pre>import operator</pre>
               <p>This imports or loads the operator module so that it's 
-              functionality can be accessed/used.</p>
+              functionality can be accessed.</p>
               <p>Enter:</p>
               <pre>dir()</pre>
-              <p>Now, you should see the operator module in the list.</p>
+              <p>You should see the operator module in the list.</p>
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
               <p>Now, you should not get the error encountered before the 
               operator module was imported, but a result.</p>
-              <p>The dot '.' in this command is an operator called the dot 
-              operator. It instructs the python interpretter to look inside the 
+              <p>The dot '.' in this command is an operator called the 'dot 
+              operator'. It instructs the python interpretter to look inside the 
               thing on the left (of the dot) to find the thing on the right 
               (of the dot). So, the expression looks inside the operator module 
-              for the add function, and passes into the add function two 
-              parameters in the given order. The add function returns the result 
-              of summing these two numbers, and the result is displayed.</p> 
+              for the function 'add', and passes into the it two parameters in 
+              the given order. The function returns the result of summing these
+              two numbers, and the result is displayed.</p> 
               <p>To list the functions in the operator module, enter:</p>
               <pre>dir(operator)</pre>
               <p>It is quite a long list!</p>
               <p>Notice that there are numerous functions that have a name 
               starting and ending with a double underscore '__'. These are not 
-              meant to be called directly, but they can be.</p>
+              normally called directly, but they can be.</p>
               <p>Enter:</p>
               <pre>operator.__add__(2, 3)</pre>
               <p>Python does not exert access control on variables and 
               functions. A naming convention is used to indicate to users 
               whether a variable or function is meant to be accessed from 
-              outside the module. Underscores (_) and double underscores (__) at
+              outside the module. Underscores '_' and double underscores '__' at
               the start and/or end of identifiers have a special meaning in 
-              python.</p>
+              Python. As a general rule, you should not modify anything with 
+              these in their name.</p>
               <p>Have a play and use some other functions from the operator 
               module.</p>
               """);
         s = addSection("3.3", "The Help System", 3);
         w.add(s.sectionHTML);
-        w.add(c.index.getReference("Python Help System", "", s.sid));
+        w.add(c.index.getReference("Python help", "", s.sid));
         w.add("""
-              <p>At the Python Prompt, enter:</p>
+              <p>At the Python prompt, enter:</p>
               <pre>help(operator.add)</pre>
               <p>This prints out some information about how to use the operator
               module add function.</p>
               <p>Enter the following to enter the help system:</p>
               <pre>help()</pre>
-              <p>The prompt should change to the 'Help Prompt' and look like:</p>
+              <p>The prompt should change to the 'Help prompt' and look like:</p>
               <pre>help> </pre>
               <p>Read what is printed.</p>
               <p>Enter:</p>
               <pre>modules</pre>
               <p>It may take a few minutes to report a list of available 
               modules.</p>
-              <p>At the Help Prompt enter:</p>
+              <p>At the Help prompt enter:</p>
               <pre>operator</pre>
               <p>This should display the start of the help documentation for the 
               operator module. Press the &lt;enter&gt; key to see the next line 
@@ -355,7 +357,7 @@ public class Python extends Page {
               key streams the documentation a page at a time. The &lt;q&gt; key 
               quits and should return you to the prompt.</p>
               <p>Have a look at some documentation for other modules.</p>
-              <p>To exit the help system and return you to the Python Prompt, 
+              <p>To exit the help system and return you to the Python prompt, 
               enter:</p>
               <pre>q</pre>
               <p>Before learning how to run a file of Python commands, let us 
@@ -374,17 +376,23 @@ public class Python extends Page {
                 + c.index.getReference("Syntax Error", "syntax error", s.sid)
                 + " gets raised.</p>");
         w.add("""
-              <p>At the python prompt enter:</p>
+              <p>At the Python prompt enter:</p>
               <pre>x=</pre>
-              <p>You should get the following syntax error:</p>
+              """);
+        w.add("<p>You should get the following "
+                + c.index.getReference("Python SyntaxError", "SyntaxError", 
+                        s.sid)
+                + ":</p>");
+        w.add("""
               <pre>
               File "<stdin>", line 1
                   x =
                      ^
               SyntaxError: invalid syntax
               </pre>
-              <p>Notice how this attempts to indicate where the syntax error is.
-              Essentially, the issue with this code is that the expression is 
+              <p>Notice how this attempts to indicate where the syntax error 
+              is.</p>
+              <p>Essentially, the issue with this code is that the expression is 
               incomplete: There should be something on the right of the equals 
               sign '='.</p>
               <p>One of the key skills in coding is learning to read and 
@@ -392,7 +400,7 @@ public class Python extends Page {
               
               <h3 id="4.2">4.2. Statements</h3>
               <p>Multiple statements on a single line are separated with 
-              semicolons (;). At the python prompt enter:</p>
+              semicolons ';'. At the python prompt enter:</p>
               <pre>y=1;x=y;print(x)</pre>
               <p>The output should be:</p>
               <pre>1</pre>
@@ -422,19 +430,29 @@ public class Python extends Page {
         w.add("<p>Between triple quotes everything is a comment. There are two"
                 + " types of triple quote, those using single quotation marks,"
                 + " and those using double quotation marks.</p>");
-        w.add("<p>Triple double quotes '\"\"\"' are used for "
-                + c.index.getReference("Python Docstring", "docstrings", s.sid)
+        w.add("<p>Triple double quotes are used for "
+                + c.index.getReference("Python docstring", "docstrings", s.sid)
                 + " - a form of source documentation that will be detailed"
                 + " later in the course.</p>");
-        w.add("<p>Triple single quotes \"'''\" are useful for commenting out"
+        w.add("<p>Triple single quotes are useful for commenting out"
                 + " sections of code when "
                 + c.index.getReference("Debugging", "debugging", s.sid)
                 + ".</p>");
         w.add("""
               <pre>
+              '''
+              This is between triple single quotes and is a comment
+              '''
+              
               \"\"\"
-              This is between triple quotes and is a comment.
+              This is between triple double quotes and is a comment.
               \"\"\"
+              
+              '''
+              \"\"\"
+              This is both between triple single and double quotes and is a comment.
+              \"\"\"
+              '''
               </pre>
               <p>Comments are to help make code easier for humans to read and 
               understand. It can be helpful to refer to other information 
@@ -455,7 +473,7 @@ public class Python extends Page {
               # Calculate x to the power of y
               x ** y
               </pre>
-              <p>Indentation is syntax in python. Indentation refers to the 
+              <p>Indentation is syntax in Python. Indentation refers to the 
               blank space that precedes expressions on a line. (Blank space is 
               sometimes called 'white space' - as code backgrounds were normally 
               white in colour). It is good to be consistent with indentation and 
@@ -471,52 +489,64 @@ public class Python extends Page {
                   print(x) # This line is indented one standard step further.
               print(\"done\") # This line is indented to the previous level.
               </pre>
-              <p>In the code above, if the variable x is greater than the 
-              variable y, then the value of x is printed. If the variable x has 
-              not been initialised, then there will be an error:</p>
+              <p>In the code above, if the variable 'x' is greater than the 
+              variable 'y', then the value of 'x' is printed. If the variable 
+              'x' has not been initialised, then there will be an error:</p>
               <pre>Traceback (most recent call last):
                 File "<stdin>", line 1, in <module>
               NameError: name 'x' is not defined</pre>
-              <p>The function print() is a function of the builtin module that 
-              is loaded by default. Read the the help for it, enter:
-              </p>
-              <pre>help(print)</pre>
-              
-              <h3 id="4.5">4.5. Delimiters, Literals and Operators</h3>
-              <p>Delimiters separate bits of code and can also act as operators. 
-              The following are delimiters in python:</p>
+              """);
+        w.add("<p>The function "
+                + c.index.getReference("Python print", "print", s.sid)
+                + " is a function of the "
+                + c.index.getReference("Python builtins", "builtins", s.sid)
+                + " module that is loaded by default. Read the the help for it."
+                + " Enter:</p>");
+        w.add("<pre>help(print)</pre>");
+        
+        s = addSection("4.5", "Delimiters, Literals and Operators", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>Delimiters in code separate and help organise things. The "
+                + " following are "
+                + c.index.getReference("Python delimiters", s.sid)
+                + ":</p>");
+        w.add("""
               <pre>(       )       [       ]       {       }
               ,       :       .       ;       @       =       ->
               +=      -=      *=      /=      //=     %=      @=
               &=      |=      ^=      >>=     <<=     **=</pre>
-              <p>The various types of bracket are parentheses '()',
+              <p>The various types of bracket are paired: parentheses '()',
               square brackets '[]' and curly brackets '{}' also known as braces.
-              A lot of code uses brackets. Each open bracket must be matched 
-              with a closing bracket. Failure to match brackets correctly can 
-              cause confusion. Commas ',', colons ':', dots '.' and 
-              semicolons ';' are also commonly used delimeters in code. Don't
-              worry about what these other things do for now.</p>
+              A lot of code uses brackets. Each open bracket must be paired 
+              with a closing bracket. Failure to pair brackets correctly is 
+              problematic and is a common reason for confusion. Commas ',', 
+              colons ':', dots '.' and semicolons ';' are also commonly used 
+              delimeters in code. Details of these other delimiters are omitted 
+              for the time being, but some are also operators.</p>
               <p>Literals are specific numerical or text values.</p>
-              <p>Operators are sequences of symbols that are shorthand for 
-              some operator module functions (e.g. +, -, *, /, %)</p>
               """);
+        w.add("<p>Operators are sequences of symbols that are shorthand for "
+                + c.index.getReference("Python operator", "operator", s.sid)
+                + " module functions (e.g. +, -, *, /, %)</p>");
+        
         s = addSection("4.6", "Identifiers and Keywords", 3);
         w.add(s.sectionHTML);
         w.add("<p>Identifiers are names of variables, functions, classes,"
                 + " modules and packages.</p>");
-        w.add("<p>"
-                + c.index.getReference("Python Keywords", s.sid)
-                + " (keywords) are reserved words - terms that can't be used"
-                + " for identifiers.</p>");
+        w.add("<p>A Python "
+                + c.index.getReference("Python keyword", "keyword", s.sid)
+                + " is a reserved word - a term that can't be used for an"
+                + " identifier.</p>");
         w.add("<p>Attempting to "
-                + c.index.getReference("Name Binding", "use them", s.sid) 
-                + " as variable names typically results in "
-                + c.index.getReference("Syntax Error", "syntax errors", s.sid)
+                + c.index.getReference("Name Binding", "use", s.sid) 
+                + " a keyword as an identifier such as a variable name"
+                + " typically results in a "
+                + c.index.getReference("Syntax Error", "syntax error", s.sid)
                 + ". Enter the following at the Python prompt:</p>");
         w.add("""
               <pre>if = 2</pre>
               <p>This should result in:</p>
-              <pre>File "<stdin>", line 1
+              <pre>File "@lt;stdin>", line 1
                   if = 2
                      ^
               SyntaxError: invalid syntax</pre>
@@ -526,7 +556,7 @@ public class Python extends Page {
               about because of the attempt to use a keyword as a variable name.
               </p>
               """);
-        w.add("<p>For more details of Python language lexicon, see the "
+        w.add("<p>For details, see the "
                 + c.references.getReference(
                         "Python Lexical Analysis Documentation"));
         w.add("""
@@ -567,8 +597,8 @@ public class Python extends Page {
               <p>Create a new ASCII text file, add to it the following line:</p>
               <pre>print("Hello World")</pre>
               <p>Save the file with the name "HelloWorld.py". Open an Anaconda 
-              Prompt. Change to the directory where you saved the file 
-              (path_to_directory) using:</p>
+              prompt. Change to the directory where you saved the file 
+              'path_to_directory' using:</p>
               <pre>cd path_to_directory</pre>
               <p>Run the file using:</p>
               <pre>python HelloWorld.py</pre>
@@ -576,23 +606,21 @@ public class Python extends Page {
               <pre>Hello World</pre>
               <p>If your file is on a different drive in Windows, then you 
               may have to switch to the drive before changing to the directory 
-              within the drive. To change from drive C: to drive M: in Windows, 
-              enter the following at the prompt:</p>
+              within the drive. To change from drive 'C:' to drive 'M:' in 
+              Windows, enter the following at the prompt:</p>
               <pre>M:</pre>
-              <p>To change back again to C:, enter the following at the prompt:
-              </p>
+              <p>To change back again to 'C:', enter the following at the 
+              prompt:</p>
               <pre>C:</pre>
               <p>For code in files, the statements are executed from top to 
               bottom, but the flow may call functions which may themselves call 
-              other functions. We will learn how to define functions later, but 
-              let us learn about calling functions soon and understand that when 
-              the last command of the function is executed, then the 
-              interpreter returns to where the function was called.</p>
-              <p>Try creating another file adding some python commands and 
-              running it.</p>
-              <p>It is not necessary to run the files of python code from the 
-              directory in which the file is located. You can provide a path to
-              the file in the python command. That path can be absolute (from 
+              other functions. The interpreter returns to the line of code after 
+              a function call once the function has been executed.</p>
+              <p>Try creating another file, add some Python commands and run it.
+              </p>
+              <p>It is not necessary to run files of Python code from the 
+              directory in which the file is located. A path to the file can be 
+              given in the Python command. That path can be absolute (from 
               the base of the file system) or relative (from the current 
               directory.</p>
               """);
@@ -602,21 +630,22 @@ public class Python extends Page {
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.references.getReference("Jupyter Notebook")
-                + ", is a REPL based system that embeds code into a document"
+                + ", is a "
+                + c.index.getReference("REPL", s.sid)
+                + " like system that embeds code into a document"
                 + " containing other information: text, images, data, and"
                 + " links. Code is entered in cells which when run present"
                 + " outputs within the document which is displayed in a Web"
                 + " browser (unless ouputs are configured to appear in separate"
-                + "windows). Jupyter Notebook is useful as code can be"
-                + " described in detail and distributed with associated data"
-                + " and visualizations.</p>");
+                + " windows).</p>");
         w.add("<p>Jupyter Notebook comes bundled with Anaconda and can be "
                 + "downloaded separately from:"
-                + "<a href=\"https://jupyter.org/\">Jupyter</a>.</p>");
+                + c.references.getReference("Jupyter")
+                + ".</p>");
         w.add("""
-              <p>At the Anaconda Prompt change to a directory where you can 
+              <p>At the Anaconda prompt change to a directory where you can 
               write new files and enter:</p>
-              <pre>jupyter notbook</pre>
+              <pre>jupyter notebook</pre>
               <p>Some messages should appear in the Command Window and a Web 
               browser tab should open with the Jupyter Notebook Interface.</p>
               <p>From the New Button drop down list of the Jupyter Notebook 
@@ -632,32 +661,28 @@ public class Python extends Page {
               <pre>print("Hello World")</pre>
               <p>You should see something like:</p>
               <img src="../../resources/python/jupyter3.png" alt="Jupyter Notebook Interface 3" />
-              <p>Entire programs can be entered into cells as can 
-              <a href="https://www.markdownguide.org/basic-syntax/">markdown</a>
-              .</p>
-              <p>Because Jupyter Notebooks runs in the browser, it can utilise
-              <a href="https://en.wikipedia.org/wiki/JavaScript">Javascript</a>
-              - a programming language that all widely used modern Web browsers 
-              work with. Leveraging Javascript and Python allows for the 
-              generation of some Web based interactive maps. In Section 9, there 
-              is a further exercise using Jupyter Notebooks to this end. First 
-              we learn about setting up Python environments and installing 
-              Python packages - as a good way to get interactive maps working in 
-              a Jupyter Notebook is to make use of additional packages that are
-              not included with Anaconda and prior to modifying a Python 
-              environment by installing Python packages, it is good to know 
-              about Python environment management. First though, let's explore
-              running Python in other ways... Before launching into that, 
-              consider if you should take a short break...</p>
               """);
+        w.add("<p>Entire programs can be entered into cells as can "
+                + c.index.getReference("Markdown", s.sid)
+                + ".</p>");
+        w.add("<p>Because a Jupyter Notebook application runs in a Web "
+                + "browser, it can utilise "
+                + c.index.getReference("JavaScript", s.sid)
+                + " - a programming language that all widely used modern Web "
+                + "browsers can run. Leveraging JavaScript and Python allows "
+                + "for the generation of some Web based interactive maps. In "
+                + "<a href=\"#9\">Section 9</a>, there is a practical exercise "
+                + "about this. Prior to attempting this, it is important to "
+                + "learn about setting up Python environments and installing "
+                + "Python packages. First though, let's explore running Python "
+                + "code in some other ways...</p>");
 
         s = addSection("7", "Integrated Development Environments", 2);
 
         w.add(s.sectionHTML);
 
         w.add("<p>"
-                + c.index.getReference(
-                        "Integrated Development Environment",
+                + c.index.getReference("IDE", 
                         "Integrated Development Environments", s.sid)
                 + "(IDEs) are software tools used to make writing code and "
                 + "developing software easier. This section introduces "
@@ -667,12 +692,14 @@ public class Python extends Page {
                 + "- IDEs that come with "
                 + c.references.getReference("Anaconda")
                 + ".</p>");
+        s = addSection("7.1", "IDLE", 3);
+        w.add(s.sectionHTML);
         w.add("""
-              <h3 id="7.1">7.1. IDLE</h3>
               <p>Python comes with IDLE - an Integrated Development and Learning 
-              Environment. IDLE has an editor window, and a console window for 
+              Environment. The IDLE application has an 'editor window' for 
+              editing files of Python commands, and a 'console window' for 
               entering REPL commands and displaying output. At the Anaconda 
-              Prompt enter:</p>
+              prompt enter:</p>
               <pre>idle</pre>
               <p>This should open up the IDLE console window that should look 
               something like the image below:</p>
@@ -683,36 +710,38 @@ public class Python extends Page {
               <p>Open your HelloWorld.py file. It should open the file in an 
               editor window that looks something like:</p>
               <img src="../../resources/python/idle2.png" alt="The IDLE file editor window interface" />
-              <p>Notice again that like Jupyter Notebook, the code appearing in 
+              <p>Notice that as with a Jupyter Notebook, the code appearing in 
               the IDLE editor window is styled.</a>
               <p>The editor window has other menu options. Select:</p>
               <pre>Run -> Run Module</pre>
               <p>This should run the HelloWorld.py file, and output to the 
               console in the other window which should appear something like:</p>
               <img src="../../resources/python/idle3.png" alt="The IDLE interface having run the Hello World program" />
-              <p><a href="https://docs.python.org/3/library/idle.html">
-              IDLE Documentation</a>.</p>
-              <p>IDLE is an Integrated Development Environment (IDE) that comes 
-              with Python.</p>
-              <p>Close down IDLE.<p>
-              
-              <h3 id="7.2">7.2. Spyder</h3>
-              <p>Spyder (the Scientific PYthon Development EnviRonment) is a 
-              more sophisticated IDE that comes with Anaconda and can be 
-              downloaded from the 
-              <a href="https://www.spyder-ide.org/">Spyder Website</a>.
-              <p>From the Anaconda Prompt enter:</p>
+              """);
+        w.add("<p>"
+                + c.references.getReference("IDLE")
+                + " is an IDE that comes with Python.</p>);");
+        w.add("<p>Close down the instance of IDLE that is running.<p>");
+        s = addSection("7.2", "Spyder", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.references.getReference("Spyder") 
+                + " - the Scientific PYthon Development EnviRonment, is"
+                + " currently more sophisticated IDE that comes with Anaconda."
+                + "</p>");
+        w.add("""
+              <p>From the Anaconda prompt enter:</p>
               <pre>spyder</pre>
               <p>It may take a couple of minutes to load, when you should see 
               something like this:</p>
               <img src="../../resources/python/spyder1.png" alt="The Spyder interface" />
-              <p>The pane to the left is the editor pane. The pane to the top 
-              right is the inspector pane. The pane to the bottom right is the 
-              console pane.</p>
-              <p>From the menus, choose:</p>
+              <p>The pane to the left is the 'editor pane'. The pane to the top 
+              right is the 'inspector pane'. The pane to the bottom right is the 
+              'console pane'.</p>
+              <p>From the menu, choose:</p>
               <pre>File -> Open...</pre>
-              <p>Open your HelloWorld.py file which should appear in the editor 
-              pane. From the menus, choose:</p>
+              <p>Open your 'HelloWorld.py' file which should appear in the 
+              editor pane. From the menu, choose:</p>
               <pre>Run -> Run</pre>
               <p>If a popup box appears choose the default and this should run 
               your program and output should apear in the console like in the 
@@ -721,15 +750,21 @@ public class Python extends Page {
               World program successfully run" />
               <p>Use the editor and add the following in line 2:</p>
               <pre>x = y</pre>
-              <p>Try to run the file again. You should get an error. There 
-              should also be a mark against the code on line 2 on the left and 
-              on the right of the editor pane. Try hovering your mouse over the 
-              mark on the left. You should see something similar to the image 
-              below:</p>
-              <img src="../../resources/python/spyder3.png" alt="The Spyder interface showing an error." />
-              <p><a href="https://docs.spyder-ide.org/current/index.html">
-              Spyder Documentation</a></p>
-              
+              """);
+        w.add("<p>Try to run the file again. It should raise a "
+                + c.index.getReference("Python NameError", "NameError", s.sid)
+                + " and there should be marks against the code on line 2 on "
+                + "the left and right of the editor pane. Hover your mouse "
+                + "cursor over the mark on the left. You should see something "
+                + "similar to the image below:</p>");
+        w.add("""
+              <img src="../../resources/python/spyder3.png" 
+              alt="The Spyder interface showing an error." />
+              """);
+        w.add("<p>Have a look at the latest "
+                + c.references.getReference("Spyder Documentation")
+                + "</p>");
+        w.add("""
               <h3 id="7.3">7.3 Other IDEs</h3>
               <p>There are other IDEs that support Python code development. If 
               you are already familiar with an IDE that supports Python code 
@@ -744,72 +779,89 @@ public class Python extends Page {
               -->
               .
               </p>
-              
-              <h2 id="8">8. QGIS Desktop Python Console</h2>
-              <p>Geographical Information System (GIS) software are used to 
-              create, manage, process, model, visualise and serve geographical 
-              data and information. <a href="https://www.qgis.org/">QGIS</a>, 
-              also called Quantum GIS, is Free and Open Source Software, there 
-              is a thriving developer and user community, and QGIS Desktop 
-              provides a Python Application Program Interface (API). QGIS is 
-              mostly written in mixture of 
-              <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>
-              and Python and there are both server and client software. QGIS 
-              Desktop is the client software which can be controlled via a 
-              Graphical User Interface (GUI). The GUI has a Menu, Panels and 
-              Toolbars. Load QGIS Desktop via AppsAnywhere or download, install 
-              and run it on your own device. Downloads are available from:</p>
-              <p><a href="https://www.qgis.org/">https://www.qgis.org/</a></p>
-              <p>As QGIS loads, a splash screen should appear, then when fully 
-              loaded the GUI should appear. From the GUI Menu select:</p>
+              """);
+        s = addSection("8", "QGIS Desktop Python Console", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("Geographical Information System (GIS)")
+                + " software are used to create, manage, process, model,"
+                + " visualise and distribute geographical data and information."
+                + c.references.getReference("QGIS") 
+                + " Desktop is GIS software that is "
+                + c.index.getReference("Free and Open Source Software", 
+                "free and open source")
+                + ", there is currently a thriving developer and user "
+                + "community and a Python "
+                + c.index.getReference("API")
+                + ". QGIS is mostly written in mixture of "
+                + c.index.getReference("C++", s.sid)
+                + " and Python and there is both Desktop and Server software"
+                + " that to some extent can be automatedusing Python APIs."
+                + "</p>");
+        w.add("<p>QGIS Desktop is often controlled via a "
+                + c.index.getReference("GUI", s.sid)
+                + ". The GUI has a Menu, Panels and Toolbars. Load QGIS "
+                + "Desktop via 'AppsAnywhere' or download, install and run it "
+                + "on your own device.</p>");
+        w.add("<p>As QGIS Desktop software loads, a splash screen should "
+                + "appear. When fully loaded the GUI should appear.</p>");
+        w.add("""
+              From the GUI Menu select:</p>
               <pre>Plugins > Python Console</pre>
               <p>You should see something like:</p>
-              <img src="../../resources/python/qgis1.png" alt="QGIS Python Console basic interface" />
-              <p>There are 5 buttons, a display area and a Python Prompt:</p>
+              <img src="../../resources/python/qgis1.png" alt="QGIS Desktop Python Console basic interface" />
+              <p>There are 5 buttons, a display area and a Python prompt:</p>
               <pre>>>></pre> 
-              <p>At the Python Prompt enter:</p>
+              <p>At the Python prompt enter:</p>
               <pre>dir()</pre>
               <p>A considerable amount of functionality should be listed in the 
               display area of the Python Console.</p>
-              <p>To list the functionality of the QGIS interface, enter:</p>
+              <p>To list the functionality of the QGIS Desktop interface, 
+              enter:</p>
               <pre>dir(iface)</pre>
-              <p>The QGIS Python API allows us to access all the functionality 
-              in the GUI programatically, gives greater control in data loading 
-              and processing, and allows us to use additional functionality 
-              available in the Python environment provided. The following is a 
-              key reference:</p> 
               """);
-        w.add("<p>" + c.references.getReference("QGIS Python API Documentation")
+        w.add("<p>"
+                + c.index.getReference("PyQGIS", s.sid)
+                + " allows us to access all the functionality accessible via "
+                + "the QGIS Desktop GUI programatically, and gives greater "
+                + "control in data loading and processing. It also allows us "
+                + "to develop and use additional functionality including "
+                + "functionality available in the Python environment provided."
                 + "</p>");
         w.add("""
-              <p>In the Python Console, locate and action the Show Editor 
-              Button. The Editor should appear on the right of the Python 
-              Console.</p>
+              <p>In the QGIS Desktop Python console, locate and action the 
+              'Show Editor' button. The 'editor panel' should appear on the 
+              right of the console.</p>
               <p>Download
               <a href="../../resources/python/QGIS1.py">QGIS1.py</a> - a Python
               source code file written to be run in the QGIS Desktop Python 
-              Console. Read the source code, and run the program following the 
-              instructions that are in the multi-line comment at the top of 
+              console. Read the source code, and run the program following the 
+              instructions that are in the multi-line comment at the top of the
               source code. (An outline of what to expect is provided in that 
-              multi-line comment too.)</p>
+              multi-line comment.)</p>
               <p>The import statements are at the top (which is good practise). 
               Code is organised into code blocks with comments that outline what 
               each code block does (also good practise). The import statements 
-              start with the keyword "from" which details from which package the 
-              specified modules are imported. In the code there are some For 
-              Loops which start with the keyword "for". The first of these 
-              iterates over the fields in a layer. The others iterate over the 
-              features in a layer. Iteration simply means going through a 
-              collection of things one at a time.</p>
-              <p>The program accesses both attribute and geometry from a layer, 
-              and adds data into the QGIS Desktop GUI display. Once the program 
-              has run the QGIS interface should look something like:
+              start with the keyword 'from' which details from which package the 
+              specified modules are imported.</p>
+              """);
+        w.add("<p>The code contains some "
+                + c.index.getReference("For Loop", "for loops")
+                + " which start with the keyword 'for'. The first of these "
+                + "iterates over the 'fields' in a 'layer'. The others iterate "
+                + "over the 'features' in a 'layer'. (Iteration simply means "
+                + "going through a collection of things one at a time.)</p>");
+        w.add("<p>The program accesses both attribute and geometry data from a "
+                + "layer, and adds data into the QGIS Desktop GUI display."
+                + "</p>");
+        w.add("<p>Once the program has run the QGIS Desktop GUI should look "
+                + "something like:</p>");
+        w.add("""
               <img src="../../resources/python/qgis2.png" alt="QGIS Python 
               Console after having run QGISExample.py" />
               </p>
-              <p>QGIS Desktop Plugins can be written in both C++ and Python. 
-              This course does not cover these things, but here are some 
-              relevant links:
+              <p>QGIS Desktop Plugins can be written in both C++ and Python. For 
+              details see the following:
               </p>
               <ul>
               <li><a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
@@ -817,8 +869,13 @@ public class Python extends Page {
               <li><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/index.html#developing-python-plugins">
               PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a></li>
               </ul>
+              """);
+        
+        s = addSection("9", "Python Packages and Environment Management", 2);
 
-              <h2 id="9">9. Python Packages and Environment Management</h2>
+        w.add(s.sectionHTML);
+        
+        w.add("""
               <p>Packaging code and delivering it to users via repositories is 
               good practise for a numerous reasons. Many software and code 
               repositories are language specific or software specific (like QGIS
@@ -886,22 +943,24 @@ public class Python extends Page {
               time, there is greater risk that version 1.10 would be the version 
               available and it could be hard to diagnose issues as a result of 
               this.</p>
-              <p>Conda is a package and environment manager that comes with 
-              Anaconda. There is another common way to create and manage Python 
-              environments using
-              <a href="https://docs.python.org/3/library/venv.html">venv</a> - 
-              which creates what are termed Virtual Environments and 
-              <a href="https://pip.pypa.io">pip</a>. These are much
-              like the Python environments created by Conda and the commands for 
-              doing this are very similar. Conda is the recommended way of 
-              installing some Python GIS packages that are interesting  . It is not necessarily that those 
-              packages cannot be configured and made to work using venv and pip, 
-              but that such configuration can be more complicated, especially on 
-              Windows operating systems. A key reference 
-              for Conda is:
-              <a href="https://docs.conda.io/">https://docs.conda.io/</a>
-              </p>
-              <p>Open an Anaconda Prompt, change to a directory where you can 
+              """);
+        w.add("<p>"
+                + c.references.getReference("Conda")
+                + " is a package and environment manager that comes with "
+                + "Anaconda. There is another common way to create and manage "
+                + "Python environments using "
+                + c.index.getReference("Python venv", "venv", s.sid)
+                + " - which creates what are termed 'Virtual Environments' and "
+                + c.references.getReference("PIP", "pip")
+                + ". These are much like the Python environments created by"
+                + " Conda (and the commands for doing this are very similar)."
+                + " Conda is the recommended way of installing some Python"
+                + " GIS packages. It is not necessarily that those packages"
+                + " cannot be configured and made to work using venv and pip,"
+                + " but that such configuration is currently more complicated,"
+                + " especially on Microsoft Windows operating systems.</p>");
+        w.add("""
+              <p>Open an Anaconda prompt, change to a directory where you can 
               write files and enter the following command to create a list of
               Python packages available in the Python environment:</p>
               <pre>pip list > piplist.txt</pre>
@@ -922,28 +981,36 @@ public class Python extends Page {
               replicate the environment on another resource. For details of how
               to do that see:
               <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">
-              https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment</a>
-              </p>
-              <p>Get a list of available environments. Enter:</p>
+              The Conda User Guide Page on Managing Environments Section on 
+              Sharing an Environment</a></p>
+              <p>Get a list of available Conda environments. Enter:</p>
               <pre>conda env list</pre>
               <p>The list is displayed and should look something like:</p>
               <pre># conda environments:
               #
               base                  *  C:\\ProgramData\\Anaconda3</pre>
-              <p>Often when creating an environment, it is for a specific 
+              <p>Often when creating an Python environment, it is for a specific 
               purpose and only specific packages are installed. It is advised to
               install packages together as the installer attempts to resolve 
-              conflicts and ensure the versions of the package dependencies 
-              installed will work together. You are instructed to install a 
-              default environment with just the core of the version of Python 
-              that comes with Anaconda, then install on this environment all the 
-              packages needed for this course. Altogether you need about 2GB of 
-              space in the location where you install the environment. 
-              Installation onto OneDrive is not advised. On University of Leeds 
-              shared computers or on the Windows Virtual Desktop, it is 
-              recommended that you organise to install onto the M:\\ drive e.g.
-              into:
+              conflicts and ensure the versions of packages installed will work 
+              together. Below, the instructions are to install a default Python
+              environment - one that comes with Anaconda, then install in this 
+              environment all the packages needed for this course. Altogether 
+              you need about 2GB of space in the location where you create the 
+              environment.
               """);
+        w.add("<p>Creating Python environments on Cloud storage such as on "
+                + "<a href=\"https://en.wikipedia.org/wiki/OneDrive\">"
+                + "Microsoft OneDrive</a>"
+                + " or "
+                + "<a href=\"https://en.wikipedia.org/wiki/GoogleDrive\">"
+                + "Google Drive</a>"
+                + " is currently not recommended. On University of Leeds"
+                + " campus computers or the 'Academic' "
+                + "<a href=\"https://wvd.leeds.ac.uk\">"
+                + "University Windows Virtual Desktop</a>"
+                + " it is recommended to create the Python environment on the "
+                + "M:\\ drive, for example in the following location:");
         String envPath = "M:\\" + c.getCourseCode1() + "\\envs";
         w.add(envPath);
         w.add("<p>Create the directory in which to store the environment.</p>");
@@ -955,29 +1022,28 @@ public class Python extends Page {
                 + "install the environment in a particular location. The path "
                 + "example given here is for Windows if using Linux or MacOS, "
                 + "then the path will be different. By default conda creates "
-                + "environments in a directory called envs located wherever "
+                + "environments in a directory called 'envs' located wherever "
                 + "Anaconda is installed."
                 + "Confirm the environment creation by pressing the <y> key "
-                + "when prompted. When the environment creating is complete, "
-                + "which should just take a few seconds. Check the newly "
-                + "created environment is listed. Enter:</p>");
+                + "when prompted. Creating the environment should just take a "
+                + "few seconds. Once created, check it is listed. Enter:</p>");
         w.add("<pre>conda env list</pre>");
         w.add("<p>You should see something like what is shown below. The "
                 + "details can vary depending on where the environment was "
-                + "installed:<p>");
+                + "created:<p>");
         w.add("<pre># conda environments:");
         w.add("#");
         w.add("base             *  C:\\ProgramData\\Anaconda3");
         w.add("myenv               " + envPath + "</pre>");
-        w.add("<p>Conda environments are registered/listed in the .conda "
-                + "directory in your home directory in a file with the name "
-                + "environments.txt</p>");
-        w.add("<p>Assuming you named your environment myenv, activate it by"
+        w.add("<p>Conda environments are registered/listed in the '.conda' "
+                + "directory in your user home directory in a file with the "
+                + "name 'environments.txt'.</p>");
+        w.add("<p>Assuming you named your environment 'myenv', activate it by"
                 + " entering:</p>");
         w.add("<pre>conda activate " + envPath + "</pre>");
         w.add("""
               <p>The prompt should change to have "(myenv)" prepended</p>
-              <p>Next step is to install a set of packages including:</p>
+              <p>Next install the following Python packages:</p>
               <ul>
               <li><a href="https://contextily.readthedocs.io/en/latest/">Contextily</a></li>
               <li><a href="https://github.com/Toblerity/Fiona">Fiona</a></li>
@@ -985,18 +1051,19 @@ public class Python extends Page {
               <li><a href="https://geopandas.org/">Geopandas</a></li>
               <li><a href="https://readthedocs.org/projects/pip/">pip</a></li>
               <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
-              <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/">PyQt5</a></li>
+              <li><a href="https://pypi.org/project/PyQt5">PyQt5</a></li>
+              <li><a href="https://pypi.org/project/spyder-kernels/">spyder-kernels</li>
               </ul>
-              <p>Install these as well as ipykernel and spyder-kernels=2.2. Enter:</p>
+              <p>Enter:</p>
               <pre>conda install -c conda-forge contextily fiona folium geopandas pip pysal ipykernel spyder spyder-kernels=2.2</pre>
-              <p>Install PyQt5 with:</p>
               <pre>pip install pyqt5</pre>
-              <p>Install myenv into the ipykernel so it is available via the 
-              Jupyter Notebook interface.</p>  
+              <p>Install 'myenv' into the 'ipykernel' so it is available via the 
+              Jupyter Notebook interface:</p>  
               <pre>python -m ipykernel install --user --name=myenv</pre>
               <p>Download
-              <a href="../../resources/python/Jupyter1.ipynb">Jupyter1.ipynb</a> and save it in a 
-              directory and start Jupyter Notebook so it can load the file.</p>
+              <a href="../../resources/python/Jupyter1.ipynb">
+              Jupyter1.ipynb</a>, save it to a directory and start 
+              Jupyter Notebook so it can load the file.</p>
               <p>Enter the following to run Jupyter Notebook:</p>
               <pre>jupyter notebook --NotebookApp.max_buffer_size=1073741824</pre>
               <p>This gives Jupyter Notebook twice as much memory as the current 
@@ -1004,7 +1071,7 @@ public class Python extends Page {
               <p>Wait for a Web browser tab to appear with the Jupyter Notebook 
               interface. When it appears select:<p>
               <pre>New > myenv</pre>
-              <p>Open Jupyter1.ipynb read and run it cell by cell.</p>
+              <p>Open 'Jupyter1.ipynb' read and run it cell by cell.</p>
               <p>If for some reason that does not work, then try something a bit 
               simpler and copy the code below into a cell and run it.</p>
               <pre><code class="language-python"># Simple example code 

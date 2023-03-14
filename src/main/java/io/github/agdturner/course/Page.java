@@ -175,7 +175,7 @@ public abstract class Page extends WebPage {
     public Section addSection(String inPageID, String sectionName, int level) {
         SectionID sid = new SectionID(c.sectionIDs.size(), this, inPageID);
         c.sectionIDs.add(sid);
-        c.addSection(sid, id, title + " " + inPageID + " " + sectionName);
+        c.addSection(sid, id, title + ": " + inPageID + ". " + sectionName);
         return new Section(sid, "<h" + level + " id=\"" + inPageID + "\">" 
                 + inPageID + ". " + sectionName + "</h" + level + ">");
     }

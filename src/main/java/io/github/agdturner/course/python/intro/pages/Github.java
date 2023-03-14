@@ -42,7 +42,7 @@ public class Github extends Page {
               <h2 id="1">1. Introduction</h2>
               <p><a href="http://www.github.com">GitHub</a> is a
               <a href="https://en.wikipedia.org/wiki/Git">Git</a>
-              based code hosting platform for version control and collaboration. 
+              based code hosting platform. 
               "It lets you and others work together on projects from anywhere."
               </p>
               <p>GitHub makes it easy to get involved in code development, and 
@@ -50,25 +50,26 @@ public class Github extends Page {
               </p>
               <p>For a history of GitHub have a look at the
               <a href="https://en.wikipedia.org/wiki/GitHub">
-              GitHub Wikipeida Article</a></p>
+              GitHub Wikipedia Article</a></p>
               <p>If you accept the 
               <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service">
-              GitHub Terms of Service</a>, please create a
-              <a href="http://www.github.com">GitHub</a> account choosing a 
+              GitHub Terms of Service</a>, please create an account choosing a 
               username comprising lower case letters and numbers. You do not 
               need a GitHub account to complete this course, but it is 
-              recommended. There are other ways that you can use version control 
-              and create a basic website for the assignments.</p>
+              recommended.</p>
               
               <h2 id="2">2. Getting Started with GitHub</h2>
               <p>Complete the
               <a href="https://docs.github.com/en/get-started/quickstart/hello-world">
               Hello World Tutorial</a>.</p>
-              <p>If you are using a University of Leeds machine you can access 
-              Git client software via AppsAnywhere and the Windows Vitual 
-              Desktop:
-              <a href="https://wvd.leeds.ac.uk">https://wvd.leeds.ac.uk</a>.
-              Alternatively, 
+              """);
+        w.add("""
+              <p>Git client software is available via 'AppsAnywhere' at the 
+              University of Leeds which is accessible remotely via the 
+              'Academic'
+              <a href="https://wvd.leeds.ac.uk">
+              University Windows Virtual Desktop</a>
+              . Alternatively, 
               <a href="https://docs.github.com/en/get-started/quickstart/set-up-git#setting-up-git">
               follow these instructions to setup a 
               <a href="https://git-scm.com/downloads">Git Client<a> on your 

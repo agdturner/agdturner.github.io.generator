@@ -40,12 +40,11 @@ public class ABM8 extends Page {
         writeH1();
         w.add("""
               <h2 id="1">1. Introduction and Preparation</h2>
-              <p>This practical is about adding a Graphical User Interface so 
-              that users can run the model.</p>
+              <p>This practical is about adding a Graphical User Interface.</p>
               <p>In your local code repository src directory duplicate your abm7
               directory and call the new directory "abm8".</p>
               
-              <h2 id="2">2. Setting up Tkinter<h2>
+              <h2 id="2">2. Setting up Tkinter</h2>
               <p>Matplotlib has different "backends" that allow it to render 
               graphics in different ways. As the GUI will be developed using 
               tkinter, it is necessary to change the matplotlib backend by 
