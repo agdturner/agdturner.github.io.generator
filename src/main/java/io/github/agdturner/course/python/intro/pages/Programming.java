@@ -43,40 +43,56 @@ public class Programming extends Page {
         w.add("""
               <h2 id="1.">1. Introduction</h2>
               <p>""");
-        w.add(c.index.getReference("Computer Programming", 
+        w.add(c.index.getReference("Computer Programming",
                 "Computer programming")
                 + " (coding) is the process of designing and building an"
-                + " executable computer program - a set of instruction that"
-                + " are fetched and executed sequentially.</p>");
+                + " executable computer program - a set of instruction"
+                + " fetched and executed sequentially.</p>");
         w.add("<p>Contemporary desktop and laptop computers typically have a"
-                + " keyboard and mouse for user input, a visual display screen,"
+                + c.index.getReference("Keyboard", "keyboard")
+                + " and "
+                + c.index.getReference("Mouse", "mouse")
+                + " for user input, a visual display screen ("
+                + c.index.getReference("Monitor", "monitor")
+                + "),"
                 + " smaller amounts of faster more volatile data storage"
-                + " (memory), and larger amounts of more persistent data"
-                + " storage (disk) that is organised using a "
-                + c.index.getReference("File System") 
+                + " ("
+                + c.index.getReference("Memory", "memory")
+                + "), and larger amounts of more persistent data"
+                + " storage ("
+                + c.index.getReference("Disk", "disk")
+                + " that is organised using a "
+                + c.index.getReference("File System")
                 + ". Computers may have inbuilt or perpherally connected"
-                + " devices such as microphones and cameras, and the screen"
-                + " may be a touch screen. Networked computers can typically"
-                + " communicate using standard " 
+                + " devices such as microphones, cameras, and additional data "
+                + " storage. The monitor"
+                + " may also be an "
+                + c.index.getReference("Touchscreen", "touchscreen")
+                + " for user input. Networked computers typically communicate"
+                + " using standard "
                 + c.index.getReference("Internet")
                 + " protocols. The basic functioning of a computer is handled"
                 + " by an "
                 + c.index.getReference("Operating System")
                 + " upon which additional "
                 + c.index.getReference("Software")
-                + " can be installed, including software that interprets "
-                + c.index.getReference("Programming Language")
-                + " source code into machine instructions.</p>");
+                + " can be installed, including software that can interpret "
+                + c.index.getReference("Source Code", "source code")
+                + " into machine instructions.</p>"
+        );
         w.add("<p>Programming can be done visually by arranging and connecting"
                 + " pre-built components into executable workflows. However,"
                 + " this course is about programming using text based command"
-                + " instructions that have a formal syntax. Some computer"
-                + " languages look similar, some look very different. This"
-                + " course is mostly based on the "
+                + " instructions that have a formal syntax known as a "
+                + c.index.getReference("Programming Language",
+                        "programming language")
+                + ". Some programming language syntax and terms are similar,"
+                + " some are very different. This course is mostly based on"
+                + " the "
                 + c.index.getReference("Python",
-                "Python programming language")
+                        "Python programming language")
                 + " (Python).");
-        
+
         w.add("<h2 id=\"2.\">2. Data</h2>");
         Section s;
         s = addSection("2.1", "Bits and Bytes", 3);
@@ -84,7 +100,8 @@ public class Programming extends Page {
         w.add("<p>In most modern computers, data is encoded in binary: the"
                 + " smallest unit is a "
                 + c.index.getReference("Bit", "bit", s.sid)
-                + " which is in one of two possible states: 0 or 1.</p>");
+                + " which encodes one of two possible states, which - for "
+                + " simplicity and brevity - are denoted '0' and '1'.</p>");
         w.add("<p>Typically computers work with fixed size collections of bits"
                 + " called "
                 + c.index.getReference("Byte", "bytes", s.sid)
@@ -96,63 +113,74 @@ public class Programming extends Page {
               bits there are 4 possible combinations [00, 01, 10, 11]; with 3 
               bits there are 8 combinations [000, 001, 010, 100, 011, 101, 110,
               111]; with 4, 16 combinations; with 5, 32 combination, and so on.
-              </p>
+              With each added bit in a byte there are twice as many 
+              combinations compared to the smaller sizes byte. This doubling
+              adds up exponentially and soon provides many combinations...</p>
               <p>7 bits in a byte allows for (128 combinations) which is 
-              suffient to represent all the letters in the English alphabet in 
+              sufficient to represent all the letters in the English alphabet in 
               both lower and upper case, the ten numeric digits 0 to 9, and 
               64 other symbols.</p>
               """);
-        w.add("<p>7 bit bytes is the basis of " 
-                + c.index.getReference("ASCII", "ASCII", s.sid) 
-                + " - a data encoding which is the basis of some text file "
-                + "formats.</p>");
+        w.add("<p>7 bit bytes is the basis of "
+                + c.index.getReference("ASCII", "ASCII", s.sid)
+                + " - a data encoding which is used often used for text, and is "
+                + " the basis of a number of different "
+                + c.index.getReference("File Format", "file formats")
+                + ".</p>");
         w.add("<p>" + c.index.getReference("Unicode", "Unicode", s.sid) + " is "
-                + "another commonly used encoding. As of Unicode format "
-                + "version 15.0, there are 149,186 characters that are "
-                + "uniquely encoded, including various alphabets, mathematical "
-                + "symbols and emojis. Unicode uses between 1 and 4 bytes of "
-                + "length 8 for encoding.</p>");
+                + "another commonly used encoding. As of Unicode version 15.0, "
+                + "there are 149,186 characters that are uniquely encoded, "
+                + "including various alphabets, mathematical symbols and "
+                + "emojis. Unicode uses between 1 and 4 bytes of length 8 for "
+                + "encoding.</p>");
         w.add("<p>Commonly, there are multiples of 8 bits in a byte, but there "
                 + "can be any number.</p>");
         s = addSection("2.2", "File Formats", 3);
         w.add(s.sectionHTML);
-        w.add("<p>Data stored in a file is often stored in standard " 
+        w.add("<p>Data stored in a file is often stored in a standard "
                 + c.index.getReference("File Format", "file format", s.sid)
                 + " - typically based on a versioned specification which "
                 + "details what encodings are used and how the data is "
                 + "organised.</p>");
         w.add("<p>Some file formats use different encodings in different parts "
-                + "to make the data more usable and require less storage space."
-                + "</p>");
+                + ", a complication that makes the data more usable and more "
+                + "compact - requiring less storage space.</p>");
         w.add("<p>Often the suffix of a filename indicates the file format, "
                 + "for example the file format of a file named \"index.html\" "
-                + "is expected to be in " 
-                + c.index.getReference("HTML", s.sid) 
+                + "is expected to be in "
+                + c.index.getReference("HTML", s.sid)
                 + " format. Some file formats contain an identifying code"
                 + " (known as a "
-                + c.index.getReference("Magic Number", "magic number", s.sid) 
-                + " typically at the start of the file.</p>");
+                + c.index.getReference("Magic Number", "magic number", s.sid)
+                + " typically at the start of the file. If it is not clear "
+                + "from the filename or any external "
+                + c.index.getReference("Metadata", "metadata", s.sid)
+                + " what the format of the file is, sometimes it can be"
+                + " discerned from a magic number.</p>");
         s = addSection("2.3", "Integers and Floating Point", 3);
         w.add(s.sectionHTML);
         w.add("""
-              <p>Each integer number in a range is typically represented using a 
-              single byte with a length sufficient to represent all those 
-              integers in the range. The encoding will detail how this is done 
-              and what the range is. Usually, zero is either in the middle or at 
-              the start of the range. To represent integer numbers in a wider 
-              range, either the byte size must increase, or multiple bytes must 
-              be used.</p>
+              <p>All integer numbers in a range are often represented using 
+              bytes with equal length -  a length sufficient to represent all 
+              those integers in the range. The encoding will detail how this is 
+              done. Usually, zero is either in the middle or at the start of the
+              range. If the byte size is minimal, to represent integer numbers 
+              in a wider range, either the byte size must increase, or multiple 
+              bytes must be used in a more comploicated encoding.</p>
               <p>Floating point numbers are a subset of fractions typically 
               encoded using either 32 or 64 bit bytes. The density of fractions 
               within any part of the range varies. In general, the density is 
               greater towards the centre of the range which with standard 
               floating point numbers is zero.</p>
               """);
-        w.add("<p>" + c.index.getReference("Floating-point", 
-                "Floating point arithmetic", s.sid) 
-                + " has been standardised. The result of a calculation is"
-                + " rounded to the nearest value in the range. So, in some"
-                + " instances a calculation is accurate, other times it is"
+        w.add("<p>" + c.index.getReference("Floating-point",
+                "Floating point arithmetic", s.sid)
+                + " is standardised and the result of a calculation gets"
+                + " rounded to the nearest value. Most of the time, the"
+                + " standardisation has ensured that calculations on different"
+                + " computers are the same, but there can be variation. Anyway,"
+                + " for some floating point calculations the result is"
+                + " completely accurate and precise, other times it is"
                 + " rounded either up or down. It is important to be aware that"
                 + " there can be significant error in this standardised"
                 + " arithmetic.</p>");
@@ -167,37 +195,40 @@ public class Programming extends Page {
         s = addSection("3", "Learning to Program", 2);
         w.add(s.sectionHTML);
         w.add("""
-              <p>Learning to program takes time and energy. It involves 
-              developing and strengthening neural networks in your brain. It is 
-              highly recommended that you organise to learn new programming 
-              concepts when you are well rested and have good concentration. 
-              Mistakes and misunderstandings are more likely if you are tired or 
+              <p>Learning to program takes time and energy. It is highly 
+              recommended that you organise to learn new programming concepts 
+              when you are well rested and have good concentration. Mistakes 
+              and misunderstandings are more likely if you are tired or 
               distracted.</p>
               <p>Take breaks as you learn. They do more than help avoid fatigue. 
-              They can help conceptually.</p>
+              They can help conceptually and overall they can save you a lot 
+              more time than they take, and they can make the whole process of 
+              learning a lot more healthy and enjoyable.</p>
               """);
-        w.add("<p>Save your work often and use " 
-                + c.index.getReference("Version Control", 
-                        "version control", s.sid) 
+        w.add("<p>Save your work often and use "
+                + c.index.getReference("Version Control",
+                        "version control", s.sid)
                 + " as this avoids losing work and provides a track of "
                 + " progress that you and others might find useful.</p>");
         w.add("""
-              <p>Once you have a good grip of programming basics, as you should 
-              have by the end of this course, good ways to improve your skills 
+              <p>Once you have a good grip of programming basics, (which you 
+              should have after this course), good ways to improve your skills 
               are by getting involved in open source software development 
-              projects and completing more advanced programming courses.</p>
+              projects, engaging in code review, writing code, reading 
+              documentation and doing other programming courses.</p>
               <p>Being familiar with one programming language helps in learning 
               others. Many concepts are shared and the language syntax and 
               workflows are often similar.</p>
               <p>Some programming languages are particularly well geared for 
               particular types of application. This can be a consequence of the 
-              langauge fundamentals, but more often it is because something 
-              similar has already been done with that langauge that you can 
+              language fundamentals, but more often it is because something 
+              similar has already been done with that language that you can 
               build upon or learn from.</p>
               <p>When given a choice, experienced programmers will often choose 
               a language for an implementation because they either know that 
-              language well - and can envisage what to do, or because they want 
-              to learn/try something new.</p>
+              language well - and can envisage what to do, or because they 
+              know that a particular language is well suited to the task, or 
+              because they want to learn/try something new.</p>
               <p>Programming and programming language development are typically 
               community activities. It is normal to ask others for help and to 
               provide others with help and work collaboratively to develop 
@@ -208,17 +239,15 @@ public class Programming extends Page {
               <p>Asking for help with programming, whether this is from a tutor,
               peer, or on a forum is a skill. Whilst it may be easiest for you 
               to show someone what is happening and talk about it. It is often 
-              not so easy to arrange an interactive session. Often the best way 
-              to get help is to document the issue - describe and detail with 
-              text and pictures what is happeneing and why this is confusing or 
-              not what you want to happen. Often the act of describing and 
-              detailing the issue helps you to understand better and think of 
-              different ideas to try - which may ultimately resolve the issue 
-              before you ask for help. Don't see this as wasted effort, the more
-              you practise preparing to ask for help, the better you should be
-              at it when you eventually do.</p>
-              """);
-        w.add("""
+              not so easy to arrange an interactive help session. Often the best
+              way to get help is to document the issue - describe and detail 
+              with text and pictures what is happeneing and why this is 
+              confusing or not what you want to happen. Often the act of 
+              describing and detailing the issue helps you to understand better
+              and think of different ideas to try - which may ultimately resolve
+              the issue before you ask for help. Don't see this as wasted 
+              effort, the more you practise preparing to ask for help, the 
+              better you should be at it when you do!</p>
               <p>Often detailing an issue involves consulting documentation 
               and providing information about your environment. Sometimes the 
               issue is not that you have done something wrong, but that some 
@@ -227,7 +256,7 @@ public class Programming extends Page {
               </p>
               """);
         w.add("<p>Sometimes the issue is a result of a '"
-                + c.index.getReference("Software Bug", "software bug", s.sid)
+                + c.index.getReference("Software Bug", "bug", s.sid)
                 + "' in other software - an error, flaw or fault in the design, "
                 + "development, or operation of computer software that causes "
                 + "it to produce an incorrect or unexpected result, or to "
@@ -236,15 +265,20 @@ public class Programming extends Page {
                 + "' - a short-lived fault in a system, such as a transient "
                 + "fault that corrects itself, making it difficult to "
                 + "troubleshoot.</p>");
-        w.add("<p>Before writing a detailed bug report it is always worth "
-                + "resetting the system and attempting to replicate the issue. "
-                + "Bug reporting is an important activity in software and "
-                + "language development. Whether you are filing a bug report, "
-                + "or just asking for help, often you should aim to provide a "
-                + "minimum working example to replicate the bug/issue. And as "
-                + "with all data exchanges, you should think carefully before "
-                + "sharing data.</p>");
         w.add("""
+              <p>Often it is worth resetting the system and attempting to
+              replicate the issue. Reporting a bug is an important activity in 
+              software and language development. Many bug reports are made 
+              openly available. A 'known bug' is one that has been reported. 
+              This may already be being worked on or be 'fixed' or there may be 
+              'workarounds' - ways of coping. A new version of software is 
+              typically released with one or more bug fixes. Sometimes you have 
+              to decide when it is worth doing the work to change to this later 
+              version or whether you can cope with a workaround.</p>
+              <p>Whether you are filing a bug report, or just asking for help, 
+              often you should aim to provide a minimum working example to 
+              replicate the bug/issue. And as with all data exchanges, you 
+              should think carefully before sharing data.</p>
               <p>In learning to program, some things you might comprehend 
               instantly, other things might take several attempts to grasp or 
               fully understand. Some things you might understand, but they seem 
@@ -255,25 +289,27 @@ public class Programming extends Page {
         s = addSection("4", "Language Evolution, Deprecation and Versions", 2);
         w.add(s.sectionHTML);
         w.add("""
-              <p>High level computer programming languages like Python are 
-              evolving and new ones occasionally get developed. Some programming 
-              languages also become obsolete and some older versions of 
-              languages become unsupported over time.</p>
+              <p>High level computer programming languages like Python evolve 
+              and new ones occasionally get developed. Some programming 
+              languages are retired or become obsolete, and some older versions 
+              of languages become unsupported over time.</p>
               """);
         w.add("<p>Supporting "
-              + c.index.getReference("Backward Compatibility", 
-                      "backward compatibility", s.sid)
-              + " - interoperability with older versions - has both costs and "
-              + "benefits. These costs and benefits should be and typically "
-              + "are weighed up by those developing languages. Changes that "
-              + "are not backward compatible can create a lot of work!</p>");
+                + c.index.getReference("Backward Compatibility",
+                        "backward compatibility", s.sid)
+                + " - interoperability with older versions - has both costs and "
+                + "benefits. These costs and benefits should be and typically "
+                + "are weighed up by those developing languages. Changes that "
+                + "are not backward compatible can create a lot of work! It is "
+                + "also discouraging if old code does not work with newer "
+                + "language interpreters as this results in reliance on old"
+                + "versions which can have security implications.</p>");
         w.add("""
               <p>Languages compete for users and developers. Often new features 
-              in one language are implemented in others soon after, as there is 
-              a demand and often a genuine need for them. The pace of language 
-              evolution is related to the scale of investment in resources, and 
-              the skill, and design decisions taken by the developer community.
-              </p>
+              in one language are implemented in others soon after. The pace of 
+              language evolution is related to the scale of investment in 
+              resources, and the skill, and design decisions taken by the 
+              developer community.</p>
               <p>As new syntax, new functionality and more efficient ways of
               doing things evolve in a language, some code either becomes 
               obsolete, or is best changed to use the new ways. This can require 
@@ -281,17 +317,22 @@ public class Programming extends Page {
               <p>Fundamental changes in language syntax are associated with 
               major new versions of a language. Minor versions may add new 
               language features. Minor-minor version changes are usually 
-              associated with bug fixes.</p>
+              associated with one or more bug fix.</p>
               """);
-        w.add("<p>" +
-                c.index.getReference("Deprecation", s.sid)
-                 + " is a common part of modern high level languages and third"
-                 + " party software. It is part of a process of phasing things"
-                 + " out. Things are first marked as deprecated in a version,"
-                 + " then in subsequent versions the things are removed.</p>");
-        w.add("<p>It is important to know what version of a language and any"
-                + " third party components a program has been tested with."
-                + "</p>");
+        w.add("<p>"
+                + c.index.getReference("Deprecation", s.sid)
+                + " is a common part of modern high level languages and third"
+                + " party software. It is part of a process of phasing things"
+                + " out. Things are first marked as deprecated in a version,"
+                + " then in subsequent versions the things are removed.</p>");
+        w.add("<p>For many reasons, a key one in science and for evidence "
+                + "based policy being '"
+                + c.index.getReference("Reproducibility", "reproducibility", 
+                        s.sid)
+                + "' - it is important to "
+                + "know what version of a language and any third party "
+                + "components a program has been tested with and results have "
+                + "been produced with.</p>");
         w.add("""
               <h2 id="5">5. Considerata</h2>
               <p>With any language, there are often several ways to achieve the 
@@ -308,15 +349,14 @@ public class Programming extends Page {
               develop good practise and improve code and software.</p>
               <p>Throughout this course, you are encouraged to produce easy to 
               understand, easy to maintain, efficient, reliable, well tested and 
-              well documented code/software. Not all code/software in use today 
-              is like this!</p>
-              <p>Just to re-iterate: Please take care and think about the 
-              trustworthiness of any code you run and if in doubt, consult your 
-              tutor.</p>
-              <p>Please read and adhere to the terms and conditions of software 
-              licenses. Also keep in mind that for academic work, it is 
-              important to keep track of what you consult and avoid plagiarism 
-              (presenting other's work as your own).</p>
+              well documented code/software. Not all code and software in use 
+              today is like this!</p>
+              <p>Remember to take care and think about the trustworthiness of 
+              any code you run and if in doubt, consult your tutor.</p>
+              <p>Please adhere to the terms and conditions of software licenses.
+              And keep in mind that it is important to keep track of what you 
+              consult and avoid plagiarising (presenting other's work as your 
+              own).</p>
               </div>
               """);
     }

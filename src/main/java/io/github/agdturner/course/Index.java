@@ -181,6 +181,13 @@ public class Index extends Page {
                 + "without completely removing it or prohibiting its use";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Disk";
+        url = getWikipediaURL("Computer_memory");
+        description = "computer data storage that is slower than memory and "
+                + "is used to store information persistently (from one session "
+                + "to the next)";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Double-precision Floating-point";
         url = getWikipediaURL("Double-precision_floating-point_format");
         description = "a computer number format, usually occupying 64 bits in "
@@ -291,7 +298,13 @@ public class Index extends Page {
                 + "browsers have a dedicated JavaScript engine to execute code "
                 + "on users' devices";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-                
+        
+        name = "Keyboard";
+        url = getWikipediaURL("Computer_keyboard");
+        description = "a peripheral input device modeled after the typewriter "
+                + "keyboard";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Linux";
         url = getWikipediaURL("Linux");
         description = "a family of open-source Unix-like operating systems";
@@ -315,10 +328,34 @@ public class Index extends Page {
                 + "text using a plain-text editor";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Metadata";
+        url = getWikipediaURL("Metadata");
+        description = "data that provides information about other data";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Memory";
+        url = getWikipediaURL("Computer_memory");
+        description = "computer data storage that operates at a high speed "
+                + "compared to other data storage and is used to store "
+                + "information for immediate use";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Microsoft Windows";
         url = getWikipediaURL("Microsoft_Windows");
         description = "a group of several proprietary graphical operating "
                 + "system families developed and marketed by Microsoft";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Monitor";
+        url = getWikipediaURL("Computer_monitor");
+        description = "an output device that displays information in pictorial "
+                + "or textual form";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Mouse";
+        url = getWikipediaURL("Computer_mouse");
+        description = "a hand-held pointing device that detects "
+                + "two-dimensional motion relative to a surface";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Name Binding";
@@ -528,6 +565,14 @@ public class Index extends Page {
                 + "executes them, and returns the result to the user";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Reproducibility";
+        url = getWikipediaURL("Reproducibility");
+        description = "in computational sciences means any results should be "
+                + "documented by making all data and code available in such a "
+                + "way that the computations can be executed again with "
+                + "identical results";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Scope";
         url = getWikipediaURL("Scope_(computer_science)");
         description = "the part of a program where a name binding is valid";
@@ -552,6 +597,12 @@ public class Index extends Page {
                 + "ways";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Source Code";
+        url = getWikipediaURL("Source_code");
+        description = "text written using a human-readable programming "
+                + "language";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Syntax Error";
         url = getWikipediaURL("Syntax_error");
         description = "an error in the syntax of a sequence of characters or"
@@ -564,6 +615,12 @@ public class Index extends Page {
         description = "a framework for organizing the set of communication "
                 + "protocols used in the Internet and similar computer "
                 + "networks according to functional criteria";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Touchscreen";
+        url = getWikipediaURL("Touchscreen");
+        description = " both an input ('touch panel') and output ('display') "
+                + "device)";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Unicode";

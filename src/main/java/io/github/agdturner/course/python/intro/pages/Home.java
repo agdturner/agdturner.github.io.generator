@@ -54,26 +54,27 @@ public class Home extends Page {
                         + c.academicYear + "&M=" + c.getCourseCode2(),
                         c.getCourseCode1() + " Module Catalogue Page")
                 + "</p>");
-        w.add("<p>These website is maintained by "
+        w.add("<p>The website is maintained by "
                 + Web_ContentWriter.getLink(
                         "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
                         "Andy Turner")
                 + " and comprises a set of webpages and file based resources."
                         + "</p>");
         w.add("""
-              <p>At the top of each webpage is a Style Button that can be used to 
-              change between a lighter and darker style. Below that is a 
-              Navigation Section which outlines the current page. Each webpage 
-              links to the next and at the end there is an index and a page of 
-              references.</p>
+              <p>At the top of each webpage is a Style Button that can be used
+              to change between a lighter and darker style. Below that is a 
+              Navigation Section. Each webpage links to the next at the end. The 
+              last pages are index and references pages. The index page contains
+              definitions for a lot of terms ans so is also a bit like a 
+              glossary.</p>
               <p>Essentially, the idea is that you - students taking the course
               - read through the webpages trying out code and undertaking 
               practical exercises as directed.</p>
-              <p>Please contact your tutor by email or us the module Discussion 
+              <p>Please contact your tutor by email or use the module Discussion 
               tool in  
               <a href="https://minerva.leeds.ac.uk/">Minerva</a> if you want 
-              help or clarification or there is a problem with these resources.
-              </p>
+              help or to clarify something or there is a problem with these 
+              resources.</p>
               """);
 
         w.add("""
@@ -86,7 +87,7 @@ public class Home extends Page {
 //                + c.index.getReference("API",
 //                        "Application Programming Interface (API)")
 //                + "</li>");
-        w.add("<li>" + c.index.getReference("Variable", "Variables") + "</li>");
+        w.add("<li>" + c.index.getReference("Variable", "Variables") + ";</li>");
         w.add("<li>"
                 + c.index.getReference("Control Flow")
                 + "("
@@ -95,24 +96,24 @@ public class Home extends Page {
                 + c.index.getReference("For Loop", "for loops")
                 + "/"
                 + c.index.getReference("While Loop", "while loops")
-                + ")</li>");
+                + ");</li>");
         w.add("<li>"
                 + c.index.getReference("Function", "Functions")
                 + " and "
                 + c.index.getReference("Functional Programming")
-                + "</li>");
+                + ";</li>");
         w.add("<li>"
                 + c.index.getReference("Class", "Classes")
                 + " and "
                 + c.index.getReference("Object Oriented Programming")
-                + "</li>");
+                + ";</li>");
         w.add("</ul>");
 
         w.add("<p>"
                 + c.index.getReference("Python")
                 + " specifics:</p>");
         w.add("<ul>");
-        w.add("<li>Language development and limitations</li>");
+        w.add("<li>Language development and limitations;</li>");
         w.add("<li>Structuring and organising code into "
                 + c.references.getReference(
                         "Python Documentation Classes Tutorial", "Classes")
@@ -122,40 +123,36 @@ public class Home extends Page {
                         "Modules")
                 + ", and "
                 + c.references.getReference("Python Packages", "Packages")
-                + ".</li>");
+                + ";</li>");
         w.add("<li>Using the "
                 + c.index.getReference("REPL", "Read Evaluate Print Loop")
-                + " (REPL) environment</li>");
+                + " (REPL) environment;</li>");
         w.add("<li>Running programs via the command line, "
                 + c.references.getReference("Jupyter Notebook")
                 + ", "
                 + c.references.getReference("IDLE")
                 + " and "
                 + c.references.getReference("Spyder")
-                + ".</li>");
+                + ";</li>");
         w.add("<li>Python Environment Management using "
                 + c.references.getReference("Conda")
                 + " and "
                 + c.index.getReference("Python venv", "venv")
-                + "</li>");
+                + ";</li>");
         w.add("<li>Using the "
                 + c.references.getReference("Python Standard Library")
                 + ", and third party packages available via "
-                + c.references.getReference("PyPI",
-                        "PyPI - the Python Package Index")
-                + "</a></li>");
-//        w.add("<li>Using Python to automate "
-//                + c.references.getReference("https://qgis.org/", "QGIS", null)
-//                + " Desktop - geospatial data processing software.</li>");
+                + c.references.getReference("PyPI")
+                + " - the Python Package Index;</li>");
         w.add("<li>Including code comments and "
                 + c.index.getReference("Python docstring", "docstrings")
-                + " to ease comprehension and use.</li>");
+                + " to ease comprehension and use;</li>");
 //        w.add("<li>Producing documentation using "
 //                + c.references.getReference("https://docs.python.org/3/library/pydoc.html",
 //                        "Pydoc", null)
 //                + " and "
 //                + c.references.getReference("https://www.sphinx-doc.org/", "Sphinx", null)
-//                + "</li>");
+//                + ";</li>");
         w.add("<li>Testing code using print statements.</li>");
 //        w.add("<li>Testing code using print statements and "
 //                + c.references.getReference(
@@ -178,17 +175,22 @@ public class Home extends Page {
               <p>You will learn about:</p>
               <ul>
               """);
+        w.add("<li>Automatating "
+                + c.references.getReference("QGIS")
+                + " Desktop using "
+                + c.index.getReference("PyQGIS")
+                + ";</li>");
         w.add("<li>"
                 + c.index.getReference("Version Control")
-                + "</li>");
+                + ";</li>");
         w.add("<li>Data encoding and "
                 + c.index.getReference("File Format", "file formats")
-                + "</li>");
-        w.add("<li>Python data structures ("
+                + ";</li>");
+        w.add("<li>Python "
                 + c.index.getReference("Python lists", "lists")
-                + ", "
-                + c.index.getReference("Python dict", "dictionaries")
-                + "</li>");
+                + "and "
+                + c.index.getReference("Python dict", "dict")
+                + " data structures;</li>");
         w.add("""
               <li>Program input and output</li>
               <!--
@@ -197,22 +199,22 @@ public class Home extends Page {
               """);
         w.add("<li>The Python parts of the "
                 + c.references.getReference("Anaconda")
-                + " data science platform</li>");
+                + " data science platform;</li>");
         w.add("<li>Processing geographical features (geometry and related"
-                + " attribute) data.</li>-->");
+                + " attribute) data;</li>-->");
         w.add("<li>Visualisation using "
                 + c.references.getReference("Matplotlib")
-                + "</li>");
-        w.add("<li>Processing raster data stored in lists.</li>");
+                + ";</li>");
+        w.add("<li>Processing raster data stored as lists of lists;</li>");
         w.add("<li>Using "
                 + c.references.getReference("GitHub")
-                + "</li>");
+                + ";</li>");
         w.add("<li>Developing a "
                 + c.index.getReference("GUI", "Graphical User Interface")
-                + " (GUI)</li>");
+                + " (GUI);</li>");
         w.add("<li>Developing and visualising a basic spatial "
                 + c.index.getReference("Agent Based Model")
-                + " (ABM)</li>");
+                + " (ABM);</li>");
         w.add("""
               </ul>
               <p>Computer programming mostly involves computational thinking, 
@@ -227,34 +229,30 @@ public class Home extends Page {
               <p>If you are new to computer programming, there is quite a lot of 
               terminology to get used to, some is generic to programming, some 
               is more specific to Python.</p>
-              <p>There are some key concept to understand which may take several 
-              attempts to learn fully.</p>
+              <p>There are some key concepts to understand which may take 
+              several attempts to learn fully.</p>
 
               <h2 id="4">4. The Learning Journey</h2>
               <p>Develop your understanding through practise and by reading.</p>
               <p>Be experimental - test your understanding by testing code does 
               what you expect it to. If code does not do what you expect, try to
-              understand why - treat it as a learning opportunity.</p>
+              understand why - regard failure as a learning opportunity!</p>
               <p>One of the keys to coding is learning to be able to interpret 
               errors messages - understand what caused them. If your program 
-              generates an exception and error message, then figure out what the
-              issue is and resolve before trying to implement code that does 
-              something else. Ignoring errors is a bad idea. In general, the 
-              more changes made to a program, the harder it becomes resolve an 
-              issue.</p>
-              <p>Be cautious and do not run code that you do not fully trust. 
-              Think about the code does that you want to try: Do you comprehend 
-              it sufficiently to know it won't do anything malicious before 
-              trying it out?</p>
+              generates an exception and error message, then try to understand 
+              what happened before moving on. Ignoring errors is a bad idea!</p>
+              <p>Be cautious and do not run code that you do not fully trust. If
+              in doubt consult with your tutor.</p>
               """);
         w.add("<p>The webpages with names starting \"ABM\" are a sequence of"
-                + " practicals for the development of a basic spatial "
+                + " practicals that progress the development of a basic spatial"
+                + " "
                 + c.index.getReference("Agent Based Model", "ABM")
-                + ". The ABM can be regarded as a simple model of animals"
-                + " moving about in an environment, interacting with each other"
-                + " and the environment.</p>");
+                + ". The ABM can be regarded as a simple model of autonomous"
+                + " spatial entities that move in an environment, interacting"
+                + " with the environment and each other.</p>");
         w.add("<p>Developing the ABM by following instructions puts into"
-                + " practise much of the theory detailed in other webpages. By"
+                + " practise some of the theory detailed in other webpages. By"
                 + " the end of these practicals, you should have ABM model code"
                 + " that:</p>");
         w.add("<ul>");
@@ -266,26 +264,26 @@ public class Home extends Page {
               <li>produces an animation, data files and user friendly messages.
               </li>
               </ul>
-              <p>At that stage, you should have sufficient knowledge and skill 
-              to develop the model further without detailed instructions.</p>
-              <p>You are then to undertake an independent project to apply what 
-              you have learned to develop some different software - there will 
-              be a specification, some guidance for approaching the task, but no
-              detailed instructions to follow.</p>
+              <p>After completing the last ABM practical, you should have 
+              sufficient knowledge and skill to develop the model further 
+              without being given detailed instructions.</p>
+              <p>To complete the course, you are to undertake an independent 
+              project to apply what you have learned to develop some different 
+              software - there will be a specification of what the software is 
+              to do, some guidance for approaching the software development 
+              task, but no detailed instructions to follow.</p>
               <p>Do not expect to master the Python language by the end of this 
-              course. It can take many years of experience to learn all about a 
-              language. Try to enjoy the learning journey, the challenges and 
-              the rewards.</p>
-              <p>Gaining elementry programming skills and knowledge is 
-              empowering in a world where there skills are in high demand and 
-              with which you can make a difference.</p>
+              course. Usually this takes many years of practise.</p>
+              <p>Try to enjoy the learning journey, the challenges and the 
+              rewards. Learning to program and learning Python is empowering!
+              </p>
               
               <h2 id="5">5. Platform/Software</h2>
               <p>All the software used in this course is 
               """);
         w.add(c.index.getReference("Free and Open Source Software",
                 "Free and Open Source Software")
-                + " (FOSS) which is available to download and install on "
+                + " (FOSS) - available to download and install on "
                 + c.index.getReference("Linux")
                 + ", "
                 + c.index.getReference("Microsoft Windows")
@@ -311,12 +309,12 @@ public class Home extends Page {
                   <ol>
                   """);
             w.add("<li>" + pic.assignment1Name + " worth "
-                    + pic.assignment1Weighting + "% of the overal mark and due "
+                    + pic.assignment1Weighting + "% of the overall mark and due "
                     + pic.assignment1DueDate + " - developed by completing "
                     + "the ABM practicals.</li>");
 
             w.add("<li>" + pic.assignment2Name + " worth "
-                    + pic.assignment2Weighting + "% of the overal mark and due "
+                    + pic.assignment2Weighting + "% of the overall mark and due "
                     + pic.assignment2DueDate + " - developed by applying what "
                     + "you have learned to a software development task for "
                     + "which there is a specification and a suggested way to "
