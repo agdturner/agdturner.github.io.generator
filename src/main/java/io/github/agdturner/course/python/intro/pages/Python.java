@@ -16,7 +16,6 @@
 package io.github.agdturner.course.python.intro.pages;
 
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
-import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.Section;
 import io.github.agdturner.course.Page;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -44,35 +43,33 @@ public class Python extends Page {
         Section s;
         s = addSection("1", "Introduction", 2);
         w.add(s.sectionHTML);
-        String pythonWebsiteLink = c.references.getReference(
-                "Python Website");
-        String python3ReferenceLink = c.references.getReference(
-                "Python 3 Language Reference");
-        String pythonStandardLibraryLink = c.references.getReference(
-                "Python Standard Library");
-        String psfLink = c.references.getReference(
-                "Python Software Foundation");
         w.add("<p>"
                 + c.index.getReference("Python")
                 + " is a popular and powerful high-level programming language "
                 + "supported and developed by the "
-                + psfLink + " - an organisation with a mission to promote,"
+                + c.references.getReference("Python Software Foundation")
+                + " - an organisation with a mission to promote,"
                 + " protect, and advance the language, and support and"
                 + " facilitate the growth of a diverse and international "
-                + "community of python programmers.</p>");
-        w.add("<p>The " + pythonStandardLibraryLink + " and various Python"
-                + " source code interpreters are freely available in source"
+                + "community of Python programmers.</p>");
+        w.add("<p>The "
+                + c.references.getReference("Python Standard Library")
+                + " and various Python "
+                + c.index.getReference("Source Code", "source code")
+                + " interpreters are freely available in source"
                 + " and binary forms for all major platforms from the "
-                + pythonWebsiteLink + ", and these may be freely distributed."
-                + " Python interpreters translate Python source code into"
-                + " machine instructions that work at a much lower level."
-                + " The need for interpretation is what classifies Python as a"
-                + " high-level language.</p>"
-                + "<p>The " + pythonWebsiteLink + " contains distributions of"
-                + " and pointers to many third party Python libraries, tools,"
-                + " and additional documentation.</p>"
+                + c.references.getReference("Python Website")
+                + ", and these may be freely distributed. Python interpreters "
+                + "translate Python source code into machine instructions that "
+                + "work at a much lower level. The need for interpretation is "
+                + "what classifies Python as a high-level language.</p>"
+                + "<p>The "
+                + c.references.getReference("Python Website")
+                + " contains distributions of and pointers to many third party"
+                + " Python libraries, tools, and additional documentation.</p>"
                 + "<p>A particularly useful page for beginners is the "
-                + python3ReferenceLink + ".</p>");
+                + c.references.getReference("Python 3 Language Reference")
+                + ".</p>");
 
         s = addSection("2", "Python 3", 2);
 
@@ -98,17 +95,14 @@ public class Python extends Page {
         }
         w.add("</ul>");
         w.add("<p>On these webpages, changes are marked against numbered"
-                + " Python Enhancement Proposals (PEPs). PEPs allow the"
-                + " community of Python users to look ahead and see what might"
-                + " change and get involved in language development. PEPs have"
-                + " their own website: "
+                + " Python Enhancement Proposals (PEPs). There is a "
                 + c.references.getReference(
-                        "Python Enhancement Proposal Website")
-                + "</p>");
-        w.add("<p>As with all programming languages, Python evolves through"
-                + " versions. As well as adding new things (such as new kinds"
-                + " of expression and new functions), things may also change"
-                + " from one version to the next. Though there are few "
+                        "Python Enhancement Proposal Website", "PEPs Website")
+                + ". PEPs allow the community of Python users to plan ahead and"
+                + " get involved in language development.</p>");
+        w.add("<p>Later versions introduce new language features - new types of"
+                + " expression and new modules and functions. There can also be"
+                + " changes from one version to the next, but there are few "
                 + c.index.getReference("API",
                         "Application Programming Interface", s.sid)
                 + " (API) changes - changes to the syntax, names, and details"
@@ -116,43 +110,37 @@ public class Python extends Page {
                 + c.index.getReference("Backward Compatibility",
                         "backward compatible", s.sid)
                 + ".</p>");
+        w.add("<p>New language features will not work with older interpreters, "
+                + "and code tested with older interpreters might not "
+                + "necessarily work the same with newer interpreters. This is "
+                + "important to bear in mind - for "
+                + c.index.getReference("Reproducibility", "reproducibility",
+                        s.sid)
+                + " of results and diagnosis of issues.</p>");
+        w.add("<p>There is a vast ecosystem of third party Python libraries."
+                + " Much of this is made available as packages via the "
+                + c.references.getReference("PyPI", "Python Package Index")
+                + " (PyPI).</p>");
         w.add("""
-              <p>New language features will not work with older interpreters,
-              and code tested with older interpreters might not necessarily 
-              work the same as before with newer interpreters - due to API 
-              changes and bug fixes. This is important to bear in mind - for 
-              reproducibility of results and diagnosing issues when it can be
-              key to know exactly which versions of everything have been used.
+              <p>Below, in <a href="#9">Section 9</a>, there is an exercise that 
+              involves installing Python packages from PyPI and that links to 
+              details about how to package code and make it available via PyPI.
               </p>
               """);
-        w.add("<p>There is a vast ecosystem of third party python libraries."
-                + " Much of this is made available as packages via the "
-                + c.references.getReference("PyPI",
-                        "Python Package Index (PyPI)")
-                + "</p>");
-        w.add("""
-              <p>In <a href="#9">Section 9</a>, there is an exercise that 
-              involves installing Python packages from PyPI and that links to 
-              details about how to package code and make it available via 
-              PyPI.</p>
-              """);
-
         w.add("<p>The "
                 + c.references.getReference("Python Tutorial")
                 + " is a good place to start learning Python. In your private"
                 + " study time, you might like to make your way through that"
                 + " learning material too.</p>");
-        w.add("<p>Running Python code in different ways...</p>");
 
         s = addSection("3", "Running Python", 2);
-
         w.add(s.sectionHTML);
         w.add("<p>Python instructions also known as 'commands' or 'statements',"
                 + " can be entered one at a time at a "
                 + c.index.getReference("Command Line Interface",
                         "command-line interface", s.sid)
                 + " or passed in a file.</p>");
-        w.add("<p>Check if there is a version of Python already on your "
+        w.add("<p>First, check if there is a version of Python already on your "
                 + c.index.getReference("PATH", s.sid)
                 + " by running a 'Terminal' or 'Command Window' and entering"
                 + " the following at the prompt:</p>");
@@ -171,22 +159,22 @@ public class Python extends Page {
                 + "<a href=\"https://wvd.leeds.ac.uk\">"
                 + "University Windows Virtual Desktop"
                 + ".</a>");
-        w.add("<p>You can also download and install Anaconda on your own"
-                + " device. If you do this, then choose the default options"
-                + " to avoid interfering with any other version of Python"
-                + " already installed on your system. By default, Anaconda"
-                + " installs into your user home directory.</p>");
+        w.add("<p>Anaconda can also be download and installed. If you choose to"
+                + " do this, then it is recommended to select the default"
+                + " install options to avoid interfering with any other version"
+                + " of Python already installed. By default, Anaconda"
+                + " installs into the user home directory.</p>");
 
         s = addSection("3.1", "Python REPL", 3);
 
         w.add(s.sectionHTML);
         w.add("""
               <h4>3.1.1. Hello World</h4>
-              <p>Open an Anaconda prompt. On Windows the prompt should look 
+              <p>Open an 'Anaconda prompt'. On Windows the prompt should look 
               something like:</p>
               <pre>(base) C:\\></pre>
               <p>Here, 'base' is the activated Python environment and 'C:\\' is 
-              the current drive and directory. Enter:</p>
+              the current drive and working directory. Enter:</p>
               <pre>python --version</pre>
               <p>This should inform you about the version of Python that came 
               with Anaconda. Enter:</p>
@@ -195,16 +183,16 @@ public class Python extends Page {
               like:</p>
               <pre>>>></pre>
               """);
-        w.add("<p>This is a "
+        w.add("<p>This is a Python "
                 + c.index.getReference("REPL", s.sid)
-                + " environment for Python. Enter:</p>");
+                + " environment. Enter:</p>");
         w.add("""
               <pre>print("Hello World")</pre>
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
               """);
-        s = addSection("3.1.2", "Numerical calculations", 4);
 
+        s = addSection("3.1.2", "Numerical calculations", 4);
         w.add(s.sectionHTML);
         w.add("""
               <p>The Python prompt can be used for some basic calculations. 
@@ -213,37 +201,66 @@ public class Python extends Page {
               <p>You should see the result of adding the number 2 to the number
               3:</p>
               <pre>5</pre>
-              <p>The plus symbol '+' is the operator for addition. The 
-              operator for multiplication is the asterix '*' symbol, try 
-              multiplying two numbers.</p>
-              <p>The operator symbol for division is the forward slash '/' 
-              symbol. Try dividing 3 by 2. Notice that the result is not an 
-              integer.</p>
-              <p>Run the following command:</p>
-              <pre>1 / 0</pre>
-              <p>You should get the following Divide by Zero Error message:</p>
+              """);
+        w.add("<p>The plus symbol '+' in this instance acts as an addition"
+                + " operator. This is a '"
+                + c.index.getReference("Python Built-in Types",
+                        "Built-in Type", s.sid)
+                + "' operator that works with specific types of variables."
+                + " Multiplication can be done similarly using an asterix '*'"
+                + " symbol; and division can be done using the forward slash "
+                + "'/' symbol.<p>");
+        w.add("""
+              <p>Dividing '3' by '2' in this way results not in an integer, but
+              in '1.5'. In some programming languages dividing by an integer 
+              will result in an integer. Indeed this used to be the case in an 
+              old version of Python!</p>
+              """);
+        w.add("<p>Trying to evaluate a division by zero results in a "
+                + c.index.getReference("Python ZeroDivisionError",
+                        "ZeroDivisionError", s.sid)
+                + ".<p>");
+        w.add("""
+              <p>Try multiplying and dividing some numbers, and try the 
+              following division:</p>")
+              <pre>1 / 0</pre>              
+              <p>Which should result in:</p>
               <pre>
               Traceback (most recent call last):
-                File "<stdin>", line 1, in <module>
+                File "&lt;stdin>", line 1, in <module>
               ZeroDivisionError: division by zero
               </pre>
-              <p>Have a play: Try calculating bigger and bigger numbers that are 
-              powers of 2. Enter:</p>
+              """);
+        w.add("<p>A"
+                + c.index.getReference("Python ZeroDivisionError",
+                        "ZeroDivisionError", s.sid)
+                + " is one of many "
+                + c.index.getReference("Python built-in exceptions", s.sid)
+                + ". Exceptions are 'raised' in particular circumstances and"
+                + " often errors are reported similarly, so it is good to get"
+                + " familiar with this as you are likely to see this sort of"
+                + " thing a lot and be able to interpret what it is.</p>");
+        w.add("""
+              <p>Try some more calculations. Calculates '2' to the power of 
+              '64':</p>
               <pre>2 ** 64</pre>
-              <p>This calculates 2 to the power of 64 - an integer number with 
-              20 digits. Enter:</p>
+              <p>The result is an integer with twenty digits. Try:</p>
               <pre>2 ** 1000000</pre>
-              <p>This calculates 2 to the power of 1000000 - an integer number 
-              with 301030 digits. This may take noticeably more time to 
-              calculate and display.</p>
-              <p>To calculate how many digits are in a number, it can be 
-              converted to a String using the function 'str()', the result of 
-              which we can pass into the function 'len()' which gives the 
-              length. Enter:</p>
+              <p>The result is an integer with '301,030' digits. It may take 
+              noticeably longer to compute and display this number...</p>
+              """);
+        w.add("<p>One way to calculate how many digits there are is to pass the "
+                + " result into the "
+                + c.index.getReference("Python str", "str", s.sid)
+                + " function and to pass the result of this into the "
+                + c.index.getReference("Python len", "len", s.sid)
+                + "function as follows:</p>");
+        w.add("""
               <pre>len(str(2 ** 1000000))</pre>
-              <p>Increasing the power by a further multiple of 10 would give 10 
-              times more digits. This takes significantly longer to compute in 
-              this way. Enter:</p>
+              <p>Notice how things are passed into the two functions.</p>
+              <p>Increasing the power raised to by a further multiple of ten 
+              should give ten times more digits and might take over ten longer 
+              to compute. try it:</p>
               <pre>len(str(2 ** 10000000))</pre>
               <p>While waiting for an answer, open another Anaconda prompt to 
               look at some small numbers close to zero. Enter:
@@ -253,72 +270,82 @@ public class Python extends Page {
               <pre>1 / 10000</pre>
               <pre>1 / 100000</pre>
               <p>Notice how the format of the number printed out changes with 
-              the last command. This is a number written in a scientific 
-              notation where the letter e stands for 'multiply by 10 raised to 
-              the power of'. Enter:<p>
+              the last command. '1e-05 ' is '0.00001' in scientific notation 
+              where the letter 'e' stands for 'multiply by 10 raised to 
+              the power of'. Try:<p>
               <pre>1/(2**1074)</pre>
+              <p>Which should result in:</p>
+              <pre>5e-324</pre>
+              <p>Try:<p>
               <pre>1/(2**1075)</pre>
+              <p>Which should result in:</p>
+              <pre>0.0</pre>
+              <p>The result is rounded down to 0.0 as this is the nearest Float
+              value to the true value!</p>
               """);
-        w.add("<p>This demonstrates that these types of calculations are "
-                + "approximations - ones that use "
-                + c.index.getReference("Floating-point", "floating point arithmetic", s.sid)
-                + " which rounds to the nearest value that can be represented"
-                + " in a specific way.</p>");
+        w.add("");
+
         s = addSection("3.2", "Loading Modules and Using Functions", 3);
         w.add(s.sectionHTML);
-        w.add("<p>Mathematical operators can also be accessed via functions "
-                + "that reside in the "
+        w.add("<p>Some mathematical operators are built-in as delimiters. Others can be found "
+                + "in the , but they are  '+' and '*' are shorthand for "
+                + "functions that reside in the "
                 + c.index.getReference("Python operator", "operator", s.sid)
                 + " module.</p>");
         w.add("""
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
-              <p>You should see the following error message:</p>
+              """);
+        w.add("<p>This should raise a "
+                + c.index.getReference("Python NameError", "NameError", s.sid)
+                + " as follows:</p>");
+        w.add("""
               <pre>Traceback (most recent call last):
-                File "<stdin>", line 1, in <module>
+                File "&lt;stdin>", line 1, in &lt;module>
               NameError: name 'operator' is not defined</pre>
-              <p>The error is that the interpreter does not know about the
-              operator module. Notice the similarity with this error message 
-              and the divide by zero error message.</p>
+              <p>The NameError is raised as the operator module has not been 
+              imported.</p>
               <p>Enter:</p>
               <pre>dir()</pre>
-              <p>This runs (or calls) the function 'dir()'. You can tell it is
-              a function as after the name there are start and end parentheses.
-              This function takes no arguments as there is nothing between the 
-              start and end parentheses.</p>
-              <p>The function dir() should print out a list that looks like:</p>
+              """);
+        w.add("<p>This runs (or calls) the function '"
+                + c.index.getReference("Python dir", "dir", s.sid)
+                + "'. Function calls are easy to spot as after the function"
+                + " name there are start and end parentheses. In this function"
+                + " call the function is passed no arguments - as there is"
+                + " nothing between the start and end parentheses. The output"
+                + " is a list of names in the current local scope:</p>");
+        w.add("""
               <pre>['__annotations__', '__builtins__', '__doc__', '__loader__',
               '__name__', '__package__', '__spec__']</pre>
-              <p>The list is alphabetically ordered and you can tell it is a 
-              list as it starts with an open square bracket '[' and ends with 
-              a closing square bracket ']', and each element is separated with a
-              comma ','. In the list are module identifiers that the current 
-              Python environment has access to (and from which functionality can 
-              be used directly).</p>
-              <p>Enter:</p
-              <pre>import operator</pre>
-              <p>This imports or loads the operator module so that it's 
-              functionality can be accessed.</p>
-              <p>Enter:</p>
-              <pre>dir()</pre>
-              <p>You should see the operator module in the list.</p>
+              """);
+        w.add("""
+              <p>The list is alphabetically ordered. You can tell it is a list 
+              as it starts with an open square bracket '[' and ends with 
+              a closing square bracket ']', and each item is separated with a
+              comma ','.</p>
+              <p>To import and load the operator module and see that it is 
+              loaded, enter:</p
+              <pre>import operator
+              dir()</pre>
+              <p>The operator module is now in the list.</p>
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
-              <p>Now, you should not get the error encountered before the 
+              <p>Now, you should not get the NameError encountered before the 
               operator module was imported, but a result.</p>
-              <p>The dot '.' in this command is an operator called the 'dot 
-              operator'. It instructs the python interpretter to look inside the 
-              thing on the left (of the dot) to find the thing on the right 
-              (of the dot). So, the expression looks inside the operator module 
-              for the function 'add', and passes into the it two parameters in 
-              the given order. The function returns the result of summing these
-              two numbers, and the result is displayed.</p> 
-              <p>To list the functions in the operator module, enter:</p>
+              <p>The dot '.' in this command effectively instructs the Python 
+              interpreter to look in the thing on the left (of the dot) to find 
+              the thing on the right (of the dot). So, the expression looks 
+              inside the operator module for the function 'add', and passes 
+              into it the two parameters in the given order. The function 
+              returns the result of summing these two parameters as they are 
+              numbers, and the result is displayed.</p>
+              <p>To list the identifiers in the operator module, enter:</p>
               <pre>dir(operator)</pre>
               <p>It is quite a long list!</p>
-              <p>Notice that there are numerous functions that have a name 
-              starting and ending with a double underscore '__'. These are not 
-              normally called directly, but they can be.</p>
+              <p>There are numerous functions that have a name starting and 
+              ending with a double underscore '__'. These are not normally 
+              called directly, but they can be.</p>
               <p>Enter:</p>
               <pre>operator.__add__(2, 3)</pre>
               <p>Python does not exert access control on variables and 
@@ -331,27 +358,268 @@ public class Python extends Page {
               <p>Have a play and use some other functions from the operator 
               module.</p>
               """);
+
         s = addSection("3.3", "The Help System", 3);
         w.add(s.sectionHTML);
         w.add(c.index.getReference("Python help", "", s.sid));
         w.add("""
               <p>At the Python prompt, enter:</p>
               <pre>help(operator.add)</pre>
-              <p>This prints out some information about how to use the operator
-              module add function.</p>
+              <p>This prints out some information about how to use the 
+              <a href="https://docs.python.org/3/library/operator.html#operator.add">
+              operator module function add</a>.</p>
               <p>Enter the following to enter the help system:</p>
               <pre>help()</pre>
-              <p>The prompt should change to the 'Help prompt' and look like:</p>
+              <p>The prompt should change to look like:</p>
               <pre>help> </pre>
-              <p>Read what is printed.</p>
+              <p>Read what is printed:</p>
+              <pre>
+              Welcome to Python 3.9's help utility!
+              
+              If this is your first time using Python, you should definitely check out
+              the tutorial on the Internet at https://docs.python.org/3.9/tutorial/.
+              
+              Enter the name of any module, keyword, or topic to get help on writing
+              Python programs and using Python modules.  To quit this help utility and
+              return to the interpreter, just type "quit".
+              
+              To get a list of available modules, keywords, symbols, or topics, type
+              "modules", "keywords", "symbols", or "topics".  Each module also comes
+              with a one-line summary of what it does; to list the modules whose name
+              or summary contain a given string such as "spam", type "modules spam".
+              </pre>
               <p>Enter:</p>
               <pre>modules</pre>
-              <p>It may take a few minutes to report a list of available 
-              modules.</p>
-              <p>At the Help prompt enter:</p>
+              <p>It may take a few minutes to report a set of warnings and a 
+              list of available modules:</p>
+              <pre>
+              Cython              comtypes            mock                socks
+              IPython             concurrent          modulefinder        sockshandler
+              OpenSSL             conda               mpmath              sortedcollections
+              PIL                 conda_build         msgpack             sortedcontainers
+              PyQt5               conda_content_trust msilib              soupsieve
+              TBB                 conda_env           msvcrt              sphinx
+              __future__          conda_pack          multipledispatch    spyder
+              _abc                conda_package_handling multiprocessing     spyder_kernels
+              _aix_support        conda_token         munkres             sqlalchemy
+              _argon2_cffi_bindings conda_verify        mypy_extensions     sqlite3
+              _ast                configparser        nacl                sre_compile
+              _asyncio            constantly          navigator_updater   sre_constants
+              _bisect             contextlib          nbclassic           sre_parse
+              _black_version      contextvars         nbclient            ssl
+              _blake2             cookiecutter        nbconvert           sspi
+              _bootlocale         copy                nbformat            sspicon
+              _bootsubprocess     copyreg             nest_asyncio        stat
+              _bz2                crypt               netbios             statistics
+              _cffi_backend       cryptography        netrc               statsmodels
+              _codecs             cssselect           networkx            storemagic
+              _codecs_cn          csv                 nltk                string
+              _codecs_hk          ctypes              nntplib             stringprep
+              _codecs_iso2022     curl                nose                struct
+              _codecs_jp          curses              notebook            subprocess
+              _codecs_kr          cwp                 nt                  sunau
+              _codecs_tw          cycler              ntpath              symbol
+              _collections        cython              ntsecuritycon       sympy
+              _collections_abc    cythonmagic         nturl2path          sympyprinting
+              _compat_pickle      cytoolz             numba               symtable
+              _compression        daal4py             numbergen           sys
+              _contextvars        dask                numbers             sysconfig
+              _csv                dataclasses         numexpr             tables
+              _ctypes             datashader          numpy               tabnanny
+              _ctypes_test        datashape           numpydoc            tabulate
+              _datetime           datetime            odbc                tarfile
+              _decimal            dateutil            olefile             tbb
+              _distutils_hack     dbi                 onedal              tblib
+              _elementtree        dbm                 opcode              telnetlib
+              _functools          dde                 openpyxl            tempfile
+              _hashlib            debugpy             operator            tenacity
+              _heapq              decimal             optparse            terminado
+              _imp                decorator           os                  test
+              _io                 defusedxml          packaging           test_pycosat
+              _json               diff_match_patch    pandas              testpath
+              _locale             difflib             pandocfilters       tests
+              _lsprof             dill                panel               text_unidecode
+              _lzma               dis                 param               textdistance
+              _markupbase         distributed         paramiko            textwrap
+              _md5                distutils           parsel              this
+              _msi                doctest             parser              threading
+              _multibytecodec     docutils            parso               threadpoolctl
+              _multiprocessing    email               partd               three_merge
+              _nsis               encodings           past                tifffile
+              _opcode             ensurepip           pathlib             time
+              _operator           entrypoints         pathspec            timeit
+              _osx_support        enum                patsy               timer
+              _overlapped         erfa                pdb                 tinycss
+              _peg_parser         errno               pep8                tkinter
+              _pickle             et_xmlfile          perfmon             tldextract
+              _plotly_future_     fastjsonschema      pexpect             tlz
+              _plotly_utils       faulthandler        pickle              token
+              _py_abc             filecmp             pickleshare         tokenize
+              _pydecimal          fileinput           pickletools         toml
+              _pyio               filelock            pip                 tomli
+              _pyrsistent_version flake8              pipes               tomlkit
+              _pytest             flask               pkg_resources       toolz
+              _queue              fnmatch             pkginfo             tornado
+              _random             fontTools           pkgutil             tqdm
+              _sha1               formatter           platform            trace
+              _sha256             fractions           platformdirs        traceback
+              _sha3               fsspec              plistlib            tracemalloc
+              _sha512             ftplib              plotly              traitlets
+              _signal             functools           pluggy              tty
+              _sitebuiltins       future              poplib              turtle
+              _socket             gc                  posixpath           turtledemo
+              _sqlite3            genericpath         poyo                twisted
+              _sre                gensim              pprint              types
+              _ssl                getopt              profile             typing
+              _stat               getpass             prometheus_client   typing_extensions
+              _statistics         gettext             prompt_toolkit      ujson
+              _string             glob                protego             unicodedata
+              _strptime           glob2               pstats              unidecode
+              _struct             graphlib            psutil              unittest
+              _symtable           greenlet            pty                 urllib
+              _system_path        gzip                ptyprocess          urllib3
+              _testbuffer         h5py                pvectorc            uu
+              _testcapi           hamcrest            py                  uuid
+              _testconsole        hashlib             py_compile          venv
+              _testimportmultiple heapdict            pyasn1              w3lib
+              _testinternalcapi   heapq               pyasn1_modules      warnings
+              _testmultiphase     hmac                pyclbr              watchdog
+              _thread             holoviews           pycodestyle         wave
+              _threading_local    html                pycosat             wcwidth
+              _tkinter            http                pycparser           weakref
+              _tracemalloc        hvplot              pyct                webbrowser
+              _uuid               hyperlink           pycurl              webencodings
+              _warnings           idlelib             pydispatch          websocket
+              _weakref            idna                pydoc               werkzeug
+              _weakrefset         imagecodecs         pydoc_data          wheel
+              _win32sysloader     imageio             pydocstyle          widgetsnbextension
+              _winapi             imagesize           pyexpat             win2kras
+              _winxptheme         imaplib             pyflakes            win32api
+              _xxsubinterpreters  imghdr              pygments            win32clipboard
+              _yaml               imp                 pylab               win32com
+              _zoneinfo           importlib           pylint              win32con
+              abc                 importlib_metadata  pyls_spyder         win32console
+              adodbapi            incremental         pylsp               win32cred
+              afxres              inflection          pylsp_black         win32crypt
+              aifc                iniconfig           pylsp_jsonrpc       win32cryptcon
+              alabaster           inspect             pyodbc              win32ctypes
+              anaconda_navigator  intake              pyparsing           win32event
+              anaconda_project    intervaltree        pyrsistent          win32evtlog
+              antigravity         io                  pytest              win32evtlogutil
+              anyio               ipaddress           pythoncom           win32file
+              appdirs             ipykernel           pytz                win32gui
+              argon2              ipykernel_launcher  pyviz_comms         win32gui_struct
+              argparse            ipython_genutils    pywin               win32help
+              array               ipywidgets          pywin32_bootstrap   win32inet
+              arrow               isapi               pywin32_testutil    win32inetcon
+              ast                 isort               pywintypes          win32job
+              astroid             isympy              pywt                win32lz
+              astropy             itemadapter         pyximport           win32net
+              asynchat            itemloaders         qdarkstyle          win32netcon
+              asyncio             itertools           qstylizer           win32pdh
+              asyncore            itsdangerous        qtawesome           win32pdhquery
+              atexit              jdcal               qtconsole           win32pdhutil
+              atomicwrites        jedi                qtpy                win32pipe
+              attr                jellyfish           queue               win32print
+              attrs               jinja2              queuelib            win32process
+              audioop             jinja2_time         quopri              win32profile
+              automat             jmespath            random              win32ras
+              autopep8            joblib              rasutil             win32rcparser
+              autoreload          json                re                  win32security
+              babel               json5               regcheck            win32service
+              backcall            jsonschema          regex               win32serviceutil
+              backports           jupyter             regutil             win32timezone
+              base64              jupyter_client      repo_cli            win32trace
+              bcrypt              jupyter_console     reprlib             win32traceutil
+              bdb                 jupyter_core        requests            win32transaction
+              binaryornot         jupyter_server      requests_file       win32ts
+              binascii            jupyterlab          rlcompleter         win32ui
+              binhex              jupyterlab_plotly   rmagic              win32uiole
+              binstar_client      jupyterlab_pygments rope                win32verstamp
+              bisect              jupyterlab_server   rtree               win32wnet
+              bitarray            jupyterlab_widgets  ruamel_yaml         win_inet_pton
+              bkcharts            jwt                 run                 win_unicode_console
+              black               keyring             runpy               wincertstore
+              blackd              keyword             s3transfer          winerror
+              bleach              kiwisolver          sched               winioctlcon
+              blib2to3            lazy_object_proxy   scipy               winnt
+              bokeh               lib2to3             scrapy              winperf
+              boto3               libarchive          seaborn             winpty
+              botocore            libfuturize         secrets             winreg
+              bottleneck          libpasteurize       select              winsound
+              brotli              lief                selectors           winxpgui
+              bs4                 linecache           send2trash          winxptheme
+              builtins            llvmlite            service_identity    wrapt
+              bz2                 locale              servicemanager      wsgiref
+              cProfile            locket              setuptools          xarray
+              calendar            logging             shelve              xdrlib
+              certifi             lxml                shlex               xlrd
+              cffi                lz4                 shutil              xlsxwriter
+              cgi                 lzma                signal              xlwings
+              cgitb               mailbox             sip                 xml
+              chardet             mailcap             sipconfig           xmlrpc
+              charset_normalizer  markdown            sipdistutils        xxsubtype
+              chunk               markupsafe          site                yaml
+              click               marshal             six                 yapf
+              cloudpickle         math                skimage             yapftests
+              clyent              matplotlib          sklearn             zict
+              cmath               matplotlib_inline   sklearnex           zipapp
+              cmd                 mccabe              slugify             zipfile
+              code                menuinst            smart_open          zipimport
+              codecs              mimetypes           smtpd               zipp
+              codeop              mistune             smtplib             zlib
+              collections         mkl                 snappy              zmq
+              colorama            mkl_fft             sndhdr              zoneinfo
+              colorcet            mkl_random          sniffio             zope
+              colorsys            mmap                snowballstemmer
+              commctrl            mmapfile            socket
+              compileall          mmsystem            socketserver
+              
+              Enter any module name to get more help.  Or, type "modules spam" to search
+              for modules whose name or summary contain the string "spam".
+              </pre>
+              <p>Exactly how this list presents itself will depend on the system 
+              your are using. Enter:</p>
               <pre>operator</pre>
               <p>This should display the start of the help documentation for the 
-              operator module. Press the &lt;enter&gt; key to see the next line 
+              operator module:</p>
+              <pre>
+              Help on module operator:
+              
+              NAME
+                  operator - Operator interface.
+              
+              MODULE REFERENCE
+                  https://docs.python.org/3.9/library/operator
+              
+                  The following documentation is automatically generated from the Python
+                  source files.  It may be incomplete, incorrect or include features that
+                  are considered implementation detail and may vary between Python
+                  implementations.  When in doubt, consult the module reference at the
+                  location listed above.
+              
+              DESCRIPTION
+                  This module exports a set of functions implemented in C corresponding
+                  to the intrinsic operators of Python.  For example, operator.add(x, y)
+                  is equivalent to the expression x+y.  The function names are those
+                  used for special methods; variants without leading and trailing
+                  '__' are also provided for convenience.
+              
+              CLASSES
+                  builtins.object
+                      attrgetter
+                      itemgetter
+                      methodcaller
+              
+                  class attrgetter(builtins.object)
+                   |  attrgetter(attr, ...) --> attrgetter object
+                   |
+                   |  Return a callable object that fetches the given attribute(s) from its operand.
+                   |  After f = attrgetter('name'), the call f(r) returns r.name.
+                   |  After g = attrgetter('name', 'date'), the call g(r) returns (r.name, r.date).
+              -- More  --
+              </pre>
+              <p>Press the &lt;enter&gt; key to see the next line 
               of the documentation. Press and hold the &lt;enter&gt; key and the 
               documentation should stream to the screen. The &lt;space&gt; bar 
               key streams the documentation a page at a time. The &lt;q&gt; key 
@@ -360,65 +628,67 @@ public class Python extends Page {
               <p>To exit the help system and return you to the Python prompt, 
               enter:</p>
               <pre>q</pre>
-              <p>Before learning how to run a file of Python commands, let us 
-              consider a bit more basic Python syntax.</p>
               """);
+        w.add("<p>To read the help for the "
+                + c.index.getReference("Python builtins", "builtins", s.sid)
+                + " module "
+                + c.index.getReference("Python print", "print", s.sid)
+                + " function, enter:</p>");
+        w.add("<pre>help(print)</pre>");
+        w.add("""
+              <p>Before learning how to run a file of Python commands, let us 
+              consider some more basic Python syntax - rules about how it must 
+              be written.</p>
+              """);
+
         s = addSection("4", "Basic Python Syntax", 2);
         w.add(s.sectionHTML);
-        w.add("""
-              <p>The syntax of a computer programming language are the rules 
-              about how it must be written.</p>
-              """);
+
         s = addSection("4.1", "Syntax Errors", 3);
         w.add(s.sectionHTML);
+        c.index.getReference("Syntax Error", "", s.sid);
         w.add("<p>If a statement or expression is syntactically incorrect, and"
                 + " the Python interpreter attempts to interpret it, a "
-                + c.index.getReference("Syntax Error", "syntax error", s.sid)
-                + " gets raised.</p>");
+                + c.index.getReference("Python SyntaxError", "SyntaxError",
+                        s.sid)
+                + " is raised.</p>");
         w.add("""
               <p>At the Python prompt enter:</p>
               <pre>x=</pre>
-              """);
-        w.add("<p>You should get the following "
-                + c.index.getReference("Python SyntaxError", "SyntaxError", 
-                        s.sid)
-                + ":</p>");
-        w.add("""
+              <p>You should get the following:</p>
               <pre>
-              File "<stdin>", line 1
+              File "&lt;stdin>", line 1
                   x =
                      ^
               SyntaxError: invalid syntax
               </pre>
-              <p>Notice how this attempts to indicate where the syntax error 
-              is.</p>
-              <p>Essentially, the issue with this code is that the expression is 
-              incomplete: There should be something on the right of the equals 
-              sign '='.</p>
-              <p>One of the key skills in coding is learning to read and 
-              understand error messages.</p>
+              <p>Essentially, the problem with this code is that the expression 
+              is incomplete: There should be something on the right of the 
+              equals sign '='.</p>
               
               <h3 id="4.2">4.2. Statements</h3>
-              <p>Multiple statements on a single line are separated with 
-              semicolons ';'. At the python prompt enter:</p>
+              <p>In Python, multiple statements on a single line are separated 
+              with semicolons ';'. At the Python prompt enter:</p>
               <pre>y=1;x=y;print(x)</pre>
               <p>The output should be:</p>
               <pre>1</pre>
-              <p>The same line could be spaced out more and each statement could
-              be on a separate line.</p> 
-              <p>Individual statements might include mulitple expressions and 
-              can be formulated over several lines. We will consider some 
-              examples of these shortly...</p>
+              <p>The code could be spaced out more and each statement could
+              be on a separate line without the need for any semicolons:</p>
+              <pre>y = 1
+              x = y
+              print(x)</pre>
+              <p>Individual Python statements might include multiple 
+              expressions and can be formulated over several lines. We will 
+              consider some examples of these compound statements shortly...</p>
               <p>Python does not have a special symbol to end a statement like 
               many other languages do.</p>
               """);
 
         s = addSection("4.3", "Comments", 3);
-
         w.add(s.sectionHTML);
-
         w.add("""
-              <p>The # symbol is the start of a comment.</p>
+              <p>The symbol '#' is the start of a comment. Consider the 
+              following code:</p>
               <pre>
               # This entire line is a comment
               x = 0 # This part of the line is a comment
@@ -427,17 +697,18 @@ public class Python extends Page {
               # x = 1 # Commented code is not run.
               </pre>
               """);
-        w.add("<p>Between triple quotes everything is a comment. There are two"
-                + " types of triple quote, those using single quotation marks,"
-                + " and those using double quotation marks.</p>");
+        w.add("<p>Between pairs of matching triple quotes everything is a"
+                + " comment. There are two types of triple quote, those using"
+                + " single quotation marks, and those using double quotation"
+                + " marks.</p>");
         w.add("<p>Triple double quotes are used for "
                 + c.index.getReference("Python docstring", "docstrings", s.sid)
-                + " - a form of source documentation that will be detailed"
-                + " later in the course.</p>");
-        w.add("<p>Triple single quotes are useful for commenting out"
+                + " - a form of documentation that will be detailed later in"
+                + " the course.</p>");
+        w.add("<p>Triple single quotes can be useful for commenting out"
                 + " sections of code when "
                 + c.index.getReference("Debugging", "debugging", s.sid)
-                + ".</p>");
+                + ". Consider the following code:</p>");
         w.add("""
               <pre>
               '''
@@ -454,56 +725,53 @@ public class Python extends Page {
               \"\"\"
               '''
               </pre>
-              <p>Comments are to help make code easier for humans to read and 
-              understand. It can be helpful to refer to other information 
-              sources in comments. It is sensible to add a comment to inform 
-              why code is commented out.</p>
-              
-              <h3 id="4.4">4.4. Code Layout</h3>
+              <p>Comments can be used to help make code easier to understand and
+              outline thinking behind some implementation or future improvements
+              that might be made. It can be helpful to refer to other 
+              information sources in comments. It is sensible to add a comment 
+              to explain why code any code is commented out.</p>
+              """);
+
+        s = addSection("4.4", "Code Layout", 3);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Blank lines are allowed and can help structure code into 
               blocks. It is good practice to start each code block with a
               comment that outlines what the code block is for. For example:
               </p>
-              <pre>
-              # Initialise x and y"
+              <pre># Initialise x and y"
               x = 2
               y = 4
               print(x)
               print(y)
-              # Calculate x to the power of y
-              x ** y
-              </pre>
+              
+              # Calculate and print x to the power of y
+              x ** y</pre>
               <p>Indentation is syntax in Python. Indentation refers to the 
-              blank space that precedes expressions on a line. (Blank space is 
-              sometimes called 'white space' - as code backgrounds were normally 
-              white in colour). It is good to be consistent with indentation and 
-              to be aware that indentation can effect what code does. Care must 
-              be taken with spaces and tabs in this respect as these are 
-              different, but often a number of spaces appears the same as a 
-              single tab. It is recommended not to use tabs at all in python 
-              source code and to use multiple spaces instead to indent. The 
-              following is a code block with an example If Statement:</p>
+              space that precedes expressions on a line and is sometimes called 
+              'blank space' or 'white space'. Care is needed with indentation in 
+              Python. In particular 'spaces' and 'tabs' can make indentation 
+              appear the same when it isn't. It is recommended not to use tabs 
+              for indentation and to use multiple spaces instead.</p>
+              """);
+        w.add("<p>The following is a Python code block with an example "
+                + c.index.getReference("Python if", "if statement", s.sid)
+                + ":</p>");
+        w.add("""
               <pre>
               # if x is greater than y, then print a
               if x > y: # This line has the same indent as the comment above.
                   print(x) # This line is indented one standard step further.
               print(\"done\") # This line is indented to the previous level.
               </pre>
-              <p>In the code above, if the variable 'x' is greater than the 
-              variable 'y', then the value of 'x' is printed. If the variable 
-              'x' has not been initialised, then there will be an error:</p>
-              <pre>Traceback (most recent call last):
-                File "<stdin>", line 1, in <module>
-              NameError: name 'x' is not defined</pre>
               """);
-        w.add("<p>The function "
-                + c.index.getReference("Python print", "print", s.sid)
-                + " is a function of the "
-                + c.index.getReference("Python builtins", "builtins", s.sid)
-                + " module that is loaded by default. Read the the help for it."
-                + " Enter:</p>");
-        w.add("<pre>help(print)</pre>");
-        
+        w.add("<p>In the code above, if the variable 'x' is greater than the"
+                + "variable 'y', then the value of 'x' is printed. If either "
+                + "of the variables 'x' or 'y' has not been initialised, then "
+                + "a "
+                + c.index.getReference("Python NameError", "NameError")
+                + " will be raised.</p>");
+
         s = addSection("4.5", "Delimiters, Literals and Operators", 3);
         w.add(s.sectionHTML);
         w.add("<p>Delimiters in code separate and help organise things. The "
@@ -511,24 +779,27 @@ public class Python extends Page {
                 + c.index.getReference("Python delimiters", s.sid)
                 + ":</p>");
         w.add("""
-              <pre>(       )       [       ]       {       }
-              ,       :       .       ;       @       =       ->
-              +=      -=      *=      /=      //=     %=      @=
-              &=      |=      ^=      >>=     <<=     **=</pre>
-              <p>The various types of bracket are paired: parentheses '()',
-              square brackets '[]' and curly brackets '{}' also known as braces.
-              A lot of code uses brackets. Each open bracket must be paired 
-              with a closing bracket. Failure to pair brackets correctly is 
-              problematic and is a common reason for confusion. Commas ',', 
-              colons ':', dots '.' and semicolons ';' are also commonly used 
-              delimeters in code. Details of these other delimiters are omitted 
-              for the time being, but some are also operators.</p>
-              <p>Literals are specific numerical or text values.</p>
+              <pre>(       )       [       ]       {       }      :
+              .       ;       @       =       ->      +=     -=
+              *=      /=      //=     %=      @=      &=     |=
+              ^=      >>=     <<=     **=</pre>
+              """);
+        w.add("""
+              <p>The various types of bracket are paired - each open bracket 
+              must be paired with a closing bracket: parentheses '()'; square 
+              brackets '[]'; and, curly brackets '{}' also known as braces.</p>
+              <p>A lot of code uses brackets. Failure to pair brackets correctly
+              is a common reason for confusion.</p>
+              <p>Commas ',', colons ':', and dots '.' are commonly used 
+              delimeters in Python. Details of other delimiters are omitted 
+              for the time being. Some are really better thought of as 
+              operators rather than delimiters.</p>
               """);
         w.add("<p>Operators are sequences of symbols that are shorthand for "
                 + c.index.getReference("Python operator", "operator", s.sid)
                 + " module functions (e.g. +, -, *, /, %)</p>");
-        
+        w.add("<p>Literals are specific numerical or text values.</p>");
+
         s = addSection("4.6", "Identifiers and Keywords", 3);
         w.add(s.sectionHTML);
         w.add("<p>Identifiers are names of variables, functions, classes,"
@@ -537,36 +808,39 @@ public class Python extends Page {
                 + c.index.getReference("Python keyword", "keyword", s.sid)
                 + " is a reserved word - a term that can't be used for an"
                 + " identifier.</p>");
+        c.index.getReference("Syntax Error", "", s.sid);
         w.add("<p>Attempting to "
-                + c.index.getReference("Name Binding", "use", s.sid) 
+                + c.index.getReference("Name Binding", "use", s.sid)
                 + " a keyword as an identifier such as a variable name"
                 + " typically results in a "
-                + c.index.getReference("Syntax Error", "syntax error", s.sid)
+                + c.index.getReference("Python SyntaxError", "SyntaxError",
+                        s.sid)
                 + ". Enter the following at the Python prompt:</p>");
+        w.add("<pre>if = 2</pre>");
         w.add("""
-              <pre>if = 2</pre>
               <p>This should result in:</p>
               <pre>File "@lt;stdin>", line 1
                   if = 2
                      ^
               SyntaxError: invalid syntax</pre>
-              <p>Notice that the syntax error is pointing at the equals sign
-              '='. This is because the Python interpreter is expecting a
-              conditional expression after the keyword 'if'. The error has come 
-              about because of the attempt to use a keyword as a variable name.
-              </p>
               """);
+        w.add("<p>The Python interpreter is expecting a conditional expression"
+                + " after the keyword 'if'. Recall that "
+                + c.index.getReference("Python keyword", "keywords", s.sid)
+                + " cannot be used as identifiers.</p>");
         w.add("<p>For details, see the "
                 + c.references.getReference(
-                        "Python Lexical Analysis Documentation"));
+                        "Python Lexical Analysis Documentation")
+                + "</p>");
+
+        s = addSection("4.7", "Style", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>The following code block is a "
+                + c.index.getReference("Python if", s.sid)
+                + " statement which can be read as follows: If the variable 'x'"
+                + " is greater than the variable 'y', then 'x' is printed,"
+                + " otherwise y is printed.</p>");
         w.add("""
-              </p>
-              
-              <h4 id="4.7">4.7. Style</h4>
-              <p>The following code block is an If Statement which has an 
-              Else Condition. This can be read as follows: If the variable x
-              is greater than the variable y, then x is printed, otherwise y is
-              printed.</p>
               <pre>x = 0 
               y = 1
               # If x is greater than y, then print x, else print y.
@@ -588,17 +862,18 @@ public class Python extends Page {
               else:
                   print("y", y)
               print("done")</code></pre>
-              <p>The style does not change the meaning of the code, but it can 
-              make it easier to read and understand. Most code blocks presented 
-              subsequently in these learning resources will typically be styled 
-              as in the last snippet.</p>
-              
+              <p>The style does not change the meaning of the code, but it 
+              hopefully makes it easier to read and understand.</p>
+              <p>Further code blocks presented in these learning resources will 
+              be colourfully styled as above.</p>
+              """);
+        w.add("""
               <h2 id="5">5. Running a file of Python commands</h2>
               <p>Create a new ASCII text file, add to it the following line:</p>
               <pre>print("Hello World")</pre>
               <p>Save the file with the name "HelloWorld.py". Open an Anaconda 
               prompt. Change to the directory where you saved the file 
-              'path_to_directory' using:</p>
+              (path_to_directory) using:</p>
               <pre>cd path_to_directory</pre>
               <p>Run the file using:</p>
               <pre>python HelloWorld.py</pre>
@@ -616,8 +891,6 @@ public class Python extends Page {
               bottom, but the flow may call functions which may themselves call 
               other functions. The interpreter returns to the line of code after 
               a function call once the function has been executed.</p>
-              <p>Try creating another file, add some Python commands and run it.
-              </p>
               <p>It is not necessary to run files of Python code from the 
               directory in which the file is located. A path to the file can be 
               given in the Python command. That path can be absolute (from 
@@ -646,18 +919,19 @@ public class Python extends Page {
               <p>At the Anaconda prompt change to a directory where you can 
               write new files and enter:</p>
               <pre>jupyter notebook</pre>
-              <p>Some messages should appear in the Command Window and a Web 
-              browser tab should open with the Jupyter Notebook Interface.</p>
+              <p>Some messages should appear in the console and a Web browser 
+              tab should in the default Web browser and display the Jupyter 
+              Notebook Interface.</p>
               <p>From the New Button drop down list of the Jupyter Notebook 
               Interface, select:</p>
               <pre>Python 3 (ipykernel)</pre>
               <p>The New Button is highlighted with a red oval in the following 
               image of the interface:</p>
               <img src="../../resources/python/jupyter1.png" alt="Jupyter Notebook Interface 1" />
-              <p>A python REPL environment should appear in another browser tab
+              <p>A Python REPL environment should appear in another browser tab
               like shown in the following image:</p>
               <img src="../../resources/python/jupyter2.png" alt="Jupyter Notebook Interface 2" />
-              <p>Try typing the following at the prompt and actioning run:</p>
+              <p>Enter the following in a cell and action run:</p>
               <pre>print("Hello World")</pre>
               <p>You should see something like:</p>
               <img src="../../resources/python/jupyter3.png" alt="Jupyter Notebook Interface 3" />
@@ -678,36 +952,40 @@ public class Python extends Page {
                 + "code in some other ways...</p>");
 
         s = addSection("7", "Integrated Development Environments", 2);
-
         w.add(s.sectionHTML);
-
         w.add("<p>"
-                + c.index.getReference("IDE", 
+                + c.index.getReference("IDE",
                         "Integrated Development Environments", s.sid)
                 + "(IDEs) are software tools used to make writing code and "
                 + "developing software easier. This section introduces "
                 + c.references.getReference("IDLE")
                 + " and "
                 + c.references.getReference("Spyder")
-                + "- IDEs that come with "
+                + " - IDEs that come with "
                 + c.references.getReference("Anaconda")
                 + ".</p>");
+
         s = addSection("7.1", "IDLE", 3);
         w.add(s.sectionHTML);
+        w.add("<p>Python comes with "
+                + c.references.getReference("IDLE")
+                + " - an Integrated Development and Learning Environment for "
+                + "Python. The IDLE application has an "
+                + "'editor window' for editing files of Python commands, and a "
+                + "'console window' for entering REPL commands and displaying "
+                + "output. At the Anaconda prompt enter:</p>");
         w.add("""
-              <p>Python comes with IDLE - an Integrated Development and Learning 
-              Environment. The IDLE application has an 'editor window' for 
-              editing files of Python commands, and a 'console window' for 
-              entering REPL commands and displaying output. At the Anaconda 
-              prompt enter:</p>
               <pre>idle</pre>
               <p>This should open up the IDLE console window that should look 
               something like the image below:</p>
               <img src="../../resources/python/idle1.png" alt="The IDLE interface" />
-              <p>As well as the python console prompt, there are some menus. 
-              Choose:</p>
+              """);
+        w.add("<p>As well as the Python console prompt, there is a "
+                + c.index.getReference("GUI")
+                + " menu. Choose:</p>");
+        w.add("""
               <pre>File -> Open...</pre>
-              <p>Open your HelloWorld.py file. It should open the file in an 
+              <p>Open your HelloWorld.py file. IDLE should open the file in the
               editor window that looks something like:</p>
               <img src="../../resources/python/idle2.png" alt="The IDLE file editor window interface" />
               <p>Notice that as with a Jupyter Notebook, the code appearing in 
@@ -718,17 +996,14 @@ public class Python extends Page {
               console in the other window which should appear something like:</p>
               <img src="../../resources/python/idle3.png" alt="The IDLE interface having run the Hello World program" />
               """);
-        w.add("<p>"
-                + c.references.getReference("IDLE")
-                + " is an IDE that comes with Python.</p>);");
-        w.add("<p>Close down the instance of IDLE that is running.<p>");
+        w.add("<p>Close the instance of IDLE that is running.<p>");
+
         s = addSection("7.2", "Spyder", 3);
         w.add(s.sectionHTML);
         w.add("<p>"
-                + c.references.getReference("Spyder") 
-                + " - the Scientific PYthon Development EnviRonment, is"
-                + " currently more sophisticated IDE that comes with Anaconda."
-                + "</p>");
+                + c.references.getReference("Spyder")
+                + " - the Scientific PYthon Development EnviRonment, is a"
+                + " different IDE that comes with Anaconda.</p>");
         w.add("""
               <p>From the Anaconda prompt enter:</p>
               <pre>spyder</pre>
@@ -744,7 +1019,7 @@ public class Python extends Page {
               editor pane. From the menu, choose:</p>
               <pre>Run -> Run</pre>
               <p>If a popup box appears choose the default and this should run 
-              your program and output should apear in the console like in the 
+              your program and output should appear in the console like in the 
               following image:</p>
               <img src="../../resources/python/spyder2.png" alt="The Spyder interface showing the Hello
               World program successfully run" />
@@ -753,10 +1028,10 @@ public class Python extends Page {
               """);
         w.add("<p>Try to run the file again. It should raise a "
                 + c.index.getReference("Python NameError", "NameError", s.sid)
-                + " and there should be marks against the code on line 2 on "
-                + "the left and right of the editor pane. Hover your mouse "
-                + "cursor over the mark on the left. You should see something "
-                + "similar to the image below:</p>");
+                + " and there should be marks against the code on line 2 on"
+                + " the left and right of the editor pane. Hover your mouse "
+                + " cursor over the mark on the left. You should see something "
+                + " similar to the image below:</p>");
         w.add("""
               <img src="../../resources/python/spyder3.png" 
               alt="The Spyder interface showing an error." />
@@ -764,6 +1039,7 @@ public class Python extends Page {
         w.add("<p>Have a look at the latest "
                 + c.references.getReference("Spyder Documentation")
                 + "</p>");
+
         w.add("""
               <h3 id="7.3">7.3 Other IDEs</h3>
               <p>There are other IDEs that support Python code development. If 
@@ -780,29 +1056,33 @@ public class Python extends Page {
               .
               </p>
               """);
+
         s = addSection("8", "QGIS Desktop Python Console", 2);
         w.add(s.sectionHTML);
         w.add("<p>"
-                + c.index.getReference("Geographical Information System (GIS)")
-                + " software are used to create, manage, process, model,"
+                + c.index.getReference("GIS", "Geographical Information System")
+                + "  (GIS) software are used to create, manage, process, model,"
                 + " visualise and distribute geographical data and information."
-                + c.references.getReference("QGIS") 
-                + " Desktop is GIS software that is "
-                + c.index.getReference("Free and Open Source Software", 
-                "free and open source")
-                + ", there is currently a thriving developer and user "
-                + "community and a Python "
+                + c.references.getReference("QGIS")
+                + " is "
+                + c.index.getReference("Free and Open Source Software",
+                        "free and open source")
+                + " GIS software. It has a thriving developer and user"
+                + " community and a Python "
                 + c.index.getReference("API")
                 + ". QGIS is mostly written in mixture of "
                 + c.index.getReference("C++", s.sid)
-                + " and Python and there is both Desktop and Server software"
-                + " that to some extent can be automatedusing Python APIs."
-                + "</p>");
-        w.add("<p>QGIS Desktop is often controlled via a "
-                + c.index.getReference("GUI", s.sid)
-                + ". The GUI has a Menu, Panels and Toolbars. Load QGIS "
-                + "Desktop via 'AppsAnywhere' or download, install and run it "
-                + "on your own device.</p>");
+                + " and Python and there is are distinct client and server"
+                + " software. The operation of both these can be automated"
+                + " using Python.</p>");
+        w.add("<p>QGIS Server is geared for serving out data. QGIS Desktop is "
+                + "both a client that can consume data that is served out and "
+                + "a general desktop application for processing geographical "
+                + "data. QGIS Desktop is often controlled by users via a "
+                + c.index.getReference("GUI")
+                + " with a menu, panels and toolbars. Load QGIS Desktop via"
+                + " AppsAnywhere or download, install and run it on your own "
+                + "device.</p>");
         w.add("<p>As QGIS Desktop software loads, a splash screen should "
                 + "appear. When fully loaded the GUI should appear.</p>");
         w.add("""
@@ -822,12 +1102,10 @@ public class Python extends Page {
               """);
         w.add("<p>"
                 + c.index.getReference("PyQGIS", s.sid)
-                + " allows us to access all the functionality accessible via "
-                + "the QGIS Desktop GUI programatically, and gives greater "
-                + "control in data loading and processing. It also allows us "
-                + "to develop and use additional functionality including "
-                + "functionality available in the Python environment provided."
-                + "</p>");
+                + " provides programatic access to functionality that can also"
+                + " be accessed via the QGIS Desktop GUI. It gives greater"
+                + " control in data loading and processing and can be used to "
+                + " extend the available functionality.</p>");
         w.add("""
               <p>In the QGIS Desktop Python console, locate and action the 
               'Show Editor' button. The 'editor panel' should appear on the 
@@ -839,18 +1117,21 @@ public class Python extends Page {
               instructions that are in the multi-line comment at the top of the
               source code. (An outline of what to expect is provided in that 
               multi-line comment.)</p>
-              <p>The import statements are at the top (which is good practise). 
-              Code is organised into code blocks with comments that outline what 
-              each code block does (also good practise). The import statements 
-              start with the keyword 'from' which details from which package the 
-              specified modules are imported.</p>
+              <p>The import statements are at the top of the Python source code 
+              (which is good practise). Code is organised into code blocks with 
+              comments that outline what each code block does (also good 
+              practise). In this program, the import statements start with the 
+              keyword 'from' which details from which package the specified 
+              modules are imported.</p>
               """);
+        c.index.getReference("For Loop", "", s.sid);
         w.add("<p>The code contains some "
-                + c.index.getReference("For Loop", "for loops")
-                + " which start with the keyword 'for'. The first of these "
-                + "iterates over the 'fields' in a 'layer'. The others iterate "
-                + "over the 'features' in a 'layer'. (Iteration simply means "
-                + "going through a collection of things one at a time.)</p>");
+                + c.index.getReference("Python for", s.sid)
+                + " statements which start with the keyword 'for'. The first of"
+                + " these iterates over the 'fields' in a 'layer'. The others"
+                + " iterate over the 'features' in a 'layer'. (Iteration simply"
+                + " means going through a sequence of things one at a time.)"
+                + "</p>");
         w.add("<p>The program accesses both attribute and geometry data from a "
                 + "layer, and adds data into the QGIS Desktop GUI display."
                 + "</p>");
@@ -860,9 +1141,9 @@ public class Python extends Page {
               <img src="../../resources/python/qgis2.png" alt="QGIS Python 
               Console after having run QGISExample.py" />
               </p>
-              <p>QGIS Desktop Plugins can be written in both C++ and Python. For 
-              details see the following:
-              </p>
+              <p>QGIS Desktop Plugins can be written in both C++ and Python. 
+              This course does not explore this further. For details see the 
+              following:</p>
               <ul>
               <li><a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
               QGIS Development Web Page</a></li>
@@ -870,115 +1151,111 @@ public class Python extends Page {
               PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a></li>
               </ul>
               """);
-        
-        s = addSection("9", "Python Packages and Environment Management", 2);
 
+        s = addSection("9", "Python Packages and Environment Management", 2);
         w.add(s.sectionHTML);
-        
         w.add("""
               <p>Packaging code and delivering it to users via repositories is 
-              good practise for a numerous reasons. Many software and code 
-              repositories are language specific or software specific (like QGIS
-              Desktop Plugins), components within the repositories are packaged 
-              in standard ways, and there is some process of review and some 
-              policy about package availability and removal. For details on 
-              packaging Python code see the following:
+              good practise for numerous reasons. Some software and code 
+              repositories are programming language specific or software
+              specific (like QGIS Desktop Plugins), components within the 
+              repositories are packaged in standard ways, and there is some 
+              process of review and some policy about package availability and 
+              removal. For details on packaging Python code see the following:
               """);
         w.add(c.references.getReference("Python Packaging User Guide")
                 + " - a collection of tutorials and references to help you "
                 + "distribute and install Python packages with modern tools.");
-        w.add("""
-              <p>For those just beginning to learn to program, learning to 
-              package code is jumping a step ahead. However, it helps to be 
-              aware of Python packaging and repositories as a beginner from the 
-              offset, and to learn about managing Python Environments, 
-              installing packages into them and understand a few key things 
-              about dependencies.</p>
-              """);
-        w.add("<p>As mentioned, "
+        w.add("<p>"
                 + c.references.getReference("PyPI")
-                + " is a widely used repository. Developers deploy packages"
-                + " there for users. Many are provided as "
+                + " is a widely used Python repository. Developers deploy"
+                + " packages to PyPI and users install packages from there."
+                + " Many packages are provided as "
                 + c.index.getReference("Free and Open Source Software")
-                + ", although private proprietary packages are also supported."
+                + ". PyPI also supports hosting private proprietary packages."
                 + "</p>");
         w.add("""
-              <p>When installing a package, by default package dependencies are
-              installed at the same time. In Python terms, a dependency is a 
-              package, module or function that some other code needs in order to 
-              work. At the package level, for any package that is being 
-              installed, a dependency list (tree) can be generated which 
-              includes all the dependencies. It is referred to as a tree as 
-              there can be several levels as packages may depend on other 
-              packages, but in fact it can be more like a web as there can be 
-              common dependencies in the tree.</p>
-              <p>One of the criticisms levelled at Python is to do with 
-              dependency management. When code in two different packages depends 
-              on different versions of common dependency there is what is known 
-              as a dependency conflict. There are ways to work around this using
-              something called orchestration which involves organising multiple 
-              Python environments with different versions of the same package 
-              installed in different environments, but this is fiddly and is 
-              regarded as an advanced topic that we will not cover in this 
-              course.</p>
+              <p>When installing a package in a Python environment, by default 
+              package dependencies are also installed at the same time. In 
+              Python terms, a dependency is a package, module or function that 
+              some other code needs in order to work. At the package level, for 
+              any package that is being installed, a dependency list can be 
+              generated which includes all the dependencies. Further lists can 
+              be generated that reveal what these dependencies also depend upon.
+              A web of dependencies can emerge and the dependencies can be 
+              installed sequentially so as to only install those dependencies 
+              that depend on things that are already installed in the 
+              environment.</p>
+              <p>A criticism levelled at Python is that it can be poor at 
+              dependency management compared with other programming languages. 
+              When code in two different packages depends on different versions 
+              of a common dependency, there is what is known as a dependency 
+              conflict in Python. Python is currently not able to have multiple
+              versions of a dependency installed in a single environment. The 
+              work around for this in Python is called orchestration which 
+              involves organising multiple Python environments with the 
+              required versions installed and getting these to work together. 
+              Such orchestration is fiddly and is regarded as an advanced topic 
+              that is not covered in this course.</p>
               <p>Learning about creating, activating, using, deactivating and 
               deleting Python environments is important for orchestration and 
-              for other reasons introduced below, so we cover these things in 
-              this section.</p>
-              <p>It is easy to pollute environments by installing packages (and 
-              their dependencies) that turn out not to be useful and that then 
-              get in the way - using up resources and slowing things down. This
-              is in part because uninstalling packages and removing all their 
-              dependencies is not easy due to the way things are organised. 
-              Managing environments is the recommended Python way to do deal 
-              with this for the time being.</p>
-              <p>The general advice for the time being is to install all the 
-              required packages and their dependencies at the same time. The 
-              main reason for this is that dependency conflict resolution is 
-              easier then and takes place. For example, if one dependency 
-              requires a version between 1.2 to 1.5 of a particular package and 
-              another requies a version from 1.1 to 1.10, then version 1.5 would 
-              be installed and if there is a conflict that cannot be resolved 
-              this would become clear. If the installations were done one at a 
-              time, there is greater risk that version 1.10 would be the version 
-              available and it could be hard to diagnose issues as a result of 
-              this.</p>
+              for other reasons. This is covered in this section...</p>
+              <p>It is easy to pollute Python environments by installing 
+              packages (and their dependencies) that turn out not to be useful 
+              and that then get in the way - using up resources and slowing 
+              things down. This is in part because uninstalling packages and 
+              removing all their dependencies is not currently easy with Python.
+              </p>
+              <p>The general advice when installing several packages is to 
+              install them all in one go. Some dependency conflict resolution is 
+              attempted by the installer when this is done. So, for example, if 
+              a dependency requires a version between 1.2 to 1.5 of another 
+              package and another dependency requies a version from 1.1 to 1.10, 
+              then version 1.5 would be installed as the latest version that 
+              works for all dependencies. If installations were done one at a 
+              time, it is likely that version 1.10 would end up being the 
+              version available and this might not work or might not work as 
+              expected.</p>
               """);
         w.add("<p>"
                 + c.references.getReference("Conda")
                 + " is a package and environment manager that comes with "
-                + "Anaconda. There is another common way to create and manage "
-                + "Python environments using "
+                + "Anaconda. Another way to create and manage Python "
+                + "environments uses the Python standard library module "
                 + c.index.getReference("Python venv", "venv", s.sid)
-                + " - which creates what are termed 'Virtual Environments' and "
+                + " and the Python Package Installer "
                 + c.references.getReference("PIP", "pip")
-                + ". These are much like the Python environments created by"
-                + " Conda (and the commands for doing this are very similar)."
-                + " Conda is the recommended way of installing some Python"
-                + " GIS packages. It is not necessarily that those packages"
-                + " cannot be configured and made to work using venv and pip,"
-                + " but that such configuration is currently more complicated,"
-                + " especially on Microsoft Windows operating systems.</p>");
+                + ".</p>");
+        w.add("<p>Conda is the recommended way of installing some Python"
+                + " packages. It is not necessarily that those packages"
+                + " cannot be configured and made to work using venv and"
+                + " pip, but that such configuration is currently more"
+                + " complicated. This is particularly true for some commonly"
+                + " used Python "
+                + c.index.getReference("GIS", s.sid)
+                + " packages, especially with installation on Microsoft Windows"
+                + " operating systems.</p>");
         w.add("""
               <p>Open an Anaconda prompt, change to a directory where you can 
               write files and enter the following command to create a list of
               Python packages available in the Python environment:</p>
               <pre>pip list > piplist.txt</pre>
-              <p>It may take a minute or so to run, and it should output an 
+              <p>It may take a minute or so to run. It should output an 
               ASCII text file containing a list of names with version numbers 
-              (that produced should be similar to 
-              <a href="../../resources/python/piplist.txt">piplist.txt</a>, but there may be 
-              differences).</p>
+              similar to:
+              <a href="../../resources/python/piplist.txt">piplist.txt</a>
+              .</p>
               <p>Enter the following command to create a similar list:</p>
               <pre>conda list > condalist.txt</pre>
-              <p>Again, it may take a minute or so to run, and it should output
-              an ASCII text file (similar to  
-              <a href="../../resources/python/condalist.txt">condalist.txt</a>).</p>
+              <p>Again, it may take a minute or so to run. It should output an
+              ASCII text file like similar to:  
+              <a href="../../resources/python/condalist.txt">condalist.txt</a>
+              .</p>
               <p>Enter the following command to create an explicit list of all 
-              the conda packages sved in a file named "spec-file.txt":</p>
+              the conda packages saved in a file named 'spec-file.txt':</p>
               <pre>conda list --explicit > spec-file.txt</pre>
-              <p>You or others can use this file or something similar to 
-              replicate the environment on another resource. For details of how
+              <p>This file can be used to attempt to replicate the Python 
+              environment on another resource. For details of how
               to do that see:
               <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">
               The Conda User Guide Page on Managing Environments Section on 
@@ -989,15 +1266,16 @@ public class Python extends Page {
               <pre># conda environments:
               #
               base                  *  C:\\ProgramData\\Anaconda3</pre>
-              <p>Often when creating an Python environment, it is for a specific 
-              purpose and only specific packages are installed. It is advised to
-              install packages together as the installer attempts to resolve 
-              conflicts and ensure the versions of packages installed will work 
-              together. Below, the instructions are to install a default Python
-              environment - one that comes with Anaconda, then install in this 
-              environment all the packages needed for this course. Altogether 
-              you need about 2GB of space in the location where you create the 
-              environment.
+              <p>Often users create a Python environment for a specific purpose 
+              and only specific packages are installed for that. The following 
+              set of instructions install the default Python environment that 
+              comes with Anaconda, then install in this all the packages needed 
+              for to run the examples on this page. Altogether about 2GB of 
+              space is needed in the location where you create the environment.
+              </p>
+              <p>It is not vital that you are able to run all the examples on 
+              this page. Most of the course uses only the Python standard 
+              library and a few other pakages that are installed as needed.</p>
               """);
         w.add("<p>Creating Python environments on Cloud storage such as on "
                 + "<a href=\"https://en.wikipedia.org/wiki/OneDrive\">"
@@ -1013,36 +1291,37 @@ public class Python extends Page {
                 + "M:\\ drive, for example in the following location:");
         String envPath = "M:\\" + c.getCourseCode1() + "\\envs";
         w.add(envPath);
-        w.add("<p>Create the directory in which to store the environment.</p>");
         envPath = envPath + "\\myenv";
         w.add("<p>Create the environment giving it a name added to the end of "
-                + "the directory path. Enter:</p>");
+                + "the directory path as follows:</p>");
         w.add("<pre>conda create -p " + envPath + "</pre>");
         w.add("<p>The -p option is the option to use a path to get conda to "
                 + "install the environment in a particular location. The path "
                 + "example given here is for Windows if using Linux or MacOS, "
                 + "then the path will be different. By default conda creates "
                 + "environments in a directory called 'envs' located wherever "
-                + "Anaconda is installed."
-                + "Confirm the environment creation by pressing the <y> key "
+                + "Anaconda is installed. In this case the environment being "
+                + "created is called 'myenv'."
+                + "Confirm the environment creation by pressing the &lt;y> key "
                 + "when prompted. Creating the environment should just take a "
-                + "few seconds. Once created, check it is listed. Enter:</p>");
+                + "few seconds. Once created, check it is listed:</p>");
         w.add("<pre>conda env list</pre>");
-        w.add("<p>You should see something like what is shown below. The "
-                + "details can vary depending on where the environment was "
-                + "created:<p>");
+        w.add("<p>You should see something like what is shown below:<p>");
         w.add("<pre># conda environments:");
         w.add("#");
         w.add("base             *  C:\\ProgramData\\Anaconda3");
         w.add("myenv               " + envPath + "</pre>");
+        w.add("<p>Details may vary depending on where you created the "
+                + "environment and what you called it.</p>");
         w.add("<p>Conda environments are registered/listed in the '.conda' "
-                + "directory in your user home directory in a file with the "
+                + "directory in the user home directory in a file with the "
                 + "name 'environments.txt'.</p>");
         w.add("<p>Assuming you named your environment 'myenv', activate it by"
                 + " entering:</p>");
         w.add("<pre>conda activate " + envPath + "</pre>");
         w.add("""
-              <p>The prompt should change to have "(myenv)" prepended</p>
+              <p>The prompt should change to have "(myenv)" prepended instead of 
+              "(base)"</p>
               <p>Next install the following Python packages:</p>
               <ul>
               <li><a href="https://contextily.readthedocs.io/en/latest/">Contextily</a></li>
@@ -1052,13 +1331,15 @@ public class Python extends Page {
               <li><a href="https://readthedocs.org/projects/pip/">pip</a></li>
               <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
               <li><a href="https://pypi.org/project/PyQt5">PyQt5</a></li>
-              <li><a href="https://pypi.org/project/spyder-kernels/">spyder-kernels</li>
+              <li><a href="https://pypi.org/project/spyder-kernels/">spyder-kernels</a></li>
               </ul>
               <p>Enter:</p>
               <pre>conda install -c conda-forge contextily fiona folium geopandas pip pysal ipykernel spyder spyder-kernels=2.2</pre>
+              <p>The installation may take some time... Once it is complete, 
+              install pyqt5 using pip by entering:</p>
               <pre>pip install pyqt5</pre>
-              <p>Install 'myenv' into the 'ipykernel' so it is available via the 
-              Jupyter Notebook interface:</p>  
+              <p>Next, install 'myenv' into the 'ipykernel' so it will be 
+              available via the Jupyter Notebook interface:</p>  
               <pre>python -m ipykernel install --user --name=myenv</pre>
               <p>Download
               <a href="../../resources/python/Jupyter1.ipynb">
@@ -1115,9 +1396,9 @@ public class Python extends Page {
                     13 )
                
                ModuleNotFoundError: No module named 'folium'</pre>
-              <p>Exit Jupyter Notebook and deactivate myenv2 by entering:</p>
-              <pre>deactivate myenv2</pre>
-              <p>To remove the conda environment myenv2 use:</p>
+              <p>Exit Jupyter Notebook and deactivate myenv by entering:</p>
+              <pre>deactivate myenv</pre>
+              <p>To remove the conda environment myenv use:</p>
               <pre>conda remove --name myenv --all</pre>
               <p>This ends the section on environment management and installing 
               packages.</p> 
@@ -1128,27 +1409,38 @@ public class Python extends Page {
               <li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
               https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a></li>
               </ul>
+              """);
 
-              <h2 id="10">10. Recap and Expectations</h2>
-              <p>This section of the course introduced some basic Python syntax 
-              and considered the evolution of the language. It explored running
-              Python code: using the REPL environment and help system; in files;  
-              Jupyter Notebooks; the IDLE and Spyder IDEs; and the Python 
-              environment in QGIS.</p>
-              <p>It introduced loading modules using import statements, and 
-              accessing functionality via a dot operator. There are example 
-              IF Statements and For Loops which we will learn about again 
-              shortly.</p>
-              <p>Versioning and packaging were introduced, as was managing 
-              Python/Conda environments and installing Python packages in them.
-              </p>
+        s = addSection("10", "Recap and Expectations", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>This section of the course introduced some basic Python"
+                + " syntax and considered the evolution of the language. It"
+                + " explored running Python code in a number of ways: using the"
+                + " REPL environment, running files of source code; using"
+                + " Jupyter Notebooks; the IDLE and Spyder IDEs; and the Python"
+                + " environment in QGIS.</p>");
+        w.add("""
+              <p>Loading modules using import statements, and accessing 
+              functionality via a dot operator was introduced.</p>
+              """);
+        w.add("<p>Example "
+                + c.index.getReference("Python if", "if")
+                + " statements and "
+                + c.index.getReference("Python for", "for loops")
+                + " were provided. These key things will be used many times, so "
+                + "do not worry if you have not fully understood these yet."
+                + "</p>");
+        w.add("""
+              <p>Versioning, packaging and managing Python/Conda environments 
+              have been introduced, as has installing Python packages in Python 
+              environments.</p>
               <p>Some example code has been provided. This is quite good code in
               that there are plentiful comments, and the code also does some 
               interesting things: The code that automated some QGIS Desktop 
               processing demonstrates how to access functionality from within 
-              QGIS. The Jupyter Notebook based example utilised Javascript 
-              capabilities of the Web browser and leveraged some widely used 
-              Python GIS tools.</p>
+              QGIS Desktop. The Jupyter Notebook based example utilised 
+              Javascript capabilities of the Web browser and leveraged some 
+              widely used Python GIS tools.</p>
               <p>This has been a broad brush overview. You might benefit from 
               revisiting parts of this learning once you are a bit more familiar
               with developing Python code and as you think about undertaking 

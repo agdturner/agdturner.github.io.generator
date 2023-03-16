@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,42 +39,52 @@ public class Containers extends Page {
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>The main basic data structures in python are are sequences, 
-              tuples, ranges, lists, arrays, sets and dictionaries. Similar 
-              structures are available in most high level languages, but they 
-              can be called different things. Some of the aforementioned python
+              <p>Data structures types in Python include: sequences, tuples, 
+              ranges, lists, arrays, sets and dictionaries. Similar data 
+              structures are available in other high level languages, but they 
+              may be called different things. Some of the aforementioned Python
               data structures are mutable - can be changed once they have been 
               created, others are immutable - cannot be changed once they have 
-              been created (although these may contain elements which themselves 
+              been created (although these may contain things which themselves 
               can be changed). Some are ordered, or can be ordered, and others 
               are unordered.</p>
-              
-              <h2 id="2">2. Sequences, Tuples, Ranges, Lists</h2>
-              
-              <h3 id="2.1">2.1. Sequences</h3>
-              <p>A list is a sequence as is a Byte and a String. A python Byte  
-              is a sequence of eight zeros and ones. Strings are a sequence of 
-              one character long Strings. Unlike many other high level 
-              languages, python does not have a primitive type for individual 
-              characters. Strings in python are immutable (they can not be 
-              modified), so part of a String cannot be replaced with part of 
-              another String. Instead of changing a String, a new String has to 
-              be created which can make processing with Strings seem 
-              inefficient. Strings can be created using either single or double 
-              quotation marks, one at the start and one at the end of a sequence 
-              of single length ASCII characters. Multiline Strings are either 
-              encapsulated by triple single quotes or triple double quotes. The
-              String constuctor function str() can be used to create Strings 
-              from other types of variable.</p>
-              <p>Strings may contain quotation marks, but if a String is to 
-              contain both single and double quotes, then one or the other needs 
-              escaping using the backslash escape character '\\'. If the String 
-              itself is to include a backslash, then this also would also need 
-              escaping. There are ways of making sure when defining a String 
-              that line breaks are as wanted. As a String is a sequence, parts 
-              of it can be accessed using an index. Consider the following and 
+              """);
+        
+        s = addSection("2", "Sequences", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>A "
+                + c.index.getReference("Python lists", "list", s.sid)
+                + " is a sequence as are "
+                + c.index.getReference("Python bytes", "bytes", s.sid)
+                + " and a "
+                + c.index.getReference("Python string", "strings", s.sid)
+                + ". Strings are immutable sequences of"
+                + c.index.getReference("Unicode", s.sid)
+                + " points. Unlike some other high level languages, Python"
+                + " does not have a primitive type for individual characters."
+                + " As strings in Python are immutable, part of a string cannot"
+                + " be replaced with part of another string. Instead of"
+                + " changing a string, a new one has to be created. This can"
+                + " make processing with strings seem inefficient. Strings can"
+                + " be created using either single or double quotation marks,"
+                + " one places before at the start and placed after the end of"
+                + " a sequence of single length strings.</p>");
+        w.add("<p>Multiline strings are either encapsulated by triple single"
+                + " quotes or triple double quotes. The function "
+                + c.index.getReference("Python str", "str", s.sid)
+                + " can be used to create strings from other types of "
+                + "object.</p>");
+        w.add("""
+              <p>Strings may contain quotation marks, but if a string is to 
+              contain single or double quotes, then these need escaping using 
+              the backslash escape character '\\'. If the string itself is to 
+              include a backslash, then this also would need escaping.</p>
+              <p>As a string is a sequence, parts of it can be accessed using 
+              indexes and slices. Consider the following and 
               try the code out for yourself:</p>
               <pre><code class="language-python">print('''This is \\
               all one line.

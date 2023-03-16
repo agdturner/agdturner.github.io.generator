@@ -213,7 +213,7 @@ public class Home extends Page {
                 + c.index.getReference("GUI", "Graphical User Interface")
                 + " (GUI);</li>");
         w.add("<li>Developing and visualising a basic spatial "
-                + c.index.getReference("Agent Based Model")
+                + c.index.getReference("ABM", "Agent Based Model")
                 + " (ABM);</li>");
         w.add("""
               </ul>
@@ -247,7 +247,7 @@ public class Home extends Page {
         w.add("<p>The webpages with names starting \"ABM\" are a sequence of"
                 + " practicals that progress the development of a basic spatial"
                 + " "
-                + c.index.getReference("Agent Based Model", "ABM")
+                + c.index.getReference("ABM", "Agent Based Model")
                 + ". The ABM can be regarded as a simple model of autonomous"
                 + " spatial entities that move in an environment, interacting"
                 + " with the environment and each other.</p>");

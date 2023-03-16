@@ -45,17 +45,15 @@ public class Variables extends Page {
         w.add("<p>"
                 + c.index.getReference("Variable", "Variables", s.sid)
                 + " are a combination of an identifier (a name) and a value"
-                + ".</p>");        
-        
+                + ".</p>");
+
         s = addSection("2", "Python Variables", 2);
         w.add(s.sectionHTML);
         w.add("<p>In Python, the 'type' of a variable does not have to be "
-                + "declared. The type is effectively inferred by the value of "
-                + "the variable (if it needs to be).</p>");
-        w.add("<p>Identifiers in Python can be reassigned, so a variable name "
-                + "can be reused to refer to a different type of thing, it "
-                + "does not even have to be a variable! A benefit of this is "
-                + "that "
+                + "declared - it is effectively inferred by the value of the "
+                + "variable (if it needs to be).</p>");
+        w.add("<p>In Python, identifiers such as variable names can be "
+                + "reassigned. A benefit of this is that "
                 + c.index.getReference("API", "APIs")
                 + " can be more stable (as there is no need to specify exactly"
                 + " what types of things are input and output from functions)."
@@ -63,11 +61,12 @@ public class Variables extends Page {
                 + " accidentally re-use an identifier with unintended"
                 + " consequences.");
         w.add("<p>The four primitive variable types in Python are: Integers,"
-                + " Floats, Strings, and Booleans.</p>"
+                + " Floats, Strings, and Booleans:</p>"
                 + "<p>Integers are whole numbers and are unbounded in Python. "
-                + "The largest Integer that can be used is constrained only by "
-                + "the amount of available memory.</p>"
-                + "<p>Floats are "
+                + "The largest Integer is constrained by "
+                + c.index.getReference("Memory", "memory", s.sid)
+                + " availability.</p>"
+                + "<p>Floats are standard "
                 + c.index.getReference("Double-precision Floating-point", s.sid)
                 + " numbers - a special subset of fractions. These have a "
                 + "'Maximum Value' and a 'Minimum Normal Value' (smallest "
@@ -119,21 +118,23 @@ public class Variables extends Page {
               max + d inf
               min2 2.2250754194454158e-293</pre>
               """);
-        w.add("<p>Float is very useful, but it is important to bear in mind"
-                + " the approximate nature of "
-                + c.index.getReference("Floating-point", 
+        w.add("<p>Float is very useful for approximate numerical calculations."
+                + " Do keep in mind that "
+                + c.index.getReference("Floating-point",
                         "Floating Point Arithmetic", s.sid)
-                + " which can result in significant calculation error.</p>");
+                + " is approximate - so calculations that use it are not"
+                + " necessarily accurate.</p>");
         w.add("<p>The "
                 + c.references.getReference("Python Standard Library")
-                + " has two modules that provide for more accurate arithmetic: "
+                + " has two modules that support more arithmetic accuracy: "
                 + c.index.getReference("Python decimal", "decimal", s.sid)
-                + "; "
+                + "; and, "
                 + c.index.getReference("Python fractions", "fractions", s.sid)
                 + ".</p>");
-        w.add("<p>Strings are essentially blocks of text (or sequences of "
-                + "single character length Strings). Strings can be assigned "
-                + "using; double or single quotes, or the constructor function "
+        w.add("<p>Strings are essentially blocks of text (which are sequences "
+                + "of single character length Strings). Strings can be "
+                + "assigned using; double or single quotes, or the constructor "
+                + "function "
                 + c.index.getReference("Python str", "str", s.sid)
                 + " (which can for example create a String from an Integer). "
                 + "Strings can be compared and checked for equality using the "
@@ -190,7 +191,7 @@ public class Variables extends Page {
               <pre>&lt;class 'int'&gt;
               &lt;class 'str'&gt;</pre>
               """);
-        
+
         s = addSection("3", "Functions, Variable Scope and the Global Keyword", 2);
         w.add(s.sectionHTML);
         w.add("<p>When passed as parameters into functions, variables are"
@@ -216,19 +217,19 @@ public class Variables extends Page {
               print(y) # Prints 2</code></pre>
               """);
         w.add("<p>The code in the "
-                + c.index.getReference("Python if", "If Statement", s.sid)
-                + " is executed as the condition 'x == 1' evaluates as 'True'."
-                + " If the condition were to evaluate as 'False', then the"
-                + " interpreter would skip to the end of the statement, as in"
-                + " the following code:</p>");
+                + c.index.getReference("Python if", "if statement", s.sid)
+                + " is executed as the condition 'x == 1' evaluates"
+                + " as 'True'. If the condition were to evaluate as 'False',"
+                + " then the interpreter would skip to the end of the if"
+                + " statement, as happens running the following code:</p>");
         w.add("""
               <pre><code class="language-python">x = 1
               if x == 0:
                   y = 2
               print(y)</code></pre>
-              <p>That results in:</p>
+              <p>Which results in:</p>
               <pre>NameError: name 'y' is not defined</pre>
-              <p>This is because y does not get initialised and so cannot be 
+              <p>This is because 'y' does not get initialised and so cannot be 
               passed into the print function.</p>
               """);
         w.add("""
@@ -269,17 +270,17 @@ public class Variables extends Page {
               b 2
               c 2</pre>
               """);
-        
+
         s = addSection("4", "Deleting variables", 2);
-        w.add(s.sectionHTML);        
+        w.add(s.sectionHTML);
         w.add("<p>Variables can be deleted using the keyword 'del' followed by"
                 + " the name of the variable or a "
                 + c.index.getReference("Python tuple", "tuple", s.sid)
                 + " of variables to delete.</p>");
         w.add("""
-              <p>Deleting variables can free up resources that can be used by 
-              other things. The following code snippets shows how to initialise 
-              a variable called and then delete it:<p>
+              <p>Deleting variables can free up memory for other things. The 
+              following code snippets shows how to initialise and delete
+              variables:<p>
               <pre><code class="language-python">a = 1
               del a # <-- deletes a
               #print(a) # <-- Would result in: NameError: name 'a' is not defined.
