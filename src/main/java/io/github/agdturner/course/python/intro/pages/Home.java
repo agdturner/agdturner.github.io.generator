@@ -187,7 +187,7 @@ public class Home extends Page {
                 + c.index.getReference("File Format", "file formats")
                 + ";</li>");
         w.add("<li>Python "
-                + c.index.getReference("Python lists", "lists")
+                + c.index.getReference("Python list", "lists")
                 + "and "
                 + c.index.getReference("Python dict", "dict")
                 + " data structures;</li>");

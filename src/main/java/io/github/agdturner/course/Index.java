@@ -422,6 +422,14 @@ public class Index extends Page {
         description = "a high-level, general-purpose programming language";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python array";
+        url = "https://docs.python.org/3/library/array.html";
+        description = "a standard library module that defines an object type "
+                + "which can compactly represent a sequence of values all of "
+                + "the same type. They behave like lists, except that the type "
+                + "of objects stored in them is constrained";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Python builtins";
         url = "https://docs.python.org/3/library/builtins.html";
         description = "an always loaded module that provides direct access to "
@@ -523,9 +531,9 @@ public class Index extends Page {
                 + "of an object";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
-        name = "Python lists";
+        name = "Python list";
         url = "https://docs.python.org/3/library/stdtypes.html#lists";
-        description = "mutable sequences, typically used to store collections "
+        description = "a mutable sequence, typically used to store collections "
                 + "of homogeneous items";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
@@ -560,7 +568,7 @@ public class Index extends Page {
                 + "number generators for various distributions";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
-        name = "Python ranges";
+        name = "Python range";
         url = "https://docs.python.org/3/library/stdtypes.html#ranges";
         description = "an immutable sequence of numbers, commonly used for "
                 + "looping a specific number of times in for loops";
@@ -570,7 +578,14 @@ public class Index extends Page {
         url = "https://requests.readthedocs.io/";
         description = "a third party HTTP library for Python";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-                   
+        
+        name = "Python set";
+        url = "https://docs.python.org/3/library/stdtypes.html#set";
+        description = "an unordered collection of distinct hashable objects. "
+                + "A hashable object has a hash value which must be the same "
+                + "for objects regarded as equal";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python str";
         url = "https://docs.python.org/3/library/functions.html#func-str";
         description = "a function from the builtins module for creating Strings";
@@ -613,6 +628,19 @@ public class Index extends Page {
                 + "lightweight \"virtual environments\", each with their own "
                 + "independent set of Python packages installed in their site "
                 + "directories";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python while";
+        url = "https://docs.python.org/3/reference/compound_stmts.html#while";
+        description = "a compound statement used for repeated execution as "
+                + "long as an expression evaluates as true";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python zip";
+        url = "https://docs.python.org/3/library/functions.html#zip";
+        description = "a built-in function that iterates over multiple "
+                + "iterables in parallel, producing tuples with an item from "
+                + "each one";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
         name = "Python ZeroDivisionError";
