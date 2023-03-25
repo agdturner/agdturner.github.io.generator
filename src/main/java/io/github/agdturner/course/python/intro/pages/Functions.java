@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,59 +39,67 @@ public class Functions extends Page {
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("Python Built-in Functions", s.sid)
+                + " are available as part of the "
+                + c.index.getReference("Python builtins", "builtins module",
+                        s.sid) 
+                + " Functions from modules in the "
+                + c.references.getReference("Python Standard Library", 
+                        "standard library")
+                + " are made available using "
+                + c.index.getReference("Python import", "import statements", 
+                    s.sid)
+                + ".</p>");
+        w.add("Python functions are defined in a code block that begins with a"
+                + " definition or 'function declaration', and is followed by a"
+                + " set of indented statements. The function declaration uses"
+                + " the keyword 'def' which is followed by the name of the"
+                + " function. After the function name, there are parenthesis"
+                + " which may be empty or may contain a tuple of 'parameters'"
+                + " also called 'arguments' - names for things passed into the"
+                + " function. The function declaration ends with a colon ':'."
+                + " The following gives the general form:</p>");
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>Up to this part of the course, most Python functions that have 
-              been used were automatically accessible via the builtin module. 
-              Functions from other modules in the standard library have been 
-              made accessible using import statements. This section is about 
-              defining and using functions, some special types of function and 
-              some different ways they can be used.</p>
-              <p>Standard Python functions are a code block begun with a 
-              function declaration followed by a set of indented statements. 
-              The function declaration uses the keyword "def" which is followed 
-              by the name of the function. After the function name, there are 
-              parenthesis which may be empty or may contain parameters also 
-              called arguments - names for things passed into the function. 
-              Multiple parameters are separated with commas. The function 
-              declaration ends with a colon. The following gives the general 
-              form:</p>
-              <pre>def function_name(arg_0, arg_1):
-                  # Function statements</pre>
+              <pre><code class="language-python">def function_name(arg_0, arg_1):
+                  # Function statements</code></pre>
               <p>A function may return one thing which can be a tuple of things.
               This is done with a return statement which starts with the keyword 
-              return followed by the name of the thing returned. By default, 
-              functions invisibly return None - a special object of type 
-              NoneType.</p>
-              <p>Functions that are not in the built in module need to be either 
-              imported or defined before they can be used. Once available, they 
-              can be used or called repeatedly. Rather than repeat a block of 
-              code, it is typically better to define a function and call the 
-              function twice. The bigger the block of code turned into a 
-              function, the greater the gain is in terms of making the code 
-              easier to read, understand, maintain and use.</p>
-              
-              <h2 id="2">2. Parameters</h2>
-              
-              <h3 id="2.1">2.1. Positional Parameters</h3>
-              <p>Functions parameters add flexibility and can make functions 
-              more generic. The arguments passed in as parameters can be 
-              variables and functions. If a variable passed into a function is 
-              primitive, then the parameter becomes a copy of the primitive 
-              value. So, the variable which is refered to from where the 
-              function was called will remain unchanged whatever happens in the 
-              function. This is sometimes refered to as "pass by value". 
-              However, if the variable is not primitive, then the parameter and
-              the variable which is refered to from where the function was 
-              called refer to the same thing. This is known as "pass by 
-              reference".</p>
-              <p>Passing in a function as an argument allows that function to be 
-              used within the function.</p>
+              'return' followed by the name of the thing returned. By default, 
+              functions invisibly return 'None' - a special object of type 
+              'NoneType'.</p>
+              """);
+        w.add("""
+              <p>Functions are effectively blocks of code that can be used or 
+              'called' repeatedly. Rather than repeat a block of code, it is 
+              typically better to define a function and call the function twice.
+              The bigger the block of code turned into a function, the greater 
+              the gain is in terms of making the code easier to read, 
+              understand, maintain and use.</p>
+              """);
+        
+        s = addSection("2", "Parameters", 2);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>Parameters or 'arguments' add flexibility and utility to 
+              functions. Arguments can be variables or functions. Variables that  
+              are primitive get copied. Variables that are non-primitive are 
+              shared. Passing in a function as an argument allows that function 
+              to be used within the function.</p>
               <p>As with variable declarations, in Python there is no need to 
               declare the type of a parameter passed to a function.</p>
+              """);
+        
+        s = addSection("2.1", "Positional Parameters", 3);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Positional parameters or positional arguments are given in 
-              order from left to right, so in the following add function num1 is 
-              the first argument and num2 is the second argument:</p>
+              order from left to right, so in the following 'add' function 
+              'num1' is the first argument and 'num2' is the second argument:
+              </p>
               <pre><code class="language-python">def add(num1, num2):
                   return num1 + num2              
               print(add(20,30)) # Prints 50</code></pre>
@@ -98,9 +107,9 @@ public class Functions extends Page {
               <pre><code class="language-python">def add(num1 = 0, num2 = 0):
                   return num1 + num2              
               print(add(3)) # Prints 3</code></pre>
-              <p>As arguments are ordered left to right, in the example, num1 
-              gets 3, and num2 gets nothing and so is set to the default value 
-              0.</p>
+              <p>As arguments are ordered left to right, in the example, 'num1' 
+              gets '3', and 'num2' gets nothing and so is set to the default 
+              value '0'.</p>
               <p>In the absence of a default, an argument must be passed in.
               For example the following code:</p>
               <pre><code class="language-python">def add(num1 = 0, num2):
@@ -108,37 +117,43 @@ public class Functions extends Page {
               print(add(3))</code></pre>
               <p>Results in:</p>
               <pre>SyntaxError: non-default argument follows default argument</pre>
-              <p>Because of this, arguments with defaults come in the order 
-              after any undefaulted arguments.</p>
-              
-              <h3 id="2.2">2.2. Keyword Arguments (kwargs)</h3>
+              <p>Because of this, arguments with defaults are declared after 
+              any undefaulted arguments in the function declaration.</p>
+              """);
+        
+        s = addSection("2.2", "Keyword Arguments (kwargs)", 3);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Arguments can also be named, these are called keyword arguments 
-              or kwargs. Note that this use of the term keyword has nothing to 
-              do with the generic use for words you can't use as identifiers.
-              Consider the following which uses kwargs to assign the parameter
-              values:</p>
+              or 'kwargs'. Note that this use of the term keyword has nothing to 
+              do with the keywords that are special names for things that can't 
+              be used as identifiers.</p>
+              <p>Consider the following which uses kwargs in the function call 
+              to assign the parameter values:</p>
               <pre><code class="language-python">def add(num1, num2):
                   return num1 + num2
               print(add(num2 = 30, num1 = 50))</code></pre>
-              <p>In the example, the order of the positional arguments is 
-              ignored as kwargs are used to assign the values: num2 gets 30; 
-              and, num1 gets 50.</p>
+              <p>Note that the order of the positional arguments is ignored:
+              'num2' gets '30'; and, 'num1' gets '50'.</p>
               <p>Having both positional arguments and kwargs is allowed, but 
-              kwargs must come to the right of positional arguments in the 
-              argument order.</p>
-              
-              <h3 id="2.3">2.3. Flexibility using Tuples and Dictionaries</h3>
-              <p>More positional arguments can be allowed using *tuple_name, as 
-              in the following example:</p>
+              kwargs are declared after (i.e. to the right of) positional 
+              arguments in the function declaration.</p>
+              """);
+        
+     s = addSection("2.3", "Flexibility using Tuples and Dictionaries", 3);
+     w.add(s.sectionHTML);
+        w.add("""
+              <p>More positional arguments can be allowed using '*tuple_name', 
+              as in the following example:</p>
               <pre><code class="language-python">def add(*nums):
                   r = 0
                   for num in nums:
                       r += num
                   return r
-              print(add(1,2,3,4,5,6,7)) # Prints 28</code></pre>
-              <p>The * used this way is known as the iterable (un)packing 
+              print(add(1,2,3,4,5,6,7)) # <-- Prints 28</code></pre>
+              <p>The '*' used this way is known as the iterable (un)packing 
               operator. If nothing is allocated, the tuple is empty.</p>
-              <p>The * operator can be used with lists or tuples to generate 
+              <p>The '*' can be used with lists or tuples to generate 
               parameters:</p>
               <pre><code class="language-python">def add(*nums):
                   r = 0
@@ -146,11 +161,11 @@ public class Functions extends Page {
                       r += num
                   return r
               a = [1,2,3,4]
-              print(add(*a)) # Prints 10
-              print(add(1,*a, 2)) # Prints 13</code></pre>
-              <p>The same can be done with dictionaries using **dict_name (where 
-              ** is the dictionary (un)packing operator), which will make a 
-              dictionary from unallocated kwargs. The following code:</p>
+              print(add(*a)) # <-- Prints 10
+              print(add(1,*a, 2)) # <-- Prints 13</code></pre>
+              <p>The same can be done with dictionaries using '**dict_name'
+              (where '**' is the dictionary (un)packing operator) - which will 
+              make a dictionary from unallocated kwargs. The following code:</p>
               <pre><code class="language-python">def f1(a, **details):
                   print(a)
                   print(details)
@@ -159,7 +174,7 @@ public class Functions extends Page {
               <p>Produces:</p>
               <pre>1
               {'b': 2, 'c': 3}</pre>
-              <p>The ** dictionary operator can be used to generate kwargs.
+              <p>The '**' dictionary operator can be used to generate kwargs.
               The following code:</p>
               <pre><code class="language-python">def f1(a, b, c):
                   print(a)
@@ -172,12 +187,12 @@ public class Functions extends Page {
               <pre>1
               2
               3</pre>
-              <p>Similar to with standard arguments, *tuple_name arguments must 
-              come before **dict_name arguments (if both are used). *tuple_name 
-              must come after positional parameters and **dict_name after other
-              kwargs. It is, therefore usual to place them after their 
-              associated variables or together at the end. The following 
-              code:</p>
+              <p>Similar to with standard arguments, '*tuple_name' arguments 
+              must come before '**dict_name arguments' (if both are used). And
+              '*tuple_name' arguments must come after positional arguments. 
+              And '**dict_name' arguments must come after other kwargs. It is, 
+              therefore usual to place them after their associated variables or
+              together at the end. The following code:</p>
               <pre><code class="language-python">def f1(a, b=2, *args, **kwargs):
                   print(a, b)
                   print(args)
@@ -209,13 +224,16 @@ public class Functions extends Page {
               <p>Another useful summary reference is the 
               <a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">
               Python documentation: Outline of how to get output from a function documentation</a></p>
-              
-              <h2 id="3">3. Scope</h2>
+              """);
+        
+        s = addSection("3", "Scope", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>The scope of a variable is from where in the code it can be 
               accessed. Scope was introduced in 
               <a href="../Variables/index.html#3">Variables Section 3</a> when 
               functions were first considered, and where there is an explanation 
-              of changing a variable scope using the Global Keyword (global). To 
+              of changing a variable scope using the 'global' keyword. To 
               recap, consider the following code:</p>
               <pre><code class="language-python">a = 10
               def f1():
@@ -224,11 +242,11 @@ public class Functions extends Page {
               f1()
               print(a) # Prints 10.</code></pre>
               <p>The variable 'a' is declared and initialised prior to any call 
-              to f1() and the variable can be accessed from within f1(). 
-              However, assigning a local variable within a function that has the 
-              same name as a variable already accessible from the function 
-              creates a new variable. So, to force a local assignment to a 
-              global variable, use the global keyword as follows:
+              to f1() and the variable can be accessed from within the function 
+              f1(). However, assigning a local variable within a function that 
+              has the same name as a variable already accessible from the 
+              function creates a new variable. So, to force a local assignment 
+              to a global variable, use the global keyword as follows:
               <pre><code class="language-python">a = 10
               def f1():
                   global a
@@ -239,11 +257,10 @@ public class Functions extends Page {
               print(a) # Prints 20 as the function changes the global a.</code></pre>
               <p>With nested functions there are situations where non local 
               and non global variables are wanted in the inner function such 
-              that the outer function and inner function have the same variable 
+              that the outer function and inner function share the same variable 
               and this does not change any variable with the same name in the 
               broader scope from where the function is called. To do this the 
-              Nonlocal Keyword (nonlocal) can be used, as in the following 
-              example:</p>
+              'nonlocal' keyword can be used, as in the following example:</p>
               <pre><code class="language-python">a = 1
               def f1():
                   a = 2
@@ -255,10 +272,13 @@ public class Functions extends Page {
                   print (a) # Prints 3.
               f1()
               print(a) # Prints 1.</code></pre>
-              
-              <h2 id="4">4. Function Complexity</h2>
+              """);
+        
+        s = addSection("4", "Function Complexity", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>As shown above, functions can be nested. In the example above, 
-              f2 is inside f1, so: f2 is an 'inner function'; and, f2 is an 
+              'f2' is inside 'f1', so: f2 is an 'inner function'; and, f2 is an 
               'outer function'. Nesting functions thus hides inner functions - 
               they cannot be called directly from outside the outer function. 
               This is a way to make things appear simple.</p>
@@ -278,12 +298,16 @@ public class Functions extends Page {
               defining and using functions that simply have variables as 
               parameter arguments and return variables, perhaps packed in a 
               tuple.</p>
-              
-              <h3 id="4.1">4.1. Decorators</h3>
-              <p>Decorators can be added prior to the def keyword of a function
-              to apply other functions to the outputs of a function. The syntax 
-              for these makes use of the At Symbol (@) which is followed 
-              immediately by the function name. There can be multiple decorators 
+              """);
+        
+        s = addSection("4.1", "Decorators", 3);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>Decorators are functions that aare applied to the outputs of 
+              other functions using the '@' symbol as part of the 
+              function definition (see 
+              <a href="https://docs.python.org/3/reference/compound_stmts.html#function-definitions">
+              function definitions</a>). There can be multiple decorators 
               which would work in turn passing the output back until all the 
               decorators have been applied. A decorator function can be used for 
               reporting the time it takes to run a function:<p>
@@ -337,27 +361,37 @@ public class Functions extends Page {
               n_agents = 1000000
               run_time, agents = create_agents(n_agents)
               print(run_time, "seconds to create", n_agents, "agents.")</code></pre>
-              
-              <h3 id="4.2">4.2. Lamdas</h3>
-              <p>Lamda functions are small anonymous functions in Python. They
-              can take any number of arguments, but can only have one 
-              expression. Consider the following example:</p>
-              <pre><code class="language-python"># A lamda to return the result of dividing a by b.
+              """);
+        
+        s = addSection("4.2", "Lambdas", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("Python lambda", "Lambda expressions", 
+                        s.sid)
+                + " are used to create anonymous functions. They can have any"
+                + " number of arguments, but the expression is made up of a "
+                + "single non-compound statement. Consider the following "
+                + "example:</p>");
+        w.add("""
+              <pre><code class="language-python"># A lambda to return the result of dividing a by b.
               x = lambda a, b : a / b
               
               print(x(1, 2)) # <-- Prints 0.5.</code></pre>
-              <p>Note that: the lamda function is defined with the lambda 
-              keyword, the parameters are separated with a comma and a colon is 
-              used to separate the parameters from an expression - the result of
-              which is passed back.</p>
-              
-              <h3 id="4.3">4.3. Callbacks</h3>
-              <p>Callbacks are when a function is called by another function 
-              which takes the function to be called as a parameter. Consider the 
-              following example where the callbacks are to the add and multiply
-              functions from the caller function (that itself is called in the 
-              lines that print out the results returned from the function 
-              calls):</p>
+              <p>Note that: the lambda function is defined with the 'lambda' 
+              keyword, the parameters are separated with commas, and a colon is 
+              used to separate the parameters from the expression - the result 
+              of which is passed back.</p>
+              """);
+        
+        s = addSection("4.3", "Callbacks", 3);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>A Python callback is a subroutine function which is passed as 
+              an argument to be executed at some point in the future. Consider 
+              the following example where the callbacks are to the 'add' and 
+              'multiply' functions from the caller function (that itself is 
+              called in the lines that print out the results returned from the 
+              function calls):</p>
               <pre><code class="language-python">def add(x):
                   \"""
                   Calculate and return all the elements of x added together.
@@ -442,13 +476,16 @@ public class Functions extends Page {
               for mark in marks:
                   print(mark)
               </code></pre>
-              <p>Often a callback is used in event based processing, such as 
-              when a button is clicked. It allows other tasks to be done whilst 
-              waiting for an event to happen.</p>
-              
-              <h3 id="4.4">4.4. Partial</h3>
-              <p>Partial is part of functools. It allows for arguments of a 
-              function to be set partially. For example:</p>
+              <p>Often a callback is used in event based processing. It allows 
+              other tasks to be done whilst waiting for an event to happen.</p>
+              """);
+        
+        s = addSection("4.4", "Partial", 3);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p><a href="https://docs.python.org/3/library/functools.html?highlight=partial#functools.partial">
+              Functools partial allows for arguments of a function to be set 
+              partially. For example:</p>
               <pre><code class="language-python">from functools import partial
                 
               def f(x, y, z):
@@ -458,10 +495,14 @@ public class Functions extends Page {
               pf = partial(f, 1, 2)
                 
               print(pf(3)) # Prints 6</code></pre>
-              
-              <h2 id="5">5. Style and Documenting Functions</h2>
-              
-              <h3 id="5.1">5.1. Style</h3>
+              """);
+        
+        s = addSection("5", "Style and Documenting Functions", 2);
+        w.add(s.sectionHTML);
+        
+        s = addSection("5.1", "Style", 3);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Good Python style is set out in 
               <a href="https://www.python.org/dev/peps/pep-0008/">PEP-0008</a>
               which is worth finding time to read.</p>
@@ -479,16 +520,21 @@ public class Functions extends Page {
               <li>Add spaces after commas</li>
               <li>Indent comments to the level of the code referred to.</li>
               </ul>
-              
-              <h3 id="5.2">5.2. Documenting Functions</h3>
-              <p>Docstrings are automatically extracted to describe code. They 
-              are triple-double quote enclosed comments after, for example, 
-              function declarations. For functions these should ideally have a 
-              short description of what the function does which is typically 
-              written like a command to the function more than as a description 
-              of what the function does. It should also list what the parameters
-              are and what if anything is returned from the function. For 
-              example:</p>
+              """);
+        
+        s = addSection("5.2", "Documenting Functions", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("Python docstring", "Docstrings", s.sid)
+                + " are automatically extracted to describe code. They are"
+                + " added in triple-double quote enclosed comments after,"
+                + " class or function declarations. For functions these should"
+                + " ideally have a short description of what the function does"
+                + " which is typically written like a command to the function"
+                + " more than as a description of what the function does. It"
+                + " should also list what the parameters are and what if"
+                + " anything is returned from the function. For example:</p>");
+        w.add("""
               <pre><code class="language-python">def add (num1, num2):
                   \"""
                   Add two numbers.
@@ -521,11 +567,8 @@ public class Functions extends Page {
               comes with Anaconda.</p>
               
               <h2 id="6">6. Next</h2>
-              <p>Let us apply some of what we have learned to enhance our Agent
-              Based Modelling Code.</p>
+              <p>Apply some of this to develop your Agent Based Model...</p>
               """);
-//        w.add("<p></p>");
-//        w.add("<p>Enter: \"\"</p>");
         w.add("</div>");
     }
 }

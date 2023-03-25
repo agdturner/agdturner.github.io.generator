@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,84 +39,92 @@ public class ABM4 extends Page {
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Recap and preparation", 2);
+        w.add(s.sectionHTML);
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>Currently, agents is a list of lists. The lists agents 
-              contains have two items - the coordinates defining each agent's
-              location. More items could be added to each list - items 
-              representing additional agent characteristics. However, the longer 
-              a list becomes, the harder it gets to remember what index is 
-              associated with what type of item and the easier it is to get 
-              confused and make mistakes.</p>
-              <p>Defining a class for agents provides a way to name agent 
-              characteristics and define functionality as methods that 
-              particularly apply to an agent instance.</p>
-              <p>The agents list will be changed to contain objects which are 
-              instances of an Agent class (agents). The Agent class will be 
-              defined in a different file from model.py.</p>
+              <p>Currently, 'agents' is a list that contains lists of two items; 
+              an x-coordinate, and a y-coordinate. More items could be added 
+              to the lists to representing additional agent characteristics. 
+              However, the longer the lists become, the harder it is to remember 
+              what is stored in each index and the more confusing code gets.</p>
+              <p>Defining an Agent class provides a way to name agent 
+              characteristics and refer to them by name rather than by a list 
+              index. The Agent class will be defined in a different file from 
+              'model.py' so the program code going forwards will be in multiple 
+              files.</p>
               <p>In your local code repository src directory create a new 
-              directory called "abm4". Open Spyder and use "save as" to save 
-              your "model.py" file from abm3 into the abm4 directory.</p>
-              
-              <h2 id="2">2. Agent class definition</h2>
+              directory called "abm4". Open Spyder and use 'save as' to save 
+              your 'model.py' file from abm3 into the abm4 directory.</p>
+              """);
+        
+        s = addSection("2", "Define an Agent class", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Create a new file in the abm4 directory named 
-              "agentframework.py", and add a class definition for an Agent class
+              'agentframework.py', and add a class definition for an Agent class
               in it as follows:</p>
               <pre><code class="language-python">class Agent():
                   pass</code></pre>
               <p>The keyword 'pass' ensures the code is syntactically correct 
               and will run.</p>
-              <p>In the model.py file reduce n_iterations to 10, and add the 
+              <p>In 'model.py' reduce 'n_iterations' to 10, and add the 
               following import statement:</p>
               <pre><code class="language-python">import agentframework as af</code></pre>
-              <p>Note that this imports the agentframework module which is to be 
-              referred to by the abbreviation 'af'.</p>
-              <p>At the start of the "# Initialise agents" code block, add the 
-              following lines:</p>
+              <p>Note that this imports the agentframework module as loaded from 
+              'agentframework.py' which is to be referred to by 'af'.</p>
+              <p>At the start of the '# Initialise agents' code block, add the 
+              following:</p>
               <pre><code class="language-python">a = af.Agent()
               print("type(a)", type(a))</code></pre>
-              <p>Run model.py and examine the output. It should contain the 
+              <p>Run 'model.py' and examine the output. It should contain the 
               following line:</p>
               <pre>type(a) <class 'agentframework.Agent'></pre>
               <p>This indicates that an instance of the class Agent as defined 
               in the agentframework module was successfully created.</p>
               <p>Add a constructor method to the Agent class that initialises 
-              x and y variable attributes to be random Integers between 0 and 99 
-              as follows:</p>
+              'x' and 'y' variable attributes to be random integers in the range
+              [0, 99]. The code in 'agentframework.py' should be:</p>
               <pre><code class="language-python">import random
 
               class Agent:
                   def __init__(self):
                       self.x = random.randint(0, 99)
                       self.y = random.randint(0, 99)</code></pre>
-              <p>Note that for this to work, it was necessary to import the 
-              random module.</p>
-              <p>In model.py, add a statement to print the agent that was 
-              instantiated, and run the program again.</p>
-              <p>The new print statement should produce output that looks like 
-              the following:</p>
+              """);
+        w.add("<p>Note that the "
+                + c.index.getReference("Python random", "random module", s.sid)
+                + "is imported as this is used in the Agent constructor "
+                + "'__init__' method.</p>");
+        w.add("""
+              <p>In 'model.py', add a statement to print the agent that was 
+              instantiated, and run the program again. Text along the lines of 
+              the following should be in the output:</p>
               <pre>&lt;agentframework.Agent object at 0x00000249AEA21D88&gt;</pre>
-              <p>The last part of your print statement will probably be 
-              different to '0x00000249AEA21D88' and if you run the program 
-              again, it will likely be different again. This String is a memory 
+              <p>The last part of this will almost certainly be different to 
+              '0x00000249AEA21D88' and if you run your program again, it will 
+              likely be different again. Recall that this string is a memory 
               address identifying where the object is stored in the memory of 
-              the computer and is not something to be concerned about.</p>
+              the computer.</p>
               <p>When printing an Agent instance, it would be better if 
               something more informative was output. The best way to do this 
-              is to override the __str__ method which comes from the 'type 
-              metaclass' that all classes inherit from by default. Define the 
-              method __str__() in (i.e. indented in) the Agent class as 
-              follows:</p>
+              is to override the '__str__' method which comes from the 'type' 
+              metaclass that all classes inherit from by default. Define the 
+              method in the Agent class as follows:</p>
               <pre><code class="language-python">def __str__(self):
                   return self.__class__.__name__ + "(x=" + str(self.x) \\
                       + ", y=" + str(self.y) + ")"</pre></code>
-              <p>Note that this returns a String which includes the name of the 
-              class and details of the x and y variable attributes which are 
-              transformed by the builtin function str() to be Strings.</p>
-              <p>Run model.py again and the print statement should now result in 
+              """);
+        w.add("<p>Note that this returns a string which includes the name of"
+                + " the class and details of the 'x' and 'y' variable"
+                + " attributes which are transformed by the builtins module "
+                + c.index.getReference("Python str", "str function", s.sid)
+                + " to be strings.</p>");
+        w.add("""
+              <p>Run 'model.py' again and the print statement should result in 
               the following:</p>
               <pre>Agent(x=49, y=97)</pre>
-              <p>Change the "# Initialise agents" code section in model.py to:
+              <p>Change the '# Initialise agents' code block in 'model.py' to:
               </p>
               <pre><code class="language-python"># Initialise agents
               agents = []
@@ -124,10 +133,9 @@ public class ABM4 extends Page {
                   agents.append(af.Agent())
                   print(agents[i])
               print(agents)</code></pre>
-              <p>Run model.py and you should get similar output to the 
+              <p>Run 'model.py' and you should get similar output to the 
               following (in the error report, the file paths will probably be 
-              different, and the line numbers might be different if your code 
-              is not exactly the same):</p>
+              different, and the line numbers might be different):</p>
               <pre>Check this is equal to 5: 5.0
               Agent(x=49, y=97)
               Agent(x=53, y=5)
@@ -149,38 +157,49 @@ public class ABM4 extends Page {
                   distance = get_distance(a[0], a[1], b[0], b[1])
               
               TypeError: 'Agent' object is not subscriptable</pre>
-              <p>The agents list is initialised, but the print function does not 
-              use the __str__ method to get a String representation of the 
-              agents when printing the list.</p>
-              <p>The error is a consequence of the things stored in the agents 
-              list no longer being lists, but instantiated Agent objects.</p>
+              <p>The list 'agents' is initialised, but the print function does 
+              not use the '__str__' method to get string representations when 
+              printing the list.</p>
+              """);
+        w.add("<p>The "
+                + c.index.getReference("Python TypeError", "TypeError", s.sid)
+                + " is a consequence of the 'agents' list no longer containing"
+                + " lists, but instantiated Agent objects, and some parts of"
+                + " the code are still written as though each agent is a list"
+                + " and not an instance of the Agent class.</p>");
+        w.add("""
               <p>Add the following method to the Agent class to get the print 
-              function to print String representations of agents when printing 
-              the agents list:</p>
+              function to print string representations when printing the agents 
+              list:</p>
               <pre><code class="language-python">def __repr__(self):
                   return str(self)</code></pre>
-              <p>Like the method __str__(), the method __repr__() overrides from 
-              the 'type metaclass', (for details see: 
-              <a href="https://docs.python.org/3/library/functions.html#repr">
-              repr()</a>).</p>
-              <p>To prevent the error, it is necessary to refer to the 
-              attributes of the agents as from the class definition and not to 
-              items in lists (as agents are no longer lists, but are instances 
-              of the class Agent). So, change the following line of code in 
-              the get_max_distance() function:</p> 
+              """);
+        w.add("<p>Like the '__str__' method, the '__repr__' method overrides"
+                + " from the 'type' metaclass, (for details see: "
+                + c.index.getReference("Python repr", "repr", s.sid)
+                + ".</p>");
+        w.add("""
+              <p>To avoid raising the TypeError exception, it is necessary to 
+              refer to the class attributes and not list items (as agents are 
+              no longer lists, but are instances of the class Agent). So, change 
+              the following line of code in the 'get_max_distance()' function:</p> 
               <pre><code class="language-python">distance = get_distance(a[0], a[1], b[0], b[1])</code></pre>
               <p>To be:</p>
               <pre><code class="language-python">distance = get_distance(a.x, a.y, b.x, by)</code></pre>
-              <p>Examine the code change and appreciate that there is no longer 
-              a need to remember which item in the list refers to a particular 
-              coordinate.</p>
-              <p>Everywhere else in the model.py that was referring to a 
+              <p>Appreciate that this is easier to read and understand.</p>
+              <p>Everywhere else in the 'model.py' that was referring to a 
               coordinate from the agents list is to be changed similarly. Run
-              model.py to see where the next error is raised.</p>
-              <p>In the code "agents[i][0]" should be changed to "agents[i].x"; 
-              and, "agents[i][1]" should be changed to "agents[i].y". Make a 
-              further change in the code block that plots agents, changing:
-              </p>
+              'model.py' to see where the next TypeError is raised.</p>
+              <p>In the code change:</p>
+              <pre><code class="language-python">agents[i][0]</code></pre>
+              <p>To:</p> 
+              <pre><code class="language-python">agents[i].x</code></pre> 
+              <p>And change:</p>
+              <pre><code class="language-python">agents[i][1]"</code></pre>
+              <p>To:</p>
+              <pre><code class="language-python">agents[i].y</code></pre>
+              <p>Make a further change in the code block that plots agents, 
+              changing:</p>
               <pre><code class="language-python"># Plot the coordinate with the largest x red
               lx = max(agents, key=operator.itemgetter(0))
               plt.scatter(lx[0], lx[1], color='red')
@@ -207,38 +226,46 @@ public class ABM4 extends Page {
               sy = min(agents, key=operator.attrgetter('y'))
               plt.scatter(sy.x, sy.y, color='green')</code></pre>
               <p>Hopefully, you understand these changes and your program runs 
-              without error and produces the same output as previously when you 
-              have made all the changes.</p>
+              without raising exceptions and produces the same output as 
+              previously.</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
-              
-              <h2 id="3">3. Separation of Concerns</h2>
-              <p>Define a method called move in the Agent class as follows:</p>
+              """);
+        
+    s = addSection("3", "Separation of Concerns", 2);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>Define a method called 'move' in the Agent class as follows:
+              </p>
               <pre><code class="language-python">def move(self, x_min, y_min, x_max, y_max):</code></pre>
-              <p>Cut the code from the "# Move agents" loop that moves an agent 
-              and insert it into the body of the new move method. Replace all 
-              the instances of "agents[i]" with "self". Where the code was cut 
+              <p>Cut the code that moves an individual agent from 'model.py' and 
+              paste it into the body of the new 'move' method. Replace: 
+              "agents[i]" with "self" in the method. Where the code was cut 
               from, add the following to call the move method:</p>
               <pre><code class="language-python">agents[i].move(x_min, y_min, x_max, y_max)</code></pre>              
-              <p>In the Agent class, the move method has a parameter called 
-              self, but this is not a parameter that is passed in. That self is 
-              not passed in, is a difference between a method and a function in 
-              python. Normally when calling a function the number of parameters 
+              <p>Note that in the Agent class, the 'move' method has a parameter 
+              called 'self', but this is not a parameter that is passed in. 
+              Normally when calling a function the number of parameters 
               matches, but for methods (functions in a class) there is this 
               additional parameter that is not passed in and that is the first 
               parameter.</p>
               <p>Run the program and it should produce the same results as 
               previously. The Agent class code now deals with the details of 
-              how agents move, and the model.py code details when they do.
-              This is a reasonable separation of concerns for the model being 
-              developed.</p>
-              
-              <h2 id="4">4. Give each agent a unique name</h2>
-              <p>It is possible that two Agent class instances will be located 
-              at the same coordinates at some iteration of the model, and it 
-              would be helpful to distinguish them.</p>
-              <p>Add a docstring and a parameter to the constructor method of 
-              Agent so that the method is as follows:</p>
+              how an agent moves, and 'model.py' actions when they do. This is a 
+              reasonable separation of concerns.</p>
+              """);
+        
+        s = addSection("4", "Give each agent a unique name", 2);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>It is possible that two agents will be located at the same 
+              coordinates, and it would be helpful to distinguish them.</p>
+              """);
+        w.add("<p>Add a "
+                + c.index.getReference("Python docstring", "docstring")
+                + " and a parameter to the '__init__' constructor method of"
+                + " Agent so that the method is as follows:</p>");
+        w.add("""
               <pre><code class="language-python">def __init__(self, i):
               \"""
               The constructor method.
@@ -257,25 +284,24 @@ public class ABM4 extends Page {
               self.x = random.randint(0, 99)
               self.y = random.randint(0, 99)
               pass</code></pre>
-              <p>Run model.py and you should get the following error:</p>
+              <p>Run 'model.py' and you should get the following error:</p>
               <pre>Traceback (most recent call last):
               
-                File "\\abm4\\model.py", line 91, in <module>
+                File "\\abm4\\model.py", line 91, in &amp;module>
                   agents.append(agentframework.Agent())
               
               TypeError: __init__() missing 1 required positional argument: 'i'</pre>
-              <p>The error message is that an expected argument is missing at 
-              the line that is calling for the construction of an Agent 
-              instance. Change model.py to pass in the missing argument 'i'. Run 
-              the program again and the error should not be encountered.</p>
-              <p>Modify the Agent class __str__ method so it additionally 
-              returns the unique characteristic of each Agent in the String.</p>
+              <p>The TypeError is indicating that an expected argument is 
+              missing in the call that creates the Agent instance. Change 
+              'model.py' to pass in the missing argument 'i'. Make sure the 
+              positional arguments are in a correspodiong order in the method 
+              call and in the method definition. Run the program again and 
+              the TypeError should not be raised.</p>
+              <p>Modify the Agent class '__str__' method so it additionally 
+              returns the unique characteristic of each Agent 'i'.</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
-//              <p></p>
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
         w.add("</div>");
     }
 }

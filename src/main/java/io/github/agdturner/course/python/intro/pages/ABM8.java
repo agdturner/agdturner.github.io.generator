@@ -99,10 +99,6 @@ public class ABM8 extends Page {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
-//              <p></p>
-//              <pre></pre>
         w.add("</div>");
     }
 }

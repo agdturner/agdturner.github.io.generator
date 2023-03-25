@@ -190,7 +190,7 @@ public class ABM6 extends Page {
                   
                   # For storing images
                   global ite
-                  ite = 0
+                  ite = 1
                   images = []</code></pre>
               <p>Indent the plotting so that this occurs within the Model loop
               and replace the following line:</p>
@@ -216,18 +216,14 @@ public class ABM6 extends Page {
               
               <h2 id="4">4. Further Assignment 1 Coding Tasks</h2>
               <p>Create some more variable results by randomly setting the 
-              store of each agent in initialisation to be a value between 0 and 
-              99.</p>
-              <p>Change the eat function so that if an agent store goes above 
-              100, then half the store is released back to the environment at 
-              the agent's location.</p>
+              'store' of each agent in initialisation to be a value in the range
+              [0, 99].</p>
+              <p>Change the 'eat' function so that if an agent 'store' goes 
+              above 99, then half the store is added to 'environment' where the 
+              agent is located.</p>
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
-//              <p></p>
-//              <pre></pre>
         w.add("</div>");
     }
 }

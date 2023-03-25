@@ -1061,7 +1061,7 @@ public class Python extends Page {
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.index.getReference("GIS", "Geographical Information System")
-                + "  (GIS) software are used to create, manage, process, model,"
+                + " (GIS) software are used to create, manage, process, model,"
                 + " visualise and distribute geographical data and information."
                 + c.references.getReference("QGIS")
                 + " is "

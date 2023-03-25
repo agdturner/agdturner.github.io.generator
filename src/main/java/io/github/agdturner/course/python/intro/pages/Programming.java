@@ -48,7 +48,7 @@ public class Programming extends Page {
                 + " (coding) is the process of designing and building an"
                 + " executable computer program - a set of instruction"
                 + " fetched and executed sequentially.</p>");
-        w.add("<p>Contemporary desktop and laptop computers typically have a"
+        w.add("<p>Contemporary desktop and laptop computers typically have a "
                 + c.index.getReference("Keyboard", "keyboard")
                 + " and "
                 + c.index.getReference("Mouse", "mouse")
@@ -62,7 +62,7 @@ public class Programming extends Page {
                 + " storage ("
                 + c.index.getReference("Disk", "disk")
                 + " that is organised using a "
-                + c.index.getReference("File System")
+                + c.index.getReference("File System", "file system")
                 + ". Computers may have inbuilt or perpherally connected"
                 + " devices such as microphones, cameras, and additional data "
                 + " storage. The monitor"
@@ -73,12 +73,13 @@ public class Programming extends Page {
                 + c.index.getReference("Internet")
                 + " protocols. The basic functioning of a computer is handled"
                 + " by an "
-                + c.index.getReference("Operating System")
+                + c.index.getReference("Operating System", "operating system")
                 + " upon which additional "
-                + c.index.getReference("Software")
+                + c.index.getReference("Software", "software")
                 + " can be installed, including software that can interpret "
+                + " more readable "
                 + c.index.getReference("Source Code", "source code")
-                + " into machine instructions.</p>"
+                + " into lower level less readable machine instructions.</p>"
         );
         w.add("<p>Programming can be done visually by arranging and connecting"
                 + " pre-built components into executable workflows. However,"
@@ -95,6 +96,7 @@ public class Programming extends Page {
 
         w.add("<h2 id=\"2.\">2. Data</h2>");
         Section s;
+        
         s = addSection("2.1", "Bits and Bytes", 3);
         w.add(s.sectionHTML);
         w.add("<p>In most modern computers, data is encoded in binary: the"
@@ -135,6 +137,7 @@ public class Programming extends Page {
                 + "encoding.</p>");
         w.add("<p>Commonly, there are multiples of 8 bits in a byte, but there "
                 + "can be any number.</p>");
+        
         s = addSection("2.2", "File Formats", 3);
         w.add(s.sectionHTML);
         w.add("<p>Data stored in a file is often stored in a standard "
@@ -157,20 +160,23 @@ public class Programming extends Page {
                 + c.index.getReference("Metadata", "metadata", s.sid)
                 + " what the format of the file is, sometimes it can be"
                 + " discerned from a magic number.</p>");
+        w.add("<p>File formats are revisited in <a href=\"../io/index.html#5\">"
+                + "IO Section 5.</a></p>");
+        
         s = addSection("2.3", "Integers and Floating Point", 3);
         w.add(s.sectionHTML);
         w.add("""
-              <p>All integer numbers in a range are often represented using 
-              bytes with equal length -  a length sufficient to represent all 
-              those integers in the range. The encoding will detail how this is 
-              done. Usually, zero is either in the middle or at the start of the
-              range. If the byte size is minimal, to represent integer numbers 
-              in a wider range, either the byte size must increase, or multiple 
-              bytes must be used in a more comploicated encoding.</p>
+              <p>All the integer numbers in a specific range are often 
+              represented individually using bytes of a length sufficient for 
+              that range. The encoding will detail how this is done. Usually, 
+              zero is either in the middle or at the start of the range. If the 
+              byte size is minimal, to represent integer numbers in a wider 
+              range, either the byte size must increase, or multiple bytes must 
+              be used in a more complicated encoding.</p>
               <p>Floating point numbers are a subset of fractions typically 
-              encoded using either 32 or 64 bit bytes. The density of fractions 
+              encoded using bytes of length 32 or 64. The density of fractions 
               within any part of the range varies. In general, the density is 
-              greater towards the centre of the range which with standard 
+              greater towards the centre of the range, which with standard 
               floating point numbers is zero.</p>
               """);
         w.add("<p>" + c.index.getReference("Floating-point",
@@ -187,11 +193,14 @@ public class Programming extends Page {
         w.add("<p>" + c.index.getReference(
                 "Single-precision Floating-point",
                 "Single precision floating point", s.sid) + " is a standard "
-                + "encoding that uses 32 bits per number.</p>");
+                + "encoding that uses bytes of length 32 to represent each "
+                + "number.</p>");
         w.add("<p>" + c.index.getReference(
                 "Double-precision Floating-point",
                 "Double precision floating point", s.sid) + " is a standard "
-                + "encoding that uses 64 bits per number.</p>");
+                + "encoding that uses bytes of length 64 to represent each "
+                + "number.</p>");
+        
         s = addSection("3", "Learning to Program", 2);
         w.add(s.sectionHTML);
         w.add("""
@@ -210,20 +219,22 @@ public class Programming extends Page {
                         "version control", s.sid)
                 + " as this avoids losing work and provides a track of "
                 + " progress that you and others might find useful.</p>");
+        w.add("<p>Once you have a good grip of programming basics, (which you "
+                + "should have after this course), good ways to improve your "
+                + "skills are by getting involved in "
+                + c.index.getReference("Open Source Software", 
+                    "open source software", s.sid)
+                + " development projects, engaging in code review, writing "
+                + "code, reading documentation and doing other programming "
+                + "courses.</p>");
         w.add("""
-              <p>Once you have a good grip of programming basics, (which you 
-              should have after this course), good ways to improve your skills 
-              are by getting involved in open source software development 
-              projects, engaging in code review, writing code, reading 
-              documentation and doing other programming courses.</p>
               <p>Being familiar with one programming language helps in learning 
               others. Many concepts are shared and the language syntax and 
               workflows are often similar.</p>
               <p>Some programming languages are particularly well geared for 
               particular types of application. This can be a consequence of the 
-              language fundamentals, but more often it is because something 
-              similar has already been done with that language that you can 
-              build upon or learn from.</p>
+              language fundamentals, but often it is because something similar 
+              has already been done with that language.</p>
               <p>When given a choice, experienced programmers will often choose 
               a language for an implementation because they either know that 
               language well - and can envisage what to do, or because they 
@@ -234,20 +245,20 @@ public class Programming extends Page {
               provide others with help and work collaboratively to develop 
               software. There are various online systems that help with this 
               including online forums. You are at liberty to engage in online 
-              forums, but please do not post questions about this course 
-              including the assignments. Ask a tutor if you want help.</p>
-              <p>Asking for help with programming, whether this is from a tutor,
-              peer, or on a forum is a skill. Whilst it may be easiest for you 
-              to show someone what is happening and talk about it. It is often 
-              not so easy to arrange an interactive help session. Often the best
-              way to get help is to document the issue - describe and detail 
-              with text and pictures what is happeneing and why this is 
-              confusing or not what you want to happen. Often the act of 
-              describing and detailing the issue helps you to understand better
-              and think of different ideas to try - which may ultimately resolve
-              the issue before you ask for help. Don't see this as wasted 
-              effort, the more you practise preparing to ask for help, the 
-              better you should be at it when you do!</p>
+              forums, but please do not post questions about this course, 
+              particularly about the assignments. Ask a tutor if you want help.
+              </p>
+              <p>Asking for help with programming is a skill. Whilst it may be 
+              easiest for you to show someone what is happening and talk about
+              it. It is often not so easy to arrange an interactive help 
+              session. Often the best way to get help is to document the issue 
+              - describe and detail with text and pictures what is happeneing 
+              and why this is confusing or not what you expect/want to happen. 
+              Often the act of describing and detailing the issue can help with 
+              understanding and trying different things which may ultimately 
+              resolve the issue before you ask for help. Don't see this as 
+              wasted effort, the more you practise preparing to ask for help, 
+              the better you should be at it when you do!</p>
               <p>Often detailing an issue involves consulting documentation 
               and providing information about your environment. Sometimes the 
               issue is not that you have done something wrong, but that some 
@@ -256,25 +267,29 @@ public class Programming extends Page {
               </p>
               """);
         w.add("<p>Sometimes the issue is a result of a '"
-                + c.index.getReference("Software Bug", "bug", s.sid)
-                + "' in other software - an error, flaw or fault in the design, "
-                + "development, or operation of computer software that causes "
-                + "it to produce an incorrect or unexpected result, or to "
-                + "behave in unintended ways. Sometimes it is a '"
+                + c.index.getReference("Software Bug", "software bug", s.sid)
+                + "' - an error, flaw or fault in the design, development, or "
+                + "operation that causes incorrect or unexpected things to "
+                + "happen. Sometimes issues happen in the same way each time "
+                + "something is attempted, other times the fault only sometimes "
+                + "happens. A fault that only sometimes happens is known as a "
                 + c.index.getReference("Glitch", "glitch", s.sid)
-                + "' - a short-lived fault in a system, such as a transient "
-                + "fault that corrects itself, making it difficult to "
-                + "troubleshoot.</p>");
+                + "' and these can be difficult to troubleshoot.</p>");
         w.add("""
-              <p>Often it is worth resetting the system and attempting to
-              replicate the issue. Reporting a bug is an important activity in 
-              software and language development. Many bug reports are made 
-              openly available. A 'known bug' is one that has been reported. 
-              This may already be being worked on or be 'fixed' or there may be 
-              'workarounds' - ways of coping. A new version of software is 
-              typically released with one or more bug fixes. Sometimes you have 
-              to decide when it is worth doing the work to change to this later 
-              version or whether you can cope with a workaround.</p>
+              <p>Often it is worth restarting software or rebooting the 
+              operating system to attempt to stop unexpected behaviour 
+              happening. If you start having to do this frequently it becomes 
+              more of a pain, so that you either want a better work around, or 
+              for the bug to get fixed.</p>
+              <p>Reporting a bug is an important activity in software and 
+              language development. Many bug reports are made openly available. 
+              A 'known bug' is one that has been reported already. This may 
+              already be being worked on or be 'resolved' or 'fixed' or there 
+              may be 'workarounds' - ways of coping.</p>
+              <p>A new version of software is typically released with one or 
+              more bug fixes. Sometimes you have to decide when it is worth 
+              doing the work to change to this later version or whether you can 
+              cope with a workaround.</p>
               <p>Whether you are filing a bug report, or just asking for help, 
               often you should aim to provide a minimum working example to 
               replicate the bug/issue. And as with all data exchanges, you 
@@ -286,6 +301,7 @@ public class Programming extends Page {
               is written the way it is, but no language is perfect and there may
               well be a better way...</p>
               """);
+        
         s = addSection("4", "Language Evolution, Deprecation and Versions", 2);
         w.add(s.sectionHTML);
         w.add("""
@@ -297,23 +313,25 @@ public class Programming extends Page {
         w.add("<p>Supporting "
                 + c.index.getReference("Backward Compatibility",
                         "backward compatibility", s.sid)
-                + " - interoperability with older versions - has both costs and "
-                + "benefits. These costs and benefits should be and typically "
-                + "are weighed up by those developing languages. Changes that "
-                + "are not backward compatible can create a lot of work! It is "
-                + "also discouraging if old code does not work with newer "
-                + "language interpreters as this results in reliance on old"
-                + "versions which can have security implications.</p>");
+                + " - interoperability with older versions - has both costs and"
+                + " benefits. These costs and benefits are weighed up by those "
+                + "developing languages that tyically have a process of "
+                + "deciding how things change.</p>");
+        w.add("<p>Changes that are not backward compatible can create a lot of "
+                + "work! It is also discouraging if old code does not work with"
+                + " newer language interpreters as this results in reliance on "
+                + "old versions which can be problematic and have security "
+                + "implications.</p>");
         w.add("""
               <p>Languages compete for users and developers. Often new features 
-              in one language are implemented in others soon after. The pace of 
-              language evolution is related to the scale of investment in 
-              resources, and the skill, and design decisions taken by the 
+              in one language are implemented in other languages soon after. The 
+              pace of language evolution is related to the scale of investment 
+              in resources, and the skill, and design decisions taken by the 
               developer community.</p>
               <p>As new syntax, new functionality and more efficient ways of
               doing things evolve in a language, some code either becomes 
               obsolete, or is best changed to use the new ways. This can require 
-              considerable effort to retire or update code.</p>
+              considerable effort to retire or update (refactor) code.</p>
               <p>Fundamental changes in language syntax are associated with 
               major new versions of a language. Minor versions may add new 
               language features. Minor-minor version changes are usually 
@@ -325,6 +343,9 @@ public class Programming extends Page {
                 + " party software. It is part of a process of phasing things"
                 + " out. Things are first marked as deprecated in a version,"
                 + " then in subsequent versions the things are removed.</p>");
+        
+        s = addSection("5", "Considerata", 2);
+        w.add(s.sectionHTML);
         w.add("<p>For many reasons, a key one in science and for evidence "
                 + "based policy being '"
                 + c.index.getReference("Reproducibility", "reproducibility", 
@@ -334,7 +355,6 @@ public class Programming extends Page {
                 + "components a program has been tested with and results have "
                 + "been produced with.</p>");
         w.add("""
-              <h2 id="5">5. Considerata</h2>
               <p>With any language, there are often several ways to achieve the 
               same or a similar thing. Some ways may work faster, can handle 
               larger volumes of data, or might be more concise in terms of the 

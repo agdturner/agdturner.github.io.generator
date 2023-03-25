@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -24,7 +25,7 @@ import io.github.agdturner.course.Page;
  * @author Andy Turner
  */
 public class IO extends Page {
-    
+
     /**
      * Create a new instance.
      *
@@ -33,19 +34,21 @@ public class IO extends Page {
     public IO(PythonIntroCourse c) {
         super("io", "Input and Output", "IO", c);
     }
-    
+
     @Override
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>The Python standard library "
+                + c.index.getReference("Python io", "io module", s.sid)
+                + " provides the main facilities for dealing with input and"
+                + " output (IO). Numerous other standard library modules have "
+                + " functionality for dealing with specific aspects and types"
+                + " of IO, including:</p>");
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>There are numerous functions to help with Input and Output 
-              (IO), including the Builtin Module functions:
-              <a href="https://docs.python.org/3/library/functions.html#input">input()</a>
-              and 
-              <a href="https://docs.python.org/3/library/functions.html#open">open()</a>,
-              and those in the following standard library modules: 
               <a href="https://docs.python.org/3/library/fileinput.html">fileinput</a>,
               <a href="https://docs.python.org/3/library/os.html">os</a>,
               <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a>,
@@ -57,63 +60,117 @@ public class IO extends Page {
               <a href="https://docs.python.org/3/library/internet.html">internet</a>,
               <a href="https://docs.python.org/3/library/tempfile.html">tempfile</a>, and
               <a href="https://docs.python.org/3/library/shutil.html">shutil</a>.
-              There are also various third party libraries that make it easy to
-              read and write data in specific file formats.</p>
-              
-              <h2 id="2">2. Builtins and Standard IO</h2>
-              
-              <h3 id="2.1">2.1. Standard Input</h3>
-              <p>The builtin module function input() reads input from the 
-              Standard Input (stdin) which is usually the keyboard. This 
-              continues until the &lt;ENTER&gt; (or &lt;RETURN&gt;) key is 
-              pressed. The function returns a String (without a newline 
-              character). A String provided as a parameter is displayed to 
-              prompt user input. Run the following and enter some keyboard 
-              input:</p>
-              <pre><code class="language-python">n_agents = input("Key in a positive integer between 10 and 100 to set the"
-              + " number of agents then press the &lt;ENTER&gt; or &lt;RETURN&gt; key:")
+              There are also various third party libraries with useful 
+              functionality for read and writing data in specific file formats
+              and processing data on the Web.</p>
+              """);
+
+        s = addSection("2", "Standard Input", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>The builtins module "
+                + c.index.getReference("Python input", "input function", s.sid)
+                + " reads input from the standard input 'stdin' which is"
+                + " usually the keyboard. This continues until the"
+                + " &lt;ENTER&gt; (or &lt;RETURN&gt;) key is pressed. The"
+                + " function returns a string (without a newline character). A"
+                + " string provided as a parameter is displayed to prompt user"
+                + " input. Run the following at the Python prompt and enter "
+                + " some keyboard input:</p>");
+        w.add("""
+              <pre><code class="language-python">n_agents = input("Enter n_agents (a number between 10 and 100) and press the &lt;ENTER&gt; or &lt;RETURN&gt; key:")
               print("The input detected is:", n_agents)</code></pre>
-              
-              <h3 id="2.2">2.2. Streams</h3>
-              <p>The builtin module function print() writes to the Standard 
-              Output (stdout) which is usually the screen.</p>
-              <p>Stdin and stdout are streams - flows of data. Standard Error 
-              (stderr) is also a stream - one where error messages go. Like 
+              """);
+
+        s = addSection("3", "Streams", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>The builtins module function "
+                + c.index.getReference("Python print", "print", s.sid)
+                + " writes to the standard output 'stdout' which is usually the"
+                + " screen.</p>");
+        w.add("""
+              <p>Stdin and stdout are streams - flows of data. Standard error 
+              'stderr' is also a stream - one where error messages go. Like 
               stdout, stderr is usually written to the screen by default.</p>
               <p>The streams stdin and stdout can be redirected to come from a 
               file (in the case of stdin), or go to a file (in the case of 
               stdout). From the Anaconda Prompt the following will stream data 
-              from stdin.txt into a.py as it runs:</p>
+              from 'stdin.txt' into 'a.py' as it runs:</p>
               <pre>python a.py &lt; stdin.txt</pre>
-              <p>The following will send output from running a.py into stdout.txt:</p>
+              <p>The following will send output from running 'a.py' into 
+              'stdout.txt':</p>
               <pre>python a.py &gt; stdout.txt</pre>
-              <p>This would overwrite stdout.txt if it already existed. To 
-              append to the end of any existing stdout.txt, the following could 
-              be used:</p>
+              <p>This would overwrite 'stdout.txt' if it already existed. To 
+              append to the end of any existing 'stdout.txt', the following 
+              could be used:</p>
               <pre>python a.py &gt;&gt; stdout.txt</pre>
               <p>To stream data in and out, the following can be used:</p>
               <pre>python a.py &lt; stdin.txt &gt; stdout.txt</pre>
               <p>The stdout of one program can be piped to the stdin of another 
               program using the pipe symbol '|'.</p>
-              
-              <h3 id="2.3">2.3. Open</h3>
-              <p>The following code uses the Builtin Module function open() to open a 
-              file in the current directory called "a.in" and reads this 
-              one line at a time streaming the output to the screen before then 
-              closing the file:</p>
+              """);
+        w.add("<p>The "
+                + c.index.getReference("Python print", "print function", s.sid)
+                + " also includes an option to direct stout to a file. That"
+                + " file has to be open in order for the writing to be"
+                + " successful and the open file should be closed to ensure all the"
+                + " data gets written. Typically reading and writing files uses "
+                + "'buffers' that read or write a certain number of bytes in one"
+                + " go which is done for efficiency reasons. Closing a file that "
+                + " is being written to forces a flush of any partially filled"
+                + " buffer. There is an option in the print function to force a"
+                + " flush which can also sometimes be useful...</p>");
+
+        s = addSection("4", "Reading and Writing Files Part 1", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>The following code uses the builtins module function "
+                + c.index.getReference("Python open", "open", s.sid)
+                + " to open a file in the current directory called 'a.in' and"
+                + " reads this one line at a time streaming the output to the"
+                + " screen before then closing the file:</p>");
+        w.add("""
               <pre><code class="language-python">f = open("a.in")
               for line in f:
                   print(line)
               f.close()</code></pre>
-              <p>The Close Function closes the file and releases resources.</p>
-              <p>There are helpful functions to read all lines of a file into a 
-              list which is sometimes preferable. However, if a file is large 
-              and not everything is wanted, then this can be expensive and can 
-              use up more than the amount of memory available resulting in a
-              <a href="https://docs.python.org/3/library/exceptions.html#MemoryError">
-              MemoryError</a>. So, often it is better to parse a file in 
-              portions, such as line by line.</p>
-              <p>Files are also opened for writing in a similar way. Writing to 
+              """);
+        w.add("<p>The <a href=\"https://docs.python.org/3/c-api/file.html\">"
+                + "File Object</a> returned from the above "
+                + c.index.getReference("Python open", "open", s.sid)
+                + " function call 'f' is best closed once it is read by"
+                + " calling it's 'close' method as done on line 4 of the"
+                + " code snippet. After this line is executed, 'f' becomes"
+                + " unusuable. Closing releases system resources and is"
+                + " recommended as good practice altough code will work without"
+                + " doing that.</p>");
+        w.add("<p>An alternative where a 'close' method call is not necessary"
+                + " uses the keyword 'with'. The following does effectively the"
+                + " same as the previous snippet:</p>");
+        w.add("""
+              <pre><code class="language-python">with open("a.in") as f:
+                  for line in f:
+                      print(line)</code></pre>
+              <p>This saves having to close the file, but it is awkward this 
+              way to read several files simultaneously.</p>
+        <p>The standard library 
+                            <a href="https://docs.python.org/3/library/fileinput.html">
+                            fileinput module</a>
+                            helps with reading multiple files simultaneously.</p>
+                                          """);
+        w.add("<p>The "
+                + "<a href-\"https://docs.python.org/3/library/io.html#io.IOBase.readlines\">"
+                + "readlines method</p> can read some or all lines of a file"
+                + " into a list of strings (each item being a line of the"
+                + " file. Whilst this can be convenient, if a file is large"
+                + " and not everything is wanted, then this can use a lot of"
+                + " memory and risks a "
+                + c.index.getReference("Python MemoryError", "MemoryError",
+                        s.sid)
+                + " being raised. So, often it is better to parse a file in"
+                + " portions, such as line by line. Parsing might involve"
+                + " processing or simply storing parts or all of the line in "
+                + " one or more variables.</p>");
+        w.add("""
+              <p>Files are opened for writing in a similar way. Writing to 
               a file can be done as follows:</p>
               <pre><code class="language-python"># Create something to write
               a = []
@@ -121,7 +178,7 @@ public class IO extends Page {
                   a.append("Coding is fun!");
               # Open a file for writing
               f = open("a.out", 'w')
-              # Write lines to the file
+              # Write a to the file
               for line in a:
                   f.write(line)
               # Close the file
@@ -134,37 +191,57 @@ public class IO extends Page {
               Open Function as detailed in
               <a href="https://docs.python.org/3/library/functions.html#open">
               The Python Documentation Functions Chapter Open Section</a></p>
+              <p>Again an alternative using the keyword 'with' that does not 
+              require closing the file is:</p> 
+              <pre><code class="language-python"># Create something to write
+              a = []
+              for i in range(10):
+                  a.append("Coding is fun!");
+              # Write a to file
+              with open("a.out", 'w') as f:
+                  # Write a to the file
+                  for line in a:
+                      f.write(line)</code></pre>
+              """);
 
-              <h3 id="2.4">2.4. File formats</h3>
-              <p>All files are binary files, but some binary files are known as 
-              text files which are typically delimited into lines using a 
-              newline character. To read other types of binary file, it is 
-              helpful to know details of the format. Usually this is given in a 
-              file format specification that details the structure of the file, 
-              and byte lengths and directions. This course focuses just on 
-              reading and writing text files. These text files are typically 
-              small and we are not overly concerned with optimising for memory 
-              and efficiency.</p>
-              <p>Details about handling generic binary data considered a 
-              distraction and are intentionally omitted. However, it is 
-              important to know that using text file formats for storing data 
-              that is mostly numerical can be many times less inefficent 
-              compared with a well designed binary format.<p>
-              <p>In terms of text file formats, there are several types of 
-              commonly used text file formats.</p>
-              
-              <h4 id="2.3.1">2.3.1. CSV Format</h4>
-              <p>CSV files are comma separated variable files. The variables 
-              may be numeric or Strings. There can be a complication if String 
-              variables also contain commas when the entire String is usually 
-              enclosed in quotation marks, and again there are difficulties if 
-              quotation marks or apostrophes are in the Strings.</p>
-              
-              <h4 id="2.3.2">2.3.2. JSON Format</h4>
-              <p>JSON was originally designed to capture JavaScript objects. It
-              stored data as text attribute and value pairs. Values can include 
-              more complex entities made up of further attribute-value pairs.
-              Here is an example of some GeoJSON data:</p>
+        s = addSection("5", "File formats", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>File formats were briefly introduced in "
+                + "<a href=\"../programming/index.html#2.2\">Programming "
+                + "Section 2.2</a>.</p>");
+        w.add("<p>All files are binary files, but some binary files are known"
+                + " as 'text files' - the encoding is generally recognised as"
+                + " text. Text files are typically delimited into lines by a "
+                + " 'newline' code which in Python is '\\n'. File formats are"
+                + " usually defined in a file format specification that details"
+                + " the structure of the file. In this section three types of"
+                + " text file formats are described (CSV, JSON and Markup)."
+                + "</p>");
+
+        s = addSection("5.1", "CSV", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("CSV", "CSV format", s.sid)
+                + " files are text files of comma separated values. The values"
+                + " are text, but this text might represent numbers. If a value"
+                + " contains a comma then the value is usually enclosed in"
+                + " quotation marks. If the value also contains quotation marks"
+                + " or newline then there can be difficulty parsing the file."
+                + "</p>");
+
+        s = addSection("5.2", "JSON", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("JSON", "JavaScript Object Notation",
+                        s.sid)
+                + " (JSON) is an open standard file format and data interchange"
+                + " format that uses human-readable text to store and transmit"
+                + " data objects consisting of attribute–value pairs and arrays"
+                + " (or other serializable values.</p>");
+        w.add("<p>Here is an example of some "
+                + c.index.getReference("GeoJSON", s.sid)
+                + " data:</p>");
+        w.add("""
               <pre>GeoJSON example
               {
                   "type": "FeatureCollection",
@@ -179,33 +256,33 @@ public class IO extends Page {
                       }
                   }]
               }</pre>
-              
-              <h4 id="2.3.3">2.3.3. Markup</h4>
-              <p>Markup is essentially tags and content. Tags often note the 
-              ontological context of the data, making the value have meaning: 
-              that is determining its semantic content. Examples formats 
-              include: HTML (HyperText Markup Language); and, XML (Extensible 
-              Markup Language). Tags can be nested to give information about the 
-              content. Style information can be embedded about how to portray 
-              the data, but this is better kept separate. XML is extensible in 
-              that new tags can be added to extend the langauge in what are 
-              known as profiles. There are lots of standard profiles of XML for 
-              different kinds of information including 
-              <a href="http://www.opengeospatial.org/standards/gml">
-              Geographical Markup Language (GML)</a> - a standard developed by 
-              the Open Geospatial Consortium.</p>
-              
-              <h3 id="2.4">2.4. Reading and Writing Data-Text Files</h3>
-              <p>Because it is easy to forget to close an open file, it has 
-              become good practice to set up a Context Manager using the With 
-              Keyword (with), which temporarily deals with how some code runs. 
-              The following code closes the opened file automatically. The file
-              is read line by line as before, but each line is parsed. First, 
-              the line is split into a sequence using the comma symbol (,) as a 
-              delimeter that separates each item in the sequence, then each of 
-              the items get parsed, which in this case involves using them to 
-              generate Float numbers and storing them in a list. The stored list 
-              of Float numbers is then stored in another list called data:</p>
+              """);
+
+        s = addSection("5.3", "Markup", 3);
+        w.add(s.sectionHTML);
+        w.add("<p>Markup is essentially tags and content. Tags often note the"
+                + " ontological context of the content helping define it's "
+                + " meaning. Tags can be nested. Examples formats include: "
+                + c.index.getReference("HTML", s.sid)
+                + "; and, "
+                + c.index.getReference("XML", s.sid)
+                + ". Style information can be embedded about how to portray"
+                + " the data, but this is better kept separate. XML is"
+                + " extensible in that new tags can be added to extend the"
+                + " langauge in what are known as profiles. There are lots of"
+                + " standard profiles of XML for different kinds of information"
+                + " including "
+                + c.index.getReference("GML", s.sid)
+                + " the XML grammar defined by the Open Geospatial"
+                + " Consortium (OGC) to express geographical features.</p>");
+
+        s = addSection("6", "Reading and Writing Files Part 2", 2);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>The following code reads a file line by line, parsing each line 
+              by splitting it using a comma and converting each part into a 
+              Float which is appended to a list which is then appended to 
+              another list called 'data':</p>
               <pre><code class="language-python">with open("data.txt") as f:
               data = []
               for line in f:
@@ -215,28 +292,13 @@ public class IO extends Page {
                       data_line.append(float(word))
                   data.append(data_line)
               print(data)</code></pre>
-              </p>
-              <p>Multiple files can be open for reading and writing at any time,
-              but this does not work with the Context Manager. For more 
-              information about reading and writing multiple files see:
-              <a href="https://docs.python.org/3/library/fileinput.html">
-              fileinput</a></p> 
-              <p>The Print Function also includes an option to direct stout to a  
-              file too. That file has to be open in order for the writing to be 
-              successful and the open file should be closed before the program 
-              exits. Failure to do so may result in some things not being 
-              flushed into the file due to buffering (where a buffer is filled 
-              first before data is appended to a file for efficiency. Closing a 
-              file forces a flush. There is though an option in the Print 
-              Function to force a flush each time which can be useful if 
-              something else is check for data that might otherwise be sitting 
-              in a buffer...</p>
-              
-              <h4 id="2.4.1">2.4.1. CSV Module</h4>
-              <p>It is easier to read and write CSV format files using functions
-              written specifically to do this from the CSV Module (csv).
-              </p>
-              <p>The following is an example of reading data using csv:</p>
+              """);
+        w.add("<p>It is easier to read and write CSV format files using"
+                + " functions from the Python standard library "
+                + c.index.getReference("Python csv", "csv module", s.sid)
+                + " written specifically to do this. The following is an"
+                + " example of reading some numeric data:</p>");
+        w.add("""
               <pre><code class="language-python">import csv
               f = open('data.csv', newline='')
               reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
@@ -244,10 +306,11 @@ public class IO extends Page {
                   for value in row: # A list of value
                       print(value) # Floats
               f.close()</code></pre>
-              <p>The keyword argument (kwarg) quoting=csv.QUOTE_NONNUMERIC not 
+              <p>The keyword argument 'quoting=csv.QUOTE_NONNUMERIC' not 
               only puts quotation marks around non numeric data, but also 
               converts some number formats into Floats.</p>
-              <p>The following is an example of writing data using csv:</p>
+              <p>The following is an example of using the csv module to write
+              data:</p>
               <pre><code class="language-python">import csv
               f = open('data.csv', 'w', newline='')
               writer = csv.writer(f, delimiter=' ')
@@ -255,10 +318,13 @@ public class IO extends Page {
                   writer.writerow(row) # List of values.
               f.close()</code></pre>
               <p>The optional delimiter kwarg specified here delimits using 
-              a space instead of the default comma.</p>
-              
-              <h4 id="2.4.2">2.4.2. JSON Module</h4>
-              <p>The following code can be used to read a JSON file:</p>
+              a space ' ' instead of the default comma ',', so this would 
+              actually not generate CSV format data!</p>
+              """);
+        w.add("<p>The following code uses the standard library "
+                + c.index.getReference("Python json", "json module", s.sid)
+                + " to read a JSON file:</p>");
+        w.add("""
               <pre><code class="language-python">import json
               f = open('data.json')
               data = json.load(f)
@@ -269,68 +335,67 @@ public class IO extends Page {
               f = open('data.json', 'w')
               json.dump(data, f)
               f.close()</code></pre>
-              
-              <h4 id="2.4.3">2.4.3. Serialisation/Deserialisation</h4>
-              <p>Serialisation is the converting of program data into data 
+              """);
+        w.add("<p>The standard library for processing HTML and XML is:"
+                + "<a href=\"https://docs.python.org/3/library/markup.html\">"
+                + "markup</a>, but the third party "
+                + "<a href=\"https://beautiful-soup-4.readthedocs.io/en/latest/\">"
+                + "Beautiful Soup</a> package is arguably easier to use, and is "
+                + "used later in the course to parse some HTML.</p>");
+
+        s = addSection("7", "Serialisation/Deserialisation", 2);
+        w.add(s.sectionHTML);
+        w.add("""
+               <p>Serialisation is the conversion of program data into data 
               stored typically in a file. Deserialisation is the opposite 
               process that converts data back into working code. Essentially 
               any Python object can be serialised and later deserialised. For 
-              details on how to do this, see:
-              <a href="https://docs.python.org/3/library/pickle.html">pickle</a>
+              details on how to do this, see the standard library
+              <a href="https://docs.python.org/3/library/pickle.html">
+              pickle module</a>
               </p>
-              
-              <h4 id="2.4.4">2.4.4. Handling HTML/XML</h4>
-              <p>The Python standard library for processing HTML and XML is:
-              <a href="https://docs.python.org/3/library/markup.html">
-              markup</a>, but there are often better third party tools for 
-              dealing with these types of data. Later in the course we will use
-              <a href="https://beautiful-soup-4.readthedocs.io/en/latest/">
-              Beautiful Soup</a> - a Python library for pulling data out of HTML
-              and XML files.
-              
+              """);
+
+        s = addSection("8", "OS and File Systems", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <h3 id="3">3. OS and File Systems</h3>
-              <p>The OS Module 
-              (<a href="https://docs.python.org/3/library/os.html">os</a>) 
-              allows for interaction with the underlying Operating System (OS), 
-              including environment variable manipulation and file system 
-              navigation.</p>
-              <p>Environment variables are variables at the OS level. For 
-              example, PATH is a variable which details how the OS looks for
-              programs. The mapping object "os.environ" allows for accessing 
-              environment information from a Python program. For example, the 
-              following will print the PATH:</p>
+              <p>The standard library 
+              (<a href="https://docs.python.org/3/library/os.html">os module</a>) 
+              allows for interaction with the underlying computer operating 
+              system (OS), including 'environment variable' manipulation and 
+              file system navigation.</p>
+              """);
+        w.add("<p>Environment variables are variables at the OS level. The"
+                + " mapping object '"
+                + "<a href=\"https://docs.python.org/3/library/os.html#os.environ\">"
+                + "os.environ</a>"
+                + "' allows for accessing environment information from a Python"
+                + " program. For example, the following will print the "
+                + c.index.getReference("PATH", s.sid)
+                + ":</p>");
+        w.add("""
               <pre><code class="language-python">import os
               print(os.environ["PATH"])</code></pre>
-              <p>For more info on getting and setting OS environment variables, 
-              see:
-              <a href="https://docs.python.org/3/library/os.html#os.environ">
-              os.environ</a></p>
-              <p>There are various os functions for working with the underlying 
-              file system. For example the following will print a list of 
-              every file and directory in the current working directory:</p>
-              <pre>print os.listdir(path='.')</pre>
-              <p>A standard library for dealing with file paths is:
+              <p>And the following will print a list of every file and directory 
+              in the current working directory:</p>
+              <pre><code class="language-python">print os.listdir(path='.')</code></pre>
+              <p>The standard library
               <a href="https://docs.python.org/3/library/pathlib.html">
-              pathlib</a>. To get information about files and directories 
-              (including file sizes and modification times), see:
-              <a href="https://docs.python.org/3/library/pathlib.html#Path.stat">
-              pathlib#Path.stat</a>. To set file permissions and ownership, see:
-              <a href="https://docs.python.org/3/library/pathlib.html#chmod">
-              pathlib#chmod</a> and
-              <a href="https://docs.python.org/3/library/pathlib.html#chown">
-              pathlib#chown</a>.
-              </p>
-              <p>Some other useful standard Python IO libraries are:
+              pathlib module</a>
+              helps with handling file paths and managing file systems</p>
+              <p>The standard library
               <a href="https://docs.python.org/3/library/tempfile.html">
-              tempfile</a> - for generating temporary files and directories;
+              tempfile module</a> is useful for creating temporary files.</p>
+              <p>The standard library
               <a href="https://docs.python.org/3/library/shutil.html">
-              shutil</a> - for copying files and directory structures;
+              shutil module</a> is useful for copying files and directory 
+              structures.</p>
+              <p>The standard library
               <a href="https://docs.python.org/3/library/glob.html">
-              glob</a> - for pattern hunting in files and directories.</p>
+              glob module</a> is useful for pattern hunting in files and 
+              directories.</p>
               """);
-//              <p></p>
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
         w.add("</div>");
     }
 }

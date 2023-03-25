@@ -88,8 +88,8 @@ public class ABM7 extends Page {
               global ite
               filename = '../../data/output/images/image' + str(ite) + '.png'
               plt.savefig(filename)
-              plt.show
               images.append(imageio.imread(filename))
+              plt.show
               return fig</code></pre>
               <p>Change the model loop code block into a function called update
               that has a parameter called frames. At the end of this call the 
@@ -134,13 +134,10 @@ public class ABM7 extends Page {
                       print("stopping condition")
               
                   # Plot
-                  global ite
-                  plot()
-                  ite = ite + 1</code></pre>
+                  plot()</code></pre>
               <p>Define a function gen_function() as follows:</p>
               <pre><code class="language-python">def gen_function():
                   global ite
-                  ite = 0
                   global carry_on #Not actually needed as we're not assigning, but clearer
                   while (ite < n_iterations) & (carry_on) :
                       yield ite # Returns control and waits next call.
@@ -207,19 +204,12 @@ public class ABM7 extends Page {
               <li>Including predator agents that hunt/eat the other agents.</li>
               </ul>
               
-              <h2 id="4">4. Further Assignment 1 Coding Tasks</h2>
-              <p>Complete the following tasks for your portfolio.</p>
-              <p>Write docstrings and comments in your code to help clarify what 
-              it is doing.</p>
+              <h2 id="4">4. Further Assignment 1 Coding Task</h2>
               <p>Alter the stopping condition so that the model stops when the
               average agent store is greater than 80.</p>
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
-//              <p></p>
-//              <pre></pre>
         w.add("</div>");
     }
 }

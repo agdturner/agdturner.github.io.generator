@@ -43,28 +43,40 @@ public class Containers extends Page {
         s = addSection("1", "Introduction", 2);
         w.add(s.sectionHTML);
         w.add("""
-              <p>Data structures types in Python include: sequences (strings, 
-              tuples, ranges, lists, arrays, ...), sets and dictionaries. 
-              Similar data structures are available in other high level 
-              languages, but they may be called different things. Some of these
-              data structures are 'mutable' - can be changed once they have been 
-              created, others are 'immutable' - cannot be changed once they have 
-              been created (although these may contain things which themselves 
-              can be changed). Some are ordered, or can be ordered, and others 
-              are unordered.</p>
+              <p>There are various containers for data in Python including: 
+              sequence objects (bytes, bytearrays, strings, tuples, ranges, 
+              lists, arrays), sets and dictionaries. Similar data structures are
+              available in other high level languages, but they may be called 
+              different things. Some of these data structures are 'mutable' - 
+              can be changed once they have been created, others are 'immutable'
+              - cannot be changed once they have been created (although these 
+              may contain things which themselves can be changed). Some are 
+              ordered, or can be ordered, and others are unordered. A dictionary
+              is a mapping of keys to values. In this part of the course we 
+              introduce each in a bit more detail.</p>
               """);
 
         s = addSection("2", "Sequences", 2);
         w.add(s.sectionHTML);
         w.add("<p>A sequence is a particular class of object. The following are"
-                + " commonly used sequences: bytes, strings, tuples, ranges,"
-                + " lists, arrays.</p>");
+                + " perhaps more commonly used sequences: strings, tuples,"
+                + " ranges, and lists.</p>");
+        
+        s = addSection("2.1", "Bytes and Bytearray", 3);
+        w.add(s.sectionHTML);
         c.index.getReference("Byte", "", s.sid);
-        w.add("<p>"
-                + c.index.getReference("Python bytes", "Bytes", s.sid)
-                + " are sequences of integers with values of 0 or 1.</p>");
-
-        s = addSection("2.1", "Strings", 3);
+        w.add("<p>A "
+                + c.index.getReference("Python byte", "byte", s.sid)
+                + " is an immutable sequence of integers in the range [0, 255]. "
+                + "</p>");
+        w.add("<p>A "
+                + c.index.getReference("Python bytearray", "bytearray", s.sid)
+                + " is a mutable sequence of integers in the range [0, 255]."
+                + "</p>");
+        w.add("<p>These are worth knowing about, but are not used directly in "
+                + "this course, so details are omitted.</p>");
+        
+        s = addSection("2.2", "Strings", 3);
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.index.getReference("Python string", "Strings", s.sid)
@@ -102,11 +114,11 @@ public class Containers extends Page {
               s5 = "string encapsulated with double quotes and containing double \"quotes\""
               s6 = 'string encapsulated with single quotes and containing single \'quotes\''
               s7 = str(s0) # A string constructed from another string
-              print(s7)
+              print(s7) # < prints this is a string
               s8 = str(s0[8:]) # A string constructed from a slice of another string
-              print(s8)
+              print(s8) # <-- Prints a string
               s9 = "strings " + "can be " + "concatenated using '+'"
-              print(s9)</code></pre>
+              print(s9) # <-- Prints strings can be concatenated using '+'</code></pre>
               <p>A backslash can also ensure the continuation of a line. 
               For example:</p>
               <pre><code class="language-python">print('''This is \\
@@ -115,21 +127,22 @@ public class Containers extends Page {
               <p>Produces:</p>
               <pre>This is all one line.
               This is a second.</pre>
-              <p>However, a comment cannot be added at the end of a line that is 
-              continued in this way. So, running the following:</p>
-              <pre><code class="language-python">print('''This is \\ # Not a comment, but is  
+              <p>The symbol '#' can be included in a string. Source code 
+              comments are only comments provided they are not in the string.
+              So, running the following:</p>
+              <pre><code class="language-python">print('''This is \\ # Not a comment  
               all one line.''')</code></pre>
-              <p>Everything becomes art of the string and this is the result:
-              </p>
-              <pre>This is \\ # Not a comment
+              <p>Results in:</p>
+              <pre>This is \\ # Not a comment 
               all one line.</pre>
-              <p>It is though possible to have comments using concatenation:</p>
-              <pre><code class="language-python">print("This is " + # This comment works fine!
+              <p>It is sometimes easier to use concatenation in order to add 
+              source code comments:</p>
+              <pre><code class="language-python">print("This is " + # A comment
               "all one line.")
               print("This is a second")</code></pre>
-              <p>produces:</p>
-              <pre>This is a second.
-              This is all one line.</pre>
+              <pResults in:</p>
+              <pre>This is all one line.
+              This is a second.</pre>
               <p>The string class contains many useful
               <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">
               methods</a> for processing strings. (Methods being functions 
@@ -151,7 +164,7 @@ public class Containers extends Page {
               out if a string starts or ends with a particular string.</p>
               """);
 
-        s = addSection("2.2", "Tuples", 3);
+        s = addSection("2.3", "Tuples", 3);
         w.add(s.sectionHTML);
         w.add("A "
                 + c.index.getReference("Python tuple", "tuple", s.sid)
@@ -196,7 +209,7 @@ public class Containers extends Page {
                 + " and unpacked in the tuples. Such packing/unpacking is"
                 + " is not common in other languages (currently).</p>");
 
-        s = addSection("2.3", "Ranges", 3);
+        s = addSection("2.4", "Ranges", 3);
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.index.getReference("Python range", "Ranges", s.sid)
@@ -256,7 +269,7 @@ public class Containers extends Page {
               print(any(b)) # Print if any of the items in b are True.</code></pre>
               """);
 
-        s = addSection("2.4", "Lists", 3);
+        s = addSection("2.5", "Lists", 3);
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.index.getReference("Python list", "Lists", s.sid)
@@ -362,7 +375,7 @@ public class Containers extends Page {
               "arg3".</p>
               """);
         
-        s = addSection("2.5", "Arrays", 3);
+        s = addSection("2.6", "Arrays", 3);
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.index.getReference("Python array", "Arrays", s.sid)

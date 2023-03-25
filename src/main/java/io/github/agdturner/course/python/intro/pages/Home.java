@@ -61,20 +61,22 @@ public class Home extends Page {
                 + " and comprises a set of webpages and file based resources."
                         + "</p>");
         w.add("""
-              <p>At the top of each webpage is a Style Button that can be used
-              to change between a lighter and darker style. Below that is a 
-              Navigation Section. Each webpage links to the next at the end. The 
-              last pages are index and references pages. The index page contains
-              definitions for a lot of terms ans so is also a bit like a 
-              glossary.</p>
+              <p>At the top of each webpage is a button that can be actioned to 
+              change between a lighter and darker page style. Below that is a 
+              navigation section that links to each page. The pages are 
+              sequential and at the end of each page, there is a link to the 
+              next page.</p>
+              <p>There are index and references pages at the end. The index page 
+              contains definitions for some terms and so is also a bit like a 
+              glossary. As well, it links back to particular sections of other 
+              pages that are relevant.</p>
               <p>Essentially, the idea is that you - students taking the course
               - read through the webpages trying out code and undertaking 
               practical exercises as directed.</p>
-              <p>Please contact your tutor by email or use the module Discussion 
-              tool in  
-              <a href="https://minerva.leeds.ac.uk/">Minerva</a> if you want 
-              help or to clarify something or there is a problem with these 
-              resources.</p>
+              <p>Please contact your tutor by email or use the 
+              <a href="https://minerva.leeds.ac.uk/">Minerva</a> Discussion 
+              section if you want help, clarification or there is a problem with
+              these resources.</p>
               """);
 
         w.add("""
@@ -144,9 +146,9 @@ public class Home extends Page {
                 + ", and third party packages available via "
                 + c.references.getReference("PyPI")
                 + " - the Python Package Index;</li>");
-        w.add("<li>Including code comments and "
+        w.add("<li>Including comments and "
                 + c.index.getReference("Python docstring", "docstrings")
-                + " to ease comprehension and use;</li>");
+                + " to ease code comprehension and use;</li>");
 //        w.add("<li>Producing documentation using "
 //                + c.references.getReference("https://docs.python.org/3/library/pydoc.html",
 //                        "Pydoc", null)
@@ -175,7 +177,7 @@ public class Home extends Page {
               <p>You will learn about:</p>
               <ul>
               """);
-        w.add("<li>Automatating "
+        w.add("<li>Automating "
                 + c.references.getReference("QGIS")
                 + " Desktop using "
                 + c.index.getReference("PyQGIS")
@@ -186,11 +188,13 @@ public class Home extends Page {
         w.add("<li>Data encoding and "
                 + c.index.getReference("File Format", "file formats")
                 + ";</li>");
-        w.add("<li>Python "
+        w.add("<li>Python containers including "
                 + c.index.getReference("Python list", "lists")
+                + ", "
+                + c.index.getReference("Python tuple", "tuples")
                 + "and "
-                + c.index.getReference("Python dict", "dict")
-                + " data structures;</li>");
+                + c.index.getReference("Python dict", "dictionaries")
+                + ";</li>");
         w.add("""
               <li>Program input and output</li>
               <!--
@@ -219,34 +223,36 @@ public class Home extends Page {
               </ul>
               <p>Computer programming mostly involves computational thinking, 
               planning, problem solving and testing. It is often helpful to 
-              break a task into smaller subtasks, and to think about the order 
-              in which to do things. Often good solutions involve doing a 
-              sequence of things repeatedly on some data stored in a data 
-              structure.</p>
+              break a task into smaller subtasks, and gradually develop an
+              implementation. Often good solutions to coding tasks involve doing
+              things repeatedly for a given sequence of things.</p>
               <!--<p>Often it is 
               helpful to use a framework for testing from the outset and to test 
               often as the code develops.</p>-->
               <p>If you are new to computer programming, there is quite a lot of 
               terminology to get used to, some is generic to programming, some 
               is more specific to Python.</p>
-              <p>There are some key concepts to understand which may take 
-              several attempts to learn fully.</p>
+              <p>There are some key concepts to understand which may take a few  
+              attempts to understand, but hopefully you will realise that any 
+              struggle was worth the effort!</p>
 
               <h2 id="4">4. The Learning Journey</h2>
               <p>Develop your understanding through practise and by reading.</p>
               <p>Be experimental - test your understanding by testing code does 
               what you expect it to. If code does not do what you expect, try to
-              understand why - regard failure as a learning opportunity!</p>
+              understand why - regard failure and errors as a learning 
+              opportunity!</p>
               <p>One of the keys to coding is learning to be able to interpret 
-              errors messages - understand what caused them. If your program 
-              generates an exception and error message, then try to understand 
-              what happened before moving on. Ignoring errors is a bad idea!</p>
+              errors messages and understand what caused them. If a program you 
+              are developing unexpectedle raises an exception and reports an 
+              error message, then try to understand why and stop this happening 
+              before moving on. Ignoring an error message is nearly always the 
+              wrong thing to do!</p>
               <p>Be cautious and do not run code that you do not fully trust. If
               in doubt consult with your tutor.</p>
               """);
-        w.add("<p>The webpages with names starting \"ABM\" are a sequence of"
-                + " practicals that progress the development of a basic spatial"
-                + " "
+        w.add("<p>The webpages with names starting 'ABM' are a sequence of "
+                + "practicals that progress the development of a basic spatial "
                 + c.index.getReference("ABM", "Agent Based Model")
                 + ". The ABM can be regarded as a simple model of autonomous"
                 + " spatial entities that move in an environment, interacting"
@@ -265,15 +271,16 @@ public class Home extends Page {
               </li>
               </ul>
               <p>After completing the last ABM practical, you should have 
-              sufficient knowledge and skill to develop the model further 
-              without being given detailed instructions.</p>
+              sufficient knowledge and skill to develop the model in interesting 
+              ways without being given detailed instructions.</p>
               <p>To complete the course, you are to undertake an independent 
               project to apply what you have learned to develop some different 
-              software - there will be a specification of what the software is 
-              to do, some guidance for approaching the software development 
+              software - there will be a specification of what the code/software 
+              is to do, some guidance for approaching the software development 
               task, but no detailed instructions to follow.</p>
               <p>Do not expect to master the Python language by the end of this 
-              course. Usually this takes many years of practise.</p>
+              course. Usually this takes many thousands of hours of practice 
+              over many years.</p>
               <p>Try to enjoy the learning journey, the challenges and the 
               rewards. Learning to program and learning Python is empowering!
               </p>
@@ -308,20 +315,25 @@ public class Home extends Page {
                   <p>There are two assignments that are assessed:</p>
                   <ol>
                   """);
-            w.add("<li>" + pic.assignment1Name + " worth "
-                    + pic.assignment1Weighting + "% of the overall mark and due "
-                    + pic.assignment1DueDate + " - developed by completing "
-                    + "the ABM practicals.</li>");
+            w.add("<li>" + pic.assignment1Name
+                    + " worth "
+                    + pic.assignment1Weighting
+                    + "% of the overall mark and due "
+                    + pic.assignment1DueDate
+                    + " - developed by completing the ABM practicals.</li>");
 
-            w.add("<li>" + pic.assignment2Name + " worth "
-                    + pic.assignment2Weighting + "% of the overall mark and due "
-                    + pic.assignment2DueDate + " - developed by applying what "
-                    + "you have learned to a software development task for "
-                    + "which there is a specification and a suggested way to "
-                    + "approach implementation, but no detailed instructions "
-                    + "to follow. You should have sufficent knowledge and "
-                    + "skill to sensibly begin this assignment from about half "
-                    + "way through the course.</li>");
+            w.add("<li>" + pic.assignment2Name
+                    + " worth "
+                    + pic.assignment2Weighting
+                    + "% of the overall mark and due "
+                    + pic.assignment2DueDate
+                    + " - developed by applying what you have learned to a"
+                    + " software development task for which there is a"
+                    + " specification and suggestions of how to approach"
+                    + " implementation, but no detailed instructions to"
+                    + " follow. You should have sufficent knowledge and"
+                    + " skill to begin this assignment after completing the"
+                    + " ABM5 practical.</li>");
             w.add("<p>See the module page on Minerva for details of the "
                     + "assignments and how they are assessed.</p>");
             w.add("</ol>");

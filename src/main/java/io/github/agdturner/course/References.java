@@ -142,6 +142,12 @@ public class References extends Page {
                 + "distribute and install Python packages with modern tools";
         nameToTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python Packaging User Guide";
+        url = "https://packaging.python.org/";
+        description = "a collection of tutorials and references to help you "
+                + "distribute and install Python packages with modern tools";
+        nameToTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python Software Foundation";
         url = "https://www.python.org/psf/";
         description = "an organization devoted to advancing open source "

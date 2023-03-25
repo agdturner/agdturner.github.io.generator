@@ -121,15 +121,9 @@ public class ABM9 extends Page {
               self.store_shares = 0</code></pre>
               """);
         w.add("""
-              <h2 id="3">3. Assignment 1 coding tasks</h2>
-              <p>Write some user documentation for your software.</p>
-              <p>Create/update a Web page about the software</p>  
-              <p>Edit the README file for your repository.</p>
-              """);              
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
-//              <p></p>
-//              <pre></pre>
+              <h2 id="3">3. Assignment 1 submission</h2>
+              <p>Update the README file for your repository and submit your work.</p>
+              """);
         w.add("</div>");
     }
 }

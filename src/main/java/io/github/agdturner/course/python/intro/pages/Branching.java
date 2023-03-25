@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,35 +39,57 @@ public class Branching extends Page {
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>Branching controls the flow of a program. This part considers"
+                + " a couple of ways of branching in Python. The main way uses"
+                + " an '"
+                + c.index.getReference("Conditional", "if", s.sid)
+                + "' statement.</p>");
+        
+        s = addSection("2", "If", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>The "
+                + c.index.getReference("Python if", "if statement", s.sid)
+                + " is a 'compound' statement (comprises groups of other"
+                + " statements) that provides a means to branch based upon a"
+                + " condition which evaluates to either 'True' or 'False'."
+                + " Consider the following example:</p>");
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              
-              <p>Branching is to do with the flow of a program. At a branching, 
-              the program either goes one way or another. In this section we 
-              will look at a couple of main ways of branching.</p>
-              
-              <h2 id="2">2. If, Else and Elif</h2>                            
-              
-              <p>The If Statement provides a means to branch based upon a 
-              condition which evaluates to either True or False as in the 
-              following example.</p>
-              <pre><code class="language-python"># A simple If Statement
-              day_of_week = 5
+              <pre><code class="language-python">day_of_week = 5
+              day = "Weekday"
+              # A simple If Statement
+              if day_of_week >= 6:
+                  day = "Weekend"
+              print(day)</code></pre>
+              <p>The if statement condition evaluates as False, so the result
+              is:</p>
+              <pre>Weekday</pre>
+              <p>Changing the code slightly to:</p>
+              <pre><code class="language-python">day_of_week = 6
+              # A simple If Statement
               day = "Weekday"
               if day_of_week >= 6:
-                  day = "Weekend"</code></pre>
-              <p>An Else clause branches into two distinct paths which become 
-              one again at the end of the compound statement as in the 
+                  day = "Weekend"
+              print(day)</code></pre>
+              <p>Results in:</p>
+              <pre>Weekend</pre>
+              <p>An 'else' clause branches into two distinct paths which become 
+              one again at the end of the compound if statement as in the 
               following example.</p>
-              <pre><code class="language-python"># An If-else Statement 
+              <pre><code class="language-python">day_of_week = 5
+              # An If-else Statement 
               if day_of_week < 6:
                   day = "Weekday"
               else:
-                  day = "Weekend"</code></pre>
-              <p>One or many Elif clauses can also be inserted between an If and 
-              Else clause. Elif is a short for 'else if'. Consider the following 
+                  day = "Weekend"
+              print(day) # <-- Prints Weekday</code></pre>
+              <p>One or many 'elif' clauses can also be inserted between if and
+              else clauses. Elif is short for 'else if'. Consider the following 
               example:</p>
-              <pre><code class="language-python"># An If-elif-else Statement
+              <pre><code class="language-python">day_of_week = 5
+              # An If-elif-else Statement
               if day_of_week == 1:
                   day = "Monday"
               elif day_of_week == 2:
@@ -78,20 +101,24 @@ public class Branching extends Page {
               elif day_of_week == 5:
                   day = "Friday"
               else:
-                  day = "Weekend"</code></pre>
+                  day = "Weekend"
+              print(day) # <-- Prints Friday</code></pre>
               <p>It can be argued that it is better to store a dictionary to 
-              look up the day from the day_of_week, but a simple mlook up does 
+              look up the day from the day_of_week, but a simple look up does 
               not branch, and more code can be inserted in any of the clauses, 
-              so this can be more than a sort of look up.</p>
-              
-              <h2 id="3">3. Match-case</h2>
-              
-              <p>Since Python 3.10 there is also a Match-case statement which 
-              can simplify long If-elif compound statements. The following 
-              example shows the equivalent of the If-elif-else example from the 
-              end of previous section:</p>
-              <pre><code class="language-python">
-              day_of_week = 5
+              so this can do more than just look up a value from a key.</p>
+              """);
+        
+        s = addSection("3", "Match", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>Since Python 3.10 there is also a "
+                + c.index.getReference("Python match", "match", s.sid)
+                + " statement which can simplify if statements with many elif"
+                + " clauses as a 'match-case' statement. The following example"
+                + " shows the equivalent of the example from the end of previous"
+                        + " section:</p>");
+        w.add("""
+              <pre><code class="language-python">day_of_week = 5
               match day_of_week:
                   case 1:
                       day = "Monday"
@@ -105,13 +132,12 @@ public class Branching extends Page {
                       day = "Friday"
                   case _:
                       day = "Weekend"
-              </code></pre>
+              print(day) # <-- Prints Friday</code></pre>
               <p>The final case is a catch all case using the anonymous variable 
-              which matches anything.</p>
-              <p>The Math-case statement offers more than a syntactic variation 
-              of Else-elif-else compound statements, as containers and other 
-              objects can be matched against. Examples of these can be found in 
-              the relevant PEPS:</p>
+              '_' which matches anything.</p>
+              <p>The match-case statement offers more than a syntactic 
+              variation, as containers and other objects can be matched. 
+              Examples of these and further details can be found in the relevant PEPS:</p>
               <ul>
               <li><a href="https://peps.python.org/pep-0634/">PEP 634, Structural Pattern Matching: Specification</a></li>
               <li><a href="https://peps.python.org/pep-0635/">PEP 635, Structural Pattern Matching: Motivation and Rationale</a></li>

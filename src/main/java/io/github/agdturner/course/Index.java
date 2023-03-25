@@ -167,6 +167,12 @@ public class Index extends Page {
                 + "such as HTML or XML";
         termToIndexTerm.put(name, new IndexTerm(description, url));
                 
+        name = "CSV";
+        url = getWikipediaURL("Comma-separated_values");
+        description = "a delimited text file format that uses a comma to "
+                + "separate values";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Debugging";
         url = getWikipediaURL("Debugging");
         description = "the process of finding and resolving bugs (defects or "
@@ -238,7 +244,14 @@ public class Index extends Page {
         description = "a sequence of program instructions that performs a "
                 + "specific task";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
+        name = "GeoJSON";
+        url = getWikipediaURL("GeoJSON");
+        description = "an open standard format designed for representing "
+                + "simple geographical features, along with their non-spatial "
+                + "attributes. It is based on the JSON format";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "GIS";
         url = getWikipediaURL("Geographic_information_system");
         description = "a geographical information system comprises people, "
@@ -254,6 +267,12 @@ public class Index extends Page {
                 + "troubleshoot";
         termToIndexTerm.put(name, new IndexTerm(description, url));
                 
+        name = "GML";
+        url = getWikipediaURL("Geography_Markup_Language");
+        description = "the XML grammar defined by the Open Geospatial "
+                + "Consortium (OGC) to express geographical features";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "GUI";
         url = getWikipediaURL("Graphical_user_interface");
         description = "a form of user interface that primarily uses actionable "
@@ -299,6 +318,15 @@ public class Index extends Page {
                 + "core technologies of the World Wide Web. All major Web "
                 + "browsers have a dedicated JavaScript engine to execute code "
                 + "on users' devices";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "JSON";
+        url = getWikipediaURL("JSON");
+        description = " JavaScript Object Notation is an open standard file "
+                + "format and data interchange format that uses human-readable "
+                + "text to store and transmit data objects consisting of "
+                + "attribute–value pairs and arrays (or other serializable "
+                + "values)";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
         name = "Keyboard";
@@ -382,6 +410,13 @@ public class Index extends Page {
                 + "(often known as methods)";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Open Source Software";
+        url = getWikipediaURL("Open-source_software");
+        description = "computer software that is released under a license that "
+                + "grants rights to use, study, change, and distribute the "
+                + "software and its source code";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Operating System";
         url = getWikipediaURL("Operating_system");
         description = "a system that manages computer hardware and software "
@@ -430,6 +465,11 @@ public class Index extends Page {
                 + "of objects stored in them is constrained";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python break";
+        url = "https://docs.python.org/3/reference/simple_stmts.html#break";
+        description = "terminates the nearest enclosing loop, skipping the optional else clause if the loop has one";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Python builtins";
         url = "https://docs.python.org/3/library/builtins.html";
         description = "an always loaded module that provides direct access to "
@@ -453,6 +493,20 @@ public class Index extends Page {
                 + "interpreter";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Python continue";
+        url = "https://docs.python.org/3/reference/simple_stmts.html#continue";
+        description = "continues with the next cycle of the nearest enclosing "
+                + "loop. When continue passes control out of a try statement "
+                + "with a finally clause, that finally clause is executed "
+                + "before starting the next loop cycle";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python csv";
+        url = "https://docs.python.org/3/reference/simple_stmts.html#continue";
+        description = "a standard library module for handling data in CSV "
+                + "format";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Python decimal";
         url = "https://docs.python.org/3/library/decimal.html";
         description = "a standard library module providing support for "
@@ -483,10 +537,14 @@ public class Index extends Page {
                 + "raised when there is a problem";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
-        name = "Python bytes";
+        name = "Python byte";
         url = "https://docs.python.org/3/library/stdtypes.html#bytes";
-        description = "a standard type and sequence of integers that are either "
-                + "0 or 1";
+        description = "an immutable sequence of integers in the range [0, 255]";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python bytearray";
+        url = "https://docs.python.org/3/library/stdtypes.html#bytearray";
+        description = "a mutable sequence of integers in the range [0, 255]";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
         name = "Python dir";
@@ -518,11 +576,41 @@ public class Index extends Page {
         description = "a compound statement used for conditional execution";
         termToIndexTerm.put(name, new IndexTerm(description, url));
 
+        name = "Python input";
+        url = "https://docs.python.org/3/library/functions.html#input";
+        description = "a builtins module function that reads a line from "
+                + "standard input, converts it to a string (stripping a "
+                + "trailing newline), and returns that string";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+              
+        name = "Python import";
+        url = "https://docs.python.org/3/reference/simple_stmts.html#import";
+        description = "a statement for importing modules";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python io";
+        url = "https://docs.python.org/3/library/io.html";
+        description = "a standard library module the provides the main "
+                + "facilities for dealing with various types of input and "
+                + "output";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python json";
+        url = "https://docs.python.org/3/library/json.html";
+        description = "a standard library module for handling data in JSON "
+                + "format";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python keyword";
         url = "https://docs.python.org/3/reference/lexical_analysis.html#keywords";
         description = "a reserved word that cannot be used as an "
                 + "ordinary identifier (names of variable, function, class, "
                 + "module or package)";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python lambda";
+        url = "https://docs.python.org/3/reference/expressions.html#lambda";
+        description = "an expression used to create anonymous functions";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
         name = "Python len";
@@ -537,16 +625,34 @@ public class Index extends Page {
                 + "of homogeneous items";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Python match";
+        url = "https://docs.python.org/3/reference/compound_stmts.html#the-match-statement";
+        description = "statement used for pattern matching";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python math";
         url = "https://docs.python.org/3/library/math.html";
         description = "provides access to the mathematical functions defined "
                 + "by the C standard";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Python MemoryError";
+        url = "https://docs.python.org/3/library/exceptions.html#MemoryError";
+        description = "an exception raised when an operation runs out of "
+                + "memory but the situation may still be rescued (by deleting "
+                + "some objects)";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
         name = "Python NameError";
         url = "https://docs.python.org/3/library/exceptions.html#NameError";
         description = "an exception raised when a local or global name is "
                 + "not found";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python open";
+        url = "https://docs.python.org/3/library/functions.html#input";
+        description = "a builtin function to open a file and return a "
+                + "corresponding file object";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
         name = "Python operator";
@@ -573,7 +679,13 @@ public class Index extends Page {
         description = "an immutable sequence of numbers, commonly used for "
                 + "looping a specific number of times in for loops";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-                      
+        
+        name = "Python repr";
+        url = "https://docs.python.org/3/library/functions.html#repr";
+        description = "a function from the builtins module for getting "
+                + "printable representation of an object";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
         name = "Python Requests";
         url = "https://requests.readthedocs.io/";
         description = "a third party HTTP library for Python";
@@ -610,6 +722,12 @@ public class Index extends Page {
                 + "to functions that interact strongly with the interpreter";
         termToIndexTerm.put(name, new IndexTerm(description, url));
                       
+        name = "Python time";
+        url = "https://docs.python.org/3/library/time.html";
+        description = "a standard library module providing various "
+                + "time-related functions";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python tuple";
         url = "https://docs.python.org/3/library/stdtypes.html#tuples";
         description = "an immutable sequences, typically used to store "
@@ -621,7 +739,13 @@ public class Index extends Page {
         description = "a function from the builtins module for getting the type "
                 + "of an identifier";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
+        name = "Python TypeError";
+        url = "https://docs.python.org/3/library/exceptions.html#TypeError";
+        description = "an excpetion raised when an operation or function is "
+                + "applied to an object of inappropriate type";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python venv";
         url = "https://docs.python.org/3/library/venv.html";
         description = "a standard library module that supports creating "
@@ -764,6 +888,12 @@ public class Index extends Page {
         url = getWikipediaURL("While_loop");
         description = "a control flow statement that allows code to be "
                 + "executed repeatedly until a condition evaluates as false";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                
+        name = "XML";
+        url = getWikipediaURL("XML");
+        description = "a markup language and file format for storing, "
+                + "transmitting, and reconstructing arbitrary data";
         termToIndexTerm.put(name, new IndexTerm(description, url));
     }
 
