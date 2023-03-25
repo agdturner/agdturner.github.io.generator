@@ -642,7 +642,12 @@ public class Index extends Page {
                 + "memory but the situation may still be rescued (by deleting "
                 + "some objects)";
         termToIndexTerm.put(name, new IndexTerm(description, url));
-
+        
+        name = "Python Module Index";
+        url = "https://docs.python.org/3/py-modindex.html";
+        description = "an index of standard library modules";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
         name = "Python NameError";
         url = "https://docs.python.org/3/library/exceptions.html#NameError";
         description = "an exception raised when a local or global name is "
@@ -726,6 +731,12 @@ public class Index extends Page {
         url = "https://docs.python.org/3/library/time.html";
         description = "a standard library module providing various "
                 + "time-related functions";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python try";
+        url = "https://docs.python.org/3/reference/compound_stmts.html#try";
+        description = "a statement specifies exception handlers and/or cleanup "
+                + "code for a code block";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
         name = "Python tuple";

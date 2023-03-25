@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -24,7 +25,7 @@ import io.github.agdturner.course.Page;
  * @author Andy Turner
  */
 public class Exceptions extends Page {
-    
+
     /**
      * Create a new instance.
      *
@@ -33,28 +34,36 @@ public class Exceptions extends Page {
     public Exceptions(PythonIntroCourse c) {
         super("exceptions", "Exceptions", "Exceptions", c);
     }
-    
+
     @Override
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>In python, an exception is a warning or an error that is raised
-              when the python interpreter encounters a problem or issue. There 
-              are numerous types of exception, all are derived from 
+              <p>A Python exception is 'raised' when the Python interpreter 
+              encounters an error. There are numerous types of exception, all 
+              are types of 
               <a href="https://docs.python.org/3/library/exceptions.html#BaseException">
               BaseException</a>.</p>
               <p>The raised exception is an object which contains details of 
-              what the problem is.</p>
-              
-              <h2 id="2">2. Try-Except</h2>
-              <p>If it is suspected that code might generate an exception, or if 
-              code generates an exception and analysis of this is to be done, 
-              then a try-except compound statement can be used. This tries to 
-              run the code that might or does generate the exception and catches 
-              the exceptions if it occurs allowing further code to then be 
-              executed.</p>
+              the error and what code was being executed when the error was 
+              encountered.</p>
+              """);
+
+        s = addSection("2", "Try-Except", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>If it is suspected that code might generate an exception, or"
+                + " if code raises an exception and analysis of this is to be"
+                + " done, then a "
+                + c.index.getReference("Python try", "try", s.sid)
+                + " compound statement can be used with an 'except' clause."
+                + " This tries to run the code in the try section and if"
+                + " specific exceptions are raised, then the code in the except"
+                + " clause is run.</p>");
+        w.add("""
               <p>Consider the following example:</p>
               <pre><code class="language-python"># Catch an exception
               import random
@@ -66,14 +75,14 @@ public class Exceptions extends Page {
               except:
                   a = 0
               print("Done")</code></pre>
-              <p>This will run the try clause of the compound statement, and if 
-              an exception is raised in running that, then and only then will it 
-              run the except clause.</p>
-              <p>The except clause in the example above catches any exception 
+              <p>To reiterate, this will run the 'try' clause of the compound 
+              statement, and if an exception is raised in running that, then 
+              (and only then) will the 'except' clause run.</p>
+              <p>The 'except' clause in the example above catches any exception 
               type. It is possible to be more specific and catch particular 
               types of exception, for example, the following example will only 
               run the except clause if the exception thrown is a 
-              ZeroDivisionError type exception:</p>
+              'ZeroDivisionError' type exception:</p>
               <pre><code class="language-python"># Catch a specific exception:
               import random
               try:
@@ -119,14 +128,15 @@ public class Exceptions extends Page {
               <p>Exceptions are raised automatically if they are encountered and 
               not handled in an except clause.</p>
               <p>The keyword 'raise' can be used to raise an exception by simply 
-              giving the exception type. The following raises a SystemError</p>
+              giving the exception type. The following raises a 
+              'SystemError'.</p>
               <pre><code class="language-python">raise SystemError</code></pre>
               <p>New types of exception can be defined by subclassing an 
-              exception from the builtin module.</p>
+              exception from the builtins module.</p>
               
               <h2 id="4">4. Else and Finally</h2>
-              <p>To run something only if exceptions are not raised, add an Else 
-              Clause 'else' to the try-except compound statement, for example:
+              <p>To run something only if exceptions are not raised, add an 
+              'else' clause, for example:
               </p>
               <pre><code class="language-python">import random
               try:
@@ -138,8 +148,7 @@ public class Exceptions extends Page {
                   # Exceptions here are raised.
               print("Done")</code></pre>
               <p>To run code whether an exception is raised or not, then add a 
-              Finally Clause 'finally' try-except compound statement, for 
-              example:</p>
+              'finally' clause, for example:</p>
               <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
@@ -163,28 +172,27 @@ public class Exceptions extends Page {
               clause before restarting the loop, and the Break Keyword (break)
               can be used to execute the finally clause.</p>
               -->
+              """);
 
-              <h2 id="5">5. System Exit Calls</h2>
-              <p>To exit the system at any point, call the function exit() 
-              from the sys module. For example:</p>
+        s = addSection("5", "System Exit", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>To exit a program at any point, call the '"
+                + "<a href=\"https://docs.python.org/3/library/sys.html#sys.exit\">"
+                + "exit function</a>'"
+                + " from the "
+                + c.index.getReference("Python sys", "sys module", s.sid)
+                + ". For example:</p>");
+        w.add("""
               <pre><code class="language-python">import sys
               sys.exit()</code></pre>
               <p>This has an arg option:</p>
               <pre><code class="language-python">sys.exit(arg)</code></pre>
               <p>Where arg is a number that the system will report. Zero is 
               usually regarded as exiting with no issues.</p>
-              <p>For more on this, see: 
-              <a href="https://docs.python.org/3/library/sys.html#sys.exit">
-              sys.exit</a>.
-              See also:
-              <a href="https://docs.python.org/3/library/errno.html">errno</a> -
-              a special module on system error codes.</p>
+              <p>For details on error codes, see:
+              <a href="https://docs.python.org/3/library/errno.html">errno</a>
+              - a special module on system error codes.</p>
               """);
-//              <pre></pre>
-//              <pre><code class="language-python"></code></pre>
-//              <p></p>
-//              <pre></pre>
-//              
         w.add("</div>");
     }
 }
