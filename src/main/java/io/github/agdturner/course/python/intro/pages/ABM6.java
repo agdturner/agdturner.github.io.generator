@@ -133,7 +133,7 @@ public class ABM6 extends Page {
               <p>Replace the model loop in the model.py file with the following:
               </p>
               <pre><code class="language-python"># Model loop
-              for ite in range(n_iterations):
+              for ite in range(1, n_iterations + 1):
                   print("Iteration", ite)
                   # Move agents
                   print("Move")
