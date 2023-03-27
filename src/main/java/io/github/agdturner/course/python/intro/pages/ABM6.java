@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,12 +39,14 @@ public class ABM6 extends Page {
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction and Preparation", 2);
+        w.add(s.sectionHTML);
         w.add("""
-              <h2 id="1">1. Introduction and Preparation</h2>
-              <p>To get the agents communicating they need a way to refer to 
+              <p>To get agents communicating they need a way to refer to 
               each other. Those agents that are within a given distance are 
               going to share some resource.</p>
-              <p>In your local code repository src directory create a new 
+              <p>In your local code repository 'src' directory create a new 
               directory called 'abm6'. Open Spyder and use 'save as' to save 
               your 'model.py' into this directory. Create a new directory called
               'my_modules' in 'abm6' and use 'save as' to save your 

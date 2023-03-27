@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,13 +39,14 @@ public class ABM9 extends Page {
     public void write() {
         writeHeader();
         writeH1();
-        String url = c.env.domain + "/resources/abm9/data.html";
+        Section s;
+        s = addSection("1", "Introduction and Preparation", 2);
+        w.add(s.sectionHTML);
         w.add("""
-              <h2 id="1">1. Introduction and Preparation</h2>
               <p>This practical is about using some data in an HTML file Table
               to initialise part of the model.</p>
-              <p>In your local code repository src directory duplicate your abm8
-              directory and call the new directory "abm9".</p>
+              <p>In your local code repository 'src' directory duplicate your 
+              'abm8' directory as 'abm9'.</p>
               
               <h2 id="2">2. Parsing an HTML File</h2>
               <p><a href="../../resources/abm9/data.html">The HTML to parse</a>.</p>
@@ -61,8 +63,9 @@ public class ABM9 extends Page {
               <pre><code class=\"language-python\">
               # Initialise agents
               """);
-        w.add("url = " + url);
-        w.add("r = requests.get(\'" + url + "\', verify=False)");
+        String url = "https://" + c.env.domain + "/resources/abm9/data.html";
+        w.add("url = '" + url + "'");
+        w.add("r = requests.get(url, verify=False)");
         w.add("""
               content = r.text
               soup = bs4.BeautifulSoup(content, 'html.parser')
@@ -79,7 +82,7 @@ public class ABM9 extends Page {
                   print(agents[i].agents[i])</code></pre>
               """);
         w.add("""
-              <p>Change the __init__ function in 'agentframework.py' to:</p>");
+              <p>Change the '__init__' function in 'agentframework.py' to:</p>");
               <pre><code class="language-python">def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
               \"""
               The constructor method.
