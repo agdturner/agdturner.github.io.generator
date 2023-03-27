@@ -42,13 +42,18 @@ public class Functions extends Page {
         Section s;
         s = addSection("1", "Introduction", 2);
         w.add(s.sectionHTML);
-        w.add("<p>"
+        w.add("<p>Functions are a key part of many programming languages. These"
+                + " are reusable code blocks that are called and which return."
+                + " In calling the function typically parameters can be passed"
+                + " in. A function return may contain objects or values that "
+                + " can be assigned to variables"
+                + " and in returning"
                 + c.index.getReference("Python Built-in Functions", s.sid)
                 + " are available as part of the "
                 + c.index.getReference("Python builtins", "builtins module",
                         s.sid) 
                 + " Functions from modules in the "
-                + c.references.getReference("Python Standard Library", 
+                + c.references.getReference("Python 3 Documentation: Library",
                         "standard library")
                 + " are made available using "
                 + c.index.getReference("Python import", "import statements", 

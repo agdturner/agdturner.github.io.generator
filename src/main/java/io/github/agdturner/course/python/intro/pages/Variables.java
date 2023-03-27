@@ -125,7 +125,8 @@ public class Variables extends Page {
                 + " is approximate - so calculations that use it are not"
                 + " necessarily accurate.</p>");
         w.add("<p>The "
-                + c.references.getReference("Python Standard Library")
+                + c.references.getReference("Python 3 Documentation: Library", 
+                        "Python Standard Library")
                 + " has two modules that support more arithmetic accuracy: "
                 + c.index.getReference("Python decimal", "decimal", s.sid)
                 + "; and, "

@@ -32,7 +32,7 @@ public class ABM5 extends Page {
      * @param c The Course.
      */
     public ABM5(PythonIntroCourse c) {
-        super("abm5", "Agent Based Model Part 5", "ABM5", c);
+        super("abm5", "Agent Based Model Practical 5", "ABM5", c);
     }
 
     @Override
@@ -112,8 +112,8 @@ public class ABM5 extends Page {
               there is a name collision. There is an 'io' standard library 
               module which does not have an attribute names 'read_data', and it 
               is the standard library module called 'io' that is imported.</p>
-              <p>To deal with this issue, either we have to rename the 
-              non-standard library 'io' module, or it needs to be packaged which 
+              <p>To deal with this issue, either the non-standard library 'io' 
+              module needs to be renamed, or it needs to be packaged which 
               involves creating a directory and moving 'io.py' into it. In the 
               'abm5' directory, create a directory called 'my_modules' and move 
               both 'io.py' and 'agentframework.py' into it. Change the 

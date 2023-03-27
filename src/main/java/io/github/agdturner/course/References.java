@@ -92,33 +92,61 @@ public class References extends Page {
 
         name = "PIP";
         url = getWikipediaURL("https://pip.pypa.io");
-        description = "the Python Package Installer";
+        description = "Python Package Installer";
         nameToTerm.put(name, new IndexTerm(description, url));
         
         name = "PyPI";
         url = getWikipediaURL("https://pypi.org/");
-        description = "the Python Package Index";
+        description = "Python Package Index";
         nameToTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python 3 Language Reference";
+        name = "Python 3 Documentation";
+        url = "https://docs.python.org/3/";
+        description = "the official documentation for Python 3";
+        nameToTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python 3 Documentation: Reference";
         url = "https://docs.python.org/3/reference/";
         description = "manual describing the syntax and \"core semantics\" of "
                 + "Python";
         nameToTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python Documentation Classes Tutorial";
+        name = "Python 3 Documentation: Glossary";
+        url = "https://docs.python.org/3/glossary.html";
+        description = "glossary of Python 3 Documentation Reference terms";
+        nameToTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python 3 Documentation: Library";
+        url = "https://docs.python.org/3/library/";
+        description = "the functionality that is included in Python "
+                + "distributions as standard and it's reference manual";
+        nameToTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python 3 Documentation: Tutorial";
+        url = "https://docs.python.org/3/tutorial";
+        description = null;
+        nameToTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python 3 Documentation: Tutorial: Classes";
         url = "https://docs.python.org/3/tutorial/classes.html";
         description = null;
         nameToTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python Documentation Modules Tutorial";
+        name = "Python 3 Documentation: Tutorial: Modules";
         url = "https://docs.python.org/3/tutorial/modules.html";
         description = null;
         nameToTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python Tutorial";
-        url = "https://docs.python.org/3/tutorial";
+        name = "Python 3 Documentation: Tutorial: Packages";
+        url = "https://docs.python.org/3/tutorial/modules#packages.html";
         description = null;
+        nameToTerm.put(name, new IndexTerm(description, url));
+
+        name = "Python 3 Documentation: What's New";
+        url = "https://docs.python.org/3/whatsnew";
+        description = "The \"What’s New in Python\" documentation tours "
+                + "through the most important changes between major Python "
+                + "versions.";
         nameToTerm.put(name, new IndexTerm(description, url));
 
         name = "Python Enhancement Proposal Website";
@@ -128,11 +156,6 @@ public class References extends Page {
 
         name = "Python Lexical Analysis Documentation";
         url = "https://docs.python.org/3/reference/lexical_analysis.html";
-        description = null;
-        nameToTerm.put(name, new IndexTerm(description, url));
-
-        name = "Python Packages";
-        url = "https://docs.python.org/3/tutorial/modules#packages.html";
         description = null;
         nameToTerm.put(name, new IndexTerm(description, url));
 
@@ -154,22 +177,9 @@ public class References extends Page {
                 + "technology related to the Python programming language";
         nameToTerm.put(name, new IndexTerm(description, url));
 
-        name = "Python Standard Library";
-        url = "https://docs.python.org/3/library/";
-        description = "the functionality that is commonly included in Python "
-                + "distributions and it's reference manual";
-        nameToTerm.put(name, new IndexTerm(description, url));
-
         name = "Python Website";
         url = "https://www.python.org/";
         description = null;
-        nameToTerm.put(name, new IndexTerm(description, url));
-
-        name = "Python What's New";
-        url = "https://docs.python.org/3/whatsnew";
-        description = "The \"What’s New in Python\" documentation tours "
-                + "through the most important changes between major Python "
-                + "versions.";
         nameToTerm.put(name, new IndexTerm(description, url));
 
         name = "QGIS";
@@ -184,7 +194,7 @@ public class References extends Page {
         nameToTerm.put(name, new IndexTerm(description, url));
         
         name = "Spyder Documentation";
-        url = "https://docs.spyder-ide.org/current/index.html";
+        url = "https://docs.spyder-ide.org/";
         description = null;
         nameToTerm.put(name, new IndexTerm(description, url));
     }

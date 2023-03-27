@@ -60,7 +60,8 @@ public class Modules extends Page {
         w.add("<p>The "
                 + c.index.getReference("Python Module Index", s.sid) 
                 + " is a useful look up for "
-                + c.references.getReference("Python Standard Library")
+                + c.references.getReference("Python 3 Documentation: Library",
+                        "Python Standard Library")
                 + " modules. These modules can be readily imported and used"
                 + " without needing to customise the environment.</p>");
         w.add("""

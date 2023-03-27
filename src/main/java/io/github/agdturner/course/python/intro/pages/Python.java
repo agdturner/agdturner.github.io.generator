@@ -53,7 +53,8 @@ public class Python extends Page {
                 + " facilitate the growth of a diverse and international "
                 + "community of Python programmers.</p>");
         w.add("<p>The "
-                + c.references.getReference("Python Standard Library")
+                + c.references.getReference("Python 3 Documentation: Library",
+                        "Python 3 Library")
                 + " and various Python "
                 + c.index.getReference("Source Code", "source code")
                 + " interpreters are freely available in source"
@@ -68,7 +69,7 @@ public class Python extends Page {
                 + " contains distributions of and pointers to many third party"
                 + " Python libraries, tools, and additional documentation.</p>"
                 + "<p>A particularly useful page for beginners is the "
-                + c.references.getReference("Python 3 Language Reference")
+                + c.references.getReference("Python 3 Documentation")
                 + ".</p>");
 
         s = addSection("2", "Python 3", 2);
@@ -85,8 +86,8 @@ public class Python extends Page {
               Python 3.12 is due for release in October 2023.
               For each major incremental Python 3 release there is a
               """);
-        w.add(c.references.getReference("Python What's New")
-                + " webpage that introduces what is new:</p>");
+        w.add(c.references.getReference("Python 3 Documentation: What's New")
+                + "webpage that introduces what is new:</p>");
         w.add("<ul>");
         for (int i = 0; i < 12; i++) {
             w.add("<li>" + Web_ContentWriter.getLink(
@@ -128,10 +129,11 @@ public class Python extends Page {
               </p>
               """);
         w.add("<p>The "
-                + c.references.getReference("Python Tutorial")
-                + " is a good place to start learning Python. In your private"
-                + " study time, you might like to make your way through that"
-                + " learning material too.</p>");
+                + c.references.getReference("Python 3 Documentation: Tutorial")
+                + " is a recommended way to start learning Python. In your"
+                + " private study time, you might like to make your way through"
+                + " that series of tutorials which compliment these learning"
+                + " resources and go through some things in more depth.</p>");
 
         s = addSection("3", "Running Python", 2);
         w.add(s.sectionHTML);

@@ -118,13 +118,14 @@ public class Home extends Page {
         w.add("<li>Language development and limitations;</li>");
         w.add("<li>Structuring and organising code into "
                 + c.references.getReference(
-                        "Python Documentation Classes Tutorial", "Classes")
+                        "Python 3 Documentation: Tutorial: Classes", "Classes")
                 + ", "
                 + c.references.getReference(
-                        "Python Documentation Modules Tutorial",
-                        "Modules")
+                        "Python 3 Documentation: Tutorial: Modules", "Modules")
                 + ", and "
-                + c.references.getReference("Python Packages", "Packages")
+                + c.references.getReference(
+                        "Python 3 Documentation: Tutorial: Packages", 
+                        "Packages")
                 + ";</li>");
         w.add("<li>Using the "
                 + c.index.getReference("REPL", "Read Evaluate Print Loop")
@@ -142,7 +143,8 @@ public class Home extends Page {
                 + c.index.getReference("Python venv", "venv")
                 + ";</li>");
         w.add("<li>Using the "
-                + c.references.getReference("Python Standard Library")
+                + c.references.getReference("Python 3 Documentation: Library",
+                        "Python 3 Library")
                 + ", and third party packages available via "
                 + c.references.getReference("PyPI")
                 + " - the Python Package Index;</li>");
@@ -334,10 +336,29 @@ public class Home extends Page {
                     + " follow. You should have sufficent knowledge and"
                     + " skill to begin this assignment after completing the"
                     + " ABM5 practical.</li>");
-            w.add("<p>See the module page on Minerva for details of the "
+            w.add("<p>See the module page on "
+                    + "<a href=\"https://minerva.leeds.ac.uk/\">Minerva</a>"
+                    + " for details of the "
                     + "assignments and how they are assessed.</p>");
             w.add("</ol>");
         }
+        w.add("""
+              <h2 id="6">6. About these learning resources</h2>
+              <p>These learning resources are based on 
+              <a href=\"https://www.geog.leeds.ac.uk/courses/computing/\">
+              earlier versions of courses</a> developed originally by
+              <a href="https://ajevans.github.io/">
+              Andy Evans</a>.</p>
+              <p>Slightly updated version of the course were developed for 
+              years, but a major refactor was completed in the academic year 
+              2022-2023 to make the learning resources more accessible. This
+              refactoring involved implementing a
+              <a href=\"https://github.com/agdturner/agdturner.github.io\">
+              new website build system</a>
+              which is based on
+              <a href=\"https://en.wikipedia.org/wiki/Java_(programming_language)\">
+              Java</a>.</p>
+              """);
         w.add("</div>");
     }
 }

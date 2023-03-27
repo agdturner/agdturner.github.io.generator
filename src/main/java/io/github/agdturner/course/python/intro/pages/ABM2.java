@@ -32,7 +32,7 @@ public class ABM2 extends Page {
      * @param c The Course.
      */
     public ABM2(PythonIntroCourse c) {
-        super("abm2", "Agent Based Model Part 2", "ABM2", c);
+        super("abm2", "Agent Based Model Practical 2", "ABM2", c);
     }
     
     @Override

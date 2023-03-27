@@ -32,7 +32,7 @@ public class ABM3 extends Page {
      * @param c The Course.
      */
     public ABM3(PythonIntroCourse c) {
-        super("abm3", "Agent Based Model Part 3", "ABM3", c);
+        super("abm3", "Agent Based Model Practical 3", "ABM3", c);
     }
 
     @Override
@@ -491,17 +491,19 @@ public class ABM3 extends Page {
                 + c.index.getReference("Python for", "for loop")
                 + " to loop through moving agents n_iteration times. An outer"
                 + " loop is wanted rather than an inner loop as in each"
-                + " iteration agents are to move in turn rather than each agent "
-                + " taking all their turns before any others.</p>");
+                + " iteration agents are to move in turn rather than each"
+                + " agent taking all their turns before any others. This outer"
+                + " loop is the 'main simulation loop'. Add a comment to"
+                + " identify it as such.</p>");
         w.add("""
               <p>The agents move randomly, and the more of them there are, the 
               more spread out they are likely to become.</p>
               <p>Edge effects are important to consider in geographical data 
               analysis and modelling. The agents currently have a theoretically 
-              infinite two dimensional (2D) area to move in. We want to restrict 
-              agents to move in a more constrained area. Constrain agents to a   
-              rectangluar area by limiting the x and y coordinates using the 
-              following code blocks:</p>
+              infinite two dimensional (2D) area to move in. To make things more 
+              manageable, movement will be restricted to a rectangular area by 
+              limiting the x and y coordinates using the following code 
+              blocks:</p>
               <pre><code class="language-python"># Variables for constraining movement.
               # The minimum x coordinate.
               x_min = 0
