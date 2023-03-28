@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.python.intro.pages;
 
+import io.github.agdturner.core.Section;
 import io.github.agdturner.course.python.intro.PythonIntroCourse;
 import io.github.agdturner.course.Page;
 
@@ -38,33 +39,49 @@ public class GUI extends Page {
     public void write() {
         writeHeader();
         writeH1();
+        Section s;
+        s = addSection("1", "Introduction", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>A "
+                + c.index.getReference("GUI", "Graphical User Interface", s.sid)
+                + " (GUI) is typically comprised of rectangular windows"
+                + " containing panels and a menu. Panels can contain data"
+                + " displays which can be made interactive, and widgets"
+                + " (buttons, sliders, dials, text boxes and other things a"
+                + " user might interact with). There is often a menu (or 'menu"
+                + " bar') typically along the top of a GUI window with menus"
+                + " and 'menu items' that drop down and form cascading lists"
+                + " when the menu is used.</p>");
+        w.add("<p>A GUI is event based, where some thread of the program is"
+                + " typically looping and waiting for events to fire as a"
+                + " result of user interaction typically via a keyboard or"
+                + " mouse.</p>");
+        w.add("<p>The Python standard library package and module for GUI"
+                + " development is "
+                + c.index.getReference("Python tkinter", "tkinter", s.sid)
+                + " for which there is some "
+                + c.index.getReference("Python tk", 
+                        "additional reference documentation.", s.sid)
+                + ".</p>");
         w.add("""
-              <h2 id="1">1. Introduction</h2>
-              <p>A Graphical User Interface (GUI) is typically comprised of 
-              rectangular windows and panels (parts of windows), a panal for 
-              data display, menus, and various things called widgets (buttons, 
-              sliders, and other things a user might interact with using a mouse 
-              or keyboard.</p>
-              <p>There are various alternatives for GUI development in Python.
-              In this section, we briefly look at 
-              <a href="https://docs.python.org/3/library/tkinter.html">
-              TkInter</a> which is part of 
-              <a href="https://docs.python.org/3/library/tk.html">tk</a>.</p> 
               <!--
-              <p><a href="https://www.wxpython.org/">wxpython</a></p>
+              <p>There are various third party library alternatives, including:
+              <a href="https://www.wxpython.org/">wxpython</a></p>
               -->
-              <p>GUIs are event based, where some thread of the program is 
-              typically looping and waiting for events to fire as a result 
-              of user interaction. In Python this is facilitated by callbacks - 
-              where a function is passed to another function, with the 
-              expectation that (depending on conditions) the function will be 
-              run. This involves registering a function with a GUI component 
-              such that when the GUI component is actioned, the registered 
-              function is called.</p>
-              
-              <h2 id="2">2. Getting Started with TkInter</h2>
-              <p>The following code sets up a simple canvas for a GUI 
-              and a main loop that waits for interactions with it:</p>
+              """);
+        w.add("""
+              <p>In Python, GUI events are facilitated by 'callbacks' - where a 
+              function is passed to another function, with the expectation that 
+              (depending on conditions) the function will be run. This involves 
+              registering a function with a GUI component, so that when the 
+              GUI component is actioned, the registered function is called.</p>
+              """);
+        
+        s = addSection("2", "Getting Started with tkinter", 2);
+        w.add(s.sectionHTML);
+        w.add("""
+              <p>The following code sets up a simple canvas for a GUI and a 
+              main loop that waits for interactions with it:</p>
               <pre><code class="language-python">import tkinter
               
               root = tkinter.Tk() # Main window.
@@ -74,8 +91,8 @@ public class GUI extends Page {
               c.create_rectangle(0, 0, 200, 200, fill="blue")
               
               tkinter.mainloop() # Wait for interactions.</code></pre>
-              <p>The following defines a function called run and registers this 
-              to run when the command that is added to GUI menu is actioned.</p>
+              <p>The following defines a function called 'run' and registers 
+              this to be executed a GUI menu command is actioned.</p>
               <pre><code class="language-python">import tkinter
               def run():
                   pass
@@ -92,21 +109,24 @@ public class GUI extends Page {
               <p>The run function does nothing currently, but try this code 
               yourself and print something in the run function to check it 
               works.</p>
-              
-              <h2 id="3">3. GUI Design and Development</h2>
+              """);
+        
+        s = addSection("3", "GUI Design and Development", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>There are various important things to consider in designing a 
               GUI. Firstly, who are the users and what are the common things 
               they are going to want to do? What are they already familiar with?
               It is key to think about user experience and often it is helpful 
-              to get feedback from users when designing and developing GUIs.</p>
-              <p>It is often helpful to including help systems and tutorials 
+              to get feedback from users when designing and developing GUIs
               and do extensive 'usability testing'.</p>
-              <p>At every stage when designing the GUI, think "is it obvious 
+              <p>For complicated software, it is often good to include a help
+              system as part of a GUI.</p>
+              <p>At every stage when designing a GUI, think "is it obvious 
               what this does?"</p>
               <p>Often it is a good idea to keep the GUI simple and keep parts 
               hidden until they are called for or disabled until it is sensible 
-              to action them. In Tkinter this is achieved with a parameter
-              called "state".
+              to action them.</p>
               """);
 //              <pre></pre>
 //              <pre><code class="language-python"></code></pre>

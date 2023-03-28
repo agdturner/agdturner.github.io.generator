@@ -733,6 +733,18 @@ public class Index extends Page {
                 + "time-related functions";
         termToIndexTerm.put(name, new IndexTerm(description, url));
         
+        name = "Python tkinter";
+        url = "https://docs.python.org/3/library/tkinter.html";
+        description = "a standard library module providing an interface to the "
+                + "Tcl/Tk GUI toolkit";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+        
+        name = "Python tk";
+        url = "https://docs.python.org/3/library/tk.html";
+        description = "documentation for about developing Graphical User "
+                + "Interfaces with Tk";
+        termToIndexTerm.put(name, new IndexTerm(description, url));
+                      
         name = "Python try";
         url = "https://docs.python.org/3/reference/compound_stmts.html#try";
         description = "a statement specifies exception handlers and/or cleanup "
