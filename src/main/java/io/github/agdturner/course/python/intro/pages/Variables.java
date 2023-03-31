@@ -195,15 +195,15 @@ public class Variables extends Page {
 
         s = addSection("3", "Functions, Variable Scope and the Global Keyword", 2);
         w.add(s.sectionHTML);
-        w.add("<p>When passed as parameters into functions, variables are"
-                + " handled differently depending on their type. Primitives are"
-                + " duplicated when passed into the function as a parameter"
-                + " (known as '"
-                + c.index.getReference("Call By Value", s.sid)
-                + "'). Non-primitves are shared when passed into the function"
-                + " (known as '"
+        w.add("<p>When passed as parameters into functions, variables are "
+                + "shared this is technically known as '"
                 + c.index.getReference("Call By Sharing", s.sid)
-                + "').</p>");
+                + "'. If a variable is a primitive object then effectively a "
+                + "new variable is created within the function which is "
+                + "distinct from the variable outwith the function but that "
+                + "has the same value which is technically known as '"
+                + c.index.getReference("Call By Value", s.sid)
+                + ".</p>");
         w.add("<p>The "
                 + c.index.getReference("Scope", "scope", s.sid)
                 + " of a variable is from where in the code it can be accessed."

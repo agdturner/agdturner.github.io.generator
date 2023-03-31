@@ -66,9 +66,9 @@ public class Term {
      * @return A link and description.
      */
     public String getLinkAndDescription(String linkText) {
-        String r = getLink(linkText);
+        String r = getLink(linkText) + " - ";
         if (description != null) {
-           r+= " - " + description;
+            r+= description;
         }
         return r;
     }

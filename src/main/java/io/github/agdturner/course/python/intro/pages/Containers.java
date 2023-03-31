@@ -217,17 +217,38 @@ public class Containers extends Page {
                 + " follows:</p>");
         w.add("""
               <pre><code class="language-python">range(start, stop, step) # start and step are optional and default to 0 and 1 repectively</code></pre>
-              <p>The parameters: start, stop and step should be Integers. The 
+              <p>The parameters: start, stop and step should be integers. The 
               range function generates numbers up to but not including stop, 
               for example:</p>
-              <pre><code class="language-python">r = range(4) # generates 0,1,2,3
-              print(r)
-              r = range(2,8,2) # generates 2,4,6
-              print(r)
-              r = range(0,-5,-1) # generates 0,-1,-2,-3,-4
-              print(r)</pre></code>
+              <pre><code class="language-python">for x in range(4):
+                  print(x)
+              </pre></code>
+              <p>Results in:</p>
+              <pre>0
+              1
+              2
+              3</pre>              
+              <pre><code class="language-python">for x in range(2,8,2):
+                  print(x)</pre></code>
+              <p>Results in:</p>
+              <pre>2
+              4
+              6</pre>
+              <pre><code class="language-python">for x in range(0,-5,-1)
+                  print(x)</pre></code>
+              <p>Results in:</p>
+              <pre>0
+              -1
+              -2
+              -3
+              -4</pre>
               <p>Try the code for yourself and then try to generate the 
-              sequence: -10, -5, 0, 5, 10.</p>
+              following using range and a for loop:</p>
+              <pre>-10
+              -5
+              0
+              5
+              10</pre>
               <p>A tuple can be constructed from a range or another sequence 
               producer:</p>
               <code class="language-python">r = range(5)
