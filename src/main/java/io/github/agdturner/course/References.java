@@ -67,8 +67,8 @@ public class References extends Page {
 
         name = "IDLE";
         url = "https://docs.python.org/3/library/idle.html";
-        description = "Python’s Integrated Development and Learning "
-                + "Environment";
+        description = "an Integrated Development and Learning Environment "
+                + "distributed with Python";
         nameToTerm.put(name, new Term(description, url));
         
         name = "Jupyter";
@@ -144,7 +144,7 @@ public class References extends Page {
 
         name = "Python 3 Documentation: What's New";
         url = "https://docs.python.org/3/whatsnew";
-        description = "The \"What’s New in Python\" documentation tours "
+        description = "The \"What's New in Python\" documentation tours "
                 + "through the most important changes between major Python "
                 + "versions.";
         nameToTerm.put(name, new Term(description, url));
@@ -251,7 +251,6 @@ public class References extends Page {
             StringBuilder sb = new StringBuilder();
             sb.append("<li>");
             sb.append(r.getLinkAndDescription(name));
-            sb.append(".");
             sb.append("</li>");
             w.add(sb.toString());
         }

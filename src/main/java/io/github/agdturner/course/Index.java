@@ -100,13 +100,13 @@ public class Index extends Page {
         aliasToTerm.put(name.toLowerCase(), name);
         aliasToTerm.put("bits", name);
 
-        name = "Bug";
-        url = getWikipediaURL("Bug_(engineering)");
-        description = "a defect in the design, manufacture or operation of "
-                + "machinery, circuitry, electronics, hardware, or software "
-                + "that produces undesired results or impedes operation";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+//        name = "Bug";
+//        url = getWikipediaURL("Bug_(engineering)");
+//        description = "a defect in the design, manufacture or operation of "
+//                + "machinery, circuitry, electronics, hardware, or software "
+//                + "that produces undesired results or impedes operation";
+//        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+//        aliasToTerm.put(name.toLowerCase(), name);
 
         name = "Byte";
         url = getWikipediaURL("Byte");
@@ -117,7 +117,7 @@ public class Index extends Page {
 
         name = "C++";
         url = getWikipediaURL("C%2B%2B");
-        description = "a high-level, general-purpose programming language";
+        description = "a high-level, general-purpose \"programming language\"";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Call By Sharing";
@@ -215,8 +215,8 @@ public class Index extends Page {
 
         name = "Double-precision Floating-point";
         url = getWikipediaURL("Double-precision_floating-point_format");
-        description = "a computer number format, usually occupying 64 bits in "
-                + "computer memory";
+        description = "a computer number format, usually occupying 64 \"bits\""
+                + " in computer memory";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "File Format";
@@ -341,10 +341,10 @@ public class Index extends Page {
 
         name = "JavaScript";
         url = getWikipediaURL("Javascript");
-        description = "a high-level programming language that is one of the "
-                + "core technologies of the World Wide Web. All major Web "
+        description = "a high-level \"programming language\" that is one of "
+                + "the core technologies of the \"Web\". All major Web "
                 + "browsers have a dedicated JavaScript engine to execute code "
-                + "on users' devices";
+                + "on user devices";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "JSON";
@@ -479,6 +479,7 @@ public class Index extends Page {
         url = getWikipediaURL("Programming_language");
         description = "a system of notation for writing computer programs";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        aliasToTerm.put(name.toLowerCase(), name);
 
         name = "PyQGIS";
         url = "https://qgis.org/pyqgis/";
@@ -492,7 +493,7 @@ public class Index extends Page {
 
         name = "Python";
         url = getWikipediaURL("Python_(programming_language)");
-        description = "a high-level, general-purpose programming language";
+        description = "a high-level, general-purpose \"programming language\"";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Python array";
@@ -786,14 +787,8 @@ public class Index extends Page {
 
         name = "Python time";
         url = "https://docs.python.org/3/library/time.html";
-        description = "a \"Python tandard library module providing various "
+        description = "a \"standard library\" module providing various "
                 + "time-related functions";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python tkinter";
-        url = "https://docs.python.org/3/library/tkinter.html";
-        description = "a \"standard library\" module providing an interface to "
-                + "the Tcl/Tk \"GUI\" toolkit";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Python tk";
@@ -801,6 +796,13 @@ public class Index extends Page {
         description = "documentation about developing \"GUIs\" with "
                 + "\"tkinter\"";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
+
+        name = "Python tkinter";
+        url = "https://docs.python.org/3/library/tkinter.html";
+        description = "a \"standard library\" module providing an interface to "
+                + "the Tcl/Tk \"GUI\" toolkit";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        aliasToTerm.put("tkinter", name);
 
         name = "Python try";
         url = "https://docs.python.org/3/reference/compound_stmts.html#try";
@@ -830,7 +832,8 @@ public class Index extends Page {
         name = "Python venv";
         url = "https://docs.python.org/3/library/venv.html";
         description = "a \"standard library\" module that supports creating "
-                + "lightweight \"virtual environments\", each with their own "
+                + "lightweight <a href=\"https://docs.python.org/3/glossary.html#term-virtual-environment\">"
+                + "virtual environments</a>, each with their own "
                 + "independent set of Python packages installed in their site "
                 + "directories";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
@@ -877,8 +880,8 @@ public class Index extends Page {
 
         name = "Single-precision Floating-point";
         url = getWikipediaURL("Single-precision_floating-point_format");
-        description = " a computer number format, usually occupying 32 bits in "
-                + "computer memory";
+        description = " a computer number format, usually occupying 32 \"bits\""
+                + " in computer memory";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Software";
@@ -896,8 +899,8 @@ public class Index extends Page {
 
         name = "Source Code";
         url = getWikipediaURL("Source_code");
-        description = "text written using a human-readable programming "
-                + "language";
+        description = "text written using a human-readable \"programming "
+                + "language\"";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
         aliasToTerm.put(name.toLowerCase(), name);
 
@@ -905,14 +908,14 @@ public class Index extends Page {
         url = getWikipediaURL("Syntax_error");
         description = "an error in the syntax of a sequence of characters or"
                 + " tokens that is intended to be written in a particular"
-                + " programming language";
+                + " \"programming language\"";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
         aliasToTerm.put(name.toLowerCase(), name);
 
         name = "TCP/IP";
         url = getWikipediaURL("Internet_protocol_suite");
         description = "a framework for organizing the set of communication "
-                + "protocols used in the Internet and similar computer "
+                + "protocols used in the \"Internet\" and similar computer "
                 + "networks according to functional criteria";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
@@ -926,12 +929,12 @@ public class Index extends Page {
         url = getWikipediaURL("Unicode");
         description = "an information technology standard for the consistent "
                 + "encoding, representation, and handling of text expressed in "
-                + "most of the world's writing systems";
+                + "most writing systems";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "URL";
         url = getWikipediaURL("URL");
-        description = "Uniform Resource Locator - a reference to a Web "
+        description = "Uniform Resource Locator - a reference to a \"Web\" "
                 + "resource that specifies its location and the protocol for "
                 + "retrieving it";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
@@ -948,14 +951,15 @@ public class Index extends Page {
         description = "(also known as revision control, source control, or "
                 + "\"source code\" management) is a class of systems "
                 + "responsible for managing changes to computer programs, "
-                + "documents, web sites, or other collections of information.";
+                + "documents, \"Web\" sites, or other collections of "
+                + "information.";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Web Accessibility";
         url = getWikipediaURL("Web_accessibility");
         description = "the inclusive practice of ensuring there are no "
                 + "barriers that prevent interaction with, or access to, "
-                + "websites on the World Wide Web by people with physical "
+                + "websites on the \"World Wide Web\" by people with physical "
                 + "disabilities, situational disabilities, and socio-economic "
                 + "restrictions on bandwidth and speed";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
@@ -964,9 +968,10 @@ public class Index extends Page {
         url = getWikipediaURL("World_Wide_Web");
         description = "commonly known as the Web, is an information system "
                 + "enabling documents and other web resources to be accessed "
-                + "over the Internet";
+                + "over the \"internet\"";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
+        aliasToTerm.put("Web", name);
+        
         name = "While Loop";
         url = getWikipediaURL("While_loop");
         description = "a control flow statement that allows code to be "
@@ -975,7 +980,7 @@ public class Index extends Page {
 
         name = "XML";
         url = getWikipediaURL("XML");
-        description = "a markup language and file format for storing, "
+        description = "a markup language and \"file format\" for storing, "
                 + "transmitting, and reconstructing arbitrary data";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
     }

@@ -203,7 +203,7 @@ public class Variables extends Page {
                 + "distinct from the variable outwith the function but that "
                 + "has the same value which is technically known as '"
                 + c.index.getReference("Call By Value", s.sid)
-                + ".</p>");
+                + "'.</p>");
         w.add("<p>The "
                 + c.index.getReference("Scope", "scope", s.sid)
                 + " of a variable is from where in the code it can be accessed."

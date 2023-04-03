@@ -309,7 +309,8 @@ public class Containers extends Page {
               print(a[0]) # Print the first element of a
               a.insert(0, 2) # Insert the Integer 2 into a at index 0
               a.reverse() # Reverse the order of elements in a
-              a.del(1) # Remove the element of a at index 1
+              del a[1] # Remove the element of a at index 1
+              a.remove('apple') # Remove the first occurance of 'apple' in the list
               b = list((1, 2, 4, 8))
               print(type(b))
               print(b)</code></pre>

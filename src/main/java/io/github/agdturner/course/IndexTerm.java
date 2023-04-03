@@ -72,8 +72,9 @@ public class IndexTerm extends Term {
      */
     @Override
     public String getLinkAndDescription(String linkText) {
-        String r = getLink(linkText) + " - ";
+        String r = getLink(linkText);
         if (description != null) {
+            r += " - ";
             if (description.contains("\"")) {
                 String[] split = description.split("\"");
                 for (int i = 0; i < split.length; i ++) {
@@ -93,7 +94,6 @@ public class IndexTerm extends Term {
                         }    
                     }
                 }
-                
             } else {
                 r+= description;
             }

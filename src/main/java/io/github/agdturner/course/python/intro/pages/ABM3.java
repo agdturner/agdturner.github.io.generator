@@ -251,6 +251,7 @@ public class ABM3 extends Page {
                   distance : Number
                       The Euclidean distance between (x0, y0) and (x1, y1).
                   \"""
+                  # Calculate the difference in the x coordinates.
                   dx = x0 - x1
                   # Calculate the difference in the y coordinates.
                   dy = y0 - y1

@@ -59,7 +59,7 @@ public class Home extends Page {
                         "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
                         "Andy Turner")
                 + " and comprises a set of webpages and file based resources."
-                        + "</p>");
+                + "</p>");
         w.add("""
               <p>At the top of each webpage is a button that can be actioned to 
               change between a lighter and darker page style. Below that is a 
@@ -124,7 +124,7 @@ public class Home extends Page {
                         "Python 3 Documentation: Tutorial: Modules", "Modules")
                 + ", and "
                 + c.references.getReference(
-                        "Python 3 Documentation: Tutorial: Packages", 
+                        "Python 3 Documentation: Tutorial: Packages",
                         "Packages")
                 + ";</li>");
         w.add("<li>Using the "
@@ -137,7 +137,7 @@ public class Home extends Page {
                 + " and "
                 + c.references.getReference("Spyder")
                 + ";</li>");
-        w.add("<li>Python Environment Management using "
+        w.add("<li>Python environment management using "
                 + c.references.getReference("Conda")
                 + " and "
                 + c.index.getReference("Python venv", "venv")
@@ -179,11 +179,6 @@ public class Home extends Page {
               <p>You will learn about:</p>
               <ul>
               """);
-        w.add("<li>Automating "
-                + c.references.getReference("QGIS")
-                + " Desktop using "
-                + c.index.getReference("PyQGIS")
-                + ";</li>");
         w.add("<li>"
                 + c.index.getReference("Version Control")
                 + ";</li>");
@@ -231,13 +226,23 @@ public class Home extends Page {
               <!--<p>Often it is 
               helpful to use a framework for testing from the outset and to test 
               often as the code develops.</p>-->
-              <p>If you are new to computer programming, there is quite a lot of 
-              terminology to get used to, some is generic to programming, some 
-              is more specific to Python.</p>
-              <p>There are some key concepts to understand which may take a few  
-              attempts to understand, but hopefully you will realise that any 
-              struggle was worth the effort!</p>
+              """);
+        w.add("<p>If you are new to computer programming, there is quite a lot "
+                + "of terminology to get used to, some is generic to "
+                + "programming, some is specific to "
+                + c.index.getReference("Python")
+                + ".</p>");
+        w.add("""
+              <p>There are some key concepts which may take a few attempts to 
+              get used to and comprehensively understand.</p>
+              """);
+        w.add("<p>An example of automating "
+                + c.references.getReference("QGIS")
+                + " Desktop using "
+                + c.index.getReference("PyQGIS")
+                + " is provided.</p>");
 
+        w.add("""
               <h2 id="4">4. The Learning Journey</h2>
               <p>Develop your understanding through practise and by reading.</p>
               <p>Be experimental - test your understanding by testing code does 
@@ -248,7 +253,7 @@ public class Home extends Page {
               errors messages and understand what caused them. If a program you 
               are developing unexpectedle raises an exception and reports an 
               error message, then try to understand why and stop this happening 
-              before moving on. Ignoring an error message is nearly always the 
+              before moving on. Ignoring error messages is nearly always the 
               wrong thing to do!</p>
               <p>Be cautious and do not run code that you do not fully trust. If
               in doubt consult with your tutor.</p>
@@ -280,9 +285,12 @@ public class Home extends Page {
               software - there will be a specification of what the code/software 
               is to do, some guidance for approaching the software development 
               task, but no detailed instructions to follow.</p>
-              <p>Do not expect to master the Python language by the end of this 
-              course. Usually this takes many thousands of hours of practice 
-              over many years.</p>
+              """);
+        w.add("<p>Do not expect to master "
+              + c.index.getReference("Python")
+              + " by the end of this course. Usually this takes many thousands"
+              + " of hours of practice over several years.</p>");
+        w.add("""
               <p>Try to enjoy the learning journey, the challenges and the 
               rewards. Learning to program and learning Python is empowering!
               </p>

@@ -151,7 +151,7 @@ public class Python extends Page {
                 + " that Python is not installed. If a version of Python is"
                 + " available, then the version of it should be reported.</p>");
         w.add("<p>" + c.references.getReference("Anaconda")
-                + " is a data science platform. It contains:"
+                + " is a data science platform. It contains: "
                 + c.references.getReference("Conda")
                 + " - an environment manager; a Python interpreter; some"
                 + " commonly used third party Python packages; and, some useful"
@@ -233,15 +233,16 @@ public class Python extends Page {
               ZeroDivisionError: division by zero
               </pre>
               """);
-        w.add("<p>A"
+        w.add("<p>A "
                 + c.index.getReference("Python ZeroDivisionError",
                         "ZeroDivisionError", s.sid)
-                + " is one of many "
-                + c.index.getReference("Python built-in exceptions", s.sid)
-                + ". Exceptions are 'raised' in particular circumstances and"
-                + " often errors are reported similarly, so it is good to get"
-                + " familiar with this as you are likely to see this sort of"
-                + " thing a lot and be able to interpret what it is.</p>");
+                + " is an "
+                + c.index.getReference("Python Built-in Exceptions", 
+                        "exception", s.sid)
+                + " that is 'raised' in particular circumstances. It is good"
+                + " to get familiar with reading details of these that are"
+                + " typically printed to the console as a key part of Python"
+                + " programming is about interpreting these.</p>");
         w.add("""
               <p>Try some more calculations. Calculates '2' to the power of 
               '64':</p>
@@ -256,7 +257,7 @@ public class Python extends Page {
                 + c.index.getReference("Python str", "str", s.sid)
                 + " function and to pass the result of this into the "
                 + c.index.getReference("Python len", "len", s.sid)
-                + "function as follows:</p>");
+                + " function as follows:</p>");
         w.add("""
               <pre>len(str(2 ** 1000000))</pre>
               <p>Notice how things are passed into the two functions.</p>
@@ -356,7 +357,7 @@ public class Python extends Page {
               outside the module. Underscores '_' and double underscores '__' at
               the start and/or end of identifiers have a special meaning in 
               Python. As a general rule, you should not modify anything with 
-              these in their name.</p>
+              these in their name directly.</p>
               <p>Have a play and use some other functions from the operator 
               module.</p>
               """);
@@ -858,7 +859,7 @@ public class Python extends Page {
               code easier to identify:</p>
               <pre><code class="language-python">x = 0
               y = 1
-              # if x is greater than y, then print x
+              # if x is greater than y, then print x, else print y.
               if x > y:
                   print("x", x)
               else:
@@ -1064,7 +1065,8 @@ public class Python extends Page {
         w.add("<p>"
                 + c.index.getReference("GIS", "Geographical Information System")
                 + " (GIS) software are used to create, manage, process, model,"
-                + " visualise and distribute geographical data and information."
+                + " visualise and distribute geographical data and"
+                + " information. "
                 + c.references.getReference("QGIS")
                 + " is "
                 + c.index.getReference("Free and Open Source Software",

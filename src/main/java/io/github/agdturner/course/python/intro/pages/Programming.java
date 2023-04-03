@@ -271,8 +271,9 @@ public class Programming extends Page {
                 + "' - an error, flaw or fault in the design, development, or "
                 + "operation that causes incorrect or unexpected things to "
                 + "happen. Sometimes issues happen in the same way each time "
-                + "something is attempted, other times the fault only sometimes "
-                + "happens. A fault that only sometimes happens is known as a "
+                + "something is attempted, other times the fault only "
+                + "sometimes happens. A fault that only sometimes happens is "
+                + "known as a '"
                 + c.index.getReference("Glitch", "glitch", s.sid)
                 + "' and these can be difficult to troubleshoot.</p>");
         w.add("""
