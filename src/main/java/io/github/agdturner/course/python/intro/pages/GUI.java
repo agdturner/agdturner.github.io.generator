@@ -228,7 +228,7 @@ public class GUI extends Page {
               
               def read_data(path):
                   \"""
-                  
+                  Read data.
               
                   Parameters
                   ----------
