@@ -785,6 +785,12 @@ public class Index extends Page {
                 + "to functions that interact strongly with the interpreter";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
+        name = "Python SystemError";
+        url = "https://docs.python.org/3/library/exceptions.html#SystemError";
+        description = "a \"built-in exception\" raised when the interpreter "
+                + "encounters an internal error";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        
         name = "Python time";
         url = "https://docs.python.org/3/library/time.html";
         description = "a \"standard library\" module providing various "
@@ -842,6 +848,13 @@ public class Index extends Page {
         url = "https://docs.python.org/3/reference/compound_stmts.html#while";
         description = "a compound statement used for repeated execution as "
                 + "long as an expression evaluates as true";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+
+        name = "Python yield";
+        url = "https://docs.python.org/3/reference/simple_stmts.html#yield";
+        description = "a keyword used in a statement or expression that "
+                + "returns something from a function whilst allowing further "
+                + "expressions in the function to be evaluated";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Python zip";

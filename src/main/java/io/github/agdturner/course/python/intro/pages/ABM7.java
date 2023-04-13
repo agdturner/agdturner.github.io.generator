@@ -50,8 +50,11 @@ public class ABM7 extends Page {
               stopping conditions will be added to halt the model and exit.</p>
               <p>In your local code repository 'src' directory duplicate your 
               'abm6' directory and call the new directory 'abm7'.</p>
-              
-              <h2 id="2">2. Animation</h2>
+              """);
+        
+        s = addSection("2", "Animation", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Open the new 'model.py' file from the 'abm7' directory in 
               Spyder.</p>
               <p>Add the following import statement:</p>
@@ -90,15 +93,13 @@ public class ABM7 extends Page {
               filename = '../../data/output/images/image' + str(ite) + '.png'
               plt.savefig(filename)
               images.append(imageio.imread(filename))
-              plt.show</code></pre>
+              plt.show()</code></pre>
               <p>Change the 'main simulation loop' code block into a function 
               called 'update' that has a parameter called 'frames'. At the end 
-              of this call the 'plot' function. Set the variables 'carry_on' 
-              and 'ite' as global variables and add a random stopping condition 
-              as follows:</p>
+              of this call the 'plot' function. Specify 'carry_on' as a global 
+              variable and add a random stopping condition as follows:</p>
               <pre><code class="language-python">def update(frames):
                   # Model loop
-                  global carry_on
                   #for ite in range(1, n_iterations + 1):
                   print("Iteration", frames)
                   # Move agents
@@ -127,7 +128,8 @@ public class ABM7 extends Page {
                   print("sum_environment", sum_e)
                   print("total resource", (sum_as + sum_e))
 
-                  # Stopping condition    
+                  # Stopping condition
+                  global carry_on
                   # Random
                   if random.random() < 0.1:
                       #if sum_as / n_agents > 80:
@@ -147,8 +149,8 @@ public class ABM7 extends Page {
                   if data_written == False:
                       # Write data
                       print("write data")
-                      io.write_data('../../data/output/out7.txt', environment)
-                      imageio.mimsave('../../data/output/out7.gif', images, fps=3)
+                      io.write_data('../../data/output/out.txt', environment)
+                      imageio.mimsave('../../data/output/out.gif', images, fps=3)
                       data_written = True</code></pre>
               <p>Before running the code, issue the following magic command in 
               the Spyder console so that rather than the plot being directed 
@@ -158,14 +160,22 @@ public class ABM7 extends Page {
               <p>If you want to revert this change so that plots are added to 
               the plot plane again issue the following magic command:</p>
               <pre>%matplotlib inline</pre>
-              <p>The keyword 'yield' is used to pass the value of the variable 
-              'ite' back from 'gen_function' whilst continuing to run the while
-              loop. The '# Write data' code block is included in 'gen_function'
-              and runs only once after the model has stopped.</p>
+              """);
+        w.add("<p>The keyword '"
+                + c.index.getReference("Python yield", "yield", s.sid)
+                + "' is used to pass the value of the variable 'ite' back from"
+                + " 'gen_function' whilst continuing to run the while loop. The"
+                + " '# Write data' code block is included in 'gen_function' and"
+                + " runs only once after the model has stopped.</p>");
+        w.add("""
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
-              
-              <h2 id="3">3. Code and Model Review</h2>
+              """);
+        
+        
+        s = addSection("3", "Code and Model Review", 2);
+        w.add(s.sectionHTML);
+        w.add("""
               <p>Most of your code should now be in functions and organised into 
               modules.</p>
               <p>The model simulation runs in a loop until some condition is 

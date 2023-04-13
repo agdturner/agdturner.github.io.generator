@@ -123,21 +123,27 @@ public class Exceptions extends Page {
                   a = 0
               print("Done")</code></pre></li>
               </ol>
-              
-              <h2 id="3">3. Raising Exceptions</h2>
-              <p>Exceptions are raised automatically if they are encountered and 
-              not handled in an except clause.</p>
-              <p>The keyword 'raise' can be used to raise an exception by simply 
-              giving the exception type. The following raises a 
-              'SystemError'.</p>
+              """);
+        
+        s = addSection("3", "Raising Exceptions", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>Exceptions are raised automatically if they are encountered "
+                + "and not handled in an 'except' clause.</p>");
+        w.add("<p>The keyword 'raise' can be used to raise an exception by "
+                + "simply giving the exception type. The following raises a "
+                + c.index.getReference("SystemError")
+                        + ".</p>");
+        w.add("""
               <pre><code class="language-python">raise SystemError</code></pre>
               <p>New types of exception can be defined by subclassing an 
               exception from the builtins module.</p>
-              
-              <h2 id="4">4. Else and Finally</h2>
-              <p>To run something only if exceptions are not raised, add an 
-              'else' clause, for example:
-              </p>
+              """);
+        
+        s = addSection("4", "Else and Finally", 2);
+        w.add(s.sectionHTML);
+        w.add("<p>To run something only if exceptions are not raised, add an "
+                + "'else' clause, for example:</p>");
+        w.add("""
               <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
