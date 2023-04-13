@@ -296,6 +296,8 @@ public class GUI extends Page {
                   try:
                       root.destroy()
                   except Exception:
+                      # Prevents reporting of a harmless Tcl error message:
+                      # "TclError: can't invoke "destroy" command: application has been destroyed"
                       pass
               
               def update(x):
