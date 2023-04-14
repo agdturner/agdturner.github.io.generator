@@ -41,6 +41,7 @@ import io.github.agdturner.course.python.intro.pages.Loops;
 import io.github.agdturner.course.python.intro.pages.Modules;
 import io.github.agdturner.course.python.intro.pages.Programming;
 import io.github.agdturner.course.python.intro.pages.Python;
+import io.github.agdturner.course.python.intro.pages.Testing;
 import io.github.agdturner.course.python.intro.pages.Variables;
 import io.github.agdturner.course.python.intro.pages.Web;
 import java.io.IOException;
@@ -152,7 +153,7 @@ public abstract class PythonIntroCourse extends Course {
         coursePages.add(new ABM8(this));
         coursePages.add(new Web(this));
         coursePages.add(new ABM9(this));
-        //coursePages.add(new Assignments(this));
+        coursePages.add(new Testing(this));
         /**
          * Write Pages.
          */

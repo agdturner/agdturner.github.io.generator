@@ -602,6 +602,14 @@ public class Index extends Page {
                 + "object";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
+        name = "Python doctest";
+        url = "https://docs.python.org/3/library/doctest.html";
+        description = "a \"standard library\" module that can be used to "
+                + "search for text that looks like interactive Python "
+                + "sessions, and then executes those sessions to verify "
+                + "that they work as shown";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+                
         name = "Python for";
         url = "https://docs.python.org/3/reference/compound_stmts.html#for";
         description = "used to iterate over the elements of a sequence";
@@ -831,8 +839,14 @@ public class Index extends Page {
 
         name = "Python TypeError";
         url = "https://docs.python.org/3/library/exceptions.html#TypeError";
-        description = "a \"built-in exception\" raised when an operation or function is "
-                + "applied to an object of inappropriate type";
+        description = "a \"built-in exception\" raised when an operation or "
+                + "function is applied to an object of inappropriate type";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+
+        name = "Python unittest";
+        url = "https://docs.python.org/3/library/unittest.html";
+        description = "a \"standard library\" module providing tools for "
+                + "constructing and running tests.";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Python venv";

@@ -96,7 +96,6 @@ public class Programming extends Page {
 
         w.add("<h2 id=\"2.\">2. Data</h2>");
         Section s;
-        
         s = addSection("2.1", "Bits and Bytes", 3);
         w.add(s.sectionHTML);
         w.add("<p>In most modern computers, data is encoded in binary: the"
