@@ -146,7 +146,7 @@ public class References extends Page {
         url = "https://docs.python.org/3/whatsnew";
         description = "The \"What's New in Python\" documentation tours "
                 + "through the most important changes between major Python "
-                + "versions.";
+                + "versions";
         nameToTerm.put(name, new Term(description, url));
 
         name = "Python Enhancement Proposal Website";

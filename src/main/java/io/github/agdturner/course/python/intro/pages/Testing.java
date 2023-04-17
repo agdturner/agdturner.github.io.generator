@@ -45,9 +45,6 @@ public class Testing extends Page {
         Section s;
         s = addSection("1", "Introduction", 2);
         w.add(s.sectionHTML);
-        w.add("""
-              <h2 id="1.">1. Introduction</h2>
-              <p>""");
         w.add("<p>There are a number of different types of testing involved in "
                 + "developing software, some key ones are: functionality "
                 + "testing, performance testing and usability testing. "
@@ -58,13 +55,13 @@ public class Testing extends Page {
                 + "software. "
                 + "Usability testing aims to ensure user interfaces "
                 + "are easy to use and understand. In "
-                + "<a href=\"../abm5/index.html\">ABM5</a>"
+                + "<a href=\"../abm3/index.html\">ABM3</a>"
                 + " there is an exercise in performace testing to optimise a "
                 + "function. This section focuses on functionality testing and "
                 + "some different ways to do this in Python that goes beyond "
                 + "the use of "
                 + c.index.getReference("Python print", "print", s.sid)
-                + "statements which are also fundamental for a lot of testing "
+                + " statements which are also fundamental for a lot of testing "
                 + "and issue diagnosis. As you should know by now, testing is "
                 + "key to developing code and creating reproducible results."
                 + "</p>");
