@@ -52,10 +52,10 @@ public class Branching extends Page {
         w.add(s.sectionHTML);
         w.add("<p>The "
                 + c.index.getReference("Python if", "if statement", s.sid)
-                + " is a 'compound' statement (comprises groups of other"
-                + " statements) that provides a means to branch based upon a"
-                + " condition which evaluates to either 'True' or 'False'."
-                + " Consider the following example:</p>");
+                + " is a 'compound' statement (one that comprises groups of"
+                + " other statements) that provides a means to branch based"
+                + " upon a condition which evaluates to either 'True' or"
+                + " 'False'. Consider the following example:</p>");
         w.add("""
               <pre><code class="language-python">day_of_week = 5
               day = "Weekday"
