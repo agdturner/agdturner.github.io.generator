@@ -54,8 +54,8 @@ public class Loops extends Page {
         s = addSection("2", "While", 2);
         w.add(s.sectionHTML);
         w.add("<p>The following provides an example of a "
-                + c.index.getReference("Python while", "while statement", s.sid)
-                + ":</p>");
+                + c.index.getReference("Python while", "while", s.sid)
+                + " statement:</p>");
         w.add("""
               <pre><code class="language-python">x = 1
               while (x < 10):
@@ -66,10 +66,10 @@ public class Loops extends Page {
               program fails to terminate when you were expecting it to.</p>
               """);
         w.add("<p>A "
-                + c.index.getReference("Python break", "break statement", s.sid)
-                + " breaks out of a loop which is commonly done when some "
-                + " other condition is reached. For example, consider the "
-                + "following code:</p>");
+                + c.index.getReference("Python break", "break", s.sid)
+                + " statement breaks out of a loop which is commonly done when"
+                + " some other condition is reached. For example, consider the"
+                + " following code:</p>");
         w.add("""
               <pre><code class="language-python"># Print the largest number less than 1 million that is divisible by 17
               x = 1000000
@@ -82,10 +82,9 @@ public class Loops extends Page {
               <pre>999991</pre>
               """);
         w.add("<p>The "
-                + c.index.getReference("Python continue", "continue statement",
-                        s.sid)
-                + " gets the program to return to the start of a loop when a"
-                + " condition is reached:</p>");
+                + c.index.getReference("Python continue", "continue", s.sid)
+                + " statement gets the program to return to the start of a loop"
+                + " when a condition is reached:</p>");
         w.add("""
               <pre><code class="language-python"># Print odd numbers from 1 to 10
               x = 0
@@ -108,11 +107,12 @@ public class Loops extends Page {
         w.add(s.sectionHTML);
         w.add("<p>"
                 + c.index.getReference("For Loop", "For loops", s.sid)
-                + " in Python are used with sequences that are 'iterable'."
-                + " Iterable means can be gone through one at a time. In the"
-                + " following example, the first time around the "
+                + " in Python ("
                 + c.index.getReference("Python for", "for loop", s.sid)
-                + " the variable 'x' is asigned the value '0', the second time"
+                + ") are used with sequences that are 'iterable'."
+                + " Iterable means can be gone through one at a time. In the"
+                + " following example, the first time around the loop, the"
+                + " variable 'x' is assigned the value '0', the second time"
                 + " around the loop x is assigned the value '1' and so on:"
                 + "</p>");
         w.add("""
@@ -191,15 +191,15 @@ public class Loops extends Page {
         w.add("<p>As with a while loop, an 'else' clause can be added to for"
                 + " loop and is executed once the loop completes, or not at"
                 + " all if there is a "
-                + c.index.getReference("Python break", "break statement", s.sid)
-                + " that terminates the loop before the last iteration"
-                + " completes.<p>");
-        w.add("Also, a " 
-                + c.index.getReference("Python continue", "continue statement",
+                + c.index.getReference("Python break", "break", s.sid)
+                + " statement that terminates the loop before the last"
+                + " iteration completes.<p>");
+        w.add("Also, a "
+                + c.index.getReference("Python continue", "continue",
                         s.sid)
-                + " can be used to skip to the start of the next loop iteration"
-                + " in the same way as in a while loop.</p>");
-        
+                + " statement can be used to skip to the start of the next loop"
+                + " iteration in the same way as in a while loop.</p>");
+
         s = addSection("4", "Nesting loops", 2);
         w.add(s.sectionHTML);
         w.add("<p>In spatial analysis it is common to want to go through two"
@@ -232,18 +232,17 @@ public class Loops extends Page {
                   print()</code></pre>
               """);
         w.add("<p>Recall that the "
-                + c.index.getReference("Python len", "function len", s.sid)
-                + ", when passed a sequence as a paramater, returns the length"
-                + " of the sequence, and the "
-                + c.index.getReference("Python range", "function range", s.sid)
-                + " turns an Integer argument into a sequence starting from '0'"
-                + " and ending with one less than that argument stepping by 1."
-                + "</p>");
+                + c.index.getReference("Python len", "len", s.sid)
+                + " function, when passed a sequence as a parameter, returns"
+                + " the length of the sequence, and the "
+                + c.index.getReference("Python range", "range", s.sid)
+                + " function turns an Integer argument into a sequence starting"
+                + " from '0' and ending with one less than that argument"
+                + " stepping by 1.</p>");
         w.add("""
-              <p>When processing raster data like this, it is reasonably common
-              to mistakenly get rows and columns the wrong way around. This can 
-              be hard to spot if the data has the same number of rows and 
-              columns.</p>
+              <p>When processing raster data like this, care is needed not to
+              get rows and columns mixed up. This is easier to do if the data 
+              have the same number of rows and columns!</p>
               
               <h2 id="5">5. Moving Window Algorithms</h2>
               <p>These are commonly used in image processing and for surface 
@@ -281,9 +280,8 @@ public class Loops extends Page {
               32 33 34 35</pre>
               
               <h2 id="6">6. Next</h2>
-              <p>Let us apply what we have learned about Containers, Branching 
-              and Looping to simplify and extend your Agent Based Modelling 
-              code.</p> 
+              <p>Use containers, branches and loops to simplify and extend the 
+              Agent Based Model code.</p> 
               """);
         w.add("</div>");
     }

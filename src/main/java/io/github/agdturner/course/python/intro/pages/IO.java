@@ -68,9 +68,9 @@ public class IO extends Page {
         s = addSection("2", "Standard Input", 2);
         w.add(s.sectionHTML);
         w.add("<p>The builtins module "
-                + c.index.getReference("Python input", "input function", s.sid)
-                + " reads input from the standard input 'stdin' which is"
-                + " usually the keyboard. This continues until the"
+                + c.index.getReference("Python input", "input", s.sid)
+                + " function reads input from the standard input 'stdin' which"
+                + " is usually the keyboard. This continues until the"
                 + " &lt;ENTER&gt; (or &lt;RETURN&gt;) key is pressed. The"
                 + " function returns a string (without a newline character). A"
                 + " string provided as a parameter is displayed to prompt user"
@@ -83,10 +83,10 @@ public class IO extends Page {
 
         s = addSection("3", "Streams", 2);
         w.add(s.sectionHTML);
-        w.add("<p>The builtins module function "
+        w.add("<p>The builtins module "
                 + c.index.getReference("Python print", "print", s.sid)
-                + " writes to the standard output 'stdout' which is usually the"
-                + " screen.</p>");
+                + " function writes to the standard output 'stdout' which is"
+                + " usually the terminal/console/screen.</p>");
         w.add("""
               <p>Stdin and stdout are streams - flows of data. Standard error 
               'stderr' is also a stream - one where error messages go. Like 
@@ -109,24 +109,24 @@ public class IO extends Page {
               program using the pipe symbol '|'.</p>
               """);
         w.add("<p>The "
-                + c.index.getReference("Python print", "print function", s.sid)
-                + " also includes an option to direct stout to a file. That"
-                + " file has to be open in order for the writing to be"
-                + " successful and the open file should be closed to ensure all the"
-                + " data gets written. Typically reading and writing files uses "
-                + "'buffers' that read or write a certain number of bytes in one"
-                + " go which is done for efficiency reasons. Closing a file that "
+                + c.index.getReference("Python print", "print", s.sid)
+                + " function also includes an option to direct stout to a file."
+                + " That file has to be open in order for the writing to be"
+                + " successful and the open file should be closed to ensure all"
+                + " the data gets written. Typically reading and writing files"
+                + " uses 'buffers' that read or write a certain number of bytes"
+                + " in one go which is more efficient. Closing a file that "
                 + " is being written to forces a flush of any partially filled"
                 + " buffer. There is an option in the print function to force a"
                 + " flush which can also sometimes be useful...</p>");
 
         s = addSection("4", "Reading and Writing Files Part 1", 2);
         w.add(s.sectionHTML);
-        w.add("<p>The following code uses the builtins module function "
+        w.add("<p>The following code uses the builtins module "
                 + c.index.getReference("Python open", "open", s.sid)
-                + " to open a file in the current directory called 'a.in' and"
-                + " reads this one line at a time streaming the output to the"
-                + " screen before then closing the file:</p>");
+                + " function to open a file in the current directory called"
+                + " 'a.in' and read the file one line at a time streaming the"
+                + " output to the screen before then closing the file:</p>");
         w.add("""
               <pre><code class="language-python">f = open("a.in")
               for line in f:
@@ -151,11 +151,10 @@ public class IO extends Page {
                       print(line)</code></pre>
               <p>This saves having to close the file, but it is awkward this 
               way to read several files simultaneously.</p>
-        <p>The standard library 
-                            <a href="https://docs.python.org/3/library/fileinput.html">
-                            fileinput module</a>
-                            helps with reading multiple files simultaneously.</p>
-                                          """);
+              <p>The standard library 
+              <a href="https://docs.python.org/3/library/fileinput.html">
+              fileinput module</a>
+              helps with reading multiple files simultaneously.</p>""");
         w.add("<p>The "
                 + "<a href-\"https://docs.python.org/3/library/io.html#io.IOBase.readlines\">"
                 + "readlines method</p> can read some or all lines of a file"
@@ -187,11 +186,12 @@ public class IO extends Page {
               Function which prepares the file a.out to be written to. Writing 
               to a file requires different preparation to reading from a file.
               </p>
-              <p>There are other optional arguments that can be used with the 
-              Open Function as detailed in
-              <a href="https://docs.python.org/3/library/functions.html#open">
-              The Python Documentation Functions Chapter Open Section</a></p>
-              <p>Again an alternative using the keyword 'with' that does not 
+              """);
+        w.add("<p>There are other optional arguments that can be used with the "
+                + c.index.getReference("Python open", "open", s.sid)
+                + " function, follow the link for details...</p>");
+        w.add("""
+              <p>An alternative using the keyword 'with' that does not 
               require closing the file is:</p> 
               <pre><code class="language-python"># Create something to write
               a = []

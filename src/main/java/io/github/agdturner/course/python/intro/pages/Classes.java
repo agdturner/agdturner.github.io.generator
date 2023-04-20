@@ -248,11 +248,11 @@ public class Classes extends Page {
     s = addSection("5", "Customisation", 2);
         w.add(s.sectionHTML);
         w.add("<p>By default, when printing an object using the "
-                + c.index.getReference("Python print", "print function", s.sid)
-                + ", the memory address of the object is printed, but rarely is"
-                + " this useful. The '__str__' method can be overriden to"
-                + " provide a more useful string representation of an object,"
-                + " for example:</p>");
+                + c.index.getReference("Python print", "print", s.sid)
+                + " function, the memory address of the object is printed, but"
+                + " rarely is this useful. The '__str__' method can be"
+                + " overriden to provide a more useful string representation of"
+                + " an object, for example:</p>");
         w.add("""
               <pre><code class="language-python">class Agent():
                   def __init__(self, x, y):

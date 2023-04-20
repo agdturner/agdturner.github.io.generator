@@ -46,8 +46,7 @@ public class Functions extends Page {
                 + " are reusable code blocks that are called and which return."
                 + " In calling the function typically parameters can be passed"
                 + " in. A function return may contain objects or values that "
-                + " can be assigned to variables"
-                + " and in returning"
+                + " can be assigned to variables and in returning "
                 + c.index.getReference("Python Built-in Functions", s.sid)
                 + " are available as part of the "
                 + c.index.getReference("Python builtins", "builtins module",
@@ -56,9 +55,9 @@ public class Functions extends Page {
                 + c.references.getReference("Python 3 Documentation: Library",
                         "standard library")
                 + " are made available using "
-                + c.index.getReference("Python import", "import statements", 
+                + c.index.getReference("Python import", "import", 
                     s.sid)
-                + ".</p>");
+                + " statements.</p>");
         w.add("Python functions are defined in a code block that begins with a"
                 + " definition or 'function declaration', and is followed by a"
                 + " set of indented statements. The function declaration uses"
@@ -488,8 +487,8 @@ public class Functions extends Page {
         s = addSection("4.4", "Partial", 3);
         w.add(s.sectionHTML);
         w.add("""
-              <p><a href="https://docs.python.org/3/library/functools.html?highlight=partial#functools.partial">
-              Functools partial allows for arguments of a function to be set 
+              <p>Functools <a href="https://docs.python.org/3/library/functools.html?highlight=partial#functools.partial">
+              partial</a> allows for arguments of a function to be set 
               partially. For example:</p>
               <pre><code class="language-python">from functools import partial
                 
@@ -560,19 +559,9 @@ public class Functions extends Page {
               <pre>help(x)</pre>
               <p>The docstring can also be printed using:</p>
               <pre>print(x.__doc__)</pre>
-              <p><a href="https://docs.python.org/3/library/doctest.html">
-              PyDoc</a> is the documentation system distributed with Python.
-              It supports the generation of a webpage from documentation, and 
-              can be run from the Anaconda Prompt using:</p>
-              <pre>pydoc -w filename</pre>
-              <p>Where the filename is missing the ".py" part.</p>
-              <p>There are other tools for helping to generate documentation, 
-              including
-              <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which 
-              comes with Anaconda.</p>
               
               <h2 id="6">6. Next</h2>
-              <p>Apply some of this to develop your Agent Based Model...</p>
+              <p>Refactoring the Agent Based Model code to use functions...</p>
               """);
         w.add("</div>");
     }
