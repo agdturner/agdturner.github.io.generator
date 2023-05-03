@@ -79,7 +79,7 @@ public class Testing extends Page {
                 + c.index.getReference("Python docstring", "docstring", s.sid)
                 + " as per the example in 'calculator_doctest.py'.</p>");
         w.add("<p>Save "
-                + "<a href=\"../../resources/testing/calculator.py\">calculator_doctest.py</a>"
+                + "<a href=\"../../resources/testing/calculator_doctest.py\">calculator_doctest.py</a>"
                 + ", inspect the code and run it. It should run without"
                 + " reporting anything. Try altering \"0.3\" to "
                 + "\"0.30000000000000004\" and run the file again. The output "
@@ -100,9 +100,15 @@ public class Testing extends Page {
         
         s = addSection("3", "Unit Tests", 2);
         w.add(s.sectionHTML);
+        w.add("<p>"
+                + c.index.getReference("Unit Testing", s.sid)
+                + " is where individual units of source code - together with "
+                + "associated control data, usage procedures, and operating "
+                + "procedures - are tested to determine whether they are fit "
+                + "for use. It aims to reduce software development risks, time, "
+                + "and costs.</p>");
         w.add("""
-              <p>Unit testing aims to reduce software development risks, time, 
-              and costs. In test driven development, the tests are written 
+              <p>In test driven development, the tests are written 
               before the functional code. When the code passes the tests, if the 
               tests have good enough coverage, then the functionality is 
               successfully implemented.</p>
@@ -124,10 +130,13 @@ public class Testing extends Page {
                 + " tests.</p>");
         w.add("<p>Consider the following example. The functional code is in "
                 + "'calculator.py', the module contains a single function "
-                + "'add' which adds up numbers provided as arguments and does "
-                + "this using "
+                + "'add' which adds up numbers provided as Integer or Float "
+                + c.index.getReference("Python Numeric Types", "Numeric Types ", s.sid)
+                + " using "
                 + c.index.getReference("Python decimal", "decimal", s.sid)
-                + " to more accurately do this.</p>");
+                + " to avoid some "
+                + c.index.getReference("Floating-point", "floating-point", s.sid)
+                + " rounding issues.</p>");
         w.add("<p>Save "
                 + "<a href=\"../../resources/testing/calculator.py\">calculator.py</a>"
                 + " and "

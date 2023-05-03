@@ -110,14 +110,15 @@ public class ABM5 extends Page {
               <p>This is somewhat confusing as the new 'io' module has a 
               function called 'read_data'! The exception is raised because 
               there is a name collision. There is an 'io' standard library 
-              module which does not have an attribute names 'read_data', and it 
-              is the standard library module called 'io' that is imported.</p>
-              <p>To deal with this issue, either the non-standard library 'io' 
-              module needs to be renamed, or it needs to be packaged which 
-              involves creating a directory and moving 'io.py' into it. In the 
-              'abm5' directory, create a directory called 'my_modules' and move 
-              both 'io.py' and 'agentframework.py' into it. Change the 
-              respective import statements in 'model.py' to be:</p>
+              module which does not have an attribute named 'read_data'. It is
+              the standard library module called 'io' that is being imported!
+              </p>
+              <p>Either the non-standard library 'io' module needs to be 
+              renamed, or it needs to be packaged - which involves creating a 
+              directory and moving 'io.py' into it. Packaging is the recommended 
+              way forward. In the 'abm5' directory, create a directory called 
+              'my_modules' and move both 'io.py' and 'agentframework.py' into 
+              it. Change the respective import statements in 'model.py' to be:</p>
               <pre><code class="language-python">import my_modules.agentframework as af
               import my_modules.io as io</code></pre>
               <p>Run 'model.py' and it should now run without the error. (If you 
@@ -289,8 +290,9 @@ public class ABM5 extends Page {
               <p>Print out these sums and check that the total amount of 
               resource and store in the system is not changing after each
               iteration of the model.</p>
-              <p>Define a function to write out the values of environment to a 
-              file and call this function after the main model loop.</p>
+              <p>Write a function called 'write_data' in 'io.py' to write out 
+              the values of environment to a file and call this function after 
+              the main model loop.</p>
               <!--
               <p>Set some of the model parameters towards the start of 
               the program using keyboard input such like:</p>
@@ -309,7 +311,7 @@ public class ABM5 extends Page {
               location and there is less resource at the location for all the 
               agents to have 10: Those agents processed sooner will get to eat 
               more resource. And, if agents are always processed in the same 
-              order, then there will be a ias in favour of these agents gaining 
+              order, then there will be bias in favour of these agents gaining 
               more store... Write a comment in your source code about this.</p>
               """);
     }

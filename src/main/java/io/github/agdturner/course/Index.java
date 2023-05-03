@@ -711,6 +711,12 @@ public class Index extends Page {
                 + "not found";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
+        name = "Python Numeric Types";
+        url = "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex";
+        description = "are of three distinct types: integers, floating point "
+                + "numbers, and complex numbers";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+
         name = "Python open";
         url = "https://docs.python.org/3/library/functions.html#open";
         description = "a \"builtins module\" function to open a file and "
@@ -959,6 +965,15 @@ public class Index extends Page {
                 + "most writing systems";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
+        name = "Unit Testing";
+        url = getWikipediaURL("Unit_testing");
+        description = "a software testing method by which individual units of "
+                + "source code—sets of one or more computer program modules "
+                + "together with associated control data, usage procedures, "
+                + "and operating procedures—are tested to determine whether "
+                + "they are fit for use";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        
         name = "URL";
         url = getWikipediaURL("URL");
         description = "Uniform Resource Locator - a reference to a \"Web\" "

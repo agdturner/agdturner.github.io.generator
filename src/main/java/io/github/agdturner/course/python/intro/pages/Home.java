@@ -157,22 +157,7 @@ public class Home extends Page {
 //                + " and "
 //                + c.references.getReference("https://www.sphinx-doc.org/", "Sphinx", null)
 //                + ";</li>");
-        w.add("<li>Testing code using print statements.</li>");
-//        w.add("<li>Testing code using print statements and "
-//                + c.references.getReference(
-//                        "https://docs.python.org/3/library/doctest.html",
-//                        "Doctest", null)
-//                + "</li>");
-//        w.add("<li>"
-//                + c.references.getReference("Unit_testing", "Unit testing")
-//                + " using "
-//                + c.references.getReference(
-//                        "https://docs.python.org/3/library/unittest.html",
-//                        "Unittest", null)
-//                + " and "
-//                + c.references.getReference(
-//                        "https://docs.pytest.org/", "Pytest", null)
-//                + "</li>");
+        w.add("<li>Testing code.</li>");
         w.add("</ul>");
         w.add("""
               <h2 id="3">3. Expectations</h2>
