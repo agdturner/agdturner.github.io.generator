@@ -83,7 +83,8 @@ public class GUI extends Page {
               <p>The following code sets up a main window called 'root', a 
               'Label' called 'label', a 'Button' to modify the label text via 
               the 'increment' function and a 'Button' to exit the program via 
-              the 'exiting' function:</p>
+              the 'exiting' function. This code is also available in a file: 
+              <a href="../../resources/gui/gui1.py">gui1.py</a></p>
               <pre><code class="language-python">import tkinter as tk
               
               def increment():
@@ -123,7 +124,8 @@ public class GUI extends Page {
         w.add("""
               <p>A slightly different look is provided by a more recent "themed"
               toolkit. The following does the same, but uses 'ttk' for the 
-              widgets:</p>
+              widgets. This code is also available in a file: 
+              <a href="../../resources/gui/gui2.py">gui2.py</a></p>
               <pre><code class="language-python">import tkinter as tk
               import tkinter.ttk as ttk
               
@@ -164,7 +166,8 @@ public class GUI extends Page {
         w.add("""
               <p>The following builds on the example setting up a menu and also 
               configuring so that if the window is closed, then the program 
-              exits.</p>
+              exits. This code is also available in a file: 
+              <a href="../../resources/gui/gui3.py">gui3.py</a></p>
               <pre><code class="language-python">import tkinter as tk
               import tkinter.ttk as ttk
               
@@ -219,11 +222,13 @@ public class GUI extends Page {
         w.add("""
               <p>The following sets up a scale or slider widget so that the user
               can move the slider to change the power used to dynamically scale 
-              a small raster data set.</p>
+              a small raster data set. This code is also available in a file: 
+              <a href="../../resources/gui/gui4.py">gui4.py</a></p>
               <pre><code class="language-python">import tkinter as tk
               import tkinter.ttk as ttk
               import csv
               import matplotlib
+              matplotlib.use('TkAgg')
               import matplotlib.pyplot as plt
               
               def read_data(path):
@@ -363,18 +368,16 @@ public class GUI extends Page {
         w.add(s.sectionHTML);
         w.add("""
               <p>There are various important things to consider in designing a 
-              GUI. Firstly, who are the users and what are the common things 
-              they are going to want to do? What are they already familiar with?
-              It is key to think about user experience and often it is helpful 
-              to get feedback from users when designing and developing GUIs
-              and do extensive 'usability testing'.</p>
-              <p>For complicated software, it is often good to include a help
-              system as part of a GUI.</p>
-              <p>At every stage when designing a GUI, think "is it obvious 
-              what this does?"</p>
-              <p>Often it is a good idea to keep the GUI simple and keep parts 
-              hidden until they are called for or disabled until it is sensible 
-              to action them.</p>
+              GUI. Usually the aim is to provide a GUI that is intuitive to use.
+              For software that does lots of things, it may be desriable to have
+              parts of the interface hidden until activated, and to include a 
+              help system where users can search for infomration about how to 
+              use the software.</p>
+              <p>In GUI design, it is often helpful to consider what are the 
+              first and common things a user is likely to want to do. Also, what 
+              are they already familiar with? Often it is helpful to get 
+              feedback from users and involve them in GUI design and 
+              development.</p>
               """);
 //              <pre></pre>
 //              <pre><code class="language-python"></code></pre>
