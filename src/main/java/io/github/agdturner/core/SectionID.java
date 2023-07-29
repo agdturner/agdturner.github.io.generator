@@ -15,33 +15,38 @@
  */
 package io.github.agdturner.core;
 
-import io.github.agdturner.course.Course;
-import io.github.agdturner.course.Page;
 import uk.ac.leeds.ccg.data.id.Data_ID_int;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * For defining unique identifiers of pages.
+ * Page Section Identifier.
  *
  * @author Andy Turner
  */
 public class SectionID extends Data_ID_int {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The Page.
      */
-    private final Page p;
+    private final Page page;
 
     /**
-     * The in page ID for linking.
+     * The in page section ID for linking.
      */
     private final String inPageID;
 
-    private static final long serialVersionUID = 1L;
-
-    public SectionID(int i, Page page, String inPageID) {
-        super(i);
-        this.p = page;
+    /**
+     * Create a new instance.
+     * 
+     * @param id What {@link #id} is set to.
+     * @param page What {@link #page} is set to.
+     * @param inPageID What {@link #inPageID} is set to.
+     */
+    public SectionID(int id, Page page, String inPageID) {
+        super(id);
+        this.page = page;
         this.inPageID = inPageID;
     }
 
@@ -50,8 +55,8 @@ public class SectionID extends Data_ID_int {
      */
     public String getLink() {
         return Web_ContentWriter.getLink(
-                "../" + p.filename + "/index.html#" + inPageID,
-                p.c.sectionIDToSectionName.get(this));
+                "../" + page.filename + "/index.html#" + inPageID,
+                page.site.sectionIDToSectionName.get(this));
     }
     
     @Override

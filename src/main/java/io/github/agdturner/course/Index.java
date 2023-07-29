@@ -15,10 +15,7 @@
  */
 package io.github.agdturner.course;
 
-import io.github.agdturner.core.PageID;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.TermID;
-import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -28,12 +25,22 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  *
  * @author Andy Turner
  */
-public class Index extends Page {
+public class Index extends CoursePage {
 
     /**
-     * To look up IndexTerms from a term name.
+     * To look up an IndexTerm from a term.
      */
     public final TreeMap<String, IndexTerm> termToIndexTerm;
+
+    /**
+     * These are aliases included in the index.
+     */
+    public final TreeSet<String> aliasesToIndex;
+
+    /**
+     * A complete set of terms and aliases for the index.
+     */
+    public final TreeSet<String> termsAndAliasesToIndex;
 
     /**
      * To look up a term name from an alias.
@@ -41,109 +48,280 @@ public class Index extends Page {
     public final TreeMap<String, String> aliasToTerm;
 
     /**
+     * To look up aliases from a term.
+     */
+    public final TreeMap<String, TreeSet<String>> termToAliases;
+
+    /**
+     * For checking and adding aliases.
+     *
+     * @param term The index term.
+     * @param alias The alias to add for the term.
+     * @param indexTerm The index term.
+     */
+    public final void addAlias(String term, String alias, IndexTerm indexTerm) {
+        if (aliasToTerm.containsKey(alias)) {
+            throw new RuntimeException("Alias " + alias + " already in use!");
+            /**
+             * Could add in logic to warn about/refer to other uses/ambiguity of
+             * a term/alias.
+             */
+        }
+        aliasToTerm.put(alias, term);
+        TreeSet<String> aliases;
+        if (termToAliases.containsKey(term)) {
+            aliases = termToAliases.get(term);
+        } else {
+            aliases = new TreeSet<>();
+        }
+        aliases.add(alias);
+    }
+    
+    /**
+     * For checking and adding aliases.
+     *
+     * @param term The index term.
+     * @param alias The alias to add for the term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasAndLowerCase(String term, String alias, IndexTerm indexTerm) {
+        addAlias(term, alias, indexTerm);
+        addAlias(term, alias.toLowerCase(), indexTerm);
+    }
+    
+    /**
+     * For checking and adding aliases.
+     *
+     * @param term The index term.
+     * @param alias The alias to add for the term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasToIndex(String term, String alias, IndexTerm indexTerm) {
+        addAlias(term, alias, indexTerm);
+        aliasesToIndex.add(alias);
+        termsAndAliasesToIndex.add(alias);
+    }
+
+    
+    /**
+     * Adds alias to index and adds alias and plural of alias as aliases for term.
+     *
+     * @param term The index term.
+     * @param alias The alias to add for the term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasAndAliasPlural(String term, String alias, IndexTerm indexTerm) {
+        addAliasToIndex(term, alias, indexTerm);
+        addAlias(term, alias + "s", indexTerm);
+    }
+
+    /**
+     * Adds alias to index, adds alias and plural of alias as aliases for term,
+     * and also adds the lower case version of the alias and the lower case and 
+     * plural version of the alias similarly.
+     *
+     * @param term The index term.
+     * @param alias The alias to add for the term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(String term, String alias, IndexTerm indexTerm) {
+        addAliasToIndex(term, alias, indexTerm);
+        addAlias(term, alias + "s", indexTerm);
+        String aliasLowerCase = alias.toLowerCase();
+        addAlias(term, aliasLowerCase, indexTerm);
+        addAlias(term, aliasLowerCase + "s", indexTerm);
+    }
+            
+    /**
+     * Adds the lower case of term as an alias.
+     *
+     * @param term The term to add the aliases for.
+     * @param indexTerm The index term.
+     */
+    public final void addLowerCaseAlias(String term, IndexTerm indexTerm) {
+        addAlias(term, term.toLowerCase(), indexTerm);
+    }
+
+    /**
+     * Adds the plural, lower case and lower case plural of term as aliases.
+     *
+     * @param term The term to add the aliases for.
+     * @param indexTerm The index term.
+     */
+    public final void addLowerCaseAndPluralAliases(String term, IndexTerm indexTerm) {
+        addAlias(term, term + "s", indexTerm);
+        String lowerCaseTerm = term.toLowerCase();
+        addAlias(term, lowerCaseTerm, indexTerm);
+        addAlias(term, lowerCaseTerm + "s", indexTerm);
+    }
+
+    /**
+     * Adds to {@link #termToIndexTerm} and {@link #termsAndAliasesToIndex}.
+     * 
+     * @param term The term to add.
+     * @param indexTerm The IndexTerm.
+     */
+    public final void addIndexTerm(String term, IndexTerm indexTerm) {
+        termToIndexTerm.put(term, indexTerm);
+        termsAndAliasesToIndex.add(term);
+    }
+    
+    /**
      * Create a new instance.
      *
+     * @param course What {@link #site} is set to.
      * @param filename What {@link #filename} is set to.
      * @param title What {@link #title} is set to.
      * @param label What {@link #label} is set to.
-     * @param c What {@code #c} is set to.
      */
-    public Index(String filename, String title, String label, Course c) {
-        super(filename, title, label, c);
+    public Index(Course course, String filename, String title, String label) {
+        super(course, filename, title, label);
         termToIndexTerm = new TreeMap<>();
+        aliasesToIndex = new TreeSet<>();
+        termsAndAliasesToIndex = new TreeSet<>();
         aliasToTerm = new TreeMap<>();
-        String name;
+        termToAliases = new TreeMap<>();
+        String term;
         String url;
         String description;
+        IndexTerm indexTerm;
 
-        name = "ABM";
+        term = "Agent Based Model";
         url = getWikipediaURL("Agent-based_model");
-        description = "an Agent Based Model is a computational model for "
-                + "simulating the actions and interactions of autonomous "
-                + "agents (both individual or collective entities such as "
-                + "organizations or groups)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("Agent Based Model", name);
+        description = "A computational model for simulating the actions and "
+                + "interactions of (semi-)autonomous agents (individual or "
+                + "collective entities)";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasPlural(term, "ABM", indexTerm);
 
-        name = "API";
+        term = "Application software";
+        url = getWikipediaURL("Application_software");
+        description = "A \"computer program\" designed to carry out a specific "
+                + "task other than one relating to the operation of the "
+                + "computer itself, typically to be used by \"end users\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, "Application", indexTerm);
+        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, "APP", indexTerm);
+
+        term = "Application Programming Interface";
         url = getWikipediaURL("Application_Programming_Interface");
-        description = "an interface allowing some software to interoperate "
+        description = "An interface allowing some \"software\" to interoperate "
                 + "with other software";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasPlural(term, "API", indexTerm);
 
-        name = "ASCII";
+        term = "ASCII";
         url = getWikipediaURL("ASCII");
-        description = "a character encoding standard for electronic "
+        description = "A character encoding standard for electronic "
                 + "communication";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Backward Compatibility";
+        term = "Backward Compatibility";
         url = getWikipediaURL("Backward_compatibility");
-        description = "a property of an \"operating system\", product, or "
+        description = "A property of an \"operating system\", product, or "
                 + "technology that allows for interoperability with an older "
                 + "legacy system";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        addAlias(term, "backwards compatability", indexTerm);
 
-        name = "Beautiful Soup";
-        url = "https://beautiful-soup-4.readthedocs.io/";
-        description = "a \"Python\" library for pulling data out of \"HTML\" and "
-                + "\"XML\" files";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Bit";
+        term = "Bit";
         url = getWikipediaURL("Bit");
-        description = "the most basic unit of information in computing and"
-                + " digital communications. A bit represents a logical state"
-                + " having one of two possible values";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
-        aliasToTerm.put("bits", name);
+        description = "A basic unit of information in computing and digital "
+                + "communications representing a logical state having one of "
+                + "two possible values";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
+        
+        term = "Bug";
+        url = getWikipediaURL("Bug_(engineering)");
+        description = "A defect in the design, manufacture or operation of "
+                + "machinery, circuitry, electronics, \"hardware\", or "
+                + "\"software\" that produces undesired results or impedes "
+                + "operation. "
+                + "See also \"Software Bug\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
 
-//        name = "Bug";
-//        url = getWikipediaURL("Bug_(engineering)");
-//        description = "a defect in the design, manufacture or operation of "
-//                + "machinery, circuitry, electronics, hardware, or software "
-//                + "that produces undesired results or impedes operation";
-//        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-//        aliasToTerm.put(name.toLowerCase(), name);
-
-        name = "Byte";
+        term = "Byte";
         url = getWikipediaURL("Byte");
         description = "a unit of digital information that most commonly"
                 + " consists of eight \"bits\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
 
-        name = "C++";
+        term = "Bytecode";
+        url = getWikipediaURL("Bytecode");
+        description = "a form of \"instruction set\" designed for efficient "
+                + "execution by a software \"interpreter\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+
+        term = "C++";
         url = getWikipediaURL("C%2B%2B");
-        description = "a high-level, general-purpose \"programming language\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        description = "A high-level, general-purpose \"programming language\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Call By Sharing";
+        term = "Call By Sharing";
         url = getWikipediaURL("Evaluation_strategy#Call_by_sharing");
-        description = "an evaluation strategy where a parameter is shared "
+        description = "An evaluation strategy where a parameter is shared "
                 + "such that changes that are not reassignments are changes to "
                 + "a shared object. If there is a reassignment in the function "
                 + "then the object is no longer shared and what is in the "
-                + "function is distinct from the object in the calling scope";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+                + "function is distinct from the object in the calling "
+                + "\"scope\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Call By Value";
+        term = "Call By Value";
         url = getWikipediaURL("Evaluation_strategy#Call_by_value");
-        description = "the value in the callers scope remains unchanged";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        description = "An evaluation strategy where the value in the callers "
+                + "\"scope\" remains unchanged";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Class";
+        term = "Class";
         url = getWikipediaURL("Class_(computer_programming)");
         description = "an extensible program-code-template for creating "
                 + "objects, providing initial values for state (member "
                 + "variables) and implementations of behavior (member "
                 + "functions or methods)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Command Line Interface";
+        term = "Computer";
+        url = getWikipediaURL("Computer");
+        description = "A machine that can be programmed to carry out sequences "
+                + "of arithmetic or logical operations (computation) "
+                + "automatically";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        
+        term = "Computer Hardware";
+        url = getWikipediaURL("Computer_hardware");
+        description = "The physical parts of a \"computer\", such as the case, "
+                + "central processing unit (CPU), random access memory (RAM), "
+                + "monitor, mouse, keyboard, computer data storage, graphics "
+                + "card, sound card, speakers and motherboard";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndLowerCase(term, "Hardware", indexTerm);
+
+        term = "Command Line Interface";
         url = getWikipediaURL("Command-line_interface");
         description = "a command-line interpreter or command-line processor "
                 + "uses a command-line interface (CLI) to receive commands "
@@ -151,887 +329,626 @@ public class Index extends Page {
                 + "means of setting parameters for the environment, invoking "
                 + "executables and providing information to them as to what "
                 + "actions they are to perform";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("CLI", name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasToIndex(term, "CLI", indexTerm);
 
-        name = "Computer Programming";
+        term = "Computer Program";
+        url = getWikipediaURL("Computer_program");
+        description = "A sequence or set of instructions in a "
+                + "\"programming language\" for a \"computer\" to execute";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
+
+        term = "Computer Programming";
         url = getWikipediaURL("Computer_programming");
         description = "the process of designing and building an executable "
                 + "computer program";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
 
-        name = "Conditional";
+        term = "Conditional";
         url = getWikipediaURL("Conditional_(computer_programming)");
         description = "perform different computations or actions depending on "
                 + "whether a programmer-defined boolean condition evaluates to "
                 + "true or false";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
 
-        name = "Control Flow";
+        term = "Control Flow";
         url = getWikipediaURL("Control_flow");
         description = "a named container of data";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "CSS";
+        term = "CSS";
         url = getWikipediaURL("CSS");
         description = "a style sheet language used for describing the "
                 + "presentation of a document written in a markup language "
                 + "such as \"HTML\" or \"XML\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("CSS file format", name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "CSV";
+        term = "CSV";
         url = getWikipediaURL("Comma-separated_values");
         description = "a delimited text file format that uses a comma to "
                 + "separate values";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("CSV file format", name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Debugging";
+        term = "Debugging";
         url = getWikipediaURL("Debugging");
-        description = "the process of finding and resolving bugs (defects or "
-                + "problems that prevent correct operation) within computer "
-                + "programs, software, or systems";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        description = "the process of finding and resolving \"bugs\" (defects "
+                + "or problems that prevent correct operation) within "
+                + "\"computer programs\", \"software\", or systems";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Deprecation";
+        term = "Deprecation";
         url = getWikipediaURL("Deprecation");
         description = "the discouragement of use of some terminology, feature, "
                 + "design, or practice, typically because it has been "
                 + "superseded or is no longer considered efficient or safe, "
                 + "without completely removing it or prohibiting its use";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Disk";
+        term = "Disk";
         url = getWikipediaURL("Computer_memory");
         description = "computer data storage that is slower than memory and "
                 + "is used to store information persistently (from one session "
                 + "to the next)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Double-precision Floating-point";
+        term = "Double-precision Floating-point";
         url = getWikipediaURL("Double-precision_floating-point_format");
-        description = "a computer number format, usually occupying 64 \"bits\""
-                + " in computer memory";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        description = " a \"computer\" number format, usually occupying 64 "
+                + "\"bits\" of computer memory";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "File Format";
+        term = "End user";
+        url = getWikipediaURL("End_user");
+        description = "A person who ultimately uses or is intended to "
+                + "ultimately use a product.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
+
+        term = "File Format";
         url = getWikipediaURL("File_format");
         description = "a standard way that information is encoded for storage "
                 + "in a computer file";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "File System";
+        term = "File System";
         url = getWikipediaURL("File_system");
         description = "a method and data structure that a computer operating "
                 + "system uses to control how data is stored and retrieved";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Floating-point";
+        term = "Floating-point";
         url = getWikipediaURL("Floating-point_arithmetic");
         description = "arithmetic that represents real numbers approximately, "
                 + "using an integer with a fixed precision, called the "
                 + "significand, scaled by an integer exponent of a fixed base";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "For Loop";
+        term = "For Loop";
         url = getWikipediaURL("For_loop");
         description = "runs a section of code repeatedly until a condition is "
                 + "satisfied";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Free and Open Source Software";
+        term = "Free and Open Source Software";
         url = getWikipediaURL("Free_and_open-source_software");
         description = "software where anyone is freely licensed to use, copy, "
                 + "study, and change the software in any way, and the \"source "
                 + "code\" is openly shared";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Functional Programming";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "FOSS", indexTerm);
+        
+        term = "Functional Programming";
         url = getWikipediaURL("Functional_programming");
         description = "a programming paradigm where programs are constructed "
                 + "by applying and composing functions";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Function";
+        term = "Function";
         url = getWikipediaURL("Function_(computer_programming)");
         description = "a sequence of program instructions that performs a "
                 + "specific task";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "GeoJSON";
+        term = "GeoJSON";
         url = getWikipediaURL("GeoJSON");
         description = "an open standard format designed for representing "
                 + "simple geographical features, along with their non-spatial "
                 + "attributes. It is based on the \"JSON\" format";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "GIS";
+        term = "GIS";
         url = getWikipediaURL("Geographic_information_system");
         description = "a geographical information system comprises people, "
                 + "computational resources, software and data. GIS is for "
                 + "storing, managing, processing, analyzing, and visualizing "
                 + "geographic data";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Glitch";
+        term = "Glitch";
         url = getWikipediaURL("Glitch");
         description = "a short-lived fault in a system, such as a transient "
                 + "fault that corrects itself, making it difficult to "
                 + "troubleshoot";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "GML";
+        term = "GML";
         url = getWikipediaURL("Geography_Markup_Language");
         description = "the XML grammar defined by the Open Geospatial "
                 + "Consortium (OGC) to express geographical features";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "GUI";
+        term = "Graphical User Interface";
         url = getWikipediaURL("Graphical_user_interface");
         description = "a form of user interface that primarily uses actionable "
                 + "graphical icons";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("Graphical User Interface", name);
-        aliasToTerm.put("GUIs", name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasPlural(term, "GUI", indexTerm);
 
-        name = "HTML";
+        term = "HTML";
         url = getWikipediaURL("HTML");
         description = "the standard markup language for documents designed to "
                 + "be displayed in a web browser";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("HTML file format", name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "HTTP";
+        term = "HTTP";
         url = getWikipediaURL("HTTP");
         description = "an application layer protocol in the Internet protocol "
                 + "suite model for distributed, collaborative, hypermedia "
                 + "information systems";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "HTTPS";
+        term = "HTTPS";
         url = getWikipediaURL("HTTPS");
         description = "is an extension of HTTP that uses encryption for secure "
                 + "communication over a computer network";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "IDE";
+        term = "Integrated Development Environment";
         url = getWikipediaURL("Integrated_development_environment");
-        description = "an Integrated Development Environment - a collection of "
+        description = "An Integrated Development Environment - a collection of "
                 + "software tools used to make writing code and developing "
                 + "software easier";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        addAlias(term, "IDE", indexTerm);
 
-        name = "Internet";
+        term = "Interpreter";
+        url = getWikipediaURL("Interpreter_(computing)");
+        description = "A computer program that directly executes instructions "
+                + "written in a programming or scripting language, without "
+                + "requiring them previously to have been compiled into a "
+                + "machine language program.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+
+        term = "Internet";
         url = getWikipediaURL("Internet");
         description = "a global system of interconnected computer networks "
                 + "that uses the Internet protocol suite (TCP/IP) to "
                 + "communicate between networks and devices";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        
+        term = "Java";
+        url = getWikipediaURL("Java_(programming_language)");
+        description = "A high-level, class-based, \"object-oriented\" "
+                + "\"programming language\" that is designed to have as few "
+                + "implementation dependencies as possible";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "JavaScript";
+        term = "JavaScript";
         url = getWikipediaURL("Javascript");
-        description = "a high-level \"programming language\" that is one of "
+        description = "A high-level \"programming language\" that is one of "
                 + "the core technologies of the \"Web\". All major Web "
                 + "browsers have a dedicated JavaScript engine to execute code "
                 + "on user devices";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "JSON";
+        term = "JSON";
         url = getWikipediaURL("JSON");
         description = " JavaScript Object Notation is an open standard \"file "
                 + "format\" and data interchange format that uses human"
                 + "-readable text to store and transmit data objects "
                 + "consisting of attribute–value pairs and arrays (or other "
                 + "serializable values)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Keyboard";
+        term = "Keyboard";
         url = getWikipediaURL("Computer_keyboard");
         description = "a peripheral input device modeled after the typewriter "
                 + "keyboard";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Linux";
+        term = "Linux";
         url = getWikipediaURL("Linux");
         description = "a family of open-source Unix-like \"operating systems\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "MacOS";
+        term = "MacOS";
         url = getWikipediaURL("macOS");
         description = "a group of several proprietary Unix \"operating "
                 + "systems\" developed and marketed by Apple Inc";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Magic Number";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "macOS", indexTerm);
+        
+        term = "Magic Number";
         url = getWikipediaURL("File_format#Magic_number");
         description = "file type metadata incorporated into the file - usually "
                 + "at the start";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Markdown";
+        term = "Markdown";
         url = getWikipediaURL("Markdown");
         description = "a lightweight markup language for creating formatted "
                 + "text using a plain-text editor";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Metadata";
+        term = "Metadata";
         url = getWikipediaURL("Metadata");
         description = "data that provides information about other data";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Memory";
+        term = "Memory";
         url = getWikipediaURL("Computer_memory");
         description = "computer data storage that operates at a high speed "
                 + "compared to other data storage and is used to store "
                 + "data for immediate use";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Microsoft Windows";
+        term = "Microsoft Windows";
         url = getWikipediaURL("Microsoft_Windows");
         description = "a group of several proprietary graphical \"operating "
                 + "system\" families developed and marketed by Microsoft";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Monitor";
+        term = "Monitor";
         url = getWikipediaURL("Computer_monitor");
         description = "an output device that displays information in pictorial "
                 + "or textual form";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Mouse";
+        term = "Mouse";
         url = getWikipediaURL("Computer_mouse");
         description = "a hand-held pointing device that detects "
                 + "two-dimensional motion relative to a surface";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Name Binding";
+        term = "Name Binding";
         url = getWikipediaURL("Name_binding");
         description = "the association of entities (data and/or code) with "
                 + "identifiers";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Network Socket";
+        term = "Network Socket";
         url = getWikipediaURL("Network_socket");
         description = " a software structure within a network node of a "
                 + "computer network that serves as an endpoint for sending and "
                 + "receiving data across the network";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Object Oriented Programming";
+        term = "Object Oriented Programming";
         url = getWikipediaURL("Object-oriented_programming");
         description = "a programming paradigm based on the concept of "
                 + "\"objects\", which can contain data and code. The data is "
                 + "in the form of fields (often known as attributes or "
                 + "properties), and the code is in the form of procedures "
                 + "(often known as methods)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        addAlias(term, "object-oriented", indexTerm);
 
-        name = "Open Source Software";
+        term = "Open Source Software";
         url = getWikipediaURL("Open-source_software");
         description = "computer software that is released under a license that "
                 + "grants rights to use, study, change, and distribute the "
                 + "software and its \"source code\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "OSS", indexTerm);
 
-        name = "Operating System";
+        term = "Operating System";
         url = getWikipediaURL("Operating_system");
         description = "a system that manages computer hardware and software "
                 + "resources, and provides common services for computer "
                 + "programs";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("OS", name);
-        aliasToTerm.put(name.toLowerCase(), name);
-        aliasToTerm.put("operating systems", name);
-        aliasToTerm.put("Operating Systems", name);
-
-        name = "PATH";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAlias(term, "OS", indexTerm);
+        
+        term = "PATH";
         url = getWikipediaURL("PATH_(variable)");
         description = "an environment variable on Unix-like \"operating "
                 + "systems\", DOS, OS/2, and Microsoft Windows, specifying a "
                 + "set of directories where executable programs are located";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Port";
+        term = "Port";
         url = getWikipediaURL("Port_(computer_networking)");
         description = "a number assigned to uniquely identify a connection "
                 + "endpoint and to direct data to a specific service";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Programming Language";
+        term = "Programming Language";
         url = getWikipediaURL("Programming_language");
         description = "a system of notation for writing computer programs";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "PyQGIS";
-        url = "https://qgis.org/pyqgis/";
-        description = "QGIS Python API";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "PyQGIS Developer Cookbook";
-        url = "https://docs.qgis.org/latest/en/docs/pygqis_developer_cookbook/";
-        description = "a tutorial and a reference guide to the PyQGIS API";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python";
+        term = "Python";
         url = getWikipediaURL("Python_(programming_language)");
         description = "a high-level, general-purpose \"programming language\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python array";
-        url = "https://docs.python.org/3/library/array.html";
-        description = "a \"standard library\" module that defines an object "
-                + "type which can compactly represent a sequence of values all "
-                + "of the same type. An array behaves like a \"list\", except "
-                + "that the type of objects stored in them is "
-                + "restricted/constrained";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python break";
-        url = "https://docs.python.org/3/reference/simple_stmts.html#break";
-        description = "a \"keyword\" that terminates the nearest enclosing "
-                + "loop, skipping the optional 'else' clause if the loop has "
-                + "one";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python builtins";
-        url = "https://docs.python.org/3/library/builtins.html";
-        description = "an always loaded module that provides direct access to "
-                + "all 'built-in' identifiers";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("builtins module", name);
-
-        name = "Python Built-in Constants";
-        url = "https://docs.python.org/3/library/constants.html#built-in-consts";
-        description = "constants that are always available";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("built-in constant", name);
-
-        name = "Python Built-in Exceptions";
-        url = "https://docs.python.org/3/library/exceptions.html";
-        description = "are generated by the interpreter or a \"built-in "
-                + "function\" when an error is encountered";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("built-in exception", name);
-
-        name = "Python Built-in Functions";
-        url = "https://docs.python.org/3/library/functions.html#built-in-funcs";
-        description = "functions and types that are always available";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("built-in function", name);
-
-        name = "Python Built-in Types";
-        url = "https://docs.python.org/3/library/stdtypes.html";
-        description = "\"standard library\" numerics, sequences, mappings, "
-                + "classes, instances and exceptions that are 'built-in' to "
-                + "the interpreter";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("built-in type", name);
-
-        name = "Python continue";
-        url = "https://docs.python.org/3/reference/simple_stmts.html#continue";
-        description = "a \"keyword\" that continues with the next cycle of the "
-                + "nearest enclosing loop. When continue passes control out of "
-                + "a \"try\" statement with a 'finally' clause, that finally "
-                + "clause is executed before starting the next loop cycle";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python csv";
-        url = "https://docs.python.org/3/reference/simple_stmts.html#continue";
-        description = "a \"standard library\" module for handling data in a "
-                + "\"CSV file format\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python decimal";
-        url = "https://docs.python.org/3/library/decimal.html";
-        description = "a \"standard library\" module providing support for "
-                + "fast correctly rounded decimal floating point arithmetic";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python delimiters";
-        url = "https://docs.python.org/3/reference/lexical_analysis.html#delimiters";
-        description = "a \"string\" that separates parts";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python dict";
-        url = "https://docs.python.org/3/library/stdtypes.html#dict";
-        description = "a mapping object that maps unique keys to values";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python docstring";
-        url = "https://peps.python.org/pep-0257/#what-is-a-docstring";
-        description = "a string literal comment that occurs as the first "
-                + "statement in a module, function, class, or method "
-                + "definition. This becomes the '__doc__' attribute of "
-                + "that object";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python byte";
-        url = "https://docs.python.org/3/library/stdtypes.html#bytes";
-        description = "an immutable sequence of integers in the range [0, 255]";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python bytearray";
-        url = "https://docs.python.org/3/library/stdtypes.html#bytearray";
-        description = "a mutable counterpart to a \"Python byte\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python dir";
-        url = "https://docs.python.org/3/library/functions.html#dir";
-        description = "a function that: without arguments, returns the list of "
-                + "names in the current local scope; and, with an argument, "
-                + "attempts to return a list of valid attributes for that "
-                + "object";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python doctest";
-        url = "https://docs.python.org/3/library/doctest.html";
-        description = "a \"standard library\" module that can be used to "
-                + "search for text that looks like interactive Python "
-                + "sessions, and then executes those sessions to verify "
-                + "that they work as shown";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-                
-        name = "Python for";
-        url = "https://docs.python.org/3/reference/compound_stmts.html#for";
-        description = "used to iterate over the elements of a sequence";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python fractions";
-        url = "https://docs.python.org/3/library/fractions.html";
-        description = "a \"standard library\" module providing support for "
-                + "rational number arithmetic";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python help";
-        url = "https://docs.python.org/3/library/functions.html#help";
-        description = "a function that starts the help system";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python if";
-        url = "https://docs.python.org/3/reference/compound_stmts.html#if";
-        description = "a compound statement used for conditional execution";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python input";
-        url = "https://docs.python.org/3/library/functions.html#input";
-        description = "a \"builtins module\" function that reads a line from "
-                + "standard input, converts it to a \"string\" (stripping the "
-                + "trailing newline), and returns that string";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python import";
-        url = "https://docs.python.org/3/reference/simple_stmts.html#import";
-        description = "a statement for importing modules";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python io";
-        url = "https://docs.python.org/3/library/io.html";
-        description = "a \"standard library\" module the provides the main "
-                + "facilities for dealing with various types of input and "
-                + "output";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python json";
-        url = "https://docs.python.org/3/library/json.html";
-        description = "a \"standard library\" module for handling data in "
-                + "\"JSON\" format";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python keyword";
-        url = "https://docs.python.org/3/reference/lexical_analysis.html#keywords";
-        description = "a reserved word that cannot be used as an "
-                + "ordinary identifier (names of variable, function, class, "
-                + "module or package)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("keyword", name);
-
-        name = "Python lambda";
-        url = "https://docs.python.org/3/reference/expressions.html#lambda";
-        description = "an expression used to create anonymous functions";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python len";
-        url = "https://docs.python.org/3/library/functions.html#len";
-        description = "a function for getting the length (the number of items) "
-                + "of an object";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python list";
-        url = "https://docs.python.org/3/library/stdtypes.html#lists";
-        description = "a mutable sequence, typically used to store collections "
-                + "of homogeneous items";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("list", name);
-
-        name = "Python match";
-        url = "https://docs.python.org/3/reference/compound_stmts.html#the-match-statement";
-        description = "statement used for pattern matching";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python math";
-        url = "https://docs.python.org/3/library/math.html";
-        description = "provides access to the mathematical functions defined "
-                + "by the C standard";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python MemoryError";
-        url = "https://docs.python.org/3/library/exceptions.html#MemoryError";
-        description = "a \"built-in exception\" raised when an operation runs out of "
-                + "\"memory\" but the situation may still be rescued (by deleting "
-                + "some objects)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python Module Index";
-        url = "https://docs.python.org/3/py-modindex.html";
-        description = "an index of \"standard library\" modules";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python NameError";
-        url = "https://docs.python.org/3/library/exceptions.html#NameError";
-        description = "an \"built-in exception\" raised when a local or global name is "
-                + "not found";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python Numeric Types";
-        url = "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex";
-        description = "are of three distinct types: integers, floating point "
-                + "numbers, and complex numbers";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python open";
-        url = "https://docs.python.org/3/library/functions.html#open";
-        description = "a \"builtins module\" function to open a file and "
-                + "return a corresponding file object";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python operator";
-        url = "https://docs.python.org/3/library/operator.html";
-        description = "a \"standard library\" module that exports a set of "
-                + "functions corresponding to the intrinsic operators of "
-                + "Python";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python print";
-        url = "https://docs.python.org/3/library/functions.html#print";
-        description = "a \"builtins module\" function for printing to the "
-                + "screen";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python random";
-        url = "https://docs.python.org/3/library/random.html";
-        description = "a \"standard library\" module that implements pseudo-random "
-                + "number generators for various distributions";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python range";
-        url = "https://docs.python.org/3/library/stdtypes.html#ranges";
-        description = "an immutable sequence of numbers, commonly used for "
-                + "looping a specific number of times in for loops";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python repr";
-        url = "https://docs.python.org/3/library/functions.html#repr";
-        description = "a \"builtins module\" function for getting "
-                + "printable representation of an object";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python Requests";
-        url = "https://requests.readthedocs.io/";
-        description = "a third party HTTP library for Python";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python set";
-        url = "https://docs.python.org/3/library/stdtypes.html#set";
-        description = "an unordered collection of distinct hashable objects. "
-                + "A hashable object has a hash value which must be the same "
-                + "for objects regarded as equal";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python Standard Library";
-        url = "https://docs.python.org/3/library/";
-        description = "the functionality that is included in Python "
-                + "distributions as standard and it's reference manual";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("standard library", name);
-
-        name = "Python str";
-        url = "https://docs.python.org/3/library/functions.html#func-str";
-        description = "a \"builtins module\" function for creating a "
-                + "\"string\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python string";
-        url = "https://docs.python.org/3/library/stdtypes.html#textseq";
-        description = "a standard type and immutable sequence of Unicode code "
-                + "points";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("string", name);
-
-        name = "Python SyntaxError";
-        url = "https://docs.python.org/3/library/exceptions.html#SyntaxError";
-        description = "a \"built-in exception\" raised when the parser encounters a "
-                + "\"syntax error\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python sys";
-        url = "https://docs.python.org/3/library/sys.html";
-        description = "a \"standard library\" module that provides access "
-                + "to some variables used or maintained by the interpreter and "
-                + "to functions that interact strongly with the interpreter";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python SystemError";
-        url = "https://docs.python.org/3/library/exceptions.html#SystemError";
-        description = "a \"built-in exception\" raised when the interpreter "
-                + "encounters an internal error";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
         
-        name = "Python time";
-        url = "https://docs.python.org/3/library/time.html";
-        description = "a \"standard library\" module providing various "
-                + "time-related functions";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python tk";
-        url = "https://docs.python.org/3/library/tk.html";
-        description = "documentation about developing \"GUIs\" with "
-                + "\"tkinter\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python tkinter";
-        url = "https://docs.python.org/3/library/tkinter.html";
-        description = "a \"standard library\" module providing an interface to "
-                + "the Tcl/Tk \"GUI\" toolkit";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("tkinter", name);
-
-        name = "Python try";
-        url = "https://docs.python.org/3/reference/compound_stmts.html#try";
-        description = "a statement specifies exception handlers and/or cleanup "
-                + "code for a code block";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("try", name);
-
-        name = "Python tuple";
-        url = "https://docs.python.org/3/library/stdtypes.html#tuples";
-        description = "an immutable sequences, typically used to store "
-                + "collections of heterogeneous data";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python type";
-        url = "https://docs.python.org/3/library/functions.html#type";
-        description = "a \"builtins module\" function for getting the type "
-                + "of an identifier";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python TypeError";
-        url = "https://docs.python.org/3/library/exceptions.html#TypeError";
-        description = "a \"built-in exception\" raised when an operation or "
-                + "function is applied to an object of inappropriate type";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python unittest";
-        url = "https://docs.python.org/3/library/unittest.html";
-        description = "a \"standard library\" module providing tools for "
-                + "constructing and running tests.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python venv";
-        url = "https://docs.python.org/3/library/venv.html";
-        description = "a \"standard library\" module that supports creating "
-                + "lightweight <a href=\"https://docs.python.org/3/glossary.html#term-virtual-environment\">"
-                + "virtual environments</a>, each with their own "
-                + "independent set of Python packages installed in their site "
-                + "directories";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python while";
-        url = "https://docs.python.org/3/reference/compound_stmts.html#while";
-        description = "a compound statement used for repeated execution as "
-                + "long as an expression evaluates as true";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python yield";
-        url = "https://docs.python.org/3/reference/simple_stmts.html#yield";
-        description = "a keyword used in a statement or expression that "
-                + "returns something from a function whilst allowing further "
-                + "expressions in the function to be evaluated";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python zip";
-        url = "https://docs.python.org/3/library/functions.html#zip";
-        description = "a \"builtins module\" function that iterates over "
-                + "multiple iterables in parallel, producing tuples with an "
-                + "item from each one";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Python ZeroDivisionError";
-        url = "https://docs.python.org/3/library/exceptions.html#ZeroDivisionError";
-        description = "a \"built-in exception\" raised when the second argument of a "
-                + "division or modulo operation is zero";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "REPL";
+        term = "Regression testing";
+        url = getWikipediaURL("Regression_testing");
+        description = "Re-running tests to ensure that previously developed "
+                + "and tested \"software\" still performs as expected after a "
+                + "change";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, 
+                "Regression test", indexTerm);
+        
+        term = "REPL";
         url = getWikipediaURL("Read%E2%80%93eval%E2%80%93print_loop");
-        description = "a Read Evaluate Print Loop also termed an interactive "
-                + "toplevel or language shell, a simple interactive computer "
+        description = "A Read Evaluate Print Loop is an interactive computer "
                 + "programming environment that takes single user inputs, "
                 + "executes them, and returns the result to the user";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Reproducibility";
+        term = "Reproducibility";
         url = getWikipediaURL("Reproducibility");
         description = "in computational sciences means any results should be "
                 + "documented by making all data and code available in such a "
                 + "way that the computations can be executed again with "
                 + "identical results";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Scope";
+        term = "Server";
+        url = getWikipediaURL("Server_(computing)");
+        description = "\"Computer hardware\" or \"software\" that provides "
+                + "functionality for other programs or devices, called "
+                + "\"clients\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "Scope";
         url = getWikipediaURL("Scope_(computer_science)");
-        description = "the part of a program where a name binding is valid";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        description = "In \"computer programming\", the scope of a "
+                + "\"name binding\" (an association of a name to an entity, "
+                + "such as a variable) is the part of a program where the "
+                + "name binding is valid; that is, where the name can be used "
+                + "to refer to the entity. In other parts of the program, the "
+                + "name may refer to a different entity";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
 
-        name = "Single-precision Floating-point";
+        term = "Single-precision Floating-point";
         url = getWikipediaURL("Single-precision_floating-point_format");
-        description = " a computer number format, usually occupying 32 \"bits\""
-                + " in computer memory";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        description = " a \"computer\" number format, usually occupying 32 "
+                + "\"bits\" of computer memory";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Software";
+        term = "Software";
         url = getWikipediaURL("Software");
         description = "computer programs and associated documentation and data";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Software Bug";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        
+        term = "Software Bug";
         url = getWikipediaURL("Software_bug");
-        description = "an error, flaw or fault in the design, development, or "
-                + "operation of computer software that causes it to produce an "
+        description = "An error, flaw or fault in the design, development, or "
+                + "operation of \"software\" that causes it to produce an "
                 + "incorrect or unexpected result, or to behave in unintended "
-                + "ways";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+                + "ways. See also \"bug\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Source Code";
+        term = "Source Code";
         url = getWikipediaURL("Source_code");
         description = "text written using a human-readable \"programming "
                 + "language\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        aliasToTerm.put(term.toLowerCase(), term);
 
-        name = "Syntax Error";
+        term = "Syntax Error";
         url = getWikipediaURL("Syntax_error");
         description = "an error in the syntax of a sequence of characters or"
                 + " tokens that is intended to be written in a particular"
                 + " \"programming language\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put(name.toLowerCase(), name);
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        aliasToTerm.put(term.toLowerCase(), term);
 
-        name = "TCP/IP";
+        term = "TCP/IP";
         url = getWikipediaURL("Internet_protocol_suite");
         description = "a framework for organizing the set of communication "
                 + "protocols used in the \"Internet\" and similar computer "
                 + "networks according to functional criteria";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Touchscreen";
+        term = "Touchscreen";
         url = getWikipediaURL("Touchscreen");
         description = " both an input ('touch panel') and output ('display') "
                 + "device)";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Unicode";
+        term = "Unicode";
         url = getWikipediaURL("Unicode");
         description = "an information technology standard for the consistent "
                 + "encoding, representation, and handling of text expressed in "
                 + "most writing systems";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Unit Testing";
+        term = "Unit Testing";
         url = getWikipediaURL("Unit_testing");
         description = "a software testing method by which individual units of "
                 + "source code—sets of one or more computer program modules "
                 + "together with associated control data, usage procedures, "
                 + "and operating procedures—are tested to determine whether "
                 + "they are fit for use";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        
-        name = "URL";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "URL";
         url = getWikipediaURL("URL");
         description = "Uniform Resource Locator - a reference to a \"Web\" "
                 + "resource that specifies its location and the protocol for "
                 + "retrieving it";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Variable";
+        term = "Variable";
         url = getWikipediaURL("Variable_(computer_science)");
         description = "the order in which individual statements, instructions "
                 + "or function calls of an imperative program are executed or "
                 + "evaluated";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Version Control";
+        term = "Version Control";
         url = getWikipediaURL("Version_control");
         description = "(also known as revision control, source control, or "
                 + "\"source code\" management) is a class of systems "
                 + "responsible for managing changes to computer programs, "
                 + "documents, \"Web\" sites, or other collections of "
                 + "information.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "Web Accessibility";
+        term = "Web Accessibility";
         url = getWikipediaURL("Web_accessibility");
         description = "the inclusive practice of ensuring there are no "
                 + "barriers that prevent interaction with, or access to, "
                 + "websites on the \"World Wide Web\" by people with physical "
                 + "disabilities, situational disabilities, and socio-economic "
                 + "restrictions on bandwidth and speed";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "World Wide Web";
+        term = "World Wide Web";
         url = getWikipediaURL("World_Wide_Web");
         description = "commonly known as the Web, is an information system "
                 + "enabling documents and other web resources to be accessed "
                 + "over the \"internet\"";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("Web", name);
-        
-        name = "While Loop";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        aliasToTerm.put("Web", term);
+
+        term = "While Loop";
         url = getWikipediaURL("While_loop");
         description = "a control flow statement that allows code to be "
                 + "executed repeatedly until a condition evaluates as false";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
-        name = "XML";
+        term = "XML";
         url = getWikipediaURL("XML");
         description = "a markup language and \"file format\" for storing, "
                 + "transmitting, and reconstructing arbitrary data";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
     }
 
     /**
-     * @return "https://en.wikipedia.org/wiki/" + articleName
+     * The default Wikipedia URL.
      */
-    public String getWikipediaURL(String articleName) {
-        return "https://en.wikipedia.org/wiki/" + articleName;
+    public static final String EN_WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
+
+    /**
+     * @param article Appended to create what is returned.
+     * @return {@link #EN_WIKIPEDIA_URL} + article;
+     */
+    public final String getWikipediaURL(String article) {
+        return EN_WIKIPEDIA_URL + article;
     }
 
     /**
@@ -1046,8 +963,10 @@ public class Index extends Page {
      */
     public String addWebReference(String name, String linkText,
             String url, String description) {
-        if (!c.references.nameToTerm.containsKey(name)) {
-            c.references.nameToTerm.put(name,
+        Course course = getCourse();
+        References references = course.getReferences();
+        if (!references.nameToTerm.containsKey(name)) {
+            references.nameToTerm.put(name,
                     new IndexTerm(this, description, url));
         }
         return Web_ContentWriter.getLink(url, linkText);
@@ -1080,13 +999,13 @@ public class Index extends Page {
     }
 
     /**
-     * @param name The name of the reference to get a link from.
+     * @param term The term to get a link from.
      * @param linkText The link text for the link.
      * @param sid The SectionID where the term is used.
      * @return the link for the reference given by name.
      */
-    public String getReference(String name, String linkText, SectionID sid) {
-        IndexTerm r = termToIndexTerm.get(name);
+    public String getReference(String term, String linkText, SectionID sid) {
+        IndexTerm r = termToIndexTerm.get(term);
         if (r == null) {
             return null;
         }
@@ -1101,16 +1020,21 @@ public class Index extends Page {
         writeHeader();
         writeH1();
         w.add("<ul>");
-        for (String name : termToIndexTerm.keySet()) {
-            IndexTerm r = termToIndexTerm.get(name);
+        for (String aliasOrTerm : termsAndAliasesToIndex) {
+            IndexTerm indexTerm;
+            if (aliasesToIndex.contains(aliasOrTerm)) {
+                indexTerm = termToIndexTerm.get(aliasToTerm.get(aliasOrTerm));
+            } else {
+                indexTerm = termToIndexTerm.get(aliasOrTerm);
+            }
             StringBuilder sb = new StringBuilder();
             sb.append("<li>");
-            sb.append(r.getLinkAndDescription(name));
+            sb.append(indexTerm.getLinkAndDescription(aliasOrTerm));
             sb.append(".");
-            if (!r.sids.isEmpty()) {
+            if (!indexTerm.sids.isEmpty()) {
                 sb.append(" (");
                 int l = sb.length();
-                for (SectionID s : r.sids) {
+                for (SectionID s : indexTerm.sids) {
                     sb.append(s.getLink());
                     sb.append(", ");
                 }

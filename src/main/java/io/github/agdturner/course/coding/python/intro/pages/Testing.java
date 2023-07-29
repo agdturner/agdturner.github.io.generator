@@ -1,0 +1,150 @@
+/*
+ * Copyright 2022 Centre for Computational Geography.
+ *
+ * Licensed under the Apache License, Version 2.0 (the"License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an"AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package io.github.agdturner.course.coding.python.intro.pages;
+
+import io.github.agdturner.core.SectionID;
+import io.github.agdturner.course.Course;
+import io.github.agdturner.course.coding.python.intro.PythonIntroCourse;
+import io.github.agdturner.course.CoursePage;
+import io.github.agdturner.course.Index;
+import io.github.agdturner.course.References;
+
+/**
+ * Python Intro Course Programming Page.
+ *
+ * @author Andy Turner
+ */
+public class Testing extends CoursePage {
+
+    /**
+     * Create a new instance.
+     *
+     * @param course What {@link #site} is set to.
+     */
+    public Testing(PythonIntroCourse course) {
+        super(course, "testing", "Testing", "Testing");
+    }
+
+    @Override
+    public void write() {
+        Course course = getCourse();
+        Index index = course.getIndex();
+        References references = course.getReferences();
+        writeHeader();
+        writeH1();
+        SectionID sid = addSection("1", "Introduction", 2);
+        w.add("<p>There are a number of different types of testing involved in "
+                + "developing software, some key ones are: functionality "
+                + "testing, performance testing and usability testing. "
+                + "Functionality testing aims to assure that functions behave "
+                + "as expected. "
+                + "Performace testing helps to explore the responsiveness, "
+                + "stability, scalability, reliability and resource usage of "
+                + "software. "
+                + "Usability testing aims to ensure user interfaces "
+                + "are easy to use and understand. In "
+                + "<a href=\"../abm3/index.html\">ABM3</a>"
+                + " there is an exercise in performace testing to optimise a "
+                + "function. This section focuses on functionality testing and "
+                + "some different ways to do this in Python that goes beyond "
+                + "the use of "
+                + index.getReference("Python print", "print", sid)
+                + " statements which are also fundamental for a lot of testing "
+                + "and issue diagnosis. As you should know by now, testing is "
+                + "key to developing code and creating reproducible results."
+                + "</p>");
+
+        sid = addSection("2", "Doctest", 2);
+        w.add("<p>The "
+                + index.getReference("Python Standard Library", sid)
+                + " comes with "
+                + index.getReference("Python doctest", "doctest", sid)
+                + " a module that can be used to search for text that looks "
+                + "like interactive Python sessions, and then executes those "
+                + "sessions to verify that they work as shown. Such text is "
+                + "sometimes placed in a "
+                + index.getReference("Python docstring", "docstring", sid)
+                + " as per the example in 'calculator_doctest.py'.</p>");
+        w.add("<p>Save "
+                + "<a href=\"../../resources/testing/calculator_doctest.py\">calculator_doctest.py</a>"
+                + ", inspect the code and run it. It should run without"
+                + " reporting anything. Try altering \"0.3\" to "
+                + "\"0.30000000000000004\" and run the file again. The output "
+                + "should be along the following lines:</p>");
+        w.add("""
+              <pre>File "calculator_doctest.py", line 25, in __main__.add
+              Failed example:
+                  add(0.1, 0.1, 0.1)
+              Expected:
+                  0.30000000000000004
+              Got:
+                  0.3
+              **********************************************************************
+              1 items had failures:
+                 1 of   2 in __main__.add
+              ***Test Failed*** 1 failures.</pre>
+              """);
+
+        sid = addSection("3", "Unit Tests", 2);
+        w.add("<p>"
+                + index.getReference("Unit Testing", sid)
+                + " is where individual units of source code - together with "
+                + "associated control data, usage procedures, and operating "
+                + "procedures - are tested to determine whether they are fit "
+                + "for use. It aims to reduce software development risks, time, "
+                + "and costs.</p>");
+        w.add("""
+              <p>In test driven development, the tests are written 
+              before the functional code. When the code passes the tests, if the 
+              tests have good enough coverage, then the functionality is 
+              successfully implemented.</p>
+              <p>It can be good to separate testing code from functional code so
+              that testing code does not have to be distributed with functional 
+              code. In some software development the overall size of the testing 
+              code is huge compared to the functional code, so separating this 
+              out allows for distributions to be smaller. Organising this is 
+              involves packaging code to have a separate test package. Usually,
+              the structure of the test package is the same as the main code 
+              package structure making the tests for specific modules, classes 
+              and functions to be easily found and updated.</p>
+              """);
+        w.add("<p>The "
+                + index.getReference("Python Standard Library", sid)
+                + " comes with "
+                + index.getReference("Python unittest", "unittest", sid)
+                + " a module providing tools for constructing and running"
+                + " tests.</p>");
+        w.add("<p>Consider the following example. The functional code is in "
+                + "'calculator.py', the module contains a single function "
+                + "'add' which adds up numbers provided as Integer or Float "
+                + index.getReference("Python Numeric Types", "Numeric Types ", sid)
+                + " using "
+                + index.getReference("Python decimal", "decimal", sid)
+                + " to avoid some "
+                + index.getReference("Floating-point", "floating-point", sid)
+                + " rounding issues.</p>");
+        w.add("<p>Save "
+                + "<a href=\"../../resources/testing/calculator.py\">calculator.py</a>"
+                + " and "
+                + "<a href=\"../../resources/testing/test.py\">test.py</a>"
+                + " in the same directory, inspect the code and run 'test.py'."
+                + " For more details about developing unit tests in Python,"
+                + " see: "
+                + index.getReference("Python unittest", "unittest", sid)
+                + ".</p>");
+        w.add("</div>");
+    }
+}
