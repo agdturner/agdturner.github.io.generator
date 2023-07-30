@@ -76,7 +76,7 @@ public class Index extends CoursePage {
         }
         aliases.add(alias);
     }
-    
+
     /**
      * For checking and adding aliases.
      *
@@ -88,7 +88,7 @@ public class Index extends CoursePage {
         addAlias(term, alias, indexTerm);
         addAlias(term, alias.toLowerCase(), indexTerm);
     }
-    
+
     /**
      * For checking and adding aliases.
      *
@@ -102,9 +102,9 @@ public class Index extends CoursePage {
         termsAndAliasesToIndex.add(alias);
     }
 
-    
     /**
-     * Adds alias to index and adds alias and plural of alias as aliases for term.
+     * Adds alias to index and adds alias and plural of alias as aliases for
+     * term.
      *
      * @param term The index term.
      * @param alias The alias to add for the term.
@@ -117,7 +117,7 @@ public class Index extends CoursePage {
 
     /**
      * Adds alias to index, adds alias and plural of alias as aliases for term,
-     * and also adds the lower case version of the alias and the lower case and 
+     * and also adds the lower case version of the alias and the lower case and
      * plural version of the alias similarly.
      *
      * @param term The index term.
@@ -131,7 +131,7 @@ public class Index extends CoursePage {
         addAlias(term, aliasLowerCase, indexTerm);
         addAlias(term, aliasLowerCase + "s", indexTerm);
     }
-            
+
     /**
      * Adds the lower case of term as an alias.
      *
@@ -157,7 +157,7 @@ public class Index extends CoursePage {
 
     /**
      * Adds to {@link #termToIndexTerm} and {@link #termsAndAliasesToIndex}.
-     * 
+     *
      * @param term The term to add.
      * @param indexTerm The IndexTerm.
      */
@@ -165,7 +165,7 @@ public class Index extends CoursePage {
         termToIndexTerm.put(term, indexTerm);
         termsAndAliasesToIndex.add(term);
     }
-    
+
     /**
      * Create a new instance.
      *
@@ -238,7 +238,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAndPluralAliases(term, indexTerm);
-        
+
         term = "Bug";
         url = getWikipediaURL("Bug_(engineering)");
         description = "A defect in the design, manufacture or operation of "
@@ -310,7 +310,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        
+
         term = "Computer Hardware";
         url = getWikipediaURL("Computer_hardware");
         description = "The physical parts of a \"computer\", such as the case, "
@@ -465,7 +465,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "FOSS", indexTerm);
-        
+
         term = "Functional Programming";
         url = getWikipediaURL("Functional_programming");
         description = "a programming paradigm where programs are constructed "
@@ -572,7 +572,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        
+
         term = "Java";
         url = getWikipediaURL("Java_(programming_language)");
         description = "A high-level, class-based, \"object-oriented\" "
@@ -623,7 +623,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "macOS", indexTerm);
-        
+
         term = "Magic Number";
         url = getWikipediaURL("File_format#Magic_number");
         description = "file type metadata incorporated into the file - usually "
@@ -726,7 +726,7 @@ public class Index extends CoursePage {
         addIndexTerm(term, indexTerm);
         addLowerCaseAndPluralAliases(term, indexTerm);
         addAlias(term, "OS", indexTerm);
-        
+
         term = "PATH";
         url = getWikipediaURL("PATH_(variable)");
         description = "an environment variable on Unix-like \"operating "
@@ -756,7 +756,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        
+
         term = "Regression testing";
         url = getWikipediaURL("Regression_testing");
         description = "Re-running tests to ensure that previously developed "
@@ -765,9 +765,9 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, 
+        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term,
                 "Regression test", indexTerm);
-        
+
         term = "REPL";
         url = getWikipediaURL("Read%E2%80%93eval%E2%80%93print_loop");
         description = "A Read Evaluate Print Loop is an interactive computer "
@@ -818,7 +818,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        
+
         term = "Software Bug";
         url = getWikipediaURL("Software_bug");
         description = "An error, flaw or fault in the design, development, or "
@@ -957,14 +957,12 @@ public class Index extends CoursePage {
      *
      * @param name The name for the reference.
      * @param linkText The text for the link.
-     * @param url The url of the reference.
+     * @param url The URL of the reference.
      * @param description The description of the reference.
      * @return A link.
      */
     public String addWebReference(String name, String linkText,
             String url, String description) {
-        Course course = getCourse();
-        References references = course.getReferences();
         if (!references.nameToTerm.containsKey(name)) {
             references.nameToTerm.put(name,
                     new IndexTerm(this, description, url));
@@ -973,7 +971,7 @@ public class Index extends CoursePage {
     }
 
     /**
-     * @param name The name of the reference to get a link from.
+     * @param name The name to get a link from.
      * @return the link for the reference given by name.
      */
     public String getReference(String name) {
@@ -981,16 +979,16 @@ public class Index extends CoursePage {
     }
 
     /**
-     * @param name The name of the reference to get a link from.
+     * @param name The name to get a link from.
      * @param linkText The link text for the link.
-     * @return the link for the reference given by name.
+     * @return The link for the reference given by name.
      */
     public String getReference(String name, String linkText) {
         return getReference(name, linkText, null);
     }
 
     /**
-     * @param name The name of the reference to get a link from.
+     * @param name The name to get a link from.
      * @param sid The SectionID where the term is used.
      * @return the link for the reference given by name.
      */
@@ -999,20 +997,25 @@ public class Index extends CoursePage {
     }
 
     /**
-     * @param term The term to get a link from.
+     * @param name The name to get a link from.
      * @param linkText The link text for the link.
      * @param sid The SectionID where the term is used.
      * @return the link for the reference given by name.
      */
-    public String getReference(String term, String linkText, SectionID sid) {
-        IndexTerm r = termToIndexTerm.get(term);
+    public String getReference(String name, String linkText, SectionID sid) {
+        IndexTerm r = termToIndexTerm.get(name);
         if (r == null) {
-            return null;
+            String term = aliasToTerm.get(name);
+            if (term != null) {
+                return getReference(term, linkText, sid);
+            }
+        } else {
+            if (sid != null) {
+                r.sids.add(sid);
+            }
+            return r.getLink(linkText);
         }
-        if (sid != null) {
-            r.sids.add(sid);
-        }
-        return r.getLink(linkText);
+        return null;
     }
 
     @Override

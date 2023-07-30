@@ -16,14 +16,14 @@
 package io.github.agdturner.course.coding.java.pages;
 
 import io.github.agdturner.course.coding.java.JavaCourse;
-import io.github.agdturner.course.pages.CourseHomePage;
+import io.github.agdturner.course.pages.CourseHome;
 
 /**
  * Extend this for a Java Course Home Page.
  *
  * @author Andy Turner
  */
-public abstract class CourseJavaHomePage extends CourseHomePage {
+public abstract class CourseJavaHomePage extends CourseHome {
 
     /**
      * Create a new instance.

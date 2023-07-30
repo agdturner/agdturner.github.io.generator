@@ -17,7 +17,7 @@ package io.github.agdturner.core;
 
 import io.github.agdturner.course.Index;
 import io.github.agdturner.course.References;
-import io.github.agdturner.course.pages.CourseHomePage;
+import io.github.agdturner.course.pages.CourseHome;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -40,7 +40,7 @@ public abstract class Site {
     /**
      * For storing the course Home Page.
      */
-    protected CourseHomePage homePage;
+    protected CourseHome homePage;
 
     /**
      * The Site Pages (other than the {@link #homePage}, {@link indexPage#index}

@@ -17,7 +17,7 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.Site;
-import io.github.agdturner.course.pages.CourseHomePage;
+import io.github.agdturner.course.pages.CourseHome;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -86,5 +86,5 @@ public abstract class Course extends Site {
     /**
      * @return The site Home page. 
      */
-    public abstract CourseHomePage getHomePage();
+    public abstract CourseHome getHomePage();
 }

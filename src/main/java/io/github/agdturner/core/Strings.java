@@ -59,4 +59,11 @@ public class Strings extends Web_Strings {
     public String get(Integer i) {
         return strings.get(i);
     }
+    
+    /**
+     * Return s with first letter capitalised.
+     */
+    public static String toUpperCaseFirstLetter(String s){
+        return s.substring(0,1).toUpperCase() + s.substring(1);
+    }
 }

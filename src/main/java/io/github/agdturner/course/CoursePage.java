@@ -17,18 +17,38 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.core.Page;
 import io.github.agdturner.core.PageID;
-import io.github.agdturner.course.pages.CourseHomePage;
+import io.github.agdturner.course.pages.CourseHome;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
- * For course pages.
+ * Course Web Page.
  *
  * @author Andy Turner
  */
 public abstract class CoursePage extends Page {
 
+    /**
+     * Index for convenience.
+     */
+    protected final Index index;
+
+    /**
+     * References for convenience.
+     */
+    protected final References references;
+    
+    /**
+     * Course Pages for convenience.
+     */
+    protected final ArrayList<Page> pages;
+    
+    /**
+     * CCourse Home Page for convenience.
+     */
+    protected final CourseHome homePage;
+    
     /**
      * Create a new instance.
      *
@@ -42,6 +62,10 @@ public abstract class CoursePage extends Page {
                 Paths.get(course.courseDir.toString(), filename));
         course.addPage(w, id, label, filename);
         this.sections = new TreeMap<>();
+        index = course.getIndex();
+        references = course.getReferences();
+        pages = course.pages;
+        homePage = course.getHomePage();
     }
     
     /**
@@ -76,12 +100,8 @@ public abstract class CoursePage extends Page {
      */
     @Override
     public String getLinks(String linkClass, boolean addPrevious) {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
         StringBuilder sb = new StringBuilder("<div>\n<p>");
-        ArrayList<Page> pages = course.pages;
-        if (this instanceof CourseHomePage) {
+        if (this instanceof CourseHome) {
             sb.append(getLinkNext(pages.get(0), linkClass));
         } else {
             int n = pages.size();
@@ -105,7 +125,7 @@ public abstract class CoursePage extends Page {
                                 linkClass));
                         sb.append("</p>\n<p>");
                     } else if (this.id.id == 0) {
-                        sb.append(getLinkPrev(course.getHomePage(), linkClass));
+                        sb.append(getLinkPrev(homePage, linkClass));
                         sb.append("</p>\n<p>");
                     }
                 }
