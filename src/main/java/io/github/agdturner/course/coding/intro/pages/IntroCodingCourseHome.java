@@ -32,7 +32,6 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
     @Override
     public void writeExpectations() {
         super.writeExpectations();
-        writeExpectations0();
     }
     
     /**
@@ -41,16 +40,10 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
     public void writeExpectations0() {
         w.add("<li>"
                 + index.getReference("Version Control")
-                + ";</li>");
-        w.add("<li>Using "
+                + "</li>");
+        w.add("<li>"
                 + references.getReference("GitHub")
-                + ";</li>");
-        w.add("<li>Data encoding and "
-                + index.getReference("File Format", "file formats")
-                + ";</li>");
-        w.add("<li>Developing a "
-                + index.getReference("GUI", "Graphical User Interface")
-                + " (GUI);</li>");
+                + " as a source code repository and for Web site hosting</li>");
     }
     
     @Override

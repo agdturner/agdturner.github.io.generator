@@ -170,7 +170,7 @@ public class Modules extends CoursePage {
               geographical data processing or whatever you may be doing.</p>
               """);
         w.add("<p>Many Python libraries are made available via "
-                + references.getReference("PyPI")
+                + index.getReference("PyPI")
                 + " - the Python Package Index (PyPi) including:</p>");
         w.add("""
               <ul>

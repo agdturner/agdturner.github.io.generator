@@ -48,6 +48,7 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     public void writeConcepts() {
         writeProgrammingConcepts();
         writeObjectOrientedProgrammingConcepts();
+        writeGUIProgrammingConcepts();
         pythonProgrammingConcepts();
     }
     
@@ -56,7 +57,27 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 + index.getReference("Python")
                 + " specifics:</p>");
         w.add("<ul>");
-        w.add("<li>Language development and limitations;</li>");
+        w.add("<li>Language development and limitations</li>");
+        w.add("<li>Using the "
+                + index.getReference("REPL", "Read Evaluate Print Loop")
+                + " (REPL) environment</li>");
+        w.add("<li>Running programs via the command line</li>");
+        w.add("<li>Using "
+                + references.getReference("Jupyter Notebook")
+                + "</li>");
+        w.add("<li>Using "
+                + references.getReference("IDLE")
+                + " and "
+                + references.getReference("Spyder")
+                + "</li>");
+        w.add("<li>Python containers including "
+                + index.getReference("Python list", "lists")
+                + ", "
+                + index.getReference("Python tuple", "tuples")
+                + " and "
+                + index.getReference("Python dict", "dictionaries")
+                + "</li>");
+        w.add("<li>Program input and output</li>");
         w.add("<li>Structuring and organising code into "
                 + references.getReference(
                         "Python 3 Documentation: Tutorial: Classes", "Classes")
@@ -67,33 +88,24 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 + references.getReference(
                         "Python 3 Documentation: Tutorial: Packages",
                         "Packages")
-                + ";</li>");
-        w.add("<li>Using the "
-                + index.getReference("REPL", "Read Evaluate Print Loop")
-                + " (REPL) environment;</li>");
-        w.add("<li>Running programs via the command line, "
-                + references.getReference("Jupyter Notebook")
-                + ", "
-                + references.getReference("IDLE")
-                + " and "
-                + references.getReference("Spyder")
-                + ";</li>");
+                + "</li>");
         w.add("<li>Python environment management using "
                 + references.getReference("Conda")
                 + " and "
                 + index.getReference("Python venv", "venv")
-                + ";</li>");
+                + "</li>");
         w.add("<li>Using the "
                 + references.getReference("Python 3 Documentation: Library",
                         "Python 3 Library")
-                + ", and third party packages available via "
-                + references.getReference("PyPI")
-                + " - the Python Package Index;</li>");
+                + "</li>");
+        w.add("<li>Using third party packages available via the "
+                + index.getReference("Python Package Index")
+                + "</li>");
         w.add("<li>"
-                + index.getReference("Python docstring", "docstrings")
-                + ";</li>");
+                + index.getReference("Python docstring")
+                + " syntax</li>");
 //        w.add("<li>Producing documentation using "
-//                + references.getReference("https://docs.python.org/3/library/pydosite.html",
+//                + references.getReference("https://docs.python.org/3/library/pydoc.html",
 //                        "Pydoc", null)
 //                + " and "
 //                + references.getReference("https://www.sphinx-dosite.org/", "Sphinx", null)
@@ -111,28 +123,15 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
     
     public void writeExpectations2() {       
-        w.add("<li>Python containers including "
-                + index.getReference("Python list", "lists")
-                + ", "
-                + index.getReference("Python tuple", "tuples")
-                + " and "
-                + index.getReference("Python dict", "dictionaries")
-                + ";</li>");
-        w.add("""
-              <li>Program input and output</li>
-              <!--
-              <li>Developing Python code (planning, writing, testing, 
-              organising)</li>
-              """);
-        w.add("<li>The Python parts of the "
+        w.add("<!--<li>Python parts of the "
                 + references.getReference("Anaconda")
                 + " data science platform;</li>");
         w.add("<li>Processing geographical features (geometry and related"
                 + " attribute) data;</li>-->");
         w.add("<li>Visualisation using "
                 + references.getReference("Matplotlib")
-                + ";</li>");
-        w.add("<li>Processing raster data stored as lists of lists;</li>");
+                + "</li>");
+        w.add("<li>Processing raster data stored as lists of lists</li>");
         w.add("<li>Developing and visualising a basic spatial "
                 + index.getReference("ABM", "Agent Based Model")
                 + " (ABM);</li>");
@@ -156,11 +155,11 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
               <p>There are some key concepts which may take a few attempts to 
               get used to and comprehensively understand.</p>
               """);
-        w.add("<p>An example of automating "
+        w.add("<p>You get to review some exemplar code that automates some "
                 + references.getReference("QGIS")
-                + " Desktop using "
+                + " Desktop processing using "
                 + index.getReference("PyQGIS")
-                + " is provided.</p>");
+                + "</p>");
 
         writeLearningJourney();
     }
@@ -194,11 +193,6 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         w.add("<li>Developing and visualising a basic spatial "
                 + index.getReference("ABM", "Agent Based Model")
                 + " (ABM);</li>");
-        w.add("<p>You get to review and try some example code that automates "
-                + references.getReference("QGIS")
-                + " Desktop using "
-                + index.getReference("PyQGIS")
-                + ".</p>");
     }
     
     @Override
@@ -219,20 +213,15 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         w.add("<p>Developing the ABM by following instructions puts into"
                 + " practise some of the theory detailed in other webpages. By"
                 + " the end of these practicals, you should have ABM model code"
-                + " that:</p>");
-        w.add("<ul>");
-        w.add("<li>has a basic "
+                + " that has a basic "
                 + index.getReference("GUI")
-                + ";</li>");
-        w.add("""
-              <li>reads in data from local files and from the Web; and</li>
-              <li>produces an animation, data files and user friendly messages.
-              </li>
-              </ul>
-              <p>After completing the last ABM practical, you should have 
-              sufficient knowledge and skill to develop the model in interesting 
-              ways without being given detailed instructions.</p>
-              """);
+                + ", reads in data from local files and from the Web, and"
+                + " produces an animation, data files and user friendly "
+                + "messages.</p>"
+                + "<p>After completing the last ABM practical, you should have"
+                + " sufficient knowledge and skill to develop the model in"
+                + " interesting ways without being given detailed"
+                + " instructions.</p>");
         }
     
     public void writeLearningJourney2() {

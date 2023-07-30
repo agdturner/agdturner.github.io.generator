@@ -44,6 +44,7 @@ public class PythonIndex extends Index {
         String name;
         String url;
         String description;
+        IndexTerm indexTerm;
 
         name = "Beautiful Soup";
         url = "https://beautiful-soup-4.readthedocs.io/";
@@ -51,6 +52,21 @@ public class PythonIndex extends Index {
                 + "\"XML\" files";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
+        name = "PIP";
+        url = "https://pip.pypa.io";
+        description = "The Package Installer for \"Python\"";
+        indexTerm =  new IndexTerm(this, description, url);
+        termToIndexTerm.put(name, indexTerm);
+        addLowerCaseAlias(url, indexTerm);
+        
+        name = "Python Package Index";
+        url = "https://pypi.org/";
+        description = "A repository of software for the Python programming "
+                + "language.";
+        indexTerm =  new IndexTerm(this, description, url);
+        termToIndexTerm.put(name, indexTerm);
+        addAliasAndLowerCase(name, "PyPi", indexTerm);
+                
         name = "PyQGIS";
         url = "https://qgis.org/pyqgis/";
         description = "QGIS Python API";

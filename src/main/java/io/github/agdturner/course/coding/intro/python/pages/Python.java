@@ -126,7 +126,7 @@ public class Python extends CoursePage {
                 + " is often very important in research.</p>");
         w.add("<p>There is a vast ecosystem of third party Python libraries."
                 + " Much of this is made available as packages via the "
-                + references.getReference("PyPI", "Python Package Index")
+                + index.getReference("PyPI", "Python Package Index")
                 + " (PyPI).</p>");
         w.add("""
               <p>Below, in <a href="#9">Section 9</a>, there is an exercise that 
@@ -1157,7 +1157,7 @@ public class Python extends CoursePage {
                 + " - a collection of tutorials and references to help you "
                 + "distribute and install Python packages with modern tools.");
         w.add("<p>"
-                + references.getReference("PyPI")
+                + index.getReference("PyPI")
                 + " is a widely used Python repository. Developers deploy"
                 + " packages to PyPI and users install packages from there."
                 + " Many packages are provided as "

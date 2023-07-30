@@ -34,11 +34,7 @@ public abstract class CodingCourseHome extends CourseHome {
               <p>General computer programming language concepts, including:</p>
               <ul>
               """);
-//        w.add("<li>The notion of an "
-//                + index.getReference("API",
-//                        "Application Programming Interface (API)")
-//                + "</li>");
-        w.add("<li>" + index.getReference("Variable", "Variables") + ";</li>");
+        w.add("<li>" + index.getReference("Variable", "Variables") + "</li>");
         w.add("<li>"
                 + index.getReference("Control Flow")
                 + "("
@@ -47,12 +43,15 @@ public abstract class CodingCourseHome extends CourseHome {
                 + index.getReference("For Loop", "for loops")
                 + "/"
                 + index.getReference("While Loop", "while loops")
-                + ");</li>");
+                + ")</li>");
         w.add("<li>"
                 + index.getReference("Function", "Functions")
-                + ";</li>");        
-        w.add("<li>Documentation;</li>");
-        w.add("<li>Testing.</li>");
+                + "</li>");
+        w.add("<li>Data encoding and "
+                + index.getReference("File Format", "file formats")
+                + ";</li>");
+        w.add("<li>Documentation</li>");
+        w.add("<li>Testing</li>");
     }
     
     public void writeObjectOrientedProgrammingConcepts() {
@@ -60,9 +59,13 @@ public abstract class CodingCourseHome extends CourseHome {
                 + index.getReference("Class", "Classes")
                 + " and "
                 + index.getReference("Object Oriented Programming")
-                + ";</li>");
+                + "</li>");
         w.add("</ul>");
     }
     
-    
+    public void writeGUIProgrammingConcepts() {
+        w.add("<li>Developing "
+                + index.getReference("GUI", "Graphical User Interfaces")
+                + "</li>");
+    }
 }

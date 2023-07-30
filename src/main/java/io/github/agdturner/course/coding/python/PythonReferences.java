@@ -77,12 +77,12 @@ public class PythonReferences extends References {
 
         name = "PIP";
         url = "https://pip.pypa.io";
-        description = "Python Package Installer";
+        description = "The Package Installer for \"Python\"";
         nameToTerm.put(name, new Term(description, url));
         
-        name = "PyPI";
+        name = "Python Package Index (PyPI)";
         url = "https://pypi.org/";
-        description = "Python Package Index";
+        description = "A repository of software for \"Python\".";
         nameToTerm.put(name, new Term(description, url));
 
         String python3Documentation = "Python 3 Documentation";
