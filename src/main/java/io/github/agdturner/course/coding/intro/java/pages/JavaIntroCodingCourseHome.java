@@ -46,32 +46,6 @@ public class JavaIntroCodingCourseHome extends IntroCodingCourseHome {
     @Override
     public void writeSyllabus() {
         super.writeSyllabus();
-        w.add("""
-              <p>General computer programming language concepts, including:</p>
-              <ul>
-              """);
-        w.add("<li>"
-                + index.getReference("Class", "Classes")
-                + " and "
-                + index.getReference("Object Oriented Programming")
-                + ";</li>");
-        w.add("<li>" + index.getReference("Variable", "Variables") + ";</li>");
-        w.add("<li>"
-                + index.getReference("Control Flow")
-                + "("
-                + index.getReference("Conditional", "conditionals")
-                + "/"
-                + index.getReference("For Loop", "for loops")
-                + "/"
-                + index.getReference("While Loop", "while loops")
-                + ");</li>");
-        w.add("<li>"
-                + index.getReference("Function", "Functions")
-                + " and "
-                + index.getReference("Functional Programming")
-                + ";</li>");
-        w.add("</ul>");
-
         w.add("<p>"
                 + index.getReference("Java")
                 + " specifics:</p>");

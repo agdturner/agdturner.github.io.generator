@@ -47,6 +47,7 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     
     public void writeConcepts() {
         writeProgrammingConcepts();
+        writeOrganisationalConcepts();
         writeObjectOrientedProgrammingConcepts();
         writeGUIProgrammingConcepts();
         pythonProgrammingConcepts();
@@ -55,30 +56,38 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     public void pythonProgrammingConcepts() {
         w.add("<p>"
                 + index.getReference("Python")
-                + " specifics:</p>");
-        w.add("<ul>");
-        w.add("<li>Language development and limitations</li>");
-        w.add("<li>Using the "
+                + " Language development and limitations</p>");
+        w.add("<p>The "
+                + index.getReference("Python")
+                + " "
                 + index.getReference("REPL", "Read Evaluate Print Loop")
-                + " (REPL) environment</li>");
-        w.add("<li>Running programs via the command line</li>");
-        w.add("<li>Using "
+                + " (REPL) environment</p>");
+        w.add("<p>Running "
+                + index.getReference("Python")
+                + " programs via the command line</p>");
+        w.add("<p>Using "
                 + references.getReference("Jupyter Notebook")
-                + "</li>");
-        w.add("<li>Using "
+                + "</p>");
+        w.add("<p>Using "
                 + references.getReference("IDLE")
                 + " and "
                 + references.getReference("Spyder")
-                + "</li>");
-        w.add("<li>Python containers including "
+                + "</p>");
+        w.add("<p>"
+                + index.getReference("Python")
+                + " containers including; "
                 + index.getReference("Python list", "lists")
                 + ", "
                 + index.getReference("Python tuple", "tuples")
                 + " and "
                 + index.getReference("Python dict", "dictionaries")
-                + "</li>");
-        w.add("<li>Program input and output</li>");
-        w.add("<li>Structuring and organising code into "
+                + "</p>");
+        w.add("<p> "
+                + index.getReference("Python")
+                + " program input and output</p>");
+        w.add("<p>Structuring and organising "
+                + index.getReference("Python")
+                + " code into "
                 + references.getReference(
                         "Python 3 Documentation: Tutorial: Classes", "Classes")
                 + ", "
@@ -88,29 +97,30 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 + references.getReference(
                         "Python 3 Documentation: Tutorial: Packages",
                         "Packages")
-                + "</li>");
-        w.add("<li>Python environment management using "
+                + "</p>");
+        w.add("<p>"
+                + index.getReference("Python")
+                + " environment management using "
                 + references.getReference("Conda")
                 + " and "
                 + index.getReference("Python venv", "venv")
-                + "</li>");
-        w.add("<li>Using the "
+                + "</p>");
+        w.add("<p>Using the "
                 + references.getReference("Python 3 Documentation: Library",
                         "Python 3 Library")
-                + "</li>");
-        w.add("<li>Using third party packages available via the "
+                + "</p>");
+        w.add("<p>Using third party packages available via the "
                 + index.getReference("Python Package Index")
-                + "</li>");
-        w.add("<li>"
+                + "</p>");
+        w.add("<p>"
                 + index.getReference("Python docstring")
-                + " syntax</li>");
-//        w.add("<li>Producing documentation using "
+                + " syntax</p>");
+//        w.add("<p>Producing documentation using "
 //                + references.getReference("https://docs.python.org/3/library/pydoc.html",
 //                        "Pydoc", null)
 //                + " and "
 //                + references.getReference("https://www.sphinx-dosite.org/", "Sphinx", null)
-//                + ";</li>");
-        w.add("</ul>");
+//                + "</p>");
     }
     
     @Override

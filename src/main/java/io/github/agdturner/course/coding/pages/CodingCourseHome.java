@@ -20,15 +20,15 @@ import io.github.agdturner.course.pages.CourseHome;
 
 /**
  * Coding Course Home Page.
- * 
+ *
  * @author Andy Turner
  */
 public abstract class CodingCourseHome extends CourseHome {
-    
+
     public CodingCourseHome(Course course, String courseName) {
         super(course, courseName);
     }
-    
+
     public void writeProgrammingConcepts() {
         w.add("""
               <p>General computer programming language concepts, including:</p>
@@ -37,7 +37,7 @@ public abstract class CodingCourseHome extends CourseHome {
         w.add("<li>" + index.getReference("Variable", "Variables") + "</li>");
         w.add("<li>"
                 + index.getReference("Control Flow")
-                + "("
+                + " ("
                 + index.getReference("Conditional", "conditionals")
                 + "/"
                 + index.getReference("For Loop", "for loops")
@@ -52,20 +52,29 @@ public abstract class CodingCourseHome extends CourseHome {
                 + ";</li>");
         w.add("<li>Documentation</li>");
         w.add("<li>Testing</li>");
+        w.add("</ul>");
     }
-    
+
+    public void writeOrganisationalConcepts() {
+        w.add("<p>"
+                + index.getReference("Version Control")
+                + "</p>");
+    }
+
     public void writeObjectOrientedProgrammingConcepts() {
-        w.add("<li>"
+        w.add("<p>"
+                + index.getReference("Version Control")
+                + "</p>");
+        w.add("<p>"
                 + index.getReference("Class", "Classes")
                 + " and "
                 + index.getReference("Object Oriented Programming")
-                + "</li>");
-        w.add("</ul>");
+                + "</p>");
     }
-    
+
     public void writeGUIProgrammingConcepts() {
-        w.add("<li>Developing "
+        w.add("<p>Developing "
                 + index.getReference("GUI", "Graphical User Interfaces")
-                + "</li>");
+                + "</p>");
     }
 }

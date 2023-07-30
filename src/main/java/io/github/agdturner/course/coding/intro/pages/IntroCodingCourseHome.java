@@ -39,9 +39,6 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
      */
     public void writeExpectations0() {
         w.add("<li>"
-                + index.getReference("Version Control")
-                + "</li>");
-        w.add("<li>"
                 + references.getReference("GitHub")
                 + " as a source code repository and for Web site hosting</li>");
     }
