@@ -72,7 +72,6 @@ public abstract class Course extends Site {
         return courseCode; 
     }
     
-    
     /**
      * @return The site index page. 
      */

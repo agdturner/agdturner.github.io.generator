@@ -29,13 +29,13 @@ public abstract class CodingCourseHome extends CourseHome {
         super(course, courseName);
     }
 
-    public void writeProgrammingConcepts() {
-        w.add("""
+    public void getProgrammingConcepts(StringBuilder sb) {
+        sb.append("""
               <p>General computer programming language concepts, including:</p>
               <ul>
               """);
-        w.add("<li>" + index.getReference("Variable", "Variables") + "</li>");
-        w.add("<li>"
+        sb.append("<li>" + index.getReference("Variable", "Variables") + "</li>\n");
+        sb.append("<li>"
                 + index.getReference("Control Flow")
                 + " ("
                 + index.getReference("Conditional", "conditionals")
@@ -43,38 +43,38 @@ public abstract class CodingCourseHome extends CourseHome {
                 + index.getReference("For Loop", "for loops")
                 + "/"
                 + index.getReference("While Loop", "while loops")
-                + ")</li>");
-        w.add("<li>"
+                + ")</li>\n");
+        sb.append("<li>"
                 + index.getReference("Function", "Functions")
-                + "</li>");
-        w.add("<li>Data encoding and "
+                + "</li>\n");
+        sb.append("<li>Data encoding and "
                 + index.getReference("File Format", "file formats")
-                + ";</li>");
-        w.add("<li>Documentation</li>");
-        w.add("<li>Testing</li>");
-        w.add("</ul>");
+                + "</li>\n");
+        sb.append("<li>Documentation</li>\n");
+        sb.append("<li>Testing</li>\n");
+        sb.append("</ul>\n");
     }
 
-    public void writeOrganisationalConcepts() {
-        w.add("<p>"
+    public void getOrganisationalConcepts(StringBuilder sb) {
+        sb.append("<p>"
                 + index.getReference("Version Control")
-                + "</p>");
+                + "</p>\n");
     }
 
-    public void writeObjectOrientedProgrammingConcepts() {
-        w.add("<p>"
+    public void getObjectOrientedProgrammingConcepts(StringBuilder sb) {
+        sb.append("<p>"
                 + index.getReference("Version Control")
-                + "</p>");
-        w.add("<p>"
+                + "</p>\n");
+        sb.append("<p>"
                 + index.getReference("Class", "Classes")
                 + " and "
                 + index.getReference("Object Oriented Programming")
-                + "</p>");
+                + "</p>\n");
     }
 
-    public void writeGUIProgrammingConcepts() {
-        w.add("<p>Developing "
+    public void getGUIProgrammingConcepts(StringBuilder sb) {
+        sb.append("<p>Developing "
                 + index.getReference("GUI", "Graphical User Interfaces")
-                + "</p>");
+                + "</p>\n");
     }
 }

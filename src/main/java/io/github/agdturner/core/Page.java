@@ -61,7 +61,7 @@ public abstract class Page {
     /**
      * Page ID
      */
-    public final PageID id;
+    public final PageID pageID;
 
     /**
      * Path to the file.
@@ -75,7 +75,7 @@ public abstract class Page {
      * @param filename What {@link #filename} is set to.
      * @param title What {@link #title} is set to.
      * @param label What {@link #label} is set to.
-     * @param id What {@link #id} is set to.
+     * @param id What {@link #pageID} is set to.
      * @param path What {@link #path} is set to.
      */
     public Page(Site site, String filename, String title, String label, 
@@ -85,7 +85,7 @@ public abstract class Page {
         this.filename = filename;
         this.title = title;
         this.label = label;
-        this.id = id;
+        this.pageID = id;
         this.path = path;
         this.site.addPage(w, id, label, filename);
         this.sections = new TreeMap<>();
@@ -162,32 +162,44 @@ public abstract class Page {
     }
 
     /**
-     * Adds section to references and returns it.
+     * Adds a Section to the site and returns the SectionID.
      * @param inPageID HTML id.
      * @param sectionName Section name.
      * @param level For heading.
+     * @param stringBuilder For appending the HTML to.
      * @return SectionID
      */
-    public SectionID addSection(String inPageID, String sectionName, int level) {
-        SectionID sid = new SectionID(site.sectionIDs.size(), this, inPageID);
-        site.sectionIDs.add(sid);
-        site.addSection(sid, id, title + ": " + inPageID + ". " + sectionName);
+    public SectionID addSection(String inPageID, String sectionName, int level, 
+            StringBuilder stringBuilder) {
+        SectionID sectionID = new SectionID(site.sectionIDs.size(), this, inPageID);
+        site.sectionIDs.add(sectionID);
+        site.addSection(sectionID, pageID, title + ": " + inPageID + ". " + sectionName);
         String html = "<h" + level + " id=\"" + inPageID + "\">" 
                 + inPageID + ". " + sectionName + "</h" + level + ">";
-        w.add(html);
-        sections.put(sid, new Section(sid, html));
-        return sid;
+        stringBuilder.append(html);
+        sections.put(sectionID, new Section(sectionID, html));
+        return sectionID;
     }
     
     /**
      * For writing the page to file.
      */
-    public abstract void write();
-
+    public void write() {
+        writeHeader();
+        writeH1();
+        String page = getMainContent();
+        w.add(getPageContents());
+        w.add(page);
+    }
+    
     public void writeH1() {
         w.add("<div>");
         w.add("<h1>" + title + "</h1>");
     }
+    
+    public abstract String getMainContent();
+    
+    public abstract String getPageContents();
     
     public static List<String> getHeadElements(Path dir) {
         ArrayList<String> r = new ArrayList<>();

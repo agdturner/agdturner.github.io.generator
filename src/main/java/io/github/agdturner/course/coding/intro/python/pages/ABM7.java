@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM7 Page.
@@ -36,15 +34,12 @@ public class ABM7 extends CoursePage {
     public ABM7(PythonIntroCodingCourse course) {
         super(course, "abm7", "Agent Based Model Practical 7", "ABM7");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        sb.append("""
               <p>In this practical 
               <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html">
               matplotlib.animation.FuncAnimation</a>
@@ -54,8 +49,8 @@ public class ABM7 extends CoursePage {
               'abm6' directory and call the new directory 'abm7'.</p>
               """);
 
-        sid = addSection("2", "Animation", 2);
-        w.add("""
+        sid = addSection("2", "Animation", 2, sb);
+        sb.append("""
               <p>Open the new 'model.py' file from the 'abm7' directory in 
               Spyder.</p>
               <p>Add the following import statement:</p>
@@ -162,19 +157,19 @@ public class ABM7 extends CoursePage {
               the plot plane again issue the following magic command:</p>
               <pre>%matplotlib inline</pre>
               """);
-        w.add("<p>The keyword '"
+        sb.append("<p>The keyword '"
                 + index.getReference("Python yield", "yield", sid)
                 + "' is used to pass the value of the variable 'ite' back from"
                 + " 'gen_function' whilst continuing to run the while loop. The"
                 + " '# Write data' code block is included in 'gen_function' and"
-                + " runs only once after the model has stopped.</p>");
-        w.add("""
+                + " runs only once after the model has stopped.</p>\n");
+        sb.append("""
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
 
-        sid = addSection("3", "Code and Model Review", 2);
-        w.add("""
+        sid = addSection("3", "Code and Model Review", 2, sb);
+        sb.append("""
               <p>Most of your code should now be in functions and organised into 
               modules.</p>
               <p>The model simulation runs in a loop until some condition is 
@@ -215,6 +210,7 @@ public class ABM7 extends CoursePage {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

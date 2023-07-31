@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM1 Page.
@@ -36,19 +34,16 @@ public class ABM1 extends CoursePage {
     public ABM1(PythonIntroCodingCourse course) {
         super(course, "abm1", "Agent Based Model Practical 1", "ABM1");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>This series of practicals develops a simple spatial "
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>This series of practicals develops a simple spatial "
                 + index.getReference("ABM", "Agent Based Model", sid)
                 + " (ABM) - a type of model useful for studying behaviour"
-                + " and emergence in complex systems.</p>");
-        w.add("""
+                + " and emergence in complex systems.</p>\n");
+        sb.append("""
               <p>The ABM will represent individual 'agents' which will have 
               varying characteristics. It will run iteratively such that
               each agent will do things in simulation steps (iterations of the 
@@ -58,17 +53,17 @@ public class ABM1 extends CoursePage {
               in which they are located and which is represented as a different 
               kind of entity.</p>
               """);
-        w.add("""
+        sb.append("""
               <p>In building an ABM, you will put theory into practise and learn 
               more about:</p>
               <ul>
-              <li>testing, debugging and refactoring code;</li>
-              <li>using loops, conditionals and containers;</li>
-              <li>defining and using functions and classes;</li>
-              <li>reading and writing data files;</li>
-              <li>organising code into modules;</li>
-              <li>developing a simple Graphical User Interface (GUI); and,</li>
-              <li>scraping and processing data from the Web.</li>
+              <li>testing, debugging and refactoring code;</li>\n
+              <li>using loops, conditionals and containers;</li>\n
+              <li>defining and using functions and classes;</li>\n
+              <li>reading and writing data files;</li>\n
+              <li>organising code into modules;</li>\n
+              <li>developing a simple Graphical User Interface (GUI); and,</li>\n
+              <li>scraping and processing data from the Web.</li>\n
               </ul>
               <p>The agents will have simple behaviours and will interact 
               with the environment. The model will be initialised by reading 
@@ -77,8 +72,8 @@ public class ABM1 extends CoursePage {
               Additional outputs from the model will be saved in files.</p>
               """);
 
-        sid = addSection("2", "Getting started", 2);
-        w.add("""
+        sid = addSection("2", "Getting started", 2, sb);
+        sb.append("""
               <p>Initially two agents are going to be represented in an absrtact 
               two dimensional plane. The location of these agents will be given 
               by cartesian coordinates: (x0, y0) and (x1, y1). They will be
@@ -102,7 +97,7 @@ public class ABM1 extends CoursePage {
               'src' and within this create a new directory called 'abm1'.</p>
               <p>Open Spyder and save the file as 'model.py' in the 'abm1'
               directory.</p>
-              <p>Copy the algorithm above and paste it into the file.</li>
+              <p>Copy the algorithm above and paste it into the file.</li>\n
               <p>Add a line after the line "# Initialise a variable x0' to 
               initialise a variable 'x0' with the value '0' and print this 
               out:</p>
@@ -112,21 +107,21 @@ public class ABM1 extends CoursePage {
               should be:</p>
               <pre>x0 0</pre>
               """);
-        w.add("<p>Note that two parameters are passed into the "
+        sb.append("<p>Note that two parameters are passed into the "
                 + index.getReference("Python print", "print")
                 + " function. These are printed out sequentially with a space"
-                + " delimiter by default.</p>");
-        w.add("<p>Do the same for variable 'y0'.</p>");
+                + " delimiter by default.</p>\n");
+        sb.append("<p>Do the same for variable 'y0'.</p>\n");
 
-        sid = addSection("3", "Randomly changing values", 2);
-        w.add("<p>The Python standard library "
+        sid = addSection("3", "Randomly changing values", 2, sb);
+        sb.append("<p>The Python standard library "
                 + index.getReference("Python random", "random module", sid)
                 + " implements pseudo-random number generators for various"
                 + " distributions and provides a way to change variable "
                 + " values randomly. To use the module it has to be imported."
                 + " Towards the top of 'model.py' add the following import"
-                + " statement:</p>");
-        w.add("""
+                + " statement:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import random</code></pre>
               <p>It is good practice to organise import statements at the top 
               of files as this makes them easy to find and makes it less likely 
@@ -134,35 +129,35 @@ public class ABM1 extends CoursePage {
               excpetions and stop code executing as expected, but clutters code 
               and makes it less efficient.</p>
               """);
-        w.add("<p>Use an "
+        sb.append("<p>Use an "
                 + index.getReference("Python if", "if statement", sid)
                 + " to determine whether to increase or decrease 'x0' based on "
                 + " the value obtained from a call to the function "
                 + "<a href=\"https://docs.python.org/3/library/random.html#random.random\">"
                 + "random</a>:"
                 + " First obtain and print a pseudo-random number in the range"
-                + " [0, 1) as follows:</p>");
-        w.add("""
+                + " [0, 1) as follows:</p>\n");
+        sb.append("""
               <pre><code class="language-python">rn = random.random()
               print(rn)</code></pre>
               """);
-        w.add("<p>Run your program a few times to observe that the value of "
-                + "'rn' varies randomly.</p>"
+        sb.append("<p>Run your program a few times to observe that the value of "
+                + "'rn' varies randomly.</p>\n"
                 + "<p>What is happening, is that the start (seed) of pseudo"
                 + "-random sequence used to generate numbers randomly is being"
                 + " set from the computer clock time (which moves on"
-                + " incrementally at a high frequency.</p>"
+                + " incrementally at a high frequency.</p>\n"
                 + "<p>Declare an 'if statement' so that if the value 'rn' is "
                 + "less that '0.5' increase 'x0' by '1', otherwise decrease "
-                + "'x0' by '1':</p>");
-        w.add("""
+                + "'x0' by '1':</p>\n");
+        sb.append("""
               <pre><code class="language-python">if rn < 0.5:
                   x0 = x0 + 1
               else:
                   x0 = x0 - 1</code>
               print("x0", x0)</pre>
               """);
-        w.add("""
+        sb.append("""
               <p>Run your program a few times to observe that sometimes the 
               value of 'x0' increases and sometimes it decreases and this 
               corresponds to the value of 'rn'.</p>
@@ -191,13 +186,13 @@ public class ABM1 extends CoursePage {
               coordinates change.</p>
               """);
 
-        addSection("4", "Calculate the Euclidean distance", 2);
-        w.add("<p>Use the "
+        addSection("4", "Calculate the Euclidean distance", 2, sb);
+        sb.append("<p>Use the "
                 + "<a href = \"https://en.wikipedia.org/wiki/Pythagorean_theorem\">"
                 + "Pythogorean theorem</a> to calculate the distance between "
                 + "the cartesian coordinates (x0, y0) and (x1, y1). The "
-                + "algorithm is:</p>");
-        w.add("""
+                + "algorithm is:</p>\n");
+        sb.append("""
               <pre># Calculate the difference in the x coordinates.
               # Calculate the difference in the y coordinates.
               # Square the differences and add the squares
@@ -210,15 +205,15 @@ public class ABM1 extends CoursePage {
               So, raising a number to the power of '0.5' calculates the square 
               root.
               """);
-        w.add("(Alternatively, import the standard library "
+        sb.append("(Alternatively, import the standard library "
                 + index.getReference("Python math", "math module", sid)
                 + " and use the "
                 + "<a href = \"https://docs.python.org/3/library/math.html#math.sqrt\">"
                 + "sqrt</a> function). The expected distance between (0, 0) and"
-                + "(3, 4) is 5.</p>");
+                + "(3, 4) is 5.</p>\n");
 
-        sid = addSection("5", "Review, commit and look ahead", 2);
-        w.add("""
+        sid = addSection("5", "Review, commit and look ahead", 2, sb);
+        sb.append("""
               <p>Hopefully, you managed to develop code that produces the 
               correct answer. If not, do not worry, the important thing is to 
               have tried. Perhaps look ahead to the start of the next ABM 
@@ -233,11 +228,10 @@ public class ABM1 extends CoursePage {
               <p>Add and commit to your local git repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("<p>In the next ABM practical: Each pair of coordinates will be"
-                + " stored together in a container, "
-                + index.getReference("Python for", "for loops")
-                + " will be used to create and move more agents, and the model"
-                + " will be visualised.</p>");
-        w.add("</div>");
+        sb.append("<p>In the next ABM practical: Each pair of coordinates will be stored together in a container, ")
+                .append(index.getReference("Python for", "for loops"))
+                .append(" will be used to create and move more agents, and the model will be visualised.</p>\n");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

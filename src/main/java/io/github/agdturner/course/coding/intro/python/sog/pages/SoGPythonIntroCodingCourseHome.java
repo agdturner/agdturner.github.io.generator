@@ -31,25 +31,25 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     }
     
     @Override
-    public void writeMaintainer() {
-        w.add("<p>The website is maintained by "
+    public void getMaintainer(StringBuilder sb) {
+        sb.append("<p>The website is maintained by "
                 + Web_ContentWriter.getLink(
                         "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
                         "Andy Turner")
                 + " and comprises a set of webpages and file based resources."
-                + "</p>");
+                + "</p>\n");
     }
     
     @Override
-    public void writeLearningJourney0() {
-        super.writeLearningJourney0();
-        w.add("<p>If in doubt, please consult yout tutor.</p>");
+    public void getLearningJourney0(StringBuilder sb) {
+        super.getLearningJourney0(sb);
+        sb.append("<p>If in doubt, please consult yout tutor.</p>\n");
     }
     
     @Override
-    public void writeLearningJourney1 () {
-        super.writeLearningJourney1();
-        w.add("""
+    public void getLearningJourney1 (StringBuilder sb) {
+        super.getLearningJourney1(sb);
+        sb.append("""
               <p>To complete the course, you are to undertake an independent 
               project to apply what you have learned to develop some different 
               software - there will be a specification of what the code/software 
@@ -59,9 +59,9 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     }
 
     @Override
-    public void writePlatform() {
-        super.writePlatform();
-        w.add("<p>The software is available via 'AppsAnywhere' at the "
+    public void getPlatform(StringBuilder sb) {
+        super.getPlatform(sb);
+        sb.append("<p>The software is available via 'AppsAnywhere' at the "
                 + "University of Leeds which is accessible remotely via the "
                 + "'Academic' <a href=\"https://wvd.leeds.ac.uk\">"
                 + "University Windows Virtual Desktop</a>. The software "
@@ -70,7 +70,7 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
                 + " - a data science platform, "
                 + references.getReference("QGIS")
                 + " Desktop - Geographical Information System software, and "
-                + "various third party Python packages.</p>");
-        w.add("</div>");
+                + "various third party Python packages.</p>\n");
+        sb.append("</div>");
     }
 }

@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course Classes Page.
@@ -36,15 +34,12 @@ public class Classes extends CoursePage {
     public Classes(PythonIntroCodingCourse course) {
         super(course, "classes", "Classes", "Classes");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("""
               <p>Classes are templates for making objects. Objects are instances 
               of the 'class' that defines them. There can be many objects that 
               are instances of a class, like there are many individual people
@@ -70,8 +65,8 @@ public class Classes extends CoursePage {
               capitalised first letters for each word).</p>
               """);
 
-        sid = addSection("2", "Class Definitions, Constructors, Attributes and Methods", 2);
-        w.add("""
+        sid = addSection("2", "Class Definitions, Constructors, Attributes and Methods", 2, sb);
+        sb.append("""
               <p>A class is defined using the keyword 'class' followed by the 
               name of the class, parentheses, and a colon, for example:</p>
               <pre><code class="language-python">class Agent():</code></pre>
@@ -129,8 +124,8 @@ public class Classes extends CoursePage {
                       self.y = y</code></pre>
               """);
 
-        sid = addSection("3", "Inheritance", 2);
-        w.add("""
+        sid = addSection("3", "Inheritance", 2, sb);
+        sb.append("""
               <p>In Python, all classes inherit (attributes and methods) from 
               the 'type' metaclass. A 'metaclass' can be thought of as a factory 
               for producing classes.</p>
@@ -183,8 +178,8 @@ public class Classes extends CoursePage {
               The Python Tutorial on Classes Section on Multiple Inheritance</a>.</p>
               """);
 
-        sid = addSection("4", "Access Control", 2);
-        w.add("""
+        sid = addSection("4", "Access Control", 2, sb);
+        sb.append("""
               <p>Python does not have an direct way to declare the access level 
               or control access to variables or functions/methods as is common 
               in other languages.</p>
@@ -244,14 +239,14 @@ public class Classes extends CoursePage {
               The Python Library Documentation Chapter on Functions Section on Property</a>.</p>
               """);
 
-        sid = addSection("5", "Customisation", 2);
-        w.add("<p>By default, when printing an object using the "
+        sid = addSection("5", "Customisation", 2, sb);
+        sb.append("<p>By default, when printing an object using the "
                 + index.getReference("Python print", "print", sid)
                 + " function, the memory address of the object is printed, but"
                 + " rarely is this useful. The '__str__' method can be"
                 + " overriden to provide a more useful string representation of"
-                + " an object, for example:</p>");
-        w.add("""
+                + " an object, for example:</p>\n");
+        sb.append("""
               <pre><code class="language-python">class Agent():
                   def __init__(self, x, y):
                       self.x = x
@@ -276,6 +271,7 @@ public class Classes extends CoursePage {
               <a href="https://docs.python.org/3/tutorial/classes.html">
               The Python Tutorial on Classes</a>.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

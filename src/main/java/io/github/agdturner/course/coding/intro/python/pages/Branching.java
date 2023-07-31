@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course Branching and Loops Page.
@@ -36,28 +34,25 @@ public class Branching extends CoursePage {
     public Branching(PythonIntroCodingCourse course) {
         super(course, "branching", "Branching", "Branching");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>Branching controls the flow of a program. This part considers"
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>Branching controls the flow of a program. This part considers"
                 + " a couple of ways of branching in Python. The main way uses"
                 + " an '"
                 + index.getReference("Conditional", "if", sid)
-                + "' statement.</p>");
+                + "' statement.</p>\n");
 
-        sid = addSection("2", "If", 2);
-        w.add("<p>The "
+        sid = addSection("2", "If", 2, sb);
+        sb.append("<p>The "
                 + index.getReference("Python if", "if statement", sid)
                 + " is a 'compound' statement (one that comprises groups of"
                 + " other statements) that provides a means to branch based"
                 + " upon a condition which evaluates to either 'True' or"
-                + " 'False'. Consider the following example:</p>");
-        w.add("""
+                + " 'False'. Consider the following example:</p>\n");
+        sb.append("""
               <pre><code class="language-python">day_of_week = 5
               day = "Weekday"
               # A simple If Statement
@@ -110,14 +105,14 @@ public class Branching extends CoursePage {
               so this can do more than just look up a value from a key.</p>
               """);
 
-        sid = addSection("3", "Match", 2);
-        w.add("<p>Since Python 3.10 there is also a "
+        sid = addSection("3", "Match", 2, sb);
+        sb.append("<p>Since Python 3.10 there is also a "
                 + index.getReference("Python match", "match", sid)
                 + " statement which can simplify if statements with many elif"
                 + " clauses as a 'match-case' statement. The following example"
                 + " shows the equivalent of the example from the end of previous"
-                + " section:</p>");
-        w.add("""
+                + " section:</p>\n");
+        sb.append("""
               <pre><code class="language-python">day_of_week = 5
               match day_of_week:
                   case 1:
@@ -144,6 +139,7 @@ public class Branching extends CoursePage {
               <li><a href="https://peps.python.org/pep-0636/">PEP 636, Structural Pattern Matching: Tutorial</a></li>
               </ul>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

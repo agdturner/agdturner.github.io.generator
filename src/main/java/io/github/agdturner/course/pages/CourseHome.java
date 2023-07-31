@@ -42,11 +42,11 @@ public abstract class CourseHome extends CoursePage {
     /**
      * Initialise the header, h1, and start of the introduction.
      */
-    public void writeStart() {
+    public void getStart(StringBuilder sb) {
         writeHeader();
         writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("""
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("""
               <p>Welcome to the course website!</p>
               """);
     }
@@ -55,14 +55,14 @@ public abstract class CourseHome extends CoursePage {
      * Default webmaster details - who maintains the site and how to contact 
      * them. 
      */
-    public void writeMaintainer() {
-        w.add("<p>The website is maintained by "
+    public void getMaintainer(StringBuilder sb) {
+        sb.append("<p>The website is maintained by "
                 + Web_ContentWriter.getLink(
                         "https://arc.leeds.ac.uk/",
-                        "Research Computing Leeds")
+                        "Research Computing")
                 + " and comprises a set of webpages and file based resources."
                 + "</p>");
-        w.add("<p>Please "
+        sb.append("<p>Please "
                 + Web_ContentWriter.getLink(
                         "https://it.leeds.ac.uk/it?id=sc_cat_item&sys_id=7587b2530f675f00a82247ece1050eda",
                         "contact us")
@@ -73,8 +73,8 @@ public abstract class CourseHome extends CoursePage {
     /**
      * Explanation about navigation of the site.
      */
-    public void writeNavigationIntro() {
-        w.add("""
+    public void getNavigationIntro(StringBuilder sb) {
+        sb.append("""
               <p>At the top of each web page is a button that can be actioned to 
               change between a lighter and darker page style. Below that is a 
               navigation section that links to each web page. The pages are 
@@ -89,34 +89,34 @@ public abstract class CourseHome extends CoursePage {
               """);
     }
 
-    public void writeSyllabus() {
-        SectionID sid = addSection("2", "Syllabus", 2);
+    public void getSyllabus(StringBuilder sb) {
+        SectionID sid = addSection("2", "Syllabus", 2, sb);
     }
 
-    public void writeExpectations() {
-       SectionID sid = addSection("3", "Expectations", 2);
-        w.add("""
+    public void getExpectations(StringBuilder sb) {
+       SectionID sid = addSection("3", "Expectations", 2, sb);
+        sb.append("""
               <p>You will learn about:</p>
               <ul>
               """);
     }
         
-    public void writeExpectationsN() {
-        w.add("""
+    public void getExpectationsN(StringBuilder sb) {
+        sb.append("""
               <p>There are some key concepts which may take a few attempts to 
               get used to and comprehensively understand.</p>
               """);
     }
 
     
-    public void writeLearningJourney() {
-        writeLearningJourney0();
-        writeLearningJourneyN();
+    public void getLearningJourney(StringBuilder sb) {
+        getLearningJourney0(sb);
+        getLearningJourneyN(sb);
     }
     
-    public void writeLearningJourney0() { 
-        SectionID sid = addSection("4", "The Learning Journey", 2);
-        w.add("""
+    public void getLearningJourney0(StringBuilder sb) { 
+        SectionID sid = addSection("4", "The Learning Journey", 2, sb);
+        sb.append("""
               <p>Develop your understanding through practise and by reading.</p>
               <p>Be experimental - test your understanding by testing code does 
               what you expect it to. If code does not do what you expect, try to
@@ -132,20 +132,20 @@ public abstract class CourseHome extends CoursePage {
               """);
     }
     
-    public void writeLearningJourneyN() {
+    public void getLearningJourneyN(StringBuilder sb) {
         String courseName = getCourse().courseType;
-        w.add("<p>Try to enjoy the learning journey, the challenges and the "
+        sb.append("<p>Try to enjoy the learning journey, the challenges and the "
                 + "rewards. Learning to program and learning "
                 + index.getReference(courseName, Strings.toUpperCaseFirstLetter(courseName))
                 + " is empowering!</p>");
     }
     
-    public void writePlatform() {
-        SectionID sid = addSection("5", "Platform/Software", 2);
-        w.add("""
+    public void getPlatform(StringBuilder sb) {
+        SectionID sid = addSection("5", "Platform/Software", 2, sb);
+        sb.append("""
               <p>All the software used in this course is 
               """);
-        w.add(index.getReference("Free and Open Source Software",
+        sb.append(index.getReference("Free and Open Source Software",
                 "Free and Open Source Software")
                 + " (FOSS) - available to download and install on "
                 + index.getReference("Linux")
@@ -154,5 +154,12 @@ public abstract class CourseHome extends CoursePage {
                 + ", and "
                 + index.getReference("MacOS")
                 + ".<p>");
+    }
+    
+    /**
+     * @return {@code (Course) site).
+     */
+    public Course getCourse() {
+        return (Course) site; 
     }
 }

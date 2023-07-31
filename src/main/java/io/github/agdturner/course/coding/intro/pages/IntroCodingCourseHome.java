@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.coding.intro.pages;
 
+import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.pages.CodingCourseHome;
 
@@ -30,36 +31,39 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
     }
     
     @Override
-    public void writeExpectations() {
-        super.writeExpectations();
+    public void getExpectations(StringBuilder sb) {
+        super.getExpectations(sb);
     }
     
     /**
      * Version Control, GitHub, Data Encoding and File Formats
      */
-    public void writeExpectations0() {
-        w.add("<li>"
+    public void getExpectations0(StringBuilder sb) {
+        sb.append("<li>"
                 + references.getReference("GitHub")
-                + " as a source code repository and for Web site hosting</li>");
+                + " as a source code repository and for website hosting</li>");
     }
     
     @Override
-    public void writeExpectationsN() {
-        w.add("""
+    public void getExpectationsN(StringBuilder sb) {
+        sb.append("""
               </ul>
               <p>Computer programming mostly involves computational thinking, 
               planning, problem solving and testing. It is often helpful to 
               break a task into smaller subtasks, and gradually develop an
               implementation. Often good solutions to coding tasks involve doing
-              things repeatedly for a given sequence of things.</p>
+              things repeatedly for a sequence of things.</p>
               <!--<p>Often it is 
               helpful to use a framework for testing from the outset and to test 
               often as the code develops.</p>-->
               """);
-        w.add("<p>If you are new to computer programming, there is quite a lot "
+        String courseType = getCourse().courseType;
+        sb.append("<p>If you are new to computer programming, there is quite a lot "
                 + "of terminology to get used to, some is generic to "
                 + "programming, some is specific to "
-                + index.getReference("Python")
+                + index.getReference(courseType, Strings.toUpperCaseFirstLetter(courseType))
                 + ".</p>");
     }
+    
+    
 }

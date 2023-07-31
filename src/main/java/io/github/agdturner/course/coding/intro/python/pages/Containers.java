@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course Containers Page.
@@ -36,15 +34,12 @@ public class Containers extends CoursePage {
     public Containers(PythonIntroCodingCourse course) {
         super(course, "containers", "Containers", "Containers");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("""
               <p>There are various containers for data in Python including: 
               sequence objects (bytes, bytearrays, strings, tuples, ranges, 
               lists, arrays), sets and dictionaries. Similar data structures are
@@ -58,14 +53,14 @@ public class Containers extends CoursePage {
               introduce each in a bit more detail.</p>
               """);
 
-        sid = addSection("2", "Sequences", 2);
-        w.add("<p>A sequence is a particular class of object. The following are"
+        sid = addSection("2", "Sequences", 2, sb);
+        sb.append("<p>A sequence is a particular class of object. The following are"
                 + " perhaps more commonly used sequences: strings, tuples,"
-                + " ranges, and lists.</p>");
+                + " ranges, and lists.</p>\n");
 
-        sid = addSection("2.1", "Bytes and Bytearray", 3);
+        sid = addSection("2.1", "Bytes and Bytearray", 3, sb);
         index.getReference("Bytes", "", sid);
-        w.add("<p>A "
+        sb.append("<p>A "
                 + index.getReference("Python bytes", "bytes", sid)
                 + " container stores an immutable sequence of integers in the"
                 + " range [0, 255]. Since many major binary protocols are"
@@ -74,16 +69,16 @@ public class Containers extends CoursePage {
                 + " text encoding, bytes objects offer several methods that are only valid when working with ASCII compatible data and are closely"
                 + " related to "
                 + index.getReference("Python strings", "strings", sid)
-                + " in a variety of other ways.</p>");
-        w.add("<p>A "
+                + " in a variety of other ways.</p>\n");
+        sb.append("<p>A "
                 + index.getReference("Python bytearray", "bytearray", sid)
                 + " is a mutable sequence of integers in the range [0, 255]."
-                + "</p>");
-        w.add("<p>These are worth knowing about, but are not used directly in "
-                + "this course, so details are omitted.</p>");
+                + "</p>\n");
+        sb.append("<p>These are worth knowing about, but are not used directly in "
+                + "this course, so details are omitted.</p>\n");
 
-        sid = addSection("2.2", "Strings", 3);
-        w.add("<p>"
+        sid = addSection("2.2", "Strings", 3, sb);
+        sb.append("<p>"
                 + index.getReference("Python strings", "Strings", sid)
                 + " are immutable sequences of "
                 + index.getReference("Unicode", sid)
@@ -99,8 +94,8 @@ public class Containers extends CoursePage {
                 + index.getReference("Python str", "str", sid)
                 + " which allows strings to be constructed from other types of"
                 + " object. Multiline strings are either encapsulated by triple"
-                + " single quotes or triple double quotes.</p>");
-        w.add("""
+                + " single quotes or triple double quotes.</p>\n");
+        sb.append("""
               <p>Strings may contain quotation marks. If a string is 
               encapsulated using single quotes, then in order to contain single
               quote symbols, then these need escaping by preceding them with a
@@ -169,8 +164,8 @@ public class Containers extends CoursePage {
               out if a string starts or ends with a particular string.</p>
               """);
 
-        sid = addSection("2.3", "Tuples", 3);
-        w.add("A "
+        sid = addSection("2.3", "Tuples", 3, sb);
+        sb.append("A "
                 + index.getReference("Python tuple", "tuple", sid)
                 + " is an immutable sequence that can be added to and nested."
                 + " Like strings, once created the items cannot be substituted "
@@ -180,8 +175,8 @@ public class Containers extends CoursePage {
                 + " functions. Functions can only return one thing, but that"
                 + " thing can be a tuple that effectively packs a sequence of"
                 + " things together. Consider the following code where there is"
-                + " some packing and unpacking of a tuple:</p>");
-        w.add("""
+                + " some packing and unpacking of a tuple:</p>\n");
+        sb.append("""
               <pre><code class="language-python">a = () # A new empty tuple
               print(len(a)) # <-- Prints 0
               b = (1, "two", 4) # Pack 3 things into b
@@ -203,7 +198,7 @@ public class Containers extends CoursePage {
                   a, b = b, a+b
               print(b)</code></pre>
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + index.getReference("Python while", "while statement")
                 + " is a loop with an expression that is evaluated each time"
                 + " around the loop. While this expression 'b < 10' evaluates"
@@ -211,14 +206,14 @@ public class Containers extends CoursePage {
                 + " 'False', the program continues by executing the next line"
                 + " after the loop. Notice in the example how things are packed"
                 + " and unpacked in the tuples. Such packing/unpacking is"
-                + " is not common in other languages (currently).</p>");
+                + " is not common in other languages (currently).</p>\n");
 
-        sid = addSection("2.4", "Ranges", 3);
-        w.add("<p>"
+        sid = addSection("2.4", "Ranges", 3, sb);
+        sb.append("<p>"
                 + index.getReference("Python range", "Ranges", sid)
                 + " are a special type of immutable sequence created as"
-                + " follows:</p>");
-        w.add("""
+                + " follows:</p>\n");
+        sb.append("""
               <pre><code class="language-python">range(start, stop, step) # start and step are optional and default to 0 and 1 repectively</code></pre>
               <p>The parameters: start, stop and step should be integers. The 
               range function generates numbers up to but not including stop, 
@@ -260,7 +255,7 @@ public class Containers extends CoursePage {
               t = tuple(r)
               print(t) # <-- Prints (0, 1, 2, 3, 4)</code></pre>
               """);
-        w.add("<p>There are various "
+        sb.append("<p>There are various "
                 + index.getReference("Python Built-in Functions",
                         "built-in functions", sid)
                 + " that process sequences, for example "
@@ -272,8 +267,8 @@ public class Containers extends CoursePage {
                 + " will return the minimum value, and "
                 + "<a href=\"https://docs.python.org/3/library/functions.html#sum\">"
                 + "sum</a>"
-                + " will add up all the values in a sequence.</p>");
-        w.add("<p>Additionally, there are a number of "
+                + " will add up all the values in a sequence.</p>\n");
+        sb.append("<p>Additionally, there are a number of "
                 + "<a href=\"https://docs.python.org/3/library/stdtypes.html#common-sequence-operations\">"
                 + "common sequence methods</a>: The method 'index' will return "
                 + "the index of the first occurrence of an object equal to a "
@@ -281,8 +276,8 @@ public class Containers extends CoursePage {
                 + "occurrences instances of objects equal to a given value. "
                 + "For a sequence of boolean values ('True' or 'False') the "
                 + "method 'any' will return 'True' if any of the items in "
-                + "the sequence are 'True'.</p>:");
-        w.add("""
+                + "the sequence are 'True'.</p>\n:");
+        sb.append("""
               <pre><code class="language-python">a = (1, 6, 9, 0, 6)
               print(min(a))
               print(max(a))
@@ -293,15 +288,15 @@ public class Containers extends CoursePage {
               print(any(b)) # Print if any of the items in b are True.</code></pre>
               """);
 
-        sid = addSection("2.5", "Lists", 3);
-        w.add("<p>"
+        sid = addSection("2.5", "Lists", 3, sb);
+        sb.append("<p>"
                 + index.getReference("Python list", "Lists", sid)
                 + " are the mutable form of tuples. Lists have an order,"
                 + " different types of thing can be stored in them, things can"
                 + " be appended, inserted and removed from them. The elements"
                 + " within a list can be reordered and there are various"
-                + " methods that help with this.</p>");
-        w.add("""
+                + " methods that help with this.</p>\n");
+        sb.append("""
               <p>Lists are initialised with square brackets or using the
               constructor that can take in some other container as an argument. 
               For example:</p>
@@ -319,7 +314,7 @@ public class Containers extends CoursePage {
               <p>Run this code and check if the output is what you expect and 
               then have a play around trying some different things.</p>
               """);
-        w.add("""
+        sb.append("""
               <p>A 'slice' of a sequence contains all those items at the 
               indexes given by a range:</p>
               <pre><code class="language-python">a = [0, 1, 2, 3, 4]
@@ -334,7 +329,7 @@ public class Containers extends CoursePage {
               d = a[:] # A complete slice i.e. all items of a
               print("d", d)</code></pre>
               """);
-        w.add("""
+        sb.append("""
               <p>In slicing a list a using a[i:j:k]:</p>
               <ul>
               <li>If j > len(a), the last position is used.</li>
@@ -363,13 +358,13 @@ public class Containers extends CoursePage {
               a[1:5] = b
               print(a) # <-- Prints [0,10,20]</code></pre>
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + index.getReference("Python builtins", "builtin module")
                 + " function "
                 + index.getReference("Python zip", "zip", sid)
                 + " can be used to combine lists into a sequence of tuples as"
-                + " follows:</p>");
-        w.add("""
+                + " follows:</p>\n");
+        sb.append("""
               <pre><code class="language-python">a = [1,2,3,4,5]
               b = [10,20,30,40,50]
               c = zip(a,b)
@@ -380,7 +375,7 @@ public class Containers extends CoursePage {
               the shorter sequence and does not contain the end of the longer 
               sequence.</p>
               """);
-        w.add("""
+        sb.append("""
               <p>Command line arguments are passed in a list. For example, the
               following command passes the filename 'HelloWorld.py' to the 
               Python interpreter which then loads the file of commands to 
@@ -399,20 +394,20 @@ public class Containers extends CoursePage {
               "arg3".</p>
               """);
 
-        sid = addSection("2.6", "Arrays", 3);
-        w.add("<p>"
+        sid = addSection("2.6", "Arrays", 3, sb);
+        sb.append("<p>"
                 + index.getReference("Python array", "Arrays", sid)
                 + " are for storing and processing large collections of"
                 + " things of the same type. Typically those things are"
                 + " numbers. An array is like a list but it cannot be used to"
                 + " store anything, it can only store things of a specific"
-                + " type.</p>");
-        w.add("<p>The following creates an array containing signed Integers and"
+                + " type.</p>\n");
+        sb.append("<p>The following creates an array containing signed Integers and"
                 + " inserts a new Integer value into the array. The attempts to"
                 + " insert a Float into the array which results in a "
                 + index.getReference("Python array", "TypeError", sid)
-                + ":</p>");
-        w.add("""
+                + ":</p>\n");
+        sb.append("""
               <pre><code class="language-python">import array
               a = array.array('i', [1, 2, 3, 4])
               print(a)
@@ -422,15 +417,15 @@ public class Containers extends CoursePage {
               </code></pre>
               """);
 
-        sid = addSection("3", "Sets", 2);
-        w.add("<p>"
+        sid = addSection("3", "Sets", 2, sb);
+        sb.append("<p>"
                 + index.getReference("Python set", "Sets", sid)
                 + " are unordered collections. Adding something into a set"
                 + " which already contains that thing will not change the set."
                 + " It is easy to test whether or not something is in a set."
                 + " The following code creates an empty set, adds some things"
-                + " into it and then tests if something is in the set.</p>");
-        w.add("""
+                + " into it and then tests if something is in the set.</p>\n");
+        sb.append("""
               <pre><code class="language-python">a = set() # Empty set
               a.add("apple") # Add "apple" to a
               a.add("orange") # Add "orange" to a
@@ -441,8 +436,8 @@ public class Containers extends CoursePage {
               Two sets are equal if they contain all of the same elements.</p> 
               """);
 
-        sid = addSection("4", "Dictionaries", 2);
-        w.add("<p>"
+        sid = addSection("4", "Dictionaries", 2, sb);
+        sb.append("<p>"
                 + index.getReference("Python dict", "Dictionaries", sid)
                 + " hold key-value pairs. The keys are unique, the values can"
                 + " be anything. Dictionaries can be created using curly braces"
@@ -451,8 +446,8 @@ public class Containers extends CoursePage {
                 + " separated with commas. Alternatively the dict() constructor"
                 + " method can be used. The following code creates a dictionary"
                 + " and retrieves a value for a particular key and prints it:"
-                + "</p>");
-        w.add("""
+                + "</p>\n");
+        sb.append("""
               <pre><code class="language-python">alias = dict([("rm", "remove"), ("cd", "change directory"), ("ls", "list")])
               print(alias.get("rm")) # <-- This should print 'remove'.
               </code></pre>
@@ -460,11 +455,12 @@ public class Containers extends CoursePage {
               dictionaries.</p>
               """);
 
-        w.add("""
+        sb.append("""
               <h3 id="5">Further reading</h3>
               <p><a href="https://docs.python.org/3/tutorial/datastructures.html">
               Python documentation tutorial about data structures</a>.
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

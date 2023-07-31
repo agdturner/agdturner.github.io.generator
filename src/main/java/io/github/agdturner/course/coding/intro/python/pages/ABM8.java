@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM8 Page.
@@ -38,20 +36,19 @@ public class ABM8 extends CoursePage {
     }
 
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        sb.append("""
               <p>This practical is about adding a Graphical User Interface 
               (GUI).</p>
               <p>In your local code repository 'src' directory duplicate your 
               'abm7' directory and call the new directory 'abm8'.</p>
-              
-              <h2 id="2">2. Setting up Tkinter</h2>
-              <p>Matplotlib has different 'backends' that allow it to render 
+              """);
+
+        sid = addSection("2", "Setting up Tkinter", 2, sb);
+        sb.append("""
+                  <p>Matplotlib has different 'backends' that allow it to render 
               graphics in different ways. As the GUI will be developed using 
               tkinter, it is necessary to change the matplotlib backend by 
               adding the following at the top of 'model.py' before any other 
@@ -64,8 +61,10 @@ public class ABM8 extends CoursePage {
               'ok'. Then select:
               <pre>File > Restart</pre>
               <p>Save your files if prompted.</p>
-              
-              <h2 id="3">3. Organising the GUI</h2>
+              """);
+
+        sid = addSection("3", "Organising the GUI", 2, sb);
+        sb.append("""
               <p>Add the following function to 'model.py':</p>
               <pre><code class="language-python">def run(canvas):
                   animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
@@ -142,6 +141,7 @@ public class ABM8 extends CoursePage {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

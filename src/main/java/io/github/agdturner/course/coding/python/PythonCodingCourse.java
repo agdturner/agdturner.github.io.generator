@@ -46,4 +46,13 @@ public abstract class PythonCodingCourse extends CodingCourse {
         references = new PythonReferences(this, "references", "References", "References");
     }
 
+    @Override
+    public PythonIndex getIndex() {
+        return (PythonIndex) index;
+    }
+
+    @Override
+    public PythonReferences getReferences() {
+        return (PythonReferences) references;
+    }
 }

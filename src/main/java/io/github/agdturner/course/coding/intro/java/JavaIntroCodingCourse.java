@@ -18,7 +18,7 @@ package io.github.agdturner.course.coding.intro.java;
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.coding.pages.CodingCourseProgramming;
-import io.github.agdturner.course.coding.java.JavaCourse;
+import io.github.agdturner.course.coding.java.JavaCodingCourse;
 import io.github.agdturner.course.coding.intro.java.pages.Java;
 import io.github.agdturner.course.coding.intro.java.pages.JavaIntroCodingCourseHome;
 import java.io.IOException;
@@ -29,11 +29,11 @@ import java.util.logging.Logger;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * Java for generating Java Intro Course Website content.
+ * Java Intro Coding Course.
  *
  * @author Andy Turner
  */
-public abstract class JavaIntroCourse extends JavaCourse {
+public abstract class JavaIntroCodingCourse extends JavaCodingCourse {
 
     /**
      * Creates a new instance.
@@ -42,7 +42,7 @@ public abstract class JavaIntroCourse extends JavaCourse {
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
      */
-    public JavaIntroCourse(Environment env, String courseCode,
+    public JavaIntroCodingCourse(Environment env, String courseCode,
             String courseName) {
         super(env, courseCode, courseName);
         /**
@@ -76,37 +76,5 @@ public abstract class JavaIntroCourse extends JavaCourse {
         coursePages.add(new ABM9(this));
         coursePages.add(new Testing(this));
          */
-    }
-
-    /**
-     * Write Pages.
-     *
-     * @param local The path.
-     */
-    public void write(Path local) {
-        write(homePage, local);
-        for (int j = 0; j < pages.size(); j++) {
-            write((CoursePage) pages.get(j), local);
-        }
-        write(index, local);
-        write(references, local);
-    }
-
-    protected final void write(CoursePage page, Path local) {
-        page.write();
-        // Write footer
-        // Add navigation
-        page.w.add("<footer>");
-        page.w.add(page.getLinks("nav", false));
-        page.w.add("<p>Date last modified: " + LocalDate.now().toString() + ".</p>");
-        String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
-        page.w.add("<p>" + Web_ContentWriter.getLink(cc0, "CC0 Licence") + "</p>");
-        page.w.add("</footer>");
-        // Write page
-        try {
-            page.w.writeHTML(page.path, "index", page.title + " Page", CoursePage.getHeadElements(local));
-        } catch (IOException ex) {
-            Logger.getLogger(JavaIntroCourse.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

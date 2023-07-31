@@ -15,12 +15,9 @@
  */
 package io.github.agdturner.course.coding.intro.python.pages;
 
-import io.github.agdturner.core.Section;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM6 Page.
@@ -37,15 +34,12 @@ public class ABM6 extends CoursePage {
     public ABM6(PythonIntroCodingCourse course) {
         super(course, "abm6", "Agent Based Model Practical 6", "ABM6");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        sb.append("""
               <p>To get agents communicating they need a way to refer to each 
               other. Code is going to be developed so that those agents that are 
               within a given distance are going to share some of their store.
@@ -55,8 +49,10 @@ public class ABM6 extends CoursePage {
               your 'model.py' into this directory. Create a new directory called
               'my_modules' in 'abm6' and use 'save as' to save your 
               'agentframework.py' and 'io.py' files there.</p>
-              
-              <h2 id="2">2. Sharing</h2>
+                  """);
+        
+        sid = addSection("2", "Sharing", 2, sb);
+         sb.append("""
               <p>Each agent is going to share their store equally amongst all 
               agents within a given distance. The algorithm is as follows:</p>
               <pre># Calculate which other agents are within a given distance.
@@ -173,9 +169,10 @@ public class ABM6 extends CoursePage {
                   print("total resource", (sum_as + sum_e))</code></pre>
               <p>Run 'model.py' and interpret the output. Add more print
               statements to gain a clear understanding of how the code works.
-              </p>
-              
-              <h2 id="3">3. Organise module code</h2>
+              </p>""");
+        
+        sid = addSection("3", "Organise module code", 2, sb);
+        sb.append("""
               <p>Move all code in each 'my_modules' module that is not in 
               functions to be within if statement like the following 
               at the end of the file:</p>
@@ -183,9 +180,10 @@ public class ABM6 extends CoursePage {
               <p>Recall that this isolates this code so it is only run if that 
               file is the one run and not when the module is imported.</p>
               <p>Make sure to test that your code still produces the same 
-              results.</p>
-              
-              <h2 id="4">4. Output images and generate an animated Gif</h2>
+              results.</p>""");
+                      
+         sid = addSection("4", "Output images and generate an animated Gif", 2, sb);
+         sb.append("""
               <p>Add the following import statements to the 'model.py' placing 
               these with the other import statements as the first executable 
               statements in the code:</p>
@@ -222,9 +220,10 @@ public class ABM6 extends CoursePage {
               second.</p>
               <p>Once you have this working. Commit your code to your local 
               repository and assuming you are using GitHub - push your changes 
-              to GitHub.</p>
-              
-              <h2 id="5">5. Further Assignment 1 Coding Tasks</h2>
+              to GitHub.</p>""");
+                      
+         sid = addSection("5", "Further Assignment 1 Coding Tasks", 2, sb);
+         sb.append("""
               <p>Create some more variable results by randomly setting the 
               'store' of each agent in initialisation to be a value in the range
               [0, 99].</p>
@@ -234,6 +233,7 @@ public class ABM6 extends CoursePage {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

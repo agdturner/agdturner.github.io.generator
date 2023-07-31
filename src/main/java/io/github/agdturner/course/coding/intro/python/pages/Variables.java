@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * For Python Intro Course Variables Page.
@@ -37,25 +34,21 @@ public class Variables extends CoursePage {
     public Variables(PythonIntroCodingCourse course) {
         super(course, "variables", "Variables", "Variables");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>"
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>"
                 + index.getReference("Variable", "Variables", sid)
                 + " are a combination of an identifier (a name) and a value"
-                + ".</p>");
+                + ".</p>\n");
 
-        sid = addSection("2", "Python Variables", 2);
-        w.add("<p>In Python, the 'type' of a variable does not have to be "
+        sid = addSection("2", "Python Variables", 2, sb);
+        sb.append("<p>In Python, the 'type' of a variable does not have to be "
                 + "declared - it is effectively inferred by the value of the "
-                + "variable (if it needs to be).</p>");
-        w.add("<p>In Python, identifiers such as variable names can be "
+                + "variable (if it needs to be).</p>\n");
+        sb.append("<p>In Python, identifiers such as variable names can be "
                 + "reassigned. A benefit of this is that "
                 + index.getReference("API", "APIs")
                 + " can be more stable (as there is no need to specify exactly"
@@ -63,12 +56,12 @@ public class Variables extends CoursePage {
                 + " A downside is that, it is easier to make mistakes and "
                 + " accidentally re-use an identifier with unintended"
                 + " consequences.");
-        w.add("<p>The four primitive variable types in Python are: Integers,"
-                + " Floats, Strings, and Booleans:</p>"
+        sb.append("<p>The four primitive variable types in Python are: Integers,"
+                + " Floats, Strings, and Booleans:</p>\n"
                 + "<p>Integers are whole numbers and are unbounded in Python. "
                 + "The largest Integer is constrained by "
                 + index.getReference("Memory", "memory", sid)
-                + " availability.</p>"
+                + " availability.</p>\n"
                 + "<p>Floats are standard "
                 + index.getReference("Double-precision Floating-point", sid)
                 + " numbers - a special subset of fractions. These have a "
@@ -76,8 +69,8 @@ public class Variables extends CoursePage {
                 + "number &gt; 0) which can be ascertained from the "
                 + index.getReference("Python sys", "sys", sid)
                 + " module. There are Float values for positive and negative"
-                + " infinity. Consider and run the following code:</p>");
-        w.add("""
+                + " infinity. Consider and run the following code:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import sys
               
               # Exploring Float max and min values.
@@ -121,29 +114,29 @@ public class Variables extends CoursePage {
               max + d inf
               min2 2.2250754194454158e-293</pre>
               """);
-        w.add("<p>Float is very useful for approximate numerical calculations."
+        sb.append("<p>Float is very useful for approximate numerical calculations."
                 + " Do keep in mind that "
                 + index.getReference("Floating-point",
                         "Floating Point Arithmetic", sid)
                 + " is approximate - so calculations that use it are not"
-                + " necessarily accurate.</p>");
-        w.add("<p>The "
+                + " necessarily accurate.</p>\n");
+        sb.append("<p>The "
                 + references.getReference("Python 3 Documentation: Library",
                         "Python Standard Library")
                 + " has two modules that support more arithmetic accuracy: "
                 + index.getReference("Python decimal", "decimal", sid)
                 + "; and, "
                 + index.getReference("Python fractions", "fractions", sid)
-                + ".</p>");
-        w.add("<p>Strings are essentially blocks of text (which are sequences "
+                + ".</p>\n");
+        sb.append("<p>Strings are essentially blocks of text (which are sequences "
                 + "of single character length Strings). Strings can be "
                 + "assigned using; double or single quotes, or the constructor "
                 + "function "
                 + index.getReference("Python str", "str", sid)
                 + " (which can for example create a String from an Integer). "
                 + "Strings can be compared and checked for equality using the "
-                + "operator '=='. Consider and run the following code:</p>");
-        w.add("""
+                + "operator '=='. Consider and run the following code:</p>\n");
+        sb.append("""
               <pre><code class="language-python">s = "A"
               s2 = "a"
               s3 = "B"
@@ -171,12 +164,12 @@ public class Variables extends CoursePage {
               print("t or f", t or f)             # Prints True
               print("not (t or f)", not (t or f)) # Prints False</code></pre>
               """);
-        w.add("""
+        sb.append("""
               <p>More complex objects have state given by multiple primitives 
               variables. Objects can also be comprised of multiple other 
               objects as defined by a class.</p>
               """);
-        w.add("<p>The type of any object can be got using the function "
+        sb.append("<p>The type of any object can be got using the function "
                 + index.getReference("Python type", "type", sid)
                 + " from the "
                 + index.getReference("Python builtins", "builtins", sid)
@@ -184,8 +177,8 @@ public class Variables extends CoursePage {
                 + "initialises a variable named 'x' with the Integer value "
                 + "'1', then prints out the type of the variable 'x', then "
                 + "reassigns 'x' to have a String value, then again prints out "
-                + "the type of the variable 'x'.</p>");
-        w.add("""
+                + "the type of the variable 'x'.</p>\n");
+        sb.append("""
               <pre><code class="language-python"># Set x = 1 and print the type of x")
               x = 1
               print(type(x)) # Prints &lt;class 'int'&gt;
@@ -196,8 +189,8 @@ public class Variables extends CoursePage {
               &lt;class 'str'&gt;</pre>
               """);
 
-        sid = addSection("3", "Functions, Variable Scope and the Global Keyword", 2);
-        w.add("<p>When passed as parameters into functions, variables are "
+        sid = addSection("3", "Functions, Variable Scope and the Global Keyword", 2, sb);
+        sb.append("<p>When passed as parameters into functions, variables are "
                 + "shared this is technically known as '"
                 + index.getReference("Call By Sharing", sid)
                 + "'. If a variable is a primitive object then effectively a "
@@ -205,27 +198,27 @@ public class Variables extends CoursePage {
                 + "distinct from the variable outwith the function but that "
                 + "has the same value which is technically known as '"
                 + index.getReference("Call By Value", sid)
-                + "'.</p>");
-        w.add("<p>The "
+                + "'.</p>\n");
+        sb.append("<p>The "
                 + index.getReference("Scope", "scope", sid)
                 + " of a variable is from where in the code it can be accessed."
                 + " The "
                 + index.getReference("Python keyword", "keyword", sid)
-                + " 'global' can modify the scope.</p>");
-        w.add("""
+                + " 'global' can modify the scope.</p>\n");
+        sb.append("""
               <p>Consider the following:</p>
               <pre><code class="language-python">x = 1
               if x == 1:
                   y = 2
               print(y) # Prints 2</code></pre>
               """);
-        w.add("<p>The code in the "
+        sb.append("<p>The code in the "
                 + index.getReference("Python if", "if statement", sid)
                 + " is executed as the condition 'x == 1' evaluates"
                 + " as 'True'. If the condition were to evaluate as 'False',"
                 + " then the interpreter would skip to the end of the if"
-                + " statement, as happens running the following code:</p>");
-        w.add("""
+                + " statement, as happens running the following code:</p>\n");
+        sb.append("""
               <pre><code class="language-python">x = 1
               if x == 0:
                   y = 2
@@ -235,7 +228,7 @@ public class Variables extends CoursePage {
               <p>This is because 'y' does not get initialised and so cannot be 
               passed into the print function.</p>
               """);
-        w.add("""
+        sb.append("""
               <p>Consider the following code:</p>
               <pre><code class="language-python">x = 1
               def my_function():
@@ -274,12 +267,12 @@ public class Variables extends CoursePage {
               c 2</pre>
               """);
 
-        sid = addSection("4", "Deleting variables", 2);
-        w.add("<p>Variables can be deleted using the keyword 'del' followed by"
+        sid = addSection("4", "Deleting variables", 2, sb);
+        sb.append("<p>Variables can be deleted using the keyword 'del' followed by"
                 + " the name of the variable or a "
                 + index.getReference("Python tuple", "tuple", sid)
-                + " of variables to delete.</p>");
-        w.add("""
+                + " of variables to delete.</p>\n");
+        sb.append("""
               <p>Deleting variables can free up memory for other things. The 
               following code snippets shows how to initialise and delete
               variables:<p>
@@ -290,7 +283,7 @@ public class Variables extends CoursePage {
               c = 3
               del(b, c) # <-- Deletes b and site.</code></pre>
               """);
-        w.add("</div>");
-
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

@@ -36,11 +36,10 @@ public class Documentation extends CoursePage {
     }
     
     @Override
-    public void write() {
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("""
               <p><a href="https://docs.python.org/3/library/doctest.html">
               PyDoc</a> is the documentation system distributed with Python.
               It supports the generation of a webpage from documentation, and 
@@ -52,7 +51,7 @@ public class Documentation extends CoursePage {
               <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which 
               comes with Anaconda.</p>
               """);
-        
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * For Python Intro Course Functions Page.
@@ -37,16 +34,12 @@ public class Functions extends CoursePage {
     public Functions(PythonIntroCodingCourse course) {
         super(course, "functions", "Functions", "Functions");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>Functions are a key part of many programming languages. These"
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>Functions are a key part of many programming languages. These"
                 + " are reusable code blocks that are called and which return."
                 + " In calling the function typically parameters can be passed"
                 + " in. A function return may contain objects or values that "
@@ -61,8 +54,8 @@ public class Functions extends CoursePage {
                 + " are made available using "
                 + index.getReference("Python import", "import",
                         sid)
-                + " statements.</p>");
-        w.add("Python functions are defined in a code block that begins with a"
+                + " statements.</p>\n");
+        sb.append("Python functions are defined in a code block that begins with a"
                 + " definition or 'function declaration', and is followed by a"
                 + " set of indented statements. The function declaration uses"
                 + " the keyword 'def' which is followed by the name of the"
@@ -70,8 +63,8 @@ public class Functions extends CoursePage {
                 + " which may be empty or may contain a tuple of 'parameters'"
                 + " also called 'arguments' - names for things passed into the"
                 + " function. The function declaration ends with a colon ':'."
-                + " The following gives the general form:</p>");
-        w.add("""
+                + " The following gives the general form:</p>\n");
+        sb.append("""
               <pre><code class="language-python">def function_name(arg_0, arg_1):
                   # Function statements</code></pre>
               <p>A function may return one thing which can be a tuple of things.
@@ -80,7 +73,7 @@ public class Functions extends CoursePage {
               functions invisibly return 'None' - a special object of type 
               'NoneType'.</p>
               """);
-        w.add("""
+        sb.append("""
               <p>Functions are effectively blocks of code that can be used or 
               'called' repeatedly. Rather than repeat a block of code, it is 
               typically better to define a function and call the function twice.
@@ -89,8 +82,8 @@ public class Functions extends CoursePage {
               understand, maintain and use.</p>
               """);
 
-        sid = addSection("2", "Parameters", 2);
-        w.add("""
+        sid = addSection("2", "Parameters", 2, sb);
+        sb.append("""
               <p>Parameters or 'arguments' add flexibility and utility to 
               functions. Arguments can be variables or functions. Variables that  
               are primitive get copied. Variables that are non-primitive are 
@@ -100,8 +93,8 @@ public class Functions extends CoursePage {
               declare the type of a parameter passed to a function.</p>
               """);
 
-        sid = addSection("2.1", "Positional Parameters", 3);
-        w.add("""
+        sid = addSection("2.1", "Positional Parameters", 3, sb);
+        sb.append("""
               <p>Positional parameters or positional arguments are given in 
               order from left to right, so in the following 'add' function 
               'num1' is the first argument and 'num2' is the second argument:
@@ -127,8 +120,8 @@ public class Functions extends CoursePage {
               any undefaulted arguments in the function declaration.</p>
               """);
 
-        sid = addSection("2.2", "Keyword Arguments (kwargs)", 3);
-        w.add("""
+        sid = addSection("2.2", "Keyword Arguments (kwargs)", 3, sb);
+        sb.append("""
               <p>Arguments can also be named, these are called keyword arguments 
               or 'kwargs'. Note that this use of the term keyword has nothing to 
               do with the keywords that are special names for things that can't 
@@ -145,8 +138,8 @@ public class Functions extends CoursePage {
               arguments in the function declaration.</p>
               """);
 
-        sid = addSection("2.3", "Flexibility using Tuples and Dictionaries", 3);
-        w.add("""
+        sid = addSection("2.3", "Flexibility using Tuples and Dictionaries", 3, sb);
+        sb.append("""
               <p>More positional arguments can be allowed using '*tuple_name', 
               as in the following example:</p>
               <pre><code class="language-python">def add(*nums):
@@ -230,8 +223,8 @@ public class Functions extends CoursePage {
               Python documentation: Outline of how to get output from a function documentation</a></p>
               """);
 
-        sid = addSection("3", "Scope", 2);
-        w.add("""
+        sid = addSection("3", "Scope", 2, sb);
+        sb.append("""
               <p>The scope of a variable is from where in the code it can be 
               accessed. Scope was introduced in 
               <a href="../Variables/index.html#3">Variables Section 3</a> when 
@@ -277,8 +270,8 @@ public class Functions extends CoursePage {
               print(a) # Prints 1.</code></pre>
               """);
 
-        sid = addSection("4", "Function Complexity", 2);
-        w.add("""
+        sid = addSection("4", "Function Complexity", 2, sb);
+        sb.append("""
               <p>As shown above, functions can be nested. In the example above, 
               'f2' is inside 'f1', so: f2 is an 'inner function'; and, f2 is an 
               'outer function'. Nesting functions thus hides inner functions - 
@@ -302,8 +295,8 @@ public class Functions extends CoursePage {
               tuple.</p>
               """);
 
-        sid = addSection("4.1", "Decorators", 3);
-        w.add("""
+        sid = addSection("4.1", "Decorators", 3, sb);
+        sb.append("""
               <p>Decorators are functions that aare applied to the outputs of 
               other functions using the '@' symbol as part of the 
               function definition (see 
@@ -364,15 +357,15 @@ public class Functions extends CoursePage {
               print(run_time, "seconds to create", n_agents, "agents.")</code></pre>
               """);
 
-        sid = addSection("4.2", "Lambdas", 3);
-        w.add("<p>"
+        sid = addSection("4.2", "Lambdas", 3, sb);
+        sb.append("<p>"
                 + index.getReference("Python lambda", "Lambda expressions",
                         sid)
                 + " are used to create anonymous functions. They can have any"
                 + " number of arguments, but the expression is made up of a "
                 + "single non-compound statement. Consider the following "
-                + "example:</p>");
-        w.add("""
+                + "example:</p>\n");
+        sb.append("""
               <pre><code class="language-python"># A lambda to return the result of dividing a by b.
               x = lambda a, b : a / b
               
@@ -383,8 +376,8 @@ public class Functions extends CoursePage {
               of which is passed back.</p>
               """);
 
-        sid = addSection("4.3", "Callbacks", 3);
-        w.add("""
+        sid = addSection("4.3", "Callbacks", 3, sb);
+        sb.append("""
               <p>A Python callback is a subroutine function which is passed as 
               an argument to be executed at some point in the future. Consider 
               the following example where the callbacks are to the 'add' and 
@@ -479,8 +472,8 @@ public class Functions extends CoursePage {
               other tasks to be done whilst waiting for an event to happen.</p>
               """);
 
-        sid = addSection("4.4", "Partial", 3);
-        w.add("""
+        sid = addSection("4.4", "Partial", 3, sb);
+        sb.append("""
               <p>Functools <a href="https://docs.python.org/3/library/functools.html?highlight=partial#functools.partial">
               partial</a> allows for arguments of a function to be set 
               partially. For example:</p>
@@ -495,10 +488,10 @@ public class Functions extends CoursePage {
               print(pf(3)) # Prints 6</code></pre>
               """);
 
-        sid = addSection("5", "Style and Documenting Functions", 2);
+        sid = addSection("5", "Style and Documenting Functions", 2, sb);
 
-        sid = addSection("5.1", "Style", 3);
-        w.add("""
+        sid = addSection("5.1", "Style", 3, sb);
+        sb.append("""
               <p>Good Python style is set out in 
               <a href="https://www.python.org/dev/peps/pep-0008/">PEP-0008</a>
               which is worth finding time to read.</p>
@@ -518,8 +511,8 @@ public class Functions extends CoursePage {
               </ul>
               """);
 
-        sid = addSection("5.2", "Documenting Functions", 3);
-        w.add("<p>"
+        sid = addSection("5.2", "Documenting Functions", 3, sb);
+        sb.append("<p>"
                 + index.getReference("Python docstring", "Docstrings", sid)
                 + " are automatically extracted to describe code. They are"
                 + " added in triple-double quote enclosed comments after,"
@@ -528,8 +521,8 @@ public class Functions extends CoursePage {
                 + " which is typically written like a command to the function"
                 + " more than as a description of what the function does. It"
                 + " should also list what the parameters are and what if"
-                + " anything is returned from the function. For example:</p>");
-        w.add("""
+                + " anything is returned from the function. For example:</p>\n");
+        sb.append("""
               <pre><code class="language-python">def add (num1, num2):
                   \"""
                   Add two numbers.
@@ -550,10 +543,13 @@ public class Functions extends CoursePage {
               <pre>help(x)</pre>
               <p>The docstring can also be printed using:</p>
               <pre>print(x.__doc__)</pre>
-              
-              <h2 id="6">6. Next</h2>
+              """);
+        
+        sid = addSection("6", "Next", 2, sb);
+        sb.append("""
               <p>Refactoring the Agent Based Model code to use functions...</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM5 Page.
@@ -37,15 +35,12 @@ public class ABM5 extends CoursePage {
     public ABM5(PythonIntroCodingCourse course) {
         super(course, "abm5", "Agent Based Model Practical 5", "ABM5");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        sb.append("""
               <p>In this part the ABM environment entity will be initialise from
               a file. The agents will interact with this environment in a 
               simplistic way, and an output file will be generated.</p>
@@ -59,18 +54,18 @@ public class ABM5 extends CoursePage {
               code in different directories.</p>
               """);
 
-        sid = addSection("2", "Input Data", 2);
-        w.add("""
+        sid = addSection("2", "Input Data", 2, sb);
+        sb.append("""
               <p>Download/save into your newly created input data directory the 
               text file:
               <a href="../../resources/abm5/in.txt">in.txt</a></p>
               """);
-        w.add("<p>Open the file in a text editor. Note that the file comprises "
+        sb.append("<p>Open the file in a text editor. Note that the file comprises "
                 + "lines of integer numbers delimited by commas. It is a "
                 + index.getReference("CSV", sid)
                 + " format file. It is rectangular, indeed square and has 300 "
-                + "lines each with 300 values.</p>");
-        w.add("""
+                + "lines each with 300 values.</p>\n");
+        sb.append("""
               <p>Create a new source code file named 'io.py' in the 'abm5' 
               directory, add the following lines:</p>
               <pre><code class="language-python">import csv
@@ -87,7 +82,7 @@ public class ABM5 extends CoursePage {
               f.close()
               print(data)</code></pre>
               """);
-        w.add("""
+        sb.append("""
               <p>Run this new file. The output should correspond to the input 
               data file only the values are presented with '.0' appended (as 
               they have been loaded as Float and not Integer numbers).</p>
@@ -126,7 +121,7 @@ public class ABM5 extends CoursePage {
               <p>Run 'model.py' and it should now run without the error. (If you 
               still get an error then restart Spyder.)</p>
               """);
-        w.add("<p>Change the 'read_data' function so it checks that each row of"
+        sb.append("<p>Change the 'read_data' function so it checks that each row of"
                 + " 'data' contains the same number of values. Also change the"
                 + " function so it returns the number of lines (n_rows) and the"
                 + " number of values in each line (n_cols) as well as 'data'."
@@ -134,10 +129,10 @@ public class ABM5 extends CoursePage {
                 + index.getReference("Python tuple", "tuple", sid)
                 + ", and unpack the returned tuple in the code that calls the "
                 + "function initialising variables 'n_rows' and 'n_cols' as "
-                + "well as 'environment'.)</p>");
+                + "well as 'environment'.)</p>\n");
 
-        sid = addSection("3", "Plot environment", 2);
-        w.add("""
+        sid = addSection("3", "Plot environment", 2, sb);
+        sb.append("""
               <p>Assume that each row of 'environment' aligns with a 
               y-coordinate and each column of 'environment' aligns with an 
               x-coordinate.</p>
@@ -206,8 +201,10 @@ public class ABM5 extends CoursePage {
               self.x = random.randint(0, tnc - 1) + tnc
               tnr = int(n_rows / 3)
               self.y = random.randint(0, tnr - 1) + tnr</code></pre>
-              
-              <h2 id="4">4. Agent-Environment Interaction</h2>
+              """);
+        
+        sid = addSection("4", "Agent-Environment Interaction", 2, sb);
+        sb.append("""
               <p>Imagine that 'environment' values represent resources that 
               can be eaten or stored by agents.</a>
               <p>Change the constructor method of the Agent class again so that 
@@ -276,8 +273,10 @@ public class ABM5 extends CoursePage {
               move and eat.</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
-              
-              <h2 id="5">5. Further Assignment 1 Coding Tasks</h2>
+              """);
+        
+        sid = addSection("5", "Further Assignment 1 Coding Tasks", 2, sb);
+        sb.append("""
               <p>In the eat method of the Agent class, detail an 'else' clause 
               of the 'if' statement so that if the value of 'environment' where 
               the agent is located is less than or equal to 10 then what is 
@@ -305,8 +304,8 @@ public class ABM5 extends CoursePage {
               using GitHub - push your changes to GitHub.</p>
               """);
 
-        sid = addSection("6", "Code Review and Looking Forward", 2);
-        w.add("""
+        sid = addSection("6", "Code Review and Looking Forward", 2, sb);
+        sb.append("""
               <p>Consider what happens when two or more agents are at the same 
               location and there is less resource at the location for all the 
               agents to have 10: Those agents processed sooner will get to eat 
@@ -314,5 +313,7 @@ public class ABM5 extends CoursePage {
               order, then there will be bias in favour of these agents gaining 
               more store... Write a comment in your source code about this.</p>
               """);
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

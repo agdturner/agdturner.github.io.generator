@@ -42,7 +42,7 @@ public class MyHome extends Page {
      * Create a new instance.
      * @param site What {@link #site} is set to.
      * @param title What {@link #title} is set to.
-     * @param id What {@link #id} is set to.
+     * @param id What {@link #pageID} is set to.
      * @param path What {@link #p} is set to.
      */
     public MyHome(Site site, String title, PageID id, Path path) {
@@ -57,29 +57,27 @@ public class MyHome extends Page {
     }
     
     @Override
-    public void write() {
-        w.add("<div>");
-        w.add("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<div>");
+        sb.append("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" /></h1>");
-        w.add("<p>In June 2023 I joined the "
+        sb.append("<p>In June 2023 I joined the "
                 + "<a href=\"" + Environment.HTTPS_ARC_LEEDS_AC_UK + "about/team/\">"
                 + "Research Computing Team"
                 + "</a>"
                 + " at the "
-                + "University of Leeds as a Research Software Engineer. I have "
+                + "University of Leeds"
+                + " as a Research Software Engineer. I have "
                 + "worked at the University for over 25 years mostly "
                 + "specialising in computational geography.</p>");
-        w.add("<p>"
+        sb.append("<p>"
                 + Web_ContentWriter.getLink(Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
                         "Github Profile")
                 + "</p>");
         // End WebPage
-        w.add(Web_ContentWriter.DIVET);
-        try {
-            w.writeHTML(DIR, filename, title, null);
-        } catch (IOException ex) {
-            Logger.getLogger(MyHome.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sb.append(Web_ContentWriter.DIVET);
+        return sb.toString();
     }
 
     /**
@@ -98,6 +96,11 @@ public class MyHome extends Page {
     @Override
     public String getLinks(String linkClass, boolean addPrevious) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getPageContents() {
+        return "";
     }
     
     

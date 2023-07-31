@@ -16,10 +16,7 @@
 package io.github.agdturner.course.coding.intro.python;
 
 import io.github.agdturner.core.Environment;
-import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.coding.python.PythonCodingCourse;
-import io.github.agdturner.course.coding.python.PythonIndex;
-import io.github.agdturner.course.coding.python.PythonReferences;
 import io.github.agdturner.course.coding.intro.python.pages.ABM1;
 import io.github.agdturner.course.coding.intro.python.pages.ABM2;
 import io.github.agdturner.course.coding.intro.python.pages.ABM3;
@@ -29,7 +26,6 @@ import io.github.agdturner.course.coding.intro.python.pages.ABM6;
 import io.github.agdturner.course.coding.intro.python.pages.ABM7;
 import io.github.agdturner.course.coding.intro.python.pages.ABM8;
 import io.github.agdturner.course.coding.intro.python.pages.ABM9;
-//import io.github.agdturner.course.python.intro.pages.Assignments;
 import io.github.agdturner.course.coding.intro.python.pages.Branching;
 import io.github.agdturner.course.coding.intro.python.pages.Classes;
 import io.github.agdturner.course.coding.intro.python.pages.Containers;
@@ -46,12 +42,6 @@ import io.github.agdturner.course.coding.intro.python.pages.Python;
 import io.github.agdturner.course.coding.intro.python.pages.Testing;
 import io.github.agdturner.course.coding.intro.python.pages.Variables;
 import io.github.agdturner.course.coding.intro.python.pages.Web;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
  * Java for generating Python Intro Course  Website content.
@@ -100,54 +90,6 @@ public abstract class PythonIntroCodingCourse extends PythonCodingCourse {
         pages.add(new Web(this));
         pages.add(new ABM9(this));
         pages.add(new Testing(this));
-    }
-
-    /**
-     * Write Pages.
-     *
-     * @param path
-     */
-    protected void write(Path path) {
-        write(homePage, path);
-        for (int j = 0; j < pages.size(); j++) {
-            write((CoursePage) pages.get(j), path);
-        }
-        write(index, path);
-        write(references, path);
-    }
-
-    /**
-     * 
-     * @param page
-     * @param path 
-     */
-    protected void write(CoursePage page, Path path) {
-        page.write();
-        // Write footer
-        // Add navigation
-        page.w.add("<footer>");
-        page.w.add(page.getLinks("nav", false));
-        page.w.add("<p>Date last modified: " + LocalDate.now().toString() + ".</p>");
-        String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
-        page.w.add("<p>" + Web_ContentWriter.getLink(cc0, "CC0 Licence") + "</p>");
-        page.w.add("</footer>");
-        // Write page
-        try {
-            page.w.writeHTML(page.path, "index", page.title + " Page", 
-                    CoursePage.getHeadElements(path));
-        } catch (IOException ex) {
-            Logger.getLogger(PythonIntroCodingCourse.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public PythonIndex getIndex() {
-        return (PythonIndex) index;
-    }
-
-    @Override
-    public PythonReferences getReferences() {
-        return (PythonReferences) references;
     }
 
     @Override

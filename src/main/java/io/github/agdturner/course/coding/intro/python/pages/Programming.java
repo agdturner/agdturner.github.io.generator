@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * Python Intro Course Programming Page.
@@ -37,22 +34,17 @@ public class Programming extends CoursePage {
     public Programming(PythonIntroCodingCourse course) {
         super(course, "programming", "Programming", "Programming");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        w.add("""
-              <h2 id="1.">1. Introduction</h2>
-              <p>""");
-        w.add(index.getReference("Computer Programming",
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append(index.getReference("Computer Programming",
                 "Computer programming")
                 + " (coding) is the process of designing and building an"
                 + " executable computer program - a set of instruction"
-                + " fetched and executed sequentially.</p>");
-        w.add("<p>Contemporary desktop and laptop computers typically have a "
+                + " fetched and executed sequentially.</p>\n");
+        sb.append("<p>Contemporary desktop and laptop computers typically have a "
                 + index.getReference("Keyboard", "keyboard")
                 + " and "
                 + index.getReference("Mouse", "mouse")
@@ -83,9 +75,9 @@ public class Programming extends CoursePage {
                 + " can be installed, including software that can interpret "
                 + " more readable "
                 + index.getReference("Source Code", "source code")
-                + " into lower level less readable machine instructions.</p>"
+                + " into lower level less readable machine instructions.</p>\n"
         );
-        w.add("<p>Programming can be done visually by arranging and connecting"
+        sb.append("<p>Programming can be done visually by arranging and connecting"
                 + " pre-built components into executable workflows. However,"
                 + " this course is about programming using text based command"
                 + " instructions that have a formal syntax known as a "
@@ -98,18 +90,19 @@ public class Programming extends CoursePage {
                         "Python programming language")
                 + " (Python).");
 
-        w.add("<h2 id=\"2.\">2. Data</h2>");
-        SectionID sid = addSection("2.1", "Bits and Bytes", 3);
-        w.add("<p>In most modern computers, data is encoded in binary: the"
+        sid = addSection("2", "Data", 2, sb);
+        
+        sid = addSection("2.1", "Bits and Bytes", 3, sb);
+        sb.append("<p>In most modern computers, data is encoded in binary: the"
                 + " smallest unit is a "
                 + index.getReference("Bit", "bit", sid)
                 + " which encodes one of two possible states, which - for "
-                + " simplicity and brevity - are denoted '0' and '1'.</p>");
-        w.add("<p>Typically computers work with fixed size collections of bits"
+                + " simplicity and brevity - are denoted '0' and '1'.</p>\n");
+        sb.append("<p>Typically computers work with fixed size collections of bits"
                 + " called "
                 + index.getReference("Byte", "bytes", sid)
                 + ".");
-        w.add("""
+        sb.append("""
               The more bits there are in a byte, the more different unique 
               combinations or arrangements of bits there can be. With each added 
               bit, there are double the number of combinations. So, with 2
@@ -124,31 +117,31 @@ public class Programming extends CoursePage {
               both lower and upper case, the ten numeric digits 0 to 9, and 
               64 other symbols.</p>
               """);
-        w.add("<p>7 bit bytes is the basis of "
+        sb.append("<p>7 bit bytes is the basis of "
                 + index.getReference("ASCII", "ASCII", sid)
                 + " - a data encoding which is used often used for text, and is "
                 + " the basis of a number of different "
                 + index.getReference("File Format", "file formats")
-                + ".</p>");
-        w.add("<p>" + index.getReference("Unicode", "Unicode", sid) + " is "
+                + ".</p>\n");
+        sb.append("<p>" + index.getReference("Unicode", "Unicode", sid) + " is "
                 + "another commonly used encoding. As of Unicode version 15.0, "
                 + "there are 149,186 characters that are uniquely encoded, "
                 + "including various alphabets, mathematical symbols and "
                 + "emojis. Unicode uses between 1 and 4 bytes of length 8 for "
-                + "encoding.</p>");
-        w.add("<p>Commonly, there are multiples of 8 bits in a byte, but there "
-                + "can be any number.</p>");
+                + "encoding.</p>\n");
+        sb.append("<p>Commonly, there are multiples of 8 bits in a byte, but there "
+                + "can be any number.</p>\n");
 
-        sid = addSection("2.2", "File Formats", 3);
-        w.add("<p>Data stored in a file is often stored in a standard "
+        sid = addSection("2.2", "File Formats", 3, sb);
+        sb.append("<p>Data stored in a file is often stored in a standard "
                 + index.getReference("File Format", "file format", sid)
                 + " - typically based on a versioned specification which "
                 + "details what encodings are used and how the data is "
-                + "organised.</p>");
-        w.add("<p>Some file formats use different encodings in different parts "
+                + "organised.</p>\n");
+        sb.append("<p>Some file formats use different encodings in different parts "
                 + ", a complication that makes the data more usable and more "
-                + "compact - requiring less storage space.</p>");
-        w.add("<p>Often the suffix of a filename indicates the file format, "
+                + "compact - requiring less storage space.</p>\n");
+        sb.append("<p>Often the suffix of a filename indicates the file format, "
                 + "for example the file format of a file named \"index.html\" "
                 + "is expected to be in "
                 + index.getReference("HTML", sid)
@@ -159,12 +152,12 @@ public class Programming extends CoursePage {
                 + "from the filename or any external "
                 + index.getReference("Metadata", "metadata", sid)
                 + " what the format of the file is, sometimes it can be"
-                + " discerned from a magic number.</p>");
-        w.add("<p>File formats are revisited in <a href=\"../io/index.html#5\">"
-                + "IO Section 5.</a></p>");
+                + " discerned from a magic number.</p>\n");
+        sb.append("<p>File formats are revisited in <a href=\"../io/index.html#5\">"
+                + "IO Section 5.</a></p>\n");
 
-        sid = addSection("2.3", "Integers and Floating Point", 3);
-        w.add("""
+        sid = addSection("2.3", "Integers and Floating Point", 3, sb);
+        sb.append("""
               <p>All the integer numbers in a specific range are often 
               represented individually using bytes of a length sufficient for 
               that range. The encoding will detail how this is done. Usually, 
@@ -178,7 +171,7 @@ public class Programming extends CoursePage {
               greater towards the centre of the range, which with standard 
               floating point numbers is zero.</p>
               """);
-        w.add("<p>" + index.getReference("Floating-point",
+        sb.append("<p>" + index.getReference("Floating-point",
                 "Floating point arithmetic", sid)
                 + " is standardised and the result of a calculation gets"
                 + " rounded to the nearest value. Most of the time, the"
@@ -188,20 +181,20 @@ public class Programming extends CoursePage {
                 + " completely accurate and precise, other times it is"
                 + " rounded either up or down. It is important to be aware that"
                 + " there can be significant error in this standardised"
-                + " arithmetisite.</p>");
-        w.add("<p>" + index.getReference(
+                + " arithmetisite.</p>\n");
+        sb.append("<p>" + index.getReference(
                 "Single-precision Floating-point",
                 "Single precision floating point", sid) + " is a standard "
                 + "encoding that uses bytes of length 32 to represent each "
-                + "number.</p>");
-        w.add("<p>" + index.getReference(
+                + "number.</p>\n");
+        sb.append("<p>" + index.getReference(
                 "Double-precision Floating-point",
                 "Double precision floating point", sid) + " is a standard "
                 + "encoding that uses bytes of length 64 to represent each "
-                + "number.</p>");
+                + "number.</p>\n");
 
-        sid = addSection("3", "Learning to Program", 2);
-        w.add("""
+        sid = addSection("3", "Learning to Program", 2, sb);
+        sb.append("""
               <p>Learning to program takes time and energy. It is highly 
               recommended that you organise to learn new programming concepts 
               when you are well rested and have good concentration. Mistakes 
@@ -212,20 +205,20 @@ public class Programming extends CoursePage {
               more time than they take, and they can make the whole process of 
               learning a lot more healthy and enjoyable.</p>
               """);
-        w.add("<p>Save your work often and use "
+        sb.append("<p>Save your work often and use "
                 + index.getReference("Version Control",
                         "version control", sid)
                 + " as this avoids losing work and provides a track of "
-                + " progress that you and others might find useful.</p>");
-        w.add("<p>Once you have a good grip of programming basics, (which you "
+                + " progress that you and others might find useful.</p>\n");
+        sb.append("<p>Once you have a good grip of programming basics, (which you "
                 + "should have after this course), good ways to improve your "
                 + "skills are by getting involved in "
                 + index.getReference("Open Source Software",
                         "open source software", sid)
                 + " development projects, engaging in code review, writing "
                 + "code, reading documentation and doing other programming "
-                + "courses.</p>");
-        w.add("""
+                + "courses.</p>\n");
+        sb.append("""
               <p>Being familiar with one programming language helps in learning 
               others. Many concepts are shared and the language syntax and 
               workflows are often similar.</p>
@@ -264,7 +257,7 @@ public class Programming extends CoursePage {
               way that things are set up to work is somehow causing the issue.
               </p>
               """);
-        w.add("<p>Sometimes the issue is a result of a '"
+        sb.append("<p>Sometimes the issue is a result of a '"
                 + index.getReference("Software Bug", "software bug", sid)
                 + "' - an error, flaw or fault in the design, development, or "
                 + "operation that causes incorrect or unexpected things to "
@@ -273,8 +266,8 @@ public class Programming extends CoursePage {
                 + "sometimes happens. A fault that only sometimes happens is "
                 + "known as a '"
                 + index.getReference("Glitch", "glitch", sid)
-                + "' and these can be difficult to troubleshoot.</p>");
-        w.add("""
+                + "' and these can be difficult to troubleshoot.</p>\n");
+        sb.append("""
               <p>Often it is worth restarting software or rebooting the 
               operating system to attempt to stop unexpected behaviour 
               happening. If you start having to do this frequently it becomes 
@@ -301,26 +294,26 @@ public class Programming extends CoursePage {
               well be a better way...</p>
               """);
 
-        sid = addSection("4", "Language Evolution, Deprecation and Versions", 2);
-        w.add("""
+        sid = addSection("4", "Language Evolution, Deprecation and Versions", 2, sb);
+        sb.append("""
               <p>High level computer programming languages like Python evolve 
               and new ones occasionally get developed. Some programming 
               languages are retired or become obsolete, and some older versions 
               of languages become unsupported over time.</p>
               """);
-        w.add("<p>Supporting "
+        sb.append("<p>Supporting "
                 + index.getReference("Backward Compatibility",
                         "backward compatibility", sid)
                 + " - interoperability with older versions - has both costs and"
                 + " benefits. These costs and benefits are weighed up by those "
                 + "developing languages that tyically have a process of "
-                + "deciding how things change.</p>");
-        w.add("<p>Changes that are not backward compatible can create a lot of "
+                + "deciding how things change.</p>\n");
+        sb.append("<p>Changes that are not backward compatible can create a lot of "
                 + "work! It is also discouraging if old code does not work with"
                 + " newer language interpreters as this results in reliance on "
                 + "old versions which can be problematic and have security "
-                + "implications.</p>");
-        w.add("""
+                + "implications.</p>\n");
+        sb.append("""
               <p>Languages compete for users and developers. Often new features 
               in one language are implemented in other languages soon after. The 
               pace of language evolution is related to the scale of investment 
@@ -335,23 +328,23 @@ public class Programming extends CoursePage {
               language features. Minor-minor version changes are usually 
               associated with one or more bug fix.</p>
               """);
-        w.add("<p>"
+        sb.append("<p>"
                 + index.getReference("Deprecation", sid)
                 + " is a common part of modern high level languages and third"
                 + " party software. It is part of a process of phasing things"
                 + " out. Things are first marked as deprecated in a version,"
-                + " then in subsequent versions the things are removed.</p>");
+                + " then in subsequent versions the things are removed.</p>\n");
 
-        sid = addSection("5", "Considerata", 2);
-        w.add("<p>For many reasons, a key one in science and for evidence "
+        sid = addSection("5", "Considerata", 2, sb);
+        sb.append("<p>For many reasons, a key one in science and for evidence "
                 + "based policy being '"
                 + index.getReference("Reproducibility", "reproducibility",
                         sid)
                 + "' - it is important to "
                 + "know what version of a language and any third party "
                 + "components a program has been tested with and results have "
-                + "been produced with.</p>");
-        w.add("""
+                + "been produced with.</p>\n");
+        sb.append("""
               <p>With any language, there are often several ways to achieve the 
               same or a similar thing. Some ways may work faster, can handle 
               larger volumes of data, or might be more concise in terms of the 
@@ -376,5 +369,6 @@ public class Programming extends CoursePage {
               own).</p>
               </div>
               """);
+        return sb.toString();
     }
 }

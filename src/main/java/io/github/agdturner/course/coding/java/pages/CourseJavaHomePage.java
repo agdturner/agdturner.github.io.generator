@@ -15,7 +15,7 @@
  */
 package io.github.agdturner.course.coding.java.pages;
 
-import io.github.agdturner.course.coding.java.JavaCourse;
+import io.github.agdturner.course.coding.java.JavaCodingCourse;
 import io.github.agdturner.course.pages.CourseHome;
 
 /**
@@ -31,7 +31,7 @@ public abstract class CourseJavaHomePage extends CourseHome {
      * @param course What {@link #site} is set to.
      * @param courseName What {@link #name} is set to.
      */
-    public CourseJavaHomePage(String courseName, JavaCourse course) {
+    public CourseJavaHomePage(String courseName, JavaCodingCourse course) {
         super(course, courseName);
     }
     
@@ -39,7 +39,7 @@ public abstract class CourseJavaHomePage extends CourseHome {
      * @return JavaCourse.
      */
     @Override
-    public JavaCourse getCourse() {
-        return (JavaCourse) site; 
+    public JavaCodingCourse getCourse() {
+        return (JavaCodingCourse) site; 
     }
 }

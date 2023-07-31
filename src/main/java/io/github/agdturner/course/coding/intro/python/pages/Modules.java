@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * For Python Intro Course Modules Page.
@@ -39,14 +36,10 @@ public class Modules extends CoursePage {
     }
 
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("""
               <p>In Python a 'module' is a single file that may contain classes, 
               functions and variables. It has to be imported to make these 
               things accessible and those things are then referred to using the 
@@ -59,15 +52,15 @@ public class Modules extends CoursePage {
               packages.</p>
               """);
 
-        sid = addSection("2", "Importing", 2);
-        w.add("<p>The "
+        sid = addSection("2", "Importing", 2, sb);
+        sb.append("<p>The "
                 + index.getReference("Python Module Index", sid)
                 + " is a useful look up for "
                 + references.getReference("Python 3 Documentation: Library",
                         "Python Standard Library")
                 + " modules. These modules can be readily imported and used"
-                + " without needing to customise the environment.</p>");
-        w.add("""
+                + " without needing to customise the environment.</p>\n");
+        sb.append("""
               <p>There are two types of import statement, those that begin with
               the keyword 'import' and others that begin with the keyword 
               'from' and also contain the keyword 'import'.</p>
@@ -122,8 +115,8 @@ public class Modules extends CoursePage {
                   # It is not run if the module is imported.</code></pre>
               """);
 
-        sid = addSection("3", "Packages", 2);
-        w.add("""
+        sid = addSection("3", "Packages", 2, sb);
+        sb.append("""
               <p>Consider the following package file structure:</p>
               <pre><code class="language-python">/abm
                   __init__.py
@@ -155,11 +148,11 @@ public class Modules extends CoursePage {
               <pre>python -m packagename</pre>
               """);
 
-        sid = addSection("4", "Third Party Libraries", 2);
-        w.add("<p>"
+        sid = addSection("4", "Third Party Libraries", 2, sb);
+        sb.append("<p>"
                 + references.getReference("Anaconda")
-                + " comes bundled with numerous third party libraries.</p>");
-        w.add("""
+                + " comes bundled with numerous third party libraries.</p>\n");
+        sb.append("""
               <p>
               Exactly what Anaconda comes with varies with the version and 
               underlying operating system. Details can be found via the 
@@ -169,10 +162,10 @@ public class Modules extends CoursePage {
               <p>There are many additional libraries that might be useful for 
               geographical data processing or whatever you may be doing.</p>
               """);
-        w.add("<p>Many Python libraries are made available via "
+        sb.append("<p>Many Python libraries are made available via "
                 + index.getReference("PyPI")
-                + " - the Python Package Index (PyPi) including:</p>");
-        w.add("""
+                + " - the Python Package Index (PyPi) including:</p>\n");
+        sb.append("""
               <ul>
               <li><a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm">
               ArcPY</a>
@@ -217,6 +210,7 @@ public class Modules extends CoursePage {
               <p>For details on installing packages see: 
               <a href="../python/index.html#9">Python Packages and Environment Management</a>.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

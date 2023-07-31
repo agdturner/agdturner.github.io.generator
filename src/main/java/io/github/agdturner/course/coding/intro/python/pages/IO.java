@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course Input/Output Page.
@@ -38,19 +36,16 @@ public class IO extends CoursePage {
     }
 
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>The Python standard library "
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>The Python standard library "
                 + index.getReference("Python io", "io module", sid)
                 + " provides the main facilities for dealing with input and"
                 + " output (IO). Numerous other standard library modules have "
                 + " functionality for dealing with specific aspects and types"
-                + " of IO, including:</p>");
-        w.add("""
+                + " of IO, including:</p>\n");
+        sb.append("""
               <a href="https://docs.python.org/3/library/fileinput.html">fileinput</a>,
               <a href="https://docs.python.org/3/library/os.html">os</a>,
               <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a>,
@@ -67,8 +62,8 @@ public class IO extends CoursePage {
               and processing data on the Web.</p>
               """);
 
-        sid = addSection("2", "Standard Input", 2);
-        w.add("<p>The builtins module "
+        sid = addSection("2", "Standard Input", 2, sb);
+        sb.append("<p>The builtins module "
                 + index.getReference("Python input", "input", sid)
                 + " function reads input from the standard input 'stdin' which"
                 + " is usually the keyboard. This continues until the"
@@ -76,18 +71,18 @@ public class IO extends CoursePage {
                 + " function returns a string (without a newline character). A"
                 + " string provided as a parameter is displayed to prompt user"
                 + " input. Run the following at the Python prompt and enter "
-                + " some keyboard input:</p>");
-        w.add("""
+                + " some keyboard input:</p>\n");
+        sb.append("""
               <pre><code class="language-python">n_agents = input("Enter n_agents (a number between 10 and 100) and press the &lt;ENTER&gt; or &lt;RETURN&gt; key:")
               print("The input detected is:", n_agents)</code></pre>
               """);
 
-        sid = addSection("3", "Streams", 2);
-        w.add("<p>The builtins module "
+        sid = addSection("3", "Streams", 2, sb);
+        sb.append("<p>The builtins module "
                 + index.getReference("Python print", "print", sid)
                 + " function writes to the standard output 'stdout' which is"
                 + " usually the terminal/console/screen.</p>");
-        w.add("""
+        sb.append("""
               <p>Stdin and stdout are streams - flows of data. Standard error 
               'stderr' is also a stream - one where error messages go. Like 
               stdout, stderr is usually written to the screen by default.</p>
@@ -108,7 +103,7 @@ public class IO extends CoursePage {
               <p>The stdout of one program can be piped to the stdin of another 
               program using the pipe symbol '|'.</p>
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + index.getReference("Python print", "print", sid)
                 + " function also includes an option to direct stout to a file."
                 + " That file has to be open in order for the writing to be"
@@ -118,21 +113,21 @@ public class IO extends CoursePage {
                 + " in one go which is more efficient. Closing a file that "
                 + " is being written to forces a flush of any partially filled"
                 + " buffer. There is an option in the print function to force a"
-                + " flush which can also sometimes be useful...</p>");
+                + " flush which can also sometimes be useful...</p>\n");
 
-        sid = addSection("4", "Reading and Writing Files Part 1", 2);
-        w.add("<p>The following code uses the builtins module "
+        sid = addSection("4", "Reading and Writing Files Part 1", 2, sb);
+        sb.append("<p>The following code uses the builtins module "
                 + index.getReference("Python open", "open", sid)
                 + " function to open a file in the current directory called"
                 + " 'a.in' and read the file one line at a time streaming the"
-                + " output to the screen before then closing the file:</p>");
-        w.add("""
+                + " output to the screen before then closing the file:</p>\n");
+        sb.append("""
               <pre><code class="language-python">f = open("a.in")
               for line in f:
                   print(line)
               f.close()</code></pre>
               """);
-        w.add("<p>The <a href=\"https://docs.python.org/3/c-api/file.html\">"
+        sb.append("<p>The <a href=\"https://docs.python.org/3/c-api/file.html\">"
                 + "File Object</a> returned from the above "
                 + index.getReference("Python open", "open", sid)
                 + " function call 'f' is best closed once it is read by"
@@ -140,11 +135,11 @@ public class IO extends CoursePage {
                 + " code snippet. After this line is executed, 'f' becomes"
                 + " unusuable. Closing releases system resources and is"
                 + " recommended as good practice altough code will work without"
-                + " doing that.</p>");
-        w.add("<p>An alternative where a 'close' method call is not necessary"
+                + " doing that.</p>\n");
+        sb.append("<p>An alternative where a 'close' method call is not necessary"
                 + " uses the keyword 'with'. The following does effectively the"
-                + " same as the previous snippet:</p>");
-        w.add("""
+                + " same as the previous snippet:</p>\n");
+        sb.append("""
               <pre><code class="language-python">with open("a.in") as f:
                   for line in f:
                       print(line)</code></pre>
@@ -154,7 +149,7 @@ public class IO extends CoursePage {
               <a href="https://docs.python.org/3/library/fileinput.html">
               fileinput module</a>
               helps with reading multiple files simultaneously.</p>""");
-        w.add("<p>The "
+        sb.append("<p>The "
                 + "<a href-\"https://docs.python.org/3/library/io.html#io.IOBase.readlines\">"
                 + "readlines method</p> can read some or all lines of a file"
                 + " into a list of strings (each item being a line of the"
@@ -166,8 +161,8 @@ public class IO extends CoursePage {
                 + " being raised. So, often it is better to parse a file in"
                 + " portions, such as line by line. Parsing might involve"
                 + " processing or simply storing parts or all of the line in "
-                + " one or more variables.</p>");
-        w.add("""
+                + " one or more variables.</p>\n");
+        sb.append("""
               <p>Files are opened for writing in a similar way. Writing to 
               a file can be done as follows:</p>
               <pre><code class="language-python"># Create something to write
@@ -186,10 +181,10 @@ public class IO extends CoursePage {
               to a file requires different preparation to reading from a file.
               </p>
               """);
-        w.add("<p>There are other optional arguments that can be used with the "
+        sb.append("<p>There are other optional arguments that can be used with the "
                 + index.getReference("Python open", "open", sid)
-                + " function, follow the link for details...</p>");
-        w.add("""
+                + " function, follow the link for details...</p>\n");
+        sb.append("""
               <p>An alternative using the keyword 'with' that does not 
               require closing the file is:</p> 
               <pre><code class="language-python"># Create something to write
@@ -203,41 +198,41 @@ public class IO extends CoursePage {
                       f.write(line)</code></pre>
               """);
 
-        sid = addSection("5", "File formats", 2);
-        w.add("<p>File formats were briefly introduced in "
+        sid = addSection("5", "File formats", 2, sb);
+        sb.append("<p>File formats were briefly introduced in "
                 + "<a href=\"../programming/index.html#2.2\">Programming "
-                + "Section 2.2</a>.</p>");
-        w.add("<p>All files are binary files, but some binary files are known"
+                + "Section 2.2</a>.</p>\n");
+        sb.append("<p>All files are binary files, but some binary files are known"
                 + " as 'text files' - the encoding is generally recognised as"
                 + " text. Text files are typically delimited into lines by a "
                 + " 'newline' code which in Python is '\\n'. File formats are"
                 + " usually defined in a file format specification that details"
                 + " the structure of the file. In this section three types of"
                 + " text file formats are described (CSV, JSON and Markup)."
-                + "</p>");
+                + "</p>\n");
 
-        sid = addSection("5.1", "CSV", 3);
-        w.add("<p>"
+        sid = addSection("5.1", "CSV", 3, sb);
+        sb.append("<p>"
                 + index.getReference("CSV", "CSV format", sid)
                 + " files are text files of comma separated values. The values"
                 + " are text, but this text might represent numbers. If a value"
                 + " contains a comma then the value is usually enclosed in"
                 + " quotation marks. If the value also contains quotation marks"
                 + " or newline then there can be difficulty parsing the file."
-                + "</p>");
+                + "</p>\n");
 
-        sid = addSection("5.2", "JSON", 3);
-        w.add("<p>"
+        sid = addSection("5.2", "JSON", 3, sb);
+        sb.append("<p>"
                 + index.getReference("JSON", "JavaScript Object Notation",
                         sid)
                 + " (JSON) is an open standard file format and data interchange"
                 + " format that uses human-readable text to store and transmit"
                 + " data objects consisting of attribute–value pairs and arrays"
-                + " (or other serializable values.</p>");
-        w.add("<p>Here is an example of some "
+                + " (or other serializable values.</p>\n");
+        sb.append("<p>Here is an example of some "
                 + index.getReference("GeoJSON", sid)
                 + " data:</p>");
-        w.add("""
+        sb.append("""
               <pre>GeoJSON example
               {
                   "type": "FeatureCollection",
@@ -254,8 +249,8 @@ public class IO extends CoursePage {
               }</pre>
               """);
 
-        sid = addSection("5.3", "Markup", 3);
-        w.add("<p>Markup is essentially tags and content. Tags often note the"
+        sid = addSection("5.3", "Markup", 3, sb);
+        sb.append("<p>Markup is essentially tags and content. Tags often note the"
                 + " ontological context of the content helping define it's "
                 + " meaning. Tags can be nested. Examples formats include: "
                 + index.getReference("HTML", sid)
@@ -269,10 +264,10 @@ public class IO extends CoursePage {
                 + " including "
                 + index.getReference("GML", sid)
                 + " the XML grammar defined by the Open Geospatial"
-                + " Consortium (OGC) to express geographical features.</p>");
+                + " Consortium (OGC) to express geographical features.</p>\n");
 
-        sid = addSection("6", "Reading and Writing Files Part 2", 2);
-        w.add("""
+        sid = addSection("6", "Reading and Writing Files Part 2", 2, sb);
+        sb.append("""
               <p>The following code reads a file line by line, parsing each line 
               by splitting it using a comma and converting each part into a 
               Float which is appended to a list which is then appended to 
@@ -287,12 +282,12 @@ public class IO extends CoursePage {
                   data.append(data_line)
               print(data)</code></pre>
               """);
-        w.add("<p>It is easier to read and write CSV format files using"
+        sb.append("<p>It is easier to read and write CSV format files using"
                 + " functions from the Python standard library "
                 + index.getReference("Python csv", "csv module", sid)
                 + " written specifically to do this. The following is an"
-                + " example of reading some numeric data:</p>");
-        w.add("""
+                + " example of reading some numeric data:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import csv
               f = open('data.csv', newline='')
               reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
@@ -315,10 +310,10 @@ public class IO extends CoursePage {
               a space ' ' instead of the default comma ',', so this would 
               actually not generate CSV format data!</p>
               """);
-        w.add("<p>The following code uses the standard library "
+        sb.append("<p>The following code uses the standard library "
                 + index.getReference("Python json", "json module", sid)
-                + " to read a JSON file:</p>");
-        w.add("""
+                + " to read a JSON file:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import json
               f = open('data.json')
               data = json.load(f)
@@ -330,15 +325,15 @@ public class IO extends CoursePage {
               json.dump(data, f)
               f.close()</code></pre>
               """);
-        w.add("<p>The standard library for processing HTML and XML is:"
+        sb.append("<p>The standard library for processing HTML and XML is:"
                 + "<a href=\"https://docs.python.org/3/library/markup.html\">"
                 + "markup</a>, but the third party "
                 + "<a href=\"https://beautiful-soup-4.readthedocs.io/en/latest/\">"
                 + "Beautiful Soup</a> package is arguably easier to use, and is "
-                + "used later in the course to parse some HTML.</p>");
+                + "used later in the course to parse some HTML.</p>\n");
 
-        sid = addSection("7", "Serialisation/Deserialisation", 2);
-        w.add("""
+        sid = addSection("7", "Serialisation/Deserialisation", 2, sb);
+        sb.append("""
                <p>Serialisation is the conversion of program data into data 
               stored typically in a file. Deserialisation is the opposite 
               process that converts data back into working code. Essentially 
@@ -349,8 +344,8 @@ public class IO extends CoursePage {
               </p>
               """);
 
-        sid = addSection("8", "OS and File Systems", 2);
-        w.add("""
+        sid = addSection("8", "OS and File Systems", 2, sb);
+        sb.append("""
               <h3 id="3">3. OS and File Systems</h3>
               <p>The standard library 
               (<a href="https://docs.python.org/3/library/os.html">os module</a>) 
@@ -358,15 +353,15 @@ public class IO extends CoursePage {
               system (OS), including 'environment variable' manipulation and 
               file system navigation.</p>
               """);
-        w.add("<p>Environment variables are variables at the OS level. The"
+        sb.append("<p>Environment variables are variables at the OS level. The"
                 + " mapping object '"
                 + "<a href=\"https://docs.python.org/3/library/os.html#os.environ\">"
                 + "os.environ</a>"
                 + "' allows for accessing environment information from a Python"
                 + " program. For example, the following will print the "
                 + index.getReference("PATH", sid)
-                + ":</p>");
-        w.add("""
+                + ":</p>\n");
+        sb.append("""
               <pre><code class="language-python">import os
               print(os.environ["PATH"])</code></pre>
               <p>And the following will print a list of every file and directory 
@@ -388,6 +383,7 @@ public class IO extends CoursePage {
               glob module</a> is useful for pattern hunting in files and 
               directories.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

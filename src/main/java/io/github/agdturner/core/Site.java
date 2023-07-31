@@ -15,13 +15,20 @@
  */
 package io.github.agdturner.core;
 
+import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.Index;
 import io.github.agdturner.course.References;
+import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.pages.CourseHome;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -182,4 +189,40 @@ public abstract class Site {
         return "../" + p.filename + "/index.html";
     }
 
+    /**
+     * Write Pages.
+     *
+     * @param path The path.
+     */
+    public void write(Path path) {
+        write(homePage, path);
+        for (int j = 0; j < pages.size(); j++) {
+            write(pages.get(j), path);
+        }
+        write(index, path);
+        write(references, path);
+    }
+    
+    /**
+     * @param page
+     * @param path 
+     */
+    protected void write(Page page, Path path) {
+        page.write();
+        // Write footer
+        // Add navigation
+        page.w.add("<footer>");
+        page.w.add(page.getLinks("nav", false));
+        page.w.add("<p>Date last modified: " + LocalDate.now().toString() + ".</p>");
+        String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
+        page.w.add("<p>" + Web_ContentWriter.getLink(cc0, "CC0 Licence") + "</p>");
+        page.w.add("</footer>");
+        // Write page
+        try {
+            page.w.writeHTML(page.path, "index", page.title + " Page", 
+                    CoursePage.getHeadElements(path));
+        } catch (IOException ex) {
+            Logger.getLogger(PythonIntroCodingCourse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

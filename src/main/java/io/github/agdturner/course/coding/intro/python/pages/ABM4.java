@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM4 Page.
@@ -36,14 +34,11 @@ public class ABM4 extends CoursePage {
     public ABM4(PythonIntroCodingCourse course) {
         super(course, "abm4", "Agent Based Model Practical 4", "ABM4");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Recap and preparation", 2);
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Recap and preparation", 2, sb);
         w.add("""
               <p>Currently, 'agents' is a list that contains lists of two items; 
               an x-coordinate, and a y-coordinate. More items could be added 
@@ -60,7 +55,7 @@ public class ABM4 extends CoursePage {
               your 'model.py' file from abm3 into the abm4 directory.</p>
               """);
 
-        sid = addSection("2", "Define an Agent class", 2);
+        sid = addSection("2", "Define an Agent class", 2, sb);
         w.add("""
               <p>Create a new file in the abm4 directory named 
               'agentframework.py', and add a class definition for an Agent class
@@ -96,7 +91,7 @@ public class ABM4 extends CoursePage {
         w.add("<p>Note that the "
                 + index.getReference("Python random", "random module", sid)
                 + "is imported as this is used in the Agent constructor "
-                + "'__init__' method.</p>");
+                + "'__init__' method.</p>\n");
         w.add("""
               <p>In 'model.py', add a statement to print the agent that was 
               instantiated, and run the program again. Text along the lines of 
@@ -120,7 +115,7 @@ public class ABM4 extends CoursePage {
                 + " the class and details of the 'x' and 'y' variable"
                 + " attributes which are transformed by the builtins module "
                 + index.getReference("Python str", "str function", sid)
-                + " to be strings.</p>");
+                + " to be strings.</p>\n");
         w.add("""
               <p>Run 'model.py' again and the print statement should result in 
               the following:</p>
@@ -167,7 +162,7 @@ public class ABM4 extends CoursePage {
                 + " is a consequence of the 'agents' list no longer containing"
                 + " lists, but instantiated Agent objects, and some parts of"
                 + " the code are still written as though each agent is a list"
-                + " and not an instance of the Agent class.</p>");
+                + " and not an instance of the Agent class.</p>\n");
         w.add("""
               <p>Add the following method to the Agent class to get the print 
               function to print string representations when printing the agents 
@@ -178,7 +173,7 @@ public class ABM4 extends CoursePage {
         w.add("<p>Like the '__str__' method, the '__repr__' method overrides"
                 + " from the 'type' metaclass, (for details see: "
                 + index.getReference("Python repr", "repr", sid)
-                + ".</p>");
+                + ".</p>\n");
         w.add("""
               <p>To avoid raising the TypeError exception, it is necessary to 
               refer to the class attributes and not list items (as agents are 
@@ -233,7 +228,7 @@ public class ABM4 extends CoursePage {
               using GitHub - push your changes to GitHub.</p>
               """);
 
-        sid = addSection("3", "Separation of Concerns", 2);
+        sid = addSection("3", "Separation of Concerns", 2, sb);
         w.add("""
               <p>Define a method called 'move' in the Agent class as follows:
               </p>
@@ -255,7 +250,7 @@ public class ABM4 extends CoursePage {
               reasonable separation of concerns.</p>
               """);
 
-        sid = addSection("4", "Give each agent a unique name", 2);
+        sid = addSection("4", "Give each agent a unique name", 2, sb);
         w.add("""
               <p>It is possible that two agents will be located at the same 
               coordinates, and it would be helpful to distinguish them.</p>
@@ -263,7 +258,7 @@ public class ABM4 extends CoursePage {
         w.add("<p>Add a "
                 + index.getReference("Python docstring", "docstring")
                 + " and a parameter to the '__init__' constructor method of"
-                + " Agent so that the method is as follows:</p>");
+                + " Agent so that the method is as follows:</p>\n");
         w.add("""
               <pre><code class="language-python">def __init__(self, i):
               \"""
@@ -301,6 +296,7 @@ public class ABM4 extends CoursePage {
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>");
+        w.add("</div>\n");
+        return sb.toString();
     }
 }

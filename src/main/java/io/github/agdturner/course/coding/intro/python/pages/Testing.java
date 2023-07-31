@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * Python Intro Course Programming Page.
@@ -37,16 +34,12 @@ public class Testing extends CoursePage {
     public Testing(PythonIntroCodingCourse course) {
         super(course, "testing", "Testing", "Testing");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>There are a number of different types of testing involved in "
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>There are a number of different types of testing involved in "
                 + "developing software, some key ones are: functionality "
                 + "testing, performance testing and usability testing. "
                 + "Functionality testing aims to assure that functions behave "
@@ -65,10 +58,10 @@ public class Testing extends CoursePage {
                 + " statements which are also fundamental for a lot of testing "
                 + "and issue diagnosis. As you should know by now, testing is "
                 + "key to developing code and creating reproducible results."
-                + "</p>");
+                + "</p>\n");
 
-        sid = addSection("2", "Doctest", 2);
-        w.add("<p>The "
+        sid = addSection("2", "Doctest", 2, sb);
+        sb.append("<p>The "
                 + index.getReference("Python Standard Library", sid)
                 + " comes with "
                 + index.getReference("Python doctest", "doctest", sid)
@@ -77,14 +70,14 @@ public class Testing extends CoursePage {
                 + "sessions to verify that they work as shown. Such text is "
                 + "sometimes placed in a "
                 + index.getReference("Python docstring", "docstring", sid)
-                + " as per the example in 'calculator_doctest.py'.</p>");
-        w.add("<p>Save "
+                + " as per the example in 'calculator_doctest.py'.</p>\n");
+        sb.append("<p>Save "
                 + "<a href=\"../../resources/testing/calculator_doctest.py\">calculator_doctest.py</a>"
                 + ", inspect the code and run it. It should run without"
                 + " reporting anything. Try altering \"0.3\" to "
                 + "\"0.30000000000000004\" and run the file again. The output "
-                + "should be along the following lines:</p>");
-        w.add("""
+                + "should be along the following lines:</p>\n");
+        sb.append("""
               <pre>File "calculator_doctest.py", line 25, in __main__.add
               Failed example:
                   add(0.1, 0.1, 0.1)
@@ -98,15 +91,15 @@ public class Testing extends CoursePage {
               ***Test Failed*** 1 failures.</pre>
               """);
 
-        sid = addSection("3", "Unit Tests", 2);
-        w.add("<p>"
+        sid = addSection("3", "Unit Tests", 2, sb);
+        sb.append("<p>"
                 + index.getReference("Unit Testing", sid)
                 + " is where individual units of source code - together with "
                 + "associated control data, usage procedures, and operating "
                 + "procedures - are tested to determine whether they are fit "
                 + "for use. It aims to reduce software development risks, time, "
-                + "and costs.</p>");
-        w.add("""
+                + "and costs.</p>\n");
+        sb.append("""
               <p>In test driven development, the tests are written 
               before the functional code. When the code passes the tests, if the 
               tests have good enough coverage, then the functionality is 
@@ -121,13 +114,13 @@ public class Testing extends CoursePage {
               package structure making the tests for specific modules, classes 
               and functions to be easily found and updated.</p>
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + index.getReference("Python Standard Library", sid)
                 + " comes with "
                 + index.getReference("Python unittest", "unittest", sid)
                 + " a module providing tools for constructing and running"
-                + " tests.</p>");
-        w.add("<p>Consider the following example. The functional code is in "
+                + " tests.</p>\n");
+        sb.append("<p>Consider the following example. The functional code is in "
                 + "'calculator.py', the module contains a single function "
                 + "'add' which adds up numbers provided as Integer or Float "
                 + index.getReference("Python Numeric Types", "Numeric Types ", sid)
@@ -135,8 +128,8 @@ public class Testing extends CoursePage {
                 + index.getReference("Python decimal", "decimal", sid)
                 + " to avoid some "
                 + index.getReference("Floating-point", "floating-point", sid)
-                + " rounding issues.</p>");
-        w.add("<p>Save "
+                + " rounding issues.</p>\n");
+        sb.append("<p>Save "
                 + "<a href=\"../../resources/testing/calculator.py\">calculator.py</a>"
                 + " and "
                 + "<a href=\"../../resources/testing/test.py\">test.py</a>"
@@ -144,7 +137,8 @@ public class Testing extends CoursePage {
                 + " For more details about developing unit tests in Python,"
                 + " see: "
                 + index.getReference("Python unittest", "unittest", sid)
-                + ".</p>");
-        w.add("</div>");
+                + ".</p>\n");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

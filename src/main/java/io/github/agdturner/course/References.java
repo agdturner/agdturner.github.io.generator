@@ -68,14 +68,12 @@ public class References extends CoursePage {
      *
      * @param name The name for the reference.
      * @param linkText The text for the link.
-     * @param url The url of the reference.
+     * @param url The URL of the reference.
      * @param description The description of the reference.
      * @return A link.
      */
     public String addWebReference(String name, String linkText,
             String url, String description) {
-        Course course = getCourse();
-        References references = course.getReferences();
         if (!references.nameToTerm.containsKey(name)) {
             references.nameToTerm.put(name,
                     new Term(description, url));
@@ -101,20 +99,19 @@ public class References extends CoursePage {
     }
 
     @Override
-    public void write() {
-        writeHeader();
-        writeH1();
-        w.add("<ul>");
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<ul>");
         for (String name : nameToTerm.keySet()) {
             Term r = nameToTerm.get(name);
-            StringBuilder sb = new StringBuilder();
             sb.append("<li>");
             sb.append(r.getLinkAndDescription(name));
-            sb.append("</li>");
-            w.add(sb.toString());
+            sb.append("</li>\n");
+            sb.append(sb.toString());
         }
-        w.add("</ul>");
-        w.add("</div>");
+        sb.append("</ul>\n");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 
 }

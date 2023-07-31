@@ -16,7 +16,7 @@
 package io.github.agdturner.course.coding.intro.java.process;
 
 import io.github.agdturner.core.Environment;
-import io.github.agdturner.course.coding.intro.java.JavaIntroCourse;
+import io.github.agdturner.course.coding.intro.java.JavaIntroCodingCourse;
 import io.github.agdturner.course.coding.intro.java.pages.JavaIntroCodingCourseHome;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +26,7 @@ import java.nio.file.Paths;
  *
  * @author Andy Turner
  */
-public class Java0 extends JavaIntroCourse {
+public class Java0 extends JavaIntroCodingCourse {
 
     /**
      * Creates a new instance.

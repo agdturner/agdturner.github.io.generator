@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * For Python Intro Course ABM3 Page.
@@ -40,13 +37,18 @@ public class ABM3 extends CoursePage {
 
     @Override
     public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
         writeHeader();
         writeH1();
-        SectionID sid = addSection("1", "Recap and preparation", 2);
+        String page = getMainContent();
+        w.add(getPageContents());
+        w.add(page);
+    }
+    
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Recap and preparation", 2, sb);
+        w.add("<p>Your ABM code should look something like the following:</p>\n");
         w.add("""
-              <p>Your ABM code should look something like the following:</p>
               <pre><code class="language-python">import random
               import math
               import matplotlib.pyplot as plt
@@ -118,14 +120,18 @@ public class ABM3 extends CoursePage {
               sy = min(agents, key=operator.itemgetter(1))
               plt.scatter(sy[0], sy[1], color='green')
               plt.show()</code></pre>
-              <p>When run, this code should produce the following text output:</p>
+              """);
+        w.add("<p>When run, this code should produce the following text output:</p>\n");
+        w.add("""
               <pre>[[49, 97], [53, 5], [33, 65], [62, 51], [38, 61], [45, 74], [27, 64], [17, 36], [17, 96], [12, 79]]
               [[48, 96], [52, 4], [32, 66], [63, 52], [37, 62], [44, 75], [28, 63], [18, 35], [18, 95], [13, 78]]
               ssd 25
               distance 5.0
               distance 5.0</pre>
-              <p>And the following plot:</p>
-              <img src="../../resources/abm2/Figure_1.png" alt="ABM2 Output Plot" />
+              """);
+        w.add("<p>And the following plot:</p>\n");
+        w.add("""
+              <img src="../../resources/abm2/Figure_1.png" alt="ABM2 Output Plot" />"
               <p>Some of the print statements in the code presented above have 
               been 'commented out' - turned into comments. This reduces the 
               amount of text output in the console. Most of the print statements
@@ -143,9 +149,9 @@ public class ABM3 extends CoursePage {
               your "model.py" file into the abm3 directory.</p>
               """);
         
-        sid = addSection("2", "Distance Calculations", 2);
+        sid = addSection("2", "Distance Calculations", 2, sb);
         
-        sid = addSection("2.1", "Define a Function", 3);
+        sid = addSection("2.1", "Define a Function", 3, sb);
         w.add("""
               <p>Change the distance calculation code into a function called 
               get_distance: Use the def keyword and specify four input 
@@ -163,9 +169,9 @@ public class ABM3 extends CoursePage {
               """);
         w.add("<p>Change the comment that describes the function into a "
                 + index.getReference("Python docstring", "docstring", sid)
-                + " clarifying what the function inputs and outputs are.</p>");
+                + " clarifying what the function inputs and outputs are.</p>\n");
         
-        sid = addSection("2.2", "Calculate the maximum distance", 3);
+        sid = addSection("2.2", "Calculate the maximum distance", 3, sb);
         w.add("""
               <p>Imagine a two dimensional matrix with the agents aligned in the 
               same sequence along each dimension and the distances between them 
@@ -186,7 +192,7 @@ public class ABM3 extends CoursePage {
                 + "<a href=\"https://docs.python.org/3/library/functions.html#max\">"
                 + "builtin max function</a>"
                 + " can be used to calculate the maximum distance encountered "
-                + " yet. Some code for doing this is as follows:</p>");
+                + " yet. Some code for doing this is as follows:</p>\n");
         w.add("""
               <pre><code class="language-python">max_distance = 0 # Initialise max_distance
               for a in agents:
@@ -206,7 +212,7 @@ public class ABM3 extends CoursePage {
                 + " in a list. As above, and alternatively using list indexes."
                 + " The following code does the same calculation, and uses the "
                 + index.getReference("Python range", "range function")
-                + " to get a sequence of indexes:</p>");
+                + " to get a sequence of indexes:</p>\n");
         w.add("""
               <pre><code class="language-python">max_distance = 0
               for i in range(len(agents)):
@@ -225,10 +231,10 @@ public class ABM3 extends CoursePage {
                 + " is the same as 'n_agents', which could be used instead (and"
                 + " would be more efficient). Change this if you want, but"
                 + " consider what would happen if the length of the agents list"
-                + " gets changed in the model.)</p>");
+                + " gets changed in the model.)</p>\n");
         w.add("""
               <p>Write a function called 'get_max_distance' that returns the 
-              maximum distance between all the agents.</p>
+              maximum distance between all the agents.</p>\n
               <p>Your 'get_distance' function should look something like the 
               following:</p>
               <pre><code class="language-python">def get_distance(x0, y0, x1, y1):
@@ -267,12 +273,12 @@ public class ABM3 extends CoursePage {
                 + " defined, then recall that the Python interpreter needs to"
                 + " have read a function definition before it can be called."
                 + " So, rearrange your code so that the function is defined"
-                + " before it is called.</p>");
+                + " before it is called.</p>\n");
         
-        sid = addSection("3", "Timing", 2);
+        sid = addSection("3", "Timing", 2, sb);
         w.add("<p>This section is about using the "
                 + index.getReference("Python time", "time module", sid)
-                + " to report timings and explore code efficiency.</p>");
+                + " to report timings and explore code efficiency.</p>\n");
         w.add("""
               <p>Save your source code file with a new name, for example 
               "timing.py".<p>
@@ -369,7 +375,7 @@ public class ABM3 extends CoursePage {
                 + " function to be within an "
                 + index.getReference("Python if", "if statement")
                 + " that is only run when 'i' does not equal 'j' using the"
-                + " operator '!='. The 'if statement' will look like:</p>");
+                + " operator '!='. The 'if statement' will look like:</p>\n");
         w.add("""
               <pre><code class="language-python">if i != j:</code></pre>
               <p>Run the program again and you should see the following in the 
@@ -420,7 +426,7 @@ public class ABM3 extends CoursePage {
               alt="Another graph of time (y axis) and n_agents (x axis)" />
               """);
         
-        sid = addSection("4", "Other distance statistics", 2);
+        sid = addSection("4", "Other distance statistics", 2, sb);
         w.add("""
               <p>In calculating the maximum distance, a lower bound of 0 was 
               used to initialise the max_distance variable. To calculate the 
@@ -432,7 +438,7 @@ public class ABM3 extends CoursePage {
               """);
         w.add("<p>From the "
               + index.getReference("Python math", "math module", sid)
-              + " the following can be used for positive infinity:</p>");
+              + " the following can be used for positive infinity:</p>\n");
         w.add("""
               <pre><code class="language-python">math.inf</code></pre>
               <p>Write a function that calculates the minumum distance between 
@@ -480,7 +486,7 @@ public class ABM3 extends CoursePage {
               using GitHub - push your changes there.</p>
               """);
         
-        sid = addSection("5", "Movement", 2);
+        sid = addSection("5", "Movement", 2, sb);
         w.add("""
               <p>Currently, in 'model.py' agents move once. The code will now be 
               changed to move them a number of times. After initialising
@@ -494,7 +500,7 @@ public class ABM3 extends CoursePage {
                 + " iteration agents are to move in turn rather than each"
                 + " agent taking all their turns before any others. This outer"
                 + " loop is the 'main simulation loop'. Add a comment to"
-                + " identify it as such.</p>");
+                + " identify it as such.</p>\n");
         w.add("""
               <p>The agents move randomly, and the more of them there are, the 
               more spread out they are likely to become.</p>
@@ -532,6 +538,7 @@ public class ABM3 extends CoursePage {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>");
+        w.add("</div>\n");
+        return sb.toString();
     }
 }

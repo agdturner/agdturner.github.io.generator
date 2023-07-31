@@ -1019,10 +1019,9 @@ public class Index extends CoursePage {
     }
 
     @Override
-    public void write() {
-        writeHeader();
-        writeH1();
-        w.add("<ul>");
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<ul>");
         for (String aliasOrTerm : termsAndAliasesToIndex) {
             IndexTerm indexTerm;
             if (aliasesToIndex.contains(aliasOrTerm)) {
@@ -1030,7 +1029,6 @@ public class Index extends CoursePage {
             } else {
                 indexTerm = termToIndexTerm.get(aliasOrTerm);
             }
-            StringBuilder sb = new StringBuilder();
             sb.append("<li>");
             sb.append(indexTerm.getLinkAndDescription(aliasOrTerm));
             sb.append(".");
@@ -1047,12 +1045,12 @@ public class Index extends CoursePage {
                 }
                 sb.append(")");
             }
-            sb.append("</li>");
-            w.add(sb.toString());
+            sb.append("</li>\n");
+            sb.append(sb.toString());
         }
-        w.add("</ul>");
-        w.add("</div>");
-
+        sb.append("</ul>\n");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 
 }

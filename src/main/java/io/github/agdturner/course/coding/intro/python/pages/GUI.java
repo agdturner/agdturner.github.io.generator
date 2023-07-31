@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course GUI Page.
@@ -36,15 +34,12 @@ public class GUI extends CoursePage {
     public GUI(PythonIntroCodingCourse course) {
         super(course, "gui", "GUI", "GUI");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>A "
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>A "
                 + index.getReference("GUI", "Graphical User Interface", sid)
                 + " (GUI) is typically comprised of rectangular windows"
                 + " containing panels and a menu bar. Panels can contain data"
@@ -52,26 +47,26 @@ public class GUI extends CoursePage {
                 + " (buttons, sliders, dials, text boxes and other things a"
                 + " user might interact with). The menu bar is typically along"
                 + " the top of a GUI window with cascading drop down menus that"
-                + " appear if the menu is somehow selected.</p>");
-        w.add("<p>Most programs with a GUI have a thread that 'listens' for"
+                + " appear if the menu is somehow selected.</p>\n");
+        sb.append("<p>Most programs with a GUI have a thread that 'listens' for"
                 + " interaction and then changes variables and calls functions"
                 + " depending on the interaction with the GUI typically through"
                 + " keyboard or mouse actions. This is usually regarded as a"
-                + " form of 'event-based' programming.</p>");
-        w.add("<p>The Python standard library package and module for GUI"
+                + " form of 'event-based' programming.</p>\n");
+        sb.append("<p>The Python standard library package and module for GUI"
                 + " development is "
                 + index.getReference("Python tkinter", "tkinter", sid)
                 + " for which there is some "
                 + index.getReference("Python tk",
                         "additional reference documentation.", sid)
-                + ".</p>");
-        w.add("""
+                + ".</p>\n");
+        sb.append("""
               <!--
               <p>There are various third party library alternatives, including:
               <a href="https://www.wxpython.org/">wxpython</a></p>
               -->
               """);
-        w.add("""
+        sb.append("""
               <p>In tkinter, 'callbacks' are used to register a function with a 
               GUI component, so that when the GUI component is actioned, the 
               registered function is called. A callback is a function passed to 
@@ -79,8 +74,8 @@ public class GUI extends CoursePage {
               conditions) the function will be run. </p>
               """);
 
-        sid = addSection("2", "Getting Started with tkinter", 2);
-        w.add("""
+        sid = addSection("2", "Getting Started with tkinter", 2, sb);
+        sb.append("""
               <p>The following code sets up a main window called 'root', a 
               'Label' called 'label', a 'Button' to modify the label text via 
               the 'increment' function and a 'Button' to exit the program via 
@@ -120,8 +115,8 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("2.1", "TTK", 3);
-        w.add("""
+        sid = addSection("2.1", "TTK", 3, sb);
+        sb.append("""
               <p>A slightly different look is provided by a more recent "themed"
               toolkit. The following does the same, but uses 'ttk' for the 
               widgets. This code is also available in a file: 
@@ -161,8 +156,8 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("2.2", "Menus", 3);
-        w.add("""
+        sid = addSection("2.2", "Menus", 3, sb);
+        sb.append("""
               <p>The following builds on the example setting up a menu and also 
               configuring so that if the window is closed, then the program 
               exits. This code is also available in a file: 
@@ -216,8 +211,8 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("3", "Example scale or slider widget", 2);
-        w.add("""
+        sid = addSection("3", "Example scale or slider widget", 2, sb);
+        sb.append("""
               <p>The following sets up a scale or slider widget so that the user
               can move the slider to change the power used to dynamically scale 
               a small raster data set. This code is also available in a file: 
@@ -362,8 +357,8 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("4", "GUI Design and Development", 2);
-        w.add("""
+        sid = addSection("4", "GUI Design and Development", 2, sb);
+        sb.append("""
               <p>There are various important things to consider in designing a 
               GUI. Usually the aim is to provide a GUI that is intuitive to use.
               For software that does lots of things, it may be desriable to have
@@ -380,6 +375,7 @@ public class GUI extends CoursePage {
 //              <pre><code class="language-python"></code></pre>
 //              <p></p>
 //              <pre></pre>
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

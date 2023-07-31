@@ -16,11 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 
 /**
  * For Python Intro Course ABM2 Page.
@@ -39,16 +36,12 @@ public class ABM2 extends CoursePage {
     }
     
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Recap and preparation", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Recap and preparation", 2, sb);
+        sb.append("""
               <p>Your 'model.py' ABM1 code should look something like the 
-              following:</p>
+              following:</p>\n
               <pre><code class="language-python">import random
               import math
               
@@ -119,7 +112,7 @@ public class ABM2 extends CoursePage {
               print("distance", distance)
               distance = math.sqrt(ssd)
               print("distance", distance)</code></pre>
-              <p>Running the code should produce the following text output:</p>
+              <p>Running the code should produce the following text output:</p>\n
               <pre>x0 49
               y0 97
               rn 0.890243920837131
@@ -137,42 +130,42 @@ public class ABM2 extends CoursePage {
               distance 5.0</pre>
               <p>In your local code repository src directory create a new 
               directory called 'abm2'. Open Spyder and save 'model.py' into the 
-              'abm2' directory.</p>""");
+              'abm2' directory.</p>\n""");
         
-        sid = addSection("2", "Using Lists", 2);
-        w.add("<p>Rather than handle coordinates for each agent"
+        sid = addSection("2", "Using Lists", 2, sb);
+        sb.append("<p>Rather than handle coordinates for each agent"
                 + " individually, the coordinates for each agent are now going"
                 + " to be stored in"
                 + index.getReference("Python list", "lists", sid)
                 + " of length 2, with the first item being an 'x' coordinate,"
                 + " and the second item being a 'y' cordinate. All agents "
                 + " are also going to be stored in a list.<p>");
-        w.add("<p>The code is also going to be reorganised so that the agents"
+        sb.append("<p>The code is also going to be reorganised so that the agents"
                 + " are created in a "
                 + index.getReference("Python for", "for loop", sid)
                 + ", and there will be a second for loop to adjust the "
                 + " coordinates (move the agents).<p>");
-        w.add("""
+        sb.append("""
               <p>Towards the top of the file (below the import statements and 
               setting of the random seed) add the following to create a new 
-              empty list called 'agents':</p>
+              empty list called 'agents':</p>\n
               <pre><code class="language-python"># Create a list to store agents
               agents = []</pre></code>
               <p>Next, add coordinates to this list: First add one pair after 
               initialising 'y0' and 'x0', by adding the following:
-              </p>
+              </p>\n
               <pre><code class="language-python">agents.append([x0,y0]) # Append to the list agents</pre></code>
               <p>Note that '[x0,y0]' creates a list containing 'x0' and 'y0', 
               and the 'append' function adds this list to the agents list. After
               doing this, 'agents[0][0]' is the 'x' coordinate of the first 
               agent in the agents list and 'agents[0][1]' is the 'y' coordinate 
-              of the first agent in the agents list.</p>
+              of the first agent in the agents list.</p>\n
               <p>Go through and replace all the other uses of 'x0' with indexed 
               list references, i.e. 'agents[0][0]' and 'y0' with 'agents[0][1]' 
               (uses - not the initial assignments). Check your code still runs.
-              </p>
+              </p>\n
               <p>The code that creates the first agent and adds this to the 
-              agents list should be as follows:</p>
+              agents list should be as follows:</p>\n
               <pre><code class="language-python"># Initialise variable x0
               x0 = random.randint(0, 99)
               print("x0", x0)
@@ -182,17 +175,17 @@ public class ABM2 extends CoursePage {
               agents.append([x0, y0])</code></pre>
               <p>Note that the variables 'x0' and 'y0' are only created for 
               this initialisation. Can you think of a way to reduce this code 
-              and do the initialition more succinctly?</p>
+              and do the initialition more succinctly?</p>\n
               """);
         
-        sid = addSection("3", "Plotting", 2);
-        w.add("<p>To plot the agents using "
+        sid = addSection("3", "Plotting", 2, sb);
+        sb.append("<p>To plot the agents using "
                 + references.getReference("Matplotlib")
-                + " add the following import statements:</p>");
-        w.add("""
+                + " add the following import statements:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import matplotlib.pyplot as plt
               import operator</code></pre>
-              <p>And adding the following code to the end of 'model.py':</p>
+              <p>And adding the following code to the end of 'model.py':</p>\n
               <pre><code class="language-python"># Plot the agents
               plt.scatter(agents[0][0], agents[0][1], color='black')
               plt.scatter(agents[1][0], agents[1][1], color='black')
@@ -200,77 +193,78 @@ public class ABM2 extends CoursePage {
               # Get the coordinates with the largest x-coordinate 
               print(max(agents, key=operator.itemgetter(0)))</code></pre>
               <p>Run 'model.py' and you should see an image output in the 
-              'Plots' pane of Spyder. The image should contain two points.</p>
+              'Plots' pane of Spyder. The image should contain two points.</p>\n
               <p>Have a look at
               <a href="https://matplotlib.org/stable/api/pyplot_summary.html">
-              the matplotlib pyplot documentation</a></p>
+              the matplotlib pyplot documentation</a></p>\n
               <p>After the code that plots the points black, plot the point 
               with the largest x coordinate red. One way to do this is to store 
               those coordinates in a variable and then pass the x-coordinate and 
               y-coordinate as arguments to the command aliased as 'plt' before 
-              the 'show()' command.</p>
-              <p>Have a try and don't worry if you don't get this to work.</p>
+              the 'show()' command.</p>\n
+              <p>Have a try and don't worry if you don't get this to work.</p>\n
               """);
         
-        sid = addSection("4", "Using Loops", 2);
-        w.add("<p>This section guides you through restructuring your code so"
+        sid = addSection("4", "Using Loops", 2, sb);
+        sb.append("<p>This section guides you through restructuring your code so"
                 + " that agent initialisation (for all agents) happens first,"
                 + " and moving (for all agents) happens second. There will be"
                 + " loops for each of these things and for plotting all the"
-                + " agents.</p>");
-        w.add("<p>To prepare yourself, review your code. In doing so, it might"
+                + " agents.</p>\n");
+        sb.append("<p>To prepare yourself, review your code. In doing so, it might"
                 + " help to insert some blank lines to separate different"
                 + " parts of it, and to add more comments to help you"
                 + " understand what it is doing. Once you have done that,"
                 + " commit your code to your local repository and assuming"
-                + " you are using GitHub - push your changes to GitHub.</p>");
-        w.add("<p>Comment out the code for initialising and changing the"
+                + " you are using GitHub - push your changes to GitHub.</p>\n");
+        sb.append("<p>Comment out the code for initialising and changing the"
                 + " coordinates of the second agent. After the line of code"
                 + " that initialises the agent list add a variable called"
                 + " 'n_agents' and set this equal to '10'. Then create a "
                 + index.getReference("Python for", "for loop", sid)
                 + " that uses n_agents to create 10 agents. The code you want"
-                + " is:</p>");
-        w.add("""
+                + " is:</p>\n");
+        sb.append("""
               <pre><code class="language-python">n_agents = 10
               for i in range(n_agents):
                   agents.append([random.randint(0, 99), random.randint(0, 99)])</code></pre>
-              <p>Check that your program still runs.</p>
-              <p>You no longer want any code that initialises other agents.</p>
+              <p>Check that your program still runs.</p>\n
+              <p>You no longer want any code that initialises other agents.</p>\n
               """);
-        w.add ("<p>Use another for loop to move all 10 agents. And use another"
+        sb.append ("<p>Use another for loop to move all 10 agents. And use another"
                 + " for loop to plot all 10 agents black. Hopefully, there is"
                 + " still a red coloured dot which gives the location of the"
-                + " agent with the largest x coordinate.</p>");
-        w.add("<p>Add and commit to your local git repository and assuming you"
-                + " are using GitHub - push your changes to GitHub.</p>");
+                + " agent with the largest x coordinate.</p>\n");
+        sb.append("<p>Add and commit to your local git repository and assuming you"
+                + " are using GitHub - push your changes to GitHub.</p>\n");
         
-        sid = addSection("5", "More Plotting", 2);
-        w.add("""
+        sid = addSection("5", "More Plotting", 2, sb);
+        sb.append("""
               <p>Similarly to plotting the agent with the largest x coordinate
               red, write code to plot the agent with the smallest x coordinate 
               blue; the largest y coordinate yellow; and the smallest y 
-              coordinate green.</p>
+              coordinate green.</p>\n
               <p>Commit your code to your local repository and assuming you 
-              are using GitHub - push your changes to GitHub.</p>""");
+              are using GitHub - push your changes to GitHub.</p>\n""");
         
-        sid = addSection("6", "Code Review and Looking Forward", 2);
-        w.add("""
+        sid = addSection("6", "Code Review and Looking Forward", 2, sb);
+        sb.append("""
               <p>If you managed to complete all parts, then it should be 
               straight forward to modify your code to run for different numbers
               of agent. Have a try and also think about how you would get the 
-              agents to move multiple times.</p>
+              agents to move multiple times.</p>\n
               <p>If you got stuck, then don't worry, look ahead to the start of 
               the next ABM practical where some code that does everything is 
-              provided.</p>
+              provided.</p>\n
               <p>Next we will look in more detail about functions and how to 
               document them. Then in the next ABM practical: a loop will be 
               created to simulate movement of the agents multiple times; and the 
               distance calculation code, which is currently just a test case, 
               will be changed into a function. Most of the next practical will 
               be an exercise involving calculating the maximum distance between 
-              agents and timing code to optimise this.</p>
+              agents and timing code to optimise this.</p>\n
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

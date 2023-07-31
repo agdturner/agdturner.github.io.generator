@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course ABM8 Page.
@@ -27,7 +25,7 @@ import io.github.agdturner.course.Index;
  * @author Andy Turner
  */
 public class ABM9 extends CoursePage {
-    
+
     /**
      * Create a new instance.
      *
@@ -36,22 +34,21 @@ public class ABM9 extends CoursePage {
     public ABM9(PythonIntroCodingCourse course) {
         super(course, "abm9", "Agent Based Model Practical 9", "ABM9");
     }
-    
+
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        sb.append("""
               <p>This practical is about using some data in an HTML file Table
               to initialise part of the model.</p>
               <p>In your local code repository 'src' directory duplicate your 
               'abm8' directory as 'abm9'.</p>
-              
-              <h2 id="2">2. Parsing an HTML File</h2>
-              <p><a href="../../resources/abm9/data.html">The HTML to parse</a>.</p>
+                  """);
+
+        sid = addSection("2", "Parsing an HTML File", 2, sb);
+        sb.append("""
+                  <p><a href="../../resources/abm9/data.html">The HTML to parse</a>.</p>
               <p>Have a look at the source code for the file by either opening 
               it in a text editor or viewing the source in your Web browser.</p>
               <!--
@@ -66,9 +63,9 @@ public class ABM9 extends CoursePage {
               # Initialise agents
               """);
         String url = "https://" + site.env.domain + "/resources/abm9/data.html";
-        w.add("url = '" + url + "'");
-        w.add("r = requests.get(url, verify=False)");
-        w.add("""
+        sb.append("url = '" + url + "'");
+        sb.append("r = requests.get(url, verify=False)");
+        sb.append("""
               content = r.text
               soup = bs4.BeautifulSoup(content, 'html.parser')
               td_ys = soup.find_all(attrs={"class" : "y"})
@@ -83,7 +80,7 @@ public class ABM9 extends CoursePage {
                   agents.append(af.Agent(agents, i, environment, n_rows, n_cols, x, y))
                   print(agents[i].agents[i])</code></pre>
               """);
-        w.add("""
+        sb.append("""
               <p>Change the '__init__' function in 'agentframework.py' to:</p>");
               <pre><code class="language-python">def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
               \"""
@@ -125,10 +122,12 @@ public class ABM9 extends CoursePage {
               self.store = random.randint(0, 99)
               self.store_shares = 0</code></pre>
               """);
-        w.add("""
-              <h2 id="3">3. Assignment 1 submission</h2>
+
+        sid = addSection("3", "Assignment 1 submission", 2, sb);
+        sb.append("""
               <p>Update the README file for your repository and submit your work.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

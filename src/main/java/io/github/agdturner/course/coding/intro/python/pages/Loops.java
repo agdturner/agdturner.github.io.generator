@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course Branching and Loops Page.
@@ -37,28 +35,25 @@ public class Loops extends CoursePage {
     public Loops(PythonIntroCodingCourse course) {
         super(course, "loops", "Loops", "Loops");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>Python has syntax for '"
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>Python has syntax for '"
                 + index.getReference("While Loop", "while loops", sid)
                 + "' and '"
                 + index.getReference("For Loop", "for loops", sid)
                 + "'. While loops are typically used to repeat something until "
                 + " a condition is reached. For loops are typically used to "
                 + " repeat something a set number of times (or for each thing"
-                + " in a sequence). Let's explore while loops first...</p>");
+                + " in a sequence). Let's explore while loops first...</p>\n");
 
-        sid = addSection("2", "While", 2);
-        w.add("<p>The following provides an example of a "
+        sid = addSection("2", "While", 2, sb);
+        sb.append("<p>The following provides an example of a "
                 + index.getReference("Python while", "while", sid)
-                + " statement:</p>");
-        w.add("""
+                + " statement:</p>\n");
+        sb.append("""
               <pre><code class="language-python">x = 1
               while (x < 10):
                   print(x)
@@ -67,12 +62,12 @@ public class Loops extends CoursePage {
               loop will continue indefinitely. This is sometimes a reason why a 
               program fails to terminate when you were expecting it to.</p>
               """);
-        w.add("<p>A "
+        sb.append("<p>A "
                 + index.getReference("Python break", "break", sid)
                 + " statement breaks out of a loop which is commonly done when"
                 + " some other condition is reached. For example, consider the"
-                + " following code:</p>");
-        w.add("""
+                + " following code:</p>\n");
+        sb.append("""
               <pre><code class="language-python"># Print the largest number less than 1 million that is divisible by 17
               x = 1000000
               while (x != 0):
@@ -83,11 +78,11 @@ public class Loops extends CoursePage {
               <p>The output of which is:</p>
               <pre>999991</pre>
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + index.getReference("Python continue", "continue", sid)
                 + " statement gets the program to return to the start of a loop"
-                + " when a condition is reached:</p>");
-        w.add("""
+                + " when a condition is reached:</p>\n");
+        sb.append("""
               <pre><code class="language-python"># Print odd numbers from 1 to 10
               x = 0
               while x < 10:
@@ -105,8 +100,8 @@ public class Loops extends CoursePage {
               the normal end of print statement - a newline - with a space.</p>
               """);
 
-        sid = addSection("3", "For", 2);
-        w.add("<p>"
+        sid = addSection("3", "For", 2, sb);
+        sb.append("<p>"
                 + index.getReference("For Loop", "For loops", sid)
                 + " in Python ("
                 + index.getReference("Python for", "for loop", sid)
@@ -115,16 +110,16 @@ public class Loops extends CoursePage {
                 + " following example, the first time around the loop, the"
                 + " variable 'x' is assigned the value '0', the second time"
                 + " around the loop x is assigned the value '1' and so on:"
-                + "</p>");
-        w.add("""
+                + "</p>\n");
+        sb.append("""
               <pre><code class="language-python">for x in (0,1,2,3,4,5,6,7,8,9):
                   print(x)</code></pre>
               """);
-        w.add("<p>For sequences of numbers, it is much more common to use a "
+        sb.append("<p>For sequences of numbers, it is much more common to use a "
                 + index.getReference("Python range", "range", sid)
                 + " , for example, the following does the same as the previous"
-                + " example:</p>");
-        w.add("""
+                + " example:</p>\n");
+        sb.append("""
               <pre><code class="language-python">for x in range(10):
                   print(x)</code></pre>
               <p>It is also common to use a slice, for example:</p>
@@ -169,7 +164,7 @@ public class Loops extends CoursePage {
               <pre><code class="language-python">for name in names[2::2]:
                   print(name)</code></pre>
               """);
-        w.add("""
+        sb.append("""
               <p>A disadvantage of not having an index counter and using a 
               sequence is that it makes it harder to remove items from the 
               sequence which is often useful. For example, the following code 
@@ -189,26 +184,26 @@ public class Loops extends CoursePage {
               <p>It would though probably be better to simply reinitialise 
               'names' as an empty list.</p>
               """);
-        w.add("<p>As with a while loop, an 'else' clause can be added to for"
+        sb.append("<p>As with a while loop, an 'else' clause can be added to for"
                 + " loop and is executed once the loop completes, or not at"
                 + " all if there is a "
                 + index.getReference("Python break", "break", sid)
                 + " statement that terminates the loop before the last"
                 + " iteration completes.<p>");
-        w.add("Also, a "
+        sb.append("Also, a "
                 + index.getReference("Python continue", "continue",
                         sid)
                 + " statement can be used to skip to the start of the next loop"
-                + " iteration in the same way as in a while loop.</p>");
+                + " iteration in the same way as in a while loop.</p>\n");
 
-        sid = addSection("4", "Nesting loops", 2);
-        w.add("<p>In spatial analysis it is common to want to go through two"
+        sid = addSection("4", "Nesting loops", 2, sb);
+        sb.append("<p>In spatial analysis it is common to want to go through two"
                 + " dimensional (2D) raster data or tables of values. One way"
                 + " to do this is to nest for loops. Consider the following"
                 + " code which goes through all the rows in 'data' and for each"
                 + " 'row', goes through the values (one for each 'column'):"
-                + "</p>");
-        w.add("""
+                + "</p>\n");
+        sb.append("""
               <pre><code class="language-python">data = [
               [0,1,2],
               [3,4,5]
@@ -231,15 +226,15 @@ public class Loops extends CoursePage {
                       print(data[row][col], end=" ")
                   print()</code></pre>
               """);
-        w.add("<p>Recall that the "
+        sb.append("<p>Recall that the "
                 + index.getReference("Python len", "len", sid)
                 + " function, when passed a sequence as a parameter, returns"
                 + " the length of the sequence, and the "
                 + index.getReference("Python range", "range", sid)
                 + " function turns an Integer argument into a sequence starting"
                 + " from '0' and ending with one less than that argument"
-                + " stepping by 1.</p>");
-        w.add("""
+                + " stepping by 1.</p>\n");
+        sb.append("""
               <p>When processing raster data like this, care is needed not to
               get rows and columns mixed up. This is easier to do if the data 
               have the same number of rows and columns!</p>
@@ -283,6 +278,7 @@ public class Loops extends CoursePage {
               <p>Use containers, branches and loops to simplify and extend the 
               Agent Based Model code.</p> 
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

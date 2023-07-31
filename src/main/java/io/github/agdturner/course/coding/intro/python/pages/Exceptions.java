@@ -16,10 +16,8 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
 
 /**
  * For Python Intro Course Variables Page.
@@ -36,15 +34,12 @@ public class Exceptions extends CoursePage {
     public Exceptions(PythonIntroCodingCourse course) {
         super(course, "exceptions", "Exceptions", "Exceptions");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("""
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("""
               <p>A Python exception is 'raised' when the Python interpreter 
               encounters an error. There are numerous types of exception, all 
               are types of 
@@ -55,16 +50,16 @@ public class Exceptions extends CoursePage {
               encountered.</p>
               """);
 
-        sid = addSection("2", "Try-Except", 2);
-        w.add("<p>If it is suspected that code might generate an exception, or"
+        sid = addSection("2", "Try-Except", 2, sb);
+        sb.append("<p>If it is suspected that code might generate an exception, or"
                 + " if code raises an exception and analysis of this is to be"
                 + " done, then a "
                 + index.getReference("Python try", "try", sid)
                 + " compound statement can be used with an 'except' clause."
                 + " This tries to run the code in the try section and if"
                 + " specific exceptions are raised, then the code in the except"
-                + " clause is run.</p>");
-        w.add("""
+                + " clause is run.</p>\n");
+        sb.append("""
               <p>Consider the following example:</p>
               <pre><code class="language-python"># Catch an exception
               import random
@@ -126,23 +121,23 @@ public class Exceptions extends CoursePage {
               </ol>
               """);
 
-        sid = addSection("3", "Raising Exceptions", 2);
-        w.add("<p>Exceptions are raised automatically if they are encountered "
-                + "and not handled in an 'except' clause.</p>");
-        w.add("<p>The keyword 'raise' can be used to raise an exception by "
+        sid = addSection("3", "Raising Exceptions", 2, sb);
+        sb.append("<p>Exceptions are raised automatically if they are encountered "
+                + "and not handled in an 'except' clause.</p>\n");
+        sb.append("<p>The keyword 'raise' can be used to raise an exception by "
                 + "simply giving the exception type. The following raises a "
                 + index.getReference("SystemError")
-                + ".</p>");
-        w.add("""
+                + ".</p>\n");
+        sb.append("""
               <pre><code class="language-python">raise SystemError</code></pre>
               <p>New types of exception can be defined by subclassing an 
               exception from the builtins module.</p>
               """);
 
-        sid = addSection("4", "Else and Finally", 2);
-        w.add("<p>To run something only if exceptions are not raised, add an "
-                + "'else' clause, for example:</p>");
-        w.add("""
+        sid = addSection("4", "Else and Finally", 2, sb);
+        sb.append("<p>To run something only if exceptions are not raised, add an "
+                + "'else' clause, for example:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import random
               try:
                   a = 1/random.random()
@@ -179,17 +174,17 @@ public class Exceptions extends CoursePage {
               -->
               """);
 
-        sid = addSection("5", "System Exit", 2);
-        w.add("<p>To exit a program at any point, call the '"
+        sid = addSection("5", "System Exit", 2, sb);
+        sb.append("<p>To exit a program at any point, call the '"
                 + "<a href=\"https://docs.python.org/3/library/sys.html#sys.exit\">"
                 + "exit function</a>'"
                 + " from the "
                 + index.getReference("Python sys", "sys module", sid)
-                + ". For example:</p>");
-        w.add("""
+                + ". For example:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import sys
               sys.exit()</code></pre>
-              <p>This has an arg option:</p>
+              <p>This has an arg option:</p>\n
               <pre><code class="language-python">sys.exit(arg)</code></pre>
               <p>Where arg is a number that the system will report. Zero is 
               usually regarded as exiting with no issues.</p>
@@ -197,6 +192,7 @@ public class Exceptions extends CoursePage {
               <a href="https://docs.python.org/3/library/errno.html">errno</a>
               - a special module on system error codes.</p>
               """);
-        w.add("</div>");
+        sb.append("</div>\n");
+        return sb.toString();
     }
 }

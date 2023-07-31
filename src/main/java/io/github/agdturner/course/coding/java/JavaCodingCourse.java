@@ -16,14 +16,14 @@
 package io.github.agdturner.course.coding.java;
 
 import io.github.agdturner.core.Environment;
-import io.github.agdturner.course.Course;
+import io.github.agdturner.course.coding.CodingCourse;
 
 /**
  * Java for generating JavaCourse web content.
  *
  * @author Andy Turner
  */
-public abstract class JavaCourse extends Course {
+public abstract class JavaCodingCourse extends CodingCourse {
 
     /**
      * The course Type for setting {@link #courseType}.
@@ -37,7 +37,7 @@ public abstract class JavaCourse extends Course {
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
      */
-    public JavaCourse(Environment env, String courseCode, 
+    public JavaCodingCourse(Environment env, String courseCode, 
             String courseName) {
         super(env, COURSE_TYPE, courseCode, courseName);
         index = new JavaIndex(this, "index", "Index", "Index");

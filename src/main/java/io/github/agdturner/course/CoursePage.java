@@ -17,10 +17,13 @@ package io.github.agdturner.course;
 
 import io.github.agdturner.core.Page;
 import io.github.agdturner.core.PageID;
+import io.github.agdturner.core.Section;
+import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.pages.CourseHome;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Course Web Page.
@@ -38,17 +41,17 @@ public abstract class CoursePage extends Page {
      * References for convenience.
      */
     protected final References references;
-    
+
     /**
      * Course Pages for convenience.
      */
     protected final ArrayList<Page> pages;
-    
+
     /**
      * CCourse Home Page for convenience.
      */
     protected final CourseHome homePage;
-    
+
     /**
      * Create a new instance.
      *
@@ -60,21 +63,21 @@ public abstract class CoursePage extends Page {
     public CoursePage(Course course, String filename, String title, String label) {
         super(course, filename, title, label, new PageID(course.pages.size()),
                 Paths.get(course.courseDir.toString(), filename));
-        course.addPage(w, id, label, filename);
+        course.addPage(w, pageID, label, filename);
         this.sections = new TreeMap<>();
         index = course.getIndex();
         references = course.getReferences();
         pages = course.pages;
         homePage = course.getHomePage();
     }
-    
+
     /**
      * @return {@link #site} cast as a Course.
      */
     public Course getCourse() {
         return (Course) site;
     }
-    
+
     /**
      * @param course The course for which the index is returned.
      * @return {@code getCourse().getIndex();}.
@@ -82,7 +85,7 @@ public abstract class CoursePage extends Page {
     public Index getIndex(Course course) {
         return course.getIndex();
     }
-    
+
     /**
      * @param course The course for which the index is returned.
      * @return {@code getCourse().getIndex();}.
@@ -90,7 +93,7 @@ public abstract class CoursePage extends Page {
     public References getReferences(Course course) {
         return course.getReferences();
     }
-    
+
     /**
      * For navigation to the next and optionally previous page.
      *
@@ -120,17 +123,17 @@ public abstract class CoursePage extends Page {
                 }
             } else {
                 if (addPrevious) {
-                    if (this.id.id > 0) {
-                        sb.append(getLinkPrev(pages.get(this.id.id - 1),
+                    if (this.pageID.id > 0) {
+                        sb.append(getLinkPrev(pages.get(this.pageID.id - 1),
                                 linkClass));
                         sb.append("</p>\n<p>");
-                    } else if (this.id.id == 0) {
+                    } else if (this.pageID.id == 0) {
                         sb.append(getLinkPrev(homePage, linkClass));
                         sb.append("</p>\n<p>");
                     }
                 }
-                if (this.id.id < n - 1) {
-                    sb.append(getLinkNext(pages.get(this.id.id + 1),
+                if (this.pageID.id < n - 1) {
+                    sb.append(getLinkNext(pages.get(this.pageID.id + 1),
                             linkClass));
                 } else {
                     sb.append(getLinkNext(index, linkClass));
@@ -142,5 +145,29 @@ public abstract class CoursePage extends Page {
         }
         sb.append("</p>\n</div>");
         return sb.toString();
+    }
+
+    /**
+     * Get the page contents.
+     *
+     * @return The page contents.
+     */
+    @Override
+    public String getPageContents() {
+        TreeSet<SectionID> sids = getCourse().pageIDToSectionIDs.get(pageID);
+        if (sids != null) {
+            StringBuilder sb = new StringBuilder("<div>\n");
+            sb.append("<ul>\n");
+            for (var x : sids) {
+                sb.append("<li>\n");
+                Section section = sections.get(x);
+                sb.append(section.sectionHTML).append("\n");
+                sb.append("</li>\n");
+            }
+            sb.append("</ul>\n");
+            sb.append("</div>\n");
+            return sb.toString();
+        }
+        return "";
     }
 }

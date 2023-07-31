@@ -17,10 +17,7 @@ package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.course.Course;
 import io.github.agdturner.course.CoursePage;
-import io.github.agdturner.course.Index;
-import io.github.agdturner.course.References;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -38,16 +35,12 @@ public class Python extends CoursePage {
     public Python(PythonIntroCodingCourse course) {
         super(course, "python", "Python", "Python");
     }
-
+    
     @Override
-    public void write() {
-        Course course = getCourse();
-        Index index = course.getIndex();
-        References references = course.getReferences();
-        writeHeader();
-        writeH1();
-        SectionID sid = addSection("1", "Introduction", 2);
-        w.add("<p>"
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>"
                 + index.getReference("Python")
                 + " is a popular and powerful high-level programming language "
                 + "supported and developed by the "
@@ -55,8 +48,8 @@ public class Python extends CoursePage {
                 + " - an organisation with a mission to promote,"
                 + " protect, and advance the language, and support and"
                 + " facilitate the growth of a diverse and international "
-                + "community of Python programmers.</p>");
-        w.add("<p>The "
+                + "community of Python programmers.</p>\n");
+        sb.append("<p>The "
                 + references.getReference("Python 3 Documentation: Library",
                         "Python 3 Library")
                 + " and various Python "
@@ -67,17 +60,17 @@ public class Python extends CoursePage {
                 + ", and these may be freely distributed. Python interpreters "
                 + "translate Python source code into machine instructions that "
                 + "work at a much lower level. The need for interpretation is "
-                + "what classifies Python as a high-level language.</p>"
+                + "what classifies Python as a high-level language.</p>\n"
                 + "<p>The "
                 + references.getReference("Python Website")
                 + " contains distributions of and pointers to many third party"
-                + " Python libraries, tools, and additional documentation.</p>"
+                + " Python libraries, tools, and additional documentation.</p>\n"
                 + "<p>A particularly useful page for beginners is the "
                 + references.getReference("Python 3 Documentation")
-                + ".</p>");
+                + ".</p>\n");
 
-        sid = addSection("2", "Python 3", 2);
-        w.add("""
+        sid = addSection("2", "Python 3", 2, sb);
+        sb.append("""
               <p>Python 3 was first released in 2008. For several years both 
               Python 2 and Python 3 were developed and supported, but eventually 
               in January 2020 development and maintenance of Python 2 ceased. 
@@ -88,16 +81,16 @@ public class Python extends CoursePage {
               Python 3.12 is due for release in October 2023.
               For each major incremental Python 3 release there is a
               """);
-        w.add(references.getReference("Python 3 Documentation: What's New")
-                + " webpage that introduces what is new:</p>");
-        w.add("<ul>");
+        sb.append(references.getReference("Python 3 Documentation: What's New")
+                + " webpage that introduces what is new:</p>\n");
+        sb.append("<ul>");
         for (int i = 0; i < 12; i++) {
-            w.add("<li>" + Web_ContentWriter.getLink(
+            sb.append("<li>" + Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
                     "Whatsnew Python 3." + i) + "</li>");
         }
-        w.add("</ul>");
-        w.add("<p>On those webpages, changes are marked against numbered"
+        sb.append("</ul>");
+        sb.append("<p>On those webpages, changes are marked against numbered"
                 + " Python Enhancement Proposals (PEPs). There is a "
                 + references.getReference("Python Enhancement Proposal Website")
                 + " which has existed since July 2000. PEPs are design"
@@ -106,12 +99,12 @@ public class Python extends CoursePage {
                 + " environment. A PEP should provide a concise technical"
                 + " specification of the feature and a rationale for the"
                 + " feature. PEPs allow the community of Python users to plan"
-                + " ahead and  get involved in language development.</p>");
-        w.add("<p>Most changes in a major version of Python are "
+                + " ahead and  get involved in language development.</p>\n");
+        sb.append("<p>Most changes in a major version of Python are "
                 + index.getReference("Backward Compatibility",
                         "backward compatible", sid)
-                + ", but some are not.</p>");
-        w.add("<p>Usually, a new interpreter is needed to take advantage of new"
+                + ", but some are not.</p>\n");
+        sb.append("<p>Usually, a new interpreter is needed to take advantage of new"
                 + " language features, whereas a newer interpreter will often"
                 + " produce the same results from code interpreted with an"
                 + " older interpreter. However, it is important to bear in mind"
@@ -123,39 +116,39 @@ public class Python extends CoursePage {
                 + " are "
                 + index.getReference("Reproducibility", "reproducibile",
                         sid)
-                + " is often very important in research.</p>");
-        w.add("<p>There is a vast ecosystem of third party Python libraries."
+                + " is often very important in research.</p>\n");
+        sb.append("<p>There is a vast ecosystem of third party Python libraries."
                 + " Much of this is made available as packages via the "
                 + index.getReference("PyPI", "Python Package Index")
-                + " (PyPI).</p>");
-        w.add("""
+                + " (PyPI).</p>\n");
+        sb.append("""
               <p>Below, in <a href="#9">Section 9</a>, there is an exercise that 
               involves installing Python packages from PyPI and that links to 
               details about how to package code and make it available via PyPI.
-              </p>
+              </p>\n
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + references.getReference("Python 3 Documentation: Tutorial")
                 + " is a recommended way to start learning Python. In your"
                 + " private study time, you might like to make your way through"
                 + " that series of tutorials which compliment these learning"
-                + " resources and go through some things in more depth.</p>");
+                + " resources and go through some things in more depth.</p>\n");
 
-        sid = addSection("3", "Running Python", 2);
-        w.add("<p>Python instructions also known as 'commands' or 'statements',"
+        sid = addSection("3", "Running Python", 2, sb);
+        sb.append("<p>Python instructions also known as 'commands' or 'statements',"
                 + " can be entered one at a time at a "
                 + index.getReference("Command Line Interface",
                         "command-line interface", sid)
-                + " or passed in a file.</p>");
-        w.add("<p>First, check if there is a version of Python already on your "
+                + " or passed in a file.</p>\n");
+        sb.append("<p>First, check if there is a version of Python already on your "
                 + index.getReference("PATH", sid)
                 + " by running a 'Terminal' or 'Command Window' and entering"
-                + " the following at the prompt:</p>");
-        w.add("<pre>python --version</pre>");
-        w.add("<p>If 'python' cannot be found, then it is most likely"
+                + " the following at the prompt:</p>\n");
+        sb.append("<pre>python --version</pre>");
+        sb.append("<p>If 'python' cannot be found, then it is most likely"
                 + " that Python is not installed. If a version of Python is"
-                + " available, then the version of it should be reported.</p>");
-        w.add("<p>" + references.getReference("Anaconda")
+                + " available, then the version of it should be reported.</p>\n");
+        sb.append("<p>" + references.getReference("Anaconda")
                 + " is a data science platform. It contains: "
                 + references.getReference("Conda")
                 + " - an environment manager; a Python interpreter; some"
@@ -166,14 +159,14 @@ public class Python extends CoursePage {
                 + "<a href=\"https://wvd.leeds.ac.uk\">"
                 + "University Windows Virtual Desktop"
                 + ".</a>");
-        w.add("<p>Anaconda can also be download and installed. If you choose to"
+        sb.append("<p>Anaconda can also be download and installed. If you choose to"
                 + " do this, then it is recommended to select the default"
                 + " install options to avoid interfering with any other version"
                 + " of Python already installed. By default, Anaconda"
-                + " installs into the user home directory.</p>");
+                + " installs into the user home directory.</p>\n");
 
-        sid = addSection("3.1", "Python REPL", 3);
-        w.add("""
+        sid = addSection("3.1", "Python REPL", 3, sb);
+        sb.append("""
               <h4>3.1.1. Hello World</h4>
               <p>Open an 'Anaconda prompt'. On Windows the prompt should look 
               something like:</p>
@@ -188,17 +181,17 @@ public class Python extends CoursePage {
               like:</p>
               <pre>>>></pre>
               """);
-        w.add("<p>This is a Python "
+        sb.append("<p>This is a Python "
                 + index.getReference("REPL", sid)
-                + " environment. Enter:</p>");
-        w.add("""
+                + " environment. Enter:</p>\n");
+        sb.append("""
               <pre>print("Hello World")</pre>
               <p>You should see the following output:</p>
               <pre>Hello World</pre>
               """);
 
-        sid = addSection("3.1.2", "Numerical calculations", 4);
-        w.add("""
+        sid = addSection("3.1.2", "Numerical calculations", 4, sb);
+        sb.append("""
               <p>The Python prompt can be used for some basic calculations. 
               Enter:</p>
               <pre>2 + 3</pre>
@@ -206,7 +199,7 @@ public class Python extends CoursePage {
               3:</p>
               <pre>5</pre>
               """);
-        w.add("<p>The plus symbol '+' in this instance acts as an addition"
+        sb.append("<p>The plus symbol '+' in this instance acts as an addition"
                 + " operator. This is a '"
                 + index.getReference("Python Built-in Types",
                         "Built-in Type", sid)
@@ -214,17 +207,17 @@ public class Python extends CoursePage {
                 + " Multiplication can be done similarly using an asterix '*'"
                 + " symbol; and division can be done using the forward slash "
                 + "'/' symbol.<p>");
-        w.add("""
+        sb.append("""
               <p>Dividing '3' by '2' in this way results not in an integer, but
               in '1.5'. In some programming languages dividing by an integer 
               will result in an integer. Indeed this used to be the case in an 
               old version of Python!</p>
               """);
-        w.add("<p>Trying to evaluate a division by zero results in a "
+        sb.append("<p>Trying to evaluate a division by zero results in a "
                 + index.getReference("Python ZeroDivisionError",
                         "ZeroDivisionError", sid)
                 + ".<p>");
-        w.add("""
+        sb.append("""
               <p>Try multiplying and dividing some numbers, and try the 
               following division:</p>")
               <pre>1 / 0</pre>              
@@ -235,7 +228,7 @@ public class Python extends CoursePage {
               ZeroDivisionError: division by zero
               </pre>
               """);
-        w.add("<p>A "
+        sb.append("<p>A "
                 + index.getReference("Python ZeroDivisionError",
                         "ZeroDivisionError", sid)
                 + " is an "
@@ -244,8 +237,8 @@ public class Python extends CoursePage {
                 + " that is 'raised' in particular circumstances. It is good"
                 + " to get familiar with reading details of these that are"
                 + " typically printed to the console as a key part of Python"
-                + " programming is about interpreting these.</p>");
-        w.add("""
+                + " programming is about interpreting these.</p>\n");
+        sb.append("""
               <p>Try some more calculations. Calculates '2' to the power of 
               '64':</p>
               <pre>2 ** 64</pre>
@@ -254,13 +247,13 @@ public class Python extends CoursePage {
               <p>The result is an integer with '301,030' digits. It may take 
               noticeably longer to compute and display this number...</p>
               """);
-        w.add("<p>One way to calculate how many digits there are is to pass the "
+        sb.append("<p>One way to calculate how many digits there are is to pass the "
                 + " result into the "
                 + index.getReference("Python str", "str", sid)
                 + " function and to pass the result of this into the "
                 + index.getReference("Python len", "len", sid)
-                + " function as follows:</p>");
-        w.add("""
+                + " function as follows:</p>\n");
+        sb.append("""
               <pre>len(str(2 ** 1000000))</pre>
               <p>Notice how things are passed into the two functions.</p>
               <p>Increasing the power raised to by a further multiple of ten 
@@ -288,22 +281,22 @@ public class Python extends CoursePage {
               <p>The result is rounded down to 0.0 as this is the nearest Float
               value to the true value!</p>
               """);
-        w.add("");
+        sb.append("");
 
-        sid = addSection("3.2", "Loading Modules and Using Functions", 3);
-        w.add("<p>Some mathematical operators are built-in as delimiters. Others can be found "
+        sid = addSection("3.2", "Loading Modules and Using Functions", 3, sb);
+        sb.append("<p>Some mathematical operators are built-in as delimiters. Others can be found "
                 + "in the , but they are  '+' and '*' are shorthand for "
                 + "functions that reside in the "
                 + index.getReference("Python operator", "operator", sid)
-                + " module.</p>");
-        w.add("""
+                + " module.</p>\n");
+        sb.append("""
               <p>Enter:</p>
               <pre>operator.add(2, 3)</pre>
               """);
-        w.add("<p>This should raise a "
+        sb.append("<p>This should raise a "
                 + index.getReference("Python NameError", "NameError", sid)
-                + " as follows:</p>");
-        w.add("""
+                + " as follows:</p>\n");
+        sb.append("""
               <pre>Traceback (most recent call last):
                 File "&lt;stdin>", line 1, in &lt;module>
               NameError: name 'operator' is not defined</pre>
@@ -312,18 +305,18 @@ public class Python extends CoursePage {
               <p>Enter:</p>
               <pre>dir()</pre>
               """);
-        w.add("<p>This runs (or calls) the function '"
+        sb.append("<p>This runs (or calls) the function '"
                 + index.getReference("Python dir", "dir", sid)
                 + "'. Function calls are easy to spot as after the function"
                 + " name there are start and end parentheses. In this function"
                 + " call the function is passed no arguments - as there is"
                 + " nothing between the start and end parentheses. The output"
-                + " is a list of names in the current local scope:</p>");
-        w.add("""
+                + " is a list of names in the current local scope:</p>\n");
+        sb.append("""
               <pre>['__annotations__', '__builtins__', '__doc__', '__loader__',
               '__name__', '__package__', '__spec__']</pre>
               """);
-        w.add("""
+        sb.append("""
               <p>The list is alphabetically ordered. You can tell it is a list 
               as it starts with an open square bracket '[' and ends with 
               a closing square bracket ']', and each item is separated with a
@@ -363,9 +356,9 @@ public class Python extends CoursePage {
               module.</p>
               """);
 
-        sid = addSection("3.3", "The Help System", 3);
-        w.add(index.getReference("Python help", "", sid));
-        w.add("""
+        sid = addSection("3.3", "The Help System", 3, sb);
+        sb.append(index.getReference("Python help", "", sid));
+        sb.append("""
               <p>At the Python prompt, enter:</p>
               <pre>help(operator.add)</pre>
               <p>This prints out some information about how to use the 
@@ -632,28 +625,28 @@ public class Python extends CoursePage {
               enter:</p>
               <pre>q</pre>
               """);
-        w.add("<p>To read the help for the "
+        sb.append("<p>To read the help for the "
                 + index.getReference("Python builtins", "builtins", sid)
                 + " module "
                 + index.getReference("Python print", "print", sid)
-                + " function, enter:</p>");
-        w.add("<pre>help(print)</pre>");
-        w.add("""
+                + " function, enter:</p>\n");
+        sb.append("<pre>help(print)</pre>");
+        sb.append("""
               <p>Before learning how to run a file of Python commands, let us 
               consider some more basic Python syntax - rules about how it must 
               be written.</p>
               """);
 
-        sid = addSection("4", "Basic Python Syntax", 2);
+        sid = addSection("4", "Basic Python Syntax", 2, sb);
 
-        sid = addSection("4.1", "Syntax Errors", 3);
+        sid = addSection("4.1", "Syntax Errors", 3, sb);
         index.getReference("Syntax Error", "", sid);
-        w.add("<p>If a statement or expression is syntactically incorrect, and"
+        sb.append("<p>If a statement or expression is syntactically incorrect, and"
                 + " the Python interpreter attempts to interpret it, a "
                 + index.getReference("Python SyntaxError", "SyntaxError",
                         sid)
-                + " is raised.</p>");
-        w.add("""
+                + " is raised.</p>\n");
+        sb.append("""
               <p>At the Python prompt enter:</p>
               <pre>x=</pre>
               <p>You should get the following:</p>
@@ -685,8 +678,8 @@ public class Python extends CoursePage {
               many other languages do.</p>
               """);
 
-        sid = addSection("4.3", "Comments", 3);
-        w.add("""
+        sid = addSection("4.3", "Comments", 3, sb);
+        sb.append("""
               <p>The symbol '#' is the start of a comment. Consider the 
               following code:</p>
               <pre>
@@ -697,19 +690,19 @@ public class Python extends CoursePage {
               # x = 1 # Commented code is not run.
               </pre>
               """);
-        w.add("<p>Between pairs of matching triple quotes everything is a"
+        sb.append("<p>Between pairs of matching triple quotes everything is a"
                 + " comment. There are two types of triple quote, those using"
                 + " single quotation marks, and those using double quotation"
-                + " marks.</p>");
-        w.add("<p>Triple double quotes are used for "
+                + " marks.</p>\n");
+        sb.append("<p>Triple double quotes are used for "
                 + index.getReference("Python docstring", "docstrings", sid)
                 + " - a form of documentation that will be detailed later in"
-                + " the course.</p>");
-        w.add("<p>Triple single quotes can be useful for commenting out"
+                + " the course.</p>\n");
+        sb.append("<p>Triple single quotes can be useful for commenting out"
                 + " sections of code when "
                 + index.getReference("Debugging", "debugging", sid)
-                + ". Consider the following code:</p>");
-        w.add("""
+                + ". Consider the following code:</p>\n");
+        sb.append("""
               <pre>
               '''
               This is between triple single quotes and is a comment
@@ -732,8 +725,8 @@ public class Python extends CoursePage {
               to explain why code any code is commented out.</p>
               """);
 
-        sid = addSection("4.4", "Code Layout", 3);
-        w.add("""
+        sid = addSection("4.4", "Code Layout", 3, sb);
+        sb.append("""
               <p>Blank lines are allowed and can help structure code into 
               blocks. It is good practice to start each code block with a
               comment that outlines what the code block is for. For example:
@@ -753,10 +746,10 @@ public class Python extends CoursePage {
               appear the same when it isn't. It is recommended not to use tabs 
               for indentation and to use multiple spaces instead.</p>
               """);
-        w.add("<p>The following is a Python code block with an example "
+        sb.append("<p>The following is a Python code block with an example "
                 + index.getReference("Python if", "if statement", sid)
-                + ":</p>");
-        w.add("""
+                + ":</p>\n");
+        sb.append("""
               <pre>
               # if x is greater than y, then print a
               if x > y: # This line has the same indent as the comment above.
@@ -764,25 +757,25 @@ public class Python extends CoursePage {
               print(\"done\") # This line is indented to the previous level.
               </pre>
               """);
-        w.add("<p>In the code above, if the variable 'x' is greater than the"
+        sb.append("<p>In the code above, if the variable 'x' is greater than the"
                 + "variable 'y', then the value of 'x' is printed. If either "
                 + "of the variables 'x' or 'y' has not been initialised, then "
                 + "a "
                 + index.getReference("Python NameError", "NameError")
-                + " will be raised.</p>");
+                + " will be raised.</p>\n");
 
-        sid = addSection("4.5", "Delimiters, Literals and Operators", 3);
-        w.add("<p>Delimiters in code separate and help organise things. The "
+        sid = addSection("4.5", "Delimiters, Literals and Operators", 3, sb);
+        sb.append("<p>Delimiters in code separate and help organise things. The "
                 + " following are "
                 + index.getReference("Python delimiters", sid)
-                + ":</p>");
-        w.add("""
+                + ":</p>\n");
+        sb.append("""
               <pre>(       )       [       ]       {       }      :
               .       ;       @       =       ->      +=     -=
               *=      /=      //=     %=      @=      &=     |=
               ^=      >>=     <<=     **=</pre>
               """);
-        w.add("""
+        sb.append("""
               <p>The various types of bracket are paired - each open bracket 
               must be paired with a closing bracket: parentheses '()'; square 
               brackets '[]'; and, curly brackets '{}' also known as braces.</p>
@@ -793,50 +786,50 @@ public class Python extends CoursePage {
               for the time being. Some are really better thought of as 
               operators rather than delimiters.</p>
               """);
-        w.add("<p>Operators are sequences of symbols that are shorthand for "
+        sb.append("<p>Operators are sequences of symbols that are shorthand for "
                 + index.getReference("Python operator", "operator", sid)
-                + " module functions (e.g. +, -, *, /, %)</p>");
-        w.add("<p>Literals are specific numerical or text values.</p>");
+                + " module functions (e.g. +, -, *, /, %)</p>\n");
+        sb.append("<p>Literals are specific numerical or text values.</p>\n");
 
-        sid = addSection("4.6", "Identifiers and Keywords", 3);
-        w.add("<p>Identifiers are names of variables, functions, classes,"
-                + " modules and packages.</p>");
-        w.add("<p>A Python "
+        sid = addSection("4.6", "Identifiers and Keywords", 3, sb);
+        sb.append("<p>Identifiers are names of variables, functions, classes,"
+                + " modules and packages.</p>\n");
+        sb.append("<p>A Python "
                 + index.getReference("Python keyword", "keyword", sid)
                 + " is a reserved word - a term that can't be used for an"
-                + " identifier.</p>");
+                + " identifier.</p>\n");
         index.getReference("Syntax Error", "", sid);
-        w.add("<p>Attempting to "
+        sb.append("<p>Attempting to "
                 + index.getReference("Name Binding", "use", sid)
                 + " a keyword as an identifier such as a variable name"
                 + " typically results in a "
                 + index.getReference("Python SyntaxError", "SyntaxError",
                         sid)
-                + ". Enter the following at the Python prompt:</p>");
-        w.add("<pre>if = 2</pre>");
-        w.add("""
+                + ". Enter the following at the Python prompt:</p>\n");
+        sb.append("<pre>if = 2</pre>");
+        sb.append("""
               <p>This should result in:</p>
               <pre>File "@lt;stdin>", line 1
                   if = 2
                      ^
               SyntaxError: invalid syntax</pre>
               """);
-        w.add("<p>The Python interpreter is expecting a conditional expression"
+        sb.append("<p>The Python interpreter is expecting a conditional expression"
                 + " after the keyword 'if'. Recall that "
                 + index.getReference("Python keyword", "keywords", sid)
-                + " cannot be used as identifiers.</p>");
-        w.add("<p>For details, see the "
+                + " cannot be used as identifiers.</p>\n");
+        sb.append("<p>For details, see the "
                 + references.getReference(
                         "Python Lexical Analysis Documentation")
-                + "</p>");
+                + "</p>\n");
 
-        sid = addSection("4.7", "Style", 3);
-        w.add("<p>The following code block is a "
+        sid = addSection("4.7", "Style", 3, sb);
+        sb.append("<p>The following code block is a "
                 + index.getReference("Python if", sid)
                 + " statement which can be read as follows: If the variable 'x'"
                 + " is greater than the variable 'y', then 'x' is printed,"
-                + " otherwise y is printed.</p>");
-        w.add("""
+                + " otherwise y is printed.</p>\n");
+        sb.append("""
               <pre>x = 0 
               y = 1
               # If x is greater than y, then print x, else print y.
@@ -863,7 +856,7 @@ public class Python extends CoursePage {
               <p>Further code blocks presented in these learning resources will 
               be colourfully styled as above.</p>
               """);
-        w.add("""
+        sb.append("""
               <h2 id="5">5. Running a file of Python commands</h2>
               <p>Create a new ASCII text file, add to it the following line:</p>
               <pre>print("Hello World")</pre>
@@ -894,8 +887,8 @@ public class Python extends CoursePage {
               directory.</p>
               """);
 
-        sid = addSection("6", "Jupyter Notebook", 2);
-        w.add("<p>"
+        sid = addSection("6", "Jupyter Notebook", 2, sb);
+        sb.append("<p>"
                 + references.getReference("Jupyter Notebook")
                 + ", is a "
                 + index.getReference("REPL", sid)
@@ -904,12 +897,12 @@ public class Python extends CoursePage {
                 + " links. Code is entered in cells which when run present"
                 + " outputs within the document which is displayed in a Web"
                 + " browser (unless ouputs are configured to appear in separate"
-                + " windows).</p>");
-        w.add("<p>Jupyter Notebook comes bundled with Anaconda and can be "
+                + " windows).</p>\n");
+        sb.append("<p>Jupyter Notebook comes bundled with Anaconda and can be "
                 + "downloaded separately from:"
                 + references.getReference("Jupyter")
-                + ".</p>");
-        w.add("""
+                + ".</p>\n");
+        sb.append("""
               <p>At the Anaconda prompt change to a directory where you can 
               write new files and enter:</p>
               <pre>jupyter notebook</pre>
@@ -930,10 +923,10 @@ public class Python extends CoursePage {
               <p>You should see something like:</p>
               <img src="../../resources/python/jupyter3.png" alt="Jupyter Notebook Interface 3" />
               """);
-        w.add("<p>Entire programs can be entered into cells as can "
+        sb.append("<p>Entire programs can be entered into cells as can "
                 + index.getReference("Markdown", sid)
-                + ".</p>");
-        w.add("<p>Because a Jupyter Notebook application runs in a Web "
+                + ".</p>\n");
+        sb.append("<p>Because a Jupyter Notebook application runs in a Web "
                 + "browser, it can utilise "
                 + index.getReference("JavaScript", sid)
                 + " - a programming language that all widely used modern Web "
@@ -943,10 +936,10 @@ public class Python extends CoursePage {
                 + "about this. Prior to attempting this, it is important to "
                 + "learn about setting up Python environments and installing "
                 + "Python packages. First though, let's explore running Python "
-                + "code in some other ways...</p>");
+                + "code in some other ways...</p>\n");
 
-        sid = addSection("7", "Integrated Development Environments", 2);
-        w.add("<p>"
+        sid = addSection("7", "Integrated Development Environments", 2, sb);
+        sb.append("<p>"
                 + index.getReference("IDE",
                         "Integrated Development Environments", sid)
                 + "(IDEs) are software tools used to make writing code and "
@@ -956,26 +949,26 @@ public class Python extends CoursePage {
                 + references.getReference("Spyder")
                 + " - IDEs that come with "
                 + references.getReference("Anaconda")
-                + ".</p>");
+                + ".</p>\n");
 
-        sid = addSection("7.1", "IDLE", 3);
-        w.add("<p>Python comes with "
+        sid = addSection("7.1", "IDLE", 3, sb);
+        sb.append("<p>Python comes with "
                 + references.getReference("IDLE")
                 + " - an Integrated Development and Learning Environment for "
                 + "Python. The IDLE application has an "
                 + "'editor window' for editing files of Python commands, and a "
                 + "'console window' for entering REPL commands and displaying "
-                + "output. At the Anaconda prompt enter:</p>");
-        w.add("""
+                + "output. At the Anaconda prompt enter:</p>\n");
+        sb.append("""
               <pre>idle</pre>
               <p>This should open up the IDLE console window that should look 
               something like the image below:</p>
               <img src="../../resources/python/idle1.png" alt="The IDLE interface" />
               """);
-        w.add("<p>As well as the Python console prompt, there is a "
+        sb.append("<p>As well as the Python console prompt, there is a "
                 + index.getReference("GUI")
-                + " menu. Choose:</p>");
-        w.add("""
+                + " menu. Choose:</p>\n");
+        sb.append("""
               <pre>File -> Open...</pre>
               <p>Open your HelloWorld.py file. IDLE should open the file in the
               editor window that looks something like:</p>
@@ -988,14 +981,14 @@ public class Python extends CoursePage {
               console in the other window which should appear something like:</p>
               <img src="../../resources/python/idle3.png" alt="The IDLE interface having run the Hello World program" />
               """);
-        w.add("<p>Close the instance of IDLE that is running.<p>");
+        sb.append("<p>Close the instance of IDLE that is running.<p>");
 
-        sid = addSection("7.2", "Spyder", 3);
-        w.add("<p>"
+        sid = addSection("7.2", "Spyder", 3, sb);
+        sb.append("<p>"
                 + references.getReference("Spyder")
                 + " - the Scientific PYthon Development EnviRonment, is a"
-                + " different IDE that comes with Anaconda.</p>");
-        w.add("""
+                + " different IDE that comes with Anaconda.</p>\n");
+        sb.append("""
               <p>From the Anaconda prompt enter:</p>
               <pre>spyder</pre>
               <p>It may take a couple of minutes to load, when you should see 
@@ -1017,22 +1010,22 @@ public class Python extends CoursePage {
               <p>Use the editor and add the following in line 2:</p>
               <pre>x = y</pre>
               """);
-        w.add("<p>Try to run the file again. It should raise a "
+        sb.append("<p>Try to run the file again. It should raise a "
                 + index.getReference("Python NameError", "NameError", sid)
                 + " and there should be marks against the code on line 2 on"
                 + " the left and right of the editor pane. Hover your mouse "
                 + " cursor over the mark on the left. You should see something "
-                + " similar to the image below:</p>");
-        w.add("""
+                + " similar to the image below:</p>\n");
+        sb.append("""
               <img src="../../resources/python/spyder3.png" 
               alt="The Spyder interface showing an error." />
               """);
-        w.add("<p>Have a look at the latest "
+        sb.append("<p>Have a look at the latest "
                 + references.getReference("Spyder Documentation")
-                + "</p>");
+                + "</p>\n");
 
-        w.add("""
-              <h3 id="7.3">7.3 Other IDEs</h3>
+        sid = addSection("7.3", "Other IDEs", 3, sb);
+        sb.append("""
               <p>There are other IDEs that support Python code development. If 
               you are already familiar with an IDE that supports Python code 
               development, then you might like to give it a try. Other IDEs that 
@@ -1048,8 +1041,8 @@ public class Python extends CoursePage {
               </p>
               """);
 
-        sid = addSection("8", "QGIS Desktop Python Console", 2);
-        w.add("<p>"
+        sid = addSection("8", "QGIS Desktop Python Console", 2, sb);
+        sb.append("<p>"
                 + index.getReference("GIS", "Geographical Information System")
                 + " (GIS) software are used to create, manage, process, model,"
                 + " visualise and distribute geographical data and"
@@ -1065,18 +1058,18 @@ public class Python extends CoursePage {
                 + index.getReference("C++", sid)
                 + " and Python and there is are distinct client and server"
                 + " software. The operation of both these can be automated"
-                + " using Python.</p>");
-        w.add("<p>QGIS Server is geared for serving out data. QGIS Desktop is "
+                + " using Python.</p>\n");
+        sb.append("<p>QGIS Server is geared for serving out data. QGIS Desktop is "
                 + "both a client that can consume data that is served out and "
                 + "a general desktop application for processing geographical "
                 + "data. QGIS Desktop is often controlled by users via a "
                 + index.getReference("GUI")
                 + " with a menu, panels and toolbars. Load QGIS Desktop via"
                 + " AppsAnywhere or download, install and run it on your own "
-                + "device.</p>");
-        w.add("<p>As QGIS Desktop software loads, a splash screen should "
-                + "appear. When fully loaded the GUI should appear.</p>");
-        w.add("""
+                + "device.</p>\n");
+        sb.append("<p>As QGIS Desktop software loads, a splash screen should "
+                + "appear. When fully loaded the GUI should appear.</p>\n");
+        sb.append("""
               From the GUI Menu select:</p>
               <pre>Plugins > Python Console</pre>
               <p>You should see something like:</p>
@@ -1091,13 +1084,13 @@ public class Python extends CoursePage {
               enter:</p>
               <pre>dir(iface)</pre>
               """);
-        w.add("<p>"
+        sb.append("<p>"
                 + index.getReference("PyQGIS", sid)
                 + " provides programatic access to functionality that can also"
                 + " be accessed via the QGIS Desktop GUI. It gives greater"
                 + " control in data loading and processing and can be used to "
-                + " extend the available functionality.</p>");
-        w.add("""
+                + " extend the available functionality.</p>\n");
+        sb.append("""
               <p>In the QGIS Desktop Python console, locate and action the 
               'Show Editor' button. The 'editor panel' should appear on the 
               right of the console.</p>
@@ -1116,19 +1109,19 @@ public class Python extends CoursePage {
               modules are imported.</p>
               """);
         index.getReference("For Loop", "", sid);
-        w.add("<p>The code contains some "
+        sb.append("<p>The code contains some "
                 + index.getReference("Python for", sid)
                 + " statements which start with the keyword 'for'. The first of"
                 + " these iterates over the 'fields' in a 'layer'. The others"
                 + " iterate over the 'features' in a 'layer'. (Iteration simply"
                 + " means going through a sequence of things one at a time.)"
-                + "</p>");
-        w.add("<p>The program accesses both attribute and geometry data from a "
+                + "</p>\n");
+        sb.append("<p>The program accesses both attribute and geometry data from a "
                 + "layer, and adds data into the QGIS Desktop GUI display."
-                + "</p>");
-        w.add("<p>Once the program has run the QGIS Desktop GUI should look "
-                + "something like:</p>");
-        w.add("""
+                + "</p>\n");
+        sb.append("<p>Once the program has run the QGIS Desktop GUI should look "
+                + "something like:</p>\n");
+        sb.append("""
               <img src="../../resources/python/qgis2.png" alt="QGIS Python 
               Console after having run QGISExample.py" />
               </p>
@@ -1143,8 +1136,8 @@ public class Python extends CoursePage {
               </ul>
               """);
 
-        sid = addSection("9", "Python Packages and Environment Management", 2);
-        w.add("""
+        sid = addSection("9", "Python Packages and Environment Management", 2, sb);
+        sb.append("""
               <p>Packaging code and delivering it to users via repositories is 
               good practise for numerous reasons. Some software and code 
               repositories are programming language specific or software
@@ -1153,18 +1146,18 @@ public class Python extends CoursePage {
               process of review and some policy about package availability and 
               removal. For details on packaging Python code see the following:
               """);
-        w.add(references.getReference("Python Packaging User Guide")
+        sb.append(references.getReference("Python Packaging User Guide")
                 + " - a collection of tutorials and references to help you "
                 + "distribute and install Python packages with modern tools.");
-        w.add("<p>"
+        sb.append("<p>"
                 + index.getReference("PyPI")
                 + " is a widely used Python repository. Developers deploy"
                 + " packages to PyPI and users install packages from there."
                 + " Many packages are provided as "
                 + index.getReference("Free and Open Source Software")
                 + ". PyPI also supports hosting private proprietary packages."
-                + "</p>");
-        w.add("""
+                + "</p>\n");
+        sb.append("""
               <p>When installing a package in a Python environment, by default 
               package dependencies are also installed at the same time. In 
               Python terms, a dependency is a package, module or function that 
@@ -1207,7 +1200,7 @@ public class Python extends CoursePage {
               version available and this might not work or might not work as 
               expected.</p>
               """);
-        w.add("<p>"
+        sb.append("<p>"
                 + references.getReference("Conda")
                 + " is a package and environment manager that comes with "
                 + "Anaconda. Another way to create and manage Python "
@@ -1215,8 +1208,8 @@ public class Python extends CoursePage {
                 + index.getReference("Python venv", "venv", sid)
                 + " and the Python Package Installer "
                 + references.getReference("PIP", "pip")
-                + ".</p>");
-        w.add("<p>Conda is the recommended way of installing some Python"
+                + ".</p>\n");
+        sb.append("<p>Conda is the recommended way of installing some Python"
                 + " packages. It is not necessarily that those packages"
                 + " cannot be configured and made to work using venv and"
                 + " pip, but that such configuration is currently more"
@@ -1224,8 +1217,8 @@ public class Python extends CoursePage {
                 + " used Python "
                 + index.getReference("GIS", sid)
                 + " packages, especially with installation on Microsoft Windows"
-                + " operating systems.</p>");
-        w.add("""
+                + " operating systems.</p>\n");
+        sb.append("""
               <p>Open an Anaconda prompt, change to a directory where you can 
               write files and enter the following command to create a list of
               Python packages available in the Python environment:</p>
@@ -1267,7 +1260,7 @@ public class Python extends CoursePage {
               this page. Most of the course uses only the Python standard 
               library and a few other pakages that are installed as needed.</p>
               """);
-        w.add("<p>Creating Python environments on Cloud storage such as on "
+        sb.append("<p>Creating Python environments on Cloud storage such as on "
                 + "<a href=\"https://en.wikipedia.org/wiki/OneDrive\">"
                 + "Microsoft OneDrive</a>"
                 + " or "
@@ -1280,12 +1273,12 @@ public class Python extends CoursePage {
                 + " it is recommended to create the Python environment on the "
                 + "M:\\ drive, for example in the following location:");
         String envPath = "M:\\" + getCourse().getCourseCode() + "\\envs";
-        w.add(envPath);
+        sb.append(envPath);
         envPath = envPath + "\\myenv";
-        w.add("<p>Create the environment giving it a name added to the end of "
-                + "the directory path as follows:</p>");
-        w.add("<pre>conda create -p " + envPath + "</pre>");
-        w.add("<p>The -p option is the option to use a path to get conda to "
+        sb.append("<p>Create the environment giving it a name added to the end of "
+                + "the directory path as follows:</p>\n");
+        sb.append("<pre>conda create -p " + envPath + "</pre>");
+        sb.append("<p>The -p option is the option to use a path to get conda to "
                 + "install the environment in a particular location. The path "
                 + "example given here is for Windows if using Linux or MacOS, "
                 + "then the path will be different. By default conda creates "
@@ -1294,22 +1287,22 @@ public class Python extends CoursePage {
                 + "created is called 'myenv'."
                 + "Confirm the environment creation by pressing the &lt;y> key "
                 + "when prompted. Creating the environment should just take a "
-                + "few seconds. Once created, check it is listed:</p>");
-        w.add("<pre>conda env list</pre>");
-        w.add("<p>You should see something like what is shown below:<p>");
-        w.add("<pre># conda environments:");
-        w.add("#");
-        w.add("base             *  C:\\ProgramData\\Anaconda3");
-        w.add("myenv               " + envPath + "</pre>");
-        w.add("<p>Details may vary depending on where you created the "
-                + "environment and what you called it.</p>");
-        w.add("<p>Conda environments are registered/listed in the '.conda' "
+                + "few seconds. Once created, check it is listed:</p>\n");
+        sb.append("<pre>conda env list</pre>");
+        sb.append("<p>You should see something like what is shown below:<p>");
+        sb.append("<pre># conda environments:");
+        sb.append("#");
+        sb.append("base             *  C:\\ProgramData\\Anaconda3");
+        sb.append("myenv               " + envPath + "</pre>");
+        sb.append("<p>Details may vary depending on where you created the "
+                + "environment and what you called it.</p>\n");
+        sb.append("<p>Conda environments are registered/listed in the '.conda' "
                 + "directory in the user home directory in a file with the "
-                + "name 'environments.txt'.</p>");
-        w.add("<p>Assuming you named your environment 'myenv', activate it by"
-                + " entering:</p>");
-        w.add("<pre>conda activate " + envPath + "</pre>");
-        w.add("""
+                + "name 'environments.txt'.</p>\n");
+        sb.append("<p>Assuming you named your environment 'myenv', activate it by"
+                + " entering:</p>\n");
+        sb.append("<pre>conda activate " + envPath + "</pre>");
+        sb.append("""
               <p>The prompt should change to have "(myenv)" prepended instead of 
               "(base)"</p>
               <p>Next install the following Python packages:</p>
@@ -1401,41 +1394,42 @@ public class Python extends CoursePage {
               </ul>
               """);
 
-        sid = addSection("10", "Recap and Expectations", 2);
-        w.add("<p>This section of the course introduced some basic Python"
+        sid = addSection("10", "Recap and Expectations", 2, sb);
+        sb.append("<p>This section of the course introduced some basic Python"
                 + " syntax and considered the evolution of the language. It"
                 + " explored running Python code in a number of ways: using the"
                 + " REPL environment, running files of source code; using"
                 + " Jupyter Notebooks; the IDLE and Spyder IDEs; and the Python"
-                + " environment in QGIS.</p>");
-        w.add("""
+                + " environment in QGIS.</p>\n");
+        sb.append("""
               <p>Loading modules using import statements, and accessing 
-              functionality via a dot operator was introduced.</p>
+              functionality via a dot operator was introduced.</p>\n
               """);
-        w.add("<p>Example "
+        sb.append("<p>Example "
                 + index.getReference("Python if", "if")
                 + " statements and "
                 + index.getReference("Python for", "for loops")
                 + " were provided. These key things will be used many times, so "
                 + "do not worry if you have not fully understood these yet."
-                + "</p>");
-        w.add("""
+                + "</p>\n");
+        sb.append("""
               <p>Versioning, packaging and managing Python/Conda environments 
               have been introduced, as has installing Python packages in Python 
-              environments.</p>
+              environments.</p>\n
               <p>Some example code has been provided. This is quite good code in
               that there are plentiful comments, and the code also does some 
               interesting things: The code that automated some QGIS Desktop 
               processing demonstrates how to access functionality from within 
               QGIS Desktop. The Jupyter Notebook based example utilised 
               Javascript capabilities of the Web browser and leveraged some 
-              widely used Python GIS tools.</p>
+              widely used Python GIS tools.</p>\n
               <p>This has been a broad brush overview. You might benefit from 
               revisiting parts of this learning once you are a bit more familiar
               with developing Python code and as you think about undertaking 
-              projects.</p>
+              projects.</p>\n
               </div>
               """);
+        return sb.toString();
     }
 
 }
