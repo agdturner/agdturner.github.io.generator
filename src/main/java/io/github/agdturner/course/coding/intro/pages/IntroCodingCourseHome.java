@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.coding.intro.pages;
 
+import io.github.agdturner.core.SectionID;
 import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.pages.CodingCourseHome;
@@ -26,26 +27,23 @@ import io.github.agdturner.course.coding.pages.CodingCourseHome;
  */
 public abstract class IntroCodingCourseHome extends CodingCourseHome {
 
-    public IntroCodingCourseHome(Course course, String courseName) {
-        super(course, courseName);
+    public IntroCodingCourseHome(Course course) {
+        super(course);
     }
     
     @Override
-    public void getExpectations(StringBuilder sb) {
-        super.getExpectations(sb);
-    }
-    
-    /**
-     * Version Control, GitHub, Data Encoding and File Formats
-     */
-    public void getExpectations0(StringBuilder sb) {
-        sb.append("<li>"
-                + references.getReference("GitHub")
-                + " as a source code repository and for website hosting</li>");
+    public SectionID getExpectations0(StringBuilder sb) {
+        SectionID sid = super.getExpectations0(sb);
+        sb.append("<li>")
+                .append(references.getReference("GitHub"))
+                .append(" as a source code repository and for website hosting")
+                .append("</li>");
+        return sid;
     }
     
     @Override
-    public void getExpectationsN(StringBuilder sb) {
+    public void getExpectationsN(StringBuilder sb, SectionID sid ) {
+        super.getExpectationsN(sb, sid);
         sb.append("""
               </ul>
               <p>Computer programming mostly involves computational thinking, 

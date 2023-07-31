@@ -17,14 +17,14 @@ package io.github.agdturner.course.coding.pages;
 
 import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.Course;
-import io.github.agdturner.course.CoursePage;
+import io.github.agdturner.course.pages.CourseProgramming;
 
 /**
  * Coding Course Programming Page.
  *
  * @author Andy Turner
  */
-public class CodingCourseProgramming extends CoursePage {
+public class CodingCourseProgramming extends CourseProgramming {
 
     /**
      * Create a new instance.
@@ -32,7 +32,7 @@ public class CodingCourseProgramming extends CoursePage {
      * @param course What {@link #site} is set to.
      */
     public CodingCourseProgramming(Course course) {
-        super(course, "programming", "Programming", "Programming");
+        super(course);
     }
 
     @Override
@@ -41,83 +41,38 @@ public class CodingCourseProgramming extends CoursePage {
         getIntroduction(sb);
         getData(sb);
         getLearning(sb);
-        getLangaugeEvolution(sb);
+        getLanguageEvolution(sb);
         return sb.toString();
     }
-    
+
     public void getIntroduction(StringBuilder sb) {
-        SectionID sid = addSection("1", "Introduction", 2, sb);
-        sb.append("<p>"
-              + index.getReference("Computer Programming",
-                "Computer programming")
-                + " (coding) is the process of designing and building an"
-                + " executable computer program - a set of instruction"
-                + " fetched and executed sequentially.</p>\n");
-        sb.append("<p>Contemporary desktop and laptop computers typically have a "
-                + index.getReference("Keyboard", "keyboard")
-                + " and "
-                + index.getReference("Mouse", "mouse")
-                + " for user input, a visual display screen ("
-                + index.getReference("Monitor", "monitor")
-                + "),"
-                + " smaller amounts of faster more volatile data storage"
-                + " ("
-                + index.getReference("Memory", "memory")
-                + "), and larger amounts of more persistent data"
-                + " storage ("
-                + index.getReference("Disk", "disk")
-                + " that is organised using a "
-                + index.getReference("File System", "file system")
-                + ". Computers may have inbuilt or perpherally connected"
-                + " devices such as microphones, cameras, and additional data "
-                + " storage. The monitor"
-                + " may also be an "
-                + index.getReference("Touchscreen", "touchscreen")
-                + " for user input. Networked computers typically communicate"
-                + " using standard "
-                + index.getReference("Internet")
-                + " protocols. The basic functioning of a computer is handled"
-                + " by an "
-                + index.getReference("Operating System", "operating system")
-                + " upon which additional "
-                + index.getReference("Software", "software")
-                + " can be installed, including software that can interpret "
-                + " more readable "
-                + index.getReference("Source Code", "source code")
-                + " into lower level less readable machine instructions.</p>\n"
-        );
-        sb.append("<p>Programming can be done visually by arranging and connecting"
-                + " pre-built components into executable workflows. However,"
-                + " this course is about programming using text based command"
-                + " instructions that have a formal syntax known as a "
-                + index.getReference("Programming Language",
-                        "programming language")
-                + ". Some programming language syntax and terms are similar,"
-                + " some are very different. This course is mostly based on"
-                + " the "
-                + index.getReference("Python",
-                        "Python programming language")
-                + " (Python).</p>\n");
+        SectionID sid = getIntroduction0(sb);
     }
-    
+
+    public SectionID getIntroduction0(StringBuilder sb) {
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        return sid;
+    }
+
     public void getData(StringBuilder sb) {
         SectionID sid = addSection("2", "Data", 2, sb);
         getDataBitsAndBytes(sb);
         getDataFileFormats(sb);
         getDataIntegersAndFloatingPoint(sb);
     }
-    
+
     public void getDataBitsAndBytes(StringBuilder sb) {
         SectionID sid = addSection("2.1", "Bits and Bytes", 3, sb);
-        sb.append("<p>In most modern computers, data is encoded in binary: the"
-                + " smallest unit is a "
-                + index.getReference("Bit", "bit", sid)
-                + " which encodes one of two possible states, which - for "
-                + " simplicity and brevity - are denoted '0' and '1'.</p>\n");
-        sb.append("<p>Typically computers work with fixed size collections of bits"
-                + " called "
-                + index.getReference("Byte", "bytes", sid)
-                + ".");
+        sb.append("<p>In most modern computers, data is encoded in binary: the")
+                .append("smallest unit is a ")
+                .append(index.getReference("Bit", "bit", sid))
+                .append(" which encodes one of two possible states, which -")
+                .append(" for  simplicity and brevity - are denoted '0' and")
+                .append(" '1'.</p>\n");
+        sb.append("<p>Typically computers work with fixed size collections of")
+                .append(" bits called ")
+                .append(index.getReference("Byte", "bytes", sid))
+                .append(".");
         sb.append("""
               The more bits there are in a byte, the more different unique 
               combinations or arrangements of bits there can be. With each added 
@@ -133,48 +88,51 @@ public class CodingCourseProgramming extends CoursePage {
               both lower and upper case, the ten numeric digits 0 to 9, and 
               64 other symbols.</p>
               """);
-        sb.append("<p>7 bit bytes is the basis of "
-                + index.getReference("ASCII", "ASCII", sid)
-                + " - a data encoding which is used often used for text, and is "
-                + " the basis of a number of different "
-                + index.getReference("File Format", "file formats")
-                + ".</p>\n");
-        sb.append("<p>" + index.getReference("Unicode", "Unicode", sid) + " is "
-                + "another commonly used encoding. As of Unicode version 15.0, "
-                + "there are 149,186 characters that are uniquely encoded, "
-                + "including various alphabets, mathematical symbols and "
-                + "emojis. Unicode uses between 1 and 4 bytes of length 8 for "
-                + "encoding.</p>\n");
-        sb.append("<p>Commonly, there are multiples of 8 bits in a byte, but there "
-                + "can be any number.</p>\n");
+        sb.append("<p>7 bit bytes is the basis of ")
+                .append(index.getReference("ASCII", "ASCII", sid))
+                .append(" - a data encoding which is used often used for text,")
+                .append(" and is  the basis of a number of different ")
+                .append(index.getReference("File Format", "file formats"))
+                .append(".</p>\n");
+        sb.append("<p>").append(index.getReference("Unicode", "Unicode", sid))
+                .append(" is another commonly used encoding. As of Unicode")
+                .append(" version 15.0, there are 149,186 characters that are")
+                .append(" uniquely encoded, including various alphabets,")
+                .append(" mathematical symbols and emojis. Unicode uses")
+                .append(" between 1 and 4 bytes of length 8 for encoding.")
+                .append("</p>\n");
+        sb.append("<p>Commonly, there are multiples of 8 bits in a byte, but")
+                .append(" there can be any number.</p>\n");
     }
-    
+
     public void getDataFileFormats(StringBuilder sb) {
         SectionID sid = addSection("2.2", "File Formats", 3, sb);
-        sb.append("<p>Data stored in a file is often stored in a standard "
-                + index.getReference("File Format", "file format", sid)
-                + " - typically based on a versioned specification which "
-                + "details what encodings are used and how the data is "
-                + "organised.</p>\n");
-        sb.append("<p>Some file formats use different encodings in different parts "
-                + ", a complication that makes the data more usable and more "
-                + "compact - requiring less storage space.</p>\n");
-        sb.append("<p>Often the suffix of a filename indicates the file format, "
-                + "for example the file format of a file named \"index.html\" "
-                + "is expected to be in "
-                + index.getReference("HTML", sid)
-                + " format. Some file formats contain an identifying code"
-                + " (known as a "
-                + index.getReference("Magic Number", "magic number", sid)
-                + " typically at the start of the file. If it is not clear "
-                + "from the filename or any external "
-                + index.getReference("Metadata", "metadata", sid)
-                + " what the format of the file is, sometimes it can be"
-                + " discerned from a magic number.</p>\n");
-        sb.append("<p>File formats are revisited in <a href=\"../io/index.html#5\">"
-                + "IO Section 5.</a></p>\n");
+        sb.append("<p>Data stored in a file is often stored in a standard ")
+                .append(index.getReference("File Format", "file format", sid))
+                .append(" - typically based on a versioned specification which")
+                .append(" details what encodings are used and how the data is")
+                .append(" organised.</p>\n");
+        sb.append("<p>Some file formats use different encodings in different")
+                .append(" parts, a complication that makes the data more")
+                .append(" usable and more compact - requiring less storage")
+                .append(" space.</p>\n");
+        sb.append("<p>Often the suffix of a filename indicates the file")
+                .append(" format, for example the file format of a file named")
+                .append(" \"index.html\" is expected to be in ")
+                .append(index.getReference("HTML", sid))
+                .append(" format. Some file formats contain an identifying")
+                .append(" code (known as a ")
+                .append(index.getReference("Magic Number", "magic number", sid))
+                .append(" typically at the start of the file. If it is not")
+                .append(" clear from the filename or any external ")
+                .append(index.getReference("Metadata", "metadata", sid))
+                .append("what the format of the file is, sometimes it can be")
+                .append(" discerned from a magic number.</p>\n");
+        sb.append("<p>File formats are revisited in ")
+                .append("<a href=\"../io/index.html#5\">IO Section 5.</a>")
+                .append("</p>\n");
     }
-    
+
     public void getDataIntegersAndFloatingPoint(StringBuilder sb) {
         SectionID sid = addSection("2.3", "Integers and Floating Point", 3, sb);
         sb.append("""
@@ -202,19 +160,24 @@ public class CodingCourseProgramming extends CoursePage {
                 + " rounded either up or down. It is important to be aware that"
                 + " there can be significant error in this standardised"
                 + " arithmetisite.</p>\n");
-        sb.append("<p>" + index.getReference(
+        sb.append("<p>").append(index.getReference(
                 "Single-precision Floating-point",
-                "Single precision floating point", sid) + " is a standard "
-                + "encoding that uses bytes of length 32 to represent each "
-                + "number.</p>\n");
-        sb.append("<p>" + index.getReference(
+                "Single precision floating point", sid))
+                .append(" is a standard encoding that uses bytes of length 32")
+                .append(" to represent each number.</p>\n");
+        sb.append("<p>").append(index.getReference(
                 "Double-precision Floating-point",
-                "Double precision floating point", sid) + " is a standard "
-                + "encoding that uses bytes of length 64 to represent each "
-                + "number.</p>\n");
+                "Double precision floating point", sid))
+                .append(" is a standard encoding that uses bytes of length 64")
+                .append(" to represent each number.</p>\n");
     }
-    
-    public void getLearning(StringBuilder sb){
+
+    public void getLearning(StringBuilder sb) {
+        SectionID sid = getLearning0(sb);
+        getLearning1(sb, sid);
+    }
+
+    public SectionID getLearning0(StringBuilder sb) {
         SectionID sid = addSection("3", "Learning to Program", 2, sb);
         sb.append("""
               <p>Learning to program takes time and energy. It is highly 
@@ -222,27 +185,27 @@ public class CodingCourseProgramming extends CoursePage {
               when you are well rested and have good concentration. Mistakes 
               and misunderstandings are more likely if you are tired or 
               distracted.</p>
-              <p>Take breaks as you learn. They do more than help avoid fatigue. 
-              They can help conceptually and overall they can save you a lot 
-              more time than they take, and they can make the whole process of 
-              learning a lot more healthy and enjoyable.</p>
+              <p>Take breaks as you learn. They do more than help avoid fatigue
+              - they can save a lot more time than they take, and make the 
+              learning experience more healthy and enjoyable.</p>
               """);
-        sb.append("<p>Save your work often and use "
-                + index.getReference("Version Control",
-                        "version control", sid)
-                + " as this avoids losing work and provides a track of "
-                + " progress that you and others might find useful.</p>\n");
-        sb.append("<p>Once you have a good grip of programming basics, (which you "
-                + "should have after this course), good ways to improve your "
-                + "skills are by getting involved in "
-                + index.getReference("Open Source Software",
-                        "open source software", sid)
-                + " development projects, engaging in code review, writing "
-                + "code, reading documentation and doing other programming "
-                + "courses.</p>\n");
+        sb.append("<p>Save your work often and use ")
+                .append(index.getReference("Version Control",
+                "version control", sid))
+                .append(" as this avoids losing work and provides a track of")
+                .append(" progress that you and others might find useful.")
+                .append("</p>\n");
+        sb.append("<p>Once you have a good grip of programming basics, (which")
+                .append(" you should have after this course), good ways to")
+                .append(" improve your skills are by getting involved in ")
+                .append(index.getReference("Open Source Software",
+                "open source software", sid))
+                .append(" development projects, reviewing code, writing code,")
+                .append(" reading documentation and doing other programming")
+                .append(" courses.</p>\n");
         sb.append("""
               <p>Being familiar with one programming language helps in learning 
-              others. Many concepts are shared and the language syntax and 
+              another. Many concepts are shared and the language syntax and 
               workflows are often similar.</p>
               <p>Some programming languages are particularly well geared for 
               particular types of application. This can be a consequence of the 
@@ -252,15 +215,18 @@ public class CodingCourseProgramming extends CoursePage {
               a language for an implementation because they either know that 
               language well - and can envisage what to do, or because they 
               know that a particular language is well suited to the task, or 
-              because they want to learn/try something new.</p>
+              because they want to learn/try something new/different.</p>
               <p>Programming and programming language development are typically 
               community activities. It is normal to ask others for help and to 
               provide others with help and work collaboratively to develop 
               software. There are various online systems that help with this 
-              including online forums. You are at liberty to engage in online 
-              forums, but please do not post questions about this course, 
-              particularly about the assignments. Ask a tutor if you want help.
-              </p>
+              including online forums.<p>
+                  """);
+        return sid;
+    }
+
+    public void getLearning1(StringBuilder sb, SectionID sid) {
+        sb.append("""
               <p>Asking for help with programming is a skill. Whilst it may be 
               easiest for you to show someone what is happening and talk about
               it. It is often not so easy to arrange an interactive help 
@@ -279,16 +245,16 @@ public class CodingCourseProgramming extends CoursePage {
               way that things are set up to work is somehow causing the issue.
               </p>
               """);
-        sb.append("<p>Sometimes the issue is a result of a '"
-                + index.getReference("Software Bug", "software bug", sid)
-                + "' - an error, flaw or fault in the design, development, or "
-                + "operation that causes incorrect or unexpected things to "
-                + "happen. Sometimes issues happen in the same way each time "
-                + "something is attempted, other times the fault only "
-                + "sometimes happens. A fault that only sometimes happens is "
-                + "known as a '"
-                + index.getReference("Glitch", "glitch", sid)
-                + "' and these can be difficult to troubleshoot.</p>\n");
+        sb.append("<p>Sometimes the issue is a result of a '")
+                .append(index.getReference("Software Bug", "software bug", sid))
+                .append("' - an error, flaw or fault in the design,")
+                .append(" development, or operation that causes incorrect or")
+                .append(" unexpected things to happen. Sometimes issues happen")
+                .append(" in the same way each time something is attempted,")
+                .append(" other times the fault only sometimes happens. A")
+                .append(" fault that only sometimes happens is known as a '")
+                .append(index.getReference("Glitch", "glitch", sid))
+                .append("' and these can be difficult to troubleshoot.</p>\n");
         sb.append("""
               <p>Often it is worth restarting software or rebooting the 
               operating system to attempt to stop unexpected behaviour 
@@ -316,27 +282,34 @@ public class CodingCourseProgramming extends CoursePage {
               well be a better way...</p>
               """);
     }
-    
-    public void getLangaugeEvolution(StringBuilder sb) {
+
+    public void getLanguageEvolution(StringBuilder sb) {
         SectionID sid = addSection("4", "Language Evolution, Deprecation and Versions", 2, sb);
-        sb.append("""
-              <p>High level computer programming languages like Python evolve 
-              and new ones occasionally get developed. Some programming 
-              languages are retired or become obsolete, and some older versions 
-              of languages become unsupported over time.</p>
-              """);
-        sb.append("<p>Supporting "
-                + index.getReference("Backward Compatibility",
-                        "backward compatibility", sid)
-                + " - interoperability with older versions - has both costs and"
-                + " benefits. These costs and benefits are weighed up by those "
-                + "developing languages that tyically have a process of "
-                + "deciding how things change.</p>");
-        sb.append("<p>Changes that are not backward compatible can create a lot of "
-                + "work! It is also discouraging if old code does not work with"
-                + " newer language interpreters as this results in reliance on "
-                + "old versions which can be problematic and have security "
-                + "implications.</p>");
+        sb.append("<p>High level computer programming languages like ")
+                .append(index.getReference("Java", sid))
+                .append(" and ")
+                .append(index.getReference("Python", sid))
+                .append(" evolve rapidly. Occasionally new languages are")
+                .append(" developed. Some programming languages are retired or")
+                .append(" become obsolete, and some older versions of languages")
+                .append(" become unsupported over time. The release cadence is")
+                .append(" how often releases are made. Sometimes releases are of")
+                .append(" different kinds which are supported for different")
+                .append(" periods.</p>\n")
+                .append("<p>Supporting ")
+                .append(index.getReference("Backward Compatibility",
+                        "backward compatibility", sid))
+                .append(" - interoperability with older versions - has both")
+                .append(" costs and benefits. These costs and benefits are")
+                .append(" weighed up by those developing languages that")
+                .append(" tyically have a process of deciding how things")
+                .append(" change.</p>\n");
+        sb.append("<p>Changes that are not backward compatible can create a")
+                .append(" lot of work! It is also discouraging if old code")
+                .append(" does not work with newer language interpreters as")
+                .append(" this results in reliance on old versions which can")
+                .append(" be problematic and have security implications.")
+                .append("</p>\n");
         sb.append("""
               <p>Languages compete for users and developers. Often new features 
               in one language are implemented in other languages soon after. The 
@@ -358,16 +331,24 @@ public class CodingCourseProgramming extends CoursePage {
                 + " party software. It is part of a process of phasing things"
                 + " out. Things are first marked as deprecated in a version,"
                 + " then in subsequent versions the things are removed.</p>");
+    }
 
-        sid = addSection("5", "Considerata", 2, sb);
-        sb.append("<p>For many reasons, a key one in science and for evidence "
-                + "based policy being '"
-                + index.getReference("Reproducibility", "reproducibility",
-                        sid)
-                + "' - it is important to "
-                + "know what version of a language and any third party "
-                + "components a program has been tested with and results have "
-                + "been produced with.</p>");
+    public void getConsiderata(StringBuilder sb) {
+        SectionID sid = getConsiderata0(sb);
+        getConsiderataN(sb, sid);
+    }
+
+    public SectionID getConsiderata0(StringBuilder sb) {
+        SectionID sid = addSection("5", "Considerata", 2, sb);
+        sb.append("""
+                  <p>For many reasons, a key one in science and for evidence 
+                  based policy being '""")
+                .append(index.getReference("Reproducibility", "reproducibility",
+                        sid))
+                .append("""
+                    ', it is important to know what version of a language and 
+                    any third party components a program has been tested with 
+                    and results have been produced with.</p>""");
         sb.append("""
               <p>With any language, there are often several ways to achieve the 
               same or a similar thing. Some ways may work faster, can handle 
@@ -386,12 +367,14 @@ public class CodingCourseProgramming extends CoursePage {
               well documented code/software. Not all code and software in use 
               today is like this!</p>
               <p>Remember to take care and think about the trustworthiness of 
-              any code you run and if in doubt, consult your tutor.</p>
+              any code you run.</p>
               <p>Please adhere to the terms and conditions of software licenses.
-              And keep in mind that it is important to keep track of what you 
-              consult and avoid plagiarising (presenting other's work as your 
-              own).</p>
-              </div>
-              """);
+              </p>
+                  """);
+        return sid;
+    }
+
+    public void getConsiderataN(StringBuilder sb, SectionID sid) {
+        sb.append("</div>\n");
     }
 }

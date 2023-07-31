@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.coding.pages;
 
+import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.pages.CourseHome;
 
@@ -25,11 +26,11 @@ import io.github.agdturner.course.pages.CourseHome;
  */
 public abstract class CodingCourseHome extends CourseHome {
 
-    public CodingCourseHome(Course course, String courseName) {
-        super(course, courseName);
+    public CodingCourseHome(Course course) {
+        super(course);
     }
 
-    public void getProgrammingConcepts(StringBuilder sb) {
+    public void getSyllabusProgramming(StringBuilder sb, SectionID sid) {
         sb.append("""
               <p>General computer programming language concepts, including:</p>
               <ul>
@@ -55,16 +56,13 @@ public abstract class CodingCourseHome extends CourseHome {
         sb.append("</ul>\n");
     }
 
-    public void getOrganisationalConcepts(StringBuilder sb) {
+    public void getSyllabusOrganisational(StringBuilder sb, SectionID sid) {
         sb.append("<p>"
                 + index.getReference("Version Control")
                 + "</p>\n");
     }
 
-    public void getObjectOrientedProgrammingConcepts(StringBuilder sb) {
-        sb.append("<p>"
-                + index.getReference("Version Control")
-                + "</p>\n");
+    public void getSyllabusObjectOrientation(StringBuilder sb, SectionID sid) {
         sb.append("<p>"
                 + index.getReference("Class", "Classes")
                 + " and "
@@ -72,7 +70,7 @@ public abstract class CodingCourseHome extends CourseHome {
                 + "</p>\n");
     }
 
-    public void getGUIProgrammingConcepts(StringBuilder sb) {
+    public void getSyllabusGUI(StringBuilder sb, SectionID sid) {
         sb.append("<p>Developing "
                 + index.getReference("GUI", "Graphical User Interfaces")
                 + "</p>\n");

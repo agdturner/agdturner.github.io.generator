@@ -16,17 +16,11 @@
 package io.github.agdturner.course.coding.intro.java;
 
 import io.github.agdturner.core.Environment;
-import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.coding.pages.CodingCourseProgramming;
 import io.github.agdturner.course.coding.java.JavaCodingCourse;
 import io.github.agdturner.course.coding.intro.java.pages.Java;
 import io.github.agdturner.course.coding.intro.java.pages.JavaIntroCodingCourseHome;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
+import io.github.agdturner.course.coding.intro.java.pages.JavaIntroCodingCourseProgramming;
 
 /**
  * Java Intro Coding Course.
@@ -49,9 +43,9 @@ public abstract class JavaIntroCodingCourse extends JavaCodingCourse {
          * Initialise Course Pages.
          */
         // Home
-        homePage = new JavaIntroCodingCourseHome(this, courseName);
+        homePage = new JavaIntroCodingCourseHome(this);
         // Course Pages
-        pages.add(new CodingCourseProgramming(this));
+        pages.add(new JavaIntroCodingCourseProgramming(this));
         pages.add(new Java(this));
 /*        coursePages.add(new Variables(this));
         coursePages.add(new Github(this));

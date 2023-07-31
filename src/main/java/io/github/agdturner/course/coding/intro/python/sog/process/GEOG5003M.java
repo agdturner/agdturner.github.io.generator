@@ -21,7 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Java for generating GEOG5003M Website Content.
+ * GEOG5003M is/was a School of Geography Online Distance Learning module.
  *
  * @author Andy Turner
  */

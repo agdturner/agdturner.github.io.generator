@@ -20,6 +20,8 @@ import io.github.agdturner.course.References;
 import io.github.agdturner.course.Term;
 
 /**
+ * Java Course References.
+ * 
  * @author Andy Turner
  */
 public class JavaReferences extends References {
@@ -41,9 +43,9 @@ public class JavaReferences extends References {
         
         name = "Apache Maven";
         url = "https://en.wikipedia.org/wiki/Apache_Maven";
-        description = "Maven is a build automation tool used primarily for "
-                + "Java projects.";
-        nameToTerm.put(name, new Term(description, url));
+        description = "A build automation tool used primarily for \"Java\" "
+                + "projects";
+        nameToTerm.put(name, new Term(index, description, url));
         
     }
 }

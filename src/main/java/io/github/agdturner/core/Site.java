@@ -18,8 +18,6 @@ package io.github.agdturner.core;
 import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.Index;
 import io.github.agdturner.course.References;
-import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
-import io.github.agdturner.course.pages.CourseHome;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -45,9 +43,9 @@ public abstract class Site {
     public final Environment env;
 
     /**
-     * For storing the course Home Page.
+     * For storing the Home Page.
      */
-    protected CourseHome homePage;
+    protected Page homePage;
 
     /**
      * The Site Pages (other than the {@link #homePage}, {@link indexPage#index}
@@ -152,13 +150,13 @@ public abstract class Site {
     /**
      * Add a section for the index.
      *
-     * @param sid The Section ID.
-     * @param pid The Page ID.
+     * @param sectionID The Section ID.
+     * @param pageID The Page ID.
      * @param sectionName The name of the section.
      */
-    public void addSection(SectionID sid, PageID pid, String sectionName) {
-        sectionIDToPageID.put(sid, pid);
-        sectionIDToSectionName.put(sid, sectionName);
+    public void addSection(SectionID sectionID, PageID pageID, String sectionName) {
+        sectionIDToPageID.put(sectionID, pageID);
+        sectionIDToSectionName.put(sectionID, sectionName);
     }
 
     /**
@@ -204,8 +202,8 @@ public abstract class Site {
     }
     
     /**
-     * @param page
-     * @param path 
+     * @param page The page to write.
+     * @param path The path of the file to write to.
      */
     protected void write(Page page, Path path) {
         page.write();
@@ -220,9 +218,9 @@ public abstract class Site {
         // Write page
         try {
             page.w.writeHTML(page.path, "index", page.title + " Page", 
-                    CoursePage.getHeadElements(path));
+                    CoursePage.getHeadElements());
         } catch (IOException ex) {
-            Logger.getLogger(PythonIntroCodingCourse.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Site.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

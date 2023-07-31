@@ -13,32 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.agdturner.course.coding.java.pages;
+package io.github.agdturner.process;
 
-import io.github.agdturner.course.coding.java.JavaCodingCourse;
-import io.github.agdturner.course.pages.CourseHome;
+import io.github.agdturner.course.coding.intro.python.sog.process.GEOG5003M;
 
 /**
- * Extend this for a Java Course Home Page.
- *
+ * A master process to create all sites.
+ * 
  * @author Andy Turner
  */
-public abstract class CourseJavaHomePage extends CourseHome {
-
+public class Process {
+    
     /**
      * Create a new instance.
-     *
-     * @param course What {@link #site} is set to.
      */
-    public CourseJavaHomePage(JavaCodingCourse course) {
-        super(course);
+    public Process(){}
+    
+    /**
+     * Main method.
+     * @param args Arguments are ignored.
+     */
+    public static void main(String[] args) {
+        new Process().run(args);
     }
     
     /**
-     * @return JavaCourse.
-     */
-    @Override
-    public JavaCodingCourse getCourse() {
-        return (JavaCodingCourse) site; 
+     * The runner.
+     * @param args Arguments are ignored.
+    */
+    public void run(String[] args) {
+        GEOG5003M.main(args);
     }
+    
+    
 }

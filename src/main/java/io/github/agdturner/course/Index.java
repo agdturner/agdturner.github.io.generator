@@ -21,7 +21,7 @@ import java.util.TreeSet;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * For course index pages.
+ * Index Course Page.
  *
  * @author Andy Turner
  */
@@ -903,6 +903,8 @@ public class Index extends CoursePage {
                 + "information.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+        
 
         term = "Web Accessibility";
         url = getWikipediaURL("Web_accessibility");
@@ -1011,7 +1013,7 @@ public class Index extends CoursePage {
             }
         } else {
             if (sid != null) {
-                r.sids.add(sid);
+                r.sectionIDs.add(sid);
             }
             return r.getLink(linkText);
         }
@@ -1032,11 +1034,11 @@ public class Index extends CoursePage {
             sb.append("<li>");
             sb.append(indexTerm.getLinkAndDescription(aliasOrTerm));
             sb.append(".");
-            if (!indexTerm.sids.isEmpty()) {
+            if (!indexTerm.sectionIDs.isEmpty()) {
                 sb.append(" (");
                 int l = sb.length();
-                for (SectionID s : indexTerm.sids) {
-                    sb.append(s.getLink());
+                for (var x : indexTerm.sectionIDs) {
+                    sb.append(x.getLink());
                     sb.append(", ");
                 }
                 // Remove the last delimiter
@@ -1046,11 +1048,21 @@ public class Index extends CoursePage {
                 sb.append(")");
             }
             sb.append("</li>\n");
-            sb.append(sb.toString());
         }
         sb.append("</ul>\n");
         sb.append("</div>\n");
         return sb.toString();
     }
 
+    
+    /**
+     * For writing the page to file. (This does not write out a contents.)
+     */
+    @Override
+    public void write() {
+        writeHeader();
+        writeH1();
+        String page = getMainContent();
+        w.add(page);
+    }
 }

@@ -26,7 +26,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
- * Course Web Page.
+ * Course Page.
  *
  * @author Andy Turner
  */
@@ -154,17 +154,38 @@ public abstract class CoursePage extends Page {
      */
     @Override
     public String getPageContents() {
-        TreeSet<SectionID> sids = getCourse().pageIDToSectionIDs.get(pageID);
+        TreeSet<SectionID> sids = site.pageIDToSectionIDs.get(pageID);
         if (sids != null) {
             StringBuilder sb = new StringBuilder("<div>\n");
+            sb.append("<h2>Contents</h2>\n");
             sb.append("<ul>\n");
+            int level0=2;
+            int level;
             for (var x : sids) {
-                sb.append("<li>\n");
                 Section section = sections.get(x);
-                sb.append(section.sectionHTML).append("\n");
-                sb.append("</li>\n");
+                if (section == null) {
+                    int debug = 1;
+                } else {
+                    level = section.level;
+                    if (level > level0) {
+                        sb.append("<ul>\n");
+                        sb.append("<li>");
+                    } else if (level < level0) {
+                        sb.append("</li>");
+                        sb.append("</ul></li>\n");
+                        sb.append("<li>");
+                    } else {
+                        sb.append("<li>");
+                    }
+                    sb.append(section.sectionLink);
+                    level0 = level;
+                }
             }
-            sb.append("</ul>\n");
+            for (int i = 2; i <= level0; i ++) {
+                sb.append("</li>\n");
+                sb.append("</ul>\n");
+            }
+            
             sb.append("</div>\n");
             return sb.toString();
         }

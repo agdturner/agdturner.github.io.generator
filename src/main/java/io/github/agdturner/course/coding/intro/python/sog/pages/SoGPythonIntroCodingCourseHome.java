@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.coding.intro.python.sog.pages;
 
+import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.python.pages.PythonIntroCodingCourseHome;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -26,29 +27,30 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  */
 public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome {
     
-    public SoGPythonIntroCodingCourseHome(Course course, String courseName) {
-        super(course, courseName);
+    public SoGPythonIntroCodingCourseHome(Course course) {
+        super(course);
     }
     
     @Override
     public void getMaintainer(StringBuilder sb) {
-        sb.append("<p>The website is maintained by "
-                + Web_ContentWriter.getLink(
-                        "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
-                        "Andy Turner")
-                + " and comprises a set of webpages and file based resources."
-                + "</p>\n");
+        sb.append("<p>The website is maintained by ")
+                .append(Web_ContentWriter.getLink(
+                "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
+                "Andy Turner"))
+                .append(" and comprises a set of webpages and file based")
+                .append(" resources.</p>\n");
     }
     
     @Override
-    public void getLearningJourney0(StringBuilder sb) {
-        super.getLearningJourney0(sb);
+    public SectionID getLearningJourney0(StringBuilder sb) {
+        SectionID sid = super.getLearningJourney0(sb);
         sb.append("<p>If in doubt, please consult yout tutor.</p>\n");
+        return sid;
     }
     
     @Override
-    public void getLearningJourney1 (StringBuilder sb) {
-        super.getLearningJourney1(sb);
+    public void getLearningJourney1 (StringBuilder sb, SectionID sid) {
+        super.getLearningJourney1(sb, sid);
         sb.append("""
               <p>To complete the course, you are to undertake an independent 
               project to apply what you have learned to develop some different 
@@ -61,16 +63,17 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     @Override
     public void getPlatform(StringBuilder sb) {
         super.getPlatform(sb);
-        sb.append("<p>The software is available via 'AppsAnywhere' at the "
-                + "University of Leeds which is accessible remotely via the "
-                + "'Academic' <a href=\"https://wvd.leeds.ac.uk\">"
-                + "University Windows Virtual Desktop</a>. The software "
-                + "includes: "
-                + references.getReference("Anaconda")
-                + " - a data science platform, "
-                + references.getReference("QGIS")
-                + " Desktop - Geographical Information System software, and "
-                + "various third party Python packages.</p>\n");
+        sb.append("<p>The software is available via 'AppsAnywhere' at the")
+                .append(" University of Leeds which is accessible remotely")
+                .append(" via the 'Academic' ")
+                .append("<a href=\"https://wvd.leeds.ac.uk\">")
+                .append("University Windows Virtual Desktop</a>")
+                .append(". The software includes: ")
+                .append(references.getReference("Anaconda"))
+                .append(" - a data science platform, ")
+                .append(references.getReference("QGIS"))
+                .append(" Desktop - Geographical Information System software,")
+                .append(" and various third party Python packages.</p>\n");
         sb.append("</div>");
     }
 }

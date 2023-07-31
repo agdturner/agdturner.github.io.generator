@@ -20,12 +20,14 @@ import io.github.agdturner.course.Index;
 import io.github.agdturner.course.IndexTerm;
 
 /**
- * For course index pages.
+ * Java Index Course Page.
  *
  * @author Andy Turner
  */
 public class JavaIndex extends Index {
 
+    public static String DOCS_ORACLE_COM_EN_JAVA_JAVASE = "https://docs.oracle.com/en/java/javase/20/";
+    
     /**
      * Create a new instance.
      *
@@ -46,7 +48,7 @@ public class JavaIndex extends Index {
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
 
         name = "Java Class";
-        url = "https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Class.html";
+        url = DOCS_ORACLE_COM_EN_JAVA_JAVASE + "docs/api/java.base/java/lang/Class.html";
         description = "Instances of the class <code>Class</code> represent "
                 + "classes and interfaces in a running Java \"application\".";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
@@ -56,6 +58,11 @@ public class JavaIndex extends Index {
         url = getWikipediaURL("Java_class_file");
         description = "A file containing \"Java bytecode\" that can be "
         + "executed on the \"Java Virtual Machine\".";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        
+        name = "Javadoc";
+        url = getWikipediaURL("Javadoc");
+        description = "A documentation generator for \"Java\".";
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
         
         name = "Java Platform, Standard Edition";
@@ -101,6 +108,15 @@ public class JavaIndex extends Index {
         termToIndexTerm.put(name, new IndexTerm(this, description, url));
         aliasToTerm.put("JVM", name);
         
+        name = "JShell";
+        url = DOCS_ORACLE_COM_EN_JAVA_JAVASE + "jshell/introduction-jshell.html";
+        description = "An interactive command line tool for learning \"Java\" "
+                + "and prototyping. The Java Shell tool (JShell) is a \"REPL\" "
+                + "tool, which evaluates declarations, statements, and "
+                + "expressions as they are entered and immediately shows the "
+                + "results.";
+        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+                        
         name = "openJDK";
         url = getWikipediaURL("OpenJDK");
         description = "A free and open-source implementation of the "

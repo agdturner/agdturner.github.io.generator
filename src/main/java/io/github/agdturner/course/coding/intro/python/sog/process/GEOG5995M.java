@@ -21,13 +21,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Java for generating GEOG5995M Website Content.
+ * GEOG5995M is/was a Centre for Doctoral training module taught intensively 
+ * over a period of a week.
  *
  * @author Andy Turner
  */
 public class GEOG5995M extends SoGPythonIntroCodingCourse {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new instance.

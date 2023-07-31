@@ -18,36 +18,36 @@ package io.github.agdturner.course;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * A POJO for a term.
+ * Term.
  *
  * @author Andy Turner
  */
 public class Term {
 
     /**
+     * The index for looking up terms.
+     */
+    protected Index index;
+    
+    /**
      * The description of the resource.
      */
-    public String description;
+    public final String description;
 
     /**
-     * The url lookup for the term.
+     * The URL lookup for the term.
      */
-    public String url;
+    public final String url;
 
-
-    /**
-     * Create a new instance.
-     */
-    public Term() {
-    }
-    
     /**
      * Create a new instance.
      *
+     * @param index What {@link #index} is set to.
      * @param description What {@link #description} is set to.
      * @param url What {@link #url} is set to.
      */
-    public Term(String description, String url) {
+    public Term(Index index, String description, String url) {
+        this.index = index;
         this.description = description;
         this.url = url;
     }
@@ -62,15 +62,40 @@ public class Term {
     }
     
     /**
+     * If there is text marked up with double quotes in the description, then an 
+     * attempt is made to additionally insert a link for that text. This also 
+     * looks to use any alias set up for these terms.
+     * 
      * @param linkText
      * @return A link and description.
      */
     public String getLinkAndDescription(String linkText) {
         String r = getLink(linkText);
         if (description != null) {
-            r+= " - " + description + ".";
+            r += " - ";
+            if (description.contains("\"")) {
+                String[] split = description.split("\"");
+                for (int i = 0; i < split.length; i ++) {
+                    if (i % 2 == 0) {
+                        r+= split[i];
+                    } else {
+                        String l = index.getReference(split[i]);
+                        if (l == null) {
+                            String la = index.aliasToTerm.get(split[i]);
+                            if (la == null) {
+                                r+= "\"" + split[i] + "\"";                                
+                            } else {
+                                r+= index.getReference(la, split[i]);
+                            }
+                        } else {
+                            r+= l;
+                        }    
+                    }
+                }
+            } else {
+                r+= description;
+            }
         }
         return r;
     }
-    
 }

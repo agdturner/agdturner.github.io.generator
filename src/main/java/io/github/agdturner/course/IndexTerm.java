@@ -19,7 +19,7 @@ import io.github.agdturner.core.SectionID;
 import java.util.TreeSet;
 
 /**
- * A POJO for a IndexTerm (for a Web resource).
+ * IndexTerm.
  *
  * @author Andy Turner
  */
@@ -28,16 +28,12 @@ public class IndexTerm extends Term {
     /**
      * The SectionIDs where this term is used.
      */
-    public TreeSet<SectionID> sids;
-
+    public TreeSet<SectionID> sectionIDs;
+    
     /**
-     * The SectionIDs where this term is used.
-     */
-    private final Index index;
-
-    /**
-     * Create a new instance
+     * Create a new instance.
      *
+     * @param index What {@link #index} is set to.
      * @param description What {@link #description} is set to.
      * @param url What {@link #url} is set to.
      */
@@ -48,56 +44,16 @@ public class IndexTerm extends Term {
     /**
      * Create a new instance.
      *
+     * @param index What {@link #index} is set to.
      * @param description What {@link #description} is set to.
      * @param url What {@link #url} is set to.
      * @param sid A SectionID where the term is used.
      */
     public IndexTerm(Index index, String description, String url, SectionID sid) {
-        this.index = index;
-        this.url = url;
-        this.description = description;
-        this.sids = new TreeSet<>();
+        super(index, description, url);
+        this.sectionIDs = new TreeSet<>();
         if (sid != null) {
-            this.sids.add(sid);
+            this.sectionIDs.add(sid);
         }
-    }
-    
-    /**
-     * If there is text marked up with double quotes in the description, then an 
-     * attempt is made to additionally insert a link for that text. This also 
-     * looks to use any alias set up for these terms.
-     * 
-     * @param linkText
-     * @return A link and description.
-     */
-    @Override
-    public String getLinkAndDescription(String linkText) {
-        String r = getLink(linkText);
-        if (description != null) {
-            r += " - ";
-            if (description.contains("\"")) {
-                String[] split = description.split("\"");
-                for (int i = 0; i < split.length; i ++) {
-                    if (i % 2 == 0) {
-                        r+= split[i];
-                    } else {
-                        String l = index.getReference(split[i]);
-                        if (l == null) {
-                            String la = index.aliasToTerm.get(split[i]);
-                            if (la == null) {
-                                r+= "\"" + split[i] + "\"";                                
-                            } else {
-                                r+= index.getReference(la, split[i]);
-                            }
-                        } else {
-                            r+= l;
-                        }    
-                    }
-                }
-            } else {
-                r+= description;
-            }
-        }
-        return r;
     }
 }

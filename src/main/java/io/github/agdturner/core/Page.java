@@ -159,7 +159,7 @@ public abstract class Page {
      * @param sectionID The SectionID to add.
      */
     public void addToIndex(String name, SectionID sectionID) {
-        site.index.termToIndexTerm.get(name).sids.add(sectionID);
+        site.index.termToIndexTerm.get(name).sectionIDs.add(sectionID);
     }
 
     /**
@@ -167,18 +167,19 @@ public abstract class Page {
      * @param inPageID HTML id.
      * @param sectionName Section name.
      * @param level For heading.
-     * @param stringBuilder For appending the HTML to.
+     * @param sb For appending the HTML to.
      * @return SectionID
      */
     public SectionID addSection(String inPageID, String sectionName, int level, 
-            StringBuilder stringBuilder) {
+            StringBuilder sb) {
         SectionID sectionID = new SectionID(site.sectionIDs.size(), this, inPageID);
         site.sectionIDs.add(sectionID);
         site.addSection(sectionID, pageID, title + ": " + inPageID + ". " + sectionName);
         String html = "<h" + level + " id=\"" + inPageID + "\">" 
                 + inPageID + ". " + sectionName + "</h" + level + ">";
-        stringBuilder.append(html);
-        sections.put(sectionID, new Section(sectionID, html));
+        sb.append(html);
+        String link = "<a href=\"#" + inPageID + "\">" + inPageID + ". " + sectionName + "</a>"; 
+        sections.put(sectionID, new Section(level, sectionID, html, link));
         TreeSet<SectionID> sectionIDs = site.pageIDToSectionIDs.get(pageID);
         sectionIDs.add(sectionID);
         return sectionID;
@@ -200,11 +201,20 @@ public abstract class Page {
         w.add("<h1>" + title + "</h1>");
     }
     
+    /**
+     * @return The main content of the page. 
+     */
     public abstract String getMainContent();
     
+    /**
+     * @return The page contents. 
+     */
     public abstract String getPageContents();
     
-    public static List<String> getHeadElements(Path dir) {
+    /**
+     * @return A list of elements that go in the HTML head section. 
+     */
+    public static List<String> getHeadElements() {
         ArrayList<String> r = new ArrayList<>();
         r.add("""
               <!-- Styling. -->

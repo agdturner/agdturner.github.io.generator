@@ -19,7 +19,7 @@ import java.util.TreeMap;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
- * For course references pages.
+ * References Course Page.
  *
  * @author Andy Turner
  */
@@ -48,9 +48,9 @@ public class References extends CoursePage {
 
         name = "GitHub";
         url = "https://github.com/";
-        description = "an Internet hosting service for software development "
-                + "and version control";
-        nameToTerm.put(name, new Term(description, url));
+        description = "An \"Internet\" hosting service for \"software\" "
+                + "development and \"version control\"";
+        nameToTerm.put(name, new Term(index, description, url));
 
     }
 
@@ -66,17 +66,18 @@ public class References extends CoursePage {
      * Adds a reference to the appropriate course collections and returns a link
      * to use in a WebPage.
      *
+     * @param course The course.
      * @param name The name for the reference.
      * @param linkText The text for the link.
      * @param url The URL of the reference.
      * @param description The description of the reference.
      * @return A link.
      */
-    public String addWebReference(String name, String linkText,
+    public String addWebReference(Course course, String name, String linkText,
             String url, String description) {
         if (!references.nameToTerm.containsKey(name)) {
             references.nameToTerm.put(name,
-                    new Term(description, url));
+                    new Term(index, description, url));
         }
         return Web_ContentWriter.getLink(url, linkText);
     }
@@ -103,15 +104,25 @@ public class References extends CoursePage {
         StringBuilder sb = new StringBuilder();
         sb.append("<ul>");
         for (String name : nameToTerm.keySet()) {
-            Term r = nameToTerm.get(name);
+            Term term = nameToTerm.get(name);
             sb.append("<li>");
-            sb.append(r.getLinkAndDescription(name));
+            sb.append(term.getLinkAndDescription(name));
+            sb.append(".");            
             sb.append("</li>\n");
-            sb.append(sb.toString());
         }
         sb.append("</ul>\n");
         sb.append("</div>\n");
         return sb.toString();
     }
-
+    
+    /**
+     * For writing the page to file. (This does not write out a contents.)
+     */
+    @Override
+    public void write() {
+        writeHeader();
+        writeH1();
+        String page = getMainContent();
+        w.add(page);
+    }
 }

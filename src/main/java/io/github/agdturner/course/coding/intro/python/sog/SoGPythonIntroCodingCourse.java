@@ -82,7 +82,7 @@ public abstract class SoGPythonIntroCodingCourse extends PythonIntroCodingCourse
             int assignment1Weighting, String assignment2Name, 
             String assignment2DueDate, int assignment2Weighting) {
         super(env, courseCode, courseName);
-        homePage = new SoGPythonIntroCodingCourseHome(this, courseName);
+        homePage = new SoGPythonIntroCodingCourseHome(this);
         this.courseDetails = new SoGCourseDetails(this, academicYear);
         this.assignment1Name = assignment1Name;
         this.assignment1DueDate = assignment1DueDate;

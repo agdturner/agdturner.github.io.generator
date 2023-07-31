@@ -13,32 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.agdturner.course.coding.java.pages;
+package io.github.agdturner.course.coding.intro.java.pages;
 
-import io.github.agdturner.course.coding.java.JavaCodingCourse;
-import io.github.agdturner.course.pages.CourseHome;
+import io.github.agdturner.course.Course;
+import io.github.agdturner.course.coding.intro.pages.IntroCodingCourseProgramming;
 
 /**
- * Extend this for a Java Course Home Page.
- *
+ * Java Intro Coding Course Programming.
+ * 
  * @author Andy Turner
  */
-public abstract class CourseJavaHomePage extends CourseHome {
-
-    /**
-     * Create a new instance.
-     *
-     * @param course What {@link #site} is set to.
-     */
-    public CourseJavaHomePage(JavaCodingCourse course) {
+public class JavaIntroCodingCourseProgramming extends IntroCodingCourseProgramming {
+    
+    public JavaIntroCodingCourseProgramming(Course course) {
         super(course);
     }
     
-    /**
-     * @return JavaCourse.
-     */
-    @Override
-    public JavaCodingCourse getCourse() {
-        return (JavaCodingCourse) site; 
-    }
 }

@@ -37,7 +37,7 @@ import io.github.agdturner.course.coding.intro.python.pages.PythonIntroCodingCou
 import io.github.agdturner.course.coding.intro.python.pages.IO;
 import io.github.agdturner.course.coding.intro.python.pages.Loops;
 import io.github.agdturner.course.coding.intro.python.pages.Modules;
-import io.github.agdturner.course.coding.intro.python.pages.Programming;
+import io.github.agdturner.course.coding.intro.python.pages.PythonIntroCodingCourseProgramming;
 import io.github.agdturner.course.coding.intro.python.pages.Python;
 import io.github.agdturner.course.coding.intro.python.pages.Testing;
 import io.github.agdturner.course.coding.intro.python.pages.Variables;
@@ -64,9 +64,9 @@ public abstract class PythonIntroCodingCourse extends PythonCodingCourse {
          * Initialise Course Pages.
          */
         // Home
-        homePage = new PythonIntroCodingCourseHome(this, courseName);
+        homePage = new PythonIntroCodingCourseHome(this);
         // Course Pages
-        pages.add(new Programming(this));
+        pages.add(new PythonIntroCodingCourseProgramming(this));
         pages.add(new Python(this));
         pages.add(new Variables(this));
         pages.add(new Github(this));

@@ -23,6 +23,11 @@ package io.github.agdturner.core;
 public class Section {
 
     /**
+     * The Level.
+     */
+    public int level;
+
+    /**
      * The SectionID.
      */
     public SectionID sid;
@@ -33,14 +38,22 @@ public class Section {
     public String sectionHTML;
 
     /**
+     * The section Link.
+     */
+    public String sectionLink;
+
+    /**
      * Creates a new instance.
      *
      * @param sid What {@link #sid} is set to.
      * @param sectionHTML What {@link #sectionHTML} is set to.
+     * @param sectionLink What {@link #sectionLink} is set to.
      */
-    public Section(SectionID sid, String sectionHTML) {
+    public Section(int level, SectionID sid, String sectionHTML, String sectionLink) {
+        this.level = level;
         this.sid = sid;
         this.sectionHTML = sectionHTML;
+        this.sectionLink = sectionLink;
     }
 
     @Override

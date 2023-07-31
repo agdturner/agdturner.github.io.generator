@@ -34,12 +34,13 @@ import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
  * @author Andy Turner
  */
 public class MyHome extends Page {
-    
-    public static final Path DIR = Paths.get("C:", "Users", "geoagdt", "src", 
+
+    public static final Path DIR = Paths.get("C:", "Users", "geoagdt", "src",
             "agdt", Environment.AGDTURNER_GITHUB_IO);
-    
+
     /**
      * Create a new instance.
+     *
      * @param site What {@link #site} is set to.
      * @param title What {@link #title} is set to.
      * @param id What {@link #pageID} is set to.
@@ -55,7 +56,7 @@ public class MyHome extends Page {
             }
         }
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
@@ -98,10 +99,20 @@ public class MyHome extends Page {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * For writing the page to file. (This does not write out a contents.)
+     */
+    @Override
+    public void write() {
+        writeHeader();
+        writeH1();
+        String page = getMainContent();
+        w.add(page);
+    }
+
     @Override
     public String getPageContents() {
         return "";
     }
-    
-    
+
 }

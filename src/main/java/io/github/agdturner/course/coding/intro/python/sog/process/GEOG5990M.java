@@ -21,13 +21,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Java for generating GEOG5990M Website Content.
+ * GEOG5990M is/was a School of Geography semester long taught module.
  *
  * @author Andy Turner
  */
 public class GEOG5990M extends SoGPythonIntroCodingCourse {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new instance.

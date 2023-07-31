@@ -20,7 +20,7 @@ import io.github.agdturner.course.Index;
 import io.github.agdturner.course.IndexTerm;
 
 /**
- * For course index pages.
+ * Python Index Course Page.
  *
  * @author Andy Turner
  */

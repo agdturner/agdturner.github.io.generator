@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.pages;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.SectionID;
 import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.CoursePage;
@@ -32,15 +33,17 @@ public abstract class CourseHome extends CoursePage {
      * Create a new instance.
      *
      * @param course What {@link #site} is set to.
-     * @param courseName What {@link #name} is set to.
      */
-    public CourseHome(Course course, String courseName) {
-        super(course, "home", course.getCourseCode() + ": " + courseName, 
+    public CourseHome(Course course) {
+        super(course, "home", 
+                course.getCourseCode() + ": " + course.courseName,
                 "Home");
     }
-    
+
     /**
      * Initialise the header, h1, and start of the introduction.
+     *
+     * @param sb The StringBuilder to append to.
      */
     public void getStart(StringBuilder sb) {
         SectionID sid = addSection("1", "Introduction", 2, sb);
@@ -50,26 +53,28 @@ public abstract class CourseHome extends CoursePage {
     }
 
     /**
-     * Default webmaster details - who maintains the site and how to contact 
-     * them. 
+     * Default webmaster details - who maintains the site and how to contact
+     * them.
+     *
+     * @param sb The StringBuilder to append to.
      */
     public void getMaintainer(StringBuilder sb) {
-        sb.append("<p>The website is maintained by "
-                + Web_ContentWriter.getLink(
-                        "https://arc.leeds.ac.uk/",
-                        "Research Computing")
-                + " and comprises a set of webpages and file based resources."
-                + "</p>");
-        sb.append("<p>Please "
-                + Web_ContentWriter.getLink(
-                        "https://it.leeds.ac.uk/it?id=sc_cat_item&sys_id=7587b2530f675f00a82247ece1050eda",
-                        "contact us")
-                + " if you want help, clarification or there is a problem with"
-                + " these resources.</p>");
+        sb.append("<p>The website is maintained by ")
+                .append(Web_ContentWriter.getLink(Environment.HTTPS_ARC_LEEDS_AC_UK,
+                        "Research Computing"))
+                .append(" and comprises a set of webpages and file based")
+                .append(" resources.</p>");
+        sb.append("<p>Please ")
+                .append(Web_ContentWriter.getLink(Environment.ARC_CONTACT,
+                        "contact us"))
+                .append(" if you want help, clarification or there is a")
+                .append(" problem with these resources.</p>");
     }
 
     /**
      * Explanation about navigation of the site.
+     *
+     * @param sb The StringBuilder to append to.
      */
     public void getNavigationIntro(StringBuilder sb) {
         sb.append("""
@@ -87,32 +92,82 @@ public abstract class CourseHome extends CoursePage {
               """);
     }
 
-    public void getSyllabus(StringBuilder sb) {
+    /**
+     * For detailing the syllabus.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public abstract void getSyllabus(StringBuilder sb);
+
+    /**
+     * For detailing the first part of the syllabus.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public SectionID getSyllabus0(StringBuilder sb) {
+        sb.append("<div>\n");
         SectionID sid = addSection("2", "Syllabus", 2, sb);
+        return sid;
     }
 
-    public void getExpectations(StringBuilder sb) {
-       SectionID sid = addSection("3", "Expectations", 2, sb);
+    /**
+     * For detailing the last part of the syllabus.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void getSyllabusN(StringBuilder sb, SectionID sid) {
+        sb.append("</div>\n");
+    }
+
+    /**
+     * For detailing the expectations.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public abstract void getExpectations(StringBuilder sb);
+
+    /**
+     * For detailing the first part of the expectations.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public SectionID getExpectations0(StringBuilder sb) {
+        sb.append("<div>\n");
+        SectionID sid = addSection("3", "Expectations", 2, sb);
         sb.append("""
               <p>You will learn about:</p>
               <ul>
               """);
+        return sid;
     }
-        
-    public void getExpectationsN(StringBuilder sb) {
+
+    /**
+     * For detailing the last part of the expectations.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void getExpectationsN(StringBuilder sb, SectionID sid) {
         sb.append("""
               <p>There are some key concepts which may take a few attempts to 
               get used to and comprehensively understand.</p>
               """);
+        sb.append("</div>\n");
     }
 
-    
-    public void getLearningJourney(StringBuilder sb) {
-        getLearningJourney0(sb);
-        getLearningJourneyN(sb);
-    }
-    
-    public void getLearningJourney0(StringBuilder sb) { 
+    /**
+     * For detailing the learning journey.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public abstract void getLearningJourney(StringBuilder sb);
+
+    /**
+     * For detailing the first part of the learning journey.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public SectionID getLearningJourney0(StringBuilder sb) {
+        sb.append("<div>\n");
         SectionID sid = addSection("4", "The Learning Journey", 2, sb);
         sb.append("""
               <p>Develop your understanding through practise and by reading.</p>
@@ -128,36 +183,46 @@ public abstract class CourseHome extends CoursePage {
               wrong thing to do!</p>
               <p>Be cautious and do not run code that you do not trust.</p>
               """);
+        return sid;
     }
-    
-    public void getLearningJourneyN(StringBuilder sb) {
+
+    /**
+     * For detailing the last part of the learning journey.
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void getLearningJourneyN(StringBuilder sb, SectionID sid) {
         String courseName = getCourse().courseType;
-        sb.append("<p>Try to enjoy the learning journey, the challenges and the "
-                + "rewards. Learning to program and learning "
-                + index.getReference(courseName, Strings.toUpperCaseFirstLetter(courseName))
-                + " is empowering!</p>");
+        String courseNameUC = Strings.toUpperCaseFirstLetter(courseName);
+        sb.append("<p>Try to enjoy the learning journey, the challenges and ")
+                .append("the rewards. Learning to program and learning ")
+                .append(index.getReference(courseName, courseNameUC))
+                .append(" is empowering!</p>\n");
+        sb.append("</div>\n");
     }
-    
+
+    /**
+     * For detailing the platform.
+     *
+     * @param sb The StringBuilder to append to.
+     */
     public void getPlatform(StringBuilder sb) {
         SectionID sid = addSection("5", "Platform/Software", 2, sb);
-        sb.append("""
-              <p>All the software used in this course is 
-              """);
-        sb.append(index.getReference("Free and Open Source Software",
-                "Free and Open Source Software")
-                + " (FOSS) - available to download and install on "
-                + index.getReference("Linux")
-                + ", "
-                + index.getReference("Microsoft Windows")
-                + ", and "
-                + index.getReference("MacOS")
-                + ".<p>");
+        sb.append("<p>All the software used in this course is ")
+                .append(index.getReference("Free and Open Source Software"))
+                .append(" (FOSS) - available to download and install on ")
+                .append(index.getReference("Linux"))
+                .append(", ")
+                .append(index.getReference("Microsoft Windows"))
+                .append(", and ")
+                .append(index.getReference("MacOS"))
+                .append(".<p>\n");
     }
-    
+
     /**
      * @return {@code (Course) site).
      */
     public Course getCourse() {
-        return (Course) site; 
+        return (Course) site;
     }
 }
