@@ -252,7 +252,7 @@ public class Index extends CoursePage {
 
         term = "Byte";
         url = getWikipediaURL("Byte");
-        description = "a unit of digital information that most commonly"
+        description = "A unit of digital information that most commonly"
                 + " consists of eight \"bits\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -260,7 +260,7 @@ public class Index extends CoursePage {
 
         term = "Bytecode";
         url = getWikipediaURL("Bytecode");
-        description = "a form of \"instruction set\" designed for efficient "
+        description = "A form of \"instruction set\" designed for efficient "
                 + "execution by a software \"interpreter\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -294,13 +294,21 @@ public class Index extends CoursePage {
 
         term = "Class";
         url = getWikipediaURL("Class_(computer_programming)");
-        description = "an extensible program-code-template for creating "
+        description = "An extensible program-code-template for creating "
                 + "objects, providing initial values for state (member "
                 + "variables) and implementations of behavior (member "
                 + "functions or methods)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
+
+        term = "Client";
+        url = getWikipediaURL("Client_(computing)");
+        description = "A piece of computer \"hardware\" or \"software\" that "
+                + "accesses a service made available by a \"server\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
 
         term = "Computer";
         url = getWikipediaURL("Computer");
@@ -323,12 +331,11 @@ public class Index extends CoursePage {
 
         term = "Command Line Interface";
         url = getWikipediaURL("Command-line_interface");
-        description = "a command-line interpreter or command-line processor "
+        description = "A command-line interpreter or command-line processor "
                 + "uses a command-line interface (CLI) to receive commands "
                 + "from a user in the form of lines of text. This provides a "
                 + "means of setting parameters for the environment, invoking "
-                + "executables and providing information to them as to what "
-                + "actions they are to perform";
+                + "executables and providing information to the user";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasToIndex(term, "CLI", indexTerm);
@@ -343,7 +350,7 @@ public class Index extends CoursePage {
 
         term = "Computer Programming";
         url = getWikipediaURL("Computer_programming");
-        description = "the process of designing and building an executable "
+        description = "The process of designing and building an executable "
                 + "computer program";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -351,23 +358,24 @@ public class Index extends CoursePage {
 
         term = "Conditional";
         url = getWikipediaURL("Conditional_(computer_programming)");
-        description = "perform different computations or actions depending on "
-                + "whether a programmer-defined boolean condition evaluates to "
-                + "true or false";
+        description = "A \"control flow\" switch that performs some kind of "
+                + " evaluation to determine what code is executed next";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAndPluralAliases(term, indexTerm);
 
         term = "Control Flow";
         url = getWikipediaURL("Control_flow");
-        description = "a named container of data";
+        description = "The order in which individual statements, instructions "
+                + "or function calls of an imperative program are executed or "
+                + "evaluated";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
 
         term = "CSS";
         url = getWikipediaURL("CSS");
-        description = "a style sheet language used for describing the "
+        description = "A style sheet language used for describing the "
                 + "presentation of a document written in a markup language "
                 + "such as \"HTML\" or \"XML\"";
         indexTerm = new IndexTerm(this, description, url);
@@ -375,14 +383,14 @@ public class Index extends CoursePage {
 
         term = "CSV";
         url = getWikipediaURL("Comma-separated_values");
-        description = "a delimited text file format that uses a comma to "
+        description = "A delimited text file format that uses commas to "
                 + "separate values";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Debugging";
         url = getWikipediaURL("Debugging");
-        description = "the process of finding and resolving \"bugs\" (defects "
+        description = "The process of finding and resolving \"bugs\" (defects "
                 + "or problems that prevent correct operation) within "
                 + "\"computer programs\", \"software\", or systems";
         indexTerm = new IndexTerm(this, description, url);
@@ -391,7 +399,7 @@ public class Index extends CoursePage {
 
         term = "Deprecation";
         url = getWikipediaURL("Deprecation");
-        description = "the discouragement of use of some terminology, feature, "
+        description = "The discouragement of use of some terminology, feature, "
                 + "design, or practice, typically because it has been "
                 + "superseded or is no longer considered efficient or safe, "
                 + "without completely removing it or prohibiting its use";
@@ -401,7 +409,7 @@ public class Index extends CoursePage {
 
         term = "Disk";
         url = getWikipediaURL("Computer_memory");
-        description = "computer data storage that is slower than memory and "
+        description = "Computer data storage that is slower than memory and "
                 + "is used to store information persistently (from one session "
                 + "to the next)";
         indexTerm = new IndexTerm(this, description, url);
@@ -410,7 +418,7 @@ public class Index extends CoursePage {
 
         term = "Double-precision Floating-point";
         url = getWikipediaURL("Double-precision_floating-point_format");
-        description = " a \"computer\" number format, usually occupying 64 "
+        description = "A \"computer\" number format, usually occupying 64 "
                 + "\"bits\" of computer memory";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -426,7 +434,7 @@ public class Index extends CoursePage {
 
         term = "File Format";
         url = getWikipediaURL("File_format");
-        description = "a standard way that information is encoded for storage "
+        description = "A standard way that information is encoded for storage "
                 + "in a computer file";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -434,7 +442,7 @@ public class Index extends CoursePage {
 
         term = "File System";
         url = getWikipediaURL("File_system");
-        description = "a method and data structure that a computer operating "
+        description = "A method and data structure that a computer operating "
                 + "system uses to control how data is stored and retrieved";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -442,7 +450,7 @@ public class Index extends CoursePage {
 
         term = "Floating-point";
         url = getWikipediaURL("Floating-point_arithmetic");
-        description = "arithmetic that represents real numbers approximately, "
+        description = "Arithmetic that represents real numbers approximately, "
                 + "using an integer with a fixed precision, called the "
                 + "significand, scaled by an integer exponent of a fixed base";
         indexTerm = new IndexTerm(this, description, url);
@@ -451,31 +459,31 @@ public class Index extends CoursePage {
 
         term = "For Loop";
         url = getWikipediaURL("For_loop");
-        description = "runs a section of code repeatedly until a condition is "
-                + "satisfied";
+        description = "A computer programming construct for repeating a set of "
+                + "operations for a sequence of things, for a number of times, "
+                + "and/or until a condition is met";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
 
         term = "Free and Open Source Software";
         url = getWikipediaURL("Free_and_open-source_software");
-        description = "software where anyone is freely licensed to use, copy, "
-                + "study, and change the software in any way, and the \"source "
-                + "code\" is openly shared";
+        description = "\"Software\" which anyone is freely licensed to use, "
+                + "copy, study, change and share";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "FOSS", indexTerm);
 
         term = "Functional Programming";
         url = getWikipediaURL("Functional_programming");
-        description = "a programming paradigm where programs are constructed "
+        description = "A programming paradigm where programs are constructed "
                 + "by applying and composing functions";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Function";
         url = getWikipediaURL("Function_(computer_programming)");
-        description = "a sequence of program instructions that performs a "
+        description = "A sequence of program instructions that performs a "
                 + "specific task";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -483,7 +491,7 @@ public class Index extends CoursePage {
 
         term = "GeoJSON";
         url = getWikipediaURL("GeoJSON");
-        description = "an open standard format designed for representing "
+        description = "An open standard format designed for representing "
                 + "simple geographical features, along with their non-spatial "
                 + "attributes. It is based on the \"JSON\" format";
         indexTerm = new IndexTerm(this, description, url);
@@ -500,7 +508,7 @@ public class Index extends CoursePage {
 
         term = "Glitch";
         url = getWikipediaURL("Glitch");
-        description = "a short-lived fault in a system, such as a transient "
+        description = "A short-lived fault in a system, such as a transient "
                 + "fault that corrects itself, making it difficult to "
                 + "troubleshoot";
         indexTerm = new IndexTerm(this, description, url);
@@ -509,14 +517,14 @@ public class Index extends CoursePage {
 
         term = "GML";
         url = getWikipediaURL("Geography_Markup_Language");
-        description = "the XML grammar defined by the Open Geospatial "
-                + "Consortium (OGC) to express geographical features";
+        description = "The \"XML\" grammar defined by the Open Geospatial "
+                + "Consortium to express geographical features";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Graphical User Interface";
         url = getWikipediaURL("Graphical_user_interface");
-        description = "a form of user interface that primarily uses actionable "
+        description = "A form of user interface that primarily uses actionable "
                 + "graphical icons";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -524,31 +532,30 @@ public class Index extends CoursePage {
 
         term = "HTML";
         url = getWikipediaURL("HTML");
-        description = "the standard markup language for documents designed to "
+        description = "The standard markup language for documents designed to "
                 + "be displayed in a web browser";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "HTTP";
         url = getWikipediaURL("HTTP");
-        description = "an application layer protocol in the Internet protocol "
-                + "suite model for distributed, collaborative, hypermedia "
-                + "information systems";
+        description = "An application layer protocol in the \"Internet "
+                + "protocol suite\" model for distributed, collaborative, "
+                + "hypermedia information systems";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "HTTPS";
         url = getWikipediaURL("HTTPS");
-        description = "is an extension of HTTP that uses encryption for secure "
-                + "communication over a computer network";
+        description = "An extension of \"HTTP\" that uses encryption for "
+                + "secure communication over a computer network";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Integrated Development Environment";
         url = getWikipediaURL("Integrated_development_environment");
-        description = "An Integrated Development Environment - a collection of "
-                + "software tools used to make writing code and developing "
-                + "software easier";
+        description = "An IDE is a collection of \"software\" tools used to "
+                + "make writing code and developing \"software\" easier";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -559,15 +566,15 @@ public class Index extends CoursePage {
         description = "A computer program that directly executes instructions "
                 + "written in a programming or scripting language, without "
                 + "requiring them previously to have been compiled into a "
-                + "machine language program.";
+                + "machine language program";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
 
         term = "Internet";
         url = getWikipediaURL("Internet");
-        description = "a global system of interconnected computer networks "
-                + "that uses the Internet protocol suite (TCP/IP) to "
+        description = "A global system of interconnected computer networks "
+                + "that uses the \"Internet protocol suite\" (TCP/IP) to "
                 + "communicate between networks and devices";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -594,17 +601,16 @@ public class Index extends CoursePage {
 
         term = "JSON";
         url = getWikipediaURL("JSON");
-        description = " JavaScript Object Notation is an open standard \"file "
-                + "format\" and data interchange format that uses human"
-                + "-readable text to store and transmit data objects "
-                + "consisting of attribute–value pairs and arrays (or other "
-                + "serializable values)";
+        description = "\"JavaScript\" Object Notation is an open standard "
+                + "data interchange format that uses human-readable text to "
+                + "store and transmit data objects consisting of attribute"
+                + "–value pairs and arrays (or other serializable values)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Keyboard";
         url = getWikipediaURL("Computer_keyboard");
-        description = "a peripheral input device modeled after the typewriter "
+        description = "A peripheral input device modeled after the typewriter "
                 + "keyboard";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -612,21 +618,22 @@ public class Index extends CoursePage {
 
         term = "Linux";
         url = getWikipediaURL("Linux");
-        description = "a family of open-source Unix-like \"operating systems\"";
+        description = "A family of open-source Unix-like \"operating systems\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "MacOS";
         url = getWikipediaURL("macOS");
-        description = "a group of several proprietary Unix \"operating "
-                + "systems\" developed and marketed by Apple Inc";
+        description = "A group of several proprietary Unix \"operating "
+                + "systems\" developed and marketed by the company Apple";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "macOS", indexTerm);
-
+        addAliasAndLowerCase(term, "OSX", indexTerm);
+        
         term = "Magic Number";
         url = getWikipediaURL("File_format#Magic_number");
-        description = "file type metadata incorporated into the file - usually "
+        description = "File type metadata incorporated into the file - usually "
                 + "at the start";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -634,7 +641,7 @@ public class Index extends CoursePage {
 
         term = "Markdown";
         url = getWikipediaURL("Markdown");
-        description = "a lightweight markup language for creating formatted "
+        description = "A lightweight markup language for creating formatted "
                 + "text using a plain-text editor";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -642,14 +649,14 @@ public class Index extends CoursePage {
 
         term = "Metadata";
         url = getWikipediaURL("Metadata");
-        description = "data that provides information about other data";
+        description = "Data that provides information about other data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
 
         term = "Memory";
         url = getWikipediaURL("Computer_memory");
-        description = "computer data storage that operates at a high speed "
+        description = "Computer data storage that operates at a high speed "
                 + "compared to other data storage and is used to store "
                 + "data for immediate use";
         indexTerm = new IndexTerm(this, description, url);
@@ -658,14 +665,15 @@ public class Index extends CoursePage {
 
         term = "Microsoft Windows";
         url = getWikipediaURL("Microsoft_Windows");
-        description = "a group of several proprietary graphical \"operating "
-                + "system\" families developed and marketed by Microsoft";
+        description = "A group of several proprietary graphical \"operating "
+                + "system\" families developed and marketed by the company "
+                + "Microsoft";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Monitor";
         url = getWikipediaURL("Computer_monitor");
-        description = "an output device that displays information in pictorial "
+        description = "An output device that displays information in pictorial "
                 + "or textual form";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -673,7 +681,7 @@ public class Index extends CoursePage {
 
         term = "Mouse";
         url = getWikipediaURL("Computer_mouse");
-        description = "a hand-held pointing device that detects "
+        description = "A hand-held pointing device that detects "
                 + "two-dimensional motion relative to a surface";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -681,7 +689,7 @@ public class Index extends CoursePage {
 
         term = "Name Binding";
         url = getWikipediaURL("Name_binding");
-        description = "the association of entities (data and/or code) with "
+        description = "The association of entities (data and/or code) with "
                 + "identifiers";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -689,7 +697,7 @@ public class Index extends CoursePage {
 
         term = "Network Socket";
         url = getWikipediaURL("Network_socket");
-        description = " a software structure within a network node of a "
+        description = "A \"software\" structure within a network node of a "
                 + "computer network that serves as an endpoint for sending and "
                 + "receiving data across the network";
         indexTerm = new IndexTerm(this, description, url);
@@ -710,18 +718,17 @@ public class Index extends CoursePage {
 
         term = "Open Source Software";
         url = getWikipediaURL("Open-source_software");
-        description = "computer software that is released under a license that "
-                + "grants rights to use, study, change, and distribute the "
-                + "software and its \"source code\"";
+        description = "Computer software for which the \"source code\" is "
+                + "released and available for study. See also \"FOSS\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "OSS", indexTerm);
 
         term = "Operating System";
         url = getWikipediaURL("Operating_system");
-        description = "a system that manages computer hardware and software "
-                + "resources, and provides common services for computer "
-                + "programs";
+        description = "A system that manages computer \"hardware\" and "
+                + "\"software\" resources, and provides common services for "
+                + "computer programs";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAndPluralAliases(term, indexTerm);
@@ -729,15 +736,15 @@ public class Index extends CoursePage {
 
         term = "PATH";
         url = getWikipediaURL("PATH_(variable)");
-        description = "an environment variable on Unix-like \"operating "
-                + "systems\", DOS, OS/2, and Microsoft Windows, specifying a "
-                + "set of directories where executable programs are located";
+        description = "An environment variable expected to be set on many "
+                + "\"operating systems\". The variable specifies a set of "
+                + "directories/folders where executable programs are located";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Port";
         url = getWikipediaURL("Port_(computer_networking)");
-        description = "a number assigned to uniquely identify a connection "
+        description = "A number assigned to uniquely identify a connection "
                 + "endpoint and to direct data to a specific service";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -745,14 +752,23 @@ public class Index extends CoursePage {
 
         term = "Programming Language";
         url = getWikipediaURL("Programming_language");
-        description = "a system of notation for writing computer programs";
+        description = "A system of notation for writing computer programs";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
 
         term = "Python";
         url = getWikipediaURL("Python_(programming_language)");
-        description = "a high-level, general-purpose \"programming language\"";
+        description = "A high-level, general-purpose \"programming language\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+
+        term = "Regression test";
+        url = getWikipediaURL("Regression_testing");
+        description = "A test rerun to ensure that previously developed "
+                + "and tested \"software\" still performs as expected after a "
+                + "change";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -765,8 +781,6 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term,
-                "Regression test", indexTerm);
 
         term = "REPL";
         url = getWikipediaURL("Read%E2%80%93eval%E2%80%93print_loop");
@@ -778,16 +792,16 @@ public class Index extends CoursePage {
 
         term = "Reproducibility";
         url = getWikipediaURL("Reproducibility");
-        description = "in computational sciences means any results should be "
-                + "documented by making all data and code available in such a "
-                + "way that the computations can be executed again with "
-                + "identical results";
+        description = "In computational sciences, reporducibility means "
+                + "results should be documented by making all data and code "
+                + "available in such a way that the computations can be "
+                + "executed again with identical end results";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Server";
         url = getWikipediaURL("Server_(computing)");
-        description = "\"Computer hardware\" or \"software\" that provides "
+        description = "Computer \"hardware\" or \"software\" that provides "
                 + "functionality for other programs or devices, called "
                 + "\"clients\"";
         indexTerm = new IndexTerm(this, description, url);
@@ -807,7 +821,7 @@ public class Index extends CoursePage {
 
         term = "Single-precision Floating-point";
         url = getWikipediaURL("Single-precision_floating-point_format");
-        description = " a \"computer\" number format, usually occupying 32 "
+        description = "A \"computer\" number format, usually occupying 32 "
                 + "\"bits\" of computer memory";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -830,7 +844,7 @@ public class Index extends CoursePage {
 
         term = "Source Code";
         url = getWikipediaURL("Source_code");
-        description = "text written using a human-readable \"programming "
+        description = "Text written using a human-readable \"programming "
                 + "language\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -838,31 +852,33 @@ public class Index extends CoursePage {
 
         term = "Syntax Error";
         url = getWikipediaURL("Syntax_error");
-        description = "an error in the syntax of a sequence of characters or"
-                + " tokens that is intended to be written in a particular"
-                + " \"programming language\"";
+        description = "An error in the syntax of a sequence of characters or "
+                + "tokens that is intended to be written in a particular "
+                + "\"programming language\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         aliasToTerm.put(term.toLowerCase(), term);
 
         term = "TCP/IP";
         url = getWikipediaURL("Internet_protocol_suite");
-        description = "a framework for organizing the set of communication "
+        description = "A framework for organizing the set of communication "
                 + "protocols used in the \"Internet\" and similar computer "
                 + "networks according to functional criteria";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, 
+                "Internet protocol suite", indexTerm);
 
         term = "Touchscreen";
         url = getWikipediaURL("Touchscreen");
-        description = " both an input ('touch panel') and output ('display') "
+        description = "Both an input ('touch panel') and output ('display') "
                 + "device)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Unicode";
         url = getWikipediaURL("Unicode");
-        description = "an information technology standard for the consistent "
+        description = "An information technology standard for the consistent "
                 + "encoding, representation, and handling of text expressed in "
                 + "most writing systems";
         indexTerm = new IndexTerm(this, description, url);
@@ -870,11 +886,12 @@ public class Index extends CoursePage {
 
         term = "Unit Testing";
         url = getWikipediaURL("Unit_testing");
-        description = "a software testing method by which individual units of "
-                + "source code—sets of one or more computer program modules "
-                + "together with associated control data, usage procedures, "
-                + "and operating procedures—are tested to determine whether "
-                + "they are fit for use";
+        description = "A \"software\" testing method by which individual units "
+                + "of \"source code\" - sets of one or more computer program "
+                + "modules together with associated control data, usage "
+                + "procedures, and operating procedures - are tested to "
+                + "determine whether they are fit for use. See also "
+                + "\"regression testing\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
@@ -888,27 +905,23 @@ public class Index extends CoursePage {
 
         term = "Variable";
         url = getWikipediaURL("Variable_(computer_science)");
-        description = "the order in which individual statements, instructions "
-                + "or function calls of an imperative program are executed or "
-                + "evaluated";
+        description = "A named container for a particular set of bits or type "
+                + "of data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Version Control";
         url = getWikipediaURL("Version_control");
-        description = "(also known as revision control, source control, or "
-                + "\"source code\" management) is a class of systems "
-                + "responsible for managing changes to computer programs, "
-                + "documents, \"Web\" sites, or other collections of "
-                + "information.";
+        description = "A class of systems responsible for managing changes to "
+                + "computer programs, documents, \"Web\" sites, or other "
+                + "collections of information.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-        
 
         term = "Web Accessibility";
         url = getWikipediaURL("Web_accessibility");
-        description = "the inclusive practice of ensuring there are no "
+        description = "The inclusive practice of ensuring there are no "
                 + "barriers that prevent interaction with, or access to, "
                 + "websites on the \"World Wide Web\" by people with physical "
                 + "disabilities, situational disabilities, and socio-economic "
@@ -918,24 +931,24 @@ public class Index extends CoursePage {
 
         term = "World Wide Web";
         url = getWikipediaURL("World_Wide_Web");
-        description = "commonly known as the Web, is an information system "
+        description = "Commonly known as the Web, is an information system "
                 + "enabling documents and other web resources to be accessed "
-                + "over the \"internet\"";
+                + "over the \"Internet\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        aliasToTerm.put("Web", term);
+        addAliasAndLowerCase(term, "Web", indexTerm);
 
         term = "While Loop";
         url = getWikipediaURL("While_loop");
-        description = "a control flow statement that allows code to be "
-                + "executed repeatedly until a condition evaluates as false";
+        description = "A control flow statement that allows code to be "
+                + "executed repeatedly or until a condition evaluates as false";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "XML";
         url = getWikipediaURL("XML");
-        description = "a markup language and \"file format\" for storing, "
-                + "transmitting, and reconstructing arbitrary data";
+        description = "A extensible markup language standard and data format "
+                + "for storing, transmitting, and reconstructing data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
     }
