@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -75,19 +76,19 @@ public abstract class Page {
      * @param filename What {@link #filename} is set to.
      * @param title What {@link #title} is set to.
      * @param label What {@link #label} is set to.
-     * @param id What {@link #pageID} is set to.
+     * @param pageID What {@link #pageID} is set to.
      * @param path What {@link #path} is set to.
      */
     public Page(Site site, String filename, String title, String label, 
-            PageID id, Path path) {
+            PageID pageID, Path path) {
         this.site = site;
         this.w = new Web_ContentWriter();
         this.filename = filename;
         this.title = title;
         this.label = label;
-        this.pageID = id;
+        this.pageID = pageID;
         this.path = path;
-        this.site.addPage(w, id, label, filename);
+        this.site.addPage(pageID, label, filename);
         this.sections = new TreeMap<>();
     }
 
@@ -178,6 +179,8 @@ public abstract class Page {
                 + inPageID + ". " + sectionName + "</h" + level + ">";
         stringBuilder.append(html);
         sections.put(sectionID, new Section(sectionID, html));
+        TreeSet<SectionID> sectionIDs = site.pageIDToSectionIDs.get(pageID);
+        sectionIDs.add(sectionID);
         return sectionID;
     }
     

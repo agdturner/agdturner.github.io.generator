@@ -34,21 +34,12 @@ public class ABM3 extends CoursePage {
     public ABM3(PythonIntroCodingCourse course) {
         super(course, "abm3", "Agent Based Model Practical 3", "ABM3");
     }
-
-    @Override
-    public void write() {
-        writeHeader();
-        writeH1();
-        String page = getMainContent();
-        w.add(getPageContents());
-        w.add(page);
-    }
     
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("1", "Recap and preparation", 2, sb);
-        w.add("<p>Your ABM code should look something like the following:</p>\n");
-        w.add("""
+        sb.append("<p>Your ABM code should look something like the following:</p>\n");
+        sb.append("""
               <pre><code class="language-python">import random
               import math
               import matplotlib.pyplot as plt
@@ -121,16 +112,16 @@ public class ABM3 extends CoursePage {
               plt.scatter(sy[0], sy[1], color='green')
               plt.show()</code></pre>
               """);
-        w.add("<p>When run, this code should produce the following text output:</p>\n");
-        w.add("""
+        sb.append("<p>When run, this code should produce the following text output:</p>\n");
+        sb.append("""
               <pre>[[49, 97], [53, 5], [33, 65], [62, 51], [38, 61], [45, 74], [27, 64], [17, 36], [17, 96], [12, 79]]
               [[48, 96], [52, 4], [32, 66], [63, 52], [37, 62], [44, 75], [28, 63], [18, 35], [18, 95], [13, 78]]
               ssd 25
               distance 5.0
               distance 5.0</pre>
               """);
-        w.add("<p>And the following plot:</p>\n");
-        w.add("""
+        sb.append("<p>And the following plot:</p>\n");
+        sb.append("""
               <img src="../../resources/abm2/Figure_1.png" alt="ABM2 Output Plot" />"
               <p>Some of the print statements in the code presented above have 
               been 'commented out' - turned into comments. This reduces the 
@@ -152,7 +143,7 @@ public class ABM3 extends CoursePage {
         sid = addSection("2", "Distance Calculations", 2, sb);
         
         sid = addSection("2.1", "Define a Function", 3, sb);
-        w.add("""
+        sb.append("""
               <p>Change the distance calculation code into a function called 
               get_distance: Use the def keyword and specify four input 
               parameters (x0, y0, x1, y1). Recall that the function declaration 
@@ -167,18 +158,18 @@ public class ABM3 extends CoursePage {
               simplify it by removing one of these ways. Consider simplifying
               your code in other ways too...</p>
               """);
-        w.add("<p>Change the comment that describes the function into a "
+        sb.append("<p>Change the comment that describes the function into a "
                 + index.getReference("Python docstring", "docstring", sid)
                 + " clarifying what the function inputs and outputs are.</p>\n");
         
         sid = addSection("2.2", "Calculate the maximum distance", 3, sb);
-        w.add("""
+        sb.append("""
               <p>Imagine a two dimensional matrix with the agents aligned in the 
               same sequence along each dimension and the distances between them 
               being the values in the matrix. The matrix is symmetrical about a 
               diagonal where all the distances are zero.</p>
               """);
-        w.add("<p>The maximum distance between any two agents is the maximum"
+        sb.append("<p>The maximum distance between any two agents is the maximum"
                 + " distance in this matrix, indeed it is the maximum distance"
                 + " in one half of the values not on the zero diagonal. Anyway,"
                 + " a pair of nested "
@@ -193,7 +184,7 @@ public class ABM3 extends CoursePage {
                 + "builtin max function</a>"
                 + " can be used to calculate the maximum distance encountered "
                 + " yet. Some code for doing this is as follows:</p>\n");
-        w.add("""
+        sb.append("""
               <pre><code class="language-python">max_distance = 0 # Initialise max_distance
               for a in agents:
                   for b in agents:
@@ -208,12 +199,12 @@ public class ABM3 extends CoursePage {
               calculation is for the same agent - the diagonals in the imaginary 
               matrix.</p>
               """);
-        w.add("<p>Recall that there are two main ways to iterate over the items"
+        sb.append("<p>Recall that there are two main ways to iterate over the items"
                 + " in a list. As above, and alternatively using list indexes."
                 + " The following code does the same calculation, and uses the "
                 + index.getReference("Python range", "range function")
                 + " to get a sequence of indexes:</p>\n");
-        w.add("""
+        sb.append("""
               <pre><code class="language-python">max_distance = 0
               for i in range(len(agents)):
                   a = agents[i]
@@ -224,7 +215,7 @@ public class ABM3 extends CoursePage {
                       max_distance = max(max_distance, distance)
                       print("max_distance", max_distance)</code></pre>
               """);
-        w.add("<p>Note that this code uses variables 'i' and 'j' for the"
+        sb.append("<p>Note that this code uses variables 'i' and 'j' for the"
                 + " indexes, and the "
                 + index.getReference("Python len", "len function")
                 + " to get the length of the agents list. (Here, 'len(agents)'"
@@ -232,7 +223,7 @@ public class ABM3 extends CoursePage {
                 + " would be more efficient). Change this if you want, but"
                 + " consider what would happen if the length of the agents list"
                 + " gets changed in the model.)</p>\n");
-        w.add("""
+        sb.append("""
               <p>Write a function called 'get_max_distance' that returns the 
               maximum distance between all the agents.</p>\n
               <p>Your 'get_distance' function should look something like the 
@@ -267,7 +258,7 @@ public class ABM3 extends CoursePage {
               distance between all the agents just after they have been 
               initialised.</p>
               """);
-        w.add("If a "
+        sb.append("If a "
                 + index.getReference("Python NameError", "NameError")
                 + " is raised indicating that 'get_max_distance' is not"
                 + " defined, then recall that the Python interpreter needs to"
@@ -276,10 +267,10 @@ public class ABM3 extends CoursePage {
                 + " before it is called.</p>\n");
         
         sid = addSection("3", "Timing", 2, sb);
-        w.add("<p>This section is about using the "
+        sb.append("<p>This section is about using the "
                 + index.getReference("Python time", "time module", sid)
                 + " to report timings and explore code efficiency.</p>\n");
-        w.add("""
+        sb.append("""
               <p>Save your source code file with a new name, for example 
               "timing.py".<p>
               <p>Add the following import statement along with the others
@@ -371,12 +362,12 @@ public class ABM3 extends CoursePage {
               i 2 j 1
               i 2 j 2</pre>
               """);
-        w.add("<p>Change what is in the inner loop of the 'get_max_distance'"
+        sb.append("<p>Change what is in the inner loop of the 'get_max_distance'"
                 + " function to be within an "
                 + index.getReference("Python if", "if statement")
                 + " that is only run when 'i' does not equal 'j' using the"
                 + " operator '!='. The 'if statement' will look like:</p>\n");
-        w.add("""
+        sb.append("""
               <pre><code class="language-python">if i != j:</code></pre>
               <p>Run the program again and you should see the following in the 
               console output:</p>
@@ -427,7 +418,7 @@ public class ABM3 extends CoursePage {
               """);
         
         sid = addSection("4", "Other distance statistics", 2, sb);
-        w.add("""
+        sb.append("""
               <p>In calculating the maximum distance, a lower bound of 0 was 
               used to initialise the max_distance variable. To calculate the 
               minimum distance, then either an upper bound is wanted, or the 
@@ -436,10 +427,10 @@ public class ABM3 extends CoursePage {
               between two agents in Euclidean space is theoretically 
               infinite.</p>
               """);
-        w.add("<p>From the "
+        sb.append("<p>From the "
               + index.getReference("Python math", "math module", sid)
               + " the following can be used for positive infinity:</p>\n");
-        w.add("""
+        sb.append("""
               <pre><code class="language-python">math.inf</code></pre>
               <p>Write a function that calculates the minumum distance between 
               all the agents and record timings of how long it takes to 
@@ -487,13 +478,13 @@ public class ABM3 extends CoursePage {
               """);
         
         sid = addSection("5", "Movement", 2, sb);
-        w.add("""
+        sb.append("""
               <p>Currently, in 'model.py' agents move once. The code will now be 
               changed to move them a number of times. After initialising
               'n_agents', initialise a variable called 'n_iterations' and set it 
               equal to 1000.</p>
               """);
-        w.add("<p>Create a new outer "
+        sb.append("<p>Create a new outer "
                 + index.getReference("Python for", "for loop")
                 + " to loop through moving agents n_iteration times. An outer"
                 + " loop is wanted rather than an inner loop as in each"
@@ -501,7 +492,7 @@ public class ABM3 extends CoursePage {
                 + " agent taking all their turns before any others. This outer"
                 + " loop is the 'main simulation loop'. Add a comment to"
                 + " identify it as such.</p>\n");
-        w.add("""
+        sb.append("""
               <p>The agents move randomly, and the more of them there are, the 
               more spread out they are likely to become.</p>
               <p>Edge effects are important to consider in geographical data 
@@ -538,7 +529,7 @@ public class ABM3 extends CoursePage {
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>\n");
+        sb.append("</div>\n");
         return sb.toString();
     }
 }

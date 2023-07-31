@@ -39,7 +39,7 @@ public class ABM4 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("1", "Recap and preparation", 2, sb);
-        w.add("""
+        sb.append("""
               <p>Currently, 'agents' is a list that contains lists of two items; 
               an x-coordinate, and a y-coordinate. More items could be added 
               to the lists to representing additional agent characteristics. 
@@ -56,7 +56,7 @@ public class ABM4 extends CoursePage {
               """);
 
         sid = addSection("2", "Define an Agent class", 2, sb);
-        w.add("""
+        sb.append("""
               <p>Create a new file in the abm4 directory named 
               'agentframework.py', and add a class definition for an Agent class
               in it as follows:</p>
@@ -88,11 +88,11 @@ public class ABM4 extends CoursePage {
                       self.x = random.randint(0, 99)
                       self.y = random.randint(0, 99)</code></pre>
               """);
-        w.add("<p>Note that the "
+        sb.append("<p>Note that the "
                 + index.getReference("Python random", "random module", sid)
                 + "is imported as this is used in the Agent constructor "
                 + "'__init__' method.</p>\n");
-        w.add("""
+        sb.append("""
               <p>In 'model.py', add a statement to print the agent that was 
               instantiated, and run the program again. Text along the lines of 
               the following should be in the output:</p>
@@ -111,12 +111,12 @@ public class ABM4 extends CoursePage {
                   return self.__class__.__name__ + "(x=" + str(self.x) \\
                       + ", y=" + str(self.y) + ")"</pre></code>
               """);
-        w.add("<p>Note that this returns a string which includes the name of"
+        sb.append("<p>Note that this returns a string which includes the name of"
                 + " the class and details of the 'x' and 'y' variable"
                 + " attributes which are transformed by the builtins module "
                 + index.getReference("Python str", "str function", sid)
                 + " to be strings.</p>\n");
-        w.add("""
+        sb.append("""
               <p>Run 'model.py' again and the print statement should result in 
               the following:</p>
               <pre>Agent(x=49, y=97)</pre>
@@ -157,24 +157,24 @@ public class ABM4 extends CoursePage {
               not use the '__str__' method to get string representations when 
               printing the list.</p>
               """);
-        w.add("<p>The "
+        sb.append("<p>The "
                 + index.getReference("Python TypeError", "TypeError", sid)
                 + " is a consequence of the 'agents' list no longer containing"
                 + " lists, but instantiated Agent objects, and some parts of"
                 + " the code are still written as though each agent is a list"
                 + " and not an instance of the Agent class.</p>\n");
-        w.add("""
+        sb.append("""
               <p>Add the following method to the Agent class to get the print 
               function to print string representations when printing the agents 
               list:</p>
               <pre><code class="language-python">def __repr__(self):
                   return str(self)</code></pre>
               """);
-        w.add("<p>Like the '__str__' method, the '__repr__' method overrides"
+        sb.append("<p>Like the '__str__' method, the '__repr__' method overrides"
                 + " from the 'type' metaclass, (for details see: "
                 + index.getReference("Python repr", "repr", sid)
                 + ".</p>\n");
-        w.add("""
+        sb.append("""
               <p>To avoid raising the TypeError exception, it is necessary to 
               refer to the class attributes and not list items (as agents are 
               no longer lists, but are instances of the class Agent). So, change 
@@ -229,7 +229,7 @@ public class ABM4 extends CoursePage {
               """);
 
         sid = addSection("3", "Separation of Concerns", 2, sb);
-        w.add("""
+        sb.append("""
               <p>Define a method called 'move' in the Agent class as follows:
               </p>
               <pre><code class="language-python">def move(self, x_min, y_min, x_max, y_max):</code></pre>
@@ -251,15 +251,15 @@ public class ABM4 extends CoursePage {
               """);
 
         sid = addSection("4", "Give each agent a unique name", 2, sb);
-        w.add("""
+        sb.append("""
               <p>It is possible that two agents will be located at the same 
               coordinates, and it would be helpful to distinguish them.</p>
               """);
-        w.add("<p>Add a "
+        sb.append("<p>Add a "
                 + index.getReference("Python docstring", "docstring")
                 + " and a parameter to the '__init__' constructor method of"
                 + " Agent so that the method is as follows:</p>\n");
-        w.add("""
+        sb.append("""
               <pre><code class="language-python">def __init__(self, i):
               \"""
               The constructor method.
@@ -296,7 +296,7 @@ public class ABM4 extends CoursePage {
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
-        w.add("</div>\n");
+        sb.append("</div>\n");
         return sb.toString();
     }
 }

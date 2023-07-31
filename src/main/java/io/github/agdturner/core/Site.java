@@ -132,21 +132,21 @@ public abstract class Site {
     /**
      * For adding a General Page to the Course.
      *
-     * @param w The Web_ContentWriter of the Home Page to add the link to.
-     * @param id The PageID.
+     * @param pageID The PageID.
      * @param pageName The page name (this can have spaces and other
      * characters).
      * @param linkName The link name for the Page - this is to be unique and not
      * contain characters not allowed in a URL. In some cases it is the same as
      * pageName, in other cases it might be an abbreviation.
      */
-    public void addPage(Web_ContentWriter w, PageID id, String pageName, String linkName) {
-        pageIDs.add(id);
-        pageIDToName.put(id, linkName);
-        pageIDToNameA.put(id, pageName);
-        nameAToPageID.put(pageName, id);
+    public void addPage(PageID pageID, String pageName, String linkName) {
+        pageIDs.add(pageID);
+        pageIDToName.put(pageID, linkName);
+        pageIDToNameA.put(pageID, pageName);
+        nameAToPageID.put(pageName, pageID);
         String link = Web_ContentWriter.getLink("../" + linkName + "/index.html", pageName);
-        pageIDToLink.put(id, link);
+        pageIDToLink.put(pageID, link);
+        pageIDToSectionIDs.put(pageID, new TreeSet<>());
     }
 
     /**

@@ -43,8 +43,6 @@ public abstract class CourseHome extends CoursePage {
      * Initialise the header, h1, and start of the introduction.
      */
     public void getStart(StringBuilder sb) {
-        writeHeader();
-        writeH1();
         SectionID sid = addSection("1", "Introduction", 2, sb);
         sb.append("""
               <p>Welcome to the course website!</p>

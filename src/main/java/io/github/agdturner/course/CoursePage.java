@@ -63,7 +63,7 @@ public abstract class CoursePage extends Page {
     public CoursePage(Course course, String filename, String title, String label) {
         super(course, filename, title, label, new PageID(course.pages.size()),
                 Paths.get(course.courseDir.toString(), filename));
-        course.addPage(w, pageID, label, filename);
+        course.addPage(pageID, label, filename);
         this.sections = new TreeMap<>();
         index = course.getIndex();
         references = course.getReferences();
