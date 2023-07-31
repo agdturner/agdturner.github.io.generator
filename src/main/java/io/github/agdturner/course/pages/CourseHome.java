@@ -86,6 +86,8 @@ public abstract class CourseHome extends CoursePage {
               <p>There are index and references pages at the end. The index page 
               is a glossary of terms that links back to particular sections of 
               other pages that are relevant.</p>
+              <p>Each page has a contents section after the main heading with 
+              links to numbered sub-sections below.</p>
               <p>Essentially, taking the course involves working your way 
               through the web pages trying out code and undertaking practical 
               exercises as directed.</p>

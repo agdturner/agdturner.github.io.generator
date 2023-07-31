@@ -137,22 +137,22 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     public void getExpectations1(StringBuilder sb, SectionID sid) {
         sb.append("<li>Visualisation using ")
                 .append(references.getReference("Matplotlib"))
-                .append(";</li>\n");
-        sb.append("<li>Processing raster data stored as lists of lists;</li>\n");
+                .append("</li>\n");
+        sb.append("<li>Processing raster data stored as lists of lists</li>\n");
         sb.append("<li>Developing a ")
                 .append(index.getReference("GUI", "Graphical User Interface"))
-                .append(" (GUI);</li>\n");
+                .append(" (GUI)</li>\n");
         sb.append("<li>Developing and visualising a basic spatial ")
                 .append(index.getReference("ABM", "Agent Based Model"))
-                .append(" (ABM);</li>\n");
+                .append(" (ABM)</li>\n");
     }
     
     public void getExpectations2(StringBuilder sb, SectionID sid) {       
         sb.append("<!--<li>Some python parts of the ")
                 .append(references.getReference("Anaconda"))
-                .append(" data science platform;</li>\n");
-        sb.append("<li>Processing geographical features (geometry and related"
-                + " attribute) data;</li>\n-->");
+                .append(" data science platform</li>\n");
+        sb.append("<li>Processing geographical features (geometry and related)")
+                .append(" attribute) data;</li>\n-->");
         sb.append("""
               </ul>
               <p>Computer programming mostly involves computational thinking, 
@@ -167,13 +167,15 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         sb.append("<p>If you are new to computer programming, there is quite")
                 .append(" a lot of terminology to get used to, some is generic")
                 .append(" to programming, some is specific to ")
-                .append(index.getReference("Python")).append(".</p>\n");
+                .append(index.getReference("Python"))
+                .append(".</p>\n");
         sb.append("""
               <p>There are some key concepts which may take a few attempts to 
               get used to and comprehensively understand.</p>
               """);
         sb.append("<p>You get to review some exemplar code that automates")
-                .append(" some ").append(references.getReference("QGIS"))
+                .append(" some ")
+                .append(references.getReference("QGIS"))
                 .append(" Desktop processing using ")
                 .append(index.getReference("PyQGIS")).append("</p>\n");
         getLearningJourney(sb);
@@ -192,21 +194,22 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 .append(" of practicals that progress the development of a")
                 .append(" basic spatial ")
                 .append(index.getReference("ABM", "Agent Based Model"))
-                .append(". The ABM can be regarded as a simple model of")
-                .append(" autonomous spatial entities that move in an")
+                .append(". The ABM is a simple digital simulation model of")
+                .append(" semi-autonomous spatial entities that move in an")
                 .append(" environment, interacting with the environment and")
                 .append(" each other.</p>\n");
         sb.append("<p>Developing the ABM by following instructions puts into")
-                .append(" practise some of the theory detailed in other")
-                .append(" webpages. By the end of these practicals, you")
-                .append(" should have ABM model code that has a basic ")
+                .append(" practise some of the theory encountered. By the end")
+                .append(" of the practicals, you should have ABM model code")
+                .append(" that has a basic ")
                 .append(index.getReference("GUI"))
                 .append(", reads in data from local files and from the Web,")
                 .append(" and produces an animation, data files and user")
-                .append(" friendly messages.</p><p>After completing the last")
-                .append(" ABM practical, you should have sufficient knowledge")
-                .append(" and skill to develop the model in interesting ways")
-                .append(" without being given detailed instructions.</p>\n");
+                .append(" friendly messages.</p>\n");
+        sb.append("<p>The aim is that after completing the last ABM practical,")
+                .append(" you will have sufficient knowledge and skill to")
+                .append(" develop the model in interesting ways without being ")
+                .append(" given detailed instructions.</p>\n");
         }
     
     public void getLearningJourney2(StringBuilder sb, SectionID sid) {

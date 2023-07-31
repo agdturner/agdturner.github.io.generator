@@ -174,7 +174,8 @@ public abstract class Page {
             StringBuilder sb) {
         SectionID sectionID = new SectionID(site.sectionIDs.size(), this, inPageID);
         site.sectionIDs.add(sectionID);
-        site.addSection(sectionID, pageID, title + ": " + inPageID + ". " + sectionName);
+        //site.addSection(sectionID, pageID, title + ": " + inPageID + ". " + sectionName);
+        site.addSection(sectionID, pageID, label + ": " + inPageID + ". " + sectionName);
         String html = "<h" + level + " id=\"" + inPageID + "\">" 
                 + inPageID + ". " + sectionName + "</h" + level + ">";
         sb.append(html);

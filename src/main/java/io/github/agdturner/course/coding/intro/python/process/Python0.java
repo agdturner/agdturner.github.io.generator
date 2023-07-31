@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.agdturner.course.coding.intro.python.pages.process;
+package io.github.agdturner.course.coding.intro.python.process;
 
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
