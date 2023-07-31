@@ -699,7 +699,7 @@ public class Index extends CoursePage {
         url = getWikipediaURL("Network_socket");
         description = "A \"software\" structure within a network node of a "
                 + "computer network that serves as an endpoint for sending and "
-                + "receiving data across the network";
+                + "receiving data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -707,10 +707,8 @@ public class Index extends CoursePage {
         term = "Object Oriented Programming";
         url = getWikipediaURL("Object-oriented_programming");
         description = "a programming paradigm based on the concept of "
-                + "\"objects\", which can contain data and code. The data is "
-                + "in the form of fields (often known as attributes or "
-                + "properties), and the code is in the form of procedures "
-                + "(often known as methods)";
+                + "\"objects\", which have data (state), and methods "
+                + "(functionality)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -871,8 +869,7 @@ public class Index extends CoursePage {
 
         term = "Touchscreen";
         url = getWikipediaURL("Touchscreen");
-        description = "Both an input ('touch panel') and output ('display') "
-                + "device)";
+        description = "Both an input touch panel and output display device";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
