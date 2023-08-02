@@ -34,30 +34,27 @@ public class JavaIntroCodingCourseHome extends IntroCodingCourseHome {
     public JavaIntroCodingCourseHome(Course course) {
         super(course);
     }
-
-    @Override
-    public String getMainContent() {
-        StringBuilder sb = new StringBuilder();
-        getStart(sb);
-        getMaintainer(sb);
-        getNavigationIntro(sb);
-        getSyllabus(sb);
-        return sb.toString();
-    }
     
+    @Override
+    public void getIntroduction(StringBuilder sb) {
+        SectionID sid = getIntroduction0(sb);
+        getMaintainer(sb, sid);
+        getNavigation(sb, sid);
+        getIntroductionN(sb, sid);
+    }
+
     @Override
     public void getSyllabus(StringBuilder sb) {
         SectionID sid = getSyllabus0(sb);
-        getSyllabusProgramming(sb, sid);
-        getSyllabusOrganisational(sb, sid);
+        getSyllabusProgrammingStart(sb, sid);
         getSyllabusObjectOrientation(sb, sid);
-        getSyllabusGUI(sb, sid);
+        getSyllabusProgrammingEnd(sb, sid);
+        getSyllabusProgrammingJava(sb, sid);
+        getSyllabusOrganisational(sb, sid);
         getSyllabusN(sb, sid);
     }
     
-    @Override
-    public SectionID getSyllabus0(StringBuilder sb) {
-        SectionID sid = super.getSyllabus0(sb);
+    public void getSyllabusProgrammingJava(StringBuilder sb, SectionID sid) {
         sb.append("<p>").append(index.getReference("Java"))
                 .append(" language development and limitations</p>");
         sb.append("<p>Structuring and organising code into ")
@@ -86,18 +83,29 @@ public class JavaIntroCodingCourseHome extends IntroCodingCourseHome {
                 .append(index.getReference("Javadoc"))
                 .append(" documentation</p>");
         sb.append("<p>Testing code</p>");
-        return sid;
     }
 
     @Override
     public void getExpectations(StringBuilder sb) {
         SectionID sid = getExpectations0(sb);
+        getExpectations1(sb, sid);
         getExpectationsN(sb, sid);
+    }
+    
+    @Override
+    public void getExpectations1(StringBuilder sb, SectionID sid) {
+        sb.append("</ul>\n");
     }
 
     @Override
     public void getLearningJourney(StringBuilder sb) {
-         SectionID sid = getLearningJourney0(sb);
+        SectionID sid = getLearningJourney0(sb);
         getLearningJourneyN(sb, sid);
+    }
+
+    @Override
+    public void getPlatform(StringBuilder sb) {
+        SectionID sid = getPlatform0(sb);
+        getPlatformN(sb, sid);
     }
 }

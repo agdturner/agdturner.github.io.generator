@@ -39,59 +39,98 @@ public abstract class CourseHome extends CoursePage {
                 course.getCourseCode() + ": " + course.courseName,
                 "Home");
     }
-
-    /**
-     * Initialise the header, h1, and start of the introduction.
-     *
-     * @param sb The StringBuilder to append to.
-     */
-    public void getStart(StringBuilder sb) {
-        SectionID sid = addSection("1", "Introduction", 2, sb);
-        sb.append("""
-              <p>Welcome to the course website!</p>
-              """);
+    
+    @Override
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder();
+        getIntroduction(sb);
+        getSyllabus(sb);
+        getExpectations(sb);
+        getLearningJourney(sb);
+        getPlatform(sb);
+        return sb.toString();
     }
 
     /**
-     * Default webmaster details - who maintains the site and how to contact
-     * them.
-     *
+     * Introduction.
+     * 
      * @param sb The StringBuilder to append to.
      */
-    public void getMaintainer(StringBuilder sb) {
+    public abstract void getIntroduction(StringBuilder sb);
+
+    /**
+     * Introduction 0.
+     *
+     * @param sb The StringBuilder to append to.
+     * @return SectionID for indexing terms.
+     */
+    public SectionID getIntroduction0(StringBuilder sb) {
+        sb.append("<div>\n");
+        SectionID sid = addSection("1", "Introduction", 2, sb);
+        sb.append("<p>Welcome to the course website!</p>\n");
+        return sid;
+    }
+
+    /**
+     * Maintainer.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
+     */
+    public void getMaintainer(StringBuilder sb, SectionID sid) {
         sb.append("<p>The website is maintained by ")
-                .append(Web_ContentWriter.getLink(Environment.HTTPS_ARC_LEEDS_AC_UK,
+                .append(Web_ContentWriter.getLink(
+                        Environment.HTTPS_ARC_LEEDS_AC_UK,
                         "Research Computing"))
                 .append(" and comprises a set of webpages and file based")
-                .append(" resources.</p>");
-        sb.append("<p>Please ")
+                .append(" resources.</p>\n");
+        sb.append("<p>If you are based at ")
+                .append(Web_ContentWriter.getLink(Environment.ARC_CONTACT,
+                        "contact us"))
+                
                 .append(Web_ContentWriter.getLink(Environment.ARC_CONTACT,
                         "contact us"))
                 .append(" if you want help, clarification or there is a")
-                .append(" problem with these resources.</p>");
+                .append(" problem with these resources.</p>\n");
     }
 
     /**
-     * Explanation about navigation of the site.
+     * Navigation.
      *
      * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
      */
-    public void getNavigationIntro(StringBuilder sb) {
-        sb.append("""
-              <p>At the top of each web page is a button that can be actioned to 
-              change between a lighter and darker page style. Below that is a 
-              navigation section that links to each web page. The pages are 
-              sequential and at the end of each page, there is a link to the 
-              next page.</p>
-              <p>There are index and references pages at the end. The index page 
-              is a glossary of terms that links back to particular sections of 
-              other pages that are relevant.</p>
-              <p>Each page has a contents section after the main heading with 
-              links to numbered sub-sections below.</p>
-              <p>Essentially, taking the course involves working your way 
-              through the web pages trying out code and undertaking practical 
-              exercises as directed.</p>
-              """);
+    public void getNavigation(StringBuilder sb, SectionID sid) {
+        sb.append("<p>At the top of each webpage is a button that can be")
+              .append(" actioned to change between a lighter and darker page")
+              .append(" style. Below that is a navigation section that links")
+              .append(" to each webpage. The webpages are sequential and at")
+              .append(" the end of each webpage, there is a link to the next")
+              .append(" webpage.</p>\n");
+        sb.append("<p>The penultimate webpage is the ")
+              .append(getLink(index, "index", "link", ""))
+              .append(" - a glossary of terms that links back to webpage")
+              .append(" sections where terms are used.</p>\n");
+        sb.append("<p>The last webpage is the ")
+              .append(getLink(references, "references", "link", ""))
+              .append(" - a useful list of references and links to other")
+              .append(" resources.</p>\n");
+        sb.append("<p>Webpages with multiple sections have a Contents section")
+              .append(" that links to these. The Contents is found after the")
+              .append(" level 1 heading at the top of the webpage.</p>\n");
+        sb.append("<p>Essentially, taking the course involves working your way")
+              .append(" through the webpages and undertaking practical")
+              .append(" exercises as directed.</p>\n");
+    }
+    
+    /**
+     * Introduction N.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
+     */
+    public void getIntroductionN(StringBuilder sb, SectionID sid) {
+        sb.append("</div>\n");
     }
 
     /**
@@ -105,6 +144,7 @@ public abstract class CourseHome extends CoursePage {
      * For detailing the first part of the syllabus.
      *
      * @param sb The StringBuilder to append to.
+     * @return SectionID for indexing terms.
      */
     public SectionID getSyllabus0(StringBuilder sb) {
         sb.append("<div>\n");
@@ -116,6 +156,7 @@ public abstract class CourseHome extends CoursePage {
      * For detailing the last part of the syllabus.
      *
      * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
      */
     public void getSyllabusN(StringBuilder sb, SectionID sid) {
         sb.append("</div>\n");
@@ -132,27 +173,34 @@ public abstract class CourseHome extends CoursePage {
      * For detailing the first part of the expectations.
      *
      * @param sb The StringBuilder to append to.
+     * @return SectionID for indexing terms.
      */
     public SectionID getExpectations0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("3", "Expectations", 2, sb);
-        sb.append("""
-              <p>You will learn about:</p>
-              <ul>
-              """);
+        sb.append("<p>You will learn about:</p>\n");
+        sb.append("<ul>\n");
         return sid;
     }
+    
+    /**
+     * For detailing the expectations.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
+     */
+    public abstract void getExpectations1(StringBuilder sb, SectionID sid);
 
     /**
      * For detailing the last part of the expectations.
      *
      * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
      */
     public void getExpectationsN(StringBuilder sb, SectionID sid) {
-        sb.append("""
-              <p>There are some key concepts which may take a few attempts to 
-              get used to and comprehensively understand.</p>
-              """);
+        sb.append("<p>There are some key concepts which may take a few")
+                .append(" attempts to get used to and comprehensively")
+                .append(" understand.</p>\n");
         sb.append("</div>\n");
     }
 
@@ -164,34 +212,29 @@ public abstract class CourseHome extends CoursePage {
     public abstract void getLearningJourney(StringBuilder sb);
 
     /**
-     * For detailing the first part of the learning journey.
+     * For detailing the first part of the learning journey section.
      *
      * @param sb The StringBuilder to append to.
+     * @return SectionID for indexing terms.
      */
     public SectionID getLearningJourney0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("4", "The Learning Journey", 2, sb);
-        sb.append("""
-              <p>Develop your understanding through practise and by reading.</p>
-              <p>Be experimental - test your understanding by testing code does 
-              what you expect it to. If code does not do what you expect, try to
-              understand why - regard failure and errors as a learning 
-              opportunity!</p>
-              <p>One of the keys to coding is learning to be able to interpret 
-              errors messages and understand what caused them. If a program you 
-              are developing unexpectedly raises an exception and reports an 
-              error message, then try to understand why and stop this happening 
-              before moving on. Ignoring error messages is nearly always the 
-              wrong thing to do!</p>
-              <p>Be cautious and do not run code that you do not trust.</p>
-              """);
+        sb.append("<p>Develop your understanding through practise and by")
+                .append(" reading.</p>\n");
+        sb.append("<p>Be experimental - test your understanding by testing")
+                .append(" things do what you expect. If things do not do what")
+                .append(" you expect, try to understand why. An exception")
+                .append(" error fault or failure is also a learning")
+                .append(" opportunity!</p>\n");
         return sid;
     }
 
     /**
-     * For detailing the last part of the learning journey.
+     * For detailing the last part of the learning journey section.
      *
      * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
      */
     public void getLearningJourneyN(StringBuilder sb, SectionID sid) {
         String courseName = getCourse().courseType;
@@ -204,11 +247,19 @@ public abstract class CourseHome extends CoursePage {
     }
 
     /**
-     * For detailing the platform.
+     * For detailing the platform section.
      *
      * @param sb The StringBuilder to append to.
      */
-    public void getPlatform(StringBuilder sb) {
+    public abstract void getPlatform(StringBuilder sb);
+    
+    /**
+     * For detailing the first part of the platform section.
+     *
+     * @param sb The StringBuilder to append to.
+     * @return SectionID for indexing terms.
+     */
+    public SectionID getPlatform0(StringBuilder sb) {
         SectionID sid = addSection("5", "Platform/Software", 2, sb);
         sb.append("<p>All the software used in this course is ")
                 .append(index.getReference("Free and Open Source Software"))
@@ -219,11 +270,23 @@ public abstract class CourseHome extends CoursePage {
                 .append(", and ")
                 .append(index.getReference("MacOS"))
                 .append(".<p>\n");
+        return sid;
     }
-
+    
+    /**
+     * For detailing the last part of the platform section.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param sid For indexing terms.
+     */
+    public void getPlatformN(StringBuilder sb, SectionID sid) {
+        sb.append("</div>\n");
+    }
+    
     /**
      * @return {@code (Course) site).
      */
+    @Override
     public Course getCourse() {
         return (Course) site;
     }

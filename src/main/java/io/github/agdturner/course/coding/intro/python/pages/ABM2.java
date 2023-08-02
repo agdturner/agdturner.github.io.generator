@@ -39,10 +39,10 @@ public class ABM2 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("1", "Recap and preparation", 2, sb);
+        sb.append("<p>Your 'model.py' ABM1 code should look something like")
+            .append(" the following:</p>\n");
         sb.append("""
-              <p>Your 'model.py' ABM1 code should look something like the 
-              following:</p>\n
-              <pre><code class="language-python">import random
+                  <pre><code class="language-python">import random
               import math
               
               # Set the pseudo-random seed for reproducibility

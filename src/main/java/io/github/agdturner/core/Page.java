@@ -137,15 +137,16 @@ public abstract class Page {
     /**
      * Gets a link to a page in the series.
      *
-     * @param p The page.
-     * @param id The id for the link element.
+     * @param page The page.
+     * @param linkID The ID for the link element.
      * @param linkClass The class for the link element.
-     * @param prepend
+     * @param prepend Text prepended to the page label.
      * @return a link to a page in the series.
      */
-    protected String getLink(Page p, String id, String linkClass, String prepend) {
-        return Web_ContentWriter.getLink(site.getLinkPathString(p), id,
-                linkClass, prepend + p.label);
+    protected String getLink(Page page, String linkID, String linkClass, 
+            String prepend) {
+        return Web_ContentWriter.getLink(site.getLinkPathString(page), linkID,
+                linkClass, prepend + page.label);
     }
     
     /**
@@ -177,7 +178,7 @@ public abstract class Page {
         //site.addSection(sectionID, pageID, title + ": " + inPageID + ". " + sectionName);
         site.addSection(sectionID, pageID, label + ": " + inPageID + ". " + sectionName);
         String html = "<h" + level + " id=\"" + inPageID + "\">" 
-                + inPageID + ". " + sectionName + "</h" + level + ">";
+                + inPageID + ". " + sectionName + "</h" + level + ">\n";
         sb.append(html);
         String link = "<a href=\"#" + inPageID + "\">" + inPageID + ". " + sectionName + "</a>"; 
         sections.put(sectionID, new Section(level, sectionID, html, link));

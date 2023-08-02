@@ -36,45 +36,43 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     @Override
-    public String getMainContent() {
-        StringBuilder sb = new StringBuilder();
-        getStart(sb);
-        getMaintainer(sb);
-        getNavigationIntro(sb);
-        getSyllabus(sb);
-        getExpectations(sb);
-        return sb.toString();
+    public void getIntroduction(StringBuilder sb) {
+        SectionID sid = getIntroduction0(sb);
+        getMaintainer(sb, sid);
+        getNavigation(sb, sid);
+        getIntroductionN(sb, sid);
     }
-    
+
     @Override
     public void getSyllabus(StringBuilder sb) {
         SectionID sid = getSyllabus0(sb);
-        getSyllabusProgramming(sb, sid);
-        getSyllabusOrganisational(sb, sid);
+        getSyllabusProgrammingStart(sb, sid);
         getSyllabusObjectOrientation(sb, sid);
-        getSyllabusGUI(sb, sid);
+        getSyllabusProgrammingEnd(sb, sid);
+        getSyllabusOrganisational(sb, sid);
+        getSyllabusProgrammingPython(sb, sid);
         getSyllabusN(sb, sid);
     }
-    
-    public void getPythonProgrammingConcepts(StringBuilder sb) {
+
+    public void getSyllabusProgrammingPython(StringBuilder sb, SectionID sid) {
         sb.append("<p>").append(index.getReference("Python"))
-                .append(" Language development and limitations</p>");
+                .append(" language development and limitations.</p>\n");
         sb.append("<p>The ")
                 .append(index.getReference("Python"))
                 .append(" ")
                 .append(index.getReference("REPL", "Read Evaluate Print Loop"))
-                .append(" (REPL) environment</p>");
+                .append(" (REPL) environment.</p>\n");
         sb.append("<p>Running ")
                 .append(index.getReference("Python"))
-                .append(" programs via the command line</p>");
+                .append(" programs via the command line.</p>\n");
         sb.append("<p>Using ")
                 .append(references.getReference("Jupyter Notebook"))
-                .append("</p>");
+                .append(".</p>\n");
         sb.append("<p>Using ")
                 .append(references.getReference("IDLE"))
                 .append(" and ")
                 .append(references.getReference("Spyder"))
-                .append("</p>");
+                .append(".</p>\n");
         sb.append("<p>")
                 .append(index.getReference("Python"))
                 .append(" containers including; ")
@@ -83,49 +81,52 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 .append(index.getReference("Python tuple", "tuples"))
                 .append(" and ")
                 .append(index.getReference("Python dict", "dictionaries"))
-                .append("</p>");
+                .append(".</p>\n");
+
+        sb.append("<p>")
+                .append(index.getReference("Python docstring"))
+                .append(" syntax.</p>\n");
+//        sb.append("<p>Producing documentation using ")
+//                .append(references.getReference(
+//                        PythonIndex.PYTHON_DOCS_URL + "/library/pydoc.html",
+//                        "Pydoc"))
+//                .append(" and ")
+//                .append(references.getReference(
+//                        "https://www.sphinx-dosite.org/", "Sphinx"))
+//                .append(".</p>\n");
         sb.append("<p> ")
                 .append(index.getReference("Python"))
-                .append(" program input and output</p>");
+                .append(" program input and output.</p>\n");
         sb.append("<p>Structuring and organising ")
                 .append(index.getReference("Python"))
                 .append(" code into ")
                 .append(references.getReference(
-                "Python 3 Documentation: Tutorial: Classes", "Classes"))
+                        "Python 3 Documentation: Tutorial: Classes", "Classes"))
                 .append(", ")
                 .append(references.getReference(
                         "Python 3 Documentation: Tutorial: Modules", "Modules"))
                 .append(", and ")
                 .append(references.getReference(
-                                "Python 3 Documentation: Tutorial: Packages",
-                                "Packages"))
-                .append("</p>");
+                        "Python 3 Documentation: Tutorial: Packages",
+                        "Packages"))
+                .append(".</p>\n");
         sb.append("<p>")
                 .append(index.getReference("Python"))
                 .append(" environment management using ")
                 .append(references.getReference("Conda"))
                 .append(" and ")
                 .append(index.getReference("Python venv", "venv"))
-                .append("</p>");
+                .append(".</p>\n");
         sb.append("<p>Using the ")
                 .append(references.getReference(
                         "Python 3 Documentation: Library",
-                "Python 3 Library"))
-                .append("</p>");
+                        "Python 3 Library"))
+                .append(".</p>\n");
         sb.append("<p>Using third party packages available via the ")
                 .append(index.getReference("Python Package Index"))
-                .append("</p>");
-        sb.append("<p>")
-                .append(index.getReference("Python docstring"))
-                .append(" syntax</p>");
-//        sb.append("<p>Producing documentation using "
-//                + references.getReference("https://docs.python.org/3/library/pydoc.html",
-//                        "Pydoc", null)
-//                + " and "
-//                + references.getReference("https://www.sphinx-dosite.org/", "Sphinx", null)
-//                + "</p>");
+                .append(".</p>\n");
     }
-    
+
     @Override
     public void getExpectations(StringBuilder sb) {
         SectionID sid = getExpectations0(sb);
@@ -133,7 +134,8 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         getExpectations2(sb, sid);
         getExpectationsN(sb, sid);
     }
-    
+
+    @Override
     public void getExpectations1(StringBuilder sb, SectionID sid) {
         sb.append("<li>Visualisation using ")
                 .append(references.getReference("Matplotlib"))
@@ -145,42 +147,38 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         sb.append("<li>Developing and visualising a basic spatial ")
                 .append(index.getReference("ABM", "Agent Based Model"))
                 .append(" (ABM)</li>\n");
-    }
-    
-    public void getExpectations2(StringBuilder sb, SectionID sid) {       
         sb.append("<!--<li>Some python parts of the ")
                 .append(references.getReference("Anaconda"))
                 .append(" data science platform</li>\n");
         sb.append("<li>Processing geographical features (geometry and related)")
                 .append(" attribute) data;</li>\n-->");
-        sb.append("""
-              </ul>
-              <p>Computer programming mostly involves computational thinking, 
-              planning, problem solving and testing. It is often helpful to 
-              break a task into smaller subtasks, and gradually develop an
-              implementation. Often good solutions to coding tasks involve doing
-              things repeatedly for a given sequence of things.</p>
-              <!--<p>Often it is 
-              helpful to use a framework for testing from the outset and to test 
-              often as the code develops.</p>-->
-              """);
+        sb.append("</ul>\n");
+    }
+
+    public void getExpectations2(StringBuilder sb, SectionID sid) {
+        sb.append("<p>Computer programming mostly involves computational")
+                .append(" thinking, planning, problem solving and testing. It")
+                .append(" is often helpful to break a task into smaller")
+                .append(" subtasks, and gradually develop an implementation.")
+                .append(" Often good solutions to coding tasks involve doing")
+                .append(" things repeatedly for a given sequence of things.")
+                .append("</p>\n");
+        sb.append("<!--<p>Often it is helpful to use a framework for testing")
+                .append(" from the outset and to test often as the code")
+                .append(" develops.</p>-->\n");
         sb.append("<p>If you are new to computer programming, there is quite")
                 .append(" a lot of terminology to get used to, some is generic")
                 .append(" to programming, some is specific to ")
                 .append(index.getReference("Python"))
                 .append(".</p>\n");
-        sb.append("""
-              <p>There are some key concepts which may take a few attempts to 
-              get used to and comprehensively understand.</p>
-              """);
-        sb.append("<p>You get to review some exemplar code that automates")
-                .append(" some ")
-                .append(references.getReference("QGIS"))
-                .append(" Desktop processing using ")
-                .append(index.getReference("PyQGIS")).append("</p>\n");
-        getLearningJourney(sb);
     }
     
+    public void getExpectations3(StringBuilder sb, SectionID sid) {
+        sb.append("<p>There are some key concepts which may take a few")
+                .append(" attempts to get used to and comprehensively")
+                .append(" understand.</p>\n");
+    }
+
     @Override
     public void getLearningJourney(StringBuilder sb) {
         SectionID sid = getLearningJourney0(sb);
@@ -188,7 +186,7 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         getLearningJourney2(sb, sid);
         getLearningJourneyN(sb, sid);
     }
-    
+
     public void getLearningJourney1(StringBuilder sb, SectionID sid) {
         sb.append("<p>The webpages with names starting 'ABM' are a sequence")
                 .append(" of practicals that progress the development of a")
@@ -210,8 +208,8 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 .append(" you will have sufficient knowledge and skill to")
                 .append(" develop the model in interesting ways without being ")
                 .append(" given detailed instructions.</p>\n");
-        }
-    
+    }
+
     public void getLearningJourney2(StringBuilder sb, SectionID sid) {
         super.getLearningJourneyN(sb, sid);
         sb.append("<p>Do not expect to master ")
@@ -219,5 +217,11 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 .append(" by the end of this course. Usually this takes many")
                 .append(" thousands of hours of practice over several years.")
                 .append("</p>\n");
+    }
+
+    @Override
+    public void getPlatform(StringBuilder sb) {
+        SectionID sid = getPlatform0(sb);
+        getPlatformN(sb, sid);
     }
 }

@@ -32,7 +32,14 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     }
     
     @Override
-    public void getMaintainer(StringBuilder sb) {
+    public String getMainContent() {
+        StringBuilder sb = new StringBuilder(super.getMainContent());
+        getAssignment(sb);
+        return sb.toString();
+    }
+    
+    @Override
+    public void getMaintainer(StringBuilder sb, SectionID sid) {
         sb.append("<p>The website is maintained by ")
                 .append(Web_ContentWriter.getLink(
                 "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
@@ -51,15 +58,24 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     @Override
     public void getLearningJourney1 (StringBuilder sb, SectionID sid) {
         super.getLearningJourney1(sb, sid);
-        sb.append("""
-              <p>To complete the course, you are to undertake an independent 
-              project to apply what you have learned to develop some different 
-              software - there will be a specification of what the code/software 
-              is to do, some guidance for approaching the software development 
-              task, but no detailed instructions to follow.</p>
-              """);
-    }
+        sb.append("<p>To complete the course, you are to undertake an")
+                .append(" independent project to apply what you have learned")
+                .append(" to develop some different software - there will be")
+                .append(" a specification of what the code/software is to do,")
+                .append(" some guidance for approaching the software")
+                .append(" development task, but no detailed instructions to")
+                .append(" follow.</p>\n");    }
 
+    public void getExpectations2(StringBuilder sb, SectionID sid) {
+        super.getExpectations2(sb, sid);
+        sb.append("<p>You get to review some exemplar code that automates")
+                .append(" some ")
+                .append(references.getReference("QGIS"))
+                .append(" Desktop processing using ")
+                .append(index.getReference("PyQGIS"))
+                .append(".</p>\n");
+    }
+    
     @Override
     public void getPlatform(StringBuilder sb) {
         super.getPlatform(sb);
@@ -75,5 +91,10 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
                 .append(" Desktop - Geographical Information System software,")
                 .append(" and various third party Python packages.</p>\n");
         sb.append("</div>");
+    }
+    
+    public void getAssignment(StringBuilder sb) {
+        sb.append("");
+        
     }
 }

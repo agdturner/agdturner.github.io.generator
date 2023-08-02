@@ -38,64 +38,65 @@ public class JavaIndex extends Index {
      */
     public JavaIndex(Course course, String filename, String title, String label) {
         super(course, filename, title, label);
-        String name;
+        String term;
         String url;
         String description;
+        IndexTerm indexTerm;
 
-        name = "Java bytecode";
+        term = "Java bytecode";
         url = getWikipediaURL("Java_bytecode");
         description = "the \"bytecode\" of the \"Java Virtual Machine\".";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-
-        name = "Java Class";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        
+        term = "Java Class";
         url = DOCS_ORACLE_COM_EN_JAVA_JAVASE + "docs/api/java.base/java/lang/Class.html";
         description = "Instances of the class <code>Class</code> represent "
                 + "classes and interfaces in a running Java \"application\".";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("Java classes", name);
-
-        name = "Java class file";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAlias(term, "Java classes", indexTerm);
+        
+        term = "Java class file";
         url = getWikipediaURL("Java_class_file");
         description = "A file containing \"Java bytecode\" that can be "
         + "executed on the \"Java Virtual Machine\".";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
-        name = "Javadoc";
+        term = "Javadoc";
         url = getWikipediaURL("Javadoc");
         description = "A documentation generator for \"Java\".";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
-        name = "Java Platform, Standard Edition";
+        term = "Java Platform, Standard Edition";
         url = getWikipediaURL("Java_Platform,_Standard_Edition");
         description = "A computing platform for development and deployment of "
                 + "portable code for desktop and server environments.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
-        name = "Java Package";
+        term = "Java Package";
         url = getWikipediaURL("Java_package");
         description = "A Java package organizes \"Java classes\" into "
                 + "namespaces, providing a unique namespace for each type it "
                 + "contains. Classes in the same package can access each "
                 + "other's package-private and protected members.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
 
-        name = "Java Platform Module System";
+        term = "Java Platform Module System";
         url = getWikipediaURL("Java_Platform_Module_System");
         description = "The Java Platform Module System[1] specifies a "
                 + "distribution format for collections of Java code and "
                 + "associated resources. It also specifies a repository for "
                 + "storing these collections, or modules, and identifies how "
                 + "they can be discovered, loaded and checked for integrity.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
 
-        name = "Java (software platform)";
+        term = "Java (software platform)";
         url = getWikipediaURL("Java (software platform)");
         description = "A set of computer software and specifications that "
                 + "provides a system for developing application software and "
                 + "deploying it in a cross-platform computing environment";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
-        name = "Java Virtual Machine";
+        term = "Java Virtual Machine";
         url = getWikipediaURL("Java_Virtual_Machine");
         description = "A virtual machine that enables a computer to run "
                 + "\"Java\" programs as well as programs written in other "
@@ -105,23 +106,23 @@ public class JavaIndex extends Index {
                 + "JVM implementation. It reduces the need of program authors "
                 + "to worry about idiosyncrasies of underlying hardware "
                 + "platforms.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
-        aliasToTerm.put("JVM", name);
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAlias(term, "JVM", indexTerm);
         
-        name = "JShell";
+        term = "JShell";
         url = DOCS_ORACLE_COM_EN_JAVA_JAVASE + "jshell/introduction-jshell.html";
         description = "An interactive command line tool for learning \"Java\" "
                 + "and prototyping. The Java Shell tool (JShell) is a \"REPL\" "
                 + "tool, which evaluates declarations, statements, and "
                 + "expressions as they are entered and immediately shows the "
                 + "results.";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
                         
-        name = "openJDK";
+        term = "openJDK";
         url = getWikipediaURL("OpenJDK");
         description = "A free and open-source implementation of the "
                 + "\"Java Platform, Standard Edition\".";
-        termToIndexTerm.put(name, new IndexTerm(this, description, url));
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
     }
 

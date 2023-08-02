@@ -265,12 +265,25 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-
+        
         term = "C++";
         url = getWikipediaURL("C%2B%2B");
-        description = "A high-level, general-purpose \"programming language\"";
+        description = "A high-level, general-purpose \"programming language\". "
+                + "The latest standard version 'C++20' was published in "
+                + "December 2020. The next is expected in December 2023.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        addAlias(term, "CPP", indexTerm);
+
+        term = "C";
+        url = getWikipediaURL("C_(programming_language)");
+        description = "A general-purpose computer \"programming language\". "
+                + "The latest standard 'C17' was published in June 2018. The "
+                + "next is expected in 2024.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "C programming language", indexTerm);
+        addAlias(term, "C Standard", indexTerm);
 
         term = "Call By Sharing";
         url = getWikipediaURL("Evaluation_strategy#Call_by_sharing");
@@ -466,6 +479,15 @@ public class Index extends CoursePage {
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
 
+        term = "Fortran";
+        url = getWikipediaURL("Fortran");
+        description = "A general-purpose \"programming language\". The latest "
+                + "standard 'Fortran 2018' was released in November 2018. A "
+                + "new standard is expected for publication in July 2023";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAlias(term, indexTerm);
+
         term = "Free and Open Source Software";
         url = getWikipediaURL("Free_and_open-source_software");
         description = "\"Software\" which anyone is freely licensed to use, "
@@ -582,9 +604,11 @@ public class Index extends CoursePage {
 
         term = "Java";
         url = getWikipediaURL("Java_(programming_language)");
-        description = "A high-level, class-based, \"object-oriented\" "
-                + "\"programming language\" that is designed to have as few "
-                + "implementation dependencies as possible";
+        description = "A high-level general pupose \"programming language\". "
+                + "The latest version is Java 20, released in March 2023. "
+                + "The latest long-term support (LTS) version is Java 17, "
+                + "released in September 2021. Java 21 is scheduled for "
+                + "release in September 2023 as a LTS version.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -630,7 +654,7 @@ public class Index extends CoursePage {
         addIndexTerm(term, indexTerm);
         addAlias(term, "macOS", indexTerm);
         addAliasAndLowerCase(term, "OSX", indexTerm);
-        
+
         term = "Magic Number";
         url = getWikipediaURL("File_format#Magic_number");
         description = "File type metadata incorporated into the file - usually "
@@ -864,7 +888,7 @@ public class Index extends CoursePage {
                 + "networks according to functional criteria";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, 
+        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term,
                 "Internet protocol suite", indexTerm);
 
         term = "Touchscreen";
@@ -889,6 +913,13 @@ public class Index extends CoursePage {
                 + "procedures, and operating procedures - are tested to "
                 + "determine whether they are fit for use. See also "
                 + "\"regression testing\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "University of Leeds";
+        url = getWikipediaURL("University_of_Leeds");
+        description = "A public research university in Leeds, West Yorkshire, "
+                + "England";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
@@ -1035,27 +1066,33 @@ public class Index extends CoursePage {
         StringBuilder sb = new StringBuilder();
         sb.append("<ul>");
         for (String aliasOrTerm : termsAndAliasesToIndex) {
+            sb.append("<li>");
             IndexTerm indexTerm;
+            boolean isAlias = false;
             if (aliasesToIndex.contains(aliasOrTerm)) {
                 indexTerm = termToIndexTerm.get(aliasToTerm.get(aliasOrTerm));
+                isAlias = true;
+                sb.append(aliasOrTerm)
+                        .append(" - (See ")
+                        .append(indexTerm.getLink(aliasToTerm.get(aliasOrTerm)))
+                        .append(").");
             } else {
                 indexTerm = termToIndexTerm.get(aliasOrTerm);
-            }
-            sb.append("<li>");
-            sb.append(indexTerm.getLinkAndDescription(aliasOrTerm));
-            sb.append(".");
-            if (!indexTerm.sectionIDs.isEmpty()) {
-                sb.append(" (");
-                int l = sb.length();
-                for (var x : indexTerm.sectionIDs) {
-                    sb.append(x.getLink());
-                    sb.append(", ");
+                sb.append(indexTerm.getLinkAndDescription(aliasOrTerm));
+                sb.append(".");
+                if (!indexTerm.sectionIDs.isEmpty()) {
+                    sb.append(" (");
+                    int l = sb.length();
+                    for (var x : indexTerm.sectionIDs) {
+                        sb.append(x.getLink());
+                        sb.append(", ");
+                    }
+                    // Remove the last delimiter
+                    if (sb.length() > l) {
+                        sb.setLength(sb.length() - 2);
+                    }
+                    sb.append(")");
                 }
-                // Remove the last delimiter
-                if (sb.length() > l) {
-                    sb.setLength(sb.length() - 2);
-                }
-                sb.append(")");
             }
             sb.append("</li>\n");
         }
@@ -1064,7 +1101,6 @@ public class Index extends CoursePage {
         return sb.toString();
     }
 
-    
     /**
      * For writing the page to file. (This does not write out a contents.)
      */

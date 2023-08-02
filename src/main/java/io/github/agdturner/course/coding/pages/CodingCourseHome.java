@@ -30,7 +30,7 @@ public abstract class CodingCourseHome extends CourseHome {
         super(course);
     }
 
-    public void getSyllabusProgramming(StringBuilder sb, SectionID sid) {
+    public void getSyllabusProgrammingStart(StringBuilder sb, SectionID sid) {
         sb.append("""
               <p>General computer programming language concepts, including:</p>
               <ul>
@@ -53,26 +53,38 @@ public abstract class CodingCourseHome extends CourseHome {
                 + "</li>\n");
         sb.append("<li>Documentation</li>\n");
         sb.append("<li>Testing</li>\n");
+    }
+    
+    public void getSyllabusObjectOrientation(StringBuilder sb, SectionID sid) {
+        sb.append("<li>")
+                .append(index.getReference("Class", "Classes"))
+                .append(" and ")
+                .append(index.getReference("Object Oriented Programming"))
+                .append("</li>\n");
+    }
+    
+    public void getSyllabusProgrammingEnd(StringBuilder sb, SectionID sid) {
         sb.append("</ul>\n");
     }
 
     public void getSyllabusOrganisational(StringBuilder sb, SectionID sid) {
-        sb.append("<p>"
-                + index.getReference("Version Control")
-                + "</p>\n");
+        sb.append("<p>")
+                .append(index.getReference("Version Control"))
+                .append("</p>\n");
     }
-
-    public void getSyllabusObjectOrientation(StringBuilder sb, SectionID sid) {
-        sb.append("<p>"
-                + index.getReference("Class", "Classes")
-                + " and "
-                + index.getReference("Object Oriented Programming")
-                + "</p>\n");
-    }
-
-    public void getSyllabusGUI(StringBuilder sb, SectionID sid) {
-        sb.append("<p>Developing "
-                + index.getReference("GUI", "Graphical User Interfaces")
-                + "</p>\n");
+    
+    @Override
+    public SectionID getLearningJourney0(StringBuilder sb) {
+        SectionID sid = super.getLearningJourney0(sb);
+        sb.append("<p>One of the keys to coding is learning to be able to")
+                .append(" interpret errors messages and understand what caused")
+                .append(" them. If a program you are developing unexpectedly")
+                .append(" raises an exception and reports an error message,")
+                .append(" then try to understand why and stop this happening")
+                .append(" before moving on. Ignoring error messages is nearly")
+                .append(" always the wrong thing to do!</p>");
+        sb.append("<p>Be cautious and do not run code that you do not trust.")
+                .append("</p>\n");
+        return sid;
     }
 }
