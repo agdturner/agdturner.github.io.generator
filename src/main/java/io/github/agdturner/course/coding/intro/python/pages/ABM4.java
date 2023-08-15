@@ -34,11 +34,11 @@ public class ABM4 extends CoursePage {
     public ABM4(PythonIntroCodingCourse course) {
         super(course, "abm4", "Agent Based Model Practical 4", "ABM4");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Recap and preparation", 2, sb);
+        SectionID sid = addSection("Recap and preparation", sb);
         sb.append("""
               <p>Currently, 'agents' is a list that contains lists of two items; 
               an x-coordinate, and a y-coordinate. More items could be added 
@@ -55,25 +55,40 @@ public class ABM4 extends CoursePage {
               your 'model.py' file from abm3 into the abm4 directory.</p>
               """);
 
-        sid = addSection("2", "Define an Agent class", 2, sb);
+        sid = addSection("Define an Agent class", sb);
         sb.append("""
               <p>Create a new file in the abm4 directory named 
               'agentframework.py', and add a class definition for an Agent class
               in it as follows:</p>
-              <pre><code class="language-python">class Agent():
-                  pass</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    pass
+                """);
+        sb.append("""
               <p>The keyword 'pass' ensures the code is syntactically correct 
               and will run.</p>
               <p>In 'model.py' reduce 'n_iterations' to 10, and add the 
               following import statement:</p>
-              <pre><code class="language-python">import agentframework as af</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                import agentframework as af
+                """);
+        sb.append("""
               <p>Note that this imports the agentframework module as loaded from 
               'agentframework.py' which is to be referred to by 'af'.</p>
               <p>At the start of the '# Initialise agents' code block, add the 
               following:</p>
-              <pre><code class="language-python">a = af.Agent()
-              print("type(a)", type(a))</code></pre>
-              <p>Run 'model.py' and examine the output. It should contain the 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                a = af.Agent()
+                print("type(a)", type(a))
+                """);
+        sb.append("""
+                  <p>Run 'model.py' and examine the output. It should contain the 
               following line:</p>
               <pre>type(a) <class 'agentframework.Agent'></pre>
               <p>This indicates that an instance of the class Agent as defined 
@@ -81,17 +96,20 @@ public class ABM4 extends CoursePage {
               <p>Add a constructor method to the Agent class that initialises 
               'x' and 'y' variable attributes to be random integers in the range
               [0, 99]. The code in 'agentframework.py' should be:</p>
-              <pre><code class="language-python">import random
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                import random
 
-              class Agent:
-                  def __init__(self):
-                      self.x = random.randint(0, 99)
-                      self.y = random.randint(0, 99)</code></pre>
-              """);
-        sb.append("<p>Note that the "
-                + index.getReference("Python random", "random module", sid)
-                + "is imported as this is used in the Agent constructor "
-                + "'__init__' method.</p>\n");
+                class Agent:
+                    def __init__(self):
+                        self.x = random.randint(0, 99)
+                        self.y = random.randint(0, 99)
+                """);
+        sb.append("<p>Note that the ")
+                .append(index.getReference("Python random", "random module", sid))
+                .append("is imported as this is used in the Agent constructor "
+                        + "'__init__' method.</p>\n");
         sb.append("""
               <p>In 'model.py', add a statement to print the agent that was 
               instantiated, and run the program again. Text along the lines of 
@@ -107,10 +125,13 @@ public class ABM4 extends CoursePage {
               is to override the '__str__' method which comes from the 'type' 
               metaclass that all classes inherit from by default. Define the 
               method in the Agent class as follows:</p>
-              <pre><code class="language-python">def __str__(self):
-                  return self.__class__.__name__ + "(x=" + str(self.x) \\
-                      + ", y=" + str(self.y) + ")"</pre></code>
-              """);
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                def __str__(self):
+                   return self.__class__.__name__ + "(x=" + str(self.x) \\
+                      + ", y=" + str(self.y) + ")"
+                """);
         sb.append("<p>Note that this returns a string which includes the name of"
                 + " the class and details of the 'x' and 'y' variable"
                 + " attributes which are transformed by the builtins module "
@@ -122,14 +143,20 @@ public class ABM4 extends CoursePage {
               <pre>Agent(x=49, y=97)</pre>
               <p>Change the '# Initialise agents' code block in 'model.py' to:
               </p>
-              <pre><code class="language-python"># Initialise agents
-              agents = []
-              for i in range(n_agents):
-                  # Create an agent
-                  agents.append(af.Agent())
-                  print(agents[i])
-              print(agents)</code></pre>
-              <p>Run 'model.py' and you should get similar output to the 
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                # Initialise agents
+                agents = []
+                for i in range(n_agents):
+                    # Create an agent
+                    agents.append(af.Agent())
+                    print(agents[i])
+                print(agents)
+                """);
+        sb.append(
+                """
+                <p>Run 'model.py' and you should get similar output to the 
               following (in the error report, the file paths will probably be 
               different, and the line numbers might be different):</p>
               <pre>Check this is equal to 5: 5.0
@@ -167,9 +194,12 @@ public class ABM4 extends CoursePage {
               <p>Add the following method to the Agent class to get the print 
               function to print string representations when printing the agents 
               list:</p>
-              <pre><code class="language-python">def __repr__(self):
-                  return str(self)</code></pre>
-              """);
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                def __repr__(self):
+                    return str(self)
+                """);
         sb.append("<p>Like the '__str__' method, the '__repr__' method overrides"
                 + " from the 'type' metaclass, (for details see: "
                 + index.getReference("Python repr", "repr", sid)
@@ -178,25 +208,58 @@ public class ABM4 extends CoursePage {
               <p>To avoid raising the TypeError exception, it is necessary to 
               refer to the class attributes and not list items (as agents are 
               no longer lists, but are instances of the class Agent). So, change 
-              the following line of code in the 'get_max_distance()' function:</p> 
-              <pre><code class="language-python">distance = get_distance(a[0], a[1], b[0], b[1])</code></pre>
-              <p>To be:</p>
-              <pre><code class="language-python">distance = get_distance(a.x, a.y, b.x, by)</code></pre>
+              the following line of code in the 'get_max_distance()' function:</p>
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                distance = get_distance(a[0], a[1], b[0], b[1])
+                """);
+        sb.append("""
+                  <p>To be:</p>
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                distance = get_distance(a.x, a.y, b.x, by)
+                """);
+        sb.append("""
               <p>Appreciate that this is easier to read and understand.</p>
               <p>Everywhere else in the 'model.py' that was referring to a 
               coordinate from the agents list is to be changed similarly. Run
               'model.py' to see where the next TypeError is raised.</p>
               <p>In the code change:</p>
-              <pre><code class="language-python">agents[i][0]</code></pre>
-              <p>To:</p> 
-              <pre><code class="language-python">agents[i].x</code></pre> 
-              <p>And change:</p>
-              <pre><code class="language-python">agents[i][1]"</code></pre>
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                agents[i][0]
+                """);
+        sb.append("""
               <p>To:</p>
-              <pre><code class="language-python">agents[i].y</code></pre>
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                agents[i].x
+                """);
+        sb.append(""" 
+              <p>And change:</p>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                agents[i][1]
+                """);
+        sb.append("""
+              <p>To:</p>
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              agents[i].y
+              """);
+        sb.append("""
               <p>Make a further change in the code block that plots agents, 
               changing:</p>
-              <pre><code class="language-python"># Plot the coordinate with the largest x red
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              # Plot the coordinate with the largest x red
               lx = max(agents, key=operator.itemgetter(0))
               plt.scatter(lx[0], lx[1], color='red')
               # Plot the coordinate with the smallest x blue
@@ -207,9 +270,14 @@ public class ABM4 extends CoursePage {
               plt.scatter(ly[0], ly[1], color='yellow')
               # Plot the coordinate with the smallest y green
               sy = min(agents, key=operator.itemgetter(1))
-              plt.scatter(sy[0], sy[1], color='green')</code></pre>
+              plt.scatter(sy[0], sy[1], color='green')
+              """);
+        sb.append("""
               <p>To:</p>
-              <pre><code class="language-python"># Plot the coordinate with the largest x red
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              # Plot the coordinate with the largest x red
               lx = max(agents, key=operator.attrgetter('x'))
               plt.scatter(lx.x, lx.y, color='red')
               # Plot the coordinate with the smallest x blue
@@ -220,24 +288,36 @@ public class ABM4 extends CoursePage {
               plt.scatter(ly.x, ly.y, color='yellow')
               # Plot the coordinate with the smallest y green
               sy = min(agents, key=operator.attrgetter('y'))
-              plt.scatter(sy.x, sy.y, color='green')</code></pre>
-              <p>Hopefully, you understand these changes and your program runs 
-              without raising exceptions and produces the same output as 
-              previously.</p>
+              plt.scatter(sy.x, sy.y, color='green')
+              """);
+        sb.append(
+                """
+                <p>Study these changes. Your program should run without raising
+                  exceptions and produces the same output as previously.</p>
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
 
-        sid = addSection("3", "Separation of Concerns", 2, sb);
+        sid = addSection("Separation of Concerns", sb);
         sb.append("""
               <p>Define a method called 'move' in the Agent class as follows:
               </p>
-              <pre><code class="language-python">def move(self, x_min, y_min, x_max, y_max):</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              def move(self, x_min, y_min, x_max, y_max):
+              """);
+        sb.append("""
               <p>Cut the code that moves an individual agent from 'model.py' and 
               paste it into the body of the new 'move' method. Replace: 
               "agents[i]" with "self" in the method. Where the code was cut 
               from, add the following to call the move method:</p>
-              <pre><code class="language-python">agents[i].move(x_min, y_min, x_max, y_max)</code></pre>              
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              agents[i].move(x_min, y_min, x_max, y_max)
+              """);
+        sb.append("""
               <p>Note that in the Agent class, the 'move' method has a parameter 
               called 'self', but this is not a parameter that is passed in. 
               Normally when calling a function the number of parameters 
@@ -250,7 +330,7 @@ public class ABM4 extends CoursePage {
               reasonable separation of concerns.</p>
               """);
 
-        sid = addSection("4", "Give each agent a unique name", 2, sb);
+        sid = addSection("Give each agent a unique name", sb);
         sb.append("""
               <p>It is possible that two agents will be located at the same 
               coordinates, and it would be helpful to distinguish them.</p>
@@ -259,8 +339,9 @@ public class ABM4 extends CoursePage {
                 + index.getReference("Python docstring", "docstring")
                 + " and a parameter to the '__init__' constructor method of"
                 + " Agent so that the method is as follows:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">def __init__(self, i):
+        addPythonCodeBlock(sb,
+              """
+              def __init__(self, i):
               \"""
               The constructor method.
                
@@ -277,7 +358,9 @@ public class ABM4 extends CoursePage {
               self.i = i
               self.x = random.randint(0, 99)
               self.y = random.randint(0, 99)
-              pass</code></pre>
+              pass
+              """);
+        sb.append("""
               <p>Run 'model.py' and you should get the following error:</p>
               <pre>Traceback (most recent call last):
               

@@ -37,15 +37,15 @@ public class JavaReferences extends References {
     public JavaReferences(Course course, String filename, String title, String label) {
         super(course, filename, title, label);
         
-        String name;
+        String term;
         String url;
         String description;
         
-        name = "Apache Maven";
+        term = "Apache Maven";
         url = "https://en.wikipedia.org/wiki/Apache_Maven";
         description = "A build automation tool used primarily for \"Java\" "
                 + "projects";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
     }
 }

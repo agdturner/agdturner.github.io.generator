@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.pages.CodingCourseProgramming;
 
@@ -72,20 +71,10 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(index.getReference("Source Code", "source code"))
                 .append(" into lower level less readable machine instructions.")
                 .append("</p>\n");
-        String language = getCourse().courseType;
         sb.append("<p>Programming can be done visually by arranging and")
                 .append(" connecting pre-built components into executable")
                 .append(" workflows. However, this course is about programming")
-                .append(" using text based command instructions that have a")
-                .append(" formal syntax known as a ")
-                .append(index.getReference("Programming Language",
-                "programming language"))
-                .append(". Some programming language syntax and terms are")
-                .append(" similar, some are very different. This course is")
-                .append(" mostly based on ")
-                .append(index.getReference(language, 
-                        Strings.toUpperCaseFirstLetter(language)))
-                .append(".</p>\n");
+                .append(" using text based command instructions.</p>\n");
         return sid;
     }
     

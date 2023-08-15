@@ -38,7 +38,7 @@ public class ABM9 extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        SectionID sid = addSection("Introduction and Preparation", sb);
         sb.append("""
               <p>This practical is about using some data in an HTML file Table
               to initialise part of the model.</p>
@@ -46,7 +46,7 @@ public class ABM9 extends CoursePage {
               'abm8' directory as 'abm9'.</p>
                   """);
 
-        sid = addSection("2", "Parsing an HTML File", 2, sb);
+        sid = addSection("Parsing an HTML File", sb);
         sb.append("""
                   <p><a href="../../resources/abm9/data.html">The HTML to parse</a>.</p>
               <p>Have a look at the source code for the file by either opening 
@@ -56,13 +56,22 @@ public class ABM9 extends CoursePage {
               <a href="../../resources/abm9/data.py">data.py</a>.</p>
               -->
               <p>Add the following import statements to 'model.py':</p>
-              <pre><code class="language-python">import requests
-              import bs4</code></pre>
-              <p>Change the agent initialisation code block as follows:</p>
-              <pre><code class=\"language-python\">
-              # Initialise agents
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              import requests
+              import bs4
               """);
+        sb.append(
+                """
+                <p>Change the agent initialisation code block as follows:</p>
+                """);
         String url = "https://" + site.env.domain + "/resources/abm9/data.html";
+        addPythonCodeBlockStart(sb);
+        sb.append(
+                """
+                # Initialise agents
+                """);
         sb.append("url = '" + url + "'");
         sb.append("r = requests.get(url, verify=False)");
         sb.append("""
@@ -78,52 +87,57 @@ public class ABM9 extends CoursePage {
                   y = int(td_ys[i].text) + 99
                   x = int(td_xs[i].text) + 99
                   agents.append(af.Agent(agents, i, environment, n_rows, n_cols, x, y))
-                  print(agents[i].agents[i])</code></pre>
+                  print(agents[i].agents[i])
               """);
-        sb.append("""
-              <p>Change the '__init__' function in 'agentframework.py' to:</p>");
-              <pre><code class="language-python">def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
-              \"""
-              The constructor method.
-              
-              Parameters
-              ----------
-              i : Integer
-                  To be unique to each instance.
-              environment : List
-                  A reference to a shared environment
-              n_rows : Integer
-                  The number of rows in environment.
-              n_cols : Integer
-                  The number of columns in environment.
-              x : Integer
-                  For initialising the x coordinate of the agent.
-              y : Integer
-                  For initialising the y coordinate of the agent.
+        addPythonCodeBlockStart(sb);
+        sb.append(
+                """
+                <p>Change the '__init__' function in 'agentframework.py' to:</p>");
+                """);
+        addPythonCodeBlock(sb,
+                """
+                def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
+                \"""
+                The constructor method.
 
-              Returns
-              -------
-              None.
+                Parameters
+                ----------
+                i : Integer
+                    To be unique to each instance.
+                environment : List
+                    A reference to a shared environment.
+                n_rows : Integer
+                    The number of rows in environment.
+                n_cols : Integer
+                    The number of columns in environment.
+                x : Integer
+                    For initialising the x coordinate of the agent.
+                y : Integer
+                    For initialising the y coordinate of the agent.
 
-              \"""
-              self.agents = agents
-              self.i = i
-              self.environment = environment
-              if x == None:
-                  tnc = int(n_cols / 3)
-                  self.x = random.randint(tnc - 1, (2 * tnc) - 1)
-              else:
-                  self.x = x
-              if y == None:
-                  tnr = int(n_rows / 3)    
-                  self.y = random.randint(tnr - 1, (2 * tnr) - 1)
-              else:
-                  self.y = y
-              self.store = random.randint(0, 99)
-              self.store_shares = 0</code></pre>
-              """);
+                Returns
+                -------
+                None.
 
-        sid = addSection("3", "Assignment 1 submission", 2, sb);
+                \"""
+                self.agents = agents
+                self.i = i
+                self.environment = environment
+                if x == None:
+                    tnc = int(n_cols / 3)
+                    self.x = random.randint(tnc - 1, (2 * tnc) - 1)
+                else:
+                    self.x = x
+                if y == None:
+                    tnr = int(n_rows / 3)
+                    self.y = random.randint(tnr - 1, (2 * tnr) - 1)
+                else:
+                    self.y = y
+                self.store = random.randint(0, 99)
+                self.store_shares = 0
+                """);
+
+        sid = addSection("Assignment 1 submission", sb);
         sb.append("""
               <p>Update the README file for your repository and submit your work.</p>
               """);

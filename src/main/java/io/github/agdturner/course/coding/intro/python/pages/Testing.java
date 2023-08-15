@@ -38,7 +38,7 @@ public class Testing extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>There are a number of different types of testing involved in "
                 + "developing software, some key ones are: functionality "
                 + "testing, performance testing and usability testing. "
@@ -60,7 +60,7 @@ public class Testing extends CoursePage {
                 + "key to developing code and creating reproducible results."
                 + "</p>\n");
 
-        sid = addSection("2", "Doctest", 2, sb);
+        sid = addSection("Doctest", sb);
         sb.append("<p>The "
                 + index.getReference("Python Standard Library", sid)
                 + " comes with "
@@ -91,7 +91,7 @@ public class Testing extends CoursePage {
               ***Test Failed*** 1 failures.</pre>
               """);
 
-        sid = addSection("3", "Unit Tests", 2, sb);
+        sid = addSection("Unit Tests", sb);
         sb.append("<p>"
                 + index.getReference("Unit Testing", sid)
                 + " is where individual units of source code - together with "

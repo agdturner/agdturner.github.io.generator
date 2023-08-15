@@ -48,7 +48,7 @@ public abstract class CoursePage extends Page {
     protected final ArrayList<Page> pages;
 
     /**
-     * CCourse Home Page for convenience.
+     * Course Home Page for convenience.
      */
     protected final CourseHome homePage;
 
@@ -69,6 +69,7 @@ public abstract class CoursePage extends Page {
         references = course.getReferences();
         pages = course.pages;
         homePage = course.getHomePage();
+        sectionNo = 0;
     }
 
     /**
@@ -163,9 +164,6 @@ public abstract class CoursePage extends Page {
             int level;
             for (var x : sids) {
                 Section section = sections.get(x);
-                if (section == null) {
-                    int debug = 1;
-                } else {
                     level = section.level;
                     if (level > level0) {
                         sb.append("<ul>\n");
@@ -179,7 +177,6 @@ public abstract class CoursePage extends Page {
                     }
                     sb.append(section.sectionLink);
                     level0 = level;
-                }
             }
             for (int i = 2; i <= level0; i ++) {
                 sb.append("</li>\n");
@@ -190,5 +187,57 @@ public abstract class CoursePage extends Page {
             return sb.toString();
         }
         return "";
+    }
+    
+    /**
+     * Wraps a code block for Python code.
+     * @param sb The StringBuilder to append to.
+     * @param code The code block to wrap.
+     */
+    public void addPythonCodeBlock( StringBuilder sb, String code) {
+        addPythonCodeBlockStart(sb);
+        sb.append(code);
+        addPythonCodeBlockEnd(sb);
+    }
+    
+    /**
+     * Appends {@code <pre><code class="language-python">} to sb.
+     * @param sb The StringBuilder to append to.
+     */
+    public void addPythonCodeBlockStart(StringBuilder sb) {
+        sb.append(
+                """
+                <pre><code class="language-python">
+                """);
+    }
+    
+    /**
+     * Appends {@code </code></pre>} to sb.
+     * @param sb The StringBuilder to append to.
+     */
+    public void addPythonCodeBlockEnd(StringBuilder sb) {
+        sb.append("</code></pre>");
+    }
+    
+    /**
+     * Wraps a paragraph.
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addParagraph(StringBuilder sb, String s) {
+        sb.append("<p>");
+        sb.append(s);
+        sb.append("</p>\n");
+    }
+    
+    /**
+     * Wraps a pre.
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addPre(StringBuilder sb, String s) {
+        sb.append("<pre>");
+        sb.append(s);
+        sb.append("</pre>\n");
     }
 }

@@ -314,6 +314,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
+        addAliasAndLowerCase(term, "Classes", indexTerm);
 
         term = "Client";
         url = getWikipediaURL("Client_(computing)");
@@ -1006,8 +1007,8 @@ public class Index extends CoursePage {
      */
     public String addWebReference(String name, String linkText,
             String url, String description) {
-        if (!references.nameToTerm.containsKey(name)) {
-            references.nameToTerm.put(name,
+        if (!references.termToTerm.containsKey(name)) {
+            references.termToTerm.put(name,
                     new IndexTerm(this, description, url));
         }
         return Web_ContentWriter.getLink(url, linkText);
@@ -1068,10 +1069,8 @@ public class Index extends CoursePage {
         for (String aliasOrTerm : termsAndAliasesToIndex) {
             sb.append("<li>");
             IndexTerm indexTerm;
-            boolean isAlias = false;
             if (aliasesToIndex.contains(aliasOrTerm)) {
                 indexTerm = termToIndexTerm.get(aliasToTerm.get(aliasOrTerm));
-                isAlias = true;
                 sb.append(aliasOrTerm)
                         .append(" - (See ")
                         .append(indexTerm.getLink(aliasToTerm.get(aliasOrTerm)))

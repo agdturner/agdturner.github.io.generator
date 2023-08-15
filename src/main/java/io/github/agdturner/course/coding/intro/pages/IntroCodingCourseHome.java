@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.pages.CodingCourseHome;
 
@@ -40,28 +39,5 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
                 .append("</li>");
         return sid;
     }
-    
-    @Override
-    public void getExpectationsN(StringBuilder sb, SectionID sid ) {
-        super.getExpectationsN(sb, sid);
-        sb.append("""
-              </ul>
-              <p>Computer programming mostly involves computational thinking, 
-              planning, problem solving and testing. It is often helpful to 
-              break a task into smaller subtasks, and gradually develop an
-              implementation. Often good solutions to coding tasks involve doing
-              things repeatedly for a sequence of things.</p>
-              <!--<p>Often it is 
-              helpful to use a framework for testing from the outset and to test 
-              often as the code develops.</p>-->
-              """);
-        String courseType = getCourse().courseType;
-        sb.append("<p>If you are new to computer programming, there is quite a lot "
-                + "of terminology to get used to, some is generic to "
-                + "programming, some is specific to "
-                + index.getReference(courseType, Strings.toUpperCaseFirstLetter(courseType))
-                + ".</p>");
-    }
-    
     
 }

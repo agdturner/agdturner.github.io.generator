@@ -37,81 +37,82 @@ public class ABM3 extends CoursePage {
     
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Recap and preparation", 2, sb);
+        SectionID sid = addSection("Recap and preparation", sb);
         sb.append("<p>Your ABM code should look something like the following:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">import random
-              import math
-              import matplotlib.pyplot as plt
-              import operator
-              
-              # Set the pseudo-random seed for reproducibility
-              random.seed(0)
-              
-              # A variable to store the number of agents
-              n_agents = 10
-              
-              # Initialise agents
-              agents = []
-              for i in range(n_agents):
-                  agents.append([random.randint(0, 99), random.randint(0, 99)])
-              print(agents)
-              
-              # Move agents
-              for i in range(n_agents):
-                  # Change agents[i] coordinates randomly
-                  # x-coordinate
-                  rn = random.random()
-                  #print("rn", rn)
-                  if rn < 0.5:
-                      agents[i][0] = agents[i][0] + 1
-                  else:
-                      agents[i][0] = agents[i][0] - 1
-                  # y-coordinate
-                  rn = random.random()
-                  #print("rn", rn)
-                  if rn < 0.5:
-                      agents[i][1] = agents[i][1] + 1
-                  else:
-                      agents[i][1] = agents[i][1] - 1
-              print(agents)
-              
-              # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
-              # Set x0 and y0 to equal 0, x1 to equal 3, and y1 to equal 4
-              x0 = 0
-              y0 = 0
-              x1 = 3
-              y1 = 4
-              # Calculate the difference in the x coordinates.
-              dx = x0 - x1
-              # Calculate the difference in the y coordinates.
-              dy = y0 - y1
-              # Square the differences and add the squares
-              ssd = (dx * dx) + (dy * dy)
-              print("ssd", ssd)
-              # Calculate the square root
-              distance = ssd ** 0.5
-              print("distance", distance)
-              distance = math.sqrt(ssd)
-              print("distance", distance)
-              
-              # Plot
-              for i in range(n_agents):
-                  plt.scatter(agents[i][0], agents[i][1], color='black')
-              # Plot the coordinate with the largest x red
-              lx = max(agents, key=operator.itemgetter(0))
-              plt.scatter(lx[0], lx[1], color='red')
-              # Plot the coordinate with the smallest x blue
-              sx = min(agents, key=operator.itemgetter(0))
-              plt.scatter(sx[0], sx[1], color='blue')
-              # Plot the coordinate with the largest y yellow
-              ly = max(agents, key=operator.itemgetter(1))
-              plt.scatter(ly[0], ly[1], color='yellow')
-              # Plot the coordinate with the smallest y green
-              sy = min(agents, key=operator.itemgetter(1))
-              plt.scatter(sy[0], sy[1], color='green')
-              plt.show()</code></pre>
-              """);
+        addPythonCodeBlock(sb,
+                """
+                import random
+                import math
+                import matplotlib.pyplot as plt
+                import operator
+
+                # Set the pseudo-random seed for reproducibility
+                random.seed(0)
+
+                # A variable to store the number of agents
+                n_agents = 10
+
+                # Initialise agents
+                agents = []
+                for i in range(n_agents):
+                    agents.append([random.randint(0, 99), random.randint(0, 99)])
+                print(agents)
+
+                # Move agents
+                for i in range(n_agents):
+                    # Change agents[i] coordinates randomly
+                    # x-coordinate
+                    rn = random.random()
+                    #print("rn", rn)
+                    if rn < 0.5:
+                        agents[i][0] = agents[i][0] + 1
+                    else:
+                        agents[i][0] = agents[i][0] - 1
+                    # y-coordinate
+                    rn = random.random()
+                    #print("rn", rn)
+                    if rn < 0.5:
+                        agents[i][1] = agents[i][1] + 1
+                    else:
+                        agents[i][1] = agents[i][1] - 1
+                print(agents)
+
+                # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
+                # Set x0 and y0 to equal 0, x1 to equal 3, and y1 to equal 4
+                x0 = 0
+                y0 = 0
+                x1 = 3
+                y1 = 4
+                # Calculate the difference in the x coordinates.
+                dx = x0 - x1
+                # Calculate the difference in the y coordinates.
+                dy = y0 - y1
+                # Square the differences and add the squares
+                ssd = (dx * dx) + (dy * dy)
+                print("ssd", ssd)
+                # Calculate the square root
+                distance = ssd ** 0.5
+                print("distance", distance)
+                distance = math.sqrt(ssd)
+                print("distance", distance)
+
+                # Plot
+                for i in range(n_agents):
+                    plt.scatter(agents[i][0], agents[i][1], color='black')
+                # Plot the coordinate with the largest x red
+                lx = max(agents, key=operator.itemgetter(0))
+                plt.scatter(lx[0], lx[1], color='red')
+                # Plot the coordinate with the smallest x blue
+                sx = min(agents, key=operator.itemgetter(0))
+                plt.scatter(sx[0], sx[1], color='blue')
+                # Plot the coordinate with the largest y yellow
+                ly = max(agents, key=operator.itemgetter(1))
+                plt.scatter(ly[0], ly[1], color='yellow')
+                # Plot the coordinate with the smallest y green
+                sy = min(agents, key=operator.itemgetter(1))
+                plt.scatter(sy[0], sy[1], color='green')
+                plt.show()
+                """);
         sb.append("<p>When run, this code should produce the following text output:</p>\n");
         sb.append("""
               <pre>[[49, 97], [53, 5], [33, 65], [62, 51], [38, 61], [45, 74], [27, 64], [17, 36], [17, 96], [12, 79]]
@@ -140,9 +141,9 @@ public class ABM3 extends CoursePage {
               your "model.py" file into the abm3 directory.</p>
               """);
         
-        sid = addSection("2", "Distance Calculations", 2, sb);
+        sid = addSection("Distance Calculations", sb);
         
-        sid = addSection("2.1", "Define a Function", 3, sb);
+        sid = addSubsection("Define a Function", sb);
         sb.append("""
               <p>Change the distance calculation code into a function called 
               get_distance: Use the def keyword and specify four input 
@@ -162,7 +163,7 @@ public class ABM3 extends CoursePage {
                 + index.getReference("Python docstring", "docstring", sid)
                 + " clarifying what the function inputs and outputs are.</p>\n");
         
-        sid = addSection("2.2", "Calculate the maximum distance", 3, sb);
+        sid = addSubsection("Calculate the maximum distance", sb);
         sb.append("""
               <p>Imagine a two dimensional matrix with the agents aligned in the 
               same sequence along each dimension and the distances between them 
@@ -184,15 +185,19 @@ public class ABM3 extends CoursePage {
                 + "builtin max function</a>"
                 + " can be used to calculate the maximum distance encountered "
                 + " yet. Some code for doing this is as follows:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">max_distance = 0 # Initialise max_distance
-              for a in agents:
-                  for b in agents:
-                      distance = get_distance(a[0], a[1], b[0], b[1])
-                      print("distance between", a, b, distance)
-                      max_distance = max(max_distance, distance)
-                      print("max_distance", max_distance)</code></pre>
-              <p>Add the code to the end of your program, run it and examine the 
+        addPythonCodeBlock(sb,
+                """
+                max_distance = 0 # Initialise max_distance
+                for a in agents:
+                    for b in agents:
+                        distance = get_distance(a[0], a[1], b[0], b[1])
+                        print("distance between", a, b, distance)
+                        max_distance = max(max_distance, distance)
+                        print("max_distance", max_distance)
+                """);
+        sb.append(
+                """
+                <p>Add the code to the end of your program, run it and examine the 
               output. In calculating the maximum distance, you should see that
               some zero distances are calculated. These will either be where an 
               agent is located at the same place as another agent, or where the 
@@ -204,17 +209,18 @@ public class ABM3 extends CoursePage {
                 + " The following code does the same calculation, and uses the "
                 + index.getReference("Python range", "range function")
                 + " to get a sequence of indexes:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">max_distance = 0
-              for i in range(len(agents)):
-                  a = agents[i]
-                  for j in range(len(agents)):
-                      b = agents[j]
-                      distance = get_distance(a[0], a[1], b[0], b[1])
-                      print("distance between", a, b, distance)
-                      max_distance = max(max_distance, distance)
-                      print("max_distance", max_distance)</code></pre>
-              """);
+        addPythonCodeBlock(sb,
+                """
+                max_distance = 0
+                for i in range(len(agents)):
+                    a = agents[i]
+                    for j in range(len(agents)):
+                        b = agents[j]
+                        distance = get_distance(a[0], a[1], b[0], b[1])
+                        print("distance between", a, b, distance)
+                        max_distance = max(max_distance, distance)
+                        print("max_distance", max_distance)
+                """);
         sb.append("<p>Note that this code uses variables 'i' and 'j' for the"
                 + " indexes, and the "
                 + index.getReference("Python len", "len function")
@@ -228,33 +234,38 @@ public class ABM3 extends CoursePage {
               maximum distance between all the agents.</p>\n
               <p>Your 'get_distance' function should look something like the 
               following:</p>
-              <pre><code class="language-python">def get_distance(x0, y0, x1, y1):
-                  \"""
-                  Calculate the Euclidean distance between (x0, y0) and (x1, y1).
-              
-                  Parameters
-                  ----------
-                  x0 : Number
-                      The x-coordinate of the first coordinate pair.
-                  y0 : Number
-                      The y-coordinate of the first coordinate pair.
-                  x1 : Number
-                      The x-coordinate of the second coordinate pair.
-                  y1 : Number
-                      The y-coordinate of the second coordinate pair.
-              
-                  Returns
-                  -------
-                  distance : Number
-                      The Euclidean distance between (x0, y0) and (x1, y1).
-                  \"""
-                  # Calculate the difference in the x coordinates.
-                  dx = x0 - x1
-                  # Calculate the difference in the y coordinates.
-                  dy = y0 - y1
-                  # Return the Sum the squared differences square rooted.
-                  return ((dx * dx) + (dy * dy)) ** 0.5</code></pre>
-              <p>Use your 'get_max_distance' function to calculate the maximum 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                def get_distance(x0, y0, x1, y1):
+                    \"""
+                    Calculate the Euclidean distance between (x0, y0) and (x1, y1).
+
+                    Parameters
+                    ----------
+                    x0 : Number
+                        The x-coordinate of the first coordinate pair.
+                    y0 : Number
+                        The y-coordinate of the first coordinate pair.
+                    x1 : Number
+                        The x-coordinate of the second coordinate pair.
+                    y1 : Number
+                        The y-coordinate of the second coordinate pair.
+
+                    Returns
+                    -------
+                    distance : Number
+                        The Euclidean distance between (x0, y0) and (x1, y1).
+                    \"""
+                    # Calculate the difference in the x coordinates.
+                    dx = x0 - x1
+                    # Calculate the difference in the y coordinates.
+                    dy = y0 - y1
+                    # Return the Sum the squared differences square rooted.
+                    return ((dx * dx) + (dy * dy)) ** 0.5
+                """);
+        sb.append("""
+                  <p>Use your 'get_max_distance' function to calculate the maximum 
               distance between all the agents just after they have been 
               initialised.</p>
               """);
@@ -266,7 +277,7 @@ public class ABM3 extends CoursePage {
                 + " So, rearrange your code so that the function is defined"
                 + " before it is called.</p>\n");
         
-        sid = addSection("3", "Timing", 2, sb);
+        sid = addSection("Timing", sb);
         sb.append("<p>This section is about using the "
                 + index.getReference("Python time", "time module", sid)
                 + " to report timings and explore code efficiency.</p>\n");
@@ -275,16 +286,31 @@ public class ABM3 extends CoursePage {
               "timing.py".<p>
               <p>Add the following import statement along with the others
               towards the top of the source code:</p>
-              <pre><code class="language-python">import time</code></pre>
-              <p>Before calculating the maximum distance between the initialised 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                import time
+                """);
+        sb.append("""
+                  <p>Before calculating the maximum distance between the initialised 
               agents add the following line:</p>
-              <pre><code class="language-python">start = time.perf_counter()</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                start = time.perf_counter()
+                """);
+        sb.append("""
               <p>This sets the variable 'start' to a time variable which is the 
               number of second since the computer was last rebooted. After 
               calculating the maximum distance add the following code to 
               calculate and report a time interval:</p>
-              <pre><code class="language-python">end = time.perf_counter()
-              print("Time taken to calculate maximum distance", end - start, "seconds")</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                end = time.perf_counter()
+                print("Time taken to calculate maximum distance", end - start, "seconds")
+                """);
+        sb.append("""
               <p>Run your program and check the time taken to calculate maximum 
               distance. (It could report '0.0' seconds for 10 agents. This does 
               not mean that the processing took no time, but that it was very 
@@ -367,9 +393,12 @@ public class ABM3 extends CoursePage {
                 + index.getReference("Python if", "if statement")
                 + " that is only run when 'i' does not equal 'j' using the"
                 + " operator '!='. The 'if statement' will look like:</p>\n");
+        addPythonCodeBlock(sb,
+                """
+                if i != j:
+                """);
         sb.append("""
-              <pre><code class="language-python">if i != j:</code></pre>
-              <p>Run the program again and you should see the following in the 
+                  <p>Run the program again and you should see the following in the 
               console output:</p>
               <pre>i 0 j 1
               i 0 j 2
@@ -391,8 +420,13 @@ public class ABM3 extends CoursePage {
               <p>Modify the code again so that: 'n_agents = 3'; the print 
               statement that was commented out is no longer commented out; and, 
               so that the operator in the 'if statement' is a '&lt;'):</p>
-              <pre><code class="language-python">if i < j:</code></pre>
-              <p>Run the program again and you should get the following output:
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                if i < j:
+                """);
+        sb.append("""
+                  <p>Run the program again and you should get the following output:
               </p>
               <pre>i 0 j 1
               i 0 j 2
@@ -417,7 +451,7 @@ public class ABM3 extends CoursePage {
               alt="Another graph of time (y axis) and n_agents (x axis)" />
               """);
         
-        sid = addSection("4", "Other distance statistics", 2, sb);
+        sid = addSection("Other distance statistics", sb);
         sb.append("""
               <p>In calculating the maximum distance, a lower bound of 0 was 
               used to initialise the max_distance variable. To calculate the 
@@ -430,9 +464,12 @@ public class ABM3 extends CoursePage {
         sb.append("<p>From the "
               + index.getReference("Python math", "math module", sid)
               + " the following can be used for positive infinity:</p>\n");
+        addPythonCodeBlock(sb,
+                """
+                math.inf
+                """);
         sb.append("""
-              <pre><code class="language-python">math.inf</code></pre>
-              <p>Write a function that calculates the minumum distance between 
+                  <p>Write a function that calculates the minumum distance between 
               all the agents and record timings of how long it takes to 
               calculate both the maximum and minimum distances using the two 
               different functions.</p>
@@ -477,7 +514,7 @@ public class ABM3 extends CoursePage {
               using GitHub - push your changes there.</p>
               """);
         
-        sid = addSection("5", "Movement", 2, sb);
+        sid = addSection("Movement", sb);
         sb.append("""
               <p>Currently, in 'model.py' agents move once. The code will now be 
               changed to move them a number of times. After initialising
@@ -501,24 +538,32 @@ public class ABM3 extends CoursePage {
               manageable, movement will be restricted to a rectangular area by 
               limiting the x and y coordinates using the following code 
               blocks:</p>
-              <pre><code class="language-python"># Variables for constraining movement.
-              # The minimum x coordinate.
-              x_min = 0
-              # The minimum y coordinate.
-              y_min = 0
-              # The maximum x coordinate.
-              x_max = 99
-              # The maximum y coordinate.
-              y_max = 99</code></pre>
-              <pre><code class="language-python"># Apply movement constraints.
-              if agents[i][0] < x_min:
-                  agents[i][0] = x_min
-              if agents[i][1] < y_min:
-                  agents[i][1] = y_min
-              if agents[i][0] > x_max:
-                  agents[i][0] = x_max
-              if agents[i][1] > y_max:
-                  agents[i][1] = y_max</code></pre>
+                  """);
+        addPythonCodeBlock(sb, 
+                """
+                # Variables for constraining movement.
+                # The minimum x coordinate.
+                x_min = 0
+                # The minimum y coordinate.
+                y_min = 0
+                # The maximum x coordinate.
+                x_max = 99
+                # The maximum y coordinate.
+                y_max = 99
+                """);
+        addPythonCodeBlock(sb, 
+                """
+                # Apply movement constraints.
+                if agents[i][0] < x_min:
+                    agents[i][0] = x_min
+                if agents[i][1] < y_min:
+                    agents[i][1] = y_min
+                if agents[i][0] > x_max:
+                    agents[i][0] = x_max
+                if agents[i][1] > y_max:
+                    agents[i][1] = y_max
+                """);
+        sb.append("""
               <p>Insert the first code block at the top of 'model.py' with 
               the other initialised variables. Insert the other code block as 
               part of moving each agent.</p>

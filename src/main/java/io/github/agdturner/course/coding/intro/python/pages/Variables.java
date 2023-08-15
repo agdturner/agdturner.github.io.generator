@@ -38,13 +38,13 @@ public class Variables extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>"
                 + index.getReference("Variable", "Variables", sid)
                 + " are a combination of an identifier (a name) and a value"
                 + ".</p>\n");
 
-        sid = addSection("2", "Python Variables", 2, sb);
+        sid = addSection("Python Variables", sb);
         sb.append("<p>In Python, the 'type' of a variable does not have to be "
                 + "declared - it is effectively inferred by the value of the "
                 + "variable (if it needs to be).</p>\n");
@@ -189,7 +189,7 @@ public class Variables extends CoursePage {
               &lt;class 'str'&gt;</pre>
               """);
 
-        sid = addSection("3", "Functions, Variable Scope and the Global Keyword", 2, sb);
+        sid = addSection("Functions, Variable Scope and the Global Keyword", sb);
         sb.append("<p>When passed as parameters into functions, variables are "
                 + "shared this is technically known as '"
                 + index.getReference("Call By Sharing", sid)
@@ -267,7 +267,7 @@ public class Variables extends CoursePage {
               c 2</pre>
               """);
 
-        sid = addSection("4", "Deleting variables", 2, sb);
+        sid = addSection("Deleting variables", sb);
         sb.append("<p>Variables can be deleted using the keyword 'del' followed by"
                 + " the name of the variable or a "
                 + index.getReference("Python tuple", "tuple", sid)

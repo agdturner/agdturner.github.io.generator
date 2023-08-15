@@ -39,7 +39,7 @@ public class Loops extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>Python has syntax for '"
                 + index.getReference("While Loop", "while loops", sid)
                 + "' and '"
@@ -49,7 +49,7 @@ public class Loops extends CoursePage {
                 + " repeat something a set number of times (or for each thing"
                 + " in a sequence). Let's explore while loops first...</p>\n");
 
-        sid = addSection("2", "While", 2, sb);
+        sid = addSection("While", sb);
         sb.append("<p>The following provides an example of a "
                 + index.getReference("Python while", "while", sid)
                 + " statement:</p>\n");
@@ -100,7 +100,7 @@ public class Loops extends CoursePage {
               the normal end of print statement - a newline - with a space.</p>
               """);
 
-        sid = addSection("3", "For", 2, sb);
+        sid = addSection("For", sb);
         sb.append("<p>"
                 + index.getReference("For Loop", "For loops", sid)
                 + " in Python ("
@@ -196,7 +196,7 @@ public class Loops extends CoursePage {
                 + " statement can be used to skip to the start of the next loop"
                 + " iteration in the same way as in a while loop.</p>\n");
 
-        sid = addSection("4", "Nesting loops", 2, sb);
+        sid = addSection("Nesting loops", sb);
         sb.append("<p>In spatial analysis it is common to want to go through two"
                 + " dimensional (2D) raster data or tables of values. One way"
                 + " to do this is to nest for loops. Consider the following"

@@ -38,58 +38,67 @@ public class Exceptions extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
-        sb.append("""
-              <p>A Python exception is 'raised' when the Python interpreter 
-              encounters an error. There are numerous types of exception, all 
-              are types of 
-              <a href="https://docs.python.org/3/library/exceptions.html#BaseException">
-              BaseException</a>.</p>
-              <p>The raised exception is an object which contains details of 
-              the error and what code was being executed when the error was 
-              encountered.</p>
-              """);
+        SectionID sid = addSection("Introduction", sb);
+        sb.append("<p>A Python exception is 'raised' when the Python")
+                .append(" interpreter encounters an error. There are numerous")
+                .append(" types of exception, all are types of")
+                .append(index.getReference("Python BaseException", 
+                        "BaseException", sid))
+                .append("</p>");
+        sb.append("<p>The raised exception is an object which contains details")
+                .append(" of the error and what code was being executed when")
+                .append(" the error was encountered.</p>");
 
-        sid = addSection("2", "Try-Except", 2, sb);
-        sb.append("<p>If it is suspected that code might generate an exception, or"
-                + " if code raises an exception and analysis of this is to be"
-                + " done, then a "
-                + index.getReference("Python try", "try", sid)
-                + " compound statement can be used with an 'except' clause."
-                + " This tries to run the code in the try section and if"
-                + " specific exceptions are raised, then the code in the except"
-                + " clause is run.</p>\n");
+        sid = addSection("Try-Except", sb);
+        sb.append("<p>If it is suspected that code might generate an")
+                .append(" exception, or if code raises an exception and")
+                .append(" analysis of this is to be done, then a ")
+                .append(index.getReference("Python try", "try", sid))
+                .append(" compound statement can be used with an 'except'")
+                .append(" clause. This tries to run the code in the 'try'")
+                .append(" section and if specific exceptions are raised, then")
+                .append(" the code in the except clause is run.</p>\n");
+        sb.append("<p>Consider the following example:</p>");
+        addPythonCodeBlock(sb,
+                """
+                # Catch an exception
+                import random
+                try:
+                    a = 1/random.random()
+                    # Random generates number in
+                    # range [0,1) so
+                    # ZeroDivisionError possible
+                except:
+                    a = 0
+                print("Done")
+                """);
+        sb.append("<p>To reiterate, this will run the 'try' clause of the")
+                .append(" compound statement, and if an exception is raised in")
+                .append(" running that, then (and only then) will the 'except'")
+                .append(" clause run.</p>");
+        sb.append("<p>The 'except' clause in the example above catches any")
+                .append(" exception type. It is possible to be more specific")
+                .append(" and catch particular types of exception, for")
+                .append(" example, the following example will only run the")
+                .append(" except clause if the exception thrown is a ")
+                .append(index.getReference("Python ZeroDivisionError", 
+                        "ZeroDivisionError", sid))
+                .append(":</p>");
+        addPythonCodeBlock(sb,
+                """
+                # Catch a specific exception:
+                import random
+                try:
+                    a = 1/random.random()
+                    # Random generates number in
+                    # range 0,1 so
+                    # ZeroDivisionError possible
+                except ZeroDivisionError:
+                    a = 0
+                print("Done")
+                """);
         sb.append("""
-              <p>Consider the following example:</p>
-              <pre><code class="language-python"># Catch an exception
-              import random
-              try:
-                  a = 1/random.random()
-                  # Random generates number in
-                  # range [0,1) so
-                  # ZeroDivisionError possible
-              except:
-                  a = 0
-              print("Done")</code></pre>
-              <p>To reiterate, this will run the 'try' clause of the compound 
-              statement, and if an exception is raised in running that, then 
-              (and only then) will the 'except' clause run.</p>
-              <p>The 'except' clause in the example above catches any exception 
-              type. It is possible to be more specific and catch particular 
-              types of exception, for example, the following example will only 
-              run the except clause if the exception thrown is a 
-              'ZeroDivisionError' type exception:</p>
-              <pre><code class="language-python"># Catch a specific exception:
-              import random
-              try:
-                  a = 1/random.random()
-                  # Random generates number in
-                  # range 0,1 so
-                  # ZeroDivisionError possible
-              except ZeroDivisionError:
-                  a = 0
-              print("Done")</code></pre>
-              <p>There is a
+                  <p>There is a
               <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">
               heirarchy of exception types</a>.</p>
               <p>If an exception is encountered and is not of the type handled 
@@ -121,7 +130,7 @@ public class Exceptions extends CoursePage {
               </ol>
               """);
 
-        sid = addSection("3", "Raising Exceptions", 2, sb);
+        sid = addSection("Raising Exceptions", sb);
         sb.append("<p>Exceptions are raised automatically if they are encountered "
                 + "and not handled in an 'except' clause.</p>\n");
         sb.append("<p>The keyword 'raise' can be used to raise an exception by "
@@ -134,7 +143,7 @@ public class Exceptions extends CoursePage {
               exception from the builtins module.</p>
               """);
 
-        sid = addSection("4", "Else and Finally", 2, sb);
+        sid = addSection("Else and Finally", sb);
         sb.append("<p>To run something only if exceptions are not raised, add an "
                 + "'else' clause, for example:</p>\n");
         sb.append("""
@@ -174,7 +183,7 @@ public class Exceptions extends CoursePage {
               -->
               """);
 
-        sid = addSection("5", "System Exit", 2, sb);
+        sid = addSection("System Exit", sb);
         sb.append("<p>To exit a program at any point, call the '"
                 + "<a href=\"https://docs.python.org/3/library/sys.html#sys.exit\">"
                 + "exit function</a>'"

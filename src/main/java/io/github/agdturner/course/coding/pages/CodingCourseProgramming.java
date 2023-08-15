@@ -50,21 +50,21 @@ public class CodingCourseProgramming extends CourseProgramming {
     }
 
     public SectionID getIntroduction0(StringBuilder sb) {
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         return sid;
     }
 
     public void getData(StringBuilder sb) {
-        SectionID sid = addSection("2", "Data", 2, sb);
+        SectionID sid = addSection("Data", sb);
         getDataBitsAndBytes(sb);
         getDataFileFormats(sb);
         getDataIntegersAndFloatingPoint(sb);
     }
 
     public void getDataBitsAndBytes(StringBuilder sb) {
-        SectionID sid = addSection("2.1", "Bits and Bytes", 3, sb);
+        SectionID sid = addSubsection("Bits and Bytes", sb);
         sb.append("<p>In most modern computers, data is encoded in binary: the")
-                .append("smallest unit is a ")
+                .append(" smallest unit is a ")
                 .append(index.getReference("Bit", "bit", sid))
                 .append(" which encodes one of two possible states, which -")
                 .append(" for  simplicity and brevity - are denoted '0' and")
@@ -106,35 +106,35 @@ public class CodingCourseProgramming extends CourseProgramming {
     }
 
     public void getDataFileFormats(StringBuilder sb) {
-        SectionID sid = addSection("2.2", "File Formats", 3, sb);
+        SectionID sid = addSubsection("File Formats", sb);
         sb.append("<p>Data stored in a file is often stored in a standard ")
                 .append(index.getReference("File Format", "file format", sid))
                 .append(" - typically based on a versioned specification which")
-                .append(" details what encodings are used and how the data is")
-                .append(" organised.</p>\n");
+                .append(" details what encodings are used and how data gets")
+                .append(" arranged.</p>\n");
         sb.append("<p>Some file formats use different encodings in different")
                 .append(" parts, a complication that makes the data more")
                 .append(" usable and more compact - requiring less storage")
                 .append(" space.</p>\n");
         sb.append("<p>Often the suffix of a filename indicates the file")
                 .append(" format, for example the file format of a file named")
-                .append(" \"index.html\" is expected to be in ")
+                .append(" \"index.html\" is expected to be ")
                 .append(index.getReference("HTML", sid))
-                .append(" format. Some file formats contain an identifying")
+                .append(". Some file formats contain an identifying")
                 .append(" code (known as a ")
                 .append(index.getReference("Magic Number", "magic number", sid))
-                .append(" typically at the start of the file. If it is not")
-                .append(" clear from the filename or any external ")
+                .append(") typically at the start of the file which specify")
+                .append(" the format. File format can also be detailed in")
+                .append(" external")
                 .append(index.getReference("Metadata", "metadata", sid))
-                .append("what the format of the file is, sometimes it can be")
-                .append(" discerned from a magic number.</p>\n");
+                .append(".</p>\n");
         sb.append("<p>File formats are revisited in ")
                 .append("<a href=\"../io/index.html#5\">IO Section 5.</a>")
                 .append("</p>\n");
     }
 
     public void getDataIntegersAndFloatingPoint(StringBuilder sb) {
-        SectionID sid = addSection("2.3", "Integers and Floating Point", 3, sb);
+        SectionID sid = addSubsection("Integers and Floating Point", sb);
         sb.append("""
               <p>All the integer numbers in a specific range are often 
               represented individually using bytes of a length sufficient for 
@@ -159,7 +159,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 + " completely accurate and precise, other times it is"
                 + " rounded either up or down. It is important to be aware that"
                 + " there can be significant error in this standardised"
-                + " arithmetisite.</p>\n");
+                + " arithmetic.</p>\n");
         sb.append("<p>").append(index.getReference(
                 "Single-precision Floating-point",
                 "Single precision floating point", sid))
@@ -178,7 +178,7 @@ public class CodingCourseProgramming extends CourseProgramming {
     }
 
     public SectionID getLearning0(StringBuilder sb) {
-        SectionID sid = addSection("3", "Learning to Program", 2, sb);
+        SectionID sid = addSection("Learning to Program", sb);
         sb.append("""
               <p>Learning to program takes time and energy. It is highly 
               recommended that you organise to learn new programming concepts 
@@ -284,7 +284,7 @@ public class CodingCourseProgramming extends CourseProgramming {
     }
 
     public void getLanguageEvolution(StringBuilder sb) {
-        SectionID sid = addSection("4", "Language Evolution, Deprecation and Versions", 2, sb);
+        SectionID sid = addSection("Language Evolution, Deprecation and Versions", sb);
         sb.append("<p>High level computer programming languages like ")
                 .append(index.getReference("Java", sid))
                 .append(" and ")
@@ -339,7 +339,7 @@ public class CodingCourseProgramming extends CourseProgramming {
     }
 
     public SectionID getConsiderata0(StringBuilder sb) {
-        SectionID sid = addSection("5", "Considerata", 2, sb);
+        SectionID sid = addSection("Considerata", sb);
         sb.append("""
                   <p>For many reasons, a key one in science and for evidence 
                   based policy being '""")

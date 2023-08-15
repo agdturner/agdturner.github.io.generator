@@ -34,11 +34,11 @@ public class Classes extends CoursePage {
     public Classes(PythonIntroCodingCourse course) {
         super(course, "classes", "Classes", "Classes");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("""
               <p>Classes are templates for making objects. Objects are instances 
               of the 'class' that defines them. There can be many objects that 
@@ -65,12 +65,18 @@ public class Classes extends CoursePage {
               capitalised first letters for each word).</p>
               """);
 
-        sid = addSection("2", "Class Definitions, Constructors, Attributes and Methods", 2, sb);
+        sid = addSection("Class Definitions, Constructors, Attributes and Methods", sb);
         sb.append("""
               <p>A class is defined using the keyword 'class' followed by the 
               name of the class, parentheses, and a colon, for example:</p>
-              <pre><code class="language-python">class Agent():</code></pre>
-              <p>Class names separated by commas can be added in the parentheses 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                """);
+        sb.append(
+                """
+                <p>Class names separated by commas can be added in the parentheses 
               to declare parent classes that the class inherits from. Class 
               inheritence is detailed further in <a href="#3">Section 3</a>.</p>
               <p>As mentioned, in Python, functions inside classes are called 
@@ -83,48 +89,81 @@ public class Classes extends CoursePage {
               refer to attributes and methods of the class. For example, 
               instances of the following 'Agent' class are instantiated with 'x'
               and 'y' attribute variables that are initially set to be zero:</p>
-              <pre><code class="language-python">class Agent():
-                  def __init__(self):
-                      self.x = 0
-                      self.y = 0</code></pre>
-              <p>Suppose this class was in a file named 'agentframework.py' - 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self):
+                        self.x = 0
+                        self.y = 0
+                """);
+        sb.append(
+                """
+                <p>Suppose this class was in a file named 'agentframework.py' - 
               and so in a module named 'agentframework', it could be 
               instantiated from a script in the same directory as 
               'agentframework.py' as follows:<p>
-              <pre><code class="language-python">import agentframework
-              a = agentframework.Agent()</code></pre>
-              <p>And the 'x' and 'y' aatribute variables of 'a' - the instance 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                import agentframework
+                a = agentframework.Agent()
+                """);
+        sb.append(
+                """
+                <p>And the 'x' and 'y' aatribute variables of 'a' - the instance 
               of the class could then be accessed using the dot operator '.' as
               follows:</p>
-              <pre><code class="language-python">print(a.x) # <-- Prints the value of a.x
-              print(a.y) # <-- Prints the value of a.y
-              a.x = 3 # <-- Sets the values of a.x to be 3
-              a.y = a.y + 1 # <-- Increases the value of a.y by 1</code></pre>
-              <p>A class constructor method may accept multiple arguments. For 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                print(a.x) # <-- Prints the value of a.x
+                print(a.y) # <-- Prints the value of a.y
+                a.x = 3 # <-- Sets the values of a.x to be 3
+                a.y = a.y + 1 # <-- Increases the value of a.y by 1
+                """);
+        sb.append(
+                """
+                <p>A class constructor method may accept multiple arguments. For 
               example, the initial values for 'x' and 'y' could be passed in as 
               follows:</p>
-              <pre><code class="language-python">class Agent():
-                  def __init__(self, x, y):
-                      self.x = x
-                      self.y = y</code></pre>
-              <p>When instantiating an instance of this Agent class, it is 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self, x, y):
+                        self.x = x
+                        self.y = y
+                """);
+        sb.append(
+                """
+                <p>When instantiating an instance of this Agent class, it is 
               necessary to pass in two argument as the constructor method does 
               not set defaults of these values. The following code will 
               instantiate an Agent object using the latest class definition 
               above:</p>
-              <pre><code class="language-python">import agents
-              a = agents.Agent(0, 0)</code></pre>
-              <p>The parameters 'x' and 'y' do not have to have names 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                import agents
+                a = agents.Agent(0, 0)
+                """);
+        sb.append(
+                """
+                <p>The parameters 'x' and 'y' do not have to have names 
               corresponding to the attributes, and they can be given default 
               values making it optional as to whether these are supplied, by 
               changing the constructor method as follows:</p>
-              <pre><code class="language-python">class Agent():
-                  def __init__(self, x = 0, y = 0):
-                      self.x = x
-                      self.y = y</code></pre>
-              """);
+                """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self, x = 0, y = 0):
+                        self.x = x
+                        self.y = y
+                """);
 
-        sid = addSection("3", "Inheritance", 2, sb);
+        sid = addSection("Inheritance", sb);
         sb.append("""
               <p>In Python, all classes inherit (attributes and methods) from 
               the 'type' metaclass. A 'metaclass' can be thought of as a factory 
@@ -148,21 +187,27 @@ public class Classes extends CoursePage {
               separated by a comma.</p>
               <p>The following defines 'Goat' and 'Wolf' as classes that inherit 
               from the 'Agent' class:</p>
-              <pre><code class="language-python">class Agent():
-                  def __init__(self, x, y):
-                      self.x = x
-                      self.y = y
-              
-              class Goat(Agent):
-                  def __init__(self, x, y):
-                      super().__init__(x, y)
-                      self.hungry = True
-              
-              class Wolf(Agent):
-                  def __init__(self, x, y, pack):
-                      super().__init__(x, y)
-                      self.pack = pack</code></pre>
-              <p>The constructor methods of the Goat and Wolf classes call the 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self, x, y):
+                        self.x = x
+                        self.y = y
+
+                class Goat(Agent):
+                    def __init__(self, x, y):
+                        super().__init__(x, y)
+                        self.hungry = True
+
+                class Wolf(Agent):
+                    def __init__(self, x, y, pack):
+                        super().__init__(x, y)
+                        self.pack = pack
+                """);
+        sb.append(
+                """
+                <p>The constructor methods of the Goat and Wolf classes call the 
               superclass constructor method. Each instance of Goat would be 
               instantiated with the attribute 'self.hungry' equal to 'True'.
               Each instance of Wolf is given a parameter called 'pack' when 
@@ -178,7 +223,7 @@ public class Classes extends CoursePage {
               The Python Tutorial on Classes Section on Multiple Inheritance</a>.</p>
               """);
 
-        sid = addSection("4", "Access Control", 2, sb);
+        sid = addSection("Access Control", sb);
         sb.append("""
               <p>Python does not have an direct way to declare the access level 
               or control access to variables or functions/methods as is common 
@@ -193,81 +238,106 @@ public class Classes extends CoursePage {
               the attribute too. In the following example the function 
               property() is set up to pass, modify and delete the attribute _x:
               </p>
-              <pre><code class="language-python">class Agent():
-                  def __init__(self, ax, ay):
-                      self._x = ax
-                      self._y = ay
-              
-                  def getx(self):
-                      return self._x
-                      
-                  def setx(self, value):
-                      self._x = value
-                     
-                  def delx(self):
-                      del self._x
-              
-                  x = property(getx, setx, delx, "I'm the 'x' property.")</code></pre>
-              <p>This could be used from another module as follows:</p>
-              <pre><code class="language-python">import agents:
-              a = agent.Agent(0, 0):
-              a.x = 3
-              print(a.x) # <-- Prints 3</code></pre>
-              <p>So, rather than access the attribute _x directly, this is done 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self, ax, ay):
+                        self._x = ax
+                        self._y = ay
+
+                    def getx(self):
+                        return self._x
+
+                    def setx(self, value):
+                        self._x = value
+
+                    def delx(self):
+                        del self._x
+
+                    x = property(getx, setx, delx, "I'm the 'x' property.")
+                """);
+        sb.append(
+                """
+                <p>This could be used from another module as follows:</p>
+                """);        
+        addPythonCodeBlock(sb,
+                """
+                import agents:
+                a = agent.Agent(0, 0):
+                a.x = 3
+                print(a.x) # <-- Prints 3
+                """);
+        sb.append(
+                """
+                <p>So, rather than access the attribute _x directly, this is done 
               via a function which is aliased as x.</p>
               <p>Decorators can alternatively be used to achieve the same thing 
               as follows:</p>
-              <pre><code class="language-python">class Agent():
-                  def __init__(self, ax, ay):
-                      self._x = ax
-                      self._y = ay
-              
-                  @property
-                  def x(self):
-                      \"""I'm the 'x' property.\"""
-                      return self._x
-              
-                  @x.setter
-                  def x(self, value):
-                      self._x = value
-              
-                  @x.deleter
-                  def x(self):
-                      del self._x</code></pre>
-              <p>Details of this are provided in:
+                """);
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self, ax, ay):
+                        self._x = ax
+                        self._y = ay
+
+                    @property
+                    def x(self):
+                        \"""I'm the 'x' property.\"""
+                        return self._x
+
+                    @x.setter
+                    def x(self, value):
+                        self._x = value
+
+                    @x.deleter
+                    def x(self):
+                        del self._x
+                """);
+        sb.append(
+                """
+                <p>Details of this are provided in:
               <a href="https://docs.python.org/3/library/functions.html#property">
               The Python Library Documentation Chapter on Functions Section on Property</a>.</p>
               """);
 
-        sid = addSection("5", "Customisation", 2, sb);
+        sid = addSection("Customisation", sb);
         sb.append("<p>By default, when printing an object using the "
                 + index.getReference("Python print", "print", sid)
                 + " function, the memory address of the object is printed, but"
                 + " rarely is this useful. The '__str__' method can be"
                 + " overriden to provide a more useful string representation of"
                 + " an object, for example:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">class Agent():
-                  def __init__(self, x, y):
-                      self.x = x
-                      self.y = y
-                  
-                  def __str__(self):
-                      return "x=" + self.str(x) + ", y=" + self.str(y)
-              
-              class Goat(Agent):
-                  def __init__(self, x, y):
-                      super().__init__(x, y)
-                      self.hungry = True
+        addPythonCodeBlock(sb,
+                """
+                class Agent():
+                    def __init__(self, x, y):
+                        self.x = x
+                        self.y = y
 
-                  def __str__(self):
-                      return super().__str__() + ", hungry=" + self.str(hungry)</code></pre>
-              <p>More details on customisation can be found in              
+                    def __str__(self):
+                        return "x=" + self.str(x) + ", y=" + self.str(y)
+
+                class Goat(Agent):
+                    def __init__(self, x, y):
+                        super().__init__(x, y)
+                        self.hungry = True
+
+                    def __str__(self):
+                        return super().__str__() + ", hungry=" + self.str(hungry)
+                """);
+        sb.append(
+                """
+                <p>More details on customisation can be found in              
               <a href="https://docs.python.org/3/reference/datamodel.html#basic-customization">
-              The Python 3 Language Reference Data Model Chapter Section on Basic Customization</a>.</p> 
-              
-              <h2 id="6">6. Further learning</h2>
-              <p>For a more in depth consideration of classes, see:
+              The Python 3 Language Reference Data Model Chapter Section on Basic Customization</a>.
+                """);
+        
+        sid = addSection("Further learning", sb);
+        sb.append(
+                """
+                <p>For a more in depth consideration of classes, see:
               <a href="https://docs.python.org/3/tutorial/classes.html">
               The Python Tutorial on Classes</a>.</p>
               """);

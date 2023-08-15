@@ -34,85 +34,89 @@ public class ABM2 extends CoursePage {
     public ABM2(PythonIntroCodingCourse course) {
         super(course, "abm2", "Agent Based Model Practical 2", "ABM2");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Recap and preparation", 2, sb);
+        SectionID sid = addSection("Recap and preparation", sb);
         sb.append("<p>Your 'model.py' ABM1 code should look something like")
-            .append(" the following:</p>\n");
-        sb.append("""
-                  <pre><code class="language-python">import random
-              import math
-              
-              # Set the pseudo-random seed for reproducibility
-              random.seed(0)
-              
-              # Initialise variable x0
-              x0 = random.randint(0, 99)
-              print("x0", x0)
-              # Initialise variable y0
-              y0 = random.randint(0, 99)
-              print("y0", y0)
-              
-              # Change x0 and y0 randomly
-              rn = random.random()
-              print("rn", rn)
-              if rn < 0.5:
-                  x0 = x0 + 1
-              else:
-                  x0 = x0 - 1
-              print("x0", x0)
-              rn = random.random()
-              print("rn", rn)
-              if rn < 0.5:
-                  y0 = y0 + 1
-              else:
-                  y0 = y0 - 1
-              print("y0", y0)
-              
-              # Initialise variable x1
-              x1 = random.randint(0, 99)
-              print("x1", x1)
-              # Initialise variable y1
-              y1 = random.randint(0, 99)
-              print("y1", y1)
-              
-              # Change x1 and y1 randomly
-              rn = random.random()
-              print("rn", rn)
-              if rn < 0.5:
-                  x1 = x1 + 1
-              else:
-                  x1 = x1 - 1
-              print("x1", x1)
-              rn = random.random()
-              print("rn", rn)
-              if rn < 0.5:
-                  y1 = y1 + 1
-              else:
-                  y1 = y1 - 1
-              print("y1", y1)
-              
-              # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
-              # Set x0 and y0 to equal 0, x1 to equal 3, and y1 to equal 4
-              x0 = 0
-              y0 = 0
-              x1 = 3
-              y1 = 4
-              # Calculate the difference in the x coordinates.
-              dx = x0 - x1
-              # Calculate the difference in the y coordinates.
-              dy = y0 - y1
-              # Square the differences and add the squares
-              ssd = (dx * dx) + (dy * dy)
-              print("ssd", ssd)
-              # Calculate the square root
-              distance = ssd ** 0.5
-              print("distance", distance)
-              distance = math.sqrt(ssd)
-              print("distance", distance)</code></pre>
-              <p>Running the code should produce the following text output:</p>\n
+                .append(" the following:</p>\n");
+        addPythonCodeBlock(sb,
+                """
+                import random
+                import math
+
+                # Set the pseudo-random seed for reproducibility
+                random.seed(0)
+
+                # Initialise variable x0
+                x0 = random.randint(0, 99)
+                print("x0", x0)
+                # Initialise variable y0
+                y0 = random.randint(0, 99)
+                print("y0", y0)
+
+                # Change x0 and y0 randomly
+                rn = random.random()
+                print("rn", rn)
+                if rn < 0.5:
+                    x0 = x0 + 1
+                else:
+                    x0 = x0 - 1
+                print("x0", x0)
+                rn = random.random()
+                print("rn", rn)
+                if rn < 0.5:
+                    y0 = y0 + 1
+                else:
+                    y0 = y0 - 1
+                print("y0", y0)
+
+                # Initialise variable x1
+                x1 = random.randint(0, 99)
+                print("x1", x1)
+                # Initialise variable y1
+                y1 = random.randint(0, 99)
+                print("y1", y1)
+
+                # Change x1 and y1 randomly
+                rn = random.random()
+                print("rn", rn)
+                if rn < 0.5:
+                    x1 = x1 + 1
+                else:
+                    x1 = x1 - 1
+                print("x1", x1)
+                rn = random.random()
+                print("rn", rn)
+                if rn < 0.5:
+                    y1 = y1 + 1
+                else:
+                    y1 = y1 - 1
+                print("y1", y1)
+
+                # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
+                # Set x0 and y0 to equal 0, x1 to equal 3, and y1 to equal 4
+                x0 = 0
+                y0 = 0
+                x1 = 3
+                y1 = 4
+                # Calculate the difference in the x coordinates.
+                dx = x0 - x1
+                # Calculate the difference in the y coordinates.
+                dy = y0 - y1
+                # Square the differences and add the squares
+                ssd = (dx * dx) + (dy * dy)
+                print("ssd", ssd)
+                # Calculate the square root
+                distance = ssd ** 0.5
+                print("distance", distance)
+                distance = math.sqrt(ssd)
+                print("distance", distance)
+                """);
+        sb.append(
+                """
+                  <p>Running the code should produce the following text output:</p>\n
               <pre>x0 49
               y0 97
               rn 0.890243920837131
@@ -131,8 +135,8 @@ public class ABM2 extends CoursePage {
               <p>In your local code repository src directory create a new 
               directory called 'abm2'. Open Spyder and save 'model.py' into the 
               'abm2' directory.</p>\n""");
-        
-        sid = addSection("2", "Using Lists", 2, sb);
+
+        sid = addSection("Using Lists", sb);
         sb.append("<p>Rather than handle coordinates for each agent"
                 + " individually, the coordinates for each agent are now going"
                 + " to be stored in"
@@ -148,14 +152,25 @@ public class ABM2 extends CoursePage {
         sb.append("""
               <p>Towards the top of the file (below the import statements and 
               setting of the random seed) add the following to create a new 
-              empty list called 'agents':</p>\n
-              <pre><code class="language-python"># Create a list to store agents
-              agents = []</pre></code>
-              <p>Next, add coordinates to this list: First add one pair after 
+              empty list called 'agents':</p>""");
+        addPythonCodeBlock(sb,
+                """
+                # Create a list to store agents
+                agents = []
+                """);
+        sb.append(
+                """
+                <p>Next, add coordinates to this list: First add one pair after 
               initialising 'y0' and 'x0', by adding the following:
               </p>\n
-              <pre><code class="language-python">agents.append([x0,y0]) # Append to the list agents</pre></code>
-              <p>Note that '[x0,y0]' creates a list containing 'x0' and 'y0', 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                agents.append([x0,y0]) # Append to the list agents
+                """);
+        sb.append(
+                """
+                <p>Note that '[x0,y0]' creates a list containing 'x0' and 'y0', 
               and the 'append' function adds this list to the agents list. After
               doing this, 'agents[0][0]' is the 'x' coordinate of the first 
               agent in the agents list and 'agents[0][1]' is the 'y' coordinate 
@@ -166,32 +181,48 @@ public class ABM2 extends CoursePage {
               </p>\n
               <p>The code that creates the first agent and adds this to the 
               agents list should be as follows:</p>\n
-              <pre><code class="language-python"># Initialise variable x0
-              x0 = random.randint(0, 99)
-              print("x0", x0)
-              # Initialise variable y0
-              y0 = random.randint(0, 99)
-              print("y0", y0)
-              agents.append([x0, y0])</code></pre>
-              <p>Note that the variables 'x0' and 'y0' are only created for 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                # Initialise variable x0
+                x0 = random.randint(0, 99)
+                print("x0", x0)
+                # Initialise variable y0
+                y0 = random.randint(0, 99)
+                print("y0", y0)
+                agents.append([x0, y0])
+                """);
+        sb.append(
+                """
+                <p>Note that the variables 'x0' and 'y0' are only created for 
               this initialisation. Can you think of a way to reduce this code 
               and do the initialition more succinctly?</p>\n
               """);
-        
-        sid = addSection("3", "Plotting", 2, sb);
+
+        sid = addSection("Plotting", sb);
         sb.append("<p>To plot the agents using "
                 + references.getReference("Matplotlib")
                 + " add the following import statements:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">import matplotlib.pyplot as plt
-              import operator</code></pre>
-              <p>And adding the following code to the end of 'model.py':</p>\n
-              <pre><code class="language-python"># Plot the agents
-              plt.scatter(agents[0][0], agents[0][1], color='black')
-              plt.scatter(agents[1][0], agents[1][1], color='black')
-              plt.show()
-              # Get the coordinates with the largest x-coordinate 
-              print(max(agents, key=operator.itemgetter(0)))</code></pre>
+        addPythonCodeBlock(sb,
+                """
+                import matplotlib.pyplot as plt
+                import operator
+                """);
+        sb.append(
+                """
+                <p>And adding the following code to the end of 'model.py':</p>\n
+                """);
+        addPythonCodeBlock(sb,
+                """
+                # Plot the agents
+                plt.scatter(agents[0][0], agents[0][1], color='black')
+                plt.scatter(agents[1][0], agents[1][1], color='black')
+                plt.show()
+                # Get the coordinates with the largest x-coordinate 
+                print(max(agents, key=operator.itemgetter(0)))
+                """);
+        sb.append(
+                """
               <p>Run 'model.py' and you should see an image output in the 
               'Plots' pane of Spyder. The image should contain two points.</p>\n
               <p>Have a look at
@@ -204,8 +235,8 @@ public class ABM2 extends CoursePage {
               the 'show()' command.</p>\n
               <p>Have a try and don't worry if you don't get this to work.</p>\n
               """);
-        
-        sid = addSection("4", "Using Loops", 2, sb);
+
+        sid = addSection("Using Loops", sb);
         sb.append("<p>This section guides you through restructuring your code so"
                 + " that agent initialisation (for all agents) happens first,"
                 + " and moving (for all agents) happens second. There will be"
@@ -224,21 +255,24 @@ public class ABM2 extends CoursePage {
                 + index.getReference("Python for", "for loop", sid)
                 + " that uses n_agents to create 10 agents. The code you want"
                 + " is:</p>\n");
+        addPythonCodeBlock(sb,
+                """
+                n_agents = 10
+                for i in range(n_agents):
+                    agents.append([random.randint(0, 99), random.randint(0, 99)])
+                """);
         sb.append("""
-              <pre><code class="language-python">n_agents = 10
-              for i in range(n_agents):
-                  agents.append([random.randint(0, 99), random.randint(0, 99)])</code></pre>
               <p>Check that your program still runs.</p>\n
               <p>You no longer want any code that initialises other agents.</p>\n
               """);
-        sb.append ("<p>Use another for loop to move all 10 agents. And use another"
+        sb.append("<p>Use another for loop to move all 10 agents. And use another"
                 + " for loop to plot all 10 agents black. Hopefully, there is"
                 + " still a red coloured dot which gives the location of the"
                 + " agent with the largest x coordinate.</p>\n");
         sb.append("<p>Add and commit to your local git repository and assuming you"
                 + " are using GitHub - push your changes to GitHub.</p>\n");
-        
-        sid = addSection("5", "More Plotting", 2, sb);
+
+        sid = addSection("More Plotting", sb);
         sb.append("""
               <p>Similarly to plotting the agent with the largest x coordinate
               red, write code to plot the agent with the smallest x coordinate 
@@ -246,8 +280,8 @@ public class ABM2 extends CoursePage {
               coordinate green.</p>\n
               <p>Commit your code to your local repository and assuming you 
               are using GitHub - push your changes to GitHub.</p>\n""");
-        
-        sid = addSection("6", "Code Review and Looking Forward", 2, sb);
+
+        sid = addSection("Code Review and Looking Forward", sb);
         sb.append("""
               <p>If you managed to complete all parts, then it should be 
               straight forward to modify your code to run for different numbers

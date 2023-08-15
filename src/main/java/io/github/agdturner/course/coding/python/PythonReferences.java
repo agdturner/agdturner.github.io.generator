@@ -37,151 +37,149 @@ public class PythonReferences extends References {
     public PythonReferences(Course course, String filename, String title, String label) {
         super(course, filename, title, label);
 
-        String name;
+        String term;
         String url;
         String description;
         
-        name = "Anaconda";
+        term = "Anaconda";
         url = "https://www.anaconda.com/";
         description = "a data science platform";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "Conda";
+        term = "Conda";
         url = "https://docs.conda.io/";
         description = "an open source package management system and "
                 + "environment management system";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "IDLE";
+        term = "IDLE";
         url = PythonIndex.getPythonDocsLibraryURL("idle.html");
         description = "an Integrated Development and Learning Environment "
                 + "distributed with Python";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "Jupyter";
+        term = "Jupyter";
         url = "https://jupyter.org/about";
         description = "a non-profit, open-source project supporting "
                 + "interactive data science and scientific computing across "
                 + "all programming languages";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "Jupyter Notebook";
+        term = "Jupyter Notebook";
         url = "https://jupyter-notebook.readthedocs.io/en/stable/notebook.html";
         description = "a web-based application for developing, documenting, "
                 + "and executing code, and communicating results";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "Matplotlib";
+        term = "Matplotlib";
         url = "https://matplotlib.org/";
         description = "a library for creating static, animated, and "
                 + "interactive visualizations in Python";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "PIP";
+        term = "PIP";
         url = "https://pip.pypa.io";
         description = "The Package Installer for \"Python\"";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "Python Package Index (PyPI)";
+        term = "Python Package Index (PyPI)";
         url = "https://pypi.org/";
         description = "A repository of software for \"Python\".";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
         String python3Documentation = "Python 3 Documentation";
         
-        name = python3Documentation;
+        term = python3Documentation;
         url = PythonIndex.PYTHON_DOCS_URL;
         description = "Python 3 Documentation";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = python3Documentation + ": Reference";
+        term = python3Documentation + ": Reference";
         url = PythonIndex.getPythonDocsReferenceURL("");
         description = "Manual describing the syntax and \"core semantics\" of "
                 + "Python";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = python3Documentation + ": Glossary";
+        term = python3Documentation + ": Glossary";
         url = PythonIndex.PYTHON_DOCS_URL + "glossary.html";
         description = "Python 3 Documentation glossary of terms";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = python3Documentation + ": Library";
+        term = python3Documentation + ": Library";
         url = PythonIndex.getPythonDocsLibraryURL("");
         description = "The functionality that is included in Python "
                 + "distributions as standard and it's reference manual";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        String pythonTutorialURL = PythonIndex.PYTHON_DOCS_URL + "tutorial/";
-                
         String python3DocumentationTutorial = python3Documentation + ": Tutorial";
-        name = python3DocumentationTutorial;
-        url = pythonTutorialURL;
+        term = python3DocumentationTutorial;
+        url = PythonIndex.PYTHON_DOCS_URL_TUTORIAL;
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = python3DocumentationTutorial + ": Classes";
-        url = pythonTutorialURL + "classes.html";
+        term = python3DocumentationTutorial + ": Classes";
+        url = PythonIndex.PYTHON_DOCS_URL_TUTORIAL + "classes.html";
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = python3DocumentationTutorial + ": Modules";
-        url = pythonTutorialURL + "modules.html";
+        term = python3DocumentationTutorial + ": Modules";
+        url = PythonIndex.PYTHON_DOCS_URL_TUTORIAL + "modules.html";
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = python3DocumentationTutorial + ": Packages";
-        url = pythonTutorialURL + "modules#packages.html";
+        term = python3DocumentationTutorial + ": Packages";
+        url = PythonIndex.PYTHON_DOCS_URL_TUTORIAL + "modules.html#packages";
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = python3Documentation + ": What's New";
+        term = python3Documentation + ": What's New";
         url = PythonIndex.PYTHON_DOCS_URL + "whatsnew";
         description = "The \"What's New in Python\" documentation tours "
                 + "through the most important changes between major Python "
                 + "versions";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "Python Enhancement Proposal Website";
+        term = "Python Enhancement Proposal Website";
         url = "https://peps.python.org/";
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "Python Lexical Analysis Documentation";
+        term = "Python Lexical Analysis Documentation";
         url = PythonIndex.getPythonDocsReferenceURL("lexical_analysis.html");
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "Python Packaging User Guide";
+        term = "Python Packaging User Guide";
         url = "https://packaging.python.org/";
         description = "a collection of tutorials and references to help you "
                 + "distribute and install Python packages with modern tools";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "Python Software Foundation";
+        term = "Python Software Foundation";
         url = "https://www.python.org/psf/";
         description = "an organization devoted to advancing open source "
                 + "technology related to the Python programming language";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
 
-        name = "Python Website";
+        term = "Python Website";
         url = "https://www.python.org/";
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "QGIS";
+        term = "QGIS";
         url = "https://qgis.org/";
         description = "Quantum Geographical Infromation System Software";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "Spyder";
+        term = "Spyder";
         url = "https://www.spyder-ide.org/";
         description = "a web-based application and an integrated development "
                 + "environment for Python";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
         
-        name = "Spyder Documentation";
+        term = "Spyder Documentation";
         url = "https://docs.spyder-ide.org/";
         description = null;
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(term, new Term(index, description, url));
     }
 }

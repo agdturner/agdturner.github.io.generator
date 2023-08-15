@@ -38,7 +38,7 @@ public class Modules extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("""
               <p>In Python a 'module' is a single file that may contain classes, 
               functions and variables. It has to be imported to make these 
@@ -52,7 +52,7 @@ public class Modules extends CoursePage {
               packages.</p>
               """);
 
-        sid = addSection("2", "Importing", 2, sb);
+        sid = addSection("Importing", sb);
         sb.append("<p>The "
                 + index.getReference("Python Module Index", sid)
                 + " is a useful look up for "
@@ -115,7 +115,7 @@ public class Modules extends CoursePage {
                   # It is not run if the module is imported.</code></pre>
               """);
 
-        sid = addSection("3", "Packages", 2, sb);
+        sid = addSection("Packages", sb);
         sb.append("""
               <p>Consider the following package file structure:</p>
               <pre><code class="language-python">/abm
@@ -148,7 +148,7 @@ public class Modules extends CoursePage {
               <pre>python -m packagename</pre>
               """);
 
-        sid = addSection("4", "Third Party Libraries", 2, sb);
+        sid = addSection("Third Party Libraries", sb);
         sb.append("<p>"
                 + references.getReference("Anaconda")
                 + " comes bundled with numerous third party libraries.</p>\n");

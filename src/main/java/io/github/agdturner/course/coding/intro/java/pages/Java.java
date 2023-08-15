@@ -15,7 +15,6 @@
  */
 package io.github.agdturner.course.coding.intro.java.pages;
 
-import io.github.agdturner.core.Section;
 import io.github.agdturner.course.coding.intro.java.JavaIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -38,7 +37,7 @@ public class Java extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        addSection("1", "Introduction", 2, sb);
+        addSection("Introduction", sb);
         sb.append("<p>"
                 + index.getReference("Java")
                 + " is ...");
@@ -69,7 +68,7 @@ public class Java extends CoursePage {
                 + site.references.getReference("Python 3 Documentation")
                 + ".</p>");
         */
-        addSection("2", "Java 17", 2, sb);
+        addSection("Java 17", sb);
         sb.append("""
               <p>Java 17 was first released in...</p>
               """);

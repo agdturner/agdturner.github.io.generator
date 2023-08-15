@@ -28,7 +28,7 @@ public class References extends CoursePage {
     /**
      * To look up terms from a name.
      */
-    public TreeMap<String, Term> nameToTerm;
+    public TreeMap<String, Term> termToTerm;
 
     /**
      * Create a new instance.
@@ -40,7 +40,7 @@ public class References extends CoursePage {
      */
     public References(Course course, String filename, String title, String label) {
         super(course, filename, title, label);
-        nameToTerm = new TreeMap<>();
+        termToTerm = new TreeMap<>();
 
         String name;
         String url;
@@ -50,7 +50,7 @@ public class References extends CoursePage {
         url = "https://github.com/";
         description = "An \"Internet\" hosting service for \"software\" "
                 + "development and \"version control\"";
-        nameToTerm.put(name, new Term(index, description, url));
+        termToTerm.put(name, new Term(index, description, url));
 
     }
 
@@ -75,8 +75,8 @@ public class References extends CoursePage {
      */
     public String addWebReference(Course course, String name, String linkText,
             String url, String description) {
-        if (!references.nameToTerm.containsKey(name)) {
-            references.nameToTerm.put(name,
+        if (!references.termToTerm.containsKey(name)) {
+            references.termToTerm.put(name,
                     new Term(index, description, url));
         }
         return Web_ContentWriter.getLink(url, linkText);
@@ -96,15 +96,15 @@ public class References extends CoursePage {
      * @return the link for the reference given by name.
      */
     public String getReference(String name, String linkText) {
-        return nameToTerm.get(name).getLink(linkText);
+        return termToTerm.get(name).getLink(linkText);
     }
 
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         sb.append("<ul>");
-        for (String name : nameToTerm.keySet()) {
-            Term term = nameToTerm.get(name);
+        for (String name : termToTerm.keySet()) {
+            Term term = termToTerm.get(name);
             sb.append("<li>");
             sb.append(term.getLinkAndDescription(name));
             sb.append(".");            

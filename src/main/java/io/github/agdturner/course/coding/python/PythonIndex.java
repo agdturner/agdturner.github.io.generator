@@ -27,10 +27,15 @@ import io.github.agdturner.course.IndexTerm;
 public class PythonIndex extends Index {
 
     /**
-     * A constant storing the URL of Python 3 Documentation as a String.
+     * A constant storing the Python 3 Documentation URL as a String.
      */
     public final static String PYTHON_DOCS_URL = "https://docs.python.org/3/";
 
+    /**
+     * A constant storing the Python 3 Documentation tutorial URL as a String.
+     */
+    public final static String PYTHON_DOCS_URL_TUTORIAL = PYTHON_DOCS_URL + "tutorial/";
+    
     /**
      * Create a new instance.
      *
@@ -90,6 +95,12 @@ public class PythonIndex extends Index {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
+        term = "Python BaseException";
+        url = getPythonDocsLibraryURL("exceptions.html#BaseException");
+        description = "The base class for all \"Python Built-in Exceptions\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
         term = "Python break";
         url = getPythonDocsReferenceURL("simple_stmts.html#break");
         description = "A \"keyword\" that terminates the nearest enclosing "
@@ -194,6 +205,13 @@ public class PythonIndex extends Index {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
+        term = "Python classes";
+        url = PYTHON_DOCS_URL_TUTORIAL + "classes.html";
+        description = "\"Classes\" provide a means of bundling data and "
+                + "functionality together";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
         term = "Python dir";
         url = getPythonDocsLibraryURL("functions.html#dir");
         description = "A function that: without arguments, returns the list of "
@@ -317,6 +335,12 @@ public class PythonIndex extends Index {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
+        term = "Python modules";
+        url = PYTHON_DOCS_URL_TUTORIAL + "modules.html";
+        description = "A file containing Python definitions and statements.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
         term = "Python Module Index";
         url = PYTHON_DOCS_URL + "py-modindex.html";
         description = "An index of \"standard library\" modules";
@@ -506,10 +530,11 @@ public class PythonIndex extends Index {
         term = "Python venv";
         url = getPythonDocsLibraryURL("venv.html");
         description = "A \"standard library\" module that supports creating "
-                + "lightweight <a href=\"https://docs.python.org/3/glossary.html#term-virtual-environment\">"
+                + "lightweight <a href=\"" + PYTHON_DOCS_URL 
+                + "glossary.html#term-virtual-environment\">"
                 + "virtual environments</a>, each with their own "
-                + "independent set of Python packages installed in their site "
-                + "directories";
+                + "independent set of \"Python packages\" installed in their "
+                + "dsite irectories";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 

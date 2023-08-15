@@ -38,7 +38,7 @@ public class GUI extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>A "
                 + index.getReference("GUI", "Graphical User Interface", sid)
                 + " (GUI) is typically comprised of rectangular windows"
@@ -74,7 +74,7 @@ public class GUI extends CoursePage {
               conditions) the function will be run. </p>
               """);
 
-        sid = addSection("2", "Getting Started with tkinter", 2, sb);
+        sid = addSection("Getting Started with tkinter", sb);
         sb.append("""
               <p>The following code sets up a main window called 'root', a 
               'Label' called 'label', a 'Button' to modify the label text via 
@@ -115,7 +115,7 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("2.1", "TTK", 3, sb);
+        sid = addSubsection("TTK", sb);
         sb.append("""
               <p>A slightly different look is provided by a more recent "themed"
               toolkit. The following does the same, but uses 'ttk' for the 
@@ -156,7 +156,7 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("2.2", "Menus", 3, sb);
+        sid = addSubsection("Menus", sb);
         sb.append("""
               <p>The following builds on the example setting up a menu and also 
               configuring so that if the window is closed, then the program 
@@ -211,7 +211,7 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("3", "Example scale or slider widget", 2, sb);
+        sid = addSection("Example scale or slider widget", sb);
         sb.append("""
               <p>The following sets up a scale or slider widget so that the user
               can move the slider to change the power used to dynamically scale 
@@ -357,7 +357,7 @@ public class GUI extends CoursePage {
               root.mainloop()</code></pre>
               """);
 
-        sid = addSection("4", "GUI Design and Development", 2, sb);
+        sid = addSection("GUI Design and Development", sb);
         sb.append("""
               <p>There are various important things to consider in designing a 
               GUI. Usually the aim is to provide a GUI that is intuitive to use.

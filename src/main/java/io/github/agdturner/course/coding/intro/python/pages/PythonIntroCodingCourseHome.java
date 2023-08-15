@@ -100,15 +100,11 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         sb.append("<p>Structuring and organising ")
                 .append(index.getReference("Python"))
                 .append(" code into ")
-                .append(references.getReference(
-                        "Python 3 Documentation: Tutorial: Classes", "Classes"))
+                .append(index.getReference("Python classes", "Classes"))
                 .append(", ")
-                .append(references.getReference(
-                        "Python 3 Documentation: Tutorial: Modules", "Modules"))
+                .append(index.getReference("Python modules", "Modules"))
                 .append(", and ")
-                .append(references.getReference(
-                        "Python 3 Documentation: Tutorial: Packages",
-                        "Packages"))
+                .append(index.getReference("Python packages", "Packages"))
                 .append(".</p>\n");
         sb.append("<p>")
                 .append(index.getReference("Python"))
@@ -211,7 +207,6 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     public void getLearningJourney2(StringBuilder sb, SectionID sid) {
-        super.getLearningJourneyN(sb, sid);
         sb.append("<p>Do not expect to master ")
                 .append(index.getReference(getCourse().courseType))
                 .append(" by the end of this course. Usually this takes many")

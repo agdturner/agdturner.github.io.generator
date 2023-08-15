@@ -35,11 +35,11 @@ public class ABM5 extends CoursePage {
     public ABM5(PythonIntroCodingCourse course) {
         super(course, "abm5", "Agent Based Model Practical 5", "ABM5");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
+        SectionID sid = addSection("Introduction and Preparation", sb);
         sb.append("""
               <p>In this part the ABM environment entity will be initialise from
               a file. The agents will interact with this environment in a 
@@ -54,7 +54,7 @@ public class ABM5 extends CoursePage {
               code in different directories.</p>
               """);
 
-        sid = addSection("2", "Input Data", 2, sb);
+        sid = addSection("Input Data", sb);
         sb.append("""
               <p>Download/save into your newly created input data directory the 
               text file:
@@ -68,7 +68,10 @@ public class ABM5 extends CoursePage {
         sb.append("""
               <p>Create a new source code file named 'io.py' in the 'abm5' 
               directory, add the following lines:</p>
-              <pre><code class="language-python">import csv
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              import csv
               
               # Read input data
               f = open('../../data/input/in.txt', newline='')
@@ -80,7 +83,7 @@ public class ABM5 extends CoursePage {
                       #print(value)
                   data.append(row)
               f.close()
-              print(data)</code></pre>
+              print(data)
               """);
         sb.append("""
               <p>Run this new file. The output should correspond to the input 
@@ -92,10 +95,21 @@ public class ABM5 extends CoursePage {
               <p>Change the code block into a function called 'read_data' that 
               returns the data variable. Write code to call this function from 
               'model.py' by adding the following import statement:</p>
-              <pre><code class="language-python">import io</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              import io
+              """);
+        sb.append("""
               <p>After the import statements try to call the 'read_data' 
               function using:</p>
-              <pre><code class="language-python">environment = io.read_data()</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              environment = io.read_data()
+              """);
+
+        sb.append("""
               <p>You should encounter an AttributeError along the lines of the 
               following:</p>
               <pre>Traceback (most recent call last):
@@ -116,8 +130,13 @@ public class ABM5 extends CoursePage {
               way forward. In the 'abm5' directory, create a directory called 
               'my_modules' and move both 'io.py' and 'agentframework.py' into 
               it. Change the respective import statements in 'model.py' to be:</p>
-              <pre><code class="language-python">import my_modules.agentframework as af
-              import my_modules.io as io</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              import my_modules.agentframework as af
+              import my_modules.io as io
+              """);
+        sb.append("""
               <p>Run 'model.py' and it should now run without the error. (If you 
               still get an error then restart Spyder.)</p>
               """);
@@ -131,20 +150,30 @@ public class ABM5 extends CoursePage {
                 + "function initialising variables 'n_rows' and 'n_cols' as "
                 + "well as 'environment'.)</p>\n");
 
-        sid = addSection("3", "Plot environment", 2, sb);
+        sid = addSection("Plot environment", sb);
         sb.append("""
               <p>Assume that each row of 'environment' aligns with a 
               y-coordinate and each column of 'environment' aligns with an 
               x-coordinate.</p>
               <p>To plot 'agents' on the 'environment' add the following at the 
               start of the plotting section:</p>
-              <pre><code class="language-python">plt.imshow(environment)</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              plt.imshow(environment)
+              """);
+        sb.append("""
               <p>Change the initialisation of 'x_max' and 'y_max' to be as 
               follows:</p>
-              <pre><code class="language-python"># The maximum an agents x coordinate is allowed to be.
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              # The maximum an agents x coordinate is allowed to be.
               x_max = n_cols - 1
               # The maximum an agents y coordinate is allowed to be.
-              y_max = n_rows - 1</code></pre>
+              y_max = n_rows - 1
+              """);
+        sb.append("""
               <p>A plot should be produced that looks like:</p>
               <p><img src="../../resources/abm5/Figure_1.png" 
                 alt="A plot of agents on the environment." /></p>
@@ -153,8 +182,13 @@ public class ABM5 extends CoursePage {
               increments, so the the pattern is more squashed along the x-axis. 
               Limit the plot axes and flip the y-axis back by adding the 
               following code before the plot.show() function is called:</p>
-              <pre><code class="language-python">plt.ylim(y_min, y_max)
-              plt.xlim(x_min, x_max)</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+              plt.ylim(y_min, y_max)
+              plt.xlim(x_min, x_max)
+              """);
+        sb.append("""
               <p>Run again and the output plot should look like:</p>
               <img src="../../resources/abm5/Figure_2.png" 
                 alt="A plot of agents on a limited part of the environment." />
@@ -162,28 +196,33 @@ public class ABM5 extends CoursePage {
               environment. Change the code so that they are initialised in the 
               middle. A good way to do this is to pass in 'n_rows' and 'n_cols' 
               to the Agent '__init__' constructor method, and use these 
-              parameters to initialise the x and y coordinates as follows:</p> 
-              <pre><code class="language-python">def __init__(self, i, n_rows, n_cols):
-                  \"""
-                  The constructor method.
+              parameters to initialise the x and y coordinates as follows:</p>
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                def __init__(self, i, n_rows, n_cols):
+                    \"""
+                    The constructor method.
 
-                  Parameters
-                  ----------
-                  i : Integer
-                      To be unique to each instance.
-                  n_rows : Integer
-                      The number of rows in environment.
-                  n_cols : Integer
-                      The number of columns in environment.
-                  Returns
-                  -------
-                  None.
-                  \"""
-                  self.i = i
-                  tnc = int(n_cols / 3)
-                  self.x = random.randint(tnc - 1, (2 * tnc) - 1)
-                  tnr = int(n_rows / 3)    
-                  self.y = random.randint(tnr - 1, (2 * tnr) - 1)</code></pre>
+                    Parameters
+                    ----------
+                    i : Integer
+                        To be unique to each instance.
+                    n_rows : Integer
+                        The number of rows in environment.
+                    n_cols : Integer
+                        The number of columns in environment.
+                    Returns
+                    -------
+                    None.
+                    \"""
+                    self.i = i
+                    tnc = int(n_cols / 3)
+                    self.x = random.randint(tnc - 1, (2 * tnc) - 1)
+                    tnr = int(n_rows / 3)    
+                    self.y = random.randint(tnr - 1, (2 * tnr) - 1)
+                """);
+        sb.append("""
               <p>Change the code that calls the constuctor method so it passes 
               in the variables 'n_rows' and 'ncols' approprately. Run 
               'model.py'. The output plot should look like the following:</p>
@@ -197,13 +236,16 @@ public class ABM5 extends CoursePage {
               code would do this and effectively initialise agents in the 
               central third of a similar rectangular environment irrespective of 
               the number of rows and columns:</p>
-              <pre><code class="language-python">tnc = int(n_cols / 3)
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              tnc = int(n_cols / 3)
               self.x = random.randint(0, tnc - 1) + tnc
               tnr = int(n_rows / 3)
-              self.y = random.randint(0, tnr - 1) + tnr</code></pre>
+              self.y = random.randint(0, tnr - 1) + tnr
               """);
-        
-        sid = addSection("4", "Agent-Environment Interaction", 2, sb);
+
+        sid = addSection("Agent-Environment Interaction", sb);
         sb.append("""
               <p>Imagine that 'environment' values represent resources that 
               can be eaten or stored by agents.</a>
@@ -211,7 +253,10 @@ public class ABM5 extends CoursePage {
               'environment' is also expected to be passed in and keep a reference 
               to this as a class attribute. Also create a 'store' attribute and 
               set this equal to zero:</p>
-              <pre><code class="language-python">def __init__(self, i, environment, n_rows, n_cols):
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              def __init__(self, i, environment, n_rows, n_cols):
               \"""
               The constructor method.
 
@@ -237,14 +282,21 @@ public class ABM5 extends CoursePage {
               self.x = random.randint(tnc - 1, (2 * tnc) - 1)
               tnr = int(n_rows / 3)    
               self.y = random.randint(tnr - 1, (2 * tnr) - 1)
-              self.store = 0</code></pre>
+              self.store = 0
+              """);
+        sb.append("""
               <p>Change model.py so that environment is passed in correctly as 
               agents are initialised.</p>
               <p>In the Agent class define the following method:</p>
-              <pre><code class="language-python">def eat(self):
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              def eat(self):
                   if self.environment[self.y][self.x] &gt;= 10:
                       self.environment[self.y][self.x] -= 10
-                      self.store += 10</code></pre>
+                      self.store += 10
+              """);
+        sb.append("""
               <p>This method checks the value of the 'environment' where the 
               agent is located and if this is greater than or equal to 10, the 
               value of 'environment' where the agent is located is reduced by 10 
@@ -256,8 +308,13 @@ public class ABM5 extends CoursePage {
               the plot.</p>
               <p>Change the plot limits for a closer look at the centre of the 
               environment as follows:</p>
-              <pre><code class="language-python">plt.ylim(y_max / 3, y_max * 2 / 3)
-              plt.xlim(x_max / 3, x_max * 2 / 3)</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              plt.ylim(y_max / 3, y_max * 2 / 3)
+              plt.xlim(x_max / 3, x_max * 2 / 3)
+              """);
+        sb.append("""
               <p>Run the program again and you should get the following image:
               </p>
               <img src="../../resources/abm5/Figure_4.png" 
@@ -274,8 +331,8 @@ public class ABM5 extends CoursePage {
               <p>Commit your code to your local repository and assuming you are 
               using GitHub - push your changes to GitHub.</p>
               """);
-        
-        sid = addSection("5", "Further Assignment 1 Coding Tasks", 2, sb);
+
+        sid = addSection("Further Assignment 1 Coding Tasks", sb);
         sb.append("""
               <p>In the eat method of the Agent class, detail an 'else' clause 
               of the 'if' statement so that if the value of 'environment' where 
@@ -296,7 +353,12 @@ public class ABM5 extends CoursePage {
               <!--
               <p>Set some of the model parameters towards the start of 
               the program using keyboard input such like:</p>
-              <pre><code class="language-python">n_agents = int(input("Set n_agents: Key in a positive integer then press <ENTER>:"))</code></pre>
+                  """);
+        addPythonCodeBlock(sb,
+              """
+              n_agents = int(input("Set n_agents: Key in a positive integer then press <ENTER>:"))
+              """);        
+        sb.append("""
               <p>Get agents to optional stay still or moving left, right, up or down and not just diagonally.</p>
               <p>Get agents to move or eat but not both in an iteration.</p>
               -->
@@ -304,7 +366,7 @@ public class ABM5 extends CoursePage {
               using GitHub - push your changes to GitHub.</p>
               """);
 
-        sid = addSection("6", "Code Review and Looking Forward", 2, sb);
+        sid = addSection("Code Review and Looking Forward", sb);
         sb.append("""
               <p>Consider what happens when two or more agents are at the same 
               location and there is less resource at the location for all the 

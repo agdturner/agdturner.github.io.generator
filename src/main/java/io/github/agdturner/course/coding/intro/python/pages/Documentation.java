@@ -38,7 +38,7 @@ public class Documentation extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("""
               <p><a href="https://docs.python.org/3/library/doctest.html">
               PyDoc</a> is the documentation system distributed with Python.

@@ -39,7 +39,7 @@ public class Python extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>"
                 + index.getReference("Python")
                 + " is a popular and powerful high-level programming language "
@@ -69,7 +69,7 @@ public class Python extends CoursePage {
                 + references.getReference("Python 3 Documentation")
                 + ".</p>\n");
 
-        sid = addSection("2", "Python 3", 2, sb);
+        sid = addSection("Python 3", sb);
         sb.append("""
               <p>Python 3 was first released in 2008. For several years both 
               Python 2 and Python 3 were developed and supported, but eventually 
@@ -134,7 +134,7 @@ public class Python extends CoursePage {
                 + " that series of tutorials which compliment these learning"
                 + " resources and go through some things in more depth.</p>\n");
 
-        sid = addSection("3", "Running Python", 2, sb);
+        sid = addSection("Running Python", sb);
         sb.append("<p>Python instructions also known as 'commands' or 'statements',"
                 + " can be entered one at a time at a "
                 + index.getReference("Command Line Interface",
@@ -165,7 +165,7 @@ public class Python extends CoursePage {
                 + " of Python already installed. By default, Anaconda"
                 + " installs into the user home directory.</p>\n");
 
-        sid = addSection("3.1", "Python REPL", 3, sb);
+        sid = addSubsection("Python REPL", sb);
         sb.append("""
               <h4>3.1.1. Hello World</h4>
               <p>Open an 'Anaconda prompt'. On Windows the prompt should look 
@@ -190,7 +190,7 @@ public class Python extends CoursePage {
               <pre>Hello World</pre>
               """);
 
-        sid = addSection("3.1.2", "Numerical calculations", 4, sb);
+        sid = addSubsubsection("Numerical calculations", sb);
         sb.append("""
               <p>The Python prompt can be used for some basic calculations. 
               Enter:</p>
@@ -283,7 +283,7 @@ public class Python extends CoursePage {
               """);
         sb.append("");
 
-        sid = addSection("3.2", "Loading Modules and Using Functions", 3, sb);
+        sid = addSubsection("Loading Modules and Using Functions", sb);
         sb.append("<p>Some mathematical operators are built-in as delimiters. Others can be found "
                 + "in the , but they are  '+' and '*' are shorthand for "
                 + "functions that reside in the "
@@ -356,7 +356,7 @@ public class Python extends CoursePage {
               module.</p>
               """);
 
-        sid = addSection("3.3", "The Help System", 3, sb);
+        sid = addSubsection("The Help System", sb);
         sb.append(index.getReference("Python help", "", sid));
         sb.append("""
               <p>At the Python prompt, enter:</p>
@@ -637,9 +637,9 @@ public class Python extends CoursePage {
               be written.</p>
               """);
 
-        sid = addSection("4", "Basic Python Syntax", 2, sb);
+        sid = addSection("Basic Python Syntax", sb);
 
-        sid = addSection("4.1", "Syntax Errors", 3, sb);
+        sid = addSubsection("Syntax Errors", sb);
         index.getReference("Syntax Error", "", sid);
         sb.append("<p>If a statement or expression is syntactically incorrect, and"
                 + " the Python interpreter attempts to interpret it, a "
@@ -678,7 +678,7 @@ public class Python extends CoursePage {
               many other languages do.</p>
               """);
 
-        sid = addSection("4.3", "Comments", 3, sb);
+        sid = addSubsection("Comments", sb);
         sb.append("""
               <p>The symbol '#' is the start of a comment. Consider the 
               following code:</p>
@@ -725,7 +725,7 @@ public class Python extends CoursePage {
               to explain why code any code is commented out.</p>
               """);
 
-        sid = addSection("4.4", "Code Layout", 3, sb);
+        sid = addSubsection("Code Layout", sb);
         sb.append("""
               <p>Blank lines are allowed and can help structure code into 
               blocks. It is good practice to start each code block with a
@@ -764,7 +764,7 @@ public class Python extends CoursePage {
                 + index.getReference("Python NameError", "NameError")
                 + " will be raised.</p>\n");
 
-        sid = addSection("4.5", "Delimiters, Literals and Operators", 3, sb);
+        sid = addSubsection("Delimiters, Literals and Operators", sb);
         sb.append("<p>Delimiters in code separate and help organise things. The "
                 + " following are "
                 + index.getReference("Python delimiters", sid)
@@ -791,7 +791,7 @@ public class Python extends CoursePage {
                 + " module functions (e.g. +, -, *, /, %)</p>\n");
         sb.append("<p>Literals are specific numerical or text values.</p>\n");
 
-        sid = addSection("4.6", "Identifiers and Keywords", 3, sb);
+        sid = addSubsection("Identifiers and Keywords", sb);
         sb.append("<p>Identifiers are names of variables, functions, classes,"
                 + " modules and packages.</p>\n");
         sb.append("<p>A Python "
@@ -823,7 +823,7 @@ public class Python extends CoursePage {
                         "Python Lexical Analysis Documentation")
                 + "</p>\n");
 
-        sid = addSection("4.7", "Style", 3, sb);
+        sid = addSubsection("Style", sb);
         sb.append("<p>The following code block is a "
                 + index.getReference("Python if", sid)
                 + " statement which can be read as follows: If the variable 'x'"
@@ -887,7 +887,7 @@ public class Python extends CoursePage {
               directory.</p>
               """);
 
-        sid = addSection("6", "Jupyter Notebook", 2, sb);
+        sid = addSection("Jupyter Notebook", sb);
         sb.append("<p>"
                 + references.getReference("Jupyter Notebook")
                 + ", is a "
@@ -938,7 +938,7 @@ public class Python extends CoursePage {
                 + "Python packages. First though, let's explore running Python "
                 + "code in some other ways...</p>\n");
 
-        sid = addSection("7", "Integrated Development Environments", 2, sb);
+        sid = addSection("Integrated Development Environments", sb);
         sb.append("<p>"
                 + index.getReference("IDE",
                         "Integrated Development Environments", sid)
@@ -951,7 +951,7 @@ public class Python extends CoursePage {
                 + references.getReference("Anaconda")
                 + ".</p>\n");
 
-        sid = addSection("7.1", "IDLE", 3, sb);
+        sid = addSubsection("IDLE", sb);
         sb.append("<p>Python comes with "
                 + references.getReference("IDLE")
                 + " - an Integrated Development and Learning Environment for "
@@ -983,7 +983,7 @@ public class Python extends CoursePage {
               """);
         sb.append("<p>Close the instance of IDLE that is running.<p>");
 
-        sid = addSection("7.2", "Spyder", 3, sb);
+        sid = addSubsection("Spyder", sb);
         sb.append("<p>"
                 + references.getReference("Spyder")
                 + " - the Scientific PYthon Development EnviRonment, is a"
@@ -1024,7 +1024,7 @@ public class Python extends CoursePage {
                 + references.getReference("Spyder Documentation")
                 + "</p>\n");
 
-        sid = addSection("7.3", "Other IDEs", 3, sb);
+        sid = addSubsection("Other IDEs", sb);
         sb.append("""
               <p>There are other IDEs that support Python code development. If 
               you are already familiar with an IDE that supports Python code 
@@ -1041,7 +1041,7 @@ public class Python extends CoursePage {
               </p>
               """);
 
-        sid = addSection("8", "QGIS Desktop Python Console", 2, sb);
+        sid = addSection("QGIS Desktop Python Console", sb);
         sb.append("<p>"
                 + index.getReference("GIS", "Geographical Information System")
                 + " (GIS) software are used to create, manage, process, model,"
@@ -1136,7 +1136,7 @@ public class Python extends CoursePage {
               </ul>
               """);
 
-        sid = addSection("9", "Python Packages and Environment Management", 2, sb);
+        sid = addSection("Python Packages and Environment Management", sb);
         sb.append("""
               <p>Packaging code and delivering it to users via repositories is 
               good practise for numerous reasons. Some software and code 
@@ -1394,7 +1394,7 @@ public class Python extends CoursePage {
               </ul>
               """);
 
-        sid = addSection("10", "Recap and Expectations", 2, sb);
+        sid = addSection("Recap and Expectations", sb);
         sb.append("<p>This section of the course introduced some basic Python"
                 + " syntax and considered the evolution of the language. It"
                 + " explored running Python code in a number of ways: using the"

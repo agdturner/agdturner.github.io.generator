@@ -38,7 +38,7 @@ public class IO extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>The Python standard library "
                 + index.getReference("Python io", "io module", sid)
                 + " provides the main facilities for dealing with input and"
@@ -62,7 +62,7 @@ public class IO extends CoursePage {
               and processing data on the Web.</p>
               """);
 
-        sid = addSection("2", "Standard Input", 2, sb);
+        sid = addSection("Standard Input", sb);
         sb.append("<p>The builtins module "
                 + index.getReference("Python input", "input", sid)
                 + " function reads input from the standard input 'stdin' which"
@@ -77,7 +77,7 @@ public class IO extends CoursePage {
               print("The input detected is:", n_agents)</code></pre>
               """);
 
-        sid = addSection("3", "Streams", 2, sb);
+        sid = addSection("Streams", sb);
         sb.append("<p>The builtins module "
                 + index.getReference("Python print", "print", sid)
                 + " function writes to the standard output 'stdout' which is"
@@ -115,7 +115,7 @@ public class IO extends CoursePage {
                 + " buffer. There is an option in the print function to force a"
                 + " flush which can also sometimes be useful...</p>\n");
 
-        sid = addSection("4", "Reading and Writing Files Part 1", 2, sb);
+        sid = addSection("Reading and Writing Files Part 1", sb);
         sb.append("<p>The following code uses the builtins module "
                 + index.getReference("Python open", "open", sid)
                 + " function to open a file in the current directory called"
@@ -198,7 +198,7 @@ public class IO extends CoursePage {
                       f.write(line)</code></pre>
               """);
 
-        sid = addSection("5", "File formats", 2, sb);
+        sid = addSection("File formats", sb);
         sb.append("<p>File formats were briefly introduced in "
                 + "<a href=\"../programming/index.html#2.2\">Programming "
                 + "Section 2.2</a>.</p>\n");
@@ -211,7 +211,7 @@ public class IO extends CoursePage {
                 + " text file formats are described (CSV, JSON and Markup)."
                 + "</p>\n");
 
-        sid = addSection("5.1", "CSV", 3, sb);
+        sid = addSubsection("CSV", sb);
         sb.append("<p>"
                 + index.getReference("CSV", "CSV format", sid)
                 + " files are text files of comma separated values. The values"
@@ -221,7 +221,7 @@ public class IO extends CoursePage {
                 + " or newline then there can be difficulty parsing the file."
                 + "</p>\n");
 
-        sid = addSection("5.2", "JSON", 3, sb);
+        sid = addSubsection("JSON", sb);
         sb.append("<p>"
                 + index.getReference("JSON", "JavaScript Object Notation",
                         sid)
@@ -249,7 +249,7 @@ public class IO extends CoursePage {
               }</pre>
               """);
 
-        sid = addSection("5.3", "Markup", 3, sb);
+        sid = addSubsection("Markup", sb);
         sb.append("<p>Markup is essentially tags and content. Tags often note the"
                 + " ontological context of the content helping define it's "
                 + " meaning. Tags can be nested. Examples formats include: "
@@ -266,7 +266,7 @@ public class IO extends CoursePage {
                 + " the XML grammar defined by the Open Geospatial"
                 + " Consortium (OGC) to express geographical features.</p>\n");
 
-        sid = addSection("6", "Reading and Writing Files Part 2", 2, sb);
+        sid = addSection("Reading and Writing Files Part 2", sb);
         sb.append("""
               <p>The following code reads a file line by line, parsing each line 
               by splitting it using a comma and converting each part into a 
@@ -332,7 +332,7 @@ public class IO extends CoursePage {
                 + "Beautiful Soup</a> package is arguably easier to use, and is "
                 + "used later in the course to parse some HTML.</p>\n");
 
-        sid = addSection("7", "Serialisation/Deserialisation", 2, sb);
+        sid = addSection("Serialisation/Deserialisation", sb);
         sb.append("""
                <p>Serialisation is the conversion of program data into data 
               stored typically in a file. Deserialisation is the opposite 
@@ -344,7 +344,7 @@ public class IO extends CoursePage {
               </p>
               """);
 
-        sid = addSection("8", "OS and File Systems", 2, sb);
+        sid = addSection("OS and File Systems", sb);
         sb.append("""
               <h3 id="3">3. OS and File Systems</h3>
               <p>The standard library 

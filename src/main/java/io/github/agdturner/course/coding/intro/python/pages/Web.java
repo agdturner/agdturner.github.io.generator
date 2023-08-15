@@ -38,7 +38,7 @@ public class Web extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>The "
                 + index.getReference("Internet", sid)
                 + " is an international network of addressable machines that"
@@ -54,7 +54,7 @@ public class Web extends CoursePage {
         sb.append("<p>This section of the course provides some details of how the"
                 + " Web works...</p>\n");
         
-        sid = addSection("2", "Network Sockets, Port Numbers, Addresses and Protocols", 2, sb);
+        sid = addSection("Network Sockets, Port Numbers, Addresses and Protocols", sb);
         sb.append("<p>A '"
                 + index.getReference("Network Socket", "network socket", sid)
                 + "' connects machines so that data can be sent and recieved "
@@ -119,7 +119,7 @@ public class Web extends CoursePage {
                 + "your local IT team that are likely monitoring network "
                 + "activity for suspicious behaviour.</p>\n");
         
-        sid = addSection("3", "The World Wide Web", 2, sb);
+        sid = addSection("The World Wide Web", sb);
         sb.append("<p>The World Wide Web (Web) is a client-server system using "
                 + "port 80 and the hyper-text communication protocols:"
                 + index.getReference("HTTP", sid)
@@ -141,7 +141,7 @@ public class Web extends CoursePage {
                 + "https://www.w3.org:443/People/Berners-Lee/Overview.html</a>"
                 + "</p>\n");
         
-        sid = addSection("3.1", "Web Pages", 3, sb);
+        sid = addSubsection("Web Pages", sb);
         sb.append("<p>Web pages consist of text that is displayed and tags that "
                 + "are not. The tags are formatting details and references to "
                 + "other files like images or scripts that can provide style "
@@ -185,7 +185,7 @@ public class Web extends CoursePage {
               <pre><code>&lt;TABLE class="data" id="table_1"></code></pre>
               """);
         
-        sid = addSection("3.2", "Web Page Design", 3, sb);
+        sid = addSubsection("Web Page Design", sb);
         sb.append("<p>In general it is good practice to separate the content of a "
                 + "Web page from information about how to style it. This is "
                 + "typically done by storing the style information in a "
@@ -207,7 +207,7 @@ public class Web extends CoursePage {
                 + ". If you are working for a public organisation, "
                 + "accessibility should be a major design driver.</p>\n");
         
-        sid = addSection("3.3", "Processing Web Pages", 3, sb);
+        sid = addSubsection("Processing Web Pages", sb);
         sb.append("<p>Web pages can be retrieved by issuing HTTP requests. In "
                 + "Python a good option for this is the "
                 + index.getReference("Python Requests", "Requests library", sid)

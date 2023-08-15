@@ -38,7 +38,7 @@ public class Functions extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>Functions are a key part of many programming languages. These"
                 + " are reusable code blocks that are called and which return."
                 + " In calling the function typically parameters can be passed"
@@ -82,7 +82,7 @@ public class Functions extends CoursePage {
               understand, maintain and use.</p>
               """);
 
-        sid = addSection("2", "Parameters", 2, sb);
+        sid = addSection("Parameters", sb);
         sb.append("""
               <p>Parameters or 'arguments' add flexibility and utility to 
               functions. Arguments can be variables or functions. Variables that  
@@ -93,7 +93,7 @@ public class Functions extends CoursePage {
               declare the type of a parameter passed to a function.</p>
               """);
 
-        sid = addSection("2.1", "Positional Parameters", 3, sb);
+        sid = addSubsection("Positional Parameters", sb);
         sb.append("""
               <p>Positional parameters or positional arguments are given in 
               order from left to right, so in the following 'add' function 
@@ -120,7 +120,7 @@ public class Functions extends CoursePage {
               any undefaulted arguments in the function declaration.</p>
               """);
 
-        sid = addSection("2.2", "Keyword Arguments (kwargs)", 3, sb);
+        sid = addSubsection("Keyword Arguments (kwargs)", sb);
         sb.append("""
               <p>Arguments can also be named, these are called keyword arguments 
               or 'kwargs'. Note that this use of the term keyword has nothing to 
@@ -138,7 +138,7 @@ public class Functions extends CoursePage {
               arguments in the function declaration.</p>
               """);
 
-        sid = addSection("2.3", "Flexibility using Tuples and Dictionaries", 3, sb);
+        sid = addSubsection("Flexibility using Tuples and Dictionaries", sb);
         sb.append("""
               <p>More positional arguments can be allowed using '*tuple_name', 
               as in the following example:</p>
@@ -223,7 +223,7 @@ public class Functions extends CoursePage {
               Python documentation: Outline of how to get output from a function documentation</a></p>
               """);
 
-        sid = addSection("3", "Scope", 2, sb);
+        sid = addSection("Scope", sb);
         sb.append("""
               <p>The scope of a variable is from where in the code it can be 
               accessed. Scope was introduced in 
@@ -270,7 +270,7 @@ public class Functions extends CoursePage {
               print(a) # Prints 1.</code></pre>
               """);
 
-        sid = addSection("4", "Function Complexity", 2, sb);
+        sid = addSection("Function Complexity", sb);
         sb.append("""
               <p>As shown above, functions can be nested. In the example above, 
               'f2' is inside 'f1', so: f2 is an 'inner function'; and, f2 is an 
@@ -295,7 +295,7 @@ public class Functions extends CoursePage {
               tuple.</p>
               """);
 
-        sid = addSection("4.1", "Decorators", 3, sb);
+        sid = addSubsection("Decorators", sb);
         sb.append("""
               <p>Decorators are functions that aare applied to the outputs of 
               other functions using the '@' symbol as part of the 
@@ -357,7 +357,7 @@ public class Functions extends CoursePage {
               print(run_time, "seconds to create", n_agents, "agents.")</code></pre>
               """);
 
-        sid = addSection("4.2", "Lambdas", 3, sb);
+        sid = addSubsection("Lambdas", sb);
         sb.append("<p>"
                 + index.getReference("Python lambda", "Lambda expressions",
                         sid)
@@ -376,7 +376,7 @@ public class Functions extends CoursePage {
               of which is passed back.</p>
               """);
 
-        sid = addSection("4.3", "Callbacks", 3, sb);
+        sid = addSubsection("Callbacks", sb);
         sb.append("""
               <p>A Python callback is a subroutine function which is passed as 
               an argument to be executed at some point in the future. Consider 
@@ -472,7 +472,7 @@ public class Functions extends CoursePage {
               other tasks to be done whilst waiting for an event to happen.</p>
               """);
 
-        sid = addSection("4.4", "Partial", 3, sb);
+        sid = addSubsection("Partial", sb);
         sb.append("""
               <p>Functools <a href="https://docs.python.org/3/library/functools.html?highlight=partial#functools.partial">
               partial</a> allows for arguments of a function to be set 
@@ -488,9 +488,9 @@ public class Functions extends CoursePage {
               print(pf(3)) # Prints 6</code></pre>
               """);
 
-        sid = addSection("5", "Style and Documenting Functions", 2, sb);
+        sid = addSection("Style and Documenting Functions", sb);
 
-        sid = addSection("5.1", "Style", 3, sb);
+        sid = addSubsection("Style", sb);
         sb.append("""
               <p>Good Python style is set out in 
               <a href="https://www.python.org/dev/peps/pep-0008/">PEP-0008</a>
@@ -511,7 +511,7 @@ public class Functions extends CoursePage {
               </ul>
               """);
 
-        sid = addSection("5.2", "Documenting Functions", 3, sb);
+        sid = addSubsection("Documenting Functions", sb);
         sb.append("<p>"
                 + index.getReference("Python docstring", "Docstrings", sid)
                 + " are automatically extracted to describe code. They are"
@@ -545,7 +545,7 @@ public class Functions extends CoursePage {
               <pre>print(x.__doc__)</pre>
               """);
         
-        sid = addSection("6", "Next", 2, sb);
+        sid = addSection("Next", sb);
         sb.append("""
               <p>Refactoring the Agent Based Model code to use functions...</p>
               """);

@@ -34,11 +34,11 @@ public class Containers extends CoursePage {
     public Containers(PythonIntroCodingCourse course) {
         super(course, "containers", "Containers", "Containers");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("""
               <p>There are various containers for data in Python including: 
               sequence objects (bytes, bytearrays, strings, tuples, ranges, 
@@ -53,12 +53,12 @@ public class Containers extends CoursePage {
               introduce each in a bit more detail.</p>
               """);
 
-        sid = addSection("2", "Sequences", 2, sb);
+        sid = addSection("Sequences", sb);
         sb.append("<p>A sequence is a particular class of object. The following are"
                 + " perhaps more commonly used sequences: strings, tuples,"
                 + " ranges, and lists.</p>\n");
 
-        sid = addSection("2.1", "Bytes and Bytearray", 3, sb);
+        sid = addSubsection("Bytes and Bytearray", sb);
         index.getReference("Bytes", "", sid);
         sb.append("<p>A "
                 + index.getReference("Python bytes", "bytes", sid)
@@ -77,7 +77,7 @@ public class Containers extends CoursePage {
         sb.append("<p>These are worth knowing about, but are not used directly in "
                 + "this course, so details are omitted.</p>\n");
 
-        sid = addSection("2.2", "Strings", 3, sb);
+        sid = addSubsection("Strings", sb);
         sb.append("<p>"
                 + index.getReference("Python strings", "Strings", sid)
                 + " are immutable sequences of "
@@ -107,40 +107,64 @@ public class Containers extends CoursePage {
               indexes and it can also be 'sliced' (as explained in detail in 
               <a href="#2.4">Section 2.4</a>). Strings can be concatenated 
               using the '+' symbol. Consider and try the following code:</p>
-              <pre><code class="language-python">s0 = "this is a string"
-              s2 = 'this is also a string'
-              s3 = "string encapsulated with double quotes and containing single 'quotes'"
-              s4 = 'string encapsulated with single quotes and containing double "quotes"'
-              s5 = "string encapsulated with double quotes and containing double \"quotes\""
-              s6 = 'string encapsulated with single quotes and containing single \'quotes\''
-              s7 = str(s0) # A string constructed from another string
-              print(s7) # < prints this is a string
-              s8 = str(s0[8:]) # A string constructed from a slice of another string
-              print(s8) # <-- Prints a string
-              s9 = "strings " + "can be " + "concatenated using '+'"
-              print(s9) # <-- Prints strings can be concatenated using '+'</code></pre>
-              <p>A backslash can also ensure the continuation of a line. 
+                  """);
+        addPythonCodeBlock(sb,
+                """
+                s0 = "this is a string"
+                s2 = 'this is also a string'
+                s3 = "string encapsulated with double quotes and containing single 'quotes'"
+                s4 = 'string encapsulated with single quotes and containing double "quotes"'
+                s5 = "string encapsulated with double quotes and containing double \"quotes\""
+                s6 = 'string encapsulated with single quotes and containing single \'quotes\''
+                s7 = str(s0) # A string constructed from another string
+                print(s7) # < prints this is a string
+                s8 = str(s0[8:]) # A string constructed from a slice of another string
+                print(s8) # <-- Prints a string
+                s9 = "strings " + "can be " + "concatenated using '+'"
+                print(s9) # <-- Prints strings can be concatenated using '+'
+                """);
+        sb.append(
+                """
+                <p>A backslash can also ensure the continuation of a line. 
               For example:</p>
-              <pre><code class="language-python">print('''This is \\
+                """);
+        addPythonCodeBlock(sb,
+                """
+                print('''This is \\
               all one line.
-              This is a second.''')</code></pre>
-              <p>Produces:</p>
+              This is a second.''')
+                """);
+        sb.append(
+                """
+                <p>Produces:</p>
               <pre>This is all one line.
               This is a second.</pre>
               <p>The symbol '#' can be included in a string. Source code 
               comments are only comments provided they are not in the string.
               So, running the following:</p>
-              <pre><code class="language-python">print('''This is \\ # Not a comment  
-              all one line.''')</code></pre>
-              <p>Results in:</p>
+                """);
+        addPythonCodeBlock(sb,
+                """
+                print('''This is \\ # Not a comment  
+                all one line.''')
+                """);
+        sb.append(
+                """
+                <p>Results in:</p>
               <pre>This is \\ # Not a comment 
               all one line.</pre>
               <p>It is sometimes easier to use concatenation in order to add 
               source code comments:</p>
-              <pre><code class="language-python">print("This is " + # A comment
-              "all one line.")
-              print("This is a second")</code></pre>
-              <pResults in:</p>
+                """);
+        addPythonCodeBlock(sb,
+                """
+                print("This is " + # A comment
+                "all one line.")
+                print("This is a second")
+                """);
+        sb.append(
+                """
+            <pResults in:</p>
               <pre>This is all one line.
               This is a second.</pre>
               <p>The string class contains many useful
@@ -149,14 +173,20 @@ public class Containers extends CoursePage {
               belonging to the class.) For example, strings can be split into a 
               list using a delimiter. As it is a method, this functionality can 
               be used in a couple of ways:</p>
-              <pre><code class="language-python">s = "A simple string to split."
-              delimiter = " " # What is used to split the String into parts
-              # Split by accessing the function and passing the string to be split as a parameter.
-              split0 = str.split(s, delimiter) 
-              print(split0)
-              # Split by accessing the function from the string instance.
-              split1 = s.split(delimiter)
-              print(split1)</code></pre>
+            """);
+        addPythonCodeBlock(sb,
+                """
+                s = "A simple string to split."
+                delimiter = " " # What is used to split the String into parts
+                # Split by accessing the function and passing the string to be split as a parameter.
+                split0 = str.split(s, delimiter) 
+                print(split0)
+                # Split by accessing the function from the string instance.
+                split1 = s.split(delimiter)
+                print(split1)
+                """);
+        sb.append(
+                """
               <p>The two ways produce the same result. The delimeter is 
               optional, by default it is any blank space (a continuous sequence 
               of spaces, tabs and/or newlines).</p>
@@ -164,7 +194,7 @@ public class Containers extends CoursePage {
               out if a string starts or ends with a particular string.</p>
               """);
 
-        sid = addSection("2.3", "Tuples", 3, sb);
+        sid = addSubsection("Tuples", sb);
         sb.append("A "
                 + index.getReference("Python tuple", "tuple", sid)
                 + " is an immutable sequence that can be added to and nested."
@@ -176,28 +206,35 @@ public class Containers extends CoursePage {
                 + " thing can be a tuple that effectively packs a sequence of"
                 + " things together. Consider the following code where there is"
                 + " some packing and unpacking of a tuple:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">a = () # A new empty tuple
-              print(len(a)) # <-- Prints 0
-              b = (1, "two", 4) # Pack 3 things into b
-              print(len(b)) # Prints 3
-              c, d, e = b # unpack b into three things (c will refer to 1, d to "two" and e to 4)
-              print(c) # <-- Prints 1
-              print(d) # <-- Prints 'two'
-              singleton = 'hello', # <-- Note the trailing comma.
-              print(len(singleton)) # Prints 1</code></pre>
-              <p>Try the code yourself, then consider the following code snippet
+        addPythonCodeBlock(sb,
+                """
+                a = () # A new empty tuple
+                print(len(a)) # <-- Prints 0
+                b = (1, "two", 4) # Pack 3 things into b
+                print(len(b)) # Prints 3
+                c, d, e = b # unpack b into three things (c will refer to 1, d to "two" and e to 4)
+                print(c) # <-- Prints 1
+                print(d) # <-- Prints 'two'
+                singleton = 'hello', # <-- Note the trailing comma.
+                print(len(singleton)) # Prints 1
+                """);
+        sb.append(
+                """
+                <p>Try the code yourself, then consider the following code snippet
               which generates part of a 
               <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
               Fibonacci series</a> of integer numbers:</p>
-              <pre><code class="language-python"># Fibonacci series - the sum of the last two numbers in a sequence defines the next
-              a, b = 0, 1
-              print(a)
-              while b < 10:
-                  print(b)
-                  a, b = b, a+b
-              print(b)</code></pre>
-              """);
+                """);
+        addPythonCodeBlock(sb,
+                """
+                # Fibonacci series - the sum of the last two numbers in a sequence defines the next
+                a, b = 0, 1
+                print(a)
+                while b < 10:
+                    print(b)
+                    a, b = b, a+b
+                print(b)
+                """);
         sb.append("<p>The "
                 + index.getReference("Python while", "while statement")
                 + " is a loop with an expression that is evaluated each time"
@@ -208,53 +245,86 @@ public class Containers extends CoursePage {
                 + " and unpacked in the tuples. Such packing/unpacking is"
                 + " is not common in other languages (currently).</p>\n");
 
-        sid = addSection("2.4", "Ranges", 3, sb);
+        sid = addSubsection("Ranges", sb);
         sb.append("<p>"
                 + index.getReference("Python range", "Ranges", sid)
                 + " are a special type of immutable sequence created as"
                 + " follows:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">range(start, stop, step) # start and step are optional and default to 0 and 1 repectively</code></pre>
-              <p>The parameters: start, stop and step should be integers. The 
+        addPythonCodeBlock(sb,
+                """
+                range(start, stop, step) # start and step are optional and default to 0 and 1 repectively
+                """);
+        sb.append(
+                """
+        <p>The parameters: start, stop and step should be integers. The 
               range function generates numbers up to but not including stop, 
               for example:</p>
-              <pre><code class="language-python">for x in range(4):
-                  print(x)
-              </pre></code>
-              <p>Results in:</p>
+                """);
+        addPythonCodeBlock(sb,
+                """
+                for x in range(4):
+                    print(x)
+                """);
+        sb.append(
+                """
+                <p>Results in:</p>
               <pre>0
               1
               2
-              3</pre>              
-              <pre><code class="language-python">for x in range(2,8,2):
-                  print(x)</pre></code>
-              <p>Results in:</p>
-              <pre>2
-              4
-              6</pre>
-              <pre><code class="language-python">for x in range(0,-5,-1)
-                  print(x)</pre></code>
-              <p>Results in:</p>
-              <pre>0
-              -1
-              -2
-              -3
-              -4</pre>
-              <p>Try the code for yourself and then try to generate the 
-              following using range and a for loop:</p>
-              <pre>-10
-              -5
-              0
-              5
-              10</pre>
-              <p>A tuple can be constructed from a range or another sequence 
-              producer:</p>
-              <code class="language-python">r = range(5)
-              type(r) # <-- Prints <class 'range'>
-              print(r) # <-- Prints range(0, 5)
-              t = tuple(r)
-              print(t) # <-- Prints (0, 1, 2, 3, 4)</code></pre>
-              """);
+              3</pre>
+                """);
+        addPythonCodeBlock(sb,
+                """
+                for x in range(2,8,2):
+                    print(x)
+                """);
+        addParagraph(sb, "Results in:");
+        addPre(sb, 
+                """
+                2
+                4
+                6
+                """);
+        addPythonCodeBlock(sb,
+                """
+                for x in range(0,-5,-1)
+                    print(x)
+                """);
+        addParagraph(sb, "Results in:");
+        addPre(sb,
+                """
+                0
+                -1
+                -2
+                -3
+                -4
+                """);
+        addParagraph(sb,
+                """
+                Try the code for yourself and then try to generate the following
+                using range and a for loop:
+                """);
+        addPre(sb,
+                """
+                -10
+                -5
+                0
+                5
+                10
+                """);
+        addParagraph(sb,
+                """
+                A tuple can be constructed from a range or another sequence 
+                producer:
+                """);
+        addPythonCodeBlock(sb,
+                """
+                r = range(5)
+                type(r) # <-- Prints <class 'range'>
+                print(r) # <-- Prints range(0, 5)
+                t = tuple(r)
+                print(t) # <-- Prints (0, 1, 2, 3, 4)
+                """);
         sb.append("<p>There are various "
                 + index.getReference("Python Built-in Functions",
                         "built-in functions", sid)
@@ -288,7 +358,7 @@ public class Containers extends CoursePage {
               print(any(b)) # Print if any of the items in b are True.</code></pre>
               """);
 
-        sid = addSection("2.5", "Lists", 3, sb);
+        sid = addSubsection("Lists", sb);
         sb.append("<p>"
                 + index.getReference("Python list", "Lists", sid)
                 + " are the mutable form of tuples. Lists have an order,"
@@ -394,7 +464,7 @@ public class Containers extends CoursePage {
               "arg3".</p>
               """);
 
-        sid = addSection("2.6", "Arrays", 3, sb);
+        sid = addSubsection("Arrays", sb);
         sb.append("<p>"
                 + index.getReference("Python array", "Arrays", sid)
                 + " are for storing and processing large collections of"
@@ -417,7 +487,7 @@ public class Containers extends CoursePage {
               </code></pre>
               """);
 
-        sid = addSection("3", "Sets", 2, sb);
+        sid = addSection("Sets", sb);
         sb.append("<p>"
                 + index.getReference("Python set", "Sets", sid)
                 + " are unordered collections. Adding something into a set"
@@ -436,7 +506,7 @@ public class Containers extends CoursePage {
               Two sets are equal if they contain all of the same elements.</p> 
               """);
 
-        sid = addSection("4", "Dictionaries", 2, sb);
+        sid = addSection("Dictionaries", sb);
         sb.append("<p>"
                 + index.getReference("Python dict", "Dictionaries", sid)
                 + " hold key-value pairs. The keys are unique, the values can"

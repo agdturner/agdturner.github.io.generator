@@ -38,7 +38,7 @@ public class Github extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("""
               <p><a href="http://www.github.com">GitHub</a> is a
               <a href="https://en.wikipedia.org/wiki/Git">Git</a>
@@ -59,7 +59,7 @@ public class Github extends CoursePage {
               recommended.</p>
                   """);
         
-        sid = addSection("2", "Getting Started with GitHub", 2, sb);
+        sid = addSection("Getting Started with GitHub", sb);
         sb.append("""
               <p>Complete the
               <a href="https://docs.github.com/en/get-started/quickstart/hello-world">
@@ -141,7 +141,7 @@ public class Github extends CoursePage {
               manual way.</p>
                   """);
         
-        sid = addSection("3", "Python Code Repository Setup", 2, sb);
+        sid = addSection("Python Code Repository Setup", sb);
         sb.append("""
               <p>Create a new repository on GitHub which will be your code 
               repository for this course, call it something simple (you can 
@@ -169,7 +169,7 @@ public class Github extends CoursePage {
               contents to GitHub - which is what is wanted.</p>
               """);
         
-        sid = addSection("4", "GitHub Pages", 2, sb);
+        sid = addSection("GitHub Pages", sb);
         sb.append("""
               <p>Create another repository on GitHub - your GitHub Pages 
               Website. Follow the
@@ -177,7 +177,7 @@ public class Github extends CoursePage {
               GitHub Pages Quickstart Tutorial</a></p>
               """);
         
-        sid = addSection("5", "Taking Stock", 2, sb);
+        sid = addSection("Taking Stock", sb);
         sb.append("""
               <p>The benefits of using GitHub and the command line interface for 
               git might not yet be clear and this may seem a complicated 

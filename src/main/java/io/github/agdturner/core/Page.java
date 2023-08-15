@@ -70,6 +70,21 @@ public abstract class Page {
     public final Path path;
 
     /**
+     * The section number.
+     */
+    protected int sectionNo;
+
+    /**
+     * The subsection number.
+     */
+    protected int subsectionNo;
+
+    /**
+     * The sub-subsection number.
+     */
+    protected int subsubsectionNo;
+
+    /**
      * Create a new instance.
      *
      * @param site What {@link #site} is set to.
@@ -165,18 +180,54 @@ public abstract class Page {
 
     /**
      * Adds a Section to the site and returns the SectionID.
-     * @param inPageID HTML id.
      * @param sectionName Section name.
-     * @param level For heading.
      * @param sb For appending the HTML to.
      * @return SectionID
      */
-    public SectionID addSection(String inPageID, String sectionName, int level, 
-            StringBuilder sb) {
+    public SectionID addSection(String sectionName, StringBuilder sb) {
+        this.subsectionNo = 1;
+        String inPageID = "" + sectionNo + ". ";
+        this.sectionNo += 1;
+        return addSection(inPageID, sectionName, sb, 2);
+    }
+    
+    /**
+     * Adds a Subsection to the site and returns the SectionID.
+     * @param sectionName Section name.
+     * @param sb For appending the HTML to.
+     * @return SectionID
+     */
+    public SectionID addSubsection(String sectionName, StringBuilder sb) {
+        this.subsubsectionNo = 1;
+        String inPageID = "" + sectionNo + ". " + this.subsectionNo + ". ";
+        this.subsectionNo += 1;
+        return addSection(inPageID, sectionName, sb, 3);
+    }
+    
+    /**
+     * Adds a Sub-subsection to the site and returns the SectionID.
+     * @param sectionName Section name.
+     * @param sb For appending the HTML to.
+     * @return SectionID
+     */
+    public SectionID addSubsubsection(String sectionName, StringBuilder sb) {
+        this.subsubsectionNo += 1;
+        String inPageID = "" + sectionNo + ". " + this.subsectionNo + ". " 
+                + this.subsubsectionNo + ". ";
+        return addSection(inPageID, sectionName, sb, 4);
+    }
+    
+    /**
+     * Adds a Section to the site and returns the SectionID.
+     * @param sectionName Section name.
+     * @param sb For appending the HTML to.
+     * @param level For heading.
+     * @return SectionID
+     */
+    private SectionID addSection(String inPageID, String sectionName, StringBuilder sb, int level) {
         SectionID sectionID = new SectionID(site.sectionIDs.size(), this, inPageID);
         site.sectionIDs.add(sectionID);
-        //site.addSection(sectionID, pageID, title + ": " + inPageID + ". " + sectionName);
-        site.addSection(sectionID, pageID, label + ": " + inPageID + ". " + sectionName);
+        site.addSection(sectionID, pageID, label + ": " + inPageID + sectionName);
         String html = "<h" + level + " id=\"" + inPageID + "\">" 
                 + inPageID + ". " + sectionName + "</h" + level + ">\n";
         sb.append(html);

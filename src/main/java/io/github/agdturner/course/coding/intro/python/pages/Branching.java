@@ -34,101 +34,127 @@ public class Branching extends CoursePage {
     public Branching(PythonIntroCodingCourse course) {
         super(course, "branching", "Branching", "Branching");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction", 2, sb);
+        SectionID sid = addSection("Introduction", sb);
         sb.append("<p>Branching controls the flow of a program. This part considers"
                 + " a couple of ways of branching in Python. The main way uses"
                 + " an '"
                 + index.getReference("Conditional", "if", sid)
                 + "' statement.</p>\n");
 
-        sid = addSection("2", "If", 2, sb);
+        sid = addSection("If", sb);
         sb.append("<p>The "
                 + index.getReference("Python if", "if statement", sid)
                 + " is a 'compound' statement (one that comprises groups of"
                 + " other statements) that provides a means to branch based"
                 + " upon a condition which evaluates to either 'True' or"
                 + " 'False'. Consider the following example:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">day_of_week = 5
-              day = "Weekday"
-              # A simple If Statement
-              if day_of_week >= 6:
-                  day = "Weekend"
-              print(day)</code></pre>
+        addPythonCodeBlock(sb,
+                """
+                day_of_week = 5
+                day = "Weekday"
+                # A simple If Statement
+                if day_of_week >= 6:
+                    day = "Weekend"
+                print(day)
+                """);
+        sb.append(
+                """
               <p>The if statement condition evaluates as False, so the result
               is:</p>
               <pre>Weekday</pre>
               <p>Changing the code slightly to:</p>
-              <pre><code class="language-python">day_of_week = 6
-              # A simple If Statement
-              day = "Weekday"
-              if day_of_week >= 6:
-                  day = "Weekend"
-              print(day)</code></pre>
-              <p>Results in:</p>
+                """);
+        addPythonCodeBlock(sb,
+                """
+                day_of_week = 6
+                # A simple If Statement
+                day = "Weekday"
+                if day_of_week >= 6:
+                    day = "Weekend"
+                print(day)
+                """);
+        sb.append(
+                """
+                <p>Results in:</p>
               <pre>Weekend</pre>
               <p>An 'else' clause branches into two distinct paths which become 
               one again at the end of the compound if statement as in the 
               following example.</p>
-              <pre><code class="language-python">day_of_week = 5
-              # An If-else Statement 
-              if day_of_week < 6:
-                  day = "Weekday"
-              else:
-                  day = "Weekend"
-              print(day) # <-- Prints Weekday</code></pre>
-              <p>One or many 'elif' clauses can also be inserted between if and
+                """);
+        addPythonCodeBlock(sb,
+                """
+                day_of_week = 5
+                # An If-else  Statement 
+                if day_of_week < 6:
+                    day = "Weekday"
+                else:
+                    day = "Weekend"
+                print(day) # <-- Prints Weekday
+                """);
+        sb.append(
+                """
+                <p>One or many 'elif' clauses can also be inserted between if and
               else clauses. Elif is short for 'else if'. Consider the following 
               example:</p>
-              <pre><code class="language-python">day_of_week = 5
-              # An If-elif-else Statement
-              if day_of_week == 1:
-                  day = "Monday"
-              elif day_of_week == 2:
-                  day = "Tuesday"
-              elif day_of_week == 3:
-                  day = "Wednesday"
-              elif day_of_week == 4:
-                  day = "Thursday"
-              elif day_of_week == 5:
-                  day = "Friday"
-              else:
-                  day = "Weekend"
-              print(day) # <-- Prints Friday</code></pre>
-              <p>It can be argued that it is better to store a dictionary to 
-              look up the day from the day_of_week, but a simple look up does 
-              not branch, and more code can be inserted in any of the clauses, 
+                """);
+        addPythonCodeBlock(sb,
+                """
+                day_of_week = 5
+                # An If-elif-else Statement
+                if day_of_week == 1:
+                    day = "Monday"
+                elif day_of_week == 2:
+                    day = "Tuesday"
+                elif day_of_week == 3:
+                    day = "Wednesday"
+                elif day_of_week == 4:
+                    day = "Thursday"
+                elif day_of_week == 5:
+                    day = "Friday"
+                else:
+                    day = "Weekend"
+                print(day) # <-- Prints Friday
+                """);
+        sb.append(
+                """
+                <p>It can be argued that it is better to store a dictionary to
+              look up the day from the day_of_week, but a simple look up does
+              not branch, and more code can be inserted in any of the clauses,
               so this can do more than just look up a value from a key.</p>
               """);
 
-        sid = addSection("3", "Match", 2, sb);
+        sid = addSection("Match", sb);
         sb.append("<p>Since Python 3.10 there is also a "
                 + index.getReference("Python match", "match", sid)
                 + " statement which can simplify if statements with many elif"
                 + " clauses as a 'match-case' statement. The following example"
                 + " shows the equivalent of the example from the end of previous"
                 + " section:</p>\n");
-        sb.append("""
-              <pre><code class="language-python">day_of_week = 5
-              match day_of_week:
-                  case 1:
-                      day = "Monday"
-                  case 2:
-                      day = "Tuesday"
-                  case 3:
-                      day = "Wednesday"
-                  case 4:
-                      day = "Thursday"
-                  case 5:
-                      day = "Friday"
-                  case _:
-                      day = "Weekend"
-              print(day) # <-- Prints Friday</code></pre>
-              <p>The final case is a catch all case using the anonymous variable 
+        addPythonCodeBlock(sb,
+                """
+                day_of_week = 5
+                match day_of_week:
+                    case 1:
+                        day = "Monday"
+                    case 2:
+                        day = "Tuesday"
+                    case 3:
+                        day = "Wednesday"
+                    case 4:
+                        day = "Thursday"
+                    case 5:
+                        day = "Friday"
+                    case _:
+                        day = "Weekend"
+                print(day) # <-- Prints Friday
+                """);
+        sb.append(
+                """
+                <p>The final case is a catch all case using the anonymous variable 
               '_' which matches anything.</p>
               <p>The match-case statement offers more than a syntactic 
               variation, as containers and other objects can be matched. 

@@ -34,206 +34,246 @@ public class ABM6 extends CoursePage {
     public ABM6(PythonIntroCodingCourse course) {
         super(course, "abm6", "Agent Based Model Practical 6", "ABM6");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        SectionID sid = addSection("1", "Introduction and Preparation", 2, sb);
-        sb.append("""
-              <p>To get agents communicating they need a way to refer to each 
-              other. Code is going to be developed so that those agents that are 
-              within a given distance are going to share some of their store.
-              </p>
-              <p>In your local code repository 'src' directory create a new 
-              directory called 'abm6'. Open Spyder and use 'save as' to save 
-              your 'model.py' into this directory. Create a new directory called
-              'my_modules' in 'abm6' and use 'save as' to save your 
-              'agentframework.py' and 'io.py' files there.</p>
-                  """);
-        
-        sid = addSection("2", "Sharing", 2, sb);
-         sb.append("""
-              <p>Each agent is going to share their store equally amongst all 
-              agents within a given distance. The algorithm is as follows:</p>
-              <pre># Calculate which other agents are within a given distance.
-              # Calculate shares.
-              # Distribute shares.</pre>
-              <p>In order to share resources so that the order in which agents 
-              are processed is irrelevant, there is a need to distinguish those 
-              resources to be shared with those that have been shared.</p>               
-              <p>Change the Agent contructor to include 'agents' in the 
-              parameters, store this as a variable, and add an attribute for 
-              storing the shares 'store_shares' so it is as follows:</p>
-              <pre><code class="language-python">def __init__(self, agents, i, environment, n_rows, n_cols):
-                  \"""
-                  The constructor method.
+        SectionID sid = addSection("Introduction and Preparation", sb);
+        sb.append("<p>To get agents communicating they need a way to refer to"
+                + " each other. Code is going to be developed so that those"
+                + " agents that are within a given distance are going to share"
+                + " some of their store.</p>");
+        sb.append("<p>In your local code repository 'src' directory create a"
+                + " new directory called 'abm6'. Open Spyder and use 'save as'"
+                + " to save your 'model.py' into this directory. Create a new"
+                + " directory called 'my_modules' in 'abm6' and use 'save as'"
+                + " to save your 'agentframework.py' and 'io.py' files there."
+                + "</p>");
 
-                  Parameters
-                  ----------
-                  agents : List
-                      A list of Agent instances.
-                  i : Integer
-                      To be unique to each instance.
-                  environment : List
-                      A reference to a shared environment
-                  n_rows : Integer
-                      The number of rows in environment.
-                  n_cols : Integer
-                      The number of columns in environment.
+        sid = addSection("Sharing", sb);
+        sb.append("<p>Each agent is going to share their store equally amongst"
+                + " all agents within a given distance. The algorithm is as"
+                + " follows:</p>");
+        sb.append(
+                """
+                <pre>
+                # Calculate which other agents are within a given distance.
+                # Calculate shares.
+                # Distribute shares.
+                </pre>
+                """);
+        sb.append("<p>In order to share resources so that the order in which"
+                + " agents are processed is irrelevant, there is a need to"
+                + " distinguish those resources to be shared with those that"
+                + " have been shared.</p>");
+        sb.append("<p>Change the Agent contructor to include 'agents' in the"
+                + " parameters, store this as a variable, and add an attribute"
+                + " for storing the shares 'store_shares' so it is as follows:"
+                + "</p>");
+        addPythonCodeBlock(sb,
+                """
+                def __init__(self, agents, i, environment, n_rows, n_cols):
+                    \"""
+                    The constructor method.
 
-                  Returns
-                  -------
-                  None.
+                    Parameters
+                    ----------
+                    agents : List
+                        A list of Agent instances.
+                    i : Integer
+                        To be unique to each instance.
+                    environment : List
+                        A reference to a shared environment.
+                    n_rows : Integer
+                        The number of rows in environment.
+                    n_cols : Integer
+                        The number of columns in environment.
 
-                  \"""
-                  self.agents = agents
-                  self.i = i
-                  self.environment = environment
-                  tnc = int(n_cols / 3)
-                  self.x = random.randint(tnc - 1, (2 * tnc) - 1)
-                  tnr = int(n_rows / 3)    
-                  self.y = random.randint(tnr - 1, (2 * tnr) - 1)                   
-                  self.store = 0
-                  self.store_shares = 0</code></pre>
-              <p>Change 'model.py' so that 'agents' is passed as a parameter in 
-              the code that constructs each inidivual Agent class instance.</p>
-              <p>Test your code works and that from one agent you can access 
-              another agent by printing out one agent from another agent. For 
-              example after all the agents are initialised try printing the 
-              agent with i equal to 1 from the agent with i equal to 0:</p>
-              <pre><code class="language-python">print(agents[0].agents[1])</code></pre>
-              <p>A way to use the 'get_distance' function in 'agentframework.py' 
-              and avoid cyclic imports is to move the 'get_distance' 
-              function to a new module. Create a new file called 'geometry.py' 
-              in the 'my_modules' directory, and move the 'get_distance' method 
-              from 'model.py' to it. Add an import statement for the new 
-              geometry module in 'model.py' and change the function call to look 
-              for the function in the new geometry module by using the dot 
-              operator. (In other words change 'get_distance' to 
-              'geometry.get_distance').</p>
-              <p>Import the geometry module into 'agentframework.py' and add the 
-              following method:</p>
-              <pre><code class="language-python">def share(self, neighbourhood):
-                  # Create a list of agents in neighbourhood
-                  neighbours = []
-                  #print(self.agents[self.i])
-                  for a in self.agents:
-                      distance = geometry.get_distance(a.x, a.y, self.x, self.y)
-                      if distance < neighbourhood:
-                          neighbours.append(a.i)
-                  # Calculate amount to share
-                  n_neighbours = len(neighbours)
-                  #print("n_neighbours", n_neighbours)
-                  shares = self.store / n_neighbours
-                  #print("shares", shares)
-                  # Add shares to store_shares
-                  for i in neighbours:
-                      self.agents[i].store_shares += shares</code></pre>
-              <p>This code is using the fact that 'self.i' will be the same as 
-              the index of an agent in the 'agents' list. In the first for loop
-              of the 'share' function the distance between 'self' and each agent 
-              in the agents list is calculated and if this is less than 
-              'neighbourhood' (a parameter that is passed in), then the index of
-              the agent from the agents list is stored in the 'neighbours' list. 
-              The attribute 'self.store' is then divided into 'shares' and added 
-              to the 'store_shares' attribute of all the agents with indexes in 
-              'neighbours'.</p>
-              <p>Replace the 'main simulation loop' in 'model.py' file with the 
-              following:</p>
-              <pre><code class="language-python"># Main simulation loop
-              for ite in range(1, n_iterations + 1):
-                  print("Iteration", ite)
-                  # Move agents
-                  print("Move")
-                  for i in range(n_agents):
-                      agents[i].move(x_min, y_min, x_max, y_max)
-                      agents[i].eat()
-                      #print(agents[i])
-                  # Share store
-                  # Distribute shares
-                  for i in range(n_agents):
-                      agents[i].share(neighbourhood)
-                  # Add store_shares to store and set store_shares back to zero
-                  for i in range(n_agents):
-                      print(agents[i])
-                      agents[i].store = agents[i].store_shares
-                      agents[i].store_shares = 0
-                  print(agents)
-                  # Print the maximum distance between all the agents
-                  print("Maximum distance between all the agents", get_max_distance())
-                  # Print the total amount of resource
-                  sum_as = sum_agent_stores()
-                  print("sum_agent_stores", sum_as)
-                  sum_e = sum_environment()
-                  print("sum_environment", sum_e)
-                  print("total resource", (sum_as + sum_e))</code></pre>
-              <p>Run 'model.py' and interpret the output. Add more print
-              statements to gain a clear understanding of how the code works.
-              </p>""");
-        
-        sid = addSection("3", "Organise module code", 2, sb);
-        sb.append("""
-              <p>Move all code in each 'my_modules' module that is not in 
-              functions to be within if statement like the following 
-              at the end of the file:</p>
-              <pre><code class="language-python">if __name__ == '__main__':</code></pre>
-              <p>Recall that this isolates this code so it is only run if that 
-              file is the one run and not when the module is imported.</p>
-              <p>Make sure to test that your code still produces the same 
-              results.</p>""");
-                      
-         sid = addSection("4", "Output images and generate an animated Gif", 2, sb);
-         sb.append("""
-              <p>Add the following import statements to the 'model.py' placing 
-              these with the other import statements as the first executable 
-              statements in the code:</p>
-              <pre><code class="language-python">import imageio
-              import os</code></pre>
-              <p>Before the main simulation loop add the following code:
-              <pre><code class="language-python"># Create directory to write images to.
-                  try:
-                      os.makedirs('../../data/output/images/')
-                  except FileExistsError:
-                      print("path exists")
-                  
-                  # For storing images
-                  global ite
-                  ite = 1
-                  images = []</code></pre>
-              <p>Indent the plotting so that this occurs within the main 
-              simulation loop and replace the following line:</p>
-              <pre><code class="language-python">plot.show()</code></pre>
-              <p>With:</p>
-              <pre><code class="language-python">filename = '../../data/output/images/image' + str(ite) + '.png'
-              #filename = '../../data/output/images/image' + str(ite) + '.gif'
-              plt.savefig(filename)
-              plt.show()
-              plt.close()
-              images.append(imageio.imread(filename))</code></pre>
-              <p>This code should: create plots; save these as images in PNG 
-              format files; show and close them rapidly; then reload the PNG 
-              format file and append the image to the images list.</p>
-              <p>After the end of the main simulation loop the images can be 
-              turned into an animated GIF format file using the following:</p>
-              <pre><code class="language-python">imageio.mimsave('../../data/output/out.gif', images, fps=3)</code></pre>
-              <p>The parameter 'fps' is the number of frames that are shown per 
-              second.</p>
-              <p>Once you have this working. Commit your code to your local 
-              repository and assuming you are using GitHub - push your changes 
-              to GitHub.</p>""");
-                      
-         sid = addSection("5", "Further Assignment 1 Coding Tasks", 2, sb);
-         sb.append("""
-              <p>Create some more variable results by randomly setting the 
-              'store' of each agent in initialisation to be a value in the range
-              [0, 99].</p>
-              <p>Change the 'eat' function so that if an agent 'store' goes 
-              above 99, then half the store is added to 'environment' where the 
-              agent is located.</p>
-              <p>Commit your code to your local repository and assuming you 
-              are using GitHub - push your changes to GitHub.</p>
-              """);
-        sb.append("</div>\n");
+                    Returns
+                    -------
+                    None.
+
+                    \"""
+                    self.agents = agents
+                    self.i = i
+                    self.environment = environment
+                    tnc = int(n_cols / 3)
+                    self.x = random.randint(tnc - 1, (2 * tnc) - 1)
+                    tnr = int(n_rows / 3)
+                    self.y = random.randint(tnr - 1, (2 * tnr) - 1)       
+                    self.store = 0
+                    self.store_shares = 0
+                """);
+        sb.append("<p>Change 'model.py' so that 'agents' is passed as a"
+                + " parameter in the code that constructs each inidivual Agent"
+                + " class instance.</p>");
+        sb.append("<p>Test your code works and that from one agent you can"
+                + " access another agent by printing out one agent from another"
+                + " agent. For example after all the agents are initialised"
+                + " try printing the agent with i equal to 1 from the agent"
+                + " with i equal to 0:</p>");
+        addPythonCodeBlock(sb,
+                """
+                print(agents[0].agents[1])
+                """);
+        sb.append("<p>A way to use the 'get_distance' function in"
+                + " 'agentframework.py' and avoid cyclic imports is to move"
+                + " the 'get_distance' function to a new module. Create a new"
+                + " file called 'geometry.py' in the 'my_modules' directory,"
+                + " and move the 'get_distance' method from 'model.py' to it."
+                + " Add an import statement for the new geometry module in"
+                + " 'model.py' and change the function call to look for the"
+                + " function in the new geometry module by using the dot"
+                + " operator. (In other words change 'get_distance' to"
+                + " 'geometry.get_distance').</p>");
+        sb.append("<p>Import the geometry module into 'agentframework.py' and"
+                + " add the following method:</p>");
+        addPythonCodeBlock(sb,
+                """
+                def share(self, neighbourhood):
+                    # Create a list of agents in neighbourhood
+                    neighbours = []
+                    #print(self.agents[self.i])
+                    for a in self.agents:
+                        distance = geometry.get_distance(a.x, a.y, self.x, self.y)
+                        if distance < neighbourhood:
+                            neighbours.append(a.i)
+                    # Calculate amount to share
+                    n_neighbours = len(neighbours)
+                    #print("n_neighbours", n_neighbours)
+                    shares = self.store / n_neighbours
+                    #print("shares", shares)
+                    # Add shares to store_shares
+                    for i in neighbours:
+                        self.agents[i].store_shares += shares
+                """);
+        sb.append("<p>This code is using the fact that 'self.i' will be the"
+                + " same as the index of an agent in the 'agents' list. In the"
+                + " first for loop of the 'share' function the distance between"
+                + " 'self' and each agent in the agents list is calculated and"
+                + " if this is less than 'neighbourhood' (a parameter that is"
+                + " passed in), then the index of the agent from the agents"
+                + " list is stored in the 'neighbours' list. The attribute"
+                + " 'self.store' is then divided into 'shares' and added to the"
+                + " 'store_shares' attribute of all the agents with indexes in"
+                + " 'neighbours'.</p>");
+        sb.append("<p>Replace the 'main simulation loop' in 'model.py' file"
+                + " with the following:</p>");
+        addPythonCodeBlock(sb,
+                """
+                # Main simulation loop
+                for ite in range(1, n_iterations + 1):
+                    print("Iteration", ite)
+                    # Move agents
+                    print("Move")
+                    for i in range(n_agents):
+                          agents[i].move(x_min, y_min, x_max, y_max)
+                          agents[i].eat()
+                          #print(agents[i])
+                    # Share store
+                    # Distribute shares
+                    for i in range(n_agents):
+                        agents[i].share(neighbourhood)
+                    # Add store_shares to store and set store_shares back to zero
+                    for i in range(n_agents):
+                        print(agents[i])
+                        agents[i].store = agents[i].store_shares
+                        agents[i].store_shares = 0
+                    print(agents)
+                    # Print the maximum distance between all the agents
+                    print("Maximum distance between all the agents", get_max_distance())
+                    # Print the total amount of resource
+                    sum_as = sum_agent_stores()
+                    print("sum_agent_stores", sum_as)
+                    sum_e = sum_environment()
+                    print("sum_environment", sum_e)
+                    print("total resource", (sum_as + sum_e))
+                """);
+        sb.append("<p>Run 'model.py' and interpret the output. Add more print"
+                + " statements to gain a clear understanding of how the code"
+                + " works.</p>");
+
+        sid = addSection("Organise module code", sb);
+        sb.append("<p>Move all code in each 'my_modules' module that is not in"
+                + " functions to be within if statement like the following at"
+                + " the end of the file:</p>");
+        addPythonCodeBlock(sb,
+                """
+                if __name__ == '__main__':
+                """);
+        sb.append("<p>Recall that this isolates this code so it is only run if"
+                + " that file is the one run and not when the module is"
+                + " imported.</p>");
+        sb.append("<p>Make sure to test that your code still produces the same"
+                + "results.</p>");
+
+        sid = addSection("Output images and generate an animated Gif", sb);
+        sb.append("<p>Add the following import statements to the 'model.py'"
+                + " placing these with the other import statements as the"
+                + " first executable statements in the code:</p>");
+        addPythonCodeBlock(sb,
+                """
+                import imageio
+                import os
+                """);
+        sb.append("<p>Before the main simulation loop add the following code:"
+                + "</p>");
+        addPythonCodeBlock(sb,
+                """
+                # Create directory to write images to.
+                try:
+                    os.makedirs('../../data/output/images/')
+                except FileExistsError:
+                    print("path exists")
+
+                # For storing images
+                global ite
+                ite = 1
+                images = []
+                """);
+        sb.append("<p>Indent the plotting so that this occurs within the main"
+                + " simulation loop and replace the following line:</p>");
+        addPythonCodeBlock(sb,
+                """
+                plot.show()
+                """);
+        sb.append("<p>With:</p>");
+        addPythonCodeBlock(sb,
+                """
+                filename = '../../data/output/images/image' + str(ite) + '.png'
+                #filename = '../../data/output/images/image' + str(ite) + '.gif'
+                plt.savefig(filename)
+                plt.show()
+                plt.close()
+                images.append(imageio.imread(filename))
+                """);
+        sb.append("<p>This code should: create plots; save these as images in"
+                + " PNG format files; show and close them rapidly; then reload"
+                + " the PNG format file and append the image to the images"
+                + " list.</p>");
+        sb.append("<p>After the end of the main simulation loop the images can"
+                + " be turned into an animated GIF format file using the"
+                + " following:</p>");
+        addPythonCodeBlock(sb,
+                """
+                imageio.mimsave('../../data/output/out.gif', images, fps=3)
+                """);
+        sb.append("<p>The parameter 'fps' is the number of frames that are"
+                + " shown per second.</p>");
+        sb.append("<p>Once you have this working. Commit your code to your"
+                + " local repository and assuming you are using GitHub - push"
+                + " your changes to GitHub.</p>");
+
+        sid = addSection("Further Assignment 1 Coding Tasks", sb);
+        sb.append("<p>Create some more variable results by randomly setting the"
+                + " 'store' of each agent in initialisation to be a value in"
+                + " the range [0, 99].</p>");
+        sb.append("<p>Change the 'eat' function so that if an agent 'store'"
+                + " goes above 99, then half the store is added to"
+                + " 'environment' where the agent is located.</p>");
+        sb.append("<p>Commit your code to your local repository and assuming"
+                + " you are using GitHub - push your changes to GitHub.</p>");
+        sb.append("</div>");
         return sb.toString();
     }
 }
