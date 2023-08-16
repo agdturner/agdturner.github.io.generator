@@ -294,9 +294,8 @@ public class ABM4 extends CoursePage {
                 """
                 <p>Study these changes. Your program should run without raising
                   exceptions and produces the same output as previously.</p>
-              <p>Commit your code to your local repository and assuming you are 
-              using GitHub - push your changes to GitHub.</p>
               """);
+        addParagraphCommitToGitHub(sb);
 
         sid = addSection("Separation of Concerns", sb);
         sb.append("""
@@ -376,9 +375,8 @@ public class ABM4 extends CoursePage {
               the TypeError should not be raised.</p>
               <p>Modify the Agent class '__str__' method so it additionally 
               returns the unique characteristic of each Agent 'i'.</p>
-              <p>Commit your code to your local repository and assuming you are 
-              using GitHub - push your changes to GitHub.</p>
               """);
+        addParagraphCommitToGitHub(sb);
         sb.append("</div>\n");
         return sb.toString();
     }

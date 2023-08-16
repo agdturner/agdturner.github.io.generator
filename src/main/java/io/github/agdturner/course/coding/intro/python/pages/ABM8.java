@@ -184,9 +184,8 @@ public class ABM8 extends CoursePage {
               this becomes actionable from the GUI once the simulation has run.
               </p>
               <p>Run the program.</p>
-              <p>Commit your code to your local repository and assuming you 
-              are using GitHub - push your changes to GitHub.</p>
               """);
+        addParagraphCommitToGitHub(sb);
         sb.append("</div>\n");
         return sb.toString();
     }

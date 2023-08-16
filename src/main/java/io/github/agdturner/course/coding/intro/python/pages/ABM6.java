@@ -271,8 +271,7 @@ public class ABM6 extends CoursePage {
         sb.append("<p>Change the 'eat' function so that if an agent 'store'"
                 + " goes above 99, then half the store is added to"
                 + " 'environment' where the agent is located.</p>");
-        sb.append("<p>Commit your code to your local repository and assuming"
-                + " you are using GitHub - push your changes to GitHub.</p>");
+        addParagraphCommitToGitHub(sb);
         sb.append("</div>");
         return sb.toString();
     }

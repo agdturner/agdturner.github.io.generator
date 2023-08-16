@@ -183,9 +183,7 @@ public class ABM7 extends CoursePage {
                 .append(" the while loop. The '# Write data' code block is")
                 .append(" included in 'gen_function' and runs only once after")
                 .append(" the model has stopped.</p>");
-        sb.append("<p>Commit your code to your local repository and assuming")
-                .append(" you are using GitHub - push your changes to GitHub.")
-                .append("</p>");
+        addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code and Model Review", sb);
         sb.append("<p>Most of your code should now be in functions and")

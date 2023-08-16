@@ -19,6 +19,7 @@ import io.github.agdturner.core.Page;
 import io.github.agdturner.core.PageID;
 import io.github.agdturner.core.Section;
 import io.github.agdturner.core.SectionID;
+import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.pages.CourseHome;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -160,48 +161,50 @@ public abstract class CoursePage extends Page {
             StringBuilder sb = new StringBuilder("<div>\n");
             sb.append("<h2>Contents</h2>\n");
             sb.append("<ul>\n");
-            int level0=2;
+            int level0 = 2;
             int level;
             for (var x : sids) {
                 Section section = sections.get(x);
-                    level = section.level;
-                    if (level > level0) {
-                        sb.append("<ul>\n");
-                        sb.append("<li>");
-                    } else if (level < level0) {
-                        sb.append("</li>");
-                        sb.append("</ul></li>\n");
-                        sb.append("<li>");
-                    } else {
-                        sb.append("<li>");
-                    }
-                    sb.append(section.sectionLink);
-                    level0 = level;
+                level = section.level;
+                if (level > level0) {
+                    sb.append("<ul>\n");
+                    sb.append("<li>");
+                } else if (level < level0) {
+                    sb.append("</li>");
+                    sb.append("</ul></li>\n");
+                    sb.append("<li>");
+                } else {
+                    sb.append("<li>");
+                }
+                sb.append(section.sectionLink);
+                level0 = level;
             }
-            for (int i = 2; i <= level0; i ++) {
+            for (int i = 2; i <= level0; i++) {
                 sb.append("</li>\n");
                 sb.append("</ul>\n");
             }
-            
+
             sb.append("</div>\n");
             return sb.toString();
         }
         return "";
     }
-    
+
     /**
      * Wraps a code block for Python code.
+     *
      * @param sb The StringBuilder to append to.
      * @param code The code block to wrap.
      */
-    public void addPythonCodeBlock( StringBuilder sb, String code) {
+    public void addPythonCodeBlock(StringBuilder sb, String code) {
         addPythonCodeBlockStart(sb);
         sb.append(code);
         addPythonCodeBlockEnd(sb);
     }
-    
+
     /**
      * Appends {@code <pre><code class="language-python">} to sb.
+     *
      * @param sb The StringBuilder to append to.
      */
     public void addPythonCodeBlockStart(StringBuilder sb) {
@@ -210,34 +213,112 @@ public abstract class CoursePage extends Page {
                 <pre><code class="language-python">
                 """);
     }
-    
+
     /**
      * Appends {@code </code></pre>} to sb.
+     *
      * @param sb The StringBuilder to append to.
      */
     public void addPythonCodeBlockEnd(StringBuilder sb) {
         sb.append("</code></pre>");
     }
-    
+
     /**
-     * Wraps a paragraph.
+     * Wrap a string with an HTML paragraph tag.
+     *
      * @param sb The StringBuilder to append to.
      * @param s The string to wrap.
      */
     public void addParagraph(StringBuilder sb, String s) {
-        sb.append("<p>");
+        addTag(sb, s, Strings.s_P);
+    }
+
+    /**
+     * Wrap a string with an HTML paragraph tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to add after the start tag.
+     */
+    public void addParagraphStart(StringBuilder sb, String s) {
+        addTagStart(sb, Strings.s_P);
         sb.append(s);
-        sb.append("</p>\n");
+    }
+
+    /**
+     * Wrap a string with an HTML paragraph tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The String to add before the end tag.
+     */
+    public void addParagraphEnd(StringBuilder sb, String s) {
+        sb.append(s);
+        addTagEnd(sb, Strings.s_P);
+    }
+
+    /**
+     * Wrap a string with an HTML tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     * @param tag The tag text.
+     */
+    public void addTag(StringBuilder sb, String s, String tag) {
+        addTagStart(sb, tag);
+        sb.append(s);
+        addTagEnd(sb, tag);
+    }
+
+    /**
+     * Add a start tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param tag The tag text.
+     */
+    public void addTagStart(StringBuilder sb, String tag) {
+        sb.append("<").append(tag).append(">");
+    }
+
+    /**
+     * Add an end tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param tag The tag text.
+     */
+    public void addTagEnd(StringBuilder sb, String tag) {
+        sb.append("</").append(tag).append(">\n");
     }
     
     /**
-     * Wraps a pre.
+     * Wrap a string with an HTML pre tag.
+     *
      * @param sb The StringBuilder to append to.
      * @param s The string to wrap.
      */
     public void addPre(StringBuilder sb, String s) {
-        sb.append("<pre>");
-        sb.append(s);
-        sb.append("</pre>\n");
+        addTag(sb, s, Strings.s_pre);
+    }
+
+    /**
+     * Wraps a paragraph.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addLI(StringBuilder sb, String s) {
+        addTag(sb, s, Strings.s_li);
+    }
+
+    /**
+     * Add a paragraph: " Add and commit to your local git repository and
+     * assuming you are using GitHub - push your changes to GitHub."
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void addParagraphCommitToGitHub(StringBuilder sb) {
+        addParagraph(sb,
+                """
+                Add and commit to your local git repository and assuming you are
+                using GitHub - push your changes to GitHub.
+                """);
     }
 }

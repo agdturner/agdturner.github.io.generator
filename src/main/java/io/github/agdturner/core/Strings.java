@@ -15,8 +15,8 @@
  */
 package io.github.agdturner.core;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.ArrayList;
+//import java.util.HashMap;
 import uk.ac.leeds.ccg.web.core.Web_Strings;
 
 /**
@@ -26,8 +26,25 @@ import uk.ac.leeds.ccg.web.core.Web_Strings;
  */
 public class Strings extends Web_Strings {
 
-    public ArrayList<String> strings;
-    public HashMap<String, Integer> stringToStringID;
+    
+    public static final String PYTHON_CODE_BLOCK_END
+            = SYMBOL_PRE_END_TAG + "</code>";
+
+    public static final String PYTHON_CODE_BLOCK_START
+            = SYMBOL_PRE_START_TAG + "<code class=\"language-python\">";
+
+    public static final String OL_END = getEndTag(s_ol);
+
+    public static final String OL_START = getStartTag(s_ol);
+    
+    public static final String UL_END = getEndTag(s_ul);
+
+    public static final String UL_START = getStartTag(s_ul);
+    
+    
+                
+    //public ArrayList<String> strings;
+    //public HashMap<String, Integer> stringToStringID;
 
     /**
      * Create a new instance.
@@ -35,33 +52,35 @@ public class Strings extends Web_Strings {
     public Strings() {
     }
 
-    /**
-     * If s is in {@link #strings} return the StringID for it. Otherwise, add s
-     * to the collections ({@link #strings} and {@link #stringToStringID}) and
-     * return the StringID.
-     *
-     * @param s The String to get the StringID for.
-     * @return The StringID for s.
-     */
-    public Integer get(String s) {
-        Integer r = stringToStringID.get(s);
-        if (r == null) {
-            r = stringToStringID.size();
-            stringToStringID.put(s, r);
-            strings.add(s);
-        }
-        return r;
-    }
-
-    /**
-     * Return strings.get(i).
-     */
-    public String get(Integer i) {
-        return strings.get(i);
-    }
+//    /**
+//     * If s is in {@link #strings} return the StringID for it. Otherwise, add s
+//     * to the collections ({@link #strings} and {@link #stringToStringID}) and
+//     * return the StringID.
+//     *
+//     * @param s The String to get the StringID for.
+//     * @return The StringID for s.
+//     */
+//    public Integer get(String s) {
+//        Integer r = stringToStringID.get(s);
+//        if (r == null) {
+//            r = stringToStringID.size();
+//            stringToStringID.put(s, r);
+//            strings.add(s);
+//        }
+//        return r;
+//    }
+//
+//    /**
+//     * Return strings.get(i).
+//     * @param i 
+//     */
+//    public String get(Integer i) {
+//        return strings.get(i);
+//    }
     
     /**
-     * Return s with first letter capitalised.
+     * @param s The String to capitalise the first letter.
+     * @return s with first letter capitalised.
      */
     public static String toUpperCaseFirstLetter(String s){
         return s.substring(0,1).toUpperCase() + s.substring(1);

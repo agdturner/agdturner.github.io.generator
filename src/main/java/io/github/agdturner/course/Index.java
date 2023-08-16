@@ -189,8 +189,7 @@ public class Index extends CoursePage {
         term = "Agent Based Model";
         url = getWikipediaURL("Agent-based_model");
         description = "A computational model for simulating the actions and "
-                + "interactions of (semi-)autonomous agents (individual or "
-                + "collective entities)";
+                + "interactions of entities";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasAndAliasPlural(term, "ABM", indexTerm);

@@ -16,6 +16,7 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
+import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -39,38 +40,33 @@ public class ABM1 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        sb.append("<p>This series of practicals develops a simple spatial ")
-                .append(index.getReference("ABM", "Agent Based Model", sid))
-                .append(" (ABM) - a type of model useful for studying")
-                .append(" behaviour and emergence in complex systems.</p>\n");
-        addParagraph(sb,
+        addParagraphStart(sb, 
+                "This series of practicals develops a simple spatial ");
+        sb.append(index.getReference("ABM", "Agent Based Model", sid));
+        addParagraphEnd(sb,
                 """
-                The ABM will represent individual 'agents' which will have
-                varying characteristics. It will run iteratively such that each
-                agent will do things in simulation steps (iterations of the
-                model) which represent the passage of time. What the agents do
-                will in some ways change their characteristics, the
-                characteristics of other agents, and the spatial 'environment'
-                in which they are located and which is represented as a
-                different kind of entity.
+                (ABM) - a model for simulating the actions and interactions of
+                entities (agents) located within an environment which may change
+                and be changed by the agents.
                 """);
         addParagraph(sb,
                 """
-                In building an ABM, you will put theory into practise")
-                .append(" and learn more about:
+                Initially the agents will simply have locations within the
+                environment and will move around randomly. The model will run
+                iteratively where each iteration is effectively a time step.
+                The enviornment might change in a time step, and the agents may
+                interact with the environment and each other in a time step.
                 """);
-        sb.append(
-                """
-                <ul>
-                    <li>testing, debugging and refactoring code;</li>
-                    <li>using loops, conditionals and containers;</li>
-                    <li>defining and using functions and classes;</li>
-                    <li>reading and writing data files;</li>
-                    <li>organising code into modules;</li>
-                    <li>developing a simple Graphical User Interface (GUI); and,</li>
-                    <li>scraping and processing data from the Web.</li>
-                </ul>
-                """);
+        addParagraph(sb, "Following instructions, you get to learn about:");
+        sb.append(Strings.UL_START);
+        addLI(sb, "testing, debugging and refactoring code;");
+        addLI(sb, "using loops, conditionals and containers;");
+        addLI(sb, "defining and using functions and classes;");
+        addLI(sb, "reading and writing data files;");
+        addLI(sb, "organising code into modules;");
+        addLI(sb, "developing a simple Graphical User Interface (GUI); and,");
+        addLI(sb, "scraping and processing data from the Web.");
+        sb.append(Strings.UL_END);
         addParagraph(sb,
                 """
                 The agents will have simple behaviours and will interact with
@@ -93,7 +89,7 @@ public class ABM1 extends CoursePage {
         addParagraph(sb,
                 """
                 The code will subsequently be refactored (rewritten) so it is
-                more concise and easier to maintain and reuse.
+                more concise and easier to understand, maintain and reuse.
                 """);
         addParagraph(sb,
                 """
@@ -121,13 +117,11 @@ public class ABM1 extends CoursePage {
                 directory.
                 """);
         addParagraph(sb,
-                """
-                Copy the algorithm above and paste it into the file.
-                """);
+                "Copy the algorithm above and paste it into the file.");
         addParagraph(sb,
                 """
-                Add a line after the line \"# Initialise a variable x0'\", to
-                initialise a variable 'x0' with the value '0', then a link to
+                Add a line after the line "# Initialise a variable x0'", to
+                initialise a variable 'x0' with the value '0', then a line to
                 print 'x0':
                 """);
         addPythonCodeBlock(sb,
@@ -140,25 +134,27 @@ public class ABM1 extends CoursePage {
                 Save and run the program. The output from running the program
                 should be:
                 """);
-        addPre(sb, "<pre>x0 0</pre>");
-        sb.append("<p>Note that two parameters are passed into the ")
-                .append(index.getReference("Python print", "print"))
-                .append(" function. These are printed out sequentially with a")
-                .append(" space delimiter by default.</p>\n");
+        addPre(sb, "x0 0");
+        addParagraphStart(sb, "Note that two parameters are passed into the ");
+        sb.append(index.getReference("Python print", "print"));
+        addParagraphEnd(sb, 
+                """
+                function. These are printed out sequentially with a space
+                delimiter by default.
+                """);
         addParagraph(sb, "Do the same for variable 'y0'.");
 
         sid = addSection("Randomly changing values", sb);
-        sb.append("<p>The Python standard library ")
-                .append(index.getReference("Python random", "random module", sid))
-                .append(" implements pseudo-random number generators for")
-                .append(" various distributions and provides a way to change")
-                .append(" variable  values randomly. To use the module it has")
-                .append(" to be imported. Towards the top of 'model.py' add")
-                .append(" the following import statement:</p>\n");
-        addPythonCodeBlock(sb,
+        addParagraphStart(sb, "The Python standard library ");
+        sb.append(index.getReference("Python random", "random module", sid));
+        addParagraphEnd(sb, 
                 """
-                import random
+                implements pseudo-random number generators for various
+                distributions and provides a way to change variable values
+                randomly. To use the module it has to be imported. Towards the
+                top of 'model.py' add the following import statement:
                 """);
+        addPythonCodeBlock(sb, "import random");
         addParagraph(sb,
                 """
                 It is good practice to organise import statements at the top of
@@ -167,20 +163,25 @@ public class ABM1 extends CoursePage {
                 excpetions and stop code executing as expected, but clutters
                 code and makes it less efficient.
                 """);
-        sb.append("<p>Use an ")
-                .append(index.getReference("Python if", "if statement", sid))
-                .append(" to determine whether to increase or decrease 'x0'")
-                .append(" based on  the value obtained from a call to the")
-                .append(" function ")
-                .append(index.getReference("Python random.random", "random", sid))
-                .append(": First obtain and print a pseudo-random number in")
-                .append(" the range [0, 1) as follows:</p>\n");
+        addParagraphStart(sb, "Use an ");
+        sb.append(index.getReference("Python if", "if statement", sid));
+        sb.append(
+                """
+                to determine whether to increase or decrease 'x0' based on the
+                value obtained from a call to the function
+                """);
+        sb.append(index.getReference("Python random.random", "random", sid));
+        addParagraphEnd(sb,
+                """
+                : First obtain and print a pseudo-random number in the range
+                [0, 1) as follows:
+                """);
         addPythonCodeBlock(sb,
                 """
                 rn = random.random()
                 print(rn)
                 """);
-        addParagraph(sb, 
+        addParagraph(sb,
                 """
                 Run your program a few times to observe that the value of 'rn'
                 varies randomly.
@@ -225,11 +226,9 @@ public class ABM1 extends CoursePage {
                 # Set the pseudo-random seed for reproducibility
                 random.seed(0)
                 """);
-        addParagraph(sb,
-                """
-                When you run the program, you should get the following output:
-                """);
-        addPre(sb, 
+        addParagraph(sb, 
+                "When run, the program should generate the following output:");
+        addPre(sb,
                 """
                 x0 0
                 y0 0
@@ -253,12 +252,14 @@ public class ABM1 extends CoursePage {
                 """);
 
         addSection("Calculate the Euclidean distance", sb);
-        sb.append("<p>Use the ")
-                .append("<a href = \"https://en.wikipedia.org/wiki/Pythagorean_theorem\">")
-                .append("Pythogorean theorem</a> to calculate the distance")
-                .append(" between the cartesian coordinates (x0, y0) and (x1,")
-                .append(" y1). The algorithm is:</p>\n");
-        addPre(sb, 
+        addParagraph(sb,
+                """
+                Use the
+                <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">
+                Pythogorean theorem</a> to calculate the distance between the
+                cartesian coordinates (x0, y0) and (x1, y1). The algorithm is:
+                """);
+        addPre(sb,
                 """
                 # Calculate the difference in the x coordinates.
                 # Calculate the difference in the y coordinates.
@@ -275,12 +276,15 @@ public class ABM1 extends CoursePage {
                 number. So, raising a number to the power of '0.5' calculates
                 the square root.
                 """);
-        sb.append("(Alternatively, import the standard library ")
-                .append(index.getReference("Python math", "math module", sid))
-                .append(" and use the ")
-                .append("<a href = \"https://docs.python.org/3/library/math.html#math.sqrt\">sqrt</a> function")
-                .append(". The expected distance between (0, 0) and(3, 4) is")
-                .append(" 5.</p>\n");
+        addParagraphStart(sb, "(Alternatively, import the standard library ");
+        sb.append(index.getReference("Python math", "math module", sid));
+        addParagraphEnd(sb, 
+                """
+                and use the
+                <a href="https://docs.python.org/3/library/math.html#math.sqrt">
+                sqrt</a> function. The expected distance between (0, 0) and
+                (3, 4) is 5.
+                """);
 
         sid = addSection("Review, commit and look ahead", sb);
         addParagraph(sb,
@@ -300,16 +304,18 @@ public class ABM1 extends CoursePage {
                 code repetition and that results in easier to understand and
                 maintain code.
                 """);
-        addParagraph(sb,
+        addParagraphCommitToGitHub(sb);
+        addParagraphStart(sb,
                 """
-                Add and commit to your local git repository and assuming you
-                are using GitHub - push your changes to GitHub.
+                In the next ABM practical: Each pair of coordinates will be
+                stored together in a container,
                 """);
-        sb.append("<p>In the next ABM practical: Each pair of coordinates will")
-                .append(" be stored together in a container, ")
-                .append(index.getReference("Python for", "for loops"))
-                .append(" will be used to create and move more agents, and the")
-                .append(" model will be visualised.</p>\n");
+        sb.append(index.getReference("Python for", "for loops"));
+        addParagraphEnd(sb,
+                """
+                will be used to create and move more agents, and the model will
+                be visualised.
+                """);
         sb.append("</div>\n");
         return sb.toString();
     }

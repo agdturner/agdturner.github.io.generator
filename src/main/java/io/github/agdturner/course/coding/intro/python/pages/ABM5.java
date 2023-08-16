@@ -328,9 +328,8 @@ public class ABM5 extends CoursePage {
               <p>Note the checkered effect caused by the 'environment' being 
               eaten away. The checkering is a consequence of the way agents 
               move and eat.</p>
-              <p>Commit your code to your local repository and assuming you are 
-              using GitHub - push your changes to GitHub.</p>
               """);
+        addParagraphCommitToGitHub(sb);
 
         sid = addSection("Further Assignment 1 Coding Tasks", sb);
         sb.append("""
@@ -362,9 +361,8 @@ public class ABM5 extends CoursePage {
               <p>Get agents to optional stay still or moving left, right, up or down and not just diagonally.</p>
               <p>Get agents to move or eat but not both in an iteration.</p>
               -->
-              <p>Commit your code to your local repository, and assuming you are 
-              using GitHub - push your changes to GitHub.</p>
               """);
+        addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code Review and Looking Forward", sb);
         sb.append("""

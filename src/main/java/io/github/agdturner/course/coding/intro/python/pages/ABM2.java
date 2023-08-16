@@ -39,8 +39,8 @@ public class ABM2 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Recap and preparation", sb);
-        sb.append("<p>Your 'model.py' ABM1 code should look something like")
-                .append(" the following:</p>\n");
+        addParagraph(sb,
+                "Your ABM1 'model.py' code should look something like:");
         addPythonCodeBlock(sb,
                 """
                 import random
@@ -114,73 +114,94 @@ public class ABM2 extends CoursePage {
                 distance = math.sqrt(ssd)
                 print("distance", distance)
                 """);
-        sb.append(
+        addParagraph(sb,
+                "Running the code should produce the following text output:");
+        addPre(sb,
                 """
-                  <p>Running the code should produce the following text output:</p>\n
-              <pre>x0 49
-              y0 97
-              rn 0.890243920837131
-              x0 48
-              rn 0.04048437818077755
-              y0 98
-              x1 65
-              y1 62
-              rn 0.4049341374504143
-              x1 66
-              rn 0.7837985890347726
-              y1 61
-              ssd 25
-              distance 5.0
-              distance 5.0</pre>
-              <p>In your local code repository src directory create a new 
-              directory called 'abm2'. Open Spyder and save 'model.py' into the 
-              'abm2' directory.</p>\n""");
+                x0 49
+                y0 97
+                rn 0.890243920837131
+                x0 48
+                rn 0.04048437818077755
+                y0 98
+                x1 65
+                y1 62
+                rn 0.4049341374504143
+                x1 66
+                rn 0.7837985890347726
+                y1 61
+                ssd 25
+                distance 5.0
+                distance 5.0
+                """);
+        addParagraph(sb,
+                """
+                In your local code repository src directory create a new
+                directory called 'abm2'. Open Spyder and save 'model.py' into
+                the 'abm2' directory.
+                """);
 
         sid = addSection("Using Lists", sb);
-        sb.append("<p>Rather than handle coordinates for each agent"
-                + " individually, the coordinates for each agent are now going"
-                + " to be stored in"
-                + index.getReference("Python list", "lists", sid)
-                + " of length 2, with the first item being an 'x' coordinate,"
-                + " and the second item being a 'y' cordinate. All agents "
-                + " are also going to be stored in a list.<p>");
-        sb.append("<p>The code is also going to be reorganised so that the agents"
-                + " are created in a "
-                + index.getReference("Python for", "for loop", sid)
-                + ", and there will be a second for loop to adjust the "
-                + " coordinates (move the agents).<p>");
-        sb.append("""
-              <p>Towards the top of the file (below the import statements and 
-              setting of the random seed) add the following to create a new 
-              empty list called 'agents':</p>""");
+        addParagraphStart(sb,
+                """
+                Rather than handle coordinates for each agent individually, the
+                coordinates for each agent will be stored in
+                """);
+        sb.append(index.getReference("Python list", "lists", sid));
+        addParagraphEnd(sb,
+                """
+                of length 2, with the first item being an 'x' coordinate, and
+                the second item being a 'y' coordinate. All agents are also
+                going to be stored in a list.
+                """);
+        addParagraphStart(sb,
+                """
+                The code is also going to be reorganised so that the agents are
+                created in a
+                """);
+        sb.append(index.getReference("Python for", "for loop", sid));
+        addParagraphEnd(sb,
+                """
+                , and there will be a second for loop to adjust the coordinates
+                (move the agents).
+                """);
+        addParagraph(sb,
+                """
+                Towards the top of the file (below the import statements and
+                setting of the random seed) add the following to create a new
+                empty list called 'agents':
+                """);
         addPythonCodeBlock(sb,
                 """
                 # Create a list to store agents
                 agents = []
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>Next, add coordinates to this list: First add one pair after 
-              initialising 'y0' and 'x0', by adding the following:
-              </p>\n
+                Next, add coordinates to this list: First add one pair after
+                initialising 'y0' and 'x0', by adding the following:
                 """);
         addPythonCodeBlock(sb,
+                "agents.append([x0,y0]) # Append to the list agents");
+        addParagraph(sb,
                 """
-                agents.append([x0,y0]) # Append to the list agents
+                Note that '[x0,y0]' creates a list containing 'x0' and 'y0', and
+                the 'append' function adds this list to the agents list. After
+                doing this, 'agents[0][0]' is the 'x' coordinate of the first
+                agent in the agents list and 'agents[0][1]' is the 'y'
+                coordinate of the first agent in the agents list.
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>Note that '[x0,y0]' creates a list containing 'x0' and 'y0', 
-              and the 'append' function adds this list to the agents list. After
-              doing this, 'agents[0][0]' is the 'x' coordinate of the first 
-              agent in the agents list and 'agents[0][1]' is the 'y' coordinate 
-              of the first agent in the agents list.</p>\n
-              <p>Go through and replace all the other uses of 'x0' with indexed 
-              list references, i.e. 'agents[0][0]' and 'y0' with 'agents[0][1]' 
-              (uses - not the initial assignments). Check your code still runs.
-              </p>\n
-              <p>The code that creates the first agent and adds this to the 
-              agents list should be as follows:</p>\n
+                Go through and replace all the other uses of 'x0' with indexed
+                list references, i.e. 'agents[0][0]' and 'y0' with
+                'agents[0][1]' (uses - not the initial assignments). Check your
+                code still runs.
+                """);
+        addParagraph(sb,
+                """
+                The code that creates the first agent and adds this to the
+                agents list should be as follows:
                 """);
         addPythonCodeBlock(sb,
                 """
@@ -192,112 +213,135 @@ public class ABM2 extends CoursePage {
                 print("y0", y0)
                 agents.append([x0, y0])
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>Note that the variables 'x0' and 'y0' are only created for 
-              this initialisation. Can you think of a way to reduce this code 
-              and do the initialition more succinctly?</p>\n
-              """);
+                Note that the variables 'x0' and 'y0' are only created for this
+                initialisation. Can you think of a way to reduce this code and
+                do the initialition more succinctly?
+                """);
 
         sid = addSection("Plotting", sb);
-        sb.append("<p>To plot the agents using "
-                + references.getReference("Matplotlib")
-                + " add the following import statements:</p>\n");
+        addParagraphStart(sb, "To plot the agents using ");
+        sb.append(references.getReference("Matplotlib"));
+        addParagraphEnd(sb, " add the following import statements:");
         addPythonCodeBlock(sb,
                 """
                 import matplotlib.pyplot as plt
                 import operator
                 """);
-        sb.append(
-                """
-                <p>And adding the following code to the end of 'model.py':</p>\n
-                """);
+        addParagraph(sb,
+                "And adding the following code to the end of 'model.py':");
         addPythonCodeBlock(sb,
                 """
                 # Plot the agents
                 plt.scatter(agents[0][0], agents[0][1], color='black')
                 plt.scatter(agents[1][0], agents[1][1], color='black')
                 plt.show()
-                # Get the coordinates with the largest x-coordinate 
+                # Get the coordinates with the largest x-coordinate
                 print(max(agents, key=operator.itemgetter(0)))
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-              <p>Run 'model.py' and you should see an image output in the 
-              'Plots' pane of Spyder. The image should contain two points.</p>\n
-              <p>Have a look at
-              <a href="https://matplotlib.org/stable/api/pyplot_summary.html">
-              the matplotlib pyplot documentation</a></p>\n
-              <p>After the code that plots the points black, plot the point 
-              with the largest x coordinate red. One way to do this is to store 
-              those coordinates in a variable and then pass the x-coordinate and 
-              y-coordinate as arguments to the command aliased as 'plt' before 
-              the 'show()' command.</p>\n
-              <p>Have a try and don't worry if you don't get this to work.</p>\n
-              """);
+                Run 'model.py' and you should see an image output in the
+                'Plots' pane of Spyder. The image should contain two points.
+                """);
+        addParagraph(sb,
+                """
+                Have a look at
+                <a href="https://matplotlib.org/stable/api/pyplot_summary.html">
+                the matplotlib pyplot documentation</a>
+                """);
+        addParagraph(sb,
+                """
+                After the code that plots the points black, plot the point with
+                the largest x coordinate red. One way to do this is to store
+                those coordinates in a variable and then pass the x-coordinate
+                and y-coordinate as arguments to the command aliased as 'plt'
+                before the 'show()' command.
+                """);
+        addParagraph(sb,
+                "Have a try and don't worry if you don't get this to work.");
 
         sid = addSection("Using Loops", sb);
-        sb.append("<p>This section guides you through restructuring your code so"
-                + " that agent initialisation (for all agents) happens first,"
-                + " and moving (for all agents) happens second. There will be"
-                + " loops for each of these things and for plotting all the"
-                + " agents.</p>\n");
-        sb.append("<p>To prepare yourself, review your code. In doing so, it might"
-                + " help to insert some blank lines to separate different"
-                + " parts of it, and to add more comments to help you"
-                + " understand what it is doing. Once you have done that,"
-                + " commit your code to your local repository and assuming"
-                + " you are using GitHub - push your changes to GitHub.</p>\n");
-        sb.append("<p>Comment out the code for initialising and changing the"
-                + " coordinates of the second agent. After the line of code"
-                + " that initialises the agent list add a variable called"
-                + " 'n_agents' and set this equal to '10'. Then create a "
-                + index.getReference("Python for", "for loop", sid)
-                + " that uses n_agents to create 10 agents. The code you want"
-                + " is:</p>\n");
+        addParagraph(sb,
+                """
+                This section guides you through restructuring your code so that
+                agent initialisation (for all agents) happens first, and moving
+                (for all agents) happens second. There will be loops for each of
+                these things and for plotting all the agents.
+                """);
+        addParagraph(sb,
+                """
+                To prepare yourself, review your code. In doing so, it might
+                help to insert some blank lines to separate different parts of
+                it, and to add more comments to help you understand what it is
+                doing.
+                """);
+        addParagraphCommitToGitHub(sb);
+        addParagraph(sb,
+                """
+                Comment out the code for initialising and changing the
+                coordinates of the second agent. After the line of code that
+                initialises the agent list, add a variable called 'n_agents' and
+                set this equal to '10'. Then create a
+                """);
+        sb.append(index.getReference("Python for", "for loop", sid));
+        addParagraph(sb,
+                "that uses n_agents to create 10 agents as follows:");
         addPythonCodeBlock(sb,
                 """
                 n_agents = 10
                 for i in range(n_agents):
                     agents.append([random.randint(0, 99), random.randint(0, 99)])
                 """);
-        sb.append("""
-              <p>Check that your program still runs.</p>\n
-              <p>You no longer want any code that initialises other agents.</p>\n
-              """);
-        sb.append("<p>Use another for loop to move all 10 agents. And use another"
-                + " for loop to plot all 10 agents black. Hopefully, there is"
-                + " still a red coloured dot which gives the location of the"
-                + " agent with the largest x coordinate.</p>\n");
-        sb.append("<p>Add and commit to your local git repository and assuming you"
-                + " are using GitHub - push your changes to GitHub.</p>\n");
-
-        sid = addSection("More Plotting", sb);
-        sb.append("""
-              <p>Similarly to plotting the agent with the largest x coordinate
-              red, write code to plot the agent with the smallest x coordinate 
-              blue; the largest y coordinate yellow; and the smallest y 
-              coordinate green.</p>\n
-              <p>Commit your code to your local repository and assuming you 
-              are using GitHub - push your changes to GitHub.</p>\n""");
+        addParagraph(sb, "Check your program still runs.");
+        addParagraph(sb,
+                """
+                Delete or comment out any other code that initialises agents.
+                """);
+        addParagraph(sb,
+                """
+                Use another for loop to move all 10 agents. And use another for
+                loop to plot all 10 agents black. Hopefully, there is still a
+                red coloured dot which gives the location of the agent with the
+                largest x coordinate.
+                """);
+        addParagraphCommitToGitHub(sb);
+        
+        sid = addSection("More Plotting", sb);        
+        addParagraph(sb,
+                """
+                Similarly to plotting the agent with the largest x coordinate
+                red, write code to plot the agent with the smallest x coordinate
+                blue; the largest y coordinate yellow; and the smallest y
+                coordinate green.
+                """);
+        addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code Review and Looking Forward", sb);
-        sb.append("""
-              <p>If you managed to complete all parts, then it should be 
-              straight forward to modify your code to run for different numbers
-              of agent. Have a try and also think about how you would get the 
-              agents to move multiple times.</p>\n
-              <p>If you got stuck, then don't worry, look ahead to the start of 
-              the next ABM practical where some code that does everything is 
-              provided.</p>\n
-              <p>Next we will look in more detail about functions and how to 
-              document them. Then in the next ABM practical: a loop will be 
-              created to simulate movement of the agents multiple times; and the 
-              distance calculation code, which is currently just a test case, 
-              will be changed into a function. Most of the next practical will 
-              be an exercise involving calculating the maximum distance between 
-              agents and timing code to optimise this.</p>\n
-              """);
+        addParagraph(sb,
+                """
+                If you managed to complete all parts, then it should be straight
+                forward to modify your code to run for different numbers of
+                agent. Have a try and also think about how you would get the
+                agents to move multiple times.
+                """);
+        addParagraph(sb,
+                """
+                If you got stuck, then don't worry, look ahead to the start of
+                the next ABM practical where some code that does everything is
+                provided.
+                """);
+        addParagraph(sb,
+                """
+                Next we will look in more detail about functions and how to
+                document them. Then in the next ABM practical: a loop will be
+                created to simulate movement of the agents multiple times; and
+                the distance calculation code, which is currently just a test
+                case, will be changed into a function. Most of the next
+                practical will be an exercise involving calculating the maximum
+                distance between agents and timing code to optimise this.
+                """);
         sb.append("</div>\n");
         return sb.toString();
     }
