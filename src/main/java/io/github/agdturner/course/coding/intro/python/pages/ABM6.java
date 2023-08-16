@@ -39,37 +39,46 @@ public class ABM6 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        sb.append("<p>To get agents communicating they need a way to refer to"
-                + " each other. Code is going to be developed so that those"
-                + " agents that are within a given distance are going to share"
-                + " some of their store.</p>");
-        sb.append("<p>In your local code repository 'src' directory create a"
-                + " new directory called 'abm6'. Open Spyder and use 'save as'"
-                + " to save your 'model.py' into this directory. Create a new"
-                + " directory called 'my_modules' in 'abm6' and use 'save as'"
-                + " to save your 'agentframework.py' and 'io.py' files there."
-                + "</p>");
+        addParagraph(sb,
+                """
+                To get agents communicating they need a way to refer to each
+                other. Code is going to be developed so that those agents that
+                are within a given distance are going to share some of their
+                store.
+                """);
+        addParagraph(sb,
+                """
+                In your local code repository 'src' directory create a new
+                directory called 'abm6'. Open Spyder and use 'save as' to save
+                your 'model.py' into this directory. Create a new directory
+                called 'my_modules' in 'abm6' and use 'save as' to save your
+                'agentframework.py' and 'io.py' files there.
+                """);
 
         sid = addSection("Sharing", sb);
-        sb.append("<p>Each agent is going to share their store equally amongst"
-                + " all agents within a given distance. The algorithm is as"
-                + " follows:</p>");
-        sb.append(
+        addParagraph(sb,
                 """
-                <pre>
+                Each agent is going to share their store equally amongst all
+                agents within a given distance. The algorithm is as follows:
+                """);
+        addPre(sb,
+                """
                 # Calculate which other agents are within a given distance.
                 # Calculate shares.
                 # Distribute shares.
-                </pre>
                 """);
-        sb.append("<p>In order to share resources so that the order in which"
-                + " agents are processed is irrelevant, there is a need to"
-                + " distinguish those resources to be shared with those that"
-                + " have been shared.</p>");
-        sb.append("<p>Change the Agent contructor to include 'agents' in the"
-                + " parameters, store this as a variable, and add an attribute"
-                + " for storing the shares 'store_shares' so it is as follows:"
-                + "</p>");
+        addParagraph(sb,
+                """
+                In order to share resources so that the order in which agents
+                are processed is irrelevant, there is a need to distinguish
+                those resources to be shared with those that have been shared.
+                """);
+        addParagraph(sb,
+                """
+                Change the Agent contructor to include 'agents' in the
+                parameters, store this as a variable, and add an attribute for
+                storing the shares 'store_shares' so it is as follows:
+                """);
         addPythonCodeBlock(sb,
                 """
                 def __init__(self, agents, i, environment, n_rows, n_cols):
@@ -100,34 +109,40 @@ public class ABM6 extends CoursePage {
                     tnc = int(n_cols / 3)
                     self.x = random.randint(tnc - 1, (2 * tnc) - 1)
                     tnr = int(n_rows / 3)
-                    self.y = random.randint(tnr - 1, (2 * tnr) - 1)       
+                    self.y = random.randint(tnr - 1, (2 * tnr) - 1)
                     self.store = 0
                     self.store_shares = 0
                 """);
-        sb.append("<p>Change 'model.py' so that 'agents' is passed as a"
-                + " parameter in the code that constructs each inidivual Agent"
-                + " class instance.</p>");
-        sb.append("<p>Test your code works and that from one agent you can"
-                + " access another agent by printing out one agent from another"
-                + " agent. For example after all the agents are initialised"
-                + " try printing the agent with i equal to 1 from the agent"
-                + " with i equal to 0:</p>");
-        addPythonCodeBlock(sb,
+        addParagraph(sb,
                 """
-                print(agents[0].agents[1])
+                Change 'model.py' so that 'agents' is passed as a parameter in
+                the code that constructs each inidivual Agent class instance.
                 """);
-        sb.append("<p>A way to use the 'get_distance' function in"
-                + " 'agentframework.py' and avoid cyclic imports is to move"
-                + " the 'get_distance' function to a new module. Create a new"
-                + " file called 'geometry.py' in the 'my_modules' directory,"
-                + " and move the 'get_distance' method from 'model.py' to it."
-                + " Add an import statement for the new geometry module in"
-                + " 'model.py' and change the function call to look for the"
-                + " function in the new geometry module by using the dot"
-                + " operator. (In other words change 'get_distance' to"
-                + " 'geometry.get_distance').</p>");
-        sb.append("<p>Import the geometry module into 'agentframework.py' and"
-                + " add the following method:</p>");
+        addParagraph(sb,
+                """
+                Test your code works and that from one agent you can access
+                another agent by printing out one agent from another agent. For
+                example after all the agents are initialised try printing the
+                agent with i equal to 1 from the agent with i equal to 0:
+                """);
+        addPythonCodeBlock(sb, "print(agents[0].agents[1])");
+        addParagraph(sb,
+                """
+                A way to use the 'get_distance' function in 'agentframework.py'
+                and avoid cyclic imports is to move the 'get_distance' function
+                to a new module. Create a new file called 'geometry.py' in the
+                'my_modules' directory, and move the 'get_distance' method from
+                'model.py' to it. Add an import statement for the new geometry
+                module in 'model.py' and change the function call to look for
+                the function in the new geometry module by using the dot
+                operator. (In other words change 'get_distance' to
+                'geometry.get_distance').
+                """);
+        addParagraph(sb,
+                """
+                Import the geometry module into 'agentframework.py' and add the
+                following method:
+                """);
         addPythonCodeBlock(sb,
                 """
                 def share(self, neighbourhood):
@@ -147,18 +162,20 @@ public class ABM6 extends CoursePage {
                     for i in neighbours:
                         self.agents[i].store_shares += shares
                 """);
-        sb.append("<p>This code is using the fact that 'self.i' will be the"
-                + " same as the index of an agent in the 'agents' list. In the"
-                + " first for loop of the 'share' function the distance between"
-                + " 'self' and each agent in the agents list is calculated and"
-                + " if this is less than 'neighbourhood' (a parameter that is"
-                + " passed in), then the index of the agent from the agents"
-                + " list is stored in the 'neighbours' list. The attribute"
-                + " 'self.store' is then divided into 'shares' and added to the"
-                + " 'store_shares' attribute of all the agents with indexes in"
-                + " 'neighbours'.</p>");
-        sb.append("<p>Replace the 'main simulation loop' in 'model.py' file"
-                + " with the following:</p>");
+        addParagraph(sb,
+                """
+                This code is using the fact that 'self.i' will be the same as
+                the index of an agent in the 'agents' list. In the first for
+                loop of the 'share' function the distance between 'self' and
+                each agent in the agents list is calculated and if this is less
+                than 'neighbourhood' (a parameter that is passed in), then the
+                index of the agent from the agents list is stored in the
+                'neighbours' list. The attribute 'self.store' is then divided
+                into 'shares' and added to the 'store_shares' attribute of all
+                the agents with indexes in 'neighbours'.
+                """);
+        addParagraph(sb,
+                "Replace the 'main simulation loop' in 'model.py' file with:");
         addPythonCodeBlock(sb,
                 """
                 # Main simulation loop
@@ -189,35 +206,45 @@ public class ABM6 extends CoursePage {
                     print("sum_environment", sum_e)
                     print("total resource", (sum_as + sum_e))
                 """);
-        sb.append("<p>Run 'model.py' and interpret the output. Add more print"
-                + " statements to gain a clear understanding of how the code"
-                + " works.</p>");
+        addParagraph(sb,
+                """
+                Run 'model.py' and interpret the output. Add more print
+                statements to gain a clear understanding of how the code works.
+                """);
 
         sid = addSection("Organise module code", sb);
-        sb.append("<p>Move all code in each 'my_modules' module that is not in"
-                + " functions to be within if statement like the following at"
-                + " the end of the file:</p>");
-        addPythonCodeBlock(sb,
+        addParagraph(sb,
                 """
-                if __name__ == '__main__':
+                Move all code in each 'my_modules' module that is not in
+                functions to be within if statement like the following at the
+                end of the file:
                 """);
-        sb.append("<p>Recall that this isolates this code so it is only run if"
-                + " that file is the one run and not when the module is"
-                + " imported.</p>");
-        sb.append("<p>Make sure to test that your code still produces the same"
-                + "results.</p>");
+        addPythonCodeBlock(sb, "if __name__ == '__main__':");
+        addParagraph(sb,
+                """
+                Recall that this isolates this code so it is only run if that
+                file is the one run and not when the module is imported.
+                """);
+        addParagraph(sb,
+                """
+                Make sure to test that your code still produces the same
+                results.
+                """);
 
         sid = addSection("Output images and generate an animated Gif", sb);
-        sb.append("<p>Add the following import statements to the 'model.py'"
-                + " placing these with the other import statements as the"
-                + " first executable statements in the code:</p>");
+        addParagraph(sb,
+                """
+                Add the following import statements to the 'model.py' placing
+                these with the other import statements as the first executable
+                statements in the code:
+                """);
         addPythonCodeBlock(sb,
                 """
                 import imageio
                 import os
                 """);
-        sb.append("<p>Before the main simulation loop add the following code:"
-                + "</p>");
+        addParagraph(sb,
+                "Before the main simulation loop add the following code:");
         addPythonCodeBlock(sb,
                 """
                 # Create directory to write images to.
@@ -231,13 +258,13 @@ public class ABM6 extends CoursePage {
                 ite = 1
                 images = []
                 """);
-        sb.append("<p>Indent the plotting so that this occurs within the main"
-                + " simulation loop and replace the following line:</p>");
-        addPythonCodeBlock(sb,
+        addParagraph(sb,
                 """
-                plot.show()
+                Indent the plotting so that this occurs within the main
+                simulation loop and replace the following line:
                 """);
-        sb.append("<p>With:</p>");
+        addPythonCodeBlock(sb, "plot.show()");
+        addParagraph(sb, "With:");
         addPythonCodeBlock(sb,
                 """
                 filename = '../../data/output/images/image' + str(ite) + '.png'
@@ -247,22 +274,25 @@ public class ABM6 extends CoursePage {
                 plt.close()
                 images.append(imageio.imread(filename))
                 """);
-        sb.append("<p>This code should: create plots; save these as images in"
-                + " PNG format files; show and close them rapidly; then reload"
-                + " the PNG format file and append the image to the images"
-                + " list.</p>");
-        sb.append("<p>After the end of the main simulation loop the images can"
-                + " be turned into an animated GIF format file using the"
-                + " following:</p>");
-        addPythonCodeBlock(sb,
+        addParagraph(sb,
                 """
-                imageio.mimsave('../../data/output/out.gif', images, fps=3)
+                This code should: create plots; save these as images in PNG
+                format files; show and close them rapidly; then reload the PNG
+                format file and append the image to the images list.
                 """);
-        sb.append("<p>The parameter 'fps' is the number of frames that are"
-                + " shown per second.</p>");
-        sb.append("<p>Once you have this working. Commit your code to your"
-                + " local repository and assuming you are using GitHub - push"
-                + " your changes to GitHub.</p>");
+        addParagraph(sb,
+                """
+                After the end of the main simulation loop the images can be
+                turned into an animated GIF format file using:
+                """);
+        addPythonCodeBlock(sb,
+                "imageio.mimsave('../../data/output/out.gif', images, fps=3)");
+        addParagraph(sb,
+                """
+                The parameter 'fps' is the number of frames that are shown per
+                 second.
+                """);
+        addParagraphCommitToGitHub(sb);
 
         sid = addSection("Further Assignment 1 Coding Tasks", sb);
         sb.append("<p>Create some more variable results by randomly setting the"

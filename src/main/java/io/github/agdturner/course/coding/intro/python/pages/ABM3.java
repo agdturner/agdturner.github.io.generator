@@ -36,6 +36,7 @@ public class ABM3 extends CoursePage {
         super(course, "abm3", "Agent Based Model Practical 3", "ABM3");
     }
 
+    @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Recap and preparation", sb);
@@ -141,15 +142,15 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                The text output gives the agent coordinates before and then 
-                after a single move. This could be clearer in the information 
+                The text output gives the agent coordinates before and then
+                after a single move. This could be clearer in the information
                 printed out, but the output is fine for the time being.
                 """);
         addParagraph(sb,
                 """
-                <p>In your local code repository src directory create a new 
-                directory called "abm3". Open Spyder and use "save as" to save 
-                your "model.py" file into the abm3 directory.</p>
+                In your local code repository src directory create a new
+                directory called "abm3". Open Spyder and use "save as" to save
+                your "model.py" file into the abm3 directory.
                 """);
 
         sid = addSection("Distance Calculations", sb);
@@ -170,7 +171,7 @@ public class ABM3 extends CoursePage {
         addParagraph(sb, "Run the code to test it works");
         addParagraph(sb,
                 """
-                If your code calculates the square root in two ways, then 
+                If your code calculates the square root in two ways, then
                 simplify it by removing one of these ways. Consider simplifying
                 your code in other ways too...
                 """);
@@ -202,7 +203,7 @@ public class ABM3 extends CoursePage {
                 all agents; and an inner loop that iterates over all agents.
                 Within the inner loop the get_distance function can be used to
                 calculate the distance between a pair of agents (one from the
-                outer loop and one from the inner loop), and the 
+                outer loop and one from the inner loop), and the
                 <a href="https://docs.python.org/3/library/functions.html#max">
                 builtin max function</a> can be used to calculate the maximum
                 distance encountered yet. The following code does this:
@@ -262,7 +263,7 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Write a function called 'get_max_distance' that returns the 
+                Write a function called 'get_max_distance' that returns the
                 maximum distance between all the agents.
                 """);
         addParagraph(sb,
@@ -298,8 +299,8 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Use your 'get_max_distance' function to calculate the maximum 
-                distance between all the agents just after they have been 
+                Use your 'get_max_distance' function to calculate the maximum
+                distance between all the agents just after they have been
                 initialised.
                 """);
         addParagraphStart(sb, "If a ");
@@ -318,7 +319,7 @@ public class ABM3 extends CoursePage {
         addParagraphEnd(sb, " to report timings and explore code efficiency.");
         addParagraph(sb,
                 """
-                Save your source code file with a new name, for example 
+                Save your source code file with a new name, for example
                 "timing.py".
                 """);
         addParagraph(sb,
@@ -329,7 +330,7 @@ public class ABM3 extends CoursePage {
         addPythonCodeBlock(sb, "import time");
         addParagraph(sb,
                 """
-                Before calculating the maximum distance between the initialised 
+                Before calculating the maximum distance between the initialised
                 agents add the following line:
                 """);
         addPythonCodeBlock(sb, "start = time.perf_counter()");
@@ -343,7 +344,8 @@ public class ABM3 extends CoursePage {
         addPythonCodeBlock(sb,
                 """
                 end = time.perf_counter()
-                print("Time taken to calculate maximum distance", end - start, "seconds")
+                print("Time taken to calculate maximum distance", end - start,
+                "seconds")
                 """);
         addParagraph(sb,
                 """
@@ -367,29 +369,29 @@ public class ABM3 extends CoursePage {
         sb.append(Strings.OL_END);
         addParagraph(sb,
                 """
-              Increase 'n_agents' to 500 and run the program again. Notice that
-              the plotting is a little delayed and printing out the agents now
-              clutters the text output.
-              """);
+                Increase 'n_agents' to 500 and run the program again. Notice
+                that the plotting is a little delayed and printing out the
+                agents now clutters the text output.
+                """);
         addParagraph(sb,
                 """
-              As printing and plotting are slow and can effect timings 
-              significantly, comment out the code for printing agents and the 
-              code for plotting agents.
-              """);
+                As printing and plotting are slow and can effect timings
+                significantly, comment out the code for printing agents and the
+                code for plotting agents.
+                """);
         addParagraph(sb,
                 """
-              Run your program again. It should now be easy to see the time 
-              taken to calculate the maximum distance between agents, which is 
-              expected to take a fraction of a second.
-              """);
+                Run your program again. It should now be easy to see the time
+                taken to calculate the maximum distance between agents, which is
+                expected to take a fraction of a second.
+                """);
         addParagraph(sb,
                 """
-              Run again and compare the timing. It is normal for the timing 
-              to vary a bit from one run to another. The amount of computation 
-              is the same, but the exact timing depends on other things that are 
-              hard to control for - such as how busy your computer is doing 
-              other things.
+                Run again and compare the timing. It is normal for the timing
+                to vary a bit from one run to another. The amount of computation
+                is the same, but the exact timing depends on other things that
+                are hard to control for - such as how busy your computer is
+                doing other things.
               """);
         addParagraph(sb, "Adapt your code:");
         sb.append(Strings.OL_START);
@@ -406,10 +408,10 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Spend at least 15 minutes trying to do this coding. If you 
-                manage to do it within this time, then great, if not, then don't 
+                Spend at least 15 minutes trying to do this coding. If you
+                manage to do it within this time, then great, if not, then don't
                 worry. Having tried, compare your efforts with
-                <a href="../../resources/abm3/timing1.py">this solution</a> that 
+                <a href="../../resources/abm3/timing1.py">this solution</a> that
                 produces the following results:
                 """);
         addPre(sb,
@@ -435,14 +437,14 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                <img src="../../resources/abm3/Figure_1.png" 
+                <img src="../../resources/abm3/Figure_1.png"
                 alt="A graph of time (y axis) and n_agents (x axis)" />
                 """);
         addParagraph(sb,
                 """
-                Attempt to optimise the calculation of the maximum distance 
-                between all the agents as follows: Modify your code so that 
-                'n_agents = 3', and add the following print statement to the 
+                Attempt to optimise the calculation of the maximum distance
+                between all the agents as follows: Modify your code so that
+                'n_agents = 3', and add the following print statement to the
                 inner loop of the 'get_max_distance' function:
                 """);
         addPre(sb,
@@ -451,7 +453,7 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Run the code and you should see the following printed in the 
+                Run the code and you should see the following printed in the
                 text output:
                 """);
         addPre(sb,
@@ -483,7 +485,7 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Run the program again and you should see the following in the 
+                Run the program again and you should see the following in the
                 console output:
                 """);
         addPre(sb,
@@ -497,8 +499,8 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Compare this output with the previous run output: There is less 
-                output, as when the indexes are the same, the calculations are 
+                Compare this output with the previous run output: There is less
+                output, as when the indexes are the same, the calculations are
                 skipped.
                 """);
         addParagraph(sb,
@@ -517,14 +519,11 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Modify the code again so that: 'n_agents = 3'; the print 
-                statement that was commented out is no longer commented out; and, 
-                so that the operator in the 'if statement' is a '&lt;'):
+                Modify the code again so that: 'n_agents = 3'; the print
+                statement that was commented out is no longer commented out;
+                and, so that the operator in the 'if statement' is a '&lt;'):
                 """);
-        addPythonCodeBlock(sb,
-                """
-                if i < j:
-                """);
+        addPythonCodeBlock(sb, "if i < j:");
         addParagraph(sb,
                 """
                 Run the program again and you should get the following output:
@@ -537,9 +536,9 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Understand that the maximum distance can be calculated by 
-                finding the maximum distance between the coordinates as indexed. 
-                It may help you appreciate this if you run for 'n_agents = 5' or 
+                Understand that the maximum distance can be calculated by
+                finding the maximum distance between the coordinates as indexed.
+                It may help you appreciate this if you run for 'n_agents = 5' or
                 'n_agents = 10' and analyse the output.
                 """);
         addParagraph(sb,
@@ -548,13 +547,13 @@ public class ABM3 extends CoursePage {
                 for 'n_agents = 1000'. You should get the same max_distance
                 result calculated previously, but the processing time should be
                 roughly half.
-                """);        
+                """);
         addParagraph(sb,
                 """
-                An even faster way involves modifying the loops and removing 
-                the 'if statement'. Can you work out how to do it? (Hint: 
-                Change the range function of the inner for loop to start at index
-                i + 1).
+                An even faster way involves modifying the loops and removing
+                the 'if statement'. Can you work out how to do it? (Hint: Change
+                the range function of the inner for loop to start at index i +
+                1).
                 """);
         addParagraph(sb,
                 """
@@ -572,17 +571,17 @@ public class ABM3 extends CoursePage {
         sid = addSection("Other distance statistics", sb);
         addParagraph(sb,
                 """
-                In calculating the maximum distance, a lower bound of 0 was 
-                used to initialise the max_distance variable. To calculate the 
-                minimum distance, then either an upper bound is wanted, or the 
-                initial minimum distance should be set to be a distance between 
-                any two different agents. The upper bound of the distance 
-                between two agents in Euclidean space is theoretically 
+                In calculating the maximum distance, a lower bound of 0 was
+                used to initialise the max_distance variable. To calculate the
+                minimum distance, then either an upper bound is wanted, or the
+                initial minimum distance should be set to be a distance between
+                any two different agents. The upper bound of the distance
+                between two agents in Euclidean space is theoretically
                 infinite.
                 """);
         addParagraphStart(sb, "From the ");
-        sb.append(index.getReference("Python math", "math module", sid));        
-        addParagraphEnd(sb, 
+        sb.append(index.getReference("Python math", "math module", sid));
+        addParagraphEnd(sb,
                 " the following can be used for positive infinity:");
         addPythonCodeBlock(sb,
                 """
@@ -590,22 +589,22 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Write a function that calculates the minumum distance between 
-                all the agents and record timings of how long it takes to 
-                calculate both the maximum and minimum distances using the two 
+                Write a function that calculates the minumum distance between
+                all the agents and record timings of how long it takes to
+                calculate both the maximum and minimum distances using the two
                 different functions.
                 """);
         addParagraph(sb,
                 """
-                Develop a function that calculates both the minimum and 
-                maximum distances using a single set of nested loops and returns 
-                the result in a tuple. You should find that it is significantly 
-                quicker to calculate both the maximum and minimum this way rather 
-                than looping through things and calculating the distances twice. 
-                Write a brief document about the timings to show that calculating 
-                both the minimum and maximum distances using a single set of 
-                nested loops is more efficient. Commit this document to your 
-                repository along with your code.
+                Develop a function that calculates both the minimum and
+                maximum distances using a single set of nested loops and returns
+                the result in a tuple. You should find that it is significantly
+                quicker to calculate both the maximum and minimum this way
+                rather than looping through things and calculating the distances
+                twice. Write a brief document about the timings to show that
+                calculating both the minimum and maximum distances using a
+                single set of nested loops is more efficient. Commit this
+                document to your repository along with your code.
                 """);
         addParagraph(sb,
                 """
@@ -614,22 +613,22 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                The <a href="https://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic mean</a> 
-                average can be calculated with one run through the data. To 
+                The <a href="https://en.wikipedia.org/wiki/Arithmetic_mean">arithmetic mean</a>
+                average can be calculated with one run through the data. To
                 calculate the
                 <a href="https://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a>
-                of distances, it is first necessary to know the arithmetic mean. 
-                So, it is necessary in calculating the standard deviation to 
-                iterate over the data values at least twice, once to calculate the 
-                mean and again to sum some difference of values from the mean. The 
+                of distances, it is first necessary to know the arithmetic mean.
+                So, it is necessary in calculating the standard deviation to
+                iterate over the data values at least twice, once to calculate the
+                mean and again to sum some difference of values from the mean. The
                 <a href="https://en.wikipedia.org/wiki/Median">median</a>
                 and
-                <a hre="https://en.wikipedia.org/wiki/Mode_(statistics)">mode</a>
-                could be calculated with a single run through the data. For 
-                calculating the median the data needs to be sorted. Calculating 
-                the mode of a continuous variable is often not useful. Anyway, for 
-                a mode calculation, a dictionary can be used to store a count for 
-                each value and then return the value for which the count is 
+                <a href="https://en.wikipedia.org/wiki/Mode_(statistics)">mode</a>
+                could be calculated with a single run through the data. For
+                calculating the median the data needs to be sorted. Calculating
+                the mode of a continuous variable is often not useful. Anyway, for
+                a mode calculation, a dictionary can be used to store a count for
+                each value and then return the value for which the count is
                 highest.
                 """);
         addParagraph(sb,
@@ -639,8 +638,11 @@ public class ABM3 extends CoursePage {
                 you want the extra practise then have a go. Perhaps try 
                 calculating a truncated mean of distances ignoring a proportion 
                 of the highest and lowest distances. Think about how you would 
-                test to ensure your code produces correct results.</p>
-                <p>Replace the get_max_distance() in model.py with the new faster 
+                test to ensure your code produces correct results.
+                """);
+        addParagraph(sb,
+                """
+                Replace the get_max_distance() in model.py with the new faster
                 version you have developed.
                 """);
         addParagraphCommitToGitHub(sb);
@@ -648,29 +650,35 @@ public class ABM3 extends CoursePage {
         sid = addSection("Movement", sb);
         addParagraph(sb,
                 """
-                Currently, in 'model.py' agents move once. The code will now be 
+                Currently, in 'model.py' agents move once. The code will now be
                 changed to move them a number of times. After initialising
-                'n_agents', initialise a variable called 'n_iterations' and set it 
-                equal to 1000.
+                'n_agents', initialise a variable called 'n_iterations' and set
+                it equal to 1000.
                 """);
-        sb.append("<p>Create a new outer "
-                + index.getReference("Python for", "for loop")
-                + " to loop through moving agents n_iteration times. An outer"
-                + " loop is wanted rather than an inner loop as in each"
-                + " iteration agents are to move in turn rather than each"
-                + " agent taking all their turns before any others. This outer"
-                + " loop is the 'main simulation loop'. Add a comment to"
-                + " identify it as such.</p>\n");
-        sb.append("""
-              <p>The agents move randomly, and the more of them there are, the 
-              more spread out they are likely to become.</p>
-              <p>Edge effects are important to consider in geographical data 
-              analysis and modelling. The agents currently have a theoretically 
-              infinite two dimensional (2D) area to move in. To make things more 
-              manageable, movement will be restricted to a rectangular area by 
-              limiting the x and y coordinates using the following code 
-              blocks:</p>
-                  """);
+        addParagraphStart(sb, "Create a new outer ");
+        sb.append(index.getReference("Python for", "for loop"));
+        addParagraphEnd(sb,
+                """
+                to loop through moving agents n_iteration times. An outer loop
+                is wanted rather than an inner loop as in each iteration agents
+                are to move in turn rather than each agent taking all their
+                turns before any others. This outer loop is the 'main simulation
+                loop'. Add a comment to identify it as such.
+                """);
+        addParagraph(sb,
+                """
+                The agents move randomly, and the more of them there are, the
+                more spread out they are likely to become.
+                """);
+        addParagraph(sb,
+                """
+                Edge effects are important to consider in geographical data
+                analysis and modelling. The agents currently have a
+                theoretically infinite two dimensional (2D) area to move in. To
+                make things more manageable, movement will be restricted to a
+                rectangular area by limiting the x and y coordinates using the
+                following code blocks:
+                """);
         addPythonCodeBlock(sb,
                 """
                 # Variables for constraining movement.
@@ -695,15 +703,19 @@ public class ABM3 extends CoursePage {
                 if agents[i][1] > y_max:
                     agents[i][1] = y_max
                 """);
-        sb.append("""
-              <p>Insert the first code block at the top of 'model.py' with 
-              the other initialised variables. Insert the other code block as 
-              part of moving each agent.</p>
-              <p>After having moved each agent, the code could loop through the 
-              agents again to constrain movement, but this would be less 
-              efficient than constraining within same loop as moving each 
-              agent.<p>
-              """);
+        addParagraph(sb,
+                """
+                Insert the first code block at the top of 'model.py' with
+                the other initialised variables. Insert the other code block as
+                part of moving each agent.
+                """);
+        addParagraph(sb,
+                """
+                After having moved each agent, the code could loop through the
+                agents again to constrain movement, but this would be less
+                efficient than constraining within same loop as moving each
+                agent.
+                """);
         addParagraphCommitToGitHub(sb);
         sb.append("</div>\n");
         return sb.toString();

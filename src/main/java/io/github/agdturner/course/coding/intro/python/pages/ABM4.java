@@ -39,64 +39,85 @@ public class ABM4 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Recap and preparation", sb);
-        sb.append("""
-              <p>Currently, 'agents' is a list that contains lists of two items; 
-              an x-coordinate, and a y-coordinate. More items could be added 
-              to the lists to representing additional agent characteristics. 
-              However, the longer the lists become, the harder it is to remember 
-              what is stored in each index and the more confusing code gets.</p>
-              <p>Defining an Agent class provides a way to name agent 
-              characteristics and refer to them by name rather than by a list 
-              index. The Agent class will be defined in a different file from 
-              'model.py' so the program code going forwards will be in multiple 
-              files.</p>
-              <p>In your local code repository src directory create a new 
-              directory called "abm4". Open Spyder and use 'save as' to save 
-              your 'model.py' file from abm3 into the abm4 directory.</p>
-              """);
+        addParagraph(sb,
+                """
+                Currently, 'agents' is a list that contains lists of two items;
+                an x-coordinate, and a y-coordinate. More items could be added
+                to the lists to representing additional agent characteristics.
+                However, the longer the lists become, the harder it is to
+                remember what is stored in each index and the more confusing
+                code gets.
+                """);
+        addParagraph(sb,
+                """
+                Defining an Agent class provides a way to name agent
+                characteristics and refer to them by name rather than by a list
+                index. The Agent class will be defined in a different file from
+                'model.py' so the program code going forwards will be in
+                multiple files.
+                """);
+        addParagraph(sb,
+                """
+                In your local code repository src directory create a new
+                directory called "abm4". Open Spyder and use 'save as' to save
+                your 'model.py' file from abm3 into the abm4 directory.
+                """);
 
         sid = addSection("Define an Agent class", sb);
-        sb.append("""
-              <p>Create a new file in the abm4 directory named 
-              'agentframework.py', and add a class definition for an Agent class
-              in it as follows:</p>
-                  """);
+        addParagraph(sb,
+                """
+                Create a new file in the abm4 directory named
+                'agentframework.py', and add a class definition for an Agent
+                class in it as follows:
+                """);
         addPythonCodeBlock(sb,
                 """
                 class Agent():
                     pass
                 """);
-        sb.append("""
-              <p>The keyword 'pass' ensures the code is syntactically correct 
-              and will run.</p>
-              <p>In 'model.py' reduce 'n_iterations' to 10, and add the 
-              following import statement:</p>
-                  """);
-        addPythonCodeBlock(sb,
+        addParagraph(sb,
                 """
-                import agentframework as af
+                The keyword 'pass' ensures the code is syntactically correct
+                and will run.
                 """);
-        sb.append("""
-              <p>Note that this imports the agentframework module as loaded from 
-              'agentframework.py' which is to be referred to by 'af'.</p>
-              <p>At the start of the '# Initialise agents' code block, add the 
-              following:</p>
-                  """);
+        addParagraph(sb,
+                """
+                In 'model.py' reduce 'n_iterations' to 10, and add the following
+                import statement:
+                """);
+        addPythonCodeBlock(sb, "import agentframework as af");
+        addParagraph(sb,
+                """
+                Note that this imports the agentframework module as loaded from
+                'agentframework.py' which is to be referred to by 'af'.
+                """);
+        addParagraph(sb,
+                """
+                At the start of the '# Initialise agents' code block, add the
+                following:
+                """);
         addPythonCodeBlock(sb,
                 """
                 a = af.Agent()
                 print("type(a)", type(a))
                 """);
-        sb.append("""
-                  <p>Run 'model.py' and examine the output. It should contain the 
-              following line:</p>
-              <pre>type(a) <class 'agentframework.Agent'></pre>
-              <p>This indicates that an instance of the class Agent as defined 
-              in the agentframework module was successfully created.</p>
-              <p>Add a constructor method to the Agent class that initialises 
-              'x' and 'y' variable attributes to be random integers in the range
-              [0, 99]. The code in 'agentframework.py' should be:</p>
-                  """);
+        addParagraph(sb,
+                """
+                Run 'model.py' and examine the output. It should contain the
+                following line:
+                """);
+        addPre(sb, "type(a) <class 'agentframework.Agent'>");
+        addParagraph(sb,
+                """
+                This indicates that an instance of the class Agent as defined
+                in the agentframework module was successfully created.
+                """);
+        addParagraph(sb,
+                """
+                Add a constructor method to the Agent class that initialises 'x'
+                and 'y' variable attributes to be random integers in the range
+                [0, 99]. The code in 'agentframework.py' should be:
+                """);
         addPythonCodeBlock(sb,
                 """
                 import random
@@ -106,44 +127,61 @@ public class ABM4 extends CoursePage {
                         self.x = random.randint(0, 99)
                         self.y = random.randint(0, 99)
                 """);
-        sb.append("<p>Note that the ")
-                .append(index.getReference("Python random", "random module", sid))
-                .append("is imported as this is used in the Agent constructor "
-                        + "'__init__' method.</p>\n");
-        sb.append("""
-              <p>In 'model.py', add a statement to print the agent that was 
-              instantiated, and run the program again. Text along the lines of 
-              the following should be in the output:</p>
-              <pre>&lt;agentframework.Agent object at 0x00000249AEA21D88&gt;</pre>
-              <p>The last part of this will almost certainly be different to 
-              '0x00000249AEA21D88' and if you run your program again, it will 
-              likely be different again. Recall that this string is a memory 
-              address identifying where the object is stored in the memory of 
-              the computer.</p>
-              <p>When printing an Agent instance, it would be better if 
-              something more informative was output. The best way to do this 
-              is to override the '__str__' method which comes from the 'type' 
-              metaclass that all classes inherit from by default. Define the 
-              method in the Agent class as follows:</p>
-                  """);
+        addParagraphStart(sb, "Note that the ");
+        sb.append(index.getReference("Python random", "random module", sid));
+        addParagraphEnd(sb,
+                """
+                is imported as this is used in the Agent constructor '__init__'
+                method.
+                """);
+        addParagraph(sb,
+                """
+                In 'model.py', add a statement to print the agent that was
+                instantiated, and run the program again. Text along the lines
+                of the following should be in the output:
+                """);
+        addPre(sb,
+                "&lt;agentframework.Agent object at 0x00000249AEA21D88&gt;");
+        addParagraph(sb,
+                """
+                The last part of this will almost certainly be different to
+                '0x00000249AEA21D88' and if you run your program again, it will
+                likely be different again. Recall that this string is a memory
+                address identifying where the object is stored in the memory of
+                the computer.
+                """);
+        addParagraph(sb,
+                """
+                When printing an Agent instance, it would be better if something
+                more informative was output. The best way to do this is to
+                override the '__str__' method which comes from the 'type'
+                metaclass that all classes inherit from by default. Define the
+                method in the Agent class as follows:
+                """);
         addPythonCodeBlock(sb,
                 """
                 def __str__(self):
                    return self.__class__.__name__ + "(x=" + str(self.x) \\
                       + ", y=" + str(self.y) + ")"
                 """);
-        sb.append("<p>Note that this returns a string which includes the name of"
-                + " the class and details of the 'x' and 'y' variable"
-                + " attributes which are transformed by the builtins module "
-                + index.getReference("Python str", "str function", sid)
-                + " to be strings.</p>\n");
-        sb.append("""
-              <p>Run 'model.py' again and the print statement should result in 
-              the following:</p>
-              <pre>Agent(x=49, y=97)</pre>
-              <p>Change the '# Initialise agents' code block in 'model.py' to:
-              </p>
-                  """);
+        addParagraphStart(sb,
+                """
+                Note that this returns a string which includes the name of the
+                class and details of the 'x' and 'y' variable attributes which
+                are transformed by the builtins module
+                """);
+        sb.append(index.getReference("Python str", "str function", sid));
+        addParagraphEnd(sb, " to be strings.");
+        addParagraph(sb,
+                """
+                Run 'model.py' again and the print statement should result in
+                the following:
+                """);
+        addPre(sb, "Agent(x=49, y=97)");
+        addParagraph(sb,
+                """
+                Change the '# Initialise agents' code block in 'model.py' to:
+                """);
         addPythonCodeBlock(sb, 
                 """
                 # Initialise agents
@@ -154,109 +192,102 @@ public class ABM4 extends CoursePage {
                     print(agents[i])
                 print(agents)
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>Run 'model.py' and you should get similar output to the 
-              following (in the error report, the file paths will probably be 
-              different, and the line numbers might be different):</p>
-              <pre>Check this is equal to 5: 5.0
-              Agent(x=49, y=97)
-              Agent(x=53, y=5)
-              Agent(x=33, y=65)
-              Agent(x=62, y=51)
-              Agent(x=38, y=61)
-              Agent(x=45, y=74)
-              Agent(x=27, y=64)
-              Agent(x=17, y=36)
-              Agent(x=17, y=96)
-              Agent(x=12, y=79)
-              [&lt;agentframework.Agent object at 0x00000249B140C6C8&gt;, &lt;agentframework.Agent object at 0x00000249B14194C8&gt;, &lt;agentframework.Agent object at 0x00000249B1419148&gt;, &lt;agentframework.Agent object at 0x00000249B1419388&gt;, &lt;agentframework.Agent object at 0x00000249B14193C8&gt;, &lt;agentframework.Agent object at 0x00000249B1419448&gt;, &lt;agentframework.Agent object at 0x00000249B14191C8&gt;, &lt;agentframework.Agent object at 0x00000249B1419048&gt;, &lt;agentframework.Agent object at 0x00000249B1419488&gt;, &lt;agentframework.Agent object at 0x00000249B1419208&gt;]
-              Traceback (most recent call last):
-              
-                File "\\abm4\\model.py", line 95, in &lt;module&gt;
-                  print("Maximum distance between all the agents", get_max_distance())
-              
-                File "\\abm4\\model.py", line 81, in get_max_distance
-                  distance = get_distance(a[0], a[1], b[0], b[1])
-              
-              TypeError: 'Agent' object is not subscriptable</pre>
-              <p>The list 'agents' is initialised, but the print function does 
-              not use the '__str__' method to get string representations when 
-              printing the list.</p>
-              """);
-        sb.append("<p>The "
-                + index.getReference("Python TypeError", "TypeError", sid)
-                + " is a consequence of the 'agents' list no longer containing"
-                + " lists, but instantiated Agent objects, and some parts of"
-                + " the code are still written as though each agent is a list"
-                + " and not an instance of the Agent class.</p>\n");
-        sb.append("""
-              <p>Add the following method to the Agent class to get the print 
-              function to print string representations when printing the agents 
-              list:</p>
-                  """);
+                Run 'model.py' and you should get similar output to the
+                following (in the error report, the file paths will probably be
+                different, and the line numbers might be different):
+                """);
+        addPre(sb,
+                """
+                Check this is equal to 5: 5.0
+                Agent(x=49, y=97)
+                Agent(x=53, y=5)
+                Agent(x=33, y=65)
+                Agent(x=62, y=51)
+                Agent(x=38, y=61)
+                Agent(x=45, y=74)
+                Agent(x=27, y=64)
+                Agent(x=17, y=36)
+                Agent(x=17, y=96)
+                Agent(x=12, y=79)
+                [&lt;agentframework.Agent object at 0x00000249B140C6C8&gt;, &lt;agentframework.Agent object at 0x00000249B14194C8&gt;, &lt;agentframework.Agent object at 0x00000249B1419148&gt;, &lt;agentframework.Agent object at 0x00000249B1419388&gt;, &lt;agentframework.Agent object at 0x00000249B14193C8&gt;, &lt;agentframework.Agent object at 0x00000249B1419448&gt;, &lt;agentframework.Agent object at 0x00000249B14191C8&gt;, &lt;agentframework.Agent object at 0x00000249B1419048&gt;, &lt;agentframework.Agent object at 0x00000249B1419488&gt;, &lt;agentframework.Agent object at 0x00000249B1419208&gt;]
+                Traceback (most recent call last):
+
+                  File "\\abm4\\model.py", line 95, in &lt;module&gt;
+                    print("Maximum distance between all the agents", get_max_distance())
+
+                  File "\\abm4\\model.py", line 81, in get_max_distance
+                    distance = get_distance(a[0], a[1], b[0], b[1])
+
+                TypeError: 'Agent' object is not subscriptable
+                """);
+        addParagraph(sb,
+                """
+                The list 'agents' is initialised, but the print function does
+                not use the '__str__' method to get string representations when
+                printing the list.
+                """);
+        addParagraphStart(sb, "The ");
+        sb.append(index.getReference("Python TypeError", "TypeError", sid));
+        addParagraphEnd(sb,
+                """
+                is a consequence of the 'agents' list no longer containing
+                lists, but instantiated Agent objects, and some parts of the
+                code are still written as though each agent is a list and not an
+                instance of the Agent class.
+                """);
+        addParagraph(sb,
+                """
+                Add the following method to the Agent class to get the print
+                function to print string representations when printing the
+                agents list:
+                """);
         addPythonCodeBlock(sb, 
                 """
                 def __repr__(self):
                     return str(self)
                 """);
-        sb.append("<p>Like the '__str__' method, the '__repr__' method overrides"
-                + " from the 'type' metaclass, (for details see: "
-                + index.getReference("Python repr", "repr", sid)
-                + ".</p>\n");
-        sb.append("""
-              <p>To avoid raising the TypeError exception, it is necessary to 
-              refer to the class attributes and not list items (as agents are 
-              no longer lists, but are instances of the class Agent). So, change 
-              the following line of code in the 'get_max_distance()' function:</p>
-                  """);
+        addParagraphStart(sb,
+                """
+                Like the '__str__' method, the '__repr__' method overrides from
+                the 'type' metaclass, (for details see:
+                """);
+        sb.append(index.getReference("Python repr", "repr", sid));
+        addParagraphEnd(sb, ".");
+        addParagraph(sb,
+                """
+                To avoid raising the TypeError exception, it is necessary to
+                refer to the class attributes and not list items (as agents are
+                no longer lists, but are instances of the class Agent). So,
+                change the following line of code in the 'get_max_distance()'
+                function:
+                """);
         addPythonCodeBlock(sb, 
+                "distance = get_distance(a[0], a[1], b[0], b[1])");
+        addParagraph(sb, "<p>To be:</p>");
+        addPythonCodeBlock(sb, "distance = get_distance(a.x, a.y, b.x, by)");
+        addParagraph(sb, 
+                "Appreciate that this is easier to read and understand.");
+        addParagraph(sb,
                 """
-                distance = get_distance(a[0], a[1], b[0], b[1])
+                Everywhere else in the 'model.py' that was referring to a
+                coordinate from the agents list is to be changed similarly. Run
+                'model.py' to see where the next TypeError is raised.
                 """);
-        sb.append("""
-                  <p>To be:</p>
-                  """);
-        addPythonCodeBlock(sb, 
+        addParagraph(sb, "In the code change:");
+        addPythonCodeBlock(sb, "agents[i][0]");
+        addParagraph(sb, "To:");
+        addPythonCodeBlock(sb, "agents[i].x");
+        addParagraph(sb, "And change:");
+        addPythonCodeBlock(sb, "agents[i][1]");
+        addParagraph(sb, "To:");
+        addPythonCodeBlock(sb, "agents[i].y");
+        addParagraph(sb,
                 """
-                distance = get_distance(a.x, a.y, b.x, by)
+                Make a further change in the code block that plots agents,
+                changing:
                 """);
-        sb.append("""
-              <p>Appreciate that this is easier to read and understand.</p>
-              <p>Everywhere else in the 'model.py' that was referring to a 
-              coordinate from the agents list is to be changed similarly. Run
-              'model.py' to see where the next TypeError is raised.</p>
-              <p>In the code change:</p>
-                  """);
-        addPythonCodeBlock(sb, 
-                """
-                agents[i][0]
-                """);
-        sb.append("""
-              <p>To:</p>
-                  """);
-        addPythonCodeBlock(sb, 
-                """
-                agents[i].x
-                """);
-        sb.append(""" 
-              <p>And change:</p>
-                  """);
-        addPythonCodeBlock(sb,
-                """
-                agents[i][1]
-                """);
-        sb.append("""
-              <p>To:</p>
-                  """);
-        addPythonCodeBlock(sb,
-              """
-              agents[i].y
-              """);
-        sb.append("""
-              <p>Make a further change in the code block that plots agents, 
-              changing:</p>
-                  """);
         addPythonCodeBlock(sb,
               """
               # Plot the coordinate with the largest x red
@@ -272,9 +303,7 @@ public class ABM4 extends CoursePage {
               sy = min(agents, key=operator.itemgetter(1))
               plt.scatter(sy[0], sy[1], color='green')
               """);
-        sb.append("""
-              <p>To:</p>
-                  """);
+        addParagraph(sb, "To:");
         addPythonCodeBlock(sb,
               """
               # Plot the coordinate with the largest x red
@@ -290,66 +319,67 @@ public class ABM4 extends CoursePage {
               sy = min(agents, key=operator.attrgetter('y'))
               plt.scatter(sy.x, sy.y, color='green')
               """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>Study these changes. Your program should run without raising
-                  exceptions and produces the same output as previously.</p>
-              """);
+                Study these changes. Your program should run without raising
+                exceptions and produces the same output as previously.
+                """);
         addParagraphCommitToGitHub(sb);
 
         sid = addSection("Separation of Concerns", sb);
-        sb.append("""
-              <p>Define a method called 'move' in the Agent class as follows:
-              </p>
-                  """);
-        addPythonCodeBlock(sb,
-              """
-              def move(self, x_min, y_min, x_max, y_max):
-              """);
-        sb.append("""
-              <p>Cut the code that moves an individual agent from 'model.py' and 
-              paste it into the body of the new 'move' method. Replace: 
-              "agents[i]" with "self" in the method. Where the code was cut 
-              from, add the following to call the move method:</p>
-                  """);
-        addPythonCodeBlock(sb,
-              """
-              agents[i].move(x_min, y_min, x_max, y_max)
-              """);
-        sb.append("""
-              <p>Note that in the Agent class, the 'move' method has a parameter 
-              called 'self', but this is not a parameter that is passed in. 
-              Normally when calling a function the number of parameters 
-              matches, but for methods (functions in a class) there is this 
-              additional parameter that is not passed in and that is the first 
-              parameter.</p>
-              <p>Run the program and it should produce the same results as 
-              previously. The Agent class code now deals with the details of 
-              how an agent moves, and 'model.py' actions when they do. This is a 
-              reasonable separation of concerns.</p>
-              """);
+        addParagraph(sb,
+                "Define a method called 'move' in the Agent class as follows:");
+        addPythonCodeBlock(sb, "def move(self, x_min, y_min, x_max, y_max):");
+        addParagraph(sb,
+                """
+                Cut the code that moves an individual agent from 'model.py' and
+                paste it into the body of the new 'move' method. Replace:
+                "agents[i]" with "self" in the method. Where the code was cut
+                from, add the following to call the move method:
+                """);
+        addPythonCodeBlock(sb, "agents[i].move(x_min, y_min, x_max, y_max)");
+        addParagraph(sb,
+                """
+                Note that in the Agent class, the 'move' method has a parameter
+                called 'self', but this is not a parameter that is passed in.
+                Normally when calling a function the number of parameters
+                matches, but for methods (functions in a class) there is this
+                additional parameter that is not passed in and that is the first
+                parameter.
+                """);
+        addParagraph(sb,
+                """
+                Run the program and it should produce the same results as
+                previously. The Agent class code now deals with the details of
+                how an agent moves, and 'model.py' actions when they do. This is
+                a reasonable separation of concerns.
+                """);
 
         sid = addSection("Give each agent a unique name", sb);
-        sb.append("""
-              <p>It is possible that two agents will be located at the same 
-              coordinates, and it would be helpful to distinguish them.</p>
-              """);
-        sb.append("<p>Add a "
-                + index.getReference("Python docstring", "docstring")
-                + " and a parameter to the '__init__' constructor method of"
-                + " Agent so that the method is as follows:</p>\n");
+        addParagraph(sb,
+                """
+                It is possible that two agents will be located at the same
+                coordinates, and it would be helpful to distinguish them.
+                """);
+        addParagraphStart(sb, "Add a ");
+        sb.append(index.getReference("Python docstring", "docstring"));        
+        addParagraphEnd(sb,
+                """
+                and a parameter to the '__init__' constructor method of Agent
+                so that the method is as follows:
+                """);
         addPythonCodeBlock(sb,
               """
               def __init__(self, i):
               \"""
               The constructor method.
-               
-               Parameters
+              
+              Parameters
               ----------
               i : Integer
                   To be unique to each instance.
               
-               Returns
+              Returns
               -------
               None.
               
@@ -359,23 +389,32 @@ public class ABM4 extends CoursePage {
               self.y = random.randint(0, 99)
               pass
               """);
-        sb.append("""
-              <p>Run 'model.py' and you should get the following error:</p>
-              <pre>Traceback (most recent call last):
+        addParagraph(sb,
+                "Run 'model.py' and you should get the following error:");
+        addPre(sb, 
+                """
+                Traceback (most recent call last):
               
                 File "\\abm4\\model.py", line 91, in &amp;module>
                   agents.append(agentframework.Agent())
               
-              TypeError: __init__() missing 1 required positional argument: 'i'</pre>
-              <p>The TypeError is indicating that an expected argument is 
-              missing in the call that creates the Agent instance. Change 
-              'model.py' to pass in the missing argument 'i'. Make sure the 
-              positional arguments are in a correspodiong order in the method 
-              call and in the method definition. Run the program again and 
-              the TypeError should not be raised.</p>
-              <p>Modify the Agent class '__str__' method so it additionally 
-              returns the unique characteristic of each Agent 'i'.</p>
-              """);
+                TypeError: __init__() missing 1 required positional argument:
+                'i'
+                """);
+        addParagraph(sb,
+                """
+                The TypeError is indicating that an expected argument is
+                missing in the call that creates the Agent instance. Change
+                'model.py' to pass in the missing argument 'i'. Make sure the
+                positional arguments are in a correspodiong order in the method
+                call and in the method definition. Run the program again and
+                the TypeError should not be raised.
+                """);
+        addParagraph(sb,
+                """
+                Modify the Agent class '__str__' method so it additionally
+                returns the unique characteristic of each Agent 'i'.
+                """);
         addParagraphCommitToGitHub(sb);
         sb.append("</div>\n");
         return sb.toString();
