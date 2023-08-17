@@ -39,19 +39,26 @@ public class Documentation extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        sb.append("""
-              <p><a href="https://docs.python.org/3/library/doctest.html">
-              PyDoc</a> is the documentation system distributed with Python.
-              It supports the generation of a webpage from documentation, and 
-              can be run from the Anaconda Prompt using:</p>
-              <pre>pydoc -w filename</pre>
-              <p>Where the filename is missing the ".py" part.</p>
-              <p>There are other tools for helping to generate documentation, 
-              including
-              <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which 
-              comes with Anaconda.</p>
-              """);
-        sb.append("</div>\n");
+        addParagraph(sb,
+                """
+                <a href="https://docs.python.org/3/library/doctest.html">
+                PyDoc</a>
+                is the documentation system distributed with Python. It supports
+                the generation of a webpage from documentation, and can be run
+                from the Anaconda Prompt using:
+                """);
+        addPre(sb, "pydoc -w filename");
+        addParagraph(sb, 
+                """
+                Where the filename is missing the ".py" part.
+                """);
+        addParagraph(sb,
+                """
+                There are other tools for helping to generate documentation,
+                including
+                <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which
+                comes with Anaconda.
+                """);
         return sb.toString();
     }
 }

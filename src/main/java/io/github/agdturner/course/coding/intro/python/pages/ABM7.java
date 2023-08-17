@@ -16,6 +16,7 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
+import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -39,28 +40,30 @@ public class ABM7 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>In this practical
+                In this practical
                 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html">
                 matplotlib.animation.FuncAnimation</a>
                 will be used to animate the model in a separate window. Some
                 stopping conditions will be added to halt the model and exit.
-                </p>
                 """);
-        sb.append("<p>In your local code repository 'src' directory duplicate ")
-                .append(" your 'abm6' directory and name it 'abm7'.</p>");
+        addParagraph(sb,
+                """
+                In your local code repository 'src' directory duplicate your 
+                'abm6' directory and name it 'abm7'.
+                """);
 
         sid = addSection("Animation", sb);
-        sb.append("<p>Open the new 'model.py' file from the 'abm7' directory")
-                .append(" in  Spyder.</p>");
-        sb.append("<p>Add the following import statement:</p>");
-        addPythonCodeBlock(sb,
+        addParagraph(sb,
                 """
-                import matplotlib.animation as anim
+                Open the new 'model.py' file from the 'abm7' directory in
+                Spyder.
                 """);
-        sb.append("<p>After initialising agents add the following code block:")
-                .append("</p>");
+        addParagraph(sb, "Add the following import statement:");
+        addPythonCodeBlock(sb, "import matplotlib.animation as anim");
+        addParagraph(sb,
+                "After initialising agents add the following code block:");
         addPythonCodeBlock(sb,
                 """
                 # Animate
@@ -71,10 +74,12 @@ public class ABM7 extends CoursePage {
                 data_written = False
                 animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
                 """);
-        sb.append("<p>Define a new function called 'plot' to contain the")
-                .append(" 'Plot agents' code. Add a line to clear fig at the")
-                .append(" start of the function and specify 'ite' as a global")
-                .append(" variable before it is used:</p>");
+        addParagraph(sb,
+                """
+                Define a new function called 'plot' to contain the 'Plot agents'
+                code. Add a line to clear fig at the start of the function and
+                specify 'ite' as a global variable before it is used:
+                """);
         addPythonCodeBlock(sb,
                 """
                 fig.clear()
@@ -101,11 +106,13 @@ public class ABM7 extends CoursePage {
                 images.append(imageio.imread(filename))
                 plt.show()
                 """);
-        sb.append("<p>Change the 'main simulation loop' code block into a")
-                .append(" function called 'update' that has a parameter called")
-                .append(" 'frames'. At the end of this call the 'plot'")
-                .append(" function. Specify 'carry_on' as a global variable")
-                .append(" and add a random stopping condition as follows:</p>");
+        addParagraph(sb,
+                """
+                Change the 'main simulation loop' code block into a function
+                called 'update' that has a parameter called 'frames'. At the end
+                of this call the 'plot' function. Specify 'carry_on' as a global
+                variable and add a random stopping condition as follows:
+                """);
         addPythonCodeBlock(sb,
                 """
                 def update(frames):
@@ -149,7 +156,7 @@ public class ABM7 extends CoursePage {
                     # Plot
                     plot()
                 """);
-        sb.append("<p>Define a function called 'gen_function' as follows:</p>");
+        addParagraph(sb, "Define a function called 'gen_function' as follows:");
         addPythonCodeBlock(sb,
                 """
                 def gen_function():
@@ -166,68 +173,90 @@ public class ABM7 extends CoursePage {
                         imageio.mimsave('../../data/output/out.gif', images, fps=3)
                         data_written = True
                 """);
-        sb.append("<p>Before running the code, issue the following magic")
-                .append(" command in the Spyder console so that rather than")
-                .append(" the plot being directed to the plots pane (where")
-                .append(" animation does not work), it is directed to a pop-up")
-                .append(" window:</p>");
-        sb.append("<pre>%matplotlib qt</pre>");
-        sb.append("<p>If you want to revert this change so that plots are")
-                .append(" added to the plot plane again issue the following")
-                .append(" magic command:</p>");
-        sb.append("<pre>%matplotlib inline</pre>");
-        sb.append("<p>The keyword '")
-                .append(index.getReference("Python yield", "yield", sid))
-                .append("' is used to pass the value of the variable 'ite'")
-                .append(" back from 'gen_function' whilst continuing to run")
-                .append(" the while loop. The '# Write data' code block is")
-                .append(" included in 'gen_function' and runs only once after")
-                .append(" the model has stopped.</p>");
+        addParagraph(sb,
+                """
+                Before running the code, issue the following magic command in
+                the Spyder console so that rather than the plot being directed
+                to the plots pane (where") animation does not work), it is
+                 directed to a pop-up window:
+                """);
+        addPre(sb, "%matplotlib qt");
+        addParagraph(sb,
+                """
+                If you want to revert this change so that plots are added to the
+                 plot plane again issue the following magic command:
+                """);
+        addPre(sb, "%matplotlib inline");
+        addParagraphStart(sb, "The keyword '");
+        sb.append(index.getReference("Python yield", "yield", sid));
+        addParagraphEnd(sb,
+                """
+                ' is used to pass the value of the variable 'ite' back from
+                'gen_function' whilst continuing to run the while loop. The
+                '# Write data' code block is included in 'gen_function' and runs
+                 only once after the model has stopped.
+                """);
         addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code and Model Review", sb);
-        sb.append("<p>Most of your code should now be in functions and")
-                .append(" organised intomodules.</p>");
-        sb.append("<p>The model simulation runs in a loop until some condition")
-                .append(" is reached, or until a predefined number of")
-                .append(" iterations 'n_iterations' is reached.</p>");
-        sb.append("<p>As yet, the model cannot be re-started. Some data is")
-                .append(" written to file that could be used to restart the")
-                .append(" model, but this is incomplete/insufficient. The")
-                .append(" ability to be able to stop and restart a model can")
-                .append(" be useful. This is known as 'check pointing'. It is")
-                .append(" often good to be able to run a simulation model for")
-                .append(" 'n' iterations and then run for a further 'm'")
-                .append(" iterations, and for this to produce the same results")
-                .append(" as for a run of 'm + n' iterations. The")
-                .append(" 'random.getstate()' and 'random.setstate(state)'")
-                .append(" methods can be used to store the state of 'random'")
-                .append(" to get this to work.</p>");
-        sb.append("<p>The simple agents in the model are not learning or")
-                .append(" adapting their behaviour based on interaction or the")
-                .append(" state of the environment. The model is mostly")
-                .append(" random, so observing complex, adaptive/emergent")
-                .append(" behaviour from this model should not be expected.")
-                .append("</p>");
-        sb.append("<p>Whilst the model has been framed as an ecological model,")
-                .append(" the agents could represent other things, they don't")
-                .append(" necessarily have to communicate by sharing")
-                .append(" resources, they could share something else, and they")
-                .append(" don't have to 'eat' the environment.</p>");
-        sb.append("<p>Some ideas for a more realistic ecological model are:")
-                .append("</p>");
-        sb.append(
+        addParagraph(sb,
                 """
-                <ul>
-                    <li>To have less resource that can be eaten by the agents, and
-                    model this resource as vegetation that grows.</li>
-                    <li>Make movement cost some amount of store.</li>
-                    <li>Have those agents that are successful at finding resources
-                    replicate and those unsuccessful die.</li>
-                    <li>Include predator agents that hunt/eat the other agents as
-                    prey.</li>
-                </ul>
+                Most of your code should now be in functions and organised into
+                modules.
                 """);
+        addParagraph(sb,
+                """
+                The model simulation runs in a loop until some condition is
+                reached, or until a predefined number of iterations
+                'n_iterations' is reached.
+                """);
+        addParagraph(sb,
+                """
+                As yet, the model cannot be re-started. Some data is written to
+                file that could be used to restart the model, but this is
+                incomplete/insufficient. The ability to be able to stop and
+                restart a model can be useful. This is known as 'check
+                pointing'. It is often good to be able to run a simulation model
+                for 'n' iterations and then run for a further 'm' iterations,
+                and for this to produce the same results as for a run of 'm + n'
+                iterations. The 'random.getstate()' and 'random.setstate(state)'
+                methods can be used to store the state of 'random' to get this
+                to work.
+                """);
+        addParagraph(sb,
+                """
+                The simple agents in the model are not learning or adapting
+                their behaviour based on interaction or the state of the
+                environment. The model is mostly random, so observing complex,
+                adaptive/emergent behaviour from this model should not be
+                expected.
+                """);
+        addParagraph(sb,
+                """
+                Whilst the model has been framed as an ecological model, the
+                agents could represent other things, they don't necessarily have
+                to communicate by sharing resources, they could share something
+                else, and they don't have to 'eat' the environment.
+                """);
+        addParagraph(sb,
+                "Some ideas for a more realistic ecological model are:");
+        sb.append(Strings.UL_START);
+        addLI(sb, 
+                """
+                To have less resource that can be eaten by the agents, and
+                model this resource as vegetation that grows.
+                """);
+        addLI(sb, "Make movement cost some amount of store.");
+        addLI(sb, 
+                """
+                Have those agents that are successful at finding resources
+                replicate and those unsuccessful die.
+                """);
+        addLI(sb, 
+                """
+                Include predator agents that hunt/eat the other agents as prey.
+                """);
+        sb.append(Strings.UL_END);
         return sb.toString();
     }
 }

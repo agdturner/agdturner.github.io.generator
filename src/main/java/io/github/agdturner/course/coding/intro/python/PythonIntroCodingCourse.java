@@ -43,6 +43,7 @@ import io.github.agdturner.course.coding.intro.python.pages.Testing;
 import io.github.agdturner.course.coding.intro.python.pages.Variables;
 import io.github.agdturner.course.coding.intro.python.pages.Web;
 import io.github.agdturner.course.coding.intro.python.sog.pages.SoGPythonIntroCodingCourseABM7;
+import io.github.agdturner.course.coding.intro.python.sog.pages.SoGPythonIntroCodingCourseABM9;
 
 /**
  * Java for generating Python Intro Course  Website content.
@@ -89,7 +90,7 @@ public abstract class PythonIntroCodingCourse extends PythonCodingCourse {
         pages.add(new GUI(this));
         pages.add(new ABM8(this));
         pages.add(new Web(this));
-        pages.add(new ABM9(this));
+        pages.add(new SoGPythonIntroCodingCourseABM9(this));
         pages.add(new Testing(this));
     }
 

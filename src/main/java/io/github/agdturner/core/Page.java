@@ -282,5 +282,147 @@ public abstract class Page {
         return r;
     }
     
-   
+
+    /**
+     * Wraps a code block for Python code.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The code block to wrap.
+     */
+    public void addPythonCodeBlock(StringBuilder sb, String s) {
+        addPythonCodeBlockStart(sb, s);
+        addPythonCodeBlockEnd(sb, "");
+    }
+
+    /**
+     * Appends {@code <pre><code class="language-python">} to sb.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to add after the start tag.
+     */
+    public void addPythonCodeBlockStart(StringBuilder sb, String s) {
+        sb.append(
+                """
+                <pre><code class="language-python">
+                """);
+        sb.append(s);
+    }
+
+    /**
+     * Appends {@code </code></pre>} to sb.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to add before the end tag.
+     */
+    public void addPythonCodeBlockEnd(StringBuilder sb, String s) {
+        sb.append(s);
+        sb.append("</code></pre>");
+    }
+
+    /**
+     * Wrap a string with an HTML paragraph tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addParagraph(StringBuilder sb, String s) {
+        addTag(sb, s, Strings.s_P);
+    }
+
+    /**
+     * Wrap the start of a string with an HTML start paragraph tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to add after the start tag.
+     */
+    public void addParagraphStart(StringBuilder sb, String s) {
+        addTagStart(sb, Strings.s_P);
+        sb.append(s);
+    }
+
+    /**
+     * Wrap the end of a string with an HTML end paragraph tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The String to add before the end tag.
+     */
+    public void addParagraphEnd(StringBuilder sb, String s) {
+        sb.append(s);
+        addTagEnd(sb, Strings.s_P);
+    }
+
+    /**
+     * Wrap a string with an HTML tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     * @param tag The tag text.
+     */
+    public void addTag(StringBuilder sb, String s, String tag) {
+        addTagStart(sb, tag);
+        sb.append(s);
+        addTagEnd(sb, tag);
+    }
+
+    /**
+     * Add a start tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param tag The tag text.
+     */
+    public void addTagStart(StringBuilder sb, String tag) {
+        sb.append("<").append(tag).append(">");
+    }
+
+    /**
+     * Add an end tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param tag The tag text.
+     */
+    public void addTagEnd(StringBuilder sb, String tag) {
+        sb.append("</").append(tag).append(">\n");
+    }
+    
+    /**
+     * Wrap a string with an HTML pre tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addPre(StringBuilder sb, String s) {
+        addTag(sb, s, Strings.s_pre);
+    }
+
+    /**
+     * Wraps a paragraph.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addLI(StringBuilder sb, String s) {
+        addTag(sb, s, Strings.s_li);
+    }
+
+    /**
+     * Wrap the start of a string with an HTML start list item tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to append after the start tag.
+     */
+    public void addLIStart(StringBuilder sb, String s) {
+        addTagStart(sb, Strings.s_li);
+        sb.append(s);
+    }
+
+    /**
+     * Wrap the end of a string with an HTML end list item tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to append after the start tag.
+     */
+    public void addLIEnd(StringBuilder sb, String s) {
+        sb.append(s);
+        addTagStart(sb, Strings.s_li);
+    }
 }

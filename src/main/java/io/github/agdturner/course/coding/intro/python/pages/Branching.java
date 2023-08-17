@@ -16,6 +16,7 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
+import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -39,19 +40,24 @@ public class Branching extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        sb.append("<p>Branching controls the flow of a program. This part considers"
-                + " a couple of ways of branching in Python. The main way uses"
-                + " an '"
-                + index.getReference("Conditional", "if", sid)
-                + "' statement.</p>\n");
+        addParagraphStart(sb, 
+                """
+                Branching controls the flow of a program. This part considers a
+                couple of ways of branching in Python. The main way uses an '
+                """);
+        sb.append(index.getReference("Conditional", "if", sid));
+        addParagraphEnd(sb, "' statement.");
 
         sid = addSection("If", sb);
-        sb.append("<p>The "
-                + index.getReference("Python if", "if statement", sid)
-                + " is a 'compound' statement (one that comprises groups of"
-                + " other statements) that provides a means to branch based"
-                + " upon a condition which evaluates to either 'True' or"
-                + " 'False'. Consider the following example:</p>\n");
+        addParagraphStart(sb, "The ");
+        sb.append(index.getReference("Python if", "if statement", sid));
+        addParagraphEnd(sb,
+                """
+                is a 'compound' statement (one that comprises groups of other
+                statements) that provides a means to branch based upon a
+                condition which evaluates to either 'True' or" " 'False'.
+                Consider the following example:
+                """);
         addPythonCodeBlock(sb,
                 """
                 day_of_week = 5
@@ -61,13 +67,12 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day)
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-              <p>The if statement condition evaluates as False, so the result
-              is:</p>
-              <pre>Weekday</pre>
-              <p>Changing the code slightly to:</p>
+                The if statement condition evaluates as False, so the result is:
                 """);
+        addPre(sb, "Weekday");
+        addParagraph(sb, "Changing the code slightly to:");
         addPythonCodeBlock(sb,
                 """
                 day_of_week = 6
@@ -77,13 +82,13 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day)
                 """);
-        sb.append(
+        addParagraph(sb, "Results in:");
+        addPre(sb, "Weekend");
+        addParagraph(sb,
                 """
-                <p>Results in:</p>
-              <pre>Weekend</pre>
-              <p>An 'else' clause branches into two distinct paths which become 
-              one again at the end of the compound if statement as in the 
-              following example.</p>
+                An 'else' clause branches into two distinct paths which become
+                one again at the end of the compound if statement as in the
+                following example.
                 """);
         addPythonCodeBlock(sb,
                 """
@@ -95,11 +100,11 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day) # <-- Prints Weekday
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>One or many 'elif' clauses can also be inserted between if and
-              else clauses. Elif is short for 'else if'. Consider the following 
-              example:</p>
+                One or many 'elif' clauses can also be inserted between if and
+                else clauses. Elif is short for 'else if'. Consider the
+                following example:
                 """);
         addPythonCodeBlock(sb,
                 """
@@ -119,21 +124,23 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day) # <-- Prints Friday
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>It can be argued that it is better to store a dictionary to
-              look up the day from the day_of_week, but a simple look up does
-              not branch, and more code can be inserted in any of the clauses,
-              so this can do more than just look up a value from a key.</p>
-              """);
+                It can be argued that it is better to store a dictionary to
+                look up the day from the day_of_week, but a simple look up does
+                not branch, and more code can be inserted in any of the clauses,
+                so this can do more than just look up a value from a key.
+                """);
 
         sid = addSection("Match", sb);
-        sb.append("<p>Since Python 3.10 there is also a "
-                + index.getReference("Python match", "match", sid)
-                + " statement which can simplify if statements with many elif"
-                + " clauses as a 'match-case' statement. The following example"
-                + " shows the equivalent of the example from the end of previous"
-                + " section:</p>\n");
+        addParagraphStart(sb, "Since Python 3.10 there is also a ");
+        sb.append(index.getReference("Python match", "match", sid));
+        addParagraphEnd(sb,
+                """
+                statement which can simplify if statements with many elif
+                clauses as a 'match-case' statement. The following example shows
+                the equivalent of the example from the end of previous section:
+                """);
         addPythonCodeBlock(sb,
                 """
                 day_of_week = 5
@@ -152,20 +159,35 @@ public class Branching extends CoursePage {
                         day = "Weekend"
                 print(day) # <-- Prints Friday
                 """);
-        sb.append(
+        addParagraph(sb,
                 """
-                <p>The final case is a catch all case using the anonymous variable 
-              '_' which matches anything.</p>
-              <p>The match-case statement offers more than a syntactic 
-              variation, as containers and other objects can be matched. 
-              Examples of these and further details can be found in the relevant PEPS:</p>
-              <ul>
-              <li><a href="https://peps.python.org/pep-0634/">PEP 634, Structural Pattern Matching: Specification</a></li>
-              <li><a href="https://peps.python.org/pep-0635/">PEP 635, Structural Pattern Matching: Motivation and Rationale</a></li>
-              <li><a href="https://peps.python.org/pep-0636/">PEP 636, Structural Pattern Matching: Tutorial</a></li>
-              </ul>
-              """);
-        sb.append("</div>\n");
+                The final case is a catch all case using the anonymous variable 
+                '_' which matches anything.
+                """);
+        addParagraph(sb,
+                """
+                The match-case statement offers more than a syntactic variation,
+                as containers and other objects can be matched. Examples of
+                these and further details can be found in the relevant PEPS:
+                """);
+        sb.append(Strings.UL_START);
+        addLI(sb, 
+                """
+                <a href="https://peps.python.org/pep-0634/">
+                PEP 634, Structural Pattern Matching: Specification</a>
+                """);
+        addLI(sb, 
+                """
+                <a href="https://peps.python.org/pep-0635/">
+                PEP 635, Structural Pattern Matching: Motivation and Rationale
+                </a>
+                """);
+        addLI(sb, 
+                """
+                <a href="https://peps.python.org/pep-0636/">
+                PEP 636, Structural Pattern Matching: Tutorial</a>
+                """);
+        sb.append(Strings.UL_END);
         return sb.toString();
     }
 }

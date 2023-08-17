@@ -528,6 +528,19 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
+        term = "Git";
+        url = getWikipediaURL("Git");
+        description = "a distributed version control system";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "GitHub";
+        url = "http://www.github.com";
+        description = "a developer platform to build, scale, and deliver secure"
+                + " software";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
         term = "Glitch";
         url = getWikipediaURL("Glitch");
         description = "A short-lived fault in a system, such as a transient "

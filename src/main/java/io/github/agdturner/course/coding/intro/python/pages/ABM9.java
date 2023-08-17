@@ -39,61 +39,64 @@ public class ABM9 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        sb.append("""
-              <p>This practical is about using some data in an HTML file Table
-              to initialise part of the model.</p>
-              <p>In your local code repository 'src' directory duplicate your 
-              'abm8' directory as 'abm9'.</p>
-                  """);
+        addParagraph(sb,
+                """
+                This practical is about using some data in an HTML file Table to
+                initialise part of the model.
+                """);
+        addParagraph(sb,
+                """
+                In your local code repository 'src' directory duplicate your 
+                'abm8' directory as 'abm9'.
+                """);
 
         sid = addSection("Parsing an HTML File", sb);
-        sb.append("""
-                  <p><a href="../../resources/abm9/data.html">The HTML to parse</a>.</p>
-              <p>Have a look at the source code for the file by either opening 
-              it in a text editor or viewing the source in your Web browser.</p>
-              <!--
-              <p>The Python code used to generate data.html:
-              <a href="../../resources/abm9/data.py">data.py</a>.</p>
-              -->
-              <p>Add the following import statements to 'model.py':</p>
-                  """);
+        addParagraph(sb,
+                """
+                <a href="../../resources/abm9/data.html">The HTML to parse</a>.
+                """);
+        addParagraph(sb,
+                """
+                Have a look at the source code for the file by either opening it
+                in a text editor or viewing the source in your Web browser.
+                <!--
+                (The Python code used to generate data.html:
+                <a href="../../resources/abm9/data.py">data.py</a>.)
+                -->
+                """);
+        addParagraph(sb, "Add the following import statements to 'model.py':");
         addPythonCodeBlock(sb,
               """
               import requests
               import bs4
               """);
-        sb.append(
-                """
-                <p>Change the agent initialisation code block as follows:</p>
-                """);
+        addParagraph(sb,
+                "Change the agent initialisation code block as follows:");
         String url = "https://" + site.env.domain + "/resources/abm9/data.html";
-        addPythonCodeBlockStart(sb);
-        sb.append(
+        addPythonCodeBlockStart(sb, 
                 """
                 # Initialise agents
                 """);
         sb.append("url = '" + url + "'");
-        sb.append("r = requests.get(url, verify=False)");
-        sb.append("""
-              content = r.text
-              soup = bs4.BeautifulSoup(content, 'html.parser')
-              td_ys = soup.find_all(attrs={"class" : "y"})
-              td_xs = soup.find_all(attrs={"class" : "x"})
-              print(td_ys)
-              print(td_xs)
-              agents = []
-              for i in range(n_agents):
-                  # Create an agent
-                  y = int(td_ys[i].text) + 99
-                  x = int(td_xs[i].text) + 99
-                  agents.append(af.Agent(agents, i, environment, n_rows, n_cols, x, y))
-                  print(agents[i].agents[i])
-              """);
-        addPythonCodeBlockStart(sb);
-        sb.append(
+        addPythonCodeBlockEnd(sb,
                 """
-                <p>Change the '__init__' function in 'agentframework.py' to:</p>");
+                r = requests.get(url, verify=False)");
+                content = r.text
+                soup = bs4.BeautifulSoup(content, 'html.parser')
+                td_ys = soup.find_all(attrs={"class" : "y"})
+                td_xs = soup.find_all(attrs={"class" : "x"})
+                print(td_ys)
+                print(td_xs)
+                agents = []
+                for i in range(n_agents):
+                    # Create an agent
+                    y = int(td_ys[i].text) + 99
+                    x = int(td_xs[i].text) + 99
+                    agents.append(af.Agent(agents, i, environment, n_rows, n_cols, x, y))
+                    print(agents[i].agents[i])
                 """);
+        addParagraph(sb,
+                "Change the '__init__' function in 'agentframework.py' to:");
         addPythonCodeBlock(sb,
                 """
                 def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
@@ -136,12 +139,6 @@ public class ABM9 extends CoursePage {
                 self.store = random.randint(0, 99)
                 self.store_shares = 0
                 """);
-
-        sid = addSection("Assignment 1 submission", sb);
-        sb.append("""
-              <p>Update the README file for your repository and submit your work.</p>
-              """);
-        sb.append("</div>\n");
         return sb.toString();
     }
 }
