@@ -1055,7 +1055,7 @@ public class Python extends CoursePage {
                 """);
         addParagraph(sb, 
                 """
-                The function print is called with two arguments, and the code 
+                The function print is called with two arguments, and the code
                 contains variables, comments, indentation, operators and
                 keywords. Styling can be used added to make it easier to
                 identify different parts, read and understand code. The
@@ -1093,8 +1093,8 @@ public class Python extends CoursePage {
                 """);
         addParagraph(sb, 
                 """
-                Save the file with the name "HelloWorld.py". Open an Anaconda 
-                prompt. Change to the directory where you saved the file 
+                Save the file with the name "HelloWorld.py". Open an Anaconda
+                prompt. Change to the directory where you saved the file
                 (path_to_directory) using:
                 """);
         addPre(sb, "cd path_to_directory");
@@ -1132,547 +1132,813 @@ public class Python extends CoursePage {
                 """);
 
         sid = addSection("Jupyter Notebook", sb);
-        sb.append("<p>"
-                + references.getReference("Jupyter Notebook")
-                + ", is a "
-                + index.getReference("REPL", sid)
-                + " like system that embeds code into a document"
-                + " containing other information: text, images, data, and"
-                + " links. Code is entered in cells which when run present"
-                + " outputs within the document which is displayed in a Web"
-                + " browser (unless ouputs are configured to appear in separate"
-                + " windows).</p>\n");
-        sb.append("<p>Jupyter Notebook comes bundled with Anaconda and can be "
-                + "downloaded separately from:"
-                + references.getReference("Jupyter")
-                + ".</p>\n");
-        sb.append("""
-              <p>At the Anaconda prompt change to a directory where you can 
-              write new files and enter:</p>
-              <pre>jupyter notebook</pre>
-              <p>Some messages should appear in the console and a Web browser 
-              tab should in the default Web browser and display the Jupyter 
-              Notebook Interface.</p>
-              <p>From the New Button drop down list of the Jupyter Notebook 
-              Interface, select:</p>
-              <pre>Python 3 (ipykernel)</pre>
-              <p>The New Button is highlighted with a red oval in the following 
-              image of the interface:</p>
-              <img src="../../resources/python/jupyter1.png" alt="Jupyter Notebook Interface 1" />
-              <p>A Python REPL environment should appear in another browser tab
-              like shown in the following image:</p>
-              <img src="../../resources/python/jupyter2.png" alt="Jupyter Notebook Interface 2" />
-              <p>Enter the following in a cell and action run:</p>
-              <pre>print("Hello World")</pre>
-              <p>You should see something like:</p>
-              <img src="../../resources/python/jupyter3.png" alt="Jupyter Notebook Interface 3" />
-              """);
-        sb.append("<p>Entire programs can be entered into cells as can "
-                + index.getReference("Markdown", sid)
-                + ".</p>\n");
-        sb.append("<p>Because a Jupyter Notebook application runs in a Web "
-                + "browser, it can utilise "
-                + index.getReference("JavaScript", sid)
-                + " - a programming language that all widely used modern Web "
-                + "browsers can run. Leveraging JavaScript and Python allows "
-                + "for the generation of some Web based interactive maps. In "
-                + "<a href=\"#9\">Section 9</a>, there is a practical exercise "
-                + "about this. Prior to attempting this, it is important to "
-                + "learn about setting up Python environments and installing "
-                + "Python packages. First though, let's explore running Python "
-                + "code in some other ways...</p>\n");
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("Jupyter Notebook"));
+        sb.append(", is a ");
+        sb.append(index.getReference("REPL", sid));
+        addParagraphEnd(sb,
+                """
+                like system that embeds code into a document containing other
+                information: text, images, data, and links. Code is entered in
+                cells which when run present outputs within the document which
+                is displayed in a Web browser (unless ouputs are configured to
+                appear in separate windows).
+                """);
+        addParagraphStart(sb,
+                """
+                Jupyter Notebook comes bundled with Anaconda and can be
+                downloaded separately from:
+                """);
+        sb.append(references.getReference("Jupyter"));
+        addParagraphEnd(sb, ".");
+        addParagraph(sb,
+                """
+                At the Anaconda prompt change to a directory where you can write
+                new files and enter:
+                """);
+        addPre(sb,"jupyter notebook");
+        addParagraph(sb,
+                """
+                Some messages should appear in the console and a Web browser
+                tab should in the default Web browser and display the Jupyter
+                Notebook Interface.
+                """);
+        addParagraph(sb,
+                """
+                From the New Button drop down list of the Jupyter Notebook
+                Interface, select:
+                """);
+        addPre(sb, "Python 3 (ipykernel)");
+        addParagraph(sb,
+                """
+                The New Button is highlighted with a red oval in the following
+                image of the interface:
+                <br><img src="../../resources/python/jupyter1.png"
+                alt="Jupyter Notebook Interface 1" />
+                """);
+        addParagraph(sb,
+                """
+                A Python REPL environment should appear in another browser tab
+                like shown in the following image:
+                <br><img src="../../resources/python/jupyter2.png"
+                alt="Jupyter Notebook Interface 2" />
+                """);
+        addParagraph(sb, "Enter the following in a cell and action run:");
+        addPre(sb, 
+                """
+                print("Hello World")
+                """);
+        addParagraph(sb, 
+                """
+                You should see something like:
+                <br><img src="../../resources/python/jupyter3.png"
+                alt="Jupyter Notebook Interface 3" />
+                """);
+        addParagraphStart(sb,
+                "Entire programs can be entered into cells as can ");
+        sb.append(index.getReference("Markdown", sid));
+        addParagraphEnd(sb, ".");
+        addParagraphStart(sb,
+                """
+                Because a Jupyter Notebook application runs in a Web browser, it
+                can utilise
+                """);
+        sb.append(index.getReference("JavaScript", sid));
+        addParagraphEnd(sb,
+                """
+                - a programming language that all widely used modern Web
+                browsers can run. Leveraging JavaScript and Python allows for
+                the generation of some Web based interactive maps. In
+                <a href=\"#9\">Section 9</a>, there is a practical exercise
+                about this. Prior to attempting this, it is important to learn
+                about setting up Python environments and installing Python
+                packages. First though, let's explore running Python code in
+                some other ways...
+                """);
 
         sid = addSection("Integrated Development Environments", sb);
-        sb.append("<p>"
-                + index.getReference("IDE",
-                        "Integrated Development Environments", sid)
-                + "(IDEs) are software tools used to make writing code and "
-                + "developing software easier. This section introduces "
-                + references.getReference("IDLE")
-                + " and "
-                + references.getReference("Spyder")
-                + " - IDEs that come with "
-                + references.getReference("Anaconda")
-                + ".</p>\n");
+        addParagraphEnd(sb, "");
+        sb.append(index.getReference("IDE",
+                        "Integrated Development Environments", sid));
+        sb.append(
+                """
+                (IDEs) are software tools used to make writing code and
+                developing software easier. This section introduces
+                """);
+        sb.append(references.getReference("IDLE"));
+        sb.append(" and ");
+        sb.append(references.getReference("Spyder"));
+        sb.append(" - IDEs that come with ");
+        sb.append(references.getReference("Anaconda"));
+        addParagraphEnd(sb, ".");
 
         sid = addSubsection("IDLE", sb);
-        sb.append("<p>Python comes with "
-                + references.getReference("IDLE")
-                + " - an Integrated Development and Learning Environment for "
-                + "Python. The IDLE application has an "
-                + "'editor window' for editing files of Python commands, and a "
-                + "'console window' for entering REPL commands and displaying "
-                + "output. At the Anaconda prompt enter:</p>\n");
-        sb.append("""
-              <pre>idle</pre>
-              <p>This should open up the IDLE console window that should look 
-              something like the image below:</p>
-              <img src="../../resources/python/idle1.png" alt="The IDLE interface" />
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("IDLE"));
+        addParagraphEnd(sb,
+                """
+                - an Integrated Development and Learning Environment for Python.
+                The IDLE application has an 'editor window' for editing files of
+                Python commands, and a 'console window' for entering REPL
+                commands and displaying output. At the Anaconda prompt enter:
+                """);
+        addPre(sb, "idle");
+        addParagraph(sb,
+                """
+                This should open up the IDLE console window that should look
+                something like the image below:
+                <br><img src="../../resources/python/idle1.png"
+                alt="The IDLE interface" />
+                """);
+        addParagraphStart(sb, 
+                "As well as the Python console prompt, there is a ");
+        sb.append(index.getReference("GUI"));
+        addParagraphEnd(sb, " menu. Choose:");
+        addPre(sb, "File -> Open...");
+        addParagraph(sb,
+              """
+              Open your HelloWorld.py file. IDLE should open the file in the
+              editor window that looks something like:
+              <br><img src="../../resources/python/idle2.png"
+              alt="The IDLE file editor window interface" />
               """);
-        sb.append("<p>As well as the Python console prompt, there is a "
-                + index.getReference("GUI")
-                + " menu. Choose:</p>\n");
-        sb.append("""
-              <pre>File -> Open...</pre>
-              <p>Open your HelloWorld.py file. IDLE should open the file in the
-              editor window that looks something like:</p>
-              <img src="../../resources/python/idle2.png" alt="The IDLE file editor window interface" />
-              <p>Notice that as with a Jupyter Notebook, the code appearing in 
-              the IDLE editor window is styled.</a>
-              <p>The editor window has other menu options. Select:</p>
-              <pre>Run -> Run Module</pre>
-              <p>This should run the HelloWorld.py file, and output to the 
-              console in the other window which should appear something like:</p>
-              <img src="../../resources/python/idle3.png" alt="The IDLE interface having run the Hello World program" />
+        addParagraph(sb,
+              """
+              Notice that as with a Jupyter Notebook, the code appearing in
+              the IDLE editor window is styled.
               """);
-        sb.append("<p>Close the instance of IDLE that is running.<p>");
+        addParagraph(sb, "The editor window has other menu options. Select:");
+        addPre(sb, "Run -> Run Module");
+        addParagraph(sb,
+                """
+                This should run the HelloWorld.py file, and output to the
+                console in the other window which should appear something like:
+                <br><img src="../../resources/python/idle3.png"
+                alt="The IDLE interface having run the Hello World program" />
+                """);
+        addParagraph(sb, "Close the instance of IDLE that is running.");
 
         sid = addSubsection("Spyder", sb);
-        sb.append("<p>"
-                + references.getReference("Spyder")
-                + " - the Scientific PYthon Development EnviRonment, is a"
-                + " different IDE that comes with Anaconda.</p>\n");
-        sb.append("""
-              <p>From the Anaconda prompt enter:</p>
-              <pre>spyder</pre>
-              <p>It may take a couple of minutes to load, when you should see 
-              something like this:</p>
-              <img src="../../resources/python/spyder1.png" alt="The Spyder interface" />
-              <p>The pane to the left is the 'editor pane'. The pane to the top 
-              right is the 'inspector pane'. The pane to the bottom right is the 
-              'console pane'.</p>
-              <p>From the menu, choose:</p>
-              <pre>File -> Open...</pre>
-              <p>Open your 'HelloWorld.py' file which should appear in the 
-              editor pane. From the menu, choose:</p>
-              <pre>Run -> Run</pre>
-              <p>If a popup box appears choose the default and this should run 
-              your program and output should appear in the console like in the 
-              following image:</p>
-              <img src="../../resources/python/spyder2.png" alt="The Spyder interface showing the Hello
-              World program successfully run" />
-              <p>Use the editor and add the following in line 2:</p>
-              <pre>x = y</pre>
-              """);
-        sb.append("<p>Try to run the file again. It should raise a "
-                + index.getReference("Python NameError", "NameError", sid)
-                + " and there should be marks against the code on line 2 on"
-                + " the left and right of the editor pane. Hover your mouse "
-                + " cursor over the mark on the left. You should see something "
-                + " similar to the image below:</p>\n");
-        sb.append("""
-              <img src="../../resources/python/spyder3.png" 
-              alt="The Spyder interface showing an error." />
-              """);
-        sb.append("<p>Have a look at the latest "
-                + references.getReference("Spyder Documentation")
-                + "</p>\n");
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("Spyder"));
+        addParagraphEnd(sb,
+                """
+                - the Scientific PYthon Development EnviRonment, is an IDE that
+                comes with Anaconda.
+                """);
+        addParagraph(sb, "From the Anaconda prompt enter:");
+        addPre(sb, "spyder");
+        addParagraph(sb,
+                """
+                It may take a couple of minutes to load, when you should see
+                something like this:
+                <br><img src="../../resources/python/spyder1.png"
+                alt="The Spyder interface" />
+                """);
+        addParagraph(sb,
+                """
+                The pane to the left is the 'editor pane'. The pane to the top
+                right is the 'inspector pane'. The pane to the bottom right is
+                the 'console pane'.
+                """);
+        addParagraph(sb, "From the menu, choose:");
+        addPre(sb, "File -> Open...");
+        addParagraph(sb,
+                """
+                Open your 'HelloWorld.py' file which should appear in the editor
+                pane. From the menu, choose:
+                """);
+        addPre(sb, "Run -> Run");
+        addParagraph(sb,
+                """
+                If a popup box appears choose the default and this should run
+                your program and output should appear in the console like in the
+                following image:
+                <br><img src="../../resources/python/spyder2.png"
+                alt="The Spyder interface showing the Hello World program
+                successfully ran" />
+                """);
+        addParagraph(sb, "Use the editor and add the following in line 2:");
+        addPre(sb, "x = y");
+        addParagraphStart(sb, "Try to run the file again. It should raise a ");
+        sb.append(index.getReference("Python NameError", "NameError", sid));
+        addParagraphEnd(sb,
+                """
+                and there should be marks against the code on line 2 on the left
+                and right of the editor pane. Hover your mouse cursor over the
+                mark on the left. You should see something similar to the image
+                below:
+                <br><img src="../../resources/python/spyder3.png"
+                alt="The Spyder interface showing an error." />
+                """);
+        addParagraphStart(sb, "Have a look at the latest ");
+        sb.append(references.getReference("Spyder Documentation"));
+        addParagraphEnd(sb, ".");
 
         sid = addSubsection("Other IDEs", sb);
-        sb.append("""
-              <p>There are other IDEs that support Python code development. If 
-              you are already familiar with an IDE that supports Python code 
-              development, then you might like to give it a try. Other IDEs that 
-              might be useful to you in future include:
-              <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>
-              , and
-              <a href="https://www.pydev.org">PyDev</a>
-              <!--
-              for 
-              <a href="https://en.wikipedia.org/wiki/Eclipse_(software)">Eclipse</a>
-              -->
-              .
-              </p>
-              """);
+        addParagraph(sb,
+                """
+                There are other IDEs that support Python code development. If
+                you are already familiar with an IDE that supports Python code
+                development, then you might like to give it a try. Other IDEs
+                that might be useful to you in future include:
+                <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>
+                , and
+                <a href="https://www.pydev.org">PyDev</a>.
+                <!--
+                Eclipse
+                VS Code
+                -->
+                """);
 
         sid = addSection("QGIS Desktop Python Console", sb);
-        sb.append("<p>"
-                + index.getReference("GIS", "Geographical Information System")
-                + " (GIS) software are used to create, manage, process, model,"
-                + " visualise and distribute geographical data and"
-                + " information. "
-                + references.getReference("QGIS")
-                + " is "
-                + index.getReference("Free and Open Source Software",
-                        "free and open source")
-                + " GIS software. It has a thriving developer and user"
-                + " community and a Python "
-                + index.getReference("API")
-                + ". QGIS is mostly written in mixture of "
-                + index.getReference("C++", sid)
-                + " and Python and there is are distinct client and server"
-                + " software. The operation of both these can be automated"
-                + " using Python.</p>\n");
-        sb.append("<p>QGIS Server is geared for serving out data. QGIS Desktop is "
-                + "both a client that can consume data that is served out and "
-                + "a general desktop application for processing geographical "
-                + "data. QGIS Desktop is often controlled by users via a "
-                + index.getReference("GUI")
-                + " with a menu, panels and toolbars. Load QGIS Desktop via"
-                + " AppsAnywhere or download, install and run it on your own "
-                + "device.</p>\n");
-        sb.append("<p>As QGIS Desktop software loads, a splash screen should "
-                + "appear. When fully loaded the GUI should appear.</p>\n");
-        sb.append("""
-              From the GUI Menu select:</p>
-              <pre>Plugins > Python Console</pre>
-              <p>You should see something like:</p>
-              <img src="../../resources/python/qgis1.png" alt="QGIS Desktop Python Console basic interface" />
-              <p>There are 5 buttons, a display area and a Python prompt:</p>
-              <pre>>>></pre> 
-              <p>At the Python prompt enter:</p>
-              <pre>dir()</pre>
-              <p>A considerable amount of functionality should be listed in the 
-              display area of the Python Console.</p>
-              <p>To list the functionality of the QGIS Desktop interface, 
-              enter:</p>
-              <pre>dir(iface)</pre>
-              """);
-        sb.append("<p>"
-                + index.getReference("PyQGIS", sid)
-                + " provides programatic access to functionality that can also"
-                + " be accessed via the QGIS Desktop GUI. It gives greater"
-                + " control in data loading and processing and can be used to "
-                + " extend the available functionality.</p>\n");
-        sb.append("""
-              <p>In the QGIS Desktop Python console, locate and action the 
-              'Show Editor' button. The 'editor panel' should appear on the 
-              right of the console.</p>
-              <p>Download
-              <a href="../../resources/python/QGIS1.py">QGIS1.py</a> - a Python
-              source code file written to be run in the QGIS Desktop Python 
-              console. Read the source code, and run the program following the 
-              instructions that are in the multi-line comment at the top of the
-              source code. (An outline of what to expect is provided in that 
-              multi-line comment.)</p>
-              <p>The import statements are at the top of the Python source code 
-              (which is good practise). Code is organised into code blocks with 
-              comments that outline what each code block does (also good 
-              practise). In this program, the import statements start with the 
-              keyword 'from' which details from which package the specified 
-              modules are imported.</p>
-              """);
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("GIS", "Geographical Information System",
+                sid));
+        sb.append(
+                """
+                (GIS) software are used to create, manage, process, model,
+                visualise and distribute geographical data and information.
+                """);
+        sb.append(references.getReference("QGIS"));
+        sb.append(" is ");
+        sb.append(index.getReference("Free and Open Source Software",
+                        "free and open source"));
+        sb.append(
+                """
+                GIS software. It has a thriving developer and user community and
+                a Python
+                """);
+        sb.append(index.getReference("API"));
+        sb.append(". QGIS is mostly written in mixture of ");
+        sb.append(index.getReference("C++", sid));
+        addParagraphEnd(sb,
+                """
+                and Python and there is are distinct client and server software.
+                The operation of both these can be automated using Python.
+                """);
+        addParagraphStart(sb,
+                """
+                QGIS Server is geared for serving out data. QGIS Desktop is both
+                client and server software. The client software can consume data
+                that is served out and is a general desktop application for
+                processing geographical data. QGIS Desktop is often controlled
+                by users via a
+                """);
+        sb.append(index.getReference("GUI"));
+        addParagraphEnd(sb, " with a menu, panels and toolbars.");
+        addParagraph(sb,
+                """
+                Load QGIS Desktop via AppsAnywhere or download, install and run
+                it on your own device.
+                """);
+        addParagraph(sb,
+                """
+                As QGIS Desktop software loads, a splash screen should appear.
+                When fully loaded the GUI should appear.
+                """);
+        addParagraph(sb, "From the GUI Menu select:");
+        addPre(sb, "Plugins > Python Console");
+        addParagraph(sb,
+                """
+                You should see something like:
+                <br><img src="../../resources/python/qgis1.png"
+                alt="QGIS Desktop Python Console basic interface" />
+                """);
+        addParagraph(sb,
+                "There are 5 buttons, a display area and a Python prompt:");
+        addPre(sb,">>>");
+        addParagraph(sb, "At the Python prompt enter:");
+        addPre(sb, "dir()");
+        addParagraph(sb,
+                """
+                A considerable amount of functionality should be listed in the
+                display area of the Python Console.
+                """);
+        addParagraph(sb,
+                """
+                To list the functionality of the QGIS Desktop interface, enter:
+                """);
+        addPre(sb,"dir(iface)");
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("PyQGIS", sid));
+        addParagraphEnd(sb, 
+                """
+                provides programatic access to functionality that can also be
+                accessed via the QGIS Desktop GUI. It gives greater control in
+                data loading and processing and can be used to extend the
+                available functionality.
+                """);
+        addParagraph(sb,
+                """
+                In the QGIS Desktop Python console, locate and action the
+                'Show Editor' button. The 'editor panel' should appear on the
+                right of the console.
+                """);
+        addParagraph(sb, 
+                """
+                Download;
+                <a href="../../resources/python/QGIS1.py">QGIS1.py</a>
+                - a Python source code file written to be run in the QGIS
+                Desktop Python console. Read the source code, and run the
+                program following the instructions that are in the multi-line
+                comment at the top of the source code. (An outline of what to
+                expect is provided in that multi-line comment.)
+                """);
+        addParagraph(sb, 
+                """
+                The import statements are at the top of the Python source code
+                (which is good practise). Code is organised into code blocks
+                with comments that outline what each code block does (also good
+                practise). In this program, the import statements start with the
+                keyword 'from' which details from which package the specified
+                modules are imported.
+                """);
         index.getReference("For Loop", "", sid);
-        sb.append("<p>The code contains some "
-                + index.getReference("Python for", sid)
-                + " statements which start with the keyword 'for'. The first of"
-                + " these iterates over the 'fields' in a 'layer'. The others"
-                + " iterate over the 'features' in a 'layer'. (Iteration simply"
-                + " means going through a sequence of things one at a time.)"
-                + "</p>\n");
-        sb.append("<p>The program accesses both attribute and geometry data from a "
-                + "layer, and adds data into the QGIS Desktop GUI display."
-                + "</p>\n");
-        sb.append("<p>Once the program has run the QGIS Desktop GUI should look "
-                + "something like:</p>\n");
-        sb.append("""
-              <img src="../../resources/python/qgis2.png" alt="QGIS Python 
-              Console after having run QGISExample.py" />
-              </p>
-              <p>QGIS Desktop Plugins can be written in both C++ and Python. 
-              This course does not explore this further. For details see the 
-              following:</p>
-              <ul>
-              <li><a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
-              QGIS Development Web Page</a></li>
-              <li><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/index.html#developing-python-plugins">
-              PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a></li>
-              </ul>
-              """);
+        addParagraphStart(sb, "The code contains some ");
+        sb.append(index.getReference("Python for", sid));
+        addParagraphEnd(sb,
+                """
+                statements which start with the keyword 'for'. The first of
+                these iterates over the 'fields' in a 'layer'. The others
+                iterate over the 'features' in a 'layer'. (Iteration simply
+                means going through a sequence of things one at a time.
+                """);
+        addParagraph(sb, 
+                """
+                The program accesses both attribute and geometry data from a
+                layer, and adds data into the QGIS Desktop GUI display.
+                """);
+        addParagraph(sb, 
+                """
+                Once the program has run the QGIS Desktop GUI should look
+                something like:
+                <br><img src="../../resources/python/qgis2.png"
+                alt="QGIS Python Console after having run QGISExample.py" />
+                """);
+        addParagraph(sb, 
+                """
+                QGIS Desktop Plugins can be written in both C++ and Python.
+                This course does not explore this further. For details see the
+                following:
+                """);
+        sb.append(Strings.UL_START);
+        addLI(sb,
+                """
+                <a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
+                QGIS Development Web Page</a>
+                """);
+        addLI(sb,
+                """
+                <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/index.html#developing-python-plugins">
+                PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a>
+                """);
+        sb.append(Strings.UL_END);
 
         sid = addSection("Python Packages and Environment Management", sb);
-        sb.append("""
-              <p>Packaging code and delivering it to users via repositories is 
-              good practise for numerous reasons. Some software and code 
-              repositories are programming language specific or software
-              specific (like QGIS Desktop Plugins), components within the 
-              repositories are packaged in standard ways, and there is some 
-              process of review and some policy about package availability and 
-              removal. For details on packaging Python code see the following:
-              """);
-        sb.append(references.getReference("Python Packaging User Guide")
-                + " - a collection of tutorials and references to help you "
-                + "distribute and install Python packages with modern tools.");
-        sb.append("<p>"
-                + index.getReference("PyPI")
-                + " is a widely used Python repository. Developers deploy"
-                + " packages to PyPI and users install packages from there."
-                + " Many packages are provided as "
-                + index.getReference("Free and Open Source Software")
-                + ". PyPI also supports hosting private proprietary packages."
-                + "</p>\n");
-        sb.append("""
-              <p>When installing a package in a Python environment, by default 
-              package dependencies are also installed at the same time. In 
-              Python terms, a dependency is a package, module or function that 
-              some other code needs in order to work. At the package level, for 
-              any package that is being installed, a dependency list can be 
-              generated which includes all the dependencies. Further lists can 
-              be generated that reveal what these dependencies also depend upon.
-              A web of dependencies can emerge and the dependencies can be 
-              installed sequentially so as to only install those dependencies 
-              that depend on things that are already installed in the 
-              environment.</p>
-              <p>A criticism levelled at Python is that it can be poor at 
-              dependency management compared with other programming languages. 
-              When code in two different packages depends on different versions 
-              of a common dependency, there is what is known as a dependency 
-              conflict in Python. Python is currently not able to have multiple
-              versions of a dependency installed in a single environment. The 
-              work around for this in Python is called orchestration which 
-              involves organising multiple Python environments with the 
-              required versions installed and getting these to work together. 
-              Such orchestration is fiddly and is regarded as an advanced topic 
-              that is not covered in this course.</p>
-              <p>Learning about creating, activating, using, deactivating and 
-              deleting Python environments is important for orchestration and 
-              for other reasons. This is covered in this section...</p>
-              <p>It is easy to pollute Python environments by installing 
-              packages (and their dependencies) that turn out not to be useful 
-              and that then get in the way - using up resources and slowing 
-              things down. This is in part because uninstalling packages and 
-              removing all their dependencies is not currently easy with Python.
-              </p>
-              <p>The general advice when installing several packages is to 
-              install them all in one go. Some dependency conflict resolution is 
-              attempted by the installer when this is done. So, for example, if 
-              a dependency requires a version between 1.2 to 1.5 of another 
-              package and another dependency requies a version from 1.1 to 1.10, 
-              then version 1.5 would be installed as the latest version that 
-              works for all dependencies. If installations were done one at a 
-              time, it is likely that version 1.10 would end up being the 
-              version available and this might not work or might not work as 
-              expected.</p>
-              """);
-        sb.append("<p>"
-                + references.getReference("Conda")
-                + " is a package and environment manager that comes with "
-                + "Anaconda. Another way to create and manage Python "
-                + "environments uses the Python standard library module "
-                + index.getReference("Python venv", "venv", sid)
-                + " and the Python Package Installer "
-                + references.getReference("PIP", "pip")
-                + ".</p>\n");
-        sb.append("<p>Conda is the recommended way of installing some Python"
-                + " packages. It is not necessarily that those packages"
-                + " cannot be configured and made to work using venv and"
-                + " pip, but that such configuration is currently more"
-                + " complicated. This is particularly true for some commonly"
-                + " used Python "
-                + index.getReference("GIS", sid)
-                + " packages, especially with installation on Microsoft Windows"
-                + " operating systems.</p>\n");
-        sb.append("""
-              <p>Open an Anaconda prompt, change to a directory where you can 
-              write files and enter the following command to create a list of
-              Python packages available in the Python environment:</p>
-              <pre>pip list > piplist.txt</pre>
-              <p>It may take a minute or so to run. It should output an 
-              ASCII text file containing a list of names with version numbers 
-              similar to:
-              <a href="../../resources/python/piplist.txt">piplist.txt</a>
-              .</p>
-              <p>Enter the following command to create a similar list:</p>
-              <pre>conda list > condalist.txt</pre>
-              <p>Again, it may take a minute or so to run. It should output an
-              ASCII text file like similar to:  
-              <a href="../../resources/python/condalist.txt">condalist.txt</a>
-              .</p>
-              <p>Enter the following command to create an explicit list of all 
-              the conda packages saved in a file named 'spec-file.txt':</p>
-              <pre>conda list --explicit > spec-file.txt</pre>
-              <p>This file can be used to attempt to replicate the Python 
-              environment on another resource. For details of how
-              to do that see:
-              <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">
-              The Conda User Guide Page on Managing Environments Section on 
-              Sharing an Environment</a></p>
-              <p>Get a list of available Conda environments. Enter:</p>
-              <pre>conda env list</pre>
-              <p>The list is displayed and should look something like:</p>
-              <pre># conda environments:
-              #
-              base                  *  C:\\ProgramData\\Anaconda3</pre>
-              <p>Often users create a Python environment for a specific purpose 
-              and only specific packages are installed for that. The following 
-              set of instructions install the default Python environment that 
-              comes with Anaconda, then install in this all the packages needed 
-              for to run the examples on this page. Altogether about 2GB of 
-              space is needed in the location where you create the environment.
-              </p>
-              <p>It is not vital that you are able to run all the examples on 
-              this page. Most of the course uses only the Python standard 
-              library and a few other pakages that are installed as needed.</p>
-              """);
-        sb.append("<p>Creating Python environments on Cloud storage such as on "
-                + "<a href=\"https://en.wikipedia.org/wiki/OneDrive\">"
-                + "Microsoft OneDrive</a>"
-                + " or "
-                + "<a href=\"https://en.wikipedia.org/wiki/GoogleDrive\">"
-                + "Google Drive</a>"
-                + " is currently not recommended. On University of Leeds"
-                + " campus computers or the 'Academic' "
-                + "<a href=\"https://wvd.leeds.ac.uk\">"
-                + "University Windows Virtual Desktop</a>"
-                + " it is recommended to create the Python environment on the "
-                + "M:\\ drive, for example in the following location:");
+        addParagraphStart(sb, 
+                """
+                Packaging code and delivering it to users via repositories is
+                good practise for numerous reasons. Some software and code
+                repositories are programming language specific or software
+                specific (like QGIS Desktop Plugins), components within the
+                repositories are packaged in standard ways, and there is some
+                process of review and some policy about package availability and
+                removal. For details on packaging Python code see the
+                """);
+        sb.append(references.getReference("Python Packaging User Guide"));
+        addParagraphEnd(sb,
+                """
+                - a collection of tutorials and references to help you
+                distribute and install Python packages with modern tools.
+                """);
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("PyPI", sid));
+        sb.append(
+                """
+                is a widely used Python repository. Developers deploy packages
+                to PyPI and users install packages from there. Many packages are
+                provided as
+                """);
+        sb.append(index.getReference("Free and Open Source Software"));
+        addParagraphEnd(sb,
+                ". PyPI also supports hosting private proprietary packages.");
+        addParagraph(sb,
+                """
+                When installing a package in a Python environment, by default
+                package dependencies are also installed at the same time. In
+                Python terms, a dependency is a package, module or function that
+                some other code needs in order to work. At the package level,
+                for any package that is being installed, a dependency list can
+                be generated which includes all the dependencies. Further lists
+                can be generated that reveal what these dependencies also depend
+                upon. A web of dependencies can emerge and the dependencies can
+                be installed sequentially so as to only install those
+                dependencies that depend on things that are already installed in
+                the environment.
+                """);
+        addParagraph(sb,
+                """
+                A criticism levelled at Python is that it can be poor at
+                dependency management compared with other programming languages.
+                When code in two different packages depends on different
+                versions of a common dependency, there is what is known as a
+                dependency conflict in Python. Python is currently not able to
+                have multiple versions of a dependency installed in a single
+                environment. The work around for this in Python is called
+                orchestration which involves organising multiple Python
+                environments with the required versions installed and getting
+                these to work together. Such orchestration is fiddly and is
+                regarded as an advanced topic that is not covered in this
+                course.
+                """);
+        addParagraph(sb,
+                """
+                Learning about creating, activating, using, deactivating and
+                deleting Python environments is important for orchestration and
+                for other reasons. This is covered in this section...
+                """);
+        addParagraph(sb,
+                """
+                It is easy to pollute Python environments by installing packages
+                (and their dependencies) that turn out not to be useful and that
+                then get in the way - using up resources and slowing things
+                down. This is in part because uninstalling packages and removing
+                all their dependencies is not currently easy with Python.
+                """);
+        addParagraph(sb,
+                """
+                The general advice when installing several packages is to
+                install them all in one go. Some dependency conflict resolution
+                is attempted by the installer when this is done. So, for
+                example, if a dependency requires a version between 1.2 to 1.5
+                of another package and another dependency requies a version from
+                1.1 to 1.10, then version 1.5 would be installed as the latest
+                version that works for all dependencies. If installations were
+                done one at a time, it is likely that version 1.10 would end up
+                being the version available and this might not work or might not
+                work as expected.
+                """);
+        addParagraphStart(sb, "");
+        sb.append(index.getReference("Conda", sid));
+        sb.append(
+                """
+                is a package and environment manager that comes with Anaconda.
+                Another way to create and manage Python environments uses the
+                Python standard library module
+                """);
+        sb.append(index.getReference("Python venv", "venv", sid));
+        sb.append(" and the Python Package Installer ");
+        sb.append(index.getReference("PIP", "pip", sid));
+        addParagraphEnd(sb, ".");
+        addParagraphStart(sb, 
+                """
+                Conda is the recommended way of installing some Python packages.
+                It is not necessarily that those packages cannot be configured
+                and made to work using venv and pip, but that such configuration
+                is currently more complicated. This is particularly true for
+                some commonly used Python
+                """);
+        sb.append(index.getReference("GIS", sid));
+        addParagraphEnd(sb,
+                """
+                packages, especially with installation on Microsoft Windows
+                operating systems.
+                """);
+        addParagraph(sb, 
+                """
+                Open an Anaconda prompt, change to a directory where you can
+                write files and enter the following command to create a list of
+                Python packages available in the Python environment:
+                """);
+        addPre(sb, "pip list > piplist.txt");
+        addParagraph(sb, 
+                """
+                It may take a minute or so to run. It should output an
+                ASCII text file containing a list of names with version numbers
+                similar to:
+                <a href="../../resources/python/piplist.txt">piplist.txt</a>.
+                """);
+        addParagraph(sb,
+                "Enter the following command to create a similar list:");
+        addPre(sb,"conda list > condalist.txt");
+        addParagraph(sb, 
+                """
+                Again, it may take a minute or so to run. It should output an
+                ASCII text file like similar to:
+                <a href="../../resources/python/condalist.txt">condalist.txt</a>.
+                """);
+        addParagraph(sb, 
+                """
+                Enter the following command to create an explicit list of all
+                the conda packages saved in a file named 'spec-file.txt':
+                """);
+        addPre(sb, "conda list --explicit > spec-file.txt");
+        addParagraph(sb, 
+                """
+                This file can be used to attempt to replicate the Python
+                environment on another resource. For details of how
+                to do that see:
+                <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment">
+                The Conda User Guide Page on Managing Environments Section on
+                Sharing an Environment</a>
+                """);
+        addParagraph(sb, "Get a list of available Conda environments. Enter:");
+        addPre(sb, "conda env list");
+        addParagraph(sb, 
+                "The list is displayed and should look something like:");
+        addPre(sb, 
+                """
+                # conda environments:
+                #
+                base                  *  C:\\ProgramData\\Anaconda3
+                """);
+        addParagraph(sb, 
+                """
+                Often users create a Python environment for a specific purpose
+                and only specific packages are installed for that. The
+                following set of instructions install the default Python
+                environment that comes with Anaconda, then install in this all
+                the packages needed for to run the examples on this page.
+                Altogether about 2GB of space is needed in the location where
+                you create the environment.
+                """);
+        addParagraph(sb, 
+                """
+                It is not vital that you are able to run all the examples on
+                this page. Most of the course uses only the Python standard
+                library and a few other pakages that are installed as needed.
+                """);
         String envPath = "M:\\" + getCourse().getCourseCode() + "\\envs";
-        sb.append(envPath);
+        addParagraphStart(sb, 
+                """
+                Creating Python environments on Cloud storage such as on
+                <a href="https://en.wikipedia.org/wiki/OneDrive">
+                Microsoft OneDrive</a> or
+                <a href="https://en.wikipedia.org/wiki/GoogleDrive">
+                Google Drive</a>
+                is currently not recommended. On University of Leeds campus
+                computers or the 'Academic'
+                <a href="https://wvd.leeds.ac.uk">
+                University Windows Virtual Desktop</a>
+                it is recommended to create the Python environment on the
+                M:\\ drive, for example in the following location:
+                <br>
+                """);
+        addParagraphEnd(sb, envPath);
+        
         envPath = envPath + "\\myenv";
-        sb.append("<p>Create the environment giving it a name added to the end of "
-                + "the directory path as follows:</p>\n");
-        sb.append("<pre>conda create -p " + envPath + "</pre>");
-        sb.append("<p>The -p option is the option to use a path to get conda to "
-                + "install the environment in a particular location. The path "
-                + "example given here is for Windows if using Linux or MacOS, "
-                + "then the path will be different. By default conda creates "
-                + "environments in a directory called 'envs' located wherever "
-                + "Anaconda is installed. In this case the environment being "
-                + "created is called 'myenv'."
-                + "Confirm the environment creation by pressing the &lt;y> key "
-                + "when prompted. Creating the environment should just take a "
-                + "few seconds. Once created, check it is listed:</p>\n");
-        sb.append("<pre>conda env list</pre>");
-        sb.append("<p>You should see something like what is shown below:<p>");
-        sb.append("<pre># conda environments:");
-        sb.append("#");
-        sb.append("base             *  C:\\ProgramData\\Anaconda3");
-        sb.append("myenv               " + envPath + "</pre>");
-        sb.append("<p>Details may vary depending on where you created the "
-                + "environment and what you called it.</p>\n");
-        sb.append("<p>Conda environments are registered/listed in the '.conda' "
-                + "directory in the user home directory in a file with the "
-                + "name 'environments.txt'.</p>\n");
-        sb.append("<p>Assuming you named your environment 'myenv', activate it by"
-                + " entering:</p>\n");
-        sb.append("<pre>conda activate " + envPath + "</pre>");
-        sb.append("""
-              <p>The prompt should change to have "(myenv)" prepended instead of 
-              "(base)"</p>
-              <p>Next install the following Python packages:</p>
-              <ul>
-              <li><a href="https://contextily.readthedocs.io/en/latest/">Contextily</a></li>
-              <li><a href="https://github.com/Toblerity/Fiona">Fiona</a></li>
-              <li><a href="https://python-visualization.github.io/folium/">Folium</a></li>
-              <li><a href="https://geopandas.org/">Geopandas</a></li>
-              <li><a href="https://readthedocs.org/projects/pip/">pip</a></li>
-              <li><a href="https://pypi.org/project/ipykernel/">ipykernel</a></li>
-              <li><a href="https://pypi.org/project/PyQt5">PyQt5</a></li>
-              <li><a href="https://pypi.org/project/spyder-kernels/">spyder-kernels</a></li>
-              </ul>
-              <p>Enter:</p>
-              <pre>conda install -c conda-forge contextily fiona folium geopandas pip pysal ipykernel spyder spyder-kernels=2.2</pre>
-              <p>The installation may take some time... Once it is complete, 
-              install pyqt5 using pip by entering:</p>
-              <pre>pip install pyqt5</pre>
-              <p>Next, install 'myenv' into the 'ipykernel' so it will be 
-              available via the Jupyter Notebook interface:</p>  
-              <pre>python -m ipykernel install --user --name=myenv</pre>
-              <p>Download
-              <a href="../../resources/python/Jupyter1.ipynb">
-              Jupyter1.ipynb</a>, save it to a directory and start 
-              Jupyter Notebook so it can load the file.</p>
-              <p>Enter the following to run Jupyter Notebook:</p>
-              <pre>jupyter notebook --NotebookApp.max_buffer_size=1073741824</pre>
-              <p>This gives Jupyter Notebook twice as much memory as the current 
-              default (which helps prevent memory errors being encountered).</p> 
-              <p>Wait for a Web browser tab to appear with the Jupyter Notebook 
-              interface. When it appears select:<p>
-              <pre>New > myenv</pre>
-              <p>Open 'Jupyter1.ipynb' read and run it cell by cell.</p>
-              <p>If for some reason that does not work, then try something a bit 
-              simpler and copy the code below into a cell and run it.</p>
-              <pre><code class="language-python"># Simple example code 
-              import folium
-              
-              map = folium.Map(
-                  location=(53.804, -1.555),
-                  zoom_start=16,
-                  control_scale=True
-              )
-              
-              ccg = folium.Marker(
-                  location=(53.8041954,-1.5549235),
-                  tooltip="Centre for Computational Geography",
-                  icon=folium.Icon()
-              )
-              ccg.add_to(map)
-              
-              map</code></pre>
-              <p>This should produce a slippy map with an icon on it that looks 
-              something like:</p>
-              <img src="../../resources/python/jupyter4.png" alt="Jupyter Notebook Interface 4" />
-              <p>From the Jupyter Notebook interface choose:</p>
-              <pre>new > Python 3 (ipykernel)</pre>
-              <p>Try running the same code. Most likely, the folium package is 
-              not installed in your base environment and the following error is
-              thrown:</p> 
-              <pre>---------------------------------------------------------------------------
-               ModuleNotFoundError                       Traceback (most recent call last)
-               Input In [1], in <cell line: 1>()
-               ----> 1 import folium
-                     3 map = folium.Map(
-                     4     location=(53.804, -1.555),
-                     5     zoom_start=16,
-                     6     control_scale=True
-                     7 )
-                     9 ccg = folium.Marker(
-                    10     location=(53.8041954,-1.5549235),
-                    11     tooltip="Centre for Computational Geography",
-                    12     icon=folium.Icon()
-                    13 )
-               
-               ModuleNotFoundError: No module named 'folium'</pre>
-              <p>Exit Jupyter Notebook and deactivate myenv by entering:</p>
-              <pre>deactivate myenv</pre>
-              <p>To remove the conda environment myenv use:</p>
-              <pre>conda remove --name myenv --all</pre>
-              <p>This ends the section on environment management and installing 
-              packages.</p> 
-              <p>Below are key references for installing packages using pip and conda:</p>
-              <ul>
-              <li><a href="https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing">
-              https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing</a></li>
-              <li><a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
-              https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a></li>
-              </ul>
-              """);
+        addParagraph(sb, 
+                """
+                Create the environment giving it a name added to the end of the
+                directory path as follows:
+                """);
+        addPre(sb, 
+                """
+                conda create -p " + envPath
+                """);
+        addParagraph(sb, 
+                """
+                The -p option is the option to use a path to get conda to
+                install the environment in a particular location. The path
+                example given here is for Windows if using Linux or MacOS, then
+                the path will be different. By default conda creates
+                environments in a directory called 'envs' located wherever
+                Anaconda is installed. In this case the environment being
+                created is called 'myenv'. Confirm the environment creation by
+                pressing the &lt;y> key when prompted. Creating the environment
+                should just take a few seconds. Once created, check it is
+                listed:
+                """);
+        addPre(sb, "conda env list");
+        addParagraph(sb, "You should see something like what is shown below:");
+        addPreStart(sb,
+                """
+                # conda environments:
+                #
+                base             *  C:\\ProgramData\\Anaconda3"
+                """);
+        addPreEnd(sb, "myenv               " + envPath);
+        addParagraph(sb, 
+                """
+                Details may vary depending on where you created the environment
+                and what you called it.
+                """);
+        addParagraph(sb, 
+                """
+                Conda environments are registered/listed in the '.conda'
+                directory in the user home directory in a file with the name
+                'environments.txt'.
+                """);
+        addParagraph(sb, 
+                """
+                Assuming you named your environment 'myenv', activate it by
+                entering:
+                """);
+        addPre(sb, "conda activate " + envPath);
+        addParagraph(sb, 
+                """
+                The prompt should change to have "(myenv)" prepended instead of
+                (base)
+                """);
+        addParagraph(sb, "Next install the following Python packages:");
+        sb.append(Strings.UL_START);
+        addLI(sb, """
+                  <a href="https://contextily.readthedocs.io/en/latest/">
+                  Contextily</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://github.com/Toblerity/Fiona">Fiona</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://python-visualization.github.io/folium/">Folium</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://geopandas.org/">Geopandas</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://readthedocs.org/projects/pip/">pip</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://pypi.org/project/ipykernel/">ipykernel</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://pypi.org/project/PyQt5">PyQt5</a>
+                  """);
+        addLI(sb, """
+                  <a href="https://pypi.org/project/spyder-kernels/">spyder-kernels</a>
+                  """);
+        sb.append(Strings.UL_END);
+        addParagraph(sb, "Enter:");
+        addPre(sb, "conda install -c conda-forge contextily fiona folium geopandas pip pysal ipykernel spyder spyder-kernels=2.2");
+        addParagraph(sb, 
+                """
+                The installation may take some time... Once it is complete,
+                install pyqt5 using pip by entering:
+                """);
+        addPre(sb, "pip install pyqt5");
+        addParagraph(sb, 
+                """
+                Next, install 'myenv' into the 'ipykernel' so it will be
+                available via the Jupyter Notebook interface:
+                """);
+        addPre(sb, "python -m ipykernel install --user --name=myenv");
+        addParagraph(sb, 
+                """
+                Download;
+                <a href="../../resources/python/Jupyter1.ipynb">
+                Jupyter1.ipynb</a>, save it to a directory and start
+                Jupyter Notebook so it can load the file.
+                """);
+        addParagraph(sb, "Enter the following to run Jupyter Notebook:");
+        addPre(sb, "jupyter notebook --NotebookApp.max_buffer_size=1073741824");
+        addParagraph(sb, 
+                """
+                This gives Jupyter Notebook twice as much memory as the current
+                default (which helps prevent memory errors being encountered).
+                """);
+        addParagraph(sb, 
+                """
+                Wait for a Web browser tab to appear with the Jupyter Notebook
+                interface. When it appears select:
+                """);
+        addPre(sb, "New > myenv");
+        addParagraph(sb, "Open 'Jupyter1.ipynb' read and run it cell by cell.");
+        addParagraph(sb, 
+                """
+                If for some reason that does not work, then try something a bit
+                simpler and copy the code below into a cell and run it.
+                """);
+        addPythonCodeBlock(sb, 
+                """
+                # Simple example code
+                import folium
+
+                map = folium.Map(
+                    location=(53.804, -1.555),
+                    zoom_start=16,
+                    control_scale=True
+                )
+
+                ccg = folium.Marker(
+                    location=(53.8041954,-1.5549235),
+                    tooltip="Centre for Computational Geography",
+                    icon=folium.Icon()
+                )
+                ccg.add_to(map)
+
+                map
+                """);
+        addParagraph(sb, 
+                """
+                This should produce a slippy map with an icon on it that looks
+                something like:
+                <br><img src="../../resources/python/jupyter4.png"
+                alt="Jupyter Notebook Interface 4" />
+                """);
+        addParagraph(sb, "From the Jupyter Notebook interface choose:");
+        addPre(sb, "new > Python 3 (ipykernel)");
+        addParagraph(sb, 
+                """
+                Try running the same code. Most likely, the folium package is
+                not installed in your base environment and the following error
+                is thrown:
+                """);
+        addPre(sb, 
+                """
+                ---------------------------------------------------------------------------
+                ModuleNotFoundError                       Traceback (most recent call last)
+                Input In [1], in <cell line: 1>()
+                ----> 1 import folium
+                      3 map = folium.Map(
+                      4     location=(53.804, -1.555),
+                      5     zoom_start=16,
+                      6     control_scale=True
+                      7 )
+                      9 ccg = folium.Marker(
+                     10     location=(53.8041954,-1.5549235),
+                     11     tooltip="Centre for Computational Geography",
+                     12     icon=folium.Icon()
+                     13 )
+
+                ModuleNotFoundError: No module named 'folium'
+                """);
+        addParagraph(sb, 
+                "Exit Jupyter Notebook and deactivate myenv by entering:");
+        addPre(sb, "deactivate myenv");
+        addParagraph(sb, "To remove the conda environment myenv use:");
+        addPre(sb, "conda remove --name myenv --all");
+        addParagraph(sb, 
+                """
+                This ends the section on environment management and installing
+                packages.
+                """);
+        addParagraph(sb, 
+                """
+                Below are key references for installing packages using pip and
+                conda:
+                """);
+        sb.append(Strings.UL_START);
+        addLI(sb, 
+                """
+                <a href="https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing">
+                https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing
+                </a>
+                """);
+        addLI(sb,
+                """
+                <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
+                https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a>
+                """);
+        sb.append(Strings.UL_START);
 
         sid = addSection("Recap and Expectations", sb);
-        sb.append("<p>This section of the course introduced some basic Python"
-                + " syntax and considered the evolution of the language. It"
-                + " explored running Python code in a number of ways: using the"
-                + " REPL environment, running files of source code; using"
-                + " Jupyter Notebooks; the IDLE and Spyder IDEs; and the Python"
-                + " environment in QGIS.</p>\n");
-        sb.append("""
-              <p>Loading modules using import statements, and accessing 
-              functionality via a dot operator was introduced.</p>\n
-              """);
-        sb.append("<p>Example "
-                + index.getReference("Python if", "if")
-                + " statements and "
-                + index.getReference("Python for", "for loops")
-                + " were provided. These key things will be used many times, so "
-                + "do not worry if you have not fully understood these yet."
-                + "</p>\n");
-        sb.append("""
-              <p>Versioning, packaging and managing Python/Conda environments 
-              have been introduced, as has installing Python packages in Python 
-              environments.</p>\n
-              <p>Some example code has been provided. This is quite good code in
-              that there are plentiful comments, and the code also does some 
-              interesting things: The code that automated some QGIS Desktop 
-              processing demonstrates how to access functionality from within 
-              QGIS Desktop. The Jupyter Notebook based example utilised 
-              Javascript capabilities of the Web browser and leveraged some 
-              widely used Python GIS tools.</p>\n
-              <p>This has been a broad brush overview. You might benefit from 
-              revisiting parts of this learning once you are a bit more familiar
-              with developing Python code and as you think about undertaking 
-              projects.</p>\n
-              </div>
-              """);
+        addParagraph(sb,
+                """
+                This section of the course introduced some basic Python syntax
+                and considered the evolution of the language. It explored
+                running Python code in a number of ways: using the REPL
+                environment, running files of source code; using Jupyter
+                Notebooks; the IDLE and Spyder IDEs; and the Python environment
+                in QGIS.
+                """);
+        addParagraph(sb,
+                """
+                Loading modules using import statements, and accessing
+                functionality via a dot operator was introduced.
+                """);
+        addParagraphStart(sb, "Example ");
+        sb.append(index.getReference("Python if", "if"));
+        sb.append(" statements and ");
+        sb.append(index.getReference("Python for", "for loops"));
+        addParagraphEnd(sb,
+                """
+                were provided. These key things will be used many times, so do
+                not worry if you have not fully understood these yet.
+                """);
+        addParagraph(sb,
+                """
+                Versioning, packaging and managing Python/Conda environments
+                have been introduced, as has installing Python packages in
+                Python environments.
+                """);
+        addParagraph(sb,
+                """
+                Some example code has been provided. This is quite good code in
+                that there are plentiful comments, and the code also does some
+                interesting things: The code that automated some QGIS Desktop
+                processing demonstrates how to access functionality from within
+                QGIS Desktop. The Jupyter Notebook based example utilised
+                Javascript capabilities of the Web browser and leveraged some
+                widely used Python GIS tools.
+                """);
+        addParagraph(sb,
+                """
+                This has been a broad brush overview. You might benefit from
+                revisiting parts of this learning once you are a bit more
+                familiar with developing Python code and as you think about
+                undertaking projects.
+                """);
         return sb.toString();
     }
 

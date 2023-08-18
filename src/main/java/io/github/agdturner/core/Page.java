@@ -393,9 +393,31 @@ public abstract class Page {
     public void addPre(StringBuilder sb, String s) {
         addTag(sb, s, Strings.s_pre);
     }
+    
+    
+    /**
+     * Wrap a string with an HTML pre tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addPreStart(StringBuilder sb, String s) {
+        addTag(sb, s, Strings.s_pre);
+    }
+    
+    
+    /**
+     * Wrap a string with an HTML end pre tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     */
+    public void addPreEnd(StringBuilder sb, String s) {
+        addTag(sb, s, Strings.s_pre);
+    }
 
     /**
-     * Wraps a paragraph.
+     * Wraps a string with start and HTML list item tags.
      *
      * @param sb The StringBuilder to append to.
      * @param s The string to wrap.
