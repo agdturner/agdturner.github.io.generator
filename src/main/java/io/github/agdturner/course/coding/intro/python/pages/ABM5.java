@@ -73,7 +73,7 @@ public class ABM5 extends CoursePage {
         sb.append(index.getReference("CSV", sid));
         addParagraphEnd(sb,
                 """
-                format file. It is rectangular, indeed square and has 300 lines
+                 format file. It is rectangular, indeed square and has 300 lines
                 each with 300 values.
                 """);
         addParagraph(sb,
@@ -334,7 +334,7 @@ public class ABM5 extends CoursePage {
               """);
         addParagraph(sb,
                 """
-                Change model.py so that environment is passed in correctly as 
+                Change model.py so that environment is passed in correctly as
                 agents are initialised.
                 """);
         addParagraph(sb, "In the Agent class define the following method:");

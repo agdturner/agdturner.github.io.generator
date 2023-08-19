@@ -63,7 +63,7 @@ public class Modules extends CoursePage {
         sid = addSection("Importing", sb);
         addParagraphStart(sb, "The ");
         sb.append(index.getReference("Python Module Index", sid));        
-        sb.append("is a useful look up for ");
+        sb.append(" is a useful look up for ");
         sb.append(references.getReference("Python 3 Documentation: Library",
                         "Python Standard Library"));
         addParagraphEnd(sb,

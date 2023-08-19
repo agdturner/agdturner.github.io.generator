@@ -199,7 +199,7 @@ public class ABM3 extends CoursePage {
         sb.append(index.getReference("Python for", "for loops", sid));
         addParagraphEnd(sb,
                 """
-                can be used to calculate it: An outer loop that iterates over
+                 can be used to calculate it: An outer loop that iterates over
                 all agents; and an inner loop that iterates over all agents.
                 Within the inner loop the get_distance function can be used to
                 calculate the distance between a pair of agents (one from the
@@ -633,11 +633,11 @@ public class ABM3 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Practising calculating such summary statistics from first 
-                principles is a good way to develop programming skills, so if 
-                you want the extra practise then have a go. Perhaps try 
-                calculating a truncated mean of distances ignoring a proportion 
-                of the highest and lowest distances. Think about how you would 
+                Practising calculating such summary statistics from first
+                principles is a good way to develop programming skills, so if
+                you want the extra practise then have a go. Perhaps try
+                calculating a truncated mean of distances ignoring a proportion
+                of the highest and lowest distances. Think about how you would
                 test to ensure your code produces correct results.
                 """);
         addParagraph(sb,

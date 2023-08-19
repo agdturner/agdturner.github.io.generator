@@ -45,7 +45,7 @@ public class ABM1 extends CoursePage {
         sb.append(index.getReference("ABM", "Agent Based Model", sid));
         addParagraphEnd(sb,
                 """
-                (ABM) - a model for simulating the actions and interactions of
+                 (ABM) - a model for simulating the actions and interactions of
                 entities (agents) located within an environment which may change
                 and be changed by the agents.
                 """);
@@ -149,7 +149,7 @@ public class ABM1 extends CoursePage {
         sb.append(index.getReference("Python random", "random module", sid));
         addParagraphEnd(sb, 
                 """
-                implements pseudo-random number generators for various
+                 implements pseudo-random number generators for various
                 distributions and provides a way to change variable values
                 randomly. To use the module it has to be imported. Towards the
                 top of 'model.py' add the following import statement:
@@ -167,7 +167,7 @@ public class ABM1 extends CoursePage {
         sb.append(index.getReference("Python if", "if statement", sid));
         sb.append(
                 """
-                to determine whether to increase or decrease 'x0' based on the
+                 to determine whether to increase or decrease 'x0' based on the
                 value obtained from a call to the function
                 """);
         sb.append(index.getReference("Python random.random", "random", sid));
@@ -280,7 +280,7 @@ public class ABM1 extends CoursePage {
         sb.append(index.getReference("Python math", "math module", sid));
         addParagraphEnd(sb, 
                 """
-                and use the
+                 and use the
                 <a href="https://docs.python.org/3/library/math.html#math.sqrt">
                 sqrt</a> function. The expected distance between (0, 0) and
                 (3, 4) is 5.

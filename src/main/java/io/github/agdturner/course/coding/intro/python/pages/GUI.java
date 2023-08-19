@@ -43,7 +43,7 @@ public class GUI extends CoursePage {
         sb.append(index.getReference("GUI", "Graphical User Interface", sid));
         addParagraphEnd(sb,
                 """
-                (GUI) is typically comprised of rectangular windows containing
+                 (GUI) is typically comprised of rectangular windows containing
                 panels and a menu bar. Panels can contain data displays which
                 can be made interactive, and widgets (buttons, sliders, dials,
                 text boxes and other things a user might interact with). The

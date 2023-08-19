@@ -33,22 +33,24 @@ public class SoGPythonIntroCodingCourseProgramming extends PythonIntroCodingCour
     @Override
     public SectionID getLearning0(StringBuilder sb) {
         SectionID sid = super.getLearning0(sb);
-        sb.append("""
-            <p>You are at liberty to engage in online forums, but please do not
-            post questions about this course, particularly about the 
-            assignments. Ask a tutor if you want help.</p>
-                  """);
+        addParagraph(sb,
+                """
+                You are at liberty to engage in online forums, but please do not
+                post questions about this course, particularly about the
+                assignments. Ask a tutor if you want help.
+                """);
         return sid;
     }
 
     @Override
     public SectionID getConsiderata0(StringBuilder sb) {
         SectionID sid = super.getConsiderata0(sb);
-        sb.append("""
-              <p>Keep in mind that it is important to keep track of what you 
-              consult and avoid plagiarising (presenting other's work as your 
-              own).</p>
-              """);
+        addParagraph(sb,
+                """
+                Keep in mind that it is important to keep track of what you
+                consult and avoid plagiarising (presenting other's work as your
+                own).
+                """);
         return sid;
     }
 }

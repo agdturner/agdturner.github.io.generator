@@ -43,7 +43,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python io", "io module", sid));
         addParagraphEnd(sb,
                 """
-                provides the main facilities for dealing with input and output
+                 provides the main facilities for dealing with input and output
                 (IO). Numerous other standard library modules have functionality
                 for dealing with specific aspects and types of IO, including:
                 """);
@@ -70,7 +70,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python input", "input", sid));
         addParagraphEnd(sb,
                 """
-                function reads input from the standard input 'stdin' which is
+                 function reads input from the standard input 'stdin' which is
                 usually the keyboard. This continues until the &lt;ENTER&gt;
                 (or &lt;RETURN&gt;) key is pressed. The function returns a
                 string (without a newline character). A string provided as a
@@ -88,7 +88,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python print", "print", sid));
         addParagraphEnd(sb,
                 """
-                function writes to the standard output 'stdout' which is usually
+                 function writes to the standard output 'stdout' which is usually
                 the terminal/console/screen.
                 """);
         addParagraph(sb,
@@ -130,7 +130,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python print", "print", sid));
         addParagraph(sb,
                 """
-                function also includes an option to direct stout to a file.
+                 function also includes an option to direct stout to a file.
                 That file has to be open in order for the writing to be
                 successful and the open file should be closed to ensure all the
                 data gets written. Typically reading and writing files uses
@@ -146,7 +146,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python open", "open", sid));
         addParagraphEnd(sb,
                 """
-                function to open a file in the current directory called 'a.in'
+                 function to open a file in the current directory called 'a.in'
                 and read the file one line at a time streaming the output to the
                 screen before then closing the file:
                 """);
@@ -165,7 +165,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python open", "open", sid));
         addParagraph(sb,
                 """
-                function call 'f' is best closed once it is read by calling it's
+                 function call 'f' is best closed once it is read by calling it's
                 'close' method as done on line 4 of the code snippet. After this
                 line is executed, 'f' becomes" unusuable. Closing releases
                 system resources and is recommended as good practice altough
@@ -207,7 +207,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python MemoryError", "MemoryError", sid));
         addParagraphEnd(sb,
                 """
-                being raised. So, often it is better to parse a file in
+                 being raised. So, often it is better to parse a file in
                 portions, such as line by line. Parsing might involve processing
                 or simply storing parts or all of the line in one or more
                 variables.
@@ -242,7 +242,7 @@ public class IO extends CoursePage {
                 There are other optional arguments that can be used with the
                 """);
         sb.append(index.getReference("Python open", "open", sid));
-        addParagraphEnd(sb, "function, follow the link for details...");
+        addParagraphEnd(sb, " function, follow the link for details...");
         addParagraph(sb,
                 """
                 An alternative using the keyword 'with' that does not
@@ -284,7 +284,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("CSV", "CSV format", sid));
         addParagraphEnd(sb,
                 """
-                files are text files of comma separated values. The values are
+                 files are text files of comma separated values. The values are
                 text, but this text might represent numbers. If a value contains
                 a comma then the value is usually enclosed in quotation marks.
                 If the value also contains quotation marks or newline then there
@@ -296,7 +296,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("JSON", "JavaScript Object Notation", sid));
         addParagraphEnd(sb,
                 """
-                (JSON) is an open standard file format and data interchange
+                 (JSON) is an open standard file format and data interchange
                 format that uses human-readable text to store and transmit data
                 objects consisting of attribute–value pairs and arrays (or other
                 serializable values.
@@ -343,7 +343,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("GML", sid));
         addParagraphEnd(sb,
                 """
-                the XML grammar defined by the Open Geospatial Consortium (OGC)
+                 the XML grammar defined by the Open Geospatial Consortium (OGC)
                 to express geographical features.
                 """);
 
@@ -375,7 +375,7 @@ public class IO extends CoursePage {
         sb.append(index.getReference("Python csv", "csv module", sid));
         addParagraphEnd(sb,
                 """
-                written specifically to do this. The following is an example of
+                 written specifically to do this. The following is an example of
                 reading some numeric data:
                 """);
         addPythonCodeBlock(sb, 

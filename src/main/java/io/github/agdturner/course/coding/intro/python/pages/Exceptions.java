@@ -65,7 +65,7 @@ public class Exceptions extends CoursePage {
         sb.append(index.getReference("Python try", "try", sid));
         addParagraphEnd(sb,
                 """
-                compound statement can be used with an 'except' clause. This
+                 compound statement can be used with an 'except' clause. This
                 tries to run the code in the 'try' section and if specific
                 exceptions are raised, then the code in the except clause is
                 run.

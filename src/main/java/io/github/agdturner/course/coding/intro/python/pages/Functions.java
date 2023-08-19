@@ -680,7 +680,7 @@ public class Functions extends CoursePage {
         sb.append(index.getReference("Python docstring", "Docstrings", sid));
         addParagraphEnd(sb, 
                 """
-                are automatically extracted to describe code. They are added in
+                 are automatically extracted to describe code. They are added in
                 triple-double quote enclosed comments after, class or function
                 declarations. For functions these should ideally have a short
                 description of what the function does which is typically written

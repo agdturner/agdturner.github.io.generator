@@ -345,7 +345,7 @@ public class Classes extends CoursePage {
         sb.append(index.getReference("Python print", "print", sid));
         addParagraphEnd(sb,
                 """
-                function, the memory address of the object is printed, but
+                 function, the memory address of the object is printed, but
                 rarely is this useful. The '__str__' method can be overriden to
                 provide a more useful string representation of an object, for
                 example:

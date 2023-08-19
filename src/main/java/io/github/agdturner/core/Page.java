@@ -199,7 +199,7 @@ public abstract class Page {
      */
     public SectionID addSubsection(String sectionName, StringBuilder sb) {
         this.subsubsectionNo = 1;
-        String inPageID = "" + sectionNo + ". " + this.subsectionNo + ". ";
+        String inPageID = "" + sectionNo + "." + this.subsectionNo + ". ";
         this.subsectionNo += 1;
         return addSection(inPageID, sectionName, sb, 3);
     }
@@ -212,7 +212,7 @@ public abstract class Page {
      */
     public SectionID addSubsubsection(String sectionName, StringBuilder sb) {
         this.subsubsectionNo += 1;
-        String inPageID = "" + sectionNo + ". " + this.subsectionNo + ". " 
+        String inPageID = "" + sectionNo + "." + this.subsectionNo + "." 
                 + this.subsubsectionNo + ". ";
         return addSection(inPageID, sectionName, sb, 4);
     }
@@ -224,18 +224,20 @@ public abstract class Page {
      * @param level For heading.
      * @return SectionID
      */
-    private SectionID addSection(String inPageID, String sectionName, StringBuilder sb, int level) {
-        SectionID sectionID = new SectionID(site.sectionIDs.size(), this, inPageID);
-        site.sectionIDs.add(sectionID);
-        site.addSection(sectionID, pageID, label + ": " + inPageID + sectionName);
+    private SectionID addSection(String inPageID, String sectionName, 
+            StringBuilder sb, int level) {
+        SectionID sid = new SectionID(site.sectionIDs.size(), this, inPageID);
+        site.sectionIDs.add(sid);
+        String s = inPageID + sectionName;
+        site.addSection(sid, pageID, label + ": " + s);
         String html = "<h" + level + " id=\"" + inPageID + "\">" 
-                + inPageID + ". " + sectionName + "</h" + level + ">\n";
+                + s + "</h" + level + ">\n";
         sb.append(html);
-        String link = "<a href=\"#" + inPageID + "\">" + inPageID + ". " + sectionName + "</a>"; 
-        sections.put(sectionID, new Section(level, sectionID, html, link));
+        String link = "<a href=\"#" + inPageID + "\">" + s + "</a>"; 
+        sections.put(sid, new Section(level, sid, html, link));
         TreeSet<SectionID> sectionIDs = site.pageIDToSectionIDs.get(pageID);
-        sectionIDs.add(sectionID);
-        return sectionID;
+        sectionIDs.add(sid);
+        return sid;
     }
     
     /**

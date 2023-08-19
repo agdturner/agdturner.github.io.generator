@@ -42,9 +42,7 @@ public class Variables extends CoursePage {
         addParagraphStart(sb, "");
         sb.append(index.getReference("Variable", "Variables", sid));
         addParagraphEnd(sb, 
-                """
-                are a combination of an identifier (a name) and a value
-                """);
+                " are a combination of an identifier (a name) and a value");
 
         sid = addSection("Python Variables", sb);
         addParagraph(sb,
@@ -82,14 +80,14 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Double-precision Floating-point", sid));
         sb.append(
                 """
-                numbers - a special subset of fractions. These have a 'Maximum
+                 numbers - a special subset of fractions. These have a 'Maximum
                 Value' and a 'Minimum Normal Value' (smallest number &gt; 0)
                 which can be ascertained from the
                 """);
         sb.append(index.getReference("Python sys", "sys", sid));
         addParagraphEnd(sb,
                 """
-                module. There are Float values for positive and negative
+                 module. There are Float values for positive and negative
                 infinity. Consider and run the following code:
                 """);
         addPythonCodeBlock(sb,
@@ -118,8 +116,8 @@ public class Variables extends CoursePage {
                 print("max + d/2", max + d/2)
                 print("max + d", max + d)
 
-                # Find a number bigger than min which is the same when min is 
-                # added to it. 
+                # Find a number bigger than min which is the same when min is
+                # added to it.
                 min2 = min * 10**16
                 min3 = min2 + min
                 if min3 > min2:
@@ -148,8 +146,8 @@ public class Variables extends CoursePage {
                         "Floating Point Arithmetic", sid));
         addParagraphEnd(sb,
                 """
-                is approximate - so calculations that use it are not necessarily
-                accurate.
+                 is approximate - so calculations that use it are not
+                necessarily accurate.
                 """);
         addParagraphStart(sb, "The ");
         sb.append(references.getReference("Python 3 Documentation: Library",
@@ -168,9 +166,9 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Python str", "str", sid));
         addParagraphEnd(sb,
                 """
-                (which can for example create a String from an Integer). Strings
-                can be compared and checked for equality using the operator
-                '=='. Consider and run the following code:
+                 (which can for example create a String from an Integer).
+                Strings can be compared and checked for equality using the
+                operator '=='. Consider and run the following code:
                 """);
         addPythonCodeBlock(sb,
                 """
@@ -216,7 +214,7 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Python builtins", "builtins", sid));
         addParagraphEnd(sb, 
                 """
-                module. Consider and run the following code that initialises a
+                 module. Consider and run the following code that initialises a
                 variable named 'x' with the Integer value '1', then prints out
                 the type of the variable 'x', then reassigns 'x' to have a
                 String value, then again prints out the type of the variable
@@ -257,7 +255,7 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Scope", "scope", sid));
         sb.append(
                 """
-                of a variable is from where in the code it can be accessed. The
+                 of a variable is from where in the code it can be accessed. The
                 """);
         sb.append(index.getReference("Python keyword", "keyword", sid));
         addParagraphEnd(sb, " 'global' can modify the scope.");
@@ -273,7 +271,7 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Python if", "if statement", sid));
         addParagraphEnd(sb, 
                 """
-                is executed as the condition 'x == 1' evaluates as 'True'. If
+                 is executed as the condition 'x == 1' evaluates as 'True'. If
                 the condition were to evaluate as 'False', then the interpreter
                 would skip to the end of the if statement, as happens running
                 the following code:

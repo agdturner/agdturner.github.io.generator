@@ -46,7 +46,7 @@ public class ABM9 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                In your local code repository 'src' directory duplicate your 
+                In your local code repository 'src' directory duplicate your
                 'abm8' directory as 'abm9'.
                 """);
 

@@ -67,13 +67,13 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python bytes", "bytes", sid));
         sb.append(
                 """
-                container stores an immutable sequence of integers in the
+                 container stores an immutable sequence of integers in the
                 range [0, 255]. Since many major binary protocols are based on
                 """);
         sb.append(index.getReference("ASCII", sid));
         sb.append(
                 """
-                text encoding, bytes objects offer several methods that are only
+                 text encoding, bytes objects offer several methods that are only
                 valid when working with ASCII compatible data and are closely
                 related to
                 """);
@@ -96,7 +96,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Unicode", sid));
         sb.append(
                 """
-                points. Unlike some other high level languages, Python does not
+                 points. Unlike some other high level languages, Python does not
                 have a primitive type for individual characters. As strings are
                 immutable: parts of a string cannot be replaced with parts of
                 another string. Instead of changing a string, a new one has to
@@ -108,7 +108,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python str", "str", sid));
         addParagraphEnd(sb,
                 """
-                which allows strings to be constructed from other types of
+                 which allows strings to be constructed from other types of
                 object. Multiline strings are either encapsulated by triple
                 single quotes or triple double quotes.
                 """);
@@ -232,7 +232,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python tuple", "tuple", sid));
         addParagraphEnd(sb,
                 """
-                is an immutable sequence that can be added to and nested. Like
+                 is an immutable sequence that can be added to and nested. Like
                 strings, once created the items cannot be substituted and their
                 order cannot be changed - although they may themselves contain
                 items that can be modified. Tuples are commonly used to return a
@@ -287,7 +287,7 @@ public class Containers extends CoursePage {
         addParagraphStart(sb, "");
         sb.append(index.getReference("Python range", "Ranges", sid));
         addParagraphEnd(sb,
-                "are a special type of immutable sequence created as follows:");
+                " are a special type of immutable sequence created as follows:");
         addPythonCodeBlock(sb,
                 """
                 range(start, stop, step) # start and step are optional and default to 0 and 1 repectively
@@ -368,7 +368,7 @@ public class Containers extends CoursePage {
                 "built-in functions", sid));
         addParagraphEnd(sb,
                 """
-                that process sequences, for example
+                 that process sequences, for example
                 <a href="https://docs.python.org/3/library/functions.html#min">
                 min</a>
                 will return the minimum value,
@@ -407,7 +407,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python list", "Lists", sid));
         addParagraphEnd(sb,
                 """
-                are the mutable form of tuples. Lists have an order, different
+                 are the mutable form of tuples. Lists have an order, different
                 types of thing can be stored in them, things can be appended,
                 inserted and removed from them. The elements within a list can
                 be reordered and there are various methods that help with this.
@@ -501,7 +501,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python zip", "zip", sid));
         addParagraphEnd(sb,
                 """
-                can be used to combine lists into a sequence of tuples as
+                 can be used to combine lists into a sequence of tuples as
                 follows:
                 """);
         addPythonCodeBlock(sb,
@@ -553,7 +553,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python array", "Arrays", sid));
         addParagraph(sb,
                 """
-                are for storing and processing large collections of things of
+                 are for storing and processing large collections of things of
                 the same type. Typically those things are numbers. An array is
                 like a list but it cannot be used to store anything, it can only
                 store things of a specific type.
@@ -581,7 +581,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python set", "Sets", sid));
         addParagraphEnd(sb,
                 """
-                are unordered collections. Adding something into a set which
+                 are unordered collections. Adding something into a set which
                 already contains that thing will not change the set. It is easy
                 to test whether or not something is in a set. The following code
                 creates an empty set, adds some things into it and then tests if
@@ -608,7 +608,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python dict", "Dictionaries", sid));
         addParagraphEnd(sb,
                 """
-                hold key-value pairs. The keys are unique, the values can be
+                 hold key-value pairs. The keys are unique, the values can be
                 anything. Dictionaries can be created using curly braces and
                 colons to separate the keys, which are given first, and the
                 values, which are given second. Different pairs are separated

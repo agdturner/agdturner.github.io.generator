@@ -165,19 +165,23 @@ public abstract class CoursePage extends Page {
             int level;
             for (var x : sids) {
                 Section section = sections.get(x);
-                level = section.level;
-                if (level > level0) {
-                    sb.append("<ul>\n");
-                    sb.append("<li>");
-                } else if (level < level0) {
-                    sb.append("</li>");
-                    sb.append("</ul></li>\n");
-                    sb.append("<li>");
+                if (section == null) {
+                    int debug = 1;
                 } else {
-                    sb.append("<li>");
+                    level = section.level;
+                    if (level > level0) {
+                        sb.append("<ul>\n");
+                        sb.append("<li>");
+                    } else if (level < level0) {
+                        sb.append("</li>");
+                        sb.append("</ul></li>\n");
+                        sb.append("<li>");
+                    } else {
+                        sb.append("<li>");
+                    }
+                    sb.append(section.sectionLink);
+                    level0 = level;
                 }
-                sb.append(section.sectionLink);
-                level0 = level;
             }
             for (int i = 2; i <= level0; i++) {
                 sb.append("</li>\n");

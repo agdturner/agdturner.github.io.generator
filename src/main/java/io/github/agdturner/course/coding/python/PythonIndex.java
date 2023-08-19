@@ -51,10 +51,33 @@ public class PythonIndex extends Index {
         String description;
         IndexTerm indexTerm;
 
+        
+        term = "Anaconda";
+        url = "https://www.anaconda.com/";
+        description = "a data science platform";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
         term = "Beautiful Soup";
         url = "https://beautiful-soup-4.readthedocs.io/";
-        description = "A \"Python\" library for pulling data out of \"HTML\" and "
-                + "\"XML\" files";
+        description = """
+                      A "Python" library for pulling data out of "HTML" and
+                      "XML" files
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "Conda";
+        url = "https://docs.conda.io/";
+        description = "an open source package management system and "
+                + "environment management system";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "IDLE";
+        url = PythonIndex.getPythonDocsLibraryURL("idle.html");
+        description = "an Integrated Development and Learning Environment "
+                + "distributed with Python";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 

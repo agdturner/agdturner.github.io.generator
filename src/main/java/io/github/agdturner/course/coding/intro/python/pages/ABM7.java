@@ -50,7 +50,7 @@ public class ABM7 extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                In your local code repository 'src' directory duplicate your 
+                In your local code repository 'src' directory duplicate your
                 'abm6' directory and name it 'abm7'.
                 """);
 

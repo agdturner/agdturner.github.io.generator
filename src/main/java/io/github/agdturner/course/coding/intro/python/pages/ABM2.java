@@ -150,7 +150,7 @@ public class ABM2 extends CoursePage {
         sb.append(index.getReference("Python list", "lists", sid));
         addParagraphEnd(sb,
                 """
-                of length 2, with the first item being an 'x' coordinate, and
+                 of length 2, with the first item being an 'x' coordinate, and
                 the second item being a 'y' coordinate. All agents are also
                 going to be stored in a list.
                 """);
@@ -286,8 +286,7 @@ public class ABM2 extends CoursePage {
                 set this equal to '10'. Then create a
                 """);
         sb.append(index.getReference("Python for", "for loop", sid));
-        addParagraph(sb,
-                "that uses n_agents to create 10 agents as follows:");
+        addParagraph(sb, " that uses n_agents to create 10 agents as follows:");
         addPythonCodeBlock(sb,
                 """
                 n_agents = 10

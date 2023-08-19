@@ -43,7 +43,7 @@ public class Web extends CoursePage {
         sb.append(index.getReference("Internet", sid));
         sb.append(
                 """
-                is an international network of addressable machines that
+                 is an international network of addressable machines that
                 communicate using the
                 """);
         sb.append(index.getReference("TCP/IP", "Internet protocol suite", sid));
@@ -51,7 +51,7 @@ public class Web extends CoursePage {
         sb.append(index.getReference("World Wide Web", sid));
         addParagraphEnd(sb, 
                 """
-                (Web) is a set of interlinked data or documents within the
+                 (Web) is a set of interlinked data or documents within the
                 Internet. Connections are made between data and documents
                 via connections between different machines on the internet
                 that host and serve the documents and data.
@@ -258,7 +258,7 @@ public class Web extends CoursePage {
         sb.append(index.getReference("CSS", "Cascading Style Sheet", sid));
         addParagraphEnd(sb, 
                 """
-                (CSS). These are linked to the HTML in the 'HEAD' section with
+                 (CSS). These are linked to the HTML in the 'HEAD' section with
                 the following tag:
                 """);
         addPre(sb, 

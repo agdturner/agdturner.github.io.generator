@@ -73,7 +73,7 @@ public class Loops extends CoursePage {
         sb.append(index.getReference("Python break", "break", sid));
         addParagraphEnd(sb, 
                 """
-                statement breaks out of a loop which is commonly done when some
+                 statement breaks out of a loop which is commonly done when some
                 other condition is reached. For example, consider the following
                 code:
                 """);
@@ -93,7 +93,7 @@ public class Loops extends CoursePage {
         sb.append(index.getReference("Python continue", "continue", sid));
         addParagraphEnd(sb,
                 """
-                statement gets the program to return to the start of a loop
+                 statement gets the program to return to the start of a loop
                 when a condition is reached:
                 """);
         addPythonCodeBlock(sb,
@@ -262,14 +262,14 @@ public class Loops extends CoursePage {
         sb.append(index.getReference("Python break", "break", sid));
         addParagraphEnd(sb,
                 """
-                statement that terminates the loop before the last iteration
+                 statement that terminates the loop before the last iteration
                 completes.
                 """);
         addParagraphStart(sb, "Also, a ");
         sb.append(index.getReference("Python continue", "continue", sid));
         addParagraphEnd(sb,
                 """
-                statement can be used to skip to the start of the next loop
+                 statement can be used to skip to the start of the next loop
                 iteration in the same way as in a while loop.
                 """);
 
@@ -319,13 +319,13 @@ public class Loops extends CoursePage {
         sb.append(index.getReference("Python len", "len", sid));
         sb.append(
                 """
-                function, when passed a sequence as a parameter, returns the
+                 function, when passed a sequence as a parameter, returns the
                 length of the sequence, and the
                 """);
         sb.append(index.getReference("Python range", "range", sid));
         addParagraphEnd(sb, 
                 """
-                function turns an Integer argument into a sequence starting
+                 function turns an Integer argument into a sequence starting
                 from '0' and ending with one less than that argument stepping by
                 1.
                 """);

@@ -182,7 +182,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("PATH", sid));
         addParagraphEnd(sb,
                 """
-                by running a 'Terminal' or 'Command Window' and entering the
+                 by running a 'Terminal' or 'Command Window' and entering the
                 following at the prompt:
                 """);
         addPre(sb, "python --version");
@@ -198,7 +198,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Conda", sid));
         addParagraphEnd(sb,
                 """
-                - an environment manager; a Python interpreter; some commonly
+                 - an environment manager; a Python interpreter; some commonly
                 used third party Python packages; and, some useful additional
                 tools. It is available at the University of Leeds via
                 'AppsAnywhere' using machines on campus or the 'Academic'
@@ -310,7 +310,7 @@ public class Python extends CoursePage {
                         "exception", sid));
         addParagraphEnd(sb,
                 """
-                that is 'raised' in particular circumstances. It is good to get
+                 that is 'raised' in particular circumstances. It is good to get
                 familiar with reading details of these that are typically
                 printed to the console as a key part of Python programming is
                 about interpreting these.
@@ -776,7 +776,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python builtins", "builtins", sid));
         sb.append(" module ");
         sb.append(index.getReference("Python print", "print", sid));
-        addParagraphEnd(sb, "function, enter:");
+        addParagraphEnd(sb, " function, enter:");
         addPre(sb, "help(print)");
         addParagraph(sb,
                 """
@@ -869,7 +869,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python docstring", "docstrings", sid));
         addParagraph(sb, 
                 """
-                - a form of documentation that will be detailed later in the
+                 - a form of documentation that will be detailed later in the
                 course.
                 """);
         addParagraphStart(sb, 
@@ -1000,7 +1000,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python keyword", "keyword", sid));
         addParagraphEnd(sb, 
                 """
-                is a reserved word - a term that can't be used for an
+                 is a reserved word - a term that can't be used for an
                 identifier.
                 """);
         index.getReference("Syntax Error", "", sid);
@@ -1008,7 +1008,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Name Binding", "use", sid));
         sb.append(
                 """
-                a keyword as an identifier such as a variable name typically
+                 a keyword as an identifier such as a variable name typically
                 results in a
                 """);
         sb.append(index.getReference("Python SyntaxError", "SyntaxError", sid));
@@ -1039,7 +1039,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python if", sid));
         addParagraphEnd(sb,
                 """
-                statement which can be read as follows: If the variable 'x' is
+                 statement which can be read as follows: If the variable 'x' is
                 greater than the variable 'y', then 'x' is printed, otherwise y
                 is printed.
                 """);
@@ -1138,7 +1138,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("REPL", sid));
         addParagraphEnd(sb,
                 """
-                like system that embeds code into a document containing other
+                 like system that embeds code into a document containing other
                 information: text, images, data, and links. Code is entered in
                 cells which when run present outputs within the document which
                 is displayed in a Web browser (unless ouputs are configured to
@@ -1206,7 +1206,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("JavaScript", sid));
         addParagraphEnd(sb,
                 """
-                - a programming language that all widely used modern Web
+                 - a programming language that all widely used modern Web
                 browsers can run. Leveraging JavaScript and Python allows for
                 the generation of some Web based interactive maps. In
                 <a href=\"#9\">Section 9</a>, there is a practical exercise
@@ -1222,7 +1222,7 @@ public class Python extends CoursePage {
                         "Integrated Development Environments", sid));
         sb.append(
                 """
-                (IDEs) are software tools used to make writing code and
+                 (IDEs) are software tools used to make writing code and
                 developing software easier. This section introduces
                 """);
         sb.append(references.getReference("IDLE"));
@@ -1324,7 +1324,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python NameError", "NameError", sid));
         addParagraphEnd(sb,
                 """
-                and there should be marks against the code on line 2 on the left
+                 and there should be marks against the code on line 2 on the left
                 and right of the editor pane. Hover your mouse cursor over the
                 mark on the left. You should see something similar to the image
                 below:
@@ -1374,7 +1374,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("C++", sid));
         addParagraphEnd(sb,
                 """
-                and Python and there is are distinct client and server software.
+                 and Python and there is are distinct client and server software.
                 The operation of both these can be automated using Python.
                 """);
         addParagraphStart(sb,
@@ -1424,7 +1424,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("PyQGIS", sid));
         addParagraphEnd(sb, 
                 """
-                provides programatic access to functionality that can also be
+                 provides programatic access to functionality that can also be
                 accessed via the QGIS Desktop GUI. It gives greater control in
                 data loading and processing and can be used to extend the
                 available functionality.
@@ -1459,7 +1459,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python for", sid));
         addParagraphEnd(sb,
                 """
-                statements which start with the keyword 'for'. The first of
+                 statements which start with the keyword 'for'. The first of
                 these iterates over the 'fields' in a 'layer'. The others
                 iterate over the 'features' in a 'layer'. (Iteration simply
                 means going through a sequence of things one at a time.
@@ -1516,7 +1516,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("PyPI", sid));
         sb.append(
                 """
-                is a widely used Python repository. Developers deploy packages
+                 is a widely used Python repository. Developers deploy packages
                 to PyPI and users install packages from there. Many packages are
                 provided as
                 """);
@@ -1583,7 +1583,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Conda", sid));
         sb.append(
                 """
-                is a package and environment manager that comes with Anaconda.
+                 is a package and environment manager that comes with Anaconda.
                 Another way to create and manage Python environments uses the
                 Python standard library module
                 """);
@@ -1602,7 +1602,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("GIS", sid));
         addParagraphEnd(sb,
                 """
-                packages, especially with installation on Microsoft Windows
+                 packages, especially with installation on Microsoft Windows
                 operating systems.
                 """);
         addParagraph(sb, 

@@ -25,31 +25,33 @@ public class Section {
     /**
      * The Level.
      */
-    public int level;
+    public final int level;
 
     /**
      * The SectionID.
      */
-    public SectionID sid;
+    public final SectionID sid;
 
     /**
      * The section HTML fragment.
      */
-    public String sectionHTML;
+    public final String sectionHTML;
 
     /**
      * The section Link.
      */
-    public String sectionLink;
+    public final String sectionLink;
 
     /**
      * Creates a new instance.
      *
+     * @param level What {@level #sid} is set to.
      * @param sid What {@link #sid} is set to.
      * @param sectionHTML What {@link #sectionHTML} is set to.
      * @param sectionLink What {@link #sectionLink} is set to.
      */
-    public Section(int level, SectionID sid, String sectionHTML, String sectionLink) {
+    public Section(int level, SectionID sid, String sectionHTML,
+            String sectionLink) {
         this.level = level;
         this.sid = sid;
         this.sectionHTML = sectionHTML;

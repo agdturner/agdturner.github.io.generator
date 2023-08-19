@@ -53,7 +53,7 @@ public class Branching extends CoursePage {
         sb.append(index.getReference("Python if", "if statement", sid));
         addParagraphEnd(sb,
                 """
-                is a 'compound' statement (one that comprises groups of other
+                 is a 'compound' statement (one that comprises groups of other
                 statements) that provides a means to branch based upon a
                 condition which evaluates to either 'True' or" " 'False'.
                 Consider the following example:
@@ -93,7 +93,7 @@ public class Branching extends CoursePage {
         addPythonCodeBlock(sb,
                 """
                 day_of_week = 5
-                # An If-else  Statement 
+                # An If-else  Statement
                 if day_of_week < 6:
                     day = "Weekday"
                 else:
@@ -137,7 +137,7 @@ public class Branching extends CoursePage {
         sb.append(index.getReference("Python match", "match", sid));
         addParagraphEnd(sb,
                 """
-                statement which can simplify if statements with many elif
+                 statement which can simplify if statements with many elif
                 clauses as a 'match-case' statement. The following example shows
                 the equivalent of the example from the end of previous section:
                 """);
@@ -161,7 +161,7 @@ public class Branching extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                The final case is a catch all case using the anonymous variable 
+                The final case is a catch all case using the anonymous variable
                 '_' which matches anything.
                 """);
         addParagraph(sb,

@@ -131,7 +131,7 @@ public class ABM4 extends CoursePage {
         sb.append(index.getReference("Python random", "random module", sid));
         addParagraphEnd(sb,
                 """
-                is imported as this is used in the Agent constructor '__init__'
+                 is imported as this is used in the Agent constructor '__init__'
                 method.
                 """);
         addParagraph(sb,
@@ -232,7 +232,7 @@ public class ABM4 extends CoursePage {
         sb.append(index.getReference("Python TypeError", "TypeError", sid));
         addParagraphEnd(sb,
                 """
-                is a consequence of the 'agents' list no longer containing
+                 is a consequence of the 'agents' list no longer containing
                 lists, but instantiated Agent objects, and some parts of the
                 code are still written as though each agent is a list and not an
                 instance of the Agent class.

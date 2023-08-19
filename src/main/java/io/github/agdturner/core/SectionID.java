@@ -30,7 +30,7 @@ public class SectionID extends Data_ID_int {
     /**
      * The Page.
      */
-    private final Page page;
+    private transient final Page page;
 
     /**
      * The in page section ID for linking.

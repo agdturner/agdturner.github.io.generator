@@ -44,7 +44,7 @@ public class Github extends CoursePage {
         sb.append(index.getReference("GitHub", sid));
         addParagraphEnd(sb,
                 """
-                is a developer platform to build, scale, and deliver secure
+                 is a developer platform to build, scale, and deliver secure
                 software. It is a collaborative platform that is popular and
                 reliable and provides hosting for basic websites for users,
                 teams and software.
@@ -75,7 +75,7 @@ public class Github extends CoursePage {
         sb.append(index.getReference("Git", sid));
         addParagraphEnd(sb,
                 """
-                client software is available via 'AppsAnywhere' at the
+                 client software is available via 'AppsAnywhere' at the
                 University of Leeds which is accessible remotely via the
                 'Academic'
                 <a href="https://wvd.leeds.ac.uk">
