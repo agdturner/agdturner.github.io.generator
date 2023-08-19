@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -240,7 +239,7 @@ public class ABM7 extends CoursePage {
                 """);
         addParagraph(sb,
                 "Some ideas for a more realistic ecological model are:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, 
                 """
                 To have less resource that can be eaten by the agents, and
@@ -256,7 +255,7 @@ public class ABM7 extends CoursePage {
                 """
                 Include predator agents that hunt/eat the other agents as prey.
                 """);
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         return sb.toString();
     }
 }

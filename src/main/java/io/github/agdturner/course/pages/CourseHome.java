@@ -35,11 +35,11 @@ public abstract class CourseHome extends CoursePage {
      * @param course What {@link #site} is set to.
      */
     public CourseHome(Course course) {
-        super(course, "home", 
+        super(course, "home",
                 course.getCourseCode() + ": " + course.courseName,
                 "Home");
     }
-    
+
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
@@ -53,7 +53,7 @@ public abstract class CourseHome extends CoursePage {
 
     /**
      * Introduction.
-     * 
+     *
      * @param sb The StringBuilder to append to.
      */
     public abstract void getIntroduction(StringBuilder sb);
@@ -67,7 +67,14 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getIntroduction0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("Introduction", sb);
-        sb.append("<p>Welcome to the course website!</p>\n");
+        addParagraphStart(sb, 
+                """
+                This website is an open educational resource geared towards
+                helping researchers at the University of Leeds start learning
+                to program using the
+                """);
+        sb.append(index.getReference("Python"));
+        addParagraphEnd(sb, " programming language.");
         return sid;
     }
 
@@ -78,29 +85,18 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getMaintainer(StringBuilder sb, SectionID sid) {
-        sb.append("<p>The website is maintained by the ")
-                .append(Web_ContentWriter.getLink(
-                        Environment.HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM,
-                        "Research Computing Team"))
-                .append(" at the ")
-                .append(Web_ContentWriter.getLink(
-                        Environment.HTTPS_WWW_LEEDS_AC_UK,
-                        "University of Leeds"))
-                .append(" and comprises a set of webpages and file based")
-                .append(" resources.</p>\n");
-        sb.append("<p>Please ")
-                .append(Web_ContentWriter.getLink(
-                        Environment.GITHUB_REPO,
-                        "report issues with the site on GitHub"))
-                .append(" and we will try to resolve them. Or if you are")
-                .append(" based at the ")
-                .append(Web_ContentWriter.getLink(
-                        Environment.HTTPS_WWW_LEEDS_AC_UK,
-                        "University of Leeds"))
-                .append(", ")
-                .append(Web_ContentWriter.getLink(Environment.ARC_CONTACT,
-                        "contact us via this form"))
-                .append(".</p>\n");
+        addParagraphStart(sb, "The website is maintained by the ");
+        sb.append(Web_ContentWriter.getLink(
+                Environment.HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM,
+                "Research Computing Team"));
+        sb.append(" at the ");
+        sb.append(Web_ContentWriter.getLink(Environment.HTTPS_WWW_LEEDS_AC_UK,
+                "University of Leeds"));
+        addParagraphEnd(sb, ".");
+        addParagraphStart(sb, "Please ");
+        sb.append(Web_ContentWriter.getLink(Environment.GITHUB_REPO,
+                "raise issues and submit pull requests on GitHub"));
+        addParagraphEnd(sb, ".");
     }
 
     /**
@@ -110,29 +106,39 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getNavigation(StringBuilder sb, SectionID sid) {
-        sb.append("<p>At the top of each webpage in this website is a button")
-              .append(" to change between a lighter and darker page style.")
-              .append(" Below that is a navigation section that links to ")
-              .append(" each webpage. The webpages are sequential and at the")
-              .append(" end of each webpage, there is a link to the next")
-              .append(" webpage.</p>\n");
-        sb.append("<p>The ")
-              .append(getLink(index, "index", "link", ""))
-              .append(" webpage is a glossary of terms that links back to")
-              .append(" webpage sections where terms are used.</p>\n");
-        sb.append("<p>The ")
-              .append(getLink(references, "references", "link", ""))
-              .append(" webpage is a useful list of references and links to")
-              .append(" other resources.</p>\n");
-        sb.append("<p>Webpages with multiple sections have contents sections")
-              .append(" that link to those sections. Each contents section")
-              .append(" is located below the level 1 heading at the top of the")
-              .append(" webpage.</p>\n");
-        sb.append("<p>Essentially, taking the course involves working your way")
-              .append(" through the webpages and undertaking practical")
-              .append(" exercises as directed.</p>\n");
+        addParagraph(sb,
+                """
+                Each web page has a button at the top to change between a
+                lighter and darker page style, then a navigation section that
+                links to the other pages. The pages are sequential and at the end of each webpage, there is a link to
+                the next webpage.
+                """);
+        addParagraphStart(sb, "The ");
+        sb.append(getLink(index, "index", "link", ""));
+        addParagraphEnd(sb,
+                """
+                 webpage is a glossary of terms that links back to webpage
+                sections where terms are used.
+                """);
+        addParagraphStart(sb, "The ");
+        sb.append(getLink(references, "references", "link", ""));
+        addParagraphEnd(sb,
+                """
+                 webpage is a useful list of references and links to other
+                resources.
+                """);
+        addParagraph(sb,
+                """
+                Webpages with multiple sections have a contents towards the top
+                that links to those sections.
+                """);
+        addParagraph(sb,
+                """
+                Essentially, taking the course involves working your way through
+                these webpages and undertaking practical exercises as directed.
+                """);
     }
-    
+
     /**
      * Introduction N.
      *
@@ -188,11 +194,11 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getExpectations0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("Expectations", sb);
-        sb.append("<p>You will learn about:</p>\n");
-        sb.append("<ul>\n");
+        addParagraph(sb, "You will learn about:");
+        addULStart(sb);
         return sid;
     }
-    
+
     /**
      * For detailing the expectations.
      *
@@ -208,9 +214,11 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getExpectationsN(StringBuilder sb, SectionID sid) {
-        sb.append("<p>There are some key concepts which may take a few")
-                .append(" attempts to get used to and comprehensively")
-                .append(" understand.</p>\n");
+        addParagraph(sb,
+                """
+                There are some key concepts which may take a few attempts to get
+                used to and comprehensively understand.
+                """);
         sb.append("</div>\n");
     }
 
@@ -230,13 +238,15 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getLearningJourney0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("The Learning Journey", sb);
-        sb.append("<p>Develop your understanding through practise and by")
-                .append(" reading.</p>\n");
-        sb.append("<p>Be experimental - test your understanding by testing")
-                .append(" things do what you expect. If things do not do what")
-                .append(" you expect, try to understand why. An exception")
-                .append(" error fault or failure is also a learning")
-                .append(" opportunity!</p>\n");
+        addParagraph(sb,
+                "Develop your understanding through practise and by reading.");
+        addParagraph(sb,
+                """
+                Be experimental - test your understanding by testing things do
+                what you expect. If things do not do what you expect, try to
+                understand why. An exception error fault or failure is also a
+                learning opportunity!
+                """);
         return sid;
     }
 
@@ -249,10 +259,13 @@ public abstract class CourseHome extends CoursePage {
     public void getLearningJourneyN(StringBuilder sb, SectionID sid) {
         String courseName = getCourse().courseType;
         String courseNameUC = Strings.toUpperCaseFirstLetter(courseName);
-        sb.append("<p>Try to enjoy the learning journey, the challenges and ")
-                .append("the rewards. Learning to program and learning ")
-                .append(index.getReference(courseName, courseNameUC))
-                .append(" is empowering!</p>\n");
+        addParagraphStart(sb,
+                """
+                Try to enjoy the learning journey, the challenges and the
+                rewards. Learning to program and learning
+                """);
+        sb.append(index.getReference(courseName, courseNameUC));
+        addParagraphEnd(sb, " is empowering!");
         sb.append("</div>\n");
     }
 
@@ -262,7 +275,7 @@ public abstract class CourseHome extends CoursePage {
      * @param sb The StringBuilder to append to.
      */
     public abstract void getPlatform(StringBuilder sb);
-    
+
     /**
      * For detailing the first part of the platform section.
      *
@@ -271,18 +284,18 @@ public abstract class CourseHome extends CoursePage {
      */
     public SectionID getPlatform0(StringBuilder sb) {
         SectionID sid = addSection("Platform/Software", sb);
-        sb.append("<p>All the software used in this course is ")
-                .append(index.getReference("Free and Open Source Software"))
-                .append(" (FOSS) - available to download and install on ")
-                .append(index.getReference("Linux"))
-                .append(", ")
-                .append(index.getReference("Microsoft Windows"))
-                .append(", and ")
-                .append(index.getReference("MacOS"))
-                .append(".<p>\n");
+        addParagraphStart(sb, "All the software used in this course is ");
+        sb.append(index.getReference("Free and Open Source Software"));
+        sb.append(" (FOSS) - available to download and install on ");
+        sb.append(index.getReference("Linux"));
+        sb.append(", ");
+        sb.append(index.getReference("Microsoft Windows"));
+        sb.append(", and ");
+        sb.append(index.getReference("MacOS"));
+        addParagraphEnd(sb, ".");
         return sid;
     }
-    
+
     /**
      * For detailing the last part of the platform section.
      *
@@ -292,7 +305,7 @@ public abstract class CourseHome extends CoursePage {
     public void getPlatformN(StringBuilder sb, SectionID sid) {
         sb.append("</div>\n");
     }
-    
+
     /**
      * @return {@code (Course) site).
      */

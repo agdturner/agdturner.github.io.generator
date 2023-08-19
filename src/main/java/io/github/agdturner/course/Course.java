@@ -55,14 +55,15 @@ public abstract class Course extends Site {
      * @param courseType What {@link #courseType} is set to.
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
+     * @param localPaths What {@link #localPaths} is set to.
      */
     public Course(Environment env, String courseType, String courseCode, 
-            String courseName) {
-        super(env);
+            String courseName, boolean localPaths) {
+        super(env, localPaths);
         this.courseType = courseType;
         this.courseCode = courseCode;
         this.courseName = courseName;
-        this.courseDir = Paths.get(env.dir.toString(), courseCode);
+        this.courseDir = Paths.get(env.dir.toString(), courseCode, "public_html");
     }
 
     /**

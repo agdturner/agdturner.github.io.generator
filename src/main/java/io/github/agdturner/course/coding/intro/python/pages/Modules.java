@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -246,7 +245,7 @@ public class Modules extends CoursePage {
         addParagraphStart(sb, "Many Python libraries are made available via ");
         sb.append(index.getReference("PyPI"));
         addParagraphEnd(sb, " - the Python Package Index (PyPi) including:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb,
                 """
                 <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm">
@@ -328,7 +327,7 @@ public class Modules extends CoursePage {
                 <a href="http://scikit-learn.org/">scikit-learn</a>
                 - useful for scientific analysis and machine learning.
                 """);
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         addParagraph(sb,
                 """
                 For details on installing packages see:

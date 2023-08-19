@@ -40,13 +40,12 @@ public class SoGPythonIntroCodingCourseABM7 extends ABM7 {
         StringBuilder sb = new StringBuilder();
         sb.append(super.getMainContent());
         SectionID sid = addSection("Further Assignment 1 Coding Task", sb);
-        sb.append("<p>Alter the stopping condition so that the model stops")
-                .append(" when the average agent store is greater than 80.")
-                .append("</p>");
-        sb.append("<p>Commit your code to your local repository and assuming")
-                .append(" you are using GitHub - push your changes to GitHub.")
-                .append("</p>")
-                .append("</div>\n");
+        addParagraph(sb,
+                """
+                Alter the stopping condition so that the model stops when the
+                 average agent store is greater than 80.
+                """);
+        addParagraphCommitToGitHub(sb);
         return sb.toString();
     }
 }

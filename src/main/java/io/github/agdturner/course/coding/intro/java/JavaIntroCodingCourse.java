@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.java;
 
 import io.github.agdturner.core.Environment;
-import io.github.agdturner.course.coding.pages.CodingCourseProgramming;
 import io.github.agdturner.course.coding.java.JavaCodingCourse;
 import io.github.agdturner.course.coding.intro.java.pages.Java;
 import io.github.agdturner.course.coding.intro.java.pages.JavaIntroCodingCourseHome;
@@ -35,10 +34,11 @@ public abstract class JavaIntroCodingCourse extends JavaCodingCourse {
      * @param env What {@link #env} is set to.
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
+     * @param localPaths What {@link #localPaths} is set to.
      */
     public JavaIntroCodingCourse(Environment env, String courseCode,
-            String courseName) {
-        super(env, courseCode, courseName);
+            String courseName, boolean localPaths) {
+        super(env, courseCode, courseName, localPaths);
         /**
          * Initialise Course Pages.
          */

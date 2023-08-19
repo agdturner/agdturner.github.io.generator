@@ -42,11 +42,11 @@ public class GEOG5003M extends SoGPythonIntroCodingCourse {
      * @param assignment2Weighting What {@link #assignment2Weighting} is set to.
      */
     public GEOG5003M(Environment env, String courseCode, String courseName, 
-            String academicYear, String assignment1Name, 
+            boolean localPaths, String academicYear, String assignment1Name, 
             String assignment1DueDate, int assignment1Weighting, 
             String assignment2Name, String assignment2DueDate,
             int assignment2Weighting) {
-        super(env, courseCode, courseName, academicYear,
+        super(env, courseCode, courseName, localPaths, academicYear,
                 assignment1Name, assignment1DueDate, assignment1Weighting, 
                 assignment2Name, assignment2DueDate, assignment2Weighting);
     }
@@ -73,8 +73,9 @@ public class GEOG5003M extends SoGPythonIntroCodingCourse {
         Environment env = new Environment(domain, dir);
         //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
         //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
+        boolean localPaths = true;
         GEOG5003M course = new GEOG5003M(env,
-                "5003", courseName, "202223",
+                "5003", courseName, localPaths, "202223",
                 assignment1Name, assignment1DueDate, assignment1Weighting,
                 assignment2Name, assignment2DueDate, assignment2Weighting);
         course.write(local);

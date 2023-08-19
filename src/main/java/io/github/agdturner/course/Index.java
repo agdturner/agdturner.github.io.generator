@@ -267,18 +267,22 @@ public class Index extends CoursePage {
         
         term = "C++";
         url = getWikipediaURL("C%2B%2B");
-        description = "A high-level, general-purpose \"programming language\". "
-                + "The latest standard version 'C++20' was published in "
-                + "December 2020. The next is expected in December 2023.";
+        description = """
+                      A high-level, general-purpose "programming language". The
+                      latest standard version 'C++20' was published in December
+                      2020. The next is expected in December 2023
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "CPP", indexTerm);
 
         term = "C";
         url = getWikipediaURL("C_(programming_language)");
-        description = "A general-purpose computer \"programming language\". "
-                + "The latest standard 'C17' was published in June 2018. The "
-                + "next is expected in 2024.";
+        description = """
+                      A general-purpose computer "programming language". The
+                      latest standard 'C17' was published in June 2018. The next
+                      is expected in 2024
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "C programming language", indexTerm);
@@ -388,9 +392,11 @@ public class Index extends CoursePage {
 
         term = "CSS";
         url = getWikipediaURL("CSS");
-        description = "A style sheet language used for describing the "
-                + "presentation of a document written in a markup language "
-                + "such as \"HTML\" or \"XML\"";
+        description = """
+                      A style sheet language used for describing the
+                      presentation of a document written in a markup language
+                      such as "HTML" or "XML"
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
@@ -403,9 +409,10 @@ public class Index extends CoursePage {
 
         term = "Debugging";
         url = getWikipediaURL("Debugging");
-        description = "The process of finding and resolving \"bugs\" (defects "
-                + "or problems that prevent correct operation) within "
-                + "\"computer programs\", \"software\", or systems";
+        description = """
+                      The process of finding and resolving "bugs" (defects or
+                      problems that prevent correct operation) within
+                      "computer programs", "software", or systems""";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -431,8 +438,10 @@ public class Index extends CoursePage {
 
         term = "Double-precision Floating-point";
         url = getWikipediaURL("Double-precision_floating-point_format");
-        description = "A \"computer\" number format, usually occupying 64 "
-                + "\"bits\" of computer memory";
+        description = """
+                      A "computer" number format, usually occupying 64 "bits"
+                      of computer memory
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -440,7 +449,7 @@ public class Index extends CoursePage {
         term = "End user";
         url = getWikipediaURL("End_user");
         description = "A person who ultimately uses or is intended to "
-                + "ultimately use a product.";
+                + "ultimately use a product";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAndPluralAliases(term, indexTerm);
@@ -463,9 +472,11 @@ public class Index extends CoursePage {
 
         term = "Floating-point";
         url = getWikipediaURL("Floating-point_arithmetic");
-        description = "Arithmetic that represents real numbers approximately, "
-                + "using an integer with a fixed precision, called the "
-                + "significand, scaled by an integer exponent of a fixed base";
+        description = """
+                      Arithmetic that represents real numbers approximately,
+                      using an "integer" with a fixed precision, called the
+                      significand, scaled by an "integer" exponent of a fixed
+                      base""";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
@@ -587,6 +598,16 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
+        term = "Integer";
+        url = getWikipediaURL("Integer");
+        description = """
+                      the number zero, a positive "natural number", or a
+                      negative integer
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
+        
         term = "Integrated Development Environment";
         url = getWikipediaURL("Integrated_development_environment");
         description = "An IDE is a collection of \"software\" tools used to "
@@ -731,7 +752,14 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
-
+        
+        term = "Natural number";
+        url = getWikipediaURL("Natural_number");
+        description = "the numbers 1, 2, 3, etc.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
+        
         term = "Network Socket";
         url = getWikipediaURL("Network_socket");
         description = "A \"software\" structure within a network node of a "
@@ -798,12 +826,24 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);
+        
+        term = "Rational number";
+        url = getWikipediaURL("Rational_number");
+        description = """
+                      a number that can be expressed as the quotient or
+                      fraction of two "integers"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addLowerCaseAndPluralAliases(term, indexTerm);
 
         term = "Regression test";
         url = getWikipediaURL("Regression_testing");
-        description = "A test rerun to ensure that previously developed "
-                + "and tested \"software\" still performs as expected after a "
-                + "change";
+        description = """
+                      A test rerun to ensure that previously developed and
+                      tested "software" still performs as expected after a
+                      change
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addLowerCaseAlias(term, indexTerm);

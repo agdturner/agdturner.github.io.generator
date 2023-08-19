@@ -25,8 +25,9 @@ import io.github.agdturner.course.Course;
  */
 public abstract class CodingCourse extends Course {
     
-    public CodingCourse(Environment env, String courseType, String courseCode, String courseName) {
-        super(env, courseType, courseCode, courseName);
+    public CodingCourse(Environment env, String courseType, String courseCode, 
+            String courseName, boolean localPaths) {
+        super(env, courseType, courseCode, courseName, localPaths);
     }
     
 }

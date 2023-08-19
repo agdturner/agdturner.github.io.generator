@@ -19,7 +19,6 @@ import io.github.agdturner.core.Page;
 import io.github.agdturner.core.PageID;
 import io.github.agdturner.core.Section;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.pages.CourseHome;
 import java.nio.file.Paths;
 import java.util.ArrayList;

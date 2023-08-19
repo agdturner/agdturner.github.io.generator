@@ -33,6 +33,7 @@ public class GEOG5990M extends SoGPythonIntroCodingCourse {
      * @param env What {@link #env} is set to.
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
+     * @param localPaths What {@link #localPaths} is set to.
      * @param academicYear What {@link #academicYear} is set to.
      * @param assignment1Name What {@link #assignment1Name} is set to.
      * @param assignment1DueDate What {@link #assignment1DueDate} is set to.
@@ -42,11 +43,11 @@ public class GEOG5990M extends SoGPythonIntroCodingCourse {
      * @param assignment2Weighting What {@link #assignment2Weighting} is set to.
      */
     public GEOG5990M(Environment env, String courseCode, String courseName, 
-            String academicYear, String assignment1Name, 
+            boolean localPaths, String academicYear, String assignment1Name, 
             String assignment1DueDate, int assignment1Weighting,
             String assignment2Name, String assignment2DueDate,
             int assignment2Weighting) {
-        super(env, courseCode, courseName, academicYear,
+        super(env, courseCode, courseName, localPaths, academicYear,
                 assignment1Name, assignment1DueDate, assignment1Weighting,
                 assignment2Name, assignment2DueDate, assignment2Weighting);
     }
@@ -74,7 +75,9 @@ public class GEOG5990M extends SoGPythonIntroCodingCourse {
         Environment env = new Environment(domain, dir);
         //public final Path DIR_COURSES = Paths.get(dir.toString(), "courses");
         //public final String URL_GITHUB_AGDTURNER = URL_GITHUB + "agdturner/";
-        GEOG5990M course = new GEOG5990M(env, courseNumber, courseName, "202223",
+        boolean localPaths = true;
+        GEOG5990M course = new GEOG5990M(env, courseNumber, courseName, 
+                localPaths, "202223",
                 assignment1Name, assignment1DueDate, assignment1Weighting,
                 assignment2Name, assignment2DueDate, assignment2Weighting);
         course.write(local);

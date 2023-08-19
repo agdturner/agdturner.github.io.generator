@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -457,16 +456,16 @@ public class Containers extends CoursePage {
                 print("d", d)
                 """);
         addParagraph(sb, "In slicing a list a using a[i:j:k]:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, "If j > len(a), the last position is used.");
         addLI(sb, "If i is None or omitted, zero is used.");
         addLI(sb, "If i > j, the slice is empty.");
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         addParagraph(sb, "Negative indexes can be used:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, "a[:2] # First two values.");
         addLI(sb, "a[-2:] # Last two values.");
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         addParagraph(sb,
                 """
                 Slices can be used with mutable sequences (like lists for

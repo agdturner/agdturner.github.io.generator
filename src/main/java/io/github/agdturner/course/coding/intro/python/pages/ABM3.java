@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -358,7 +357,7 @@ public class ABM3 extends CoursePage {
                 """
                 The plan in this part is to explore the following two things:
                 """);
-        sb.append(Strings.OL_START);
+        addOLStart(sb);
         addLI(sb,
                 "How does the processing time scale as 'n_agents' increases?");
         addLI(sb,
@@ -366,7 +365,7 @@ public class ABM3 extends CoursePage {
                 Other potentially more optimal ways of calculating the maximum
                 distance between agents.
                 """);
-        sb.append(Strings.OL_END);
+        addOLEnd(sb);
         addParagraph(sb,
                 """
                 Increase 'n_agents' to 500 and run the program again. Notice
@@ -388,20 +387,20 @@ public class ABM3 extends CoursePage {
         addParagraph(sb,
                 """
                 Run again and compare the timing. It is normal for the timing
-                to vary a bit from one run to another. The amount of computation
-                is the same, but the exact timing depends on other things that
-                are hard to control for - such as how busy your computer is
-                doing other things.
+                to vary slightly from one run to another. The amount of
+                computation is the same, but the exact timing depends on other
+                things that are hard to control for - such as how busy the
+                computer is doing other things.
               """);
         addParagraph(sb, "Adapt your code:");
-        sb.append(Strings.OL_START);
+        addOLStart(sb);
         addLI(sb, "Create a loop to run for a range of n_agents.");
         addLI(sb, "Create a list to store timing results.");
         addLI(sb,
                 """
                 Create a plot with time on one axis and n_agents on the other.
                 """);
-        sb.append(Strings.OL_END);
+        addOLEnd(sb);
         addParagraph(sb,
                 """
                 Experiment with your range function to get an interesting plot.

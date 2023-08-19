@@ -17,7 +17,6 @@ package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.CoursePage;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
@@ -104,13 +103,13 @@ public class Python extends CoursePage {
                 """);
         sb.append(references.getReference("Python 3 Documentation: What's New"));
         addParagraphEnd(sb, "webpage that introduces what is new:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         for (int i = 0; i < 12; i++) {
             addLI(sb, Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
                     "Whatsnew Python 3." + i));
         }
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         addParagraphStart(sb, 
                 """
                 On those webpages, changes are marked against numbered Python
@@ -1173,14 +1172,14 @@ public class Python extends CoursePage {
                 """
                 The New Button is highlighted with a red oval in the following
                 image of the interface:
-                <br><img src="../../resources/python/jupyter1.png"
+                <br /><img src="../../resources/python/jupyter1.png"
                 alt="Jupyter Notebook Interface 1" />
                 """);
         addParagraph(sb,
                 """
                 A Python REPL environment should appear in another browser tab
                 like shown in the following image:
-                <br><img src="../../resources/python/jupyter2.png"
+                <br /><img src="../../resources/python/jupyter2.png"
                 alt="Jupyter Notebook Interface 2" />
                 """);
         addParagraph(sb, "Enter the following in a cell and action run:");
@@ -1191,7 +1190,7 @@ public class Python extends CoursePage {
         addParagraph(sb, 
                 """
                 You should see something like:
-                <br><img src="../../resources/python/jupyter3.png"
+                <br /><img src="../../resources/python/jupyter3.png"
                 alt="Jupyter Notebook Interface 3" />
                 """);
         addParagraphStart(sb,
@@ -1247,7 +1246,7 @@ public class Python extends CoursePage {
                 """
                 This should open up the IDLE console window that should look
                 something like the image below:
-                <br><img src="../../resources/python/idle1.png"
+                <br /><img src="../../resources/python/idle1.png"
                 alt="The IDLE interface" />
                 """);
         addParagraphStart(sb, 
@@ -1259,7 +1258,7 @@ public class Python extends CoursePage {
               """
               Open your HelloWorld.py file. IDLE should open the file in the
               editor window that looks something like:
-              <br><img src="../../resources/python/idle2.png"
+              <br /><img src="../../resources/python/idle2.png"
               alt="The IDLE file editor window interface" />
               """);
         addParagraph(sb,
@@ -1273,7 +1272,7 @@ public class Python extends CoursePage {
                 """
                 This should run the HelloWorld.py file, and output to the
                 console in the other window which should appear something like:
-                <br><img src="../../resources/python/idle3.png"
+                <br /><img src="../../resources/python/idle3.png"
                 alt="The IDLE interface having run the Hello World program" />
                 """);
         addParagraph(sb, "Close the instance of IDLE that is running.");
@@ -1292,7 +1291,7 @@ public class Python extends CoursePage {
                 """
                 It may take a couple of minutes to load, when you should see
                 something like this:
-                <br><img src="../../resources/python/spyder1.png"
+                <br /><img src="../../resources/python/spyder1.png"
                 alt="The Spyder interface" />
                 """);
         addParagraph(sb,
@@ -1314,7 +1313,7 @@ public class Python extends CoursePage {
                 If a popup box appears choose the default and this should run
                 your program and output should appear in the console like in the
                 following image:
-                <br><img src="../../resources/python/spyder2.png"
+                <br /><img src="../../resources/python/spyder2.png"
                 alt="The Spyder interface showing the Hello World program
                 successfully ran" />
                 """);
@@ -1328,7 +1327,7 @@ public class Python extends CoursePage {
                 and right of the editor pane. Hover your mouse cursor over the
                 mark on the left. You should see something similar to the image
                 below:
-                <br><img src="../../resources/python/spyder3.png"
+                <br /><img src="../../resources/python/spyder3.png"
                 alt="The Spyder interface showing an error." />
                 """);
         addParagraphStart(sb, "Have a look at the latest ");
@@ -1402,7 +1401,7 @@ public class Python extends CoursePage {
         addParagraph(sb,
                 """
                 You should see something like:
-                <br><img src="../../resources/python/qgis1.png"
+                <br /><img src="../../resources/python/qgis1.png"
                 alt="QGIS Desktop Python Console basic interface" />
                 """);
         addParagraph(sb,
@@ -1473,7 +1472,7 @@ public class Python extends CoursePage {
                 """
                 Once the program has run the QGIS Desktop GUI should look
                 something like:
-                <br><img src="../../resources/python/qgis2.png"
+                <br /><img src="../../resources/python/qgis2.png"
                 alt="QGIS Python Console after having run QGISExample.py" />
                 """);
         addParagraph(sb, 
@@ -1482,7 +1481,7 @@ public class Python extends CoursePage {
                 This course does not explore this further. For details see the
                 following:
                 """);
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb,
                 """
                 <a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
@@ -1493,7 +1492,7 @@ public class Python extends CoursePage {
                 <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/index.html#developing-python-plugins">
                 PyQGIS Development Cookbook: Plugins Web Page: Section on Developing Python Plugins</a>
                 """);
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
 
         sid = addSection("Python Packages and Environment Management", sb);
         addParagraphStart(sb, 
@@ -1683,7 +1682,7 @@ public class Python extends CoursePage {
                 University Windows Virtual Desktop</a>
                 it is recommended to create the Python environment on the
                 M:\\ drive, for example in the following location:
-                <br>
+                <br />
                 """);
         addParagraphEnd(sb, envPath);
         
@@ -1742,7 +1741,7 @@ public class Python extends CoursePage {
                 (base)
                 """);
         addParagraph(sb, "Next install the following Python packages:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, """
                   <a href="https://contextily.readthedocs.io/en/latest/">
                   Contextily</a>
@@ -1768,7 +1767,7 @@ public class Python extends CoursePage {
         addLI(sb, """
                   <a href="https://pypi.org/project/spyder-kernels/">spyder-kernels</a>
                   """);
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         addParagraph(sb, "Enter:");
         addPre(sb, "conda install -c conda-forge contextily fiona folium geopandas pip pysal ipykernel spyder spyder-kernels=2.2");
         addParagraph(sb, 
@@ -1806,7 +1805,7 @@ public class Python extends CoursePage {
         addParagraph(sb, "Open 'Jupyter1.ipynb' read and run it cell by cell.");
         addParagraph(sb, 
                 """
-                If for some reason that does not work, then try something a bit
+                If for some reason that does not work, then try something
                 simpler and copy the code below into a cell and run it.
                 """);
         addPythonCodeBlock(sb, 
@@ -1833,7 +1832,7 @@ public class Python extends CoursePage {
                 """
                 This should produce a slippy map with an icon on it that looks
                 something like:
-                <br><img src="../../resources/python/jupyter4.png"
+                <br /><img src="../../resources/python/jupyter4.png"
                 alt="Jupyter Notebook Interface 4" />
                 """);
         addParagraph(sb, "From the Jupyter Notebook interface choose:");
@@ -1878,7 +1877,7 @@ public class Python extends CoursePage {
                 Below are key references for installing packages using pip and
                 conda:
                 """);
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, 
                 """
                 <a href="https://packaging.python.org/en/latest/tutorials/installing-packages/#use-pip-for-installing">
@@ -1890,7 +1889,7 @@ public class Python extends CoursePage {
                 <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/">
                 https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/</a>
                 """);
-        sb.append(Strings.UL_START);
+        addULEnd(sb);
 
         sid = addSection("Recap and Expectations", sb);
         addParagraph(sb,
@@ -1924,20 +1923,17 @@ public class Python extends CoursePage {
                 """);
         addParagraph(sb,
                 """
-                Some example code has been provided. This is quite good code in
-                that there are plentiful comments, and the code also does some
-                interesting things: The code that automated some QGIS Desktop
-                processing demonstrates how to access functionality from within
-                QGIS Desktop. The Jupyter Notebook based example utilised
+                Some example code has been provided that automates some QGIS
+                Desktop processing. The Jupyter Notebook based example utilised
                 Javascript capabilities of the Web browser and leveraged some
                 widely used Python GIS tools.
                 """);
         addParagraph(sb,
                 """
                 This has been a broad brush overview. You might benefit from
-                revisiting parts of this learning once you are a bit more
-                familiar with developing Python code and as you think about
-                undertaking projects.
+                revisiting parts of this learning once you are more familiar
+                with developing Python code and as you think about undertaking
+                projects.
                 """);
         return sb.toString();
     }

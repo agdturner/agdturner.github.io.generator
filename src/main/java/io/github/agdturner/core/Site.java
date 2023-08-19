@@ -43,6 +43,12 @@ public abstract class Site {
     public final Environment env;
 
     /**
+     * If true then this will map to local paths for resource
+     * files (including images, scripts, style sheets).
+     */
+    public final boolean localPaths;
+    
+    /**
      * For storing the Home Page.
      */
     protected Page homePage;
@@ -112,9 +118,11 @@ public abstract class Site {
      * Create a new instance.
      *
      * @param env What {@link #env} is set to.
+     * @param localPaths
      */
-    public Site(Environment env) {
+    public Site(Environment env, boolean localPaths) {
         this.env = env;
+        this.localPaths = localPaths;
         pages = new ArrayList<>();
         pageIDs = new TreeSet<>();
         pageIDToName = new HashMap<>();
@@ -165,7 +173,10 @@ public abstract class Site {
      * @return The navigation links HTML.
      */
     public String getNavigationLinks(String linkClass) {
-        StringBuilder sb = new StringBuilder("<div>\n<nav>\n");
+        StringBuilder sb = new StringBuilder(
+                """
+                <div class="nav">
+                """);
         sb.append(Web_ContentWriter.getLink(getLinkPathString(homePage),
                 homePage.filename, linkClass, homePage.label));
         sb.append(" ");
@@ -179,7 +190,7 @@ public abstract class Site {
         sb.append(" ");
         sb.append(Web_ContentWriter.getLink(getLinkPathString(references),
                 references.filename, linkClass, references.label));
-        sb.append("\n</nav>\n</div>");
+        sb.append("</div>");
         return sb.toString();
     }
 
@@ -218,7 +229,9 @@ public abstract class Site {
         // Write page
         try {
             page.w.writeHTML(page.path, "index", page.title + " Page", 
-                    CoursePage.getHeadElements());
+                    page.getHeadElements());
+            //page.w.writeHTML(path, "index", page.title + " Page", 
+            //        page.getHeadElements());
         } catch (IOException ex) {
             Logger.getLogger(Site.class.getName()).log(Level.SEVERE, null, ex);
         }

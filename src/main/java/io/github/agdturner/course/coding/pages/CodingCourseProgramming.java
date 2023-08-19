@@ -71,7 +71,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("Bit", "bit", sid));
         addParagraphEnd(sb,
                 """
-                which encodes one of two possible states, which - for simplicity
+                 which encodes one of two possible states, which - for simplicity
                 and brevity - are denoted '0' and '1'.
                 """);
         addParagraphStart(sb,
@@ -104,7 +104,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("ASCII", "ASCII", sid));
         sb.append(
                 """
-                - a data encoding which is used often used for text, and is the
+                 - a data encoding which is used often used for text, and is the
                  basis of a number of different
                 """);
         sb.append(index.getReference("File Format", "file formats"));
@@ -113,7 +113,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("Unicode", "Unicode", sid));
         addParagraphEnd(sb,
                 """
-                is another commonly used encoding. As of Unicode version 15.0,
+                 is another commonly used encoding. As of Unicode version 15.0,
                 there are 149,186 characters that are uniquely encoded,
                 including various alphabets, mathematical symbols and emojis.
                 Unicode uses between 1 and 4 bytes of length 8 for encoding.
@@ -132,7 +132,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("File Format", "file format", sid));
         addParagraphEnd(sb,
                 """
-                - typically based on a versioned specification which details
+                 - typically based on a versioned specification which details
                 the encodings used and how data gets arranged.
                 """);
         addParagraphStart(sb,
@@ -153,9 +153,9 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("Magic Number", "magic number", sid));
         sb.append(
                 """
-              typically at the start of the file which specify the format. File
-              format can also be detailed in external
-              """);
+                 typically at the start of the file which specify the format.
+                File format can also be detailed in external
+                """);
         sb.append(index.getReference("Metadata", "metadata", sid));
         addParagraphEnd(sb, ".");
         addParagraph(sb,
@@ -190,7 +190,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 "Floating point arithmetic", sid));
         sb.append(
                 """
-                is standardised and the result of a calculation gets rounded to
+                 is standardised and the result of a calculation gets rounded to
                 the nearest value. Most of the time, the standardisation has
                 ensured that calculations on different computers are the same,
                 but there can be variation. Anyway, for some floating point
@@ -202,19 +202,23 @@ public class CodingCourseProgramming extends CourseProgramming {
         addParagraphStart(sb, "");
         sb.append(index.getReference("Single-precision Floating-point",
                 "Single precision floating point", sid));
-        addParagraphEnd(sb,
+        sb.append(
                 """
-                is a standard encoding that uses bytes of length 32 to represent
-                each number.
+                 is a standard encoding that uses 32 bit bytes to represent a
+                subset of
                 """);
+        sb.append(index.getReference("rational numbers", sid));
+        addParagraphEnd(sb, ".");
         addParagraphStart(sb, "");
         sb.append(index.getReference("Double-precision Floating-point",
                 "Double precision floating point", sid));
-        addParagraphEnd(sb,
+        sb.append(
                 """
-                is a standard encoding that uses bytes of length 64 to represent
-                each number.
+                 is a standard encoding that uses 64 bit bytes to represent a
+                subset of
                 """);
+        sb.append(index.getReference("rational numbers", sid));
+        addParagraphEnd(sb, ".");
     }
 
     public void getLearning(StringBuilder sb) {
@@ -242,8 +246,8 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("Version Control", "version control", sid));
         addParagraphEnd(sb,
                 """
-                as this avoids losing work and provides a track of progress that
-                you and others might find useful.
+                 as this avoids losing work and provides a track of progress
+                that you and others might find useful.
                 """);
         addParagraphStart(sb,
                 """
@@ -315,14 +319,12 @@ public class CodingCourseProgramming extends CourseProgramming {
                 """);
         addParagraphStart(sb, "Sometimes the issue is a result of a '");
         sb.append(index.getReference("Software Bug", "software bug", sid));
-        sb.append(
-                """
+        sb.append("""
                 ' - an error, flaw or fault in the design, development, or
                 operation that causes incorrect or unexpected things to happen.
                 Sometimes issues happen in the same way each time something is
                 attempted, other times the fault only sometimes happens. A
-                fault that only sometimes happens is known as a '
-                """);
+                fault that only sometimes happens is known as a '""");
         sb.append(index.getReference("Glitch", "glitch", sid));
         addParagraphEnd(sb, "' and these can be difficult to troubleshoot.");
         addParagraph(sb,
@@ -374,7 +376,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("Python", sid));
         addParagraphEnd(sb,
                 """
-                can evolve rapidly. Occasionally new languages are developed.
+                 can evolve rapidly. Occasionally new languages are developed.
                 Some programming languages are retired or become obsolete, and
                 some older versions of languages become unsupported over time.
                 The release cadence is how often releases are made. Sometimes
@@ -386,7 +388,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 "backward compatibility", sid));
         addParagraphEnd(sb,
                 """
-                - interoperability with older versions - has both costs and
+                 - interoperability with older versions - has both costs and
                 benefits. These costs and benefits are weighed up by those
                 developing languages that tyically have a process of deciding
                 how things change.
@@ -425,7 +427,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("Deprecation", sid));
         addParagraphEnd(sb,
                 """
-                is a common part of modern high level languages and third party
+                 is a common part of modern high level languages and third party
                 software. It is part of a process of phasing things out. Things
                 are first marked as deprecated in a version, then in subsequent
                 versions the things are removed.

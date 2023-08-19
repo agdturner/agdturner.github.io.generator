@@ -33,12 +33,12 @@ public abstract class Page {
      * The site provides access to other pages.
      */
     public Site site;
-    
+
     /**
      * The Page Sections.
      */
     public TreeMap<SectionID, Section> sections;
-    
+
     /**
      * The Web_ContentWriter.
      */
@@ -94,7 +94,7 @@ public abstract class Page {
      * @param pageID What {@link #pageID} is set to.
      * @param path What {@link #path} is set to.
      */
-    public Page(Site site, String filename, String title, String label, 
+    public Page(Site site, String filename, String title, String label,
             PageID pageID, Path path) {
         this.site = site;
         this.w = new Web_ContentWriter();
@@ -113,8 +113,15 @@ public abstract class Page {
     protected void writeHeader() {
         w.add("<header>");
         w.add("""
-               <button id="style_button" onclick="swapStyle()"></button>""");
-        w.add(site.getNavigationLinks("nav"));
+              <button id="style_button" onclick="swapStyle()"></button>
+              """);
+        w.add("""
+              <div class="navbar">
+              """);
+        if (!site.pages.isEmpty()) {
+            w.add(site.getNavigationLinks("nav"));
+        }
+        w.add("</div>");
         w.add("</header>");
     }
 
@@ -123,7 +130,7 @@ public abstract class Page {
      *
      * @param linkClass The class for navigation links.
      * @param addPrevious If true, this also adds links to the previous page.
-     * @return 
+     * @return
      */
     public abstract String getLinks(String linkClass, boolean addPrevious);
 
@@ -158,12 +165,12 @@ public abstract class Page {
      * @param prepend Text prepended to the page label.
      * @return a link to a page in the series.
      */
-    protected String getLink(Page page, String linkID, String linkClass, 
+    protected String getLink(Page page, String linkID, String linkClass,
             String prepend) {
         return Web_ContentWriter.getLink(site.getLinkPathString(page), linkID,
                 linkClass, prepend + page.label);
     }
-    
+
     /**
      * If this term is already in the index, then the section ID is added to the
      * set of SectionIDs stored against the TermID for this term. Otherwise a
@@ -180,66 +187,70 @@ public abstract class Page {
 
     /**
      * Adds a Section to the site and returns the SectionID.
+     *
      * @param sectionName Section name.
      * @param sb For appending the HTML to.
      * @return SectionID
      */
     public SectionID addSection(String sectionName, StringBuilder sb) {
         this.subsectionNo = 1;
-        String inPageID = "" + sectionNo + ". ";
+        String inPageID = "" + sectionNo;
         this.sectionNo += 1;
         return addSection(inPageID, sectionName, sb, 2);
     }
-    
+
     /**
      * Adds a Subsection to the site and returns the SectionID.
+     *
      * @param sectionName Section name.
      * @param sb For appending the HTML to.
      * @return SectionID
      */
     public SectionID addSubsection(String sectionName, StringBuilder sb) {
         this.subsubsectionNo = 1;
-        String inPageID = "" + sectionNo + "." + this.subsectionNo + ". ";
+        String inPageID = "" + sectionNo + "." + this.subsectionNo;
         this.subsectionNo += 1;
         return addSection(inPageID, sectionName, sb, 3);
     }
-    
+
     /**
      * Adds a Sub-subsection to the site and returns the SectionID.
+     *
      * @param sectionName Section name.
      * @param sb For appending the HTML to.
      * @return SectionID
      */
     public SectionID addSubsubsection(String sectionName, StringBuilder sb) {
         this.subsubsectionNo += 1;
-        String inPageID = "" + sectionNo + "." + this.subsectionNo + "." 
-                + this.subsubsectionNo + ". ";
+        String inPageID = "" + sectionNo + "." + this.subsectionNo + "."
+                + this.subsubsectionNo;
         return addSection(inPageID, sectionName, sb, 4);
     }
-    
+
     /**
      * Adds a Section to the site and returns the SectionID.
+     *
      * @param sectionName Section name.
      * @param sb For appending the HTML to.
      * @param level For heading.
      * @return SectionID
      */
-    private SectionID addSection(String inPageID, String sectionName, 
+    private SectionID addSection(String inPageID, String sectionName,
             StringBuilder sb, int level) {
         SectionID sid = new SectionID(site.sectionIDs.size(), this, inPageID);
         site.sectionIDs.add(sid);
-        String s = inPageID + sectionName;
+        String s = inPageID + ". " + sectionName;
         site.addSection(sid, pageID, label + ": " + s);
-        String html = "<h" + level + " id=\"" + inPageID + "\">" 
+        String html = "<h" + level + " id=\"" + inPageID + "\">"
                 + s + "</h" + level + ">\n";
         sb.append(html);
-        String link = "<a href=\"#" + inPageID + "\">" + s + "</a>"; 
+        String link = "<a href=\"#" + inPageID + "\">" + s + "</a>";
         sections.put(sid, new Section(level, sid, html, link));
         TreeSet<SectionID> sectionIDs = site.pageIDToSectionIDs.get(pageID);
         sectionIDs.add(sid);
         return sid;
     }
-    
+
     /**
      * For writing the page to file.
      */
@@ -250,40 +261,54 @@ public abstract class Page {
         w.add(getPageContents());
         w.add(page);
     }
-    
+
     public void writeH1() {
         w.add("<div>");
         w.add("<h1>" + title + "</h1>");
     }
-    
+
     /**
-     * @return The main content of the page. 
+     * @return The main content of the page.
      */
     public abstract String getMainContent();
-    
+
     /**
-     * @return The page contents. 
+     * @return The page contents.
      */
     public abstract String getPageContents();
-    
+
     /**
-     * @return A list of elements that go in the HTML head section. 
+     * @return A list of elements that go in the HTML head section.
      */
-    public static List<String> getHeadElements() {
+    public List<String> getHeadElements() {
         ArrayList<String> r = new ArrayList<>();
         r.add("""
               <!-- Styling. -->
               <!-- The following href is blank, but will be populated once the
               DOM is fully loaded. -->
               <link id="css" rel="stylesheet" type="text/css" href="">\
-              <script src="/scripts/style.js"></script>
-              <!-- The following are used for stying code. -->
-              <script src="/tools/highlight/highlight.min.js"></script>
-              <script>hljs.highlightAll();</script>
-              <link id="code_theme" rel="stylesheet" type="text/css" href="">""");
+              """);
+        if (site.localPaths) {
+            r.add(
+                    """
+                    <script src="../../scripts/style.js"></script>
+                    <!-- The following are used for styling code. -->
+                    <script src="../../tools/highlight/highlight.min.js"></script>
+                    <script>hljs.highlightAll();</script>
+                    <link id="code_theme" rel="stylesheet" type="text/css" href="">
+                    """);
+        } else {
+            r.add(
+                    """
+                    <script src="/scripts/style.js"></script>
+                    <!-- The following are used for styling code. -->
+                    <script src="/tools/highlight/highlight.min.js"></script>
+                    <script>hljs.highlightAll();</script>
+                    <link id="code_theme" rel="stylesheet" type="text/css" href="">
+                    """);
+        }
         return r;
     }
-    
 
     /**
      * Wraps a code block for Python code.
@@ -354,7 +379,7 @@ public abstract class Page {
     }
 
     /**
-     * Wrap a string with an HTML tag.
+     * Wrap a string with an HTML start and end tag.
      *
      * @param sb The StringBuilder to append to.
      * @param s The string to wrap.
@@ -364,6 +389,18 @@ public abstract class Page {
         addTagStart(sb, tag);
         sb.append(s);
         addTagEnd(sb, tag);
+    }
+
+    /**
+     * Wrap a String with a start tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     * @param tag The tag text.
+     */
+    public void addTagStart(StringBuilder sb, String s, String tag) {
+        sb.append("<").append(tag).append(">");
+        sb.append(s);
     }
 
     /**
@@ -377,6 +414,18 @@ public abstract class Page {
     }
 
     /**
+     * Wrap a String with an end tag.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to wrap.
+     * @param tag The tag text.
+     */
+    public void addTagEnd(StringBuilder sb, String s, String tag) {
+        sb.append(s);
+        sb.append("</").append(tag).append(">\n");
+    }
+
+    /**
      * Add an end tag.
      *
      * @param sb The StringBuilder to append to.
@@ -385,7 +434,7 @@ public abstract class Page {
     public void addTagEnd(StringBuilder sb, String tag) {
         sb.append("</").append(tag).append(">\n");
     }
-    
+
     /**
      * Wrap a string with an HTML pre tag.
      *
@@ -395,8 +444,7 @@ public abstract class Page {
     public void addPre(StringBuilder sb, String s) {
         addTag(sb, s, Strings.s_pre);
     }
-    
-    
+
     /**
      * Wrap a string with an HTML pre tag.
      *
@@ -404,10 +452,9 @@ public abstract class Page {
      * @param s The string to wrap.
      */
     public void addPreStart(StringBuilder sb, String s) {
-        addTag(sb, s, Strings.s_pre);
+        addTagStart(sb, s, Strings.s_pre);
     }
-    
-    
+
     /**
      * Wrap a string with an HTML end pre tag.
      *
@@ -415,7 +462,7 @@ public abstract class Page {
      * @param s The string to wrap.
      */
     public void addPreEnd(StringBuilder sb, String s) {
-        addTag(sb, s, Strings.s_pre);
+        addTagEnd(sb, s, Strings.s_pre);
     }
 
     /**
@@ -435,8 +482,7 @@ public abstract class Page {
      * @param s The string to append after the start tag.
      */
     public void addLIStart(StringBuilder sb, String s) {
-        addTagStart(sb, Strings.s_li);
-        sb.append(s);
+        addTagStart(sb, s, Strings.s_li);
     }
 
     /**
@@ -446,7 +492,42 @@ public abstract class Page {
      * @param s The string to append after the start tag.
      */
     public void addLIEnd(StringBuilder sb, String s) {
-        sb.append(s);
-        addTagStart(sb, Strings.s_li);
+        addTagEnd(sb, s, Strings.s_li);
+    }
+
+    /**
+     * Add a start HTML ordered list tag
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void addOLStart(StringBuilder sb) {
+        addTagStart(sb, Strings.s_ol);
+    }
+
+    /**
+     * Add an end HTML ordered list tag
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void addOLEnd(StringBuilder sb) {
+        addTagEnd(sb, Strings.s_ol);
+    }
+
+    /**
+     * Add a start HTML unordered list tag
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void addULStart(StringBuilder sb) {
+        addTagStart(sb, Strings.s_ul);
+    }
+
+    /**
+     * Add an end HTML unordered list tag
+     *
+     * @param sb The StringBuilder to append to.
+     */
+    public void addULEnd(StringBuilder sb) {
+        addTagEnd(sb, Strings.s_ul);
     }
 }

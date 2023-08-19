@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -58,7 +57,7 @@ public class ABM1 extends CoursePage {
                 interact with the environment and each other in a time step.
                 """);
         addParagraph(sb, "Following instructions, you get to learn about:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, "testing, debugging and refactoring code;");
         addLI(sb, "using loops, conditionals and containers;");
         addLI(sb, "defining and using functions and classes;");
@@ -66,7 +65,7 @@ public class ABM1 extends CoursePage {
         addLI(sb, "organising code into modules;");
         addLI(sb, "developing a simple Graphical User Interface (GUI); and,");
         addLI(sb, "scraping and processing data from the Web.");
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         addParagraph(sb,
                 """
                 The agents will have simple behaviours and will interact with

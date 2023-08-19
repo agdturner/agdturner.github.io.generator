@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -652,7 +651,7 @@ public class Functions extends CoursePage {
                 which is worth finding time to read.
                 """);
         addParagraph(sb, "The main style elements are:");
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, "Use 4 spaces per indent");
         addLI(sb, 
                 """
@@ -673,7 +672,7 @@ public class Functions extends CoursePage {
         addLI(sb, "Keep lines to 79 characters or less.");
         addLI(sb, "Add spaces after commas");
         addLI(sb, "Indent comments to the level of the code referred to.");
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
 
         sid = addSubsection("Documenting Functions", sb);
         addParagraphStart(sb, "");

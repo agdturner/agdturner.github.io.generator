@@ -31,60 +31,51 @@ public abstract class CodingCourseHome extends CourseHome {
     }
 
     public void getSyllabusProgrammingStart(StringBuilder sb, SectionID sid) {
-        sb.append("""
-              <p>General computer programming language concepts, including:</p>
-              <ul>
-              """);
-        sb.append("<li>" + index.getReference("Variable", "Variables") + "</li>\n");
-        sb.append("<li>"
-                + index.getReference("Control Flow")
-                + " ("
-                + index.getReference("Conditional", "conditionals")
-                + "/"
-                + index.getReference("For Loop", "for loops")
-                + "/"
-                + index.getReference("While Loop", "while loops")
-                + ")</li>\n");
-        sb.append("<li>"
-                + index.getReference("Function", "Functions")
-                + "</li>\n");
-        sb.append("<li>Data encoding and "
-                + index.getReference("File Format", "file formats")
-                + "</li>\n");
-        sb.append("<li>Documentation</li>\n");
-        sb.append("<li>Testing</li>\n");
+        addParagraph(sb,
+                "General computer programming language concepts, including:");
+        addULStart(sb);
+        addLI(sb, index.getReference("Variable", "Variables"));
+        addLIStart(sb, index.getReference("Control Flow"));
+        sb.append(" (");
+        sb.append(index.getReference("Conditional", "conditionals"));
+        sb.append("/");
+        sb.append(index.getReference("For Loop", "for loops"));
+        sb.append("/");
+        sb.append(index.getReference("While Loop", "while loops"));
+        addLIEnd(sb, ")");
+        addLI(sb, index.getReference("Function", "Functions"));
+        addLIStart(sb, "Data encoding and ");
+        addLIEnd(sb, index.getReference("File Format", "file formats"));
+        addLI(sb, "Documentation");
+        addLI(sb, "Testing");
     }
     
     public void getSyllabusObjectOrientation(StringBuilder sb, SectionID sid) {
-        sb.append("<li>")
-                .append(index.getReference("Class", "Classes"))
-                .append(" and ")
-                .append(index.getReference("Object Oriented Programming"))
-                .append("</li>\n");
+        addLIStart(sb, index.getReference("Class", "Classes"));
+        sb.append(" and ");
+        addLIEnd(sb, index.getReference("Object Oriented Programming"));
     }
     
     public void getSyllabusProgrammingEnd(StringBuilder sb, SectionID sid) {
-        sb.append("</ul>\n");
+        addULEnd(sb);
     }
 
     public void getSyllabusOrganisational(StringBuilder sb, SectionID sid) {
-        sb.append("<p>")
-                .append(index.getReference("Version Control"))
-                .append("</p>\n");
+        addParagraph(sb, index.getReference("Version Control") + ".");
     }
     
     @Override
     public SectionID getLearningJourney0(StringBuilder sb) {
         SectionID sid = super.getLearningJourney0(sb);
-        sb.append("<p>One of the keys to coding is learning to be able to")
-                .append(" interpret errors messages and understand what caused")
-                .append(" them. If a program you are developing unexpectedly")
-                .append(" raises an exception and reports an error message,")
-                .append(" then try to understand why and stop this happening")
-                .append(" before moving on. Ignoring error messages is nearly")
-                .append(" always the wrong thing to do!</p>");
-        sb.append("<p>Be cautious and do not run code that you do not trust.")
-                .append("</p>\n");
+        addParagraph(sb, 
+                """
+                A key to coding is learning to be able to interpret error
+                messages and understand why they occur. If a program
+                unexpectedly raises an exception, then try to diagnose why this
+                occurred. Ignoring error messages is nearly always a mistake!
+                """);
+        addParagraph(sb, 
+                "Be cautious and only run code you trust.");
         return sid;
     }
 }

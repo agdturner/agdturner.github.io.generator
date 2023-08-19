@@ -436,12 +436,11 @@ public class IO extends CoursePage {
         addParagraph(sb,
                 """
                 The standard library for processing HTML and XML is:
-                "<a href="https://docs.python.org/3/library/markup.html">
+                <a href="https://docs.python.org/3/library/markup.html">
                 markup</a>, but the third party
                 <a href="https://beautiful-soup-4.readthedocs.io/en/latest/">
-                Beautiful Soup</a> package is arguably easier to use, and is
-                used later in the course to parse some HTML.
-                """);
+                Beautiful Soup</a> package is used later in the course to parse
+                some HTML.""");
 
         sid = addSection("Serialisation/Deserialisation", sb);
         addParagraph(sb,

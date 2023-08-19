@@ -27,15 +27,9 @@ import java.nio.file.Paths;
  */
 public class Python0 extends PythonIntroCodingCourse {
     
-    /**
-     * Creates a new instance.
-     *
-     * @param env What {@link #env} is set to.
-     * @param courseCode What {@link #courseCode} is set to.
-     * @param courseName What {@link #courseName} is set to.
-     */
-    public Python0(Environment env, String courseCode, String courseName) {
-        super(env, courseCode, courseName);
+    public Python0(Environment env, String courseCode, String courseName,
+            boolean localPaths) {
+        super(env, courseCode, courseName, localPaths);
     }
 
     /**
@@ -46,10 +40,13 @@ public class Python0 extends PythonIntroCodingCourse {
     public static void main(String[] args) {
         String courseName = "Introduction to Python Programming";
         Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
-        Path local = Paths.get("courses", "computing");
+        //Path local = Paths.get("courses", "computing");
         String domain = Environment.AGDTURNER_GITHUB_IO;
+        Path local = Paths.get(dir.toString(), domain, "Python0", "public_html");
         Environment env = new Environment(domain, dir);
-        Python0 course = new Python0(env, "Python0", courseName);
+        // Set localPaths to false when deploying.
+        boolean localPaths = false;
+        Python0 course = new Python0(env, "Python0", courseName, localPaths);
         course.write(local);
     }
 }

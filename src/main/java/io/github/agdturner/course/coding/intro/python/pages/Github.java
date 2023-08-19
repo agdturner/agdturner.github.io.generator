@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -108,7 +107,7 @@ public class Github extends CoursePage {
                 the change, and then push the change to the remote repository on
                 GitHub:
                 """);
-        sb.append(Strings.OL_START);
+        addOLStart(sb);
         addLI(sb, 
                 """
                 Open your local copy of 'README.md' in a text editor, make a
@@ -132,7 +131,7 @@ public class Github extends CoursePage {
                 git push
                 """);
         addLIEnd(sb, "");
-        sb.append(Strings.OL_END);
+        addOLEnd(sb);
         addParagraph(sb,
                 """
                 There are alternative ways to do this, but this way is
@@ -149,10 +148,9 @@ public class Github extends CoursePage {
                 browser and commit the change there: To edit the README click on
                 the 'Edit Button' which looks like a pen (in dark mode it looks
                 like the following where the button is identified with a red
-                elipse:
-                <img src="../resources/github/edit.png"  alt="GitHub README edit
-                button" />). Once you have finished editing, action the
-                'Commit changes' button to save the changes.
+                elipse: <img src="../resources/github/edit.png"
+                alt="GitHub README edit button" />). Once you have finished
+                editing, action the 'Commit changes' button to save the changes.
                 """);
         addParagraph(sb,
                 """

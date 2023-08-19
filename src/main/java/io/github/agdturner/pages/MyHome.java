@@ -63,19 +63,29 @@ public class MyHome extends Page {
         sb.append("<div>");
         sb.append("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" /></h1>");
-        sb.append("<p>In June 2023 I joined the "
-                + "<a href=\"" + Environment.HTTPS_ARC_LEEDS_AC_UK + "about/team/\">"
-                + "Research Computing Team"
-                + "</a>"
-                + " at the "
-                + "University of Leeds"
-                + " as a Research Software Engineer. I have "
-                + "worked at the University for over 25 years mostly "
-                + "specialising in computational geography.</p>");
-        sb.append("<p>"
-                + Web_ContentWriter.getLink(Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
-                        "Github Profile")
-                + "</p>");
+        addParagraphStart(sb, 
+                """
+                In June 2023 I joined the <a href="
+                """);
+        sb.append(Environment.HTTPS_ARC_LEEDS_AC_UK + "about/team/");
+        addParagraphEnd(sb, 
+                """
+                >Research Computing Team</a> at the University of Leeds as a
+                Research Software Engineer. I have worked at the University for
+                over 25 years mostly as a Research Office specialising in
+                computational geography.
+                """);
+        addParagraph(sb, 
+                """
+                <a href="Python0/home/index.html">Python0</a>
+                """);
+        addParagraph(sb, 
+                """
+                <a href="Java0/home/index.html">Java0</a>
+                """);
+        addParagraph(sb, Web_ContentWriter.getLink(
+                        Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
+                        "Github Profile"));
         // End WebPage
         sb.append(Web_ContentWriter.DIVET);
         return sb.toString();
@@ -89,7 +99,10 @@ public class MyHome extends Page {
     public static void main(String[] args) {
         String name = "Andy Turner " + Environment.AGDTURNER_GITHUB_IO + " Home Page";
         PageID id = new PageID(0);
-        MySite site = new MySite(new Environment(Environment.AGDTURNER_GITHUB_IO, DIR));
+        boolean localPaths = true;
+        MySite site = new MySite(
+                new Environment(Environment.AGDTURNER_GITHUB_IO, DIR),
+                localPaths);
         MyHome myHome = new MyHome(site, name, id, DIR);
         myHome.write();
     }

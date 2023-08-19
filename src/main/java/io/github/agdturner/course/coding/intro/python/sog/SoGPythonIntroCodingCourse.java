@@ -68,6 +68,7 @@ public abstract class SoGPythonIntroCodingCourse extends PythonIntroCodingCourse
      * @param env What {@link #env} is set to.
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
+     * @param localPaths  What {@link #localPaths} is set to.
      * @param academicYear What {@link #academicYear} is set to.
      * @param assignment1Name What {@link #assignment1Name} is set to.
      * @param assignment1DueDate What {@link #assignment1DueDate} is set to.
@@ -77,11 +78,11 @@ public abstract class SoGPythonIntroCodingCourse extends PythonIntroCodingCourse
      * @param assignment2Weighting What {@link #assignment2Weighting} is set to.
      */
     public SoGPythonIntroCodingCourse(Environment env, String courseCode, 
-            String courseName, String academicYear,
+            String courseName, boolean localPaths, String academicYear,
             String assignment1Name, String assignment1DueDate, 
             int assignment1Weighting, String assignment2Name, 
             String assignment2DueDate, int assignment2Weighting) {
-        super(env, courseCode, courseName);
+        super(env, courseCode, courseName, localPaths);
         homePage = new SoGPythonIntroCodingCourseHome(this);
         this.courseDetails = new SoGCourseDetails(this, academicYear);
         this.assignment1Name = assignment1Name;

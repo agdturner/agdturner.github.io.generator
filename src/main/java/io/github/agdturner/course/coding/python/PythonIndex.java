@@ -458,15 +458,18 @@ public class PythonIndex extends Index {
 
         term = "Python str";
         url = getPythonDocsLibraryURL("functions.html#func-str");
-        description = "A \"builtins module\" function for creating a "
-                + "\"string\"";
+        description = """
+                      A "builtins module" function for creating a "string"
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Python string";
         url = getPythonDocsLibraryURL("stdtypes.html#textseq");
-        description = "A standard type and immutable sequence of \"Unicode\" "
-                + "code points";
+        description = """
+                      A standard type and immutable sequence of "Unicode" code
+                      points
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "string", indexTerm);

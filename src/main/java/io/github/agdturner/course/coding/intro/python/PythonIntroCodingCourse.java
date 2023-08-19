@@ -52,16 +52,9 @@ import io.github.agdturner.course.coding.intro.python.sog.pages.SoGPythonIntroCo
  */
 public abstract class PythonIntroCodingCourse extends PythonCodingCourse {
 
-    /**
-     * Creates a new instance.
-     *
-     * @param env What {@link #env} is set to.
-     * @param courseCode What {@link #courseCode} is set to.
-     * @param courseName What {@link #courseName} is set to.
-     */
     public PythonIntroCodingCourse(Environment env, String courseCode,
-            String courseName) {
-        super(env, courseCode, courseName);
+            String courseName, boolean localPaths) {
+        super(env, courseCode, courseName, localPaths);
         /**
          * Initialise Course Pages.
          */

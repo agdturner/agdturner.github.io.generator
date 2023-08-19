@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -170,7 +169,7 @@ public class Branching extends CoursePage {
                 as containers and other objects can be matched. Examples of
                 these and further details can be found in the relevant PEPS:
                 """);
-        sb.append(Strings.UL_START);
+        addULStart(sb);
         addLI(sb, 
                 """
                 <a href="https://peps.python.org/pep-0634/">
@@ -187,7 +186,7 @@ public class Branching extends CoursePage {
                 <a href="https://peps.python.org/pep-0636/">
                 PEP 636, Structural Pattern Matching: Tutorial</a>
                 """);
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
         return sb.toString();
     }
 }

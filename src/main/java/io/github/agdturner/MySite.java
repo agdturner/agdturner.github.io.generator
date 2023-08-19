@@ -29,8 +29,9 @@ public class MySite extends Site {
      * Creates a new instance.
      *
      * @param env What {@link #env} is set to.
+     * @param localPaths What {@link #localPaths} is set to.
      */
-    public MySite(Environment env) {
-        super(env);
+    public MySite(Environment env, boolean localPaths) {
+        super(env, localPaths);
     }
 }

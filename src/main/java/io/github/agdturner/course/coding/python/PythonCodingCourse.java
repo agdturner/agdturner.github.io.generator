@@ -30,18 +30,9 @@ public abstract class PythonCodingCourse extends CodingCourse {
      */
     public static final String COURSE_TYPE = "python";
 
-    /**
-     * Creates a new instance.
-     *
-     * courseType is set to "python".
-     *
-     * @param env What {@link #env} is set to.
-     * @param courseCode What {@link #courseCode} is set to.
-     * @param courseName What {@link #courseName} is set to.
-     */
     public PythonCodingCourse(Environment env, String courseCode,
-            String courseName) {
-        super(env, COURSE_TYPE, courseCode, courseName);
+            String courseName, boolean localPaths) {
+        super(env, COURSE_TYPE, courseCode, courseName, localPaths);
         index = new PythonIndex(this, "index", "Index", "Index");
         references = new PythonReferences(this, "references", "References", "References");
     }

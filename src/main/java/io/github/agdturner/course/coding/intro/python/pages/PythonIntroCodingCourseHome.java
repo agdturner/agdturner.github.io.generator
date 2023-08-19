@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.coding.intro.pages.IntroCodingCourseHome;
 
@@ -56,7 +55,7 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     public void getSyllabusProgrammingPython(StringBuilder sb, SectionID sid) {
-        addParagraph(sb, "");
+        addParagraphStart(sb, "");
         sb.append(index.getReference("Python"));
         addParagraphEnd(sb, " language development and limitations.");
         addParagraphStart(sb, "The ");
@@ -143,7 +142,7 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         addLIStart(sb, "Developing and visualising a basic spatial ");
         sb.append(index.getReference("ABM", "Agent Based Model"));
         addLIEnd(sb, " (ABM)");
-        sb.append(Strings.UL_END);
+        addULEnd(sb);
     }
 
     public void getExpectations2(StringBuilder sb, SectionID sid) {

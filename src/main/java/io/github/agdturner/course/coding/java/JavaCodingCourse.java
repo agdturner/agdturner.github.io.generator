@@ -36,10 +36,11 @@ public abstract class JavaCodingCourse extends CodingCourse {
      * @param env What {@link #env} is set to.
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
+     * @param localPaths What {@link #localPaths} is set to.
      */
     public JavaCodingCourse(Environment env, String courseCode, 
-            String courseName) {
-        super(env, COURSE_TYPE, courseCode, courseName);
+            String courseName, boolean localPaths) {
+        super(env, COURSE_TYPE, courseCode, courseName, localPaths);
         index = new JavaIndex(this, "index", "Index", "Index");
         references = new JavaReferences(this, "references", "References", "References");
     }

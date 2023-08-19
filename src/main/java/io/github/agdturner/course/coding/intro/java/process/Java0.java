@@ -34,10 +34,11 @@ public class Java0 extends JavaIntroCodingCourse {
      * @param env 
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
-     * 
+     * @param localPaths What {@link #localPaths} is set to.
      */
-    public Java0(Environment env, String courseCode, String courseName) {
-        super(env, courseCode, courseName);
+    public Java0(Environment env, String courseCode, String courseName,
+            boolean localPaths) {
+        super(env, courseCode, courseName, localPaths);
     }
 
     /**
@@ -50,7 +51,8 @@ public class Java0 extends JavaIntroCodingCourse {
         Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
         String domain = Environment.AGDTURNER_GITHUB_IO;
         Environment env = new Environment(domain, dir);
-        Java0 course = new Java0(env, "Java0", courseName);
+        boolean localPaths = true;
+        Java0 course = new Java0(env, "Java0", courseName, localPaths);
         course.write(dir);
     }
 

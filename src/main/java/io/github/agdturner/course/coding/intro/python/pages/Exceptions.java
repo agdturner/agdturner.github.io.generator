@@ -16,7 +16,6 @@
 package io.github.agdturner.course.coding.intro.python.pages;
 
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
@@ -133,7 +132,7 @@ public class Exceptions extends CoursePage {
                 More than one type of exception can be handled simultaneously in
                 a couple of ways:
                 """);
-        sb.append(Strings.OL_START);
+        addOLStart(sb);
         addLIStart(sb, 
                 "The except clause can contain a tuple of types, for example:");
         addPythonCodeBlock(sb, 
@@ -160,7 +159,7 @@ public class Exceptions extends CoursePage {
                 print("Done")
                 """);
         addLIEnd(sb, "");
-        sb.append(Strings.OL_END);
+        addOLEnd(sb);
 
         sid = addSection("Raising Exceptions", sb);
         addParagraph(sb, 
