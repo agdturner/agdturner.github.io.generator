@@ -46,6 +46,8 @@ public class Branching extends CoursePage {
                 """);
         sb.append(index.getReference("Conditional", "if", sid));
         w.addPET(sb, "' statement.");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("If", sb);
         w.addPST(sb, "The ");
@@ -130,6 +132,8 @@ public class Branching extends CoursePage {
                 not branch, and more code can be inserted in any of the clauses,
                 so this can do more than just look up a value from a key.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Match", sb);
         w.addPST(sb, "Since Python 3.10 there is also a ");
@@ -187,6 +191,7 @@ public class Branching extends CoursePage {
                 PEP 636, Structural Pattern Matching: Tutorial</a>
                 """);
         w.addULET(sb);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

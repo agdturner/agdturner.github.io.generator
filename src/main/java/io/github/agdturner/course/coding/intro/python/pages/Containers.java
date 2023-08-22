@@ -52,6 +52,8 @@ public class Containers extends CoursePage {
                 changed). Some are ordered, or can be ordered, and others are
                 unordered. A dictionary is a mapping of keys to values.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Sequences", sb);
         w.addP(sb,
@@ -574,6 +576,8 @@ public class Containers extends CoursePage {
                 print(a)
                 a.insert(2, 2.5)
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Sets", sb);
         w.addPST(sb, "");
@@ -601,6 +605,8 @@ public class Containers extends CoursePage {
                 compared. Two sets are equal if they contain all of the same
                 elements.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Dictionaries", sb);
         w.addPST(sb, "");
@@ -633,6 +639,7 @@ public class Containers extends CoursePage {
                 <a href="https://docs.python.org/3/tutorial/datastructures.html">
                 Python documentation tutorial about data structures</a>.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

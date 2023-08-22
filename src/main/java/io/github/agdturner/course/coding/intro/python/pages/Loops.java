@@ -51,6 +51,8 @@ public class Loops extends CoursePage {
                 something a set number of times (or for each thing in a
                  sequence).
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("While", sb);
         w.addPST(sb, "The following provides an example of a ");
@@ -120,6 +122,8 @@ public class Loops extends CoursePage {
                 (kwarg)' called 'end' is used in the print command to substitute
                 the normal end of print statement - a newline - with a space.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("For", sb);
         w.addPST(sb, "");
@@ -272,6 +276,8 @@ public class Loops extends CoursePage {
                  statement can be used to skip to the start of the next loop
                 iteration in the same way as in a while loop.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Nesting loops", sb);
         w.addP(sb,
@@ -335,6 +341,8 @@ public class Loops extends CoursePage {
                 get rows and columns mixed up. This is easier to do if the data
                 have the same number of rows and columns!<
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
               
         sid = addSection("Moving Window Algorithms", sb);
         w.addP(sb,
@@ -379,6 +387,8 @@ public class Loops extends CoursePage {
                 26 27 28 29
                 32 33 34 35
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
               
         sid = addSection("Next", sb);
         w.addP(sb,
@@ -386,6 +396,7 @@ public class Loops extends CoursePage {
                 Use containers, branches and loops to simplify and extend the
                 Agent Based Model code.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

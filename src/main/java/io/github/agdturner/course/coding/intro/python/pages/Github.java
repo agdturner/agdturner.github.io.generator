@@ -62,6 +62,8 @@ public class Github extends CoursePage {
                 need a GitHub account to complete this course, but it is
                 recommended.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("Getting Started with GitHub", sb);
         w.addP(sb,
@@ -191,6 +193,8 @@ public class Github extends CoursePage {
                 desired, and this takes the difficulty away from doing all this
                 in a more manual way.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("Python Code Repository Setup", sb);
         w.addP(sb,
@@ -226,6 +230,8 @@ public class Github extends CoursePage {
                 GitHub '.gitignore' settings for Python will not push this
                 directory contents to GitHub - which is what is wanted.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("GitHub Pages", sb);
         w.addP(sb,
@@ -235,6 +241,8 @@ public class Github extends CoursePage {
                 <a href="https://docs.github.com/en/pages/quickstart">
                 GitHub Pages Quickstart Tutorial</a>
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("Taking Stock", sb);
         w.addP(sb,
@@ -272,6 +280,7 @@ public class Github extends CoursePage {
                 As a minimum, please ensure your files are organised, versioned
                 and backed up.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

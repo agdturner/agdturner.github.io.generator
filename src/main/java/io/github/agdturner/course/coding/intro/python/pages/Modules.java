@@ -58,6 +58,8 @@ public class Modules extends CoursePage {
                 So, a Python library might contain a single module, or multiple
                 packages.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Importing", sb);
         w.addPST(sb, "The ");
@@ -171,6 +173,8 @@ public class Modules extends CoursePage {
                     # All code in this is only run when the module is run as a script.
                     # It is not run if the module is imported.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Packages", sb);
         w.addP(sb, "Consider the following package file structure:");
@@ -223,6 +227,8 @@ public class Modules extends CoursePage {
                 then run the application when issued at the prompt:
                 """);
         w.addPRE(sb,"python -m packagename");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Third Party Libraries", sb);
         w.addPST(sb, "");
@@ -333,6 +339,7 @@ public class Modules extends CoursePage {
                 For details on installing packages see:
                 <a href="../python/index.html#9">Python Packages and Environment Management</a>.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

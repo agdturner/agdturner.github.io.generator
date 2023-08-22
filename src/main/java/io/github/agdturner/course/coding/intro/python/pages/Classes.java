@@ -74,6 +74,8 @@ public class Classes extends CoursePage {
                 in 'CamelCase' (with no spaces and mostly in lower case except
                 for capitalised first letters for each word).
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Class Definitions, Constructors, Attributes and Methods", sb);
         w.addP(sb,
@@ -174,6 +176,8 @@ public class Classes extends CoursePage {
                         self.x = x
                         self.y = y
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Inheritance", sb);
         w.addP(sb,
@@ -253,6 +257,8 @@ public class Classes extends CoursePage {
                 <a href="https://docs.python.org/3/tutorial/classes.html#multiple-inheritance">
                 The Python Tutorial on Classes Section on Multiple Inheritance</a>.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Access Control", sb);
         w.addP(sb,
@@ -339,6 +345,8 @@ public class Classes extends CoursePage {
                 <a href="https://docs.python.org/3/library/functions.html#property">
                 The Python Library Documentation Chapter on Functions Section on Property</a>.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Customisation", sb);
         w.addPST(sb, "By default, when printing an object using the ");
@@ -374,6 +382,8 @@ public class Classes extends CoursePage {
                 <a href="https://docs.python.org/3/reference/datamodel.html#basic-customization">
                 The Python 3 Language Reference Data Model Chapter Section on Basic Customization</a>.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("Further learning", sb);
         w.addP(sb,
@@ -382,6 +392,7 @@ public class Classes extends CoursePage {
                 <a href="https://docs.python.org/3/tutorial/classes.html">
                 The Python Tutorial on Classes</a>.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

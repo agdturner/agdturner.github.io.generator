@@ -54,6 +54,8 @@ public class ABM6 extends CoursePage {
                 called 'my_modules' in 'abm6' and use 'save as' to save your
                 'agentframework.py' and 'io.py' files there.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Sharing", sb);
         w.addP(sb,
@@ -211,6 +213,8 @@ public class ABM6 extends CoursePage {
                 Run 'model.py' and interpret the output. Add more print
                 statements to gain a clear understanding of how the code works.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Organise module code", sb);
         w.addP(sb,
@@ -230,6 +234,8 @@ public class ABM6 extends CoursePage {
                 Make sure to test that your code still produces the same
                 results.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Output images and generate an animated Gif", sb);
         w.addP(sb,
@@ -292,7 +298,9 @@ public class ABM6 extends CoursePage {
                 The parameter 'fps' is the number of frames that are shown per
                  second.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Further Assignment 1 Coding Tasks", sb);
         sb.append("<p>Create some more variable results by randomly setting the"
@@ -301,8 +309,8 @@ public class ABM6 extends CoursePage {
         sb.append("<p>Change the 'eat' function so that if an agent 'store'"
                 + " goes above 99, then half the store is added to"
                 + " 'environment' where the agent is located.</p>");
-        addParagraphCommitToGitHub(sb);
-        sb.append("</div>");
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

@@ -140,6 +140,8 @@ public class ABM2 extends CoursePage {
                 directory called 'abm2'. Open Spyder and save 'model.py' into
                 the 'abm2' directory.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Using Lists", sb);
         w.addPST(sb,
@@ -219,6 +221,8 @@ public class ABM2 extends CoursePage {
                 initialisation. Can you think of a way to reduce this code and
                 do the initialition more succinctly?
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Plotting", sb);
         w.addPST(sb, "To plot the agents using ");
@@ -261,6 +265,8 @@ public class ABM2 extends CoursePage {
                 """);
         w.addP(sb,
                 "Have a try and don't worry if you don't get this to work.");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Using Loops", sb);
         w.addP(sb,
@@ -277,7 +283,7 @@ public class ABM2 extends CoursePage {
                 it, and to add more comments to help you understand what it is
                 doing.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
         w.addP(sb,
                 """
                 Comment out the code for initialising and changing the
@@ -305,7 +311,9 @@ public class ABM2 extends CoursePage {
                 red coloured dot which gives the location of the agent with the
                 largest x coordinate.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("More Plotting", sb);        
         w.addP(sb,
@@ -315,7 +323,9 @@ public class ABM2 extends CoursePage {
                 blue; the largest y coordinate yellow; and the smallest y
                 coordinate green.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Code Review and Looking Forward", sb);
         w.addP(sb,
@@ -341,7 +351,7 @@ public class ABM2 extends CoursePage {
                 practical will be an exercise involving calculating the maximum
                 distance between agents and timing code to optimise this.
                 """);
-        sb.append("</div>\n");
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

@@ -49,6 +49,8 @@ public class ABM9 extends CoursePage {
                 In your local code repository 'src' directory duplicate your
                 'abm8' directory as 'abm9'.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Parsing an HTML File", sb);
         w.addP(sb,
@@ -139,6 +141,7 @@ public class ABM9 extends CoursePage {
                 self.store = random.randint(0, 99)
                 self.store_shares = 0
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

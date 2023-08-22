@@ -53,6 +53,8 @@ public class Exceptions extends CoursePage {
                  error and what code was being executed when the error was
                  encountered.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Try-Except", sb);
         w.addPST(sb,
@@ -160,6 +162,8 @@ public class Exceptions extends CoursePage {
                 """);
         w.addLIET(sb, "");
         w.addOLET(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Raising Exceptions", sb);
         w.addP(sb, 
@@ -180,6 +184,8 @@ public class Exceptions extends CoursePage {
                 New types of exception can be defined by subclassing an
                 exception from the builtins module.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Else and Finally", sb);
         w.addP(sb,
@@ -245,6 +251,8 @@ public class Exceptions extends CoursePage {
                 can be used to execute the finally clause.
                 """);
         sb.append("-->");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("System Exit", sb);
         w.addPST(sb,
@@ -274,6 +282,7 @@ public class Exceptions extends CoursePage {
                 <a href="https://docs.python.org/3/library/errno.html">errno</a>
                 - a special module on system error codes.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

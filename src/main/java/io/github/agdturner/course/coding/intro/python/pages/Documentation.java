@@ -59,6 +59,7 @@ public class Documentation extends CoursePage {
                 <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>, which
                 comes with Anaconda.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

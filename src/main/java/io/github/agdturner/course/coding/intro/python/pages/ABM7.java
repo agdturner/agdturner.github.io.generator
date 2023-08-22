@@ -52,6 +52,8 @@ public class ABM7 extends CoursePage {
                 In your local code repository 'src' directory duplicate your
                 'abm6' directory and name it 'abm7'.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Animation", sb);
         w.addP(sb,
@@ -195,7 +197,9 @@ public class ABM7 extends CoursePage {
                 '# Write data' code block is included in 'gen_function' and runs
                  only once after the model has stopped.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Code and Model Review", sb);
         w.addP(sb,
@@ -256,6 +260,7 @@ public class ABM7 extends CoursePage {
                 Include predator agents that hunt/eat the other agents as prey.
                 """);
         w.addULET(sb);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

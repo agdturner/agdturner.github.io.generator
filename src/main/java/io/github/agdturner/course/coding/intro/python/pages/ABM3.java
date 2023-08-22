@@ -151,6 +151,8 @@ public class ABM3 extends CoursePage {
                 directory called "abm3". Open Spyder and use "save as" to save
                 your "model.py" file into the abm3 directory.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Distance Calculations", sb);
 
@@ -311,6 +313,8 @@ public class ABM3 extends CoursePage {
                 function definition before it can be called. So, rearrange your
                 code so that the function is defined before it is called.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Timing", sb);
         w.addPST(sb, "This section is about using the ");
@@ -566,6 +570,8 @@ public class ABM3 extends CoursePage {
                 <img src="../../resources/abm3/Figure_2.png"
                 alt="Another graph of time (y axis) and n_agents (x axis)" />
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Other distance statistics", sb);
         w.addP(sb,
@@ -644,7 +650,9 @@ public class ABM3 extends CoursePage {
                 Replace the get_max_distance() in model.py with the new faster
                 version you have developed.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Movement", sb);
         w.addP(sb,
@@ -715,7 +723,7 @@ public class ABM3 extends CoursePage {
                 efficient than constraining within same loop as moving each
                 agent.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
         sb.append("</div>\n");
         return sb.toString();
     }

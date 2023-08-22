@@ -45,7 +45,9 @@ public class SoGPythonIntroCodingCourseABM7 extends ABM7 {
                 Alter the stopping condition so that the model stops when the
                  average agent store is greater than 80.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
         return sb.toString();
     }
 }

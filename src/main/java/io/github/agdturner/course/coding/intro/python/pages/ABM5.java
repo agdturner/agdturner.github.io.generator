@@ -57,6 +57,8 @@ public class ABM5 extends CoursePage {
                 data. It is good practice to store program data and program
                 source code in different directories.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Input Data", sb);
         w.addP(sb,
@@ -179,6 +181,8 @@ public class ABM5 extends CoursePage {
                 function initialising variables 'n_rows' and 'n_cols' as
                 well as 'environment'.)
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Plot environment", sb);
         w.addP(sb,
@@ -288,6 +292,8 @@ public class ABM5 extends CoursePage {
                 tnr = int(n_rows / 3)
                 self.y = random.randint(0, tnr - 1) + tnr
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Agent-Environment Interaction", sb);
         w.addP(sb,
@@ -396,7 +402,9 @@ public class ABM5 extends CoursePage {
                 eaten away. The checkering is a consequence of the way agents
                 move and eat.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Further Assignment 1 Coding Tasks", sb);
         w.addP(sb,
@@ -430,7 +438,9 @@ public class ABM5 extends CoursePage {
                 the values of environment to a file and call this function after
                 the main model loop.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Code Review and Looking Forward", sb);
         w.addP(sb,
@@ -442,7 +452,7 @@ public class ABM5 extends CoursePage {
                 order, then there will be bias in favour of these agents gaining
                 more store... Write a comment in your source code about this.
                 """);
-        sb.append("</div>\n");
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

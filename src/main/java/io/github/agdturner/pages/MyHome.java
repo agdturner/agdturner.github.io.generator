@@ -61,9 +61,9 @@ public class MyHome extends Page {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<div>");
-        sb.append("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
-                + "picture head and shoulders\" /></h1>");
+        w.addH1(sb, "Andy Turner GitHub Website");
+        sb.append("<img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
+                + "picture head and shoulders\" />");
         w.addPST(sb, 
                 """
                 In June 2023 I joined the <a href="
@@ -114,7 +114,7 @@ public class MyHome extends Page {
     }
 
     @Override
-    public String getPageContents() {
+    public String getContents() {
         return null;
     }
 

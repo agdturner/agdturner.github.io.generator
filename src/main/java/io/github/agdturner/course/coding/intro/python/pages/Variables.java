@@ -43,6 +43,8 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Variable", "Variables", sid));
         w.addPET(sb, 
                 " are a combination of an identifier (a name) and a value");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Python Variables", sb);
         w.addP(sb,
@@ -234,6 +236,8 @@ public class Variables extends CoursePage {
                 &lt;class 'int'&gt;
                 &lt;class 'str'&gt;
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Functions, Variable Scope and the Global Keyword", sb);
         w.addPST(sb, 
@@ -344,6 +348,8 @@ public class Variables extends CoursePage {
                 b 2
                 c 2
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Deleting variables", sb);
         w.addPST(sb, 

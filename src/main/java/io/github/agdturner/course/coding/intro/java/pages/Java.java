@@ -68,6 +68,9 @@ public class Java extends CoursePage {
                 + site.references.getReference("Python 3 Documentation")
                 + ".</p>");
         */
+        w.addDIVET(sb);
+        sb.append("\n");
+        
         addSection("Java 17", sb);
         sb.append("""
               <p>Java 17 was first released in...</p>

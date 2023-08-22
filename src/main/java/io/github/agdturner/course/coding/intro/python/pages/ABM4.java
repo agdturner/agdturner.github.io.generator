@@ -62,6 +62,8 @@ public class ABM4 extends CoursePage {
                 directory called "abm4". Open Spyder and use 'save as' to save
                 your 'model.py' file from abm3 into the abm4 directory.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Define an Agent class", sb);
         w.addP(sb,
@@ -324,7 +326,9 @@ public class ABM4 extends CoursePage {
                 Study these changes. Your program should run without raising
                 exceptions and produces the same output as previously.
                 """);
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Separation of Concerns", sb);
         w.addP(sb,
@@ -354,6 +358,8 @@ public class ABM4 extends CoursePage {
                 how an agent moves, and 'model.py' actions when they do. This is
                 a reasonable separation of concerns.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Give each agent a unique name", sb);
         w.addP(sb,
@@ -415,8 +421,8 @@ public class ABM4 extends CoursePage {
                 Modify the Agent class '__str__' method so it additionally
                 returns the unique characteristic of each Agent 'i'.
                 """);
-        addParagraphCommitToGitHub(sb);
-        sb.append("</div>\n");
+        addCommitToGitHub(sb);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

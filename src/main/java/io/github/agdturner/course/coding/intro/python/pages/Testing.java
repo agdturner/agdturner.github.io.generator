@@ -61,6 +61,8 @@ public class Testing extends CoursePage {
                 issue diagnosis. As you should know by now, testing is key to
                 developing code and creating reproducible results.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Doctest", sb);
         w.addPST(sb, "The ");
@@ -98,6 +100,8 @@ public class Testing extends CoursePage {
                    1 of   2 in __main__.add
                 ***Test Failed*** 1 failures.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Unit Tests", sb);
         w.addPST(sb, "");
@@ -161,6 +165,8 @@ public class Testing extends CoursePage {
                 """);
         sb.append(index.getReference("Python unittest", "unittest", sid));
         w.addPET(sb, ".");
+        w.addDIVET(sb);
+        sb.append("\n");
         return sb.toString();
     }
 }

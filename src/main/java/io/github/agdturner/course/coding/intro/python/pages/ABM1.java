@@ -80,6 +80,8 @@ public class ABM1 extends CoursePage {
         w.addLI(sb, "create output files; and,");
         w.addLI(sb, "produce results that can easily be reproduced.");
         w.addULET(sb);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         addSection("Getting started", sb);
         w.addP(sb,
@@ -141,6 +143,8 @@ public class ABM1 extends CoursePage {
                 function. These are printed out sequentially with a space \
                 delimiter by default.""");
         w.addP(sb, "Do similarly to initialise the variable 'y0'.");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Randomly changing values", sb);
         w.addPST(sb, "The Python standard library ");
@@ -242,6 +246,8 @@ public class ABM1 extends CoursePage {
                 randomly. Test that the movements vary for different seeds and \
                 that changes in each coordinate are independent of how the \
                 other coordinates change.""");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         addSection("Calculate the Euclidean distance", sb);
         w.addP(sb,
@@ -268,6 +274,8 @@ public class ABM1 extends CoursePage {
                 used to raise a number to the power of another number; raising \
                 a number to the power of '0.5' calculates the square root; \
                 testing can simply be done by printing out the result.""");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Review, commit and look ahead", sb);
         w.addP(sb,
@@ -289,7 +297,7 @@ public class ABM1 extends CoursePage {
                  and use the \
                 <a href="https://docs.python.org/3/library/math.html#math.sqrt"> \
                 sqrt</a> function.""");
-        addParagraphCommitToGitHub(sb);
+        addCommitToGitHub(sb);
         w.addPST(sb,
                 """
                 In the next ABM practical: The code will be modified so the \
@@ -300,6 +308,8 @@ public class ABM1 extends CoursePage {
                 """
                 will be used to create and move more agents, and the model \
                 will be visualised.""");
+        w.addDIVET(sb);
+        sb.append("\n");
         return sb.toString();
     }
 }

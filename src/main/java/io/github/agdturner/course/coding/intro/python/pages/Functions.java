@@ -92,6 +92,8 @@ public class Functions extends CoursePage {
                 greater the gain is in terms of making the code easier to read,
                 understand, maintain and use.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Parameters", sb);
         w.addP(sb,
@@ -320,6 +322,8 @@ public class Functions extends CoursePage {
                 <a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">
                 Python documentation: Outline of how to get output from a function documentation</a>
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Scope", sb);
         w.addP(sb,
@@ -383,6 +387,8 @@ public class Functions extends CoursePage {
                 f1()
                 print(a) # Prints 1.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Function Complexity", sb);
         w.addP(sb,
@@ -640,6 +646,8 @@ public class Functions extends CoursePage {
 
                 print(pf(3)) # Prints 6
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Style and Documenting Functions", sb);
 
@@ -716,12 +724,15 @@ public class Functions extends CoursePage {
         w.addPRE(sb, "help(x)");
         w.addP(sb, "The docstring can also be printed using:");
         w.addPRE(sb, "print(x.__doc__)");
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("Next", sb);
         w.addP(sb,
                 """
                 Refactoring the Agent Based Model code to use functions...
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

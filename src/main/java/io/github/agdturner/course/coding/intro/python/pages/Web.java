@@ -61,6 +61,8 @@ public class Web extends CoursePage {
                 This section of the course provides some details of how the Web
                 works...
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("Network Sockets, Port Numbers, Addresses and Protocols", sb);
         w.addPST(sb, "A '");
@@ -149,6 +151,8 @@ public class Web extends CoursePage {
                 IT team that are likely monitoring network activity for
                 suspicious behaviour.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
         
         sid = addSection("The World Wide Web", sb);
         w.addPST(sb,
@@ -300,6 +304,8 @@ public class Web extends CoursePage {
         sb.append(index.getReference("Beautiful Soup",
                         "Beautiful Soup library", sid));
         w.addPET(sb, "");
+        w.addDIVET(sb);
+        sb.append("\n");
         return sb.toString();
     }
 }

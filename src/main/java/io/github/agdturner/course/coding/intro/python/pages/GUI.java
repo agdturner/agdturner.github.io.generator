@@ -84,6 +84,8 @@ public class GUI extends CoursePage {
                 to another function, with the expectation that (depending on
                 conditions) the function will be run.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Getting Started with tkinter", sb);
         w.addP(sb,
@@ -233,6 +235,8 @@ public class GUI extends CoursePage {
                 # Start the GUI
                 root.mainloop()
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Example scale or slider widget", sb);
         w.addP(sb,
@@ -384,6 +388,8 @@ public class GUI extends CoursePage {
                 # Start the GUI
                 root.mainloop()
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("GUI Design and Development", sb);
         w.addP(sb,
@@ -403,6 +409,7 @@ public class GUI extends CoursePage {
                 feedback from users and involve them in GUI design and
                 development.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

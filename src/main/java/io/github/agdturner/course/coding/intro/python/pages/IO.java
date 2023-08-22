@@ -64,6 +64,8 @@ public class IO extends CoursePage {
                 functionality for read and writing data in specific file formats
                 and processing data on the Web.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Standard Input", sb);
         w.addPST(sb, "The builtins module ");
@@ -82,6 +84,8 @@ public class IO extends CoursePage {
                 n_agents = input("Enter n_agents (a number between 10 and 100) and press the &lt;ENTER&gt; or &lt;RETURN&gt; key:")
                 print("The input detected is:", n_agents)
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Streams", sb);
         w.addPST(sb, "The builtins module ");
@@ -140,6 +144,8 @@ public class IO extends CoursePage {
                 option in the print function to force a flush which can also
                 sometimes be useful...<
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Reading and Writing Files Part 1", sb);
         w.addPST(sb, "The following code uses the builtins module ");
@@ -260,6 +266,8 @@ public class IO extends CoursePage {
                     for line in a:
                         f.write(line)
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("File formats", sb);
         w.addP(sb,
@@ -346,6 +354,8 @@ public class IO extends CoursePage {
                  the XML grammar defined by the Open Geospatial Consortium (OGC)
                 to express geographical features.
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Reading and Writing Files Part 2", sb);
         w.addP(sb,
@@ -441,6 +451,8 @@ public class IO extends CoursePage {
                 <a href="https://beautiful-soup-4.readthedocs.io/en/latest/">
                 Beautiful Soup</a> package is used later in the course to parse
                 some HTML.""");
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("Serialisation/Deserialisation", sb);
         w.addP(sb,
@@ -453,6 +465,8 @@ public class IO extends CoursePage {
                 <a href="https://docs.python.org/3/library/pickle.html">
                 pickle module</a>
                 """);
+        w.addDIVET(sb);
+        sb.append("\n");
 
         sid = addSection("OS and File Systems", sb);
         w.addP(sb,
@@ -513,6 +527,7 @@ public class IO extends CoursePage {
                 glob module</a> is useful for pattern hunting in files and
                 directories.
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

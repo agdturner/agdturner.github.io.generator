@@ -202,9 +202,9 @@ public abstract class Page {
      * @return SectionID
      */
     public SectionID addSubsection(String sectionName, StringBuilder sb) {
-        this.subsubsectionNo = 1;
-        String inPageID = "" + sectionNo + "." + this.subsectionNo;
-        this.subsectionNo += 1;
+        subsubsectionNo = 1;
+        String inPageID = "" + (sectionNo - 1) + "." + subsectionNo;
+        subsectionNo += 1;
         return addSection(inPageID, sectionName, sb, 3);
     }
 
@@ -216,9 +216,9 @@ public abstract class Page {
      * @return SectionID
      */
     public SectionID addSubsubsection(String sectionName, StringBuilder sb) {
-        this.subsubsectionNo += 1;
-        String inPageID = "" + sectionNo + "." + this.subsectionNo + "."
-                + this.subsubsectionNo;
+        subsubsectionNo += 1;
+        String inPageID = "" + (sectionNo - 1) + "." + (subsectionNo - 1) + "."
+                + subsubsectionNo;
         return addSection(inPageID, sectionName, sb, 4);
     }
 
@@ -232,14 +232,15 @@ public abstract class Page {
      */
     private SectionID addSection(String inPageID, String sectionName,
             StringBuilder sb, int level) {
+        w.addDIVST(sb);
         SectionID sid = new SectionID(site.sectionIDs.size(), this, inPageID);
         site.sectionIDs.add(sid);
         String s = inPageID + ". " + sectionName;
         site.addSection(sid, pageID, label + ": " + s);
-        String html = "<h" + level + " id=\"" + inPageID + "\">"
-                + s + "</h" + level + ">\n";
+        String html = "<H" + level + " id=\"" + inPageID + "\">"
+                + s + "</H" + level + ">\n";
         sb.append(html);
-        String link = "<a href=\"#" + inPageID + "\">" + s + "</a>";
+        String link = "<A href=\"#" + inPageID + "\">" + s + "</A>";
         sections.put(sid, new Section(level, sid, html, link));
         TreeSet<SectionID> sectionIDs = site.pageIDToSectionIDs.get(pageID);
         sectionIDs.add(sid);
@@ -253,7 +254,7 @@ public abstract class Page {
         writeHeader();
         writeH1();
         String page = getMainContent();
-        String contents = getPageContents();
+        String contents = getContents();
         if (contents != null) {
             w.add(contents);
         }
@@ -272,7 +273,7 @@ public abstract class Page {
     /**
      * @return The page contents.
      */
-    public abstract String getPageContents();
+    public abstract String getContents();
 
     /**
      * @return A list of elements that go in the HTML head section.

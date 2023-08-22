@@ -220,14 +220,12 @@ public abstract class Site {
         page.write();
         // Write footer
         // Add navigation
-        page.w.add("""
-                   <DIV class="footer">
-                   """);
+        page.w.add(Web_Strings.DIV_ST);
         page.w.add(page.getLinks("nav", false));
-        page.w.add(Web_Strings.P_ST + "Date last modified: " + LocalDate.now().toString() + ".Web_Strings.P_ET");
+        page.w.add(Web_Strings.P_ST + "Date last modified: " + LocalDate.now().toString() + Web_Strings.P_ET);
         String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
         page.w.add(Web_Strings.P_ST + Web_ContentWriter.getLink(cc0, "CC0 Licence") + Web_Strings.P_ET);
-        page.w.add("</DIV>");
+        page.w.add(Web_Strings.DIV_ET);
         // Write page
         try {
             page.w.writeHTML(page.path, "index", page.title + " Page", 
