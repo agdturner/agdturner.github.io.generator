@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import uk.ac.leeds.ccg.web.core.Web_Strings;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -111,18 +112,12 @@ public abstract class Page {
      * Write the header including: the dark/light style button and navigation.
      */
     protected void writeHeader() {
-        w.add("<header>");
         w.add("""
               <button id="style_button" onclick="swapStyle()"></button>
-              """);
-        w.add("""
-              <div class="navbar">
               """);
         if (!site.pages.isEmpty()) {
             w.add(site.getNavigationLinks("nav"));
         }
-        w.add("</div>");
-        w.add("</header>");
     }
 
     /**
@@ -258,13 +253,15 @@ public abstract class Page {
         writeHeader();
         writeH1();
         String page = getMainContent();
-        w.add(getPageContents());
+        String contents = getPageContents();
+        if (contents != null) {
+            w.add(contents);
+        }
         w.add(page);
     }
 
     public void writeH1() {
-        w.add("<div>");
-        w.add("<h1>" + title + "</h1>");
+        w.add(Web_Strings.H1_ST + title + Web_Strings.H1_ET);
     }
 
     /**
@@ -282,31 +279,18 @@ public abstract class Page {
      */
     public List<String> getHeadElements() {
         ArrayList<String> r = new ArrayList<>();
-        r.add("""
-              <!-- Styling. -->
-              <!-- The following href is blank, but will be populated once the
-              DOM is fully loaded. -->
-              <link id="css" rel="stylesheet" type="text/css" href="">\
-              """);
-        if (site.localPaths) {
-            r.add(
-                    """
-                    <script src="../../scripts/style.js"></script>
-                    <!-- The following are used for styling code. -->
-                    <script src="../../tools/highlight/highlight.min.js"></script>
-                    <script>hljs.highlightAll();</script>
-                    <link id="code_theme" rel="stylesheet" type="text/css" href="">
-                    """);
-        } else {
-            r.add(
-                    """
-                    <script src="/scripts/style.js"></script>
-                    <!-- The following are used for styling code. -->
-                    <script src="/tools/highlight/highlight.min.js"></script>
-                    <script>hljs.highlightAll();</script>
-                    <link id="code_theme" rel="stylesheet" type="text/css" href="">
-                    """);
-        }
+        r.add(
+                """
+                <!-- Styling -->
+                <!-- href to be populated by the script (once the DOM is fully loaded) -->
+                <link id="css" rel="stylesheet" type="text/css" href="" />
+                <script src="/scripts/style.js"></script>
+                <!-- For styling code -->
+                <script src="/tools/highlight/highlight.min.js"></script>
+                <script>hljs.highlightAll();</script>
+                <!-- href to be populated by the script (once the DOM is fully loaded) -->
+                <link id="code_theme" rel="stylesheet" type="text/css" href="" />
+                """);
         return r;
     }
 
@@ -346,188 +330,4 @@ public abstract class Page {
         sb.append("</code></pre>");
     }
 
-    /**
-     * Wrap a string with an HTML paragraph tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     */
-    public void addParagraph(StringBuilder sb, String s) {
-        addTag(sb, s, Strings.s_P);
-    }
-
-    /**
-     * Wrap the start of a string with an HTML start paragraph tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to add after the start tag.
-     */
-    public void addParagraphStart(StringBuilder sb, String s) {
-        addTagStart(sb, Strings.s_P);
-        sb.append(s);
-    }
-
-    /**
-     * Wrap the end of a string with an HTML end paragraph tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The String to add before the end tag.
-     */
-    public void addParagraphEnd(StringBuilder sb, String s) {
-        sb.append(s);
-        addTagEnd(sb, Strings.s_P);
-    }
-
-    /**
-     * Wrap a string with an HTML start and end tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     * @param tag The tag text.
-     */
-    public void addTag(StringBuilder sb, String s, String tag) {
-        addTagStart(sb, tag);
-        sb.append(s);
-        addTagEnd(sb, tag);
-    }
-
-    /**
-     * Wrap a String with a start tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     * @param tag The tag text.
-     */
-    public void addTagStart(StringBuilder sb, String s, String tag) {
-        sb.append("<").append(tag).append(">");
-        sb.append(s);
-    }
-
-    /**
-     * Add a start tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param tag The tag text.
-     */
-    public void addTagStart(StringBuilder sb, String tag) {
-        sb.append("<").append(tag).append(">");
-    }
-
-    /**
-     * Wrap a String with an end tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     * @param tag The tag text.
-     */
-    public void addTagEnd(StringBuilder sb, String s, String tag) {
-        sb.append(s);
-        sb.append("</").append(tag).append(">\n");
-    }
-
-    /**
-     * Add an end tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param tag The tag text.
-     */
-    public void addTagEnd(StringBuilder sb, String tag) {
-        sb.append("</").append(tag).append(">\n");
-    }
-
-    /**
-     * Wrap a string with an HTML pre tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     */
-    public void addPre(StringBuilder sb, String s) {
-        addTag(sb, s, Strings.s_pre);
-    }
-
-    /**
-     * Wrap a string with an HTML pre tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     */
-    public void addPreStart(StringBuilder sb, String s) {
-        addTagStart(sb, s, Strings.s_pre);
-    }
-
-    /**
-     * Wrap a string with an HTML end pre tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     */
-    public void addPreEnd(StringBuilder sb, String s) {
-        addTagEnd(sb, s, Strings.s_pre);
-    }
-
-    /**
-     * Wraps a string with start and HTML list item tags.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to wrap.
-     */
-    public void addLI(StringBuilder sb, String s) {
-        addTag(sb, s, Strings.s_li);
-    }
-
-    /**
-     * Wrap the start of a string with an HTML start list item tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to append after the start tag.
-     */
-    public void addLIStart(StringBuilder sb, String s) {
-        addTagStart(sb, s, Strings.s_li);
-    }
-
-    /**
-     * Wrap the end of a string with an HTML end list item tag.
-     *
-     * @param sb The StringBuilder to append to.
-     * @param s The string to append after the start tag.
-     */
-    public void addLIEnd(StringBuilder sb, String s) {
-        addTagEnd(sb, s, Strings.s_li);
-    }
-
-    /**
-     * Add a start HTML ordered list tag
-     *
-     * @param sb The StringBuilder to append to.
-     */
-    public void addOLStart(StringBuilder sb) {
-        addTagStart(sb, Strings.s_ol);
-    }
-
-    /**
-     * Add an end HTML ordered list tag
-     *
-     * @param sb The StringBuilder to append to.
-     */
-    public void addOLEnd(StringBuilder sb) {
-        addTagEnd(sb, Strings.s_ol);
-    }
-
-    /**
-     * Add a start HTML unordered list tag
-     *
-     * @param sb The StringBuilder to append to.
-     */
-    public void addULStart(StringBuilder sb) {
-        addTagStart(sb, Strings.s_ul);
-    }
-
-    /**
-     * Add an end HTML unordered list tag
-     *
-     * @param sb The StringBuilder to append to.
-     */
-    public void addULEnd(StringBuilder sb) {
-        addTagEnd(sb, Strings.s_ul);
-    }
 }

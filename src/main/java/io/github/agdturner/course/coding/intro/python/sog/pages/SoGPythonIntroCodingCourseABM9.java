@@ -41,7 +41,7 @@ public class SoGPythonIntroCodingCourseABM9 extends ABM9 {
         sb.append(super.getMainContent());
         
         SectionID sid = addSection("Assignment 1 submission", sb);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Update the README file for your repository and submit your work.
                 """);

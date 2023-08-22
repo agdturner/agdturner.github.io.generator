@@ -116,15 +116,4 @@ public class References extends CoursePage {
         sb.append("</div>\n");
         return sb.toString();
     }
-    
-    /**
-     * For writing the page to file. (This does not write out a contents.)
-     */
-    @Override
-    public void write() {
-        writeHeader();
-        writeH1();
-        String page = getMainContent();
-        w.add(page);
-    }
 }

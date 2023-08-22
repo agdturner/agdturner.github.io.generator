@@ -39,7 +39,7 @@ public class Classes extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Classes are templates for making objects. Objects are instances
                 of the 'class' that defines them. There can be many objects
@@ -49,13 +49,13 @@ public class Classes extends CoursePage {
                 class are known as 'methods' and the 'type' of an object is the
                 class that defines it.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Python class definitions can be embedded throughout programs,
                 but it is considered good practice to organise classes in
                 'modules'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Modules are source code files, the name of the module is given
                 by the filename which should be a short word all in lowercase.
@@ -68,7 +68,7 @@ public class Classes extends CoursePage {
                 cumbersome. (Details on modules is provided after the next ABM
                 practical.)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The name of a class should start with a capital letter and be
                 in 'CamelCase' (with no spaces and mostly in lower case except
@@ -76,7 +76,7 @@ public class Classes extends CoursePage {
                 """);
 
         sid = addSection("Class Definitions, Constructors, Attributes and Methods", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A class is defined using the keyword 'class' followed by the
                 name of the class, parentheses, and a colon, for example:
@@ -88,7 +88,7 @@ public class Classes extends CoursePage {
                 to declare parent classes that the class inherits from. Class
                 inheritence is detailed further in <a href="#3">Section 3</a>.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As mentioned, in Python, functions inside classes are called
                 'methods'. A class in Python has one and only one constructor
@@ -109,7 +109,7 @@ public class Classes extends CoursePage {
                         self.x = 0
                         self.y = 0
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Suppose this class was in a file named 'agentframework.py' -
                 and so in a module named 'agentframework', it could be
@@ -121,7 +121,7 @@ public class Classes extends CoursePage {
                 import agentframework
                 a = agentframework.Agent()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 And the 'x' and 'y' aatribute variables of 'a' - the instance
                 of the class could then be accessed using the dot operator '.'
@@ -134,7 +134,7 @@ public class Classes extends CoursePage {
                 a.x = 3 # <-- Sets the values of a.x to be 3
                 a.y = a.y + 1 # <-- Increases the value of a.y by 1
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A class constructor method may accept multiple arguments. For
                 example, the initial values for 'x' and 'y' could be passed in
@@ -147,7 +147,7 @@ public class Classes extends CoursePage {
                         self.x = x
                         self.y = y
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 When instantiating an instance of this Agent class, it is
                 necessary to pass in two argument as the constructor method does
@@ -160,7 +160,7 @@ public class Classes extends CoursePage {
                 import agents
                 a = agents.Agent(0, 0)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The parameters 'x' and 'y' do not have to have names
                 corresponding to the attributes, and they can be given default
@@ -176,19 +176,19 @@ public class Classes extends CoursePage {
                 """);
 
         sid = addSection("Inheritance", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In Python, all classes inherit (attributes and methods) from the
                 'type' metaclass. A 'metaclass' can be thought of as a factory
                 for producing classes.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The classes from which a class inherits are known as 'super
                 classes', and the classes that inherit from another class are
                 known as 'subclasses'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Inheritance is heirarchical and allows for things in common to
                 multiple classes to be stored in a super class avoiding having
@@ -196,7 +196,7 @@ public class Classes extends CoursePage {
                 attributes and methods in a superclass are accessible directly
                 from subclasses.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Methods can be 'overridden' by defining a method with the same
                 name as the superclass method. The function super() can be used,
@@ -204,14 +204,14 @@ public class Classes extends CoursePage {
                 can access the superclass method that it is overriding as shown
                 in the example below.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Python supports 'multiple inheritance' where a subclass may
                 inherit from multiple superclasses. To do this, the classes
                 being inherited from are specified in the class definition, each
                 separated by a comma.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following defines 'Goat' and 'Wolf' as classes that inherit
                 from the 'Agent' class:
@@ -233,7 +233,7 @@ public class Classes extends CoursePage {
                         super().__init__(x, y)
                         self.pack = pack
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The constructor methods of the Goat and Wolf classes call the
                 superclass constructor method. Each instance of Goat would be
@@ -243,7 +243,7 @@ public class Classes extends CoursePage {
                 attribute with the same name. In this example, 'pack' could be a
                 identifier or a list or something else.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Inheritance allows for a class (call it 'A') to be extended to
                 create different subclasses, and a further class to be defined
@@ -255,20 +255,20 @@ public class Classes extends CoursePage {
                 """);
 
         sid = addSection("Access Control", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Python does not have an direct way to declare the access level
                 or control access to variables or functions/methods as is common
                 in other languages.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Instead there is a naming convention which is that variables
                 that have a name starting with an underscore and functions
                 starting with a double underscore are not to be accessed
                 directly from outside the class or module.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The function property() can be used with a specifically named
                 get method to provide indirect access to a object attribute.
@@ -295,7 +295,7 @@ public class Classes extends CoursePage {
 
                     x = property(getx, setx, delx, "I'm the 'x' property.")
                 """);
-        addParagraph(sb, "This could be used from another module as follows:");        
+        w.addP(sb, "This could be used from another module as follows:");        
         addPythonCodeBlock(sb,
                 """
                 import agents:
@@ -303,12 +303,12 @@ public class Classes extends CoursePage {
                 a.x = 3
                 print(a.x) # <-- Prints 3
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 So, rather than access the attribute _x directly, this is done
                 via a function which is aliased as x.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Decorators can alternatively be used to achieve the same thing
                 as follows:
@@ -341,9 +341,9 @@ public class Classes extends CoursePage {
                 """);
 
         sid = addSection("Customisation", sb);
-        addParagraphStart(sb, "By default, when printing an object using the ");
+        w.addPST(sb, "By default, when printing an object using the ");
         sb.append(index.getReference("Python print", "print", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  function, the memory address of the object is printed, but
                 rarely is this useful. The '__str__' method can be overriden to
@@ -368,7 +368,7 @@ public class Classes extends CoursePage {
                     def __str__(self):
                         return super().__str__() + ", hungry=" + self.str(hungry)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 More details on customisation can be found in
                 <a href="https://docs.python.org/3/reference/datamodel.html#basic-customization">
@@ -376,7 +376,7 @@ public class Classes extends CoursePage {
                 """);
         
         sid = addSection("Further learning", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 For a more in depth consideration of classes, see:
                 <a href="https://docs.python.org/3/tutorial/classes.html">

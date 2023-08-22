@@ -39,7 +39,7 @@ public class Testing extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 There are a number of different types of testing involved in
                 developing software, some key ones are: functionality testing,
@@ -55,7 +55,7 @@ public class Testing extends CoursePage {
                 different ways to do this in Python that goes beyond the use of
                 """);
         sb.append(index.getReference("Python print", "print", sid));
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 statements which are also fundamental for a lot of testing and
                 issue diagnosis. As you should know by now, testing is key to
@@ -63,7 +63,7 @@ public class Testing extends CoursePage {
                 """);
 
         sid = addSection("Doctest", sb);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python Standard Library", sid));
         sb.append(" comes with ");
         sb.append(index.getReference("Python doctest", "doctest", sid));
@@ -75,8 +75,8 @@ public class Testing extends CoursePage {
                 a
                 """);
         sb.append(index.getReference("Python docstring", "docstring", sid));
-        addParagraphEnd(sb, " as per the example in 'calculator_doctest.py'.");
-        addParagraph(sb, 
+        w.addPET(sb, " as per the example in 'calculator_doctest.py'.");
+        w.addP(sb, 
                 """
                 Save
                 <a href="../../resources/testing/calculator_doctest.py">calculator_doctest.py</a>
@@ -84,7 +84,7 @@ public class Testing extends CoursePage {
                 anything. Try altering "0.3" to "0.30000000000000004" and run
                 the file again. The output should be along the following lines:
                 """);
-        addPre(sb, 
+        w.addPRE(sb, 
                 """
                 File "calculator_doctest.py", line 25, in __main__.add
                 Failed example:
@@ -100,9 +100,9 @@ public class Testing extends CoursePage {
                 """);
 
         sid = addSection("Unit Tests", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Unit Testing", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 is where individual units of source code - together with
                 associated control data, usage procedures, and operating
@@ -110,14 +110,14 @@ public class Testing extends CoursePage {
                 use. It aims to reduce software development risks, time, and
                 costs.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 In test driven development, the tests are written before the
                 functional code. When the code passes the tests, if the tests
                 have good enough coverage, then the functionality is
                 successfully implemented.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 It can be good to separate testing code from functional code so
                 that testing code does not have to be distributed with
@@ -130,15 +130,15 @@ public class Testing extends CoursePage {
                 specific modules, classes and functions to be easily found and
                 updated.
                 """);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python Standard Library", sid));
         sb.append(" comes with ");
         sb.append(index.getReference("Python unittest", "unittest", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 a module providing tools for constructing and running tests.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Consider the following example. The functional code is in
                 'calculator.py', the module contains a single function 'add'
@@ -149,8 +149,8 @@ public class Testing extends CoursePage {
         sb.append(index.getReference("Python decimal", "decimal", sid));
         sb.append(" to avoid some ");
         sb.append(index.getReference("Floating-point", "floating-point", sid));
-        addParagraphEnd(sb, " rounding issues.");
-        addParagraphStart(sb, 
+        w.addPET(sb, " rounding issues.");
+        w.addPST(sb, 
                 """
                 Save
                 <a href="../../resources/testing/calculator.py">calculator.py</a>
@@ -160,7 +160,7 @@ public class Testing extends CoursePage {
                 more details about developing unit tests in Python, see:
                 """);
         sb.append(index.getReference("Python unittest", "unittest", sid));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
         return sb.toString();
     }
 }

@@ -39,15 +39,15 @@ public class IO extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, "The Python standard library ");
+        w.addPST(sb, "The Python standard library ");
         sb.append(index.getReference("Python io", "io module", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  provides the main facilities for dealing with input and output
                 (IO). Numerous other standard library modules have functionality
                 for dealing with specific aspects and types of IO, including:
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 <a href="https://docs.python.org/3/library/fileinput.html">fileinput</a>,
                 <a href="https://docs.python.org/3/library/os.html">os</a>,
@@ -66,9 +66,9 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSection("Standard Input", sb);
-        addParagraphStart(sb, "The builtins module ");
+        w.addPST(sb, "The builtins module ");
         sb.append(index.getReference("Python input", "input", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  function reads input from the standard input 'stdin' which is
                 usually the keyboard. This continues until the &lt;ENTER&gt;
@@ -84,51 +84,51 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSection("Streams", sb);
-        addParagraphStart(sb, "The builtins module ");
+        w.addPST(sb, "The builtins module ");
         sb.append(index.getReference("Python print", "print", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  function writes to the standard output 'stdout' which is usually
                 the terminal/console/screen.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Stdin and stdout are streams - flows of data. Standard error
                 'stderr' is also a stream - one where error messages go. Like
                 stdout, stderr is usually written to the screen by default.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The streams stdin and stdout can be redirected to come from a
                 file (in the case of stdin), or go to a file (in the case of
                 stdout). From the Anaconda Prompt the following will stream data
                 from 'stdin.txt' into 'a.py' as it runs:
                 """);
-        addPre(sb, "python a.py &lt; stdin.txt");
-        addParagraph(sb,
+        w.addPRE(sb, "python a.py &lt; stdin.txt");
+        w.addP(sb,
                 """
                 The following will send output from running 'a.py' into
                 'stdout.txt':
                 """);
-        addPre(sb, "python a.py &gt; stdout.txt");
-        addParagraph(sb,
+        w.addPRE(sb, "python a.py &gt; stdout.txt");
+        w.addP(sb,
                 """
                 This would overwrite 'stdout.txt' if it already existed. To
                 append to the end of any existing 'stdout.txt', the following
                 could be used:
                 """);
-        addPre(sb, "python a.py &gt;&gt; stdout.txt");
-        addParagraph(sb, 
+        w.addPRE(sb, "python a.py &gt;&gt; stdout.txt");
+        w.addP(sb, 
                 "To stream data in and out, the following can be used:");
-        addPre(sb, "python a.py &lt; stdin.txt &gt; stdout.txt");
-        addParagraph(sb,
+        w.addPRE(sb, "python a.py &lt; stdin.txt &gt; stdout.txt");
+        w.addP(sb,
                 """
                 The stdout of one program can be piped to the stdin of another
                 program using the pipe symbol '|'.
                 """);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python print", "print", sid));
-        addParagraph(sb,
+        w.addP(sb,
                 """
                  function also includes an option to direct stout to a file.
                 That file has to be open in order for the writing to be
@@ -142,9 +142,9 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSection("Reading and Writing Files Part 1", sb);
-        addParagraphStart(sb, "The following code uses the builtins module ");
+        w.addPST(sb, "The following code uses the builtins module ");
         sb.append(index.getReference("Python open", "open", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  function to open a file in the current directory called 'a.in'
                 and read the file one line at a time streaming the output to the
@@ -157,13 +157,13 @@ public class IO extends CoursePage {
                     print(line)
                 f.close()
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The <a href="https://docs.python.org/3/c-api/file.html">
                 File Object</a> returned from the above
                 """);
         sb.append(index.getReference("Python open", "open", sid));
-        addParagraph(sb,
+        w.addP(sb,
                 """
                  function call 'f' is best closed once it is read by calling it's
                 'close' method as done on line 4 of the code snippet. After this
@@ -171,7 +171,7 @@ public class IO extends CoursePage {
                 system resources and is recommended as good practice altough
                 code will work without doing that.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 An alternative where a 'close' method call is not necessary uses
                 the keyword 'with'. The following does effectively the same as
@@ -183,19 +183,19 @@ public class IO extends CoursePage {
                     for line in f:
                         print(line)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This saves having to close the file, but it is awkward this
                 way to read several files simultaneously.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library
                 <a href="https://docs.python.org/3/library/fileinput.html">
                 fileinput module</a>
                 helps with reading multiple files simultaneously.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The
                 <a href="https://docs.python.org/3/library/io.html#io.IOBase.readlines\">
@@ -205,14 +205,14 @@ public class IO extends CoursePage {
                 wanted, then this can use a lot of memory and risks a
                 """);
         sb.append(index.getReference("Python MemoryError", "MemoryError", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  being raised. So, often it is better to parse a file in
                 portions, such as line by line. Parsing might involve processing
                 or simply storing parts or all of the line in one or more
                 variables.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Files are opened for writing in a similar way. Writing to a file
                 can be done as follows:
@@ -231,19 +231,19 @@ public class IO extends CoursePage {
                 # Close the file
                 f.close()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note the additional 'w' parameter passed into the Open
                 Function which prepares the file a.out to be written to. Writing
                 to a file requires different preparation to reading from a file.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 There are other optional arguments that can be used with the
                 """);
         sb.append(index.getReference("Python open", "open", sid));
-        addParagraphEnd(sb, " function, follow the link for details...");
-        addParagraph(sb,
+        w.addPET(sb, " function, follow the link for details...");
+        w.addP(sb,
                 """
                 An alternative using the keyword 'with' that does not
                 require closing the file is:
@@ -262,13 +262,13 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSection("File formats", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 File formats were briefly introduced in
                 <a href="../programming/index.html#2.2">Programming Section 2.2
                 </a>.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 All files are binary files, but some binary files are known as
                 'text files' - the encoding is generally recognised as text.
@@ -280,9 +280,9 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSubsection("CSV", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("CSV", "CSV format", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  files are text files of comma separated values. The values are
                 text, but this text might represent numbers. If a value contains
@@ -292,19 +292,19 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSubsection("JSON", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("JSON", "JavaScript Object Notation", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  (JSON) is an open standard file format and data interchange
                 format that uses human-readable text to store and transmit data
                 objects consisting of attribute–value pairs and arrays (or other
                 serializable values.
                 """);
-        addParagraphStart(sb, "Here is an example of some ");
+        w.addPST(sb, "Here is an example of some ");
         sb.append(index.getReference("GeoJSON", sid));
-        addParagraphEnd(sb, " data:");
-        addPre(sb, 
+        w.addPET(sb, " data:");
+        w.addPRE(sb, 
                 """
                 GeoJSON example
                 {
@@ -323,7 +323,7 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSubsection("Markup", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Markup is essentially tags and content. Tags often note the
                 ontological context of the content helping define it's meaning.
@@ -341,14 +341,14 @@ public class IO extends CoursePage {
                 for different kinds of information including
                 """);
         sb.append(index.getReference("GML", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  the XML grammar defined by the Open Geospatial Consortium (OGC)
                 to express geographical features.
                 """);
 
         sid = addSection("Reading and Writing Files Part 2", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following code reads a file line by line, parsing each line
                 by splitting it using a comma and converting each part into a
@@ -367,13 +367,13 @@ public class IO extends CoursePage {
                     data.append(data_line)
                 print(data)
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 It is easier to read and write CSV format files using functions
                 from the Python standard library
                 """);
         sb.append(index.getReference("Python csv", "csv module", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  written specifically to do this. The following is an example of
                 reading some numeric data:
@@ -388,13 +388,13 @@ public class IO extends CoursePage {
                         print(value) # Floats
                 f.close()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The keyword argument 'quoting=csv.QUOTE_NONNUMERIC' not only
                 puts quotation marks around non numeric data, but also converts
                 some number formats into Floats.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following is an example of using the csv module to write
                 data:
@@ -408,15 +408,15 @@ public class IO extends CoursePage {
                     writer.writerow(row) # List of values.
                 f.close()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The optional delimiter kwarg specified here delimits using a
                 space ' ' instead of the default comma ',', so this would
                 actually not generate CSV format data!
                 """);
-        addParagraphStart(sb, "The following code uses the standard library ");
+        w.addPST(sb, "The following code uses the standard library ");
         sb.append(index.getReference("Python json", "json module", sid));
-        addParagraphEnd(sb, " to read a JSON file:");
+        w.addPET(sb, " to read a JSON file:");
         addPythonCodeBlock(sb,
                 """
                 import json
@@ -425,7 +425,7 @@ public class IO extends CoursePage {
                 f.close()
                 print(data)
                 """);
-        addParagraph(sb, "The following code can be used to write a JSON file:");
+        w.addP(sb, "The following code can be used to write a JSON file:");
         addPythonCodeBlock(sb, 
                 """
                 import json
@@ -433,7 +433,7 @@ public class IO extends CoursePage {
                 json.dump(data, f)
                 f.close()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library for processing HTML and XML is:
                 <a href="https://docs.python.org/3/library/markup.html">
@@ -443,7 +443,7 @@ public class IO extends CoursePage {
                 some HTML.""");
 
         sid = addSection("Serialisation/Deserialisation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Serialisation is the conversion of program data into data
                 stored typically in a file. Deserialisation is the opposite
@@ -455,7 +455,7 @@ public class IO extends CoursePage {
                 """);
 
         sid = addSection("OS and File Systems", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library
                 (<a href="https://docs.python.org/3/library/os.html">os module
@@ -464,7 +464,7 @@ public class IO extends CoursePage {
                 system (OS), including 'environment variable' manipulation and
                 file system navigation.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Environment variables are variables at the OS level. The mapping
                 object
@@ -474,39 +474,39 @@ public class IO extends CoursePage {
                 program. For example, the following will print the
                 """);
         sb.append(index.getReference("PATH", sid));
-        addParagraphEnd(sb, ":");
+        w.addPET(sb, ":");
         addPythonCodeBlock(sb, 
                 """
                 import os
                 print(os.environ["PATH"])
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 And the following will print a list of every file and directory
                 in the current working directory:
                 """);
         addPythonCodeBlock(sb, "print os.listdir(path='.')");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library
                 <a href="https://docs.python.org/3/library/pathlib.html">
                 pathlib module</a>
                 helps with handling file paths and managing file systems
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library
                 <a href="https://docs.python.org/3/library/tempfile.html">
                 tempfile module</a> is useful for creating temporary files.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library
                 <a href="https://docs.python.org/3/library/shutil.html">
                 shutil module</a> is useful for copying files and directory
                 structures.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The standard library
                 <a href="https://docs.python.org/3/library/glob.html">

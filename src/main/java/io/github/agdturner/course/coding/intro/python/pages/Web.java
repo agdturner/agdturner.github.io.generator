@@ -39,7 +39,7 @@ public class Web extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Internet", sid));
         sb.append(
                 """
@@ -49,29 +49,29 @@ public class Web extends CoursePage {
         sb.append(index.getReference("TCP/IP", "Internet protocol suite", sid));
         sb.append(" commonly known as 'TCP/IP'. The ");
         sb.append(index.getReference("World Wide Web", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  (Web) is a set of interlinked data or documents within the
                 Internet. Connections are made between data and documents
                 via connections between different machines on the internet
                 that host and serve the documents and data.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 This section of the course provides some details of how the Web
                 works...
                 """);
         
         sid = addSection("Network Sockets, Port Numbers, Addresses and Protocols", sb);
-        addParagraphStart(sb, "A '");
+        w.addPST(sb, "A '");
         sb.append(index.getReference("Network Socket", "network socket", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 ' connects machines so that data can be sent and recieved
                 between them across a network. The normal operation is for a
                 client to contact a server to open the socket for data transfer.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 In Python, to open a network socket and send some data, the
                 following code can be used:
@@ -85,18 +85,18 @@ public class Web extends CoursePage {
 
                 socket_1.send(bytes("hello world", encoding="UTF-8"))
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 In this code: the connection is to 'localhost' - the local
                 machine; the '
                 """);
         sb.append(index.getReference("Port", "port number", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 ' for the connection is 5555; and, the bytes representing
                 "hello world" in a unicode String are sent.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following code sets up a server socket to listen on the same
                 port, the server code is set to receive 30 bytes of data and
@@ -113,15 +113,15 @@ public class Web extends CoursePage {
                 b = socket_2.recv(30)
                 print(str(b))
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Web applications typically open multiple network sockets and
                 data transfers are normally initiated following a communication
                 protocol.
                 """);
-        addParagraphStart(sb, "Most computers use ");
+        w.addPST(sb, "Most computers use ");
         sb.append(index.getReference("TCP/IP"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 when communicating on the Internet. The Internet Protocol (IP)
                 is used to split data into small chunks called "packets" and
@@ -129,20 +129,20 @@ public class Web extends CoursePage {
                 Control Protocol (TCP) routes packets, and ensures they reach
                 and are reassembled at the destination.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Ports are numerical handles which individual software
                 applications associate with. The computer directs input from the
                 associated port to the specific software. The first 1024 ports
                 are allocated to specific purposes and protocols.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 IP addresses are codes uniques to each networked machine. The
                 Domain Name Service (DNS) is a mapping from these codes to a Web
                 address (or host name which is often easier to remember).
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To set up client/server software using sockets, it is best to
                 avoid specifying ports already in use and liaise with your local
@@ -151,7 +151,7 @@ public class Web extends CoursePage {
                 """);
         
         sid = addSection("The World Wide Web", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The World Wide Web (Web) is a client-server system using port 80
                 and the hyper-text communication protocols:
@@ -166,7 +166,7 @@ public class Web extends CoursePage {
                 to via a
                 """);
         sb.append(index.getReference("URL", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 . The URL comprises: a protocol identifier e.g. "HTTP", "HTTPS",
                 "FTP"; a case sensitive host name, e.g. "www.w3.org"; a case
@@ -181,7 +181,7 @@ public class Web extends CoursePage {
                 """);
         
         sid = addSubsection("Web Pages", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Web pages consist of text that is displayed and tags that are
                 not. The tags are formatting details and references to other
@@ -190,15 +190,15 @@ public class Web extends CoursePage {
                 interactive. The tags are referred to as
                 """);
         sb.append(index.getReference("HTML", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 . HTML files are text files typically saved with the filename
                 suffix ".html" (and sometimes ".htm"). (If the filename is
                 missing from the URL, by default, many servers will send a file
                 named "index.html" if it exists.
                 """);
-        addParagraph(sb, "A basic webpage:");
-        addPre(sb, 
+        w.addP(sb, "A basic webpage:");
+        w.addPRE(sb, 
                 """
                 <code>&lt;!DOCTYPE html>
                 &lt;HTML lang="en-GB">
@@ -210,7 +210,7 @@ public class Web extends CoursePage {
                 &lt;/BODY>
                 &lt;/HTML></code>
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 All the elements are marked up using tags. Each tag starts with
                 the symbol "&lt;" and ends with the symbol ">". Most tags have a
@@ -218,37 +218,37 @@ public class Web extends CoursePage {
                 but preceded by the symbol "/". What is between the start and
                 end tags is content.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 HTML tags can be nested, so HTML can be regarded as having a
                 tree structure which is called the 'Document Object Model
                 (DOM)', where each element is a child of some parent, and each
                 document has a root.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Data within a Web page is sometimes encoded in tables, that is,
                 between a start table tag '&lt;TABLE>' and an end table tag
                 '&lt;/TABLE>'. Within these table values are marked up using
                 other tags for rows and column elements.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In the next ABM practical you are guided through the process of
                 parsing HTML and extracting some data from an HTML TABLE.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 HTML elements may be given classes (generic groupings) and IDs
                 (names specific to themselves) as attributes. These are declared
                 in the start tag for the element, for example:
                 """);
-        addPre(sb, """
+        w.addPRE(sb, """
                    <code>&lt;TABLE class="data" id="table_1"></code>
                    """);
         
         sid = addSubsection("Web Page Design", sb);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 In general it is good practice to separate the content of a Web
                 page from information about how to style it. This is typically
@@ -256,50 +256,50 @@ public class Web extends CoursePage {
                 a
                 """);
         sb.append(index.getReference("CSS", "Cascading Style Sheet", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  (CSS). These are linked to the HTML in the 'HEAD' section with
                 the following tag:
                 """);
-        addPre(sb, 
+        w.addPRE(sb, 
                 """
                 <code>&lt;link rel="stylesheet" href="url_to_css_file"></code>
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The CSS file can be located relative to the page in the
                 directory structure by replacing the URL with the relative file
                 path.
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 The focus of design should be usability. A key part of this is
                 """);
         sb.append(index.getReference("Web Accessibility", "accessibility",
                 sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 . If you are working for a public organisation, accessibility
                 should be a major design driver.
                 """);
         
         sid = addSubsection("Processing Web Pages", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Web pages can be retrieved by issuing HTTP requests. In Python
                 a good option for this is the
                 """);
         sb.append(index.getReference("Python Requests", "Requests library",
                 sid));
-        addParagraphEnd(sb, " that comes with Anaconda.");
-        addParagraphStart(sb,
+        w.addPET(sb, " that comes with Anaconda.");
+        w.addPST(sb,
                 """
                 Once the content of a Web page has been retrieved a helpful
                 library for parsing the HTML is the
                 """);
         sb.append(index.getReference("Beautiful Soup",
                         "Beautiful Soup library", sid));
-        addParagraphEnd(sb, "");
+        w.addPET(sb, "");
         return sb.toString();
     }
 }

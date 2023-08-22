@@ -39,7 +39,7 @@ public class ABM2 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Recap and preparation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 "Your ABM1 'model.py' code should look something like:");
         addPythonCodeBlock(sb,
                 """
@@ -114,9 +114,9 @@ public class ABM2 extends CoursePage {
                 distance = math.sqrt(ssd)
                 print("distance", distance)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Running the code should produce the following text output:");
-        addPre(sb,
+        w.addPRE(sb,
                 """
                 x0 49
                 y0 97
@@ -134,7 +134,7 @@ public class ABM2 extends CoursePage {
                 distance 5.0
                 distance 5.0
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In your local code repository src directory create a new
                 directory called 'abm2'. Open Spyder and save 'model.py' into
@@ -142,30 +142,30 @@ public class ABM2 extends CoursePage {
                 """);
 
         sid = addSection("Using Lists", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Rather than handle coordinates for each agent individually, the
                 coordinates for each agent will be stored in
                 """);
         sb.append(index.getReference("Python list", "lists", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  of length 2, with the first item being an 'x' coordinate, and
                 the second item being a 'y' coordinate. All agents are also
                 going to be stored in a list.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The code is also going to be reorganised so that the agents are
                 created in a
                 """);
         sb.append(index.getReference("Python for", "for loop", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 , and there will be a second for loop to adjust the coordinates
                 (move the agents).
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Towards the top of the file (below the import statements and
                 setting of the random seed) add the following to create a new
@@ -176,14 +176,14 @@ public class ABM2 extends CoursePage {
                 # Create a list to store agents
                 agents = []
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Next, add coordinates to this list: First add one pair after
                 initialising 'y0' and 'x0', by adding the following:
                 """);
         addPythonCodeBlock(sb,
                 "agents.append([x0,y0]) # Append to the list agents");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that '[x0,y0]' creates a list containing 'x0' and 'y0', and
                 the 'append' function adds this list to the agents list. After
@@ -191,14 +191,14 @@ public class ABM2 extends CoursePage {
                 agent in the agents list and 'agents[0][1]' is the 'y'
                 coordinate of the first agent in the agents list.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Go through and replace all the other uses of 'x0' with indexed
                 list references, i.e. 'agents[0][0]' and 'y0' with
                 'agents[0][1]' (uses - not the initial assignments). Check your
                 code still runs.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The code that creates the first agent and adds this to the
                 agents list should be as follows:
@@ -213,7 +213,7 @@ public class ABM2 extends CoursePage {
                 print("y0", y0)
                 agents.append([x0, y0])
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that the variables 'x0' and 'y0' are only created for this
                 initialisation. Can you think of a way to reduce this code and
@@ -221,15 +221,15 @@ public class ABM2 extends CoursePage {
                 """);
 
         sid = addSection("Plotting", sb);
-        addParagraphStart(sb, "To plot the agents using ");
+        w.addPST(sb, "To plot the agents using ");
         sb.append(references.getReference("Matplotlib"));
-        addParagraphEnd(sb, " add the following import statements:");
+        w.addPET(sb, " add the following import statements:");
         addPythonCodeBlock(sb,
                 """
                 import matplotlib.pyplot as plt
                 import operator
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "And adding the following code to the end of 'model.py':");
         addPythonCodeBlock(sb,
                 """
@@ -240,18 +240,18 @@ public class ABM2 extends CoursePage {
                 # Get the coordinates with the largest x-coordinate
                 print(max(agents, key=operator.itemgetter(0)))
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Run 'model.py' and you should see an image output in the
                 'Plots' pane of Spyder. The image should contain two points.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Have a look at
                 <a href="https://matplotlib.org/stable/api/pyplot_summary.html">
                 the matplotlib pyplot documentation</a>
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 After the code that plots the points black, plot the point with
                 the largest x coordinate red. One way to do this is to store
@@ -259,18 +259,18 @@ public class ABM2 extends CoursePage {
                 and y-coordinate as arguments to the command aliased as 'plt'
                 before the 'show()' command.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Have a try and don't worry if you don't get this to work.");
 
         sid = addSection("Using Loops", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This section guides you through restructuring your code so that
                 agent initialisation (for all agents) happens first, and moving
                 (for all agents) happens second. There will be loops for each of
                 these things and for plotting all the agents.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To prepare yourself, review your code. In doing so, it might
                 help to insert some blank lines to separate different parts of
@@ -278,7 +278,7 @@ public class ABM2 extends CoursePage {
                 doing.
                 """);
         addParagraphCommitToGitHub(sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Comment out the code for initialising and changing the
                 coordinates of the second agent. After the line of code that
@@ -286,19 +286,19 @@ public class ABM2 extends CoursePage {
                 set this equal to '10'. Then create a
                 """);
         sb.append(index.getReference("Python for", "for loop", sid));
-        addParagraph(sb, " that uses n_agents to create 10 agents as follows:");
+        w.addP(sb, " that uses n_agents to create 10 agents as follows:");
         addPythonCodeBlock(sb,
                 """
                 n_agents = 10
                 for i in range(n_agents):
                     agents.append([random.randint(0, 99), random.randint(0, 99)])
                 """);
-        addParagraph(sb, "Check your program still runs.");
-        addParagraph(sb,
+        w.addP(sb, "Check your program still runs.");
+        w.addP(sb,
                 """
                 Delete or comment out any other code that initialises agents.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Use another for loop to move all 10 agents. And use another for
                 loop to plot all 10 agents black. Hopefully, there is still a
@@ -308,7 +308,7 @@ public class ABM2 extends CoursePage {
         addParagraphCommitToGitHub(sb);
         
         sid = addSection("More Plotting", sb);        
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Similarly to plotting the agent with the largest x coordinate
                 red, write code to plot the agent with the smallest x coordinate
@@ -318,20 +318,20 @@ public class ABM2 extends CoursePage {
         addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code Review and Looking Forward", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 If you managed to complete all parts, then it should be straight
                 forward to modify your code to run for different numbers of
                 agent. Have a try and also think about how you would get the
                 agents to move multiple times.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 If you got stuck, then don't worry, look ahead to the start of
                 the next ABM practical where some code that does everything is
                 provided.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Next we will look in more detail about functions and how to
                 document them. Then in the next ABM practical: a loop will be

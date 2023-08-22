@@ -39,15 +39,15 @@ public class Exceptions extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 A Python exception is 'raised' when the Python interpreter
                 encounters an error. There are numerous types of exception, all
                 are types of
                 """);
         sb.append(index.getReference("Python BaseException", "BaseException", sid));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb,
+        w.addPET(sb, ".");
+        w.addPST(sb,
                 """
                 The raised exception is an object which contains details of the
                  error and what code was being executed when the error was
@@ -55,21 +55,21 @@ public class Exceptions extends CoursePage {
                 """);
 
         sid = addSection("Try-Except", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 If it is suspected that code might generate an exception, or if
                 code raises an exception and analysis of this is to be done,
                 then a
                 """);
         sb.append(index.getReference("Python try", "try", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  compound statement can be used with an 'except' clause. This
                 tries to run the code in the 'try' section and if specific
                 exceptions are raised, then the code in the except clause is
                 run.
                 """);
-        addParagraph(sb, "Consider the following example:");
+        w.addP(sb, "Consider the following example:");
         addPythonCodeBlock(sb,
                 """
                 # Catch an exception
@@ -83,13 +83,13 @@ public class Exceptions extends CoursePage {
                     a = 0
                 print("Done")
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To reiterate, this will run the 'try' clause of the compound
                 statement, and if an exception is raised in running that, then
                 (and only then) will the 'except' clause run.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The 'except' clause in the example above catches any exception
                 type. It is possible to be more specific and catch particular
@@ -98,7 +98,7 @@ public class Exceptions extends CoursePage {
                 """);
         sb.append(index.getReference("Python ZeroDivisionError", 
                         "ZeroDivisionError", sid));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
         addPythonCodeBlock(sb,
                 """
                 # Catch a specific exception:
@@ -112,13 +112,13 @@ public class Exceptions extends CoursePage {
                     a = 0
                 print("Done")
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There is a
                 <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">
                 heirarchy of exception types</a>.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 If an exception is encountered and is not of the type handled
                 by an except clause, it is raised to where the code that raised
@@ -127,13 +127,13 @@ public class Exceptions extends CoursePage {
                 top level when the program exits and a stacktrace error message
                 (which lists exception raising details) is printed.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 More than one type of exception can be handled simultaneously in
                 a couple of ways:
                 """);
-        addOLStart(sb);
-        addLIStart(sb, 
+        w.addOLST(sb);
+        w.addLIST(sb, 
                 "The except clause can contain a tuple of types, for example:");
         addPythonCodeBlock(sb, 
                 """
@@ -144,8 +144,8 @@ public class Exceptions extends CoursePage {
                     a = 0
                 print("Done")
                 """);
-        addLIEnd(sb, "");
-        addLIStart(sb, "Using multiple except clauses, for example:");
+        w.addLIET(sb, "");
+        w.addLIST(sb, "Using multiple except clauses, for example:");
         addPythonCodeBlock(sb, 
                 """
                 import random
@@ -158,31 +158,31 @@ public class Exceptions extends CoursePage {
                     a = 0
                 print("Done")
                 """);
-        addLIEnd(sb, "");
-        addOLEnd(sb);
+        w.addLIET(sb, "");
+        w.addOLET(sb);
 
         sid = addSection("Raising Exceptions", sb);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Exceptions are raised automatically if they are encountered and
                 not handled in an 'except' clause.
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 The keyword 'raise' can be used to raise an exception by simply
                 giving the exception type. The following raises a
                 """);
         sb.append(index.getReference("SystemError", sid));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
         addPythonCodeBlock(sb, "raise SystemError");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 New types of exception can be defined by subclassing an
                 exception from the builtins module.
                 """);
 
         sid = addSection("Else and Finally", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To run something only if exceptions are not raised, add an
                 'else' clause, for example:
@@ -199,7 +199,7 @@ public class Exceptions extends CoursePage {
                     # Exceptions here are raised.
                 print("Done")
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To run code whether an exception is raised or not, then add a
                 'finally' clause, for example:
@@ -217,27 +217,27 @@ public class Exceptions extends CoursePage {
                 print("Done")
                 """);
         sb.append("<!--");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In executing the finally clause, any exceptions encountered are
                 raised after the finally has run.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Finally clauses are always executed, even if there is a Return
                 Statement (return) in the try or except clauses.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Exceptions raised in executing the finally clause are nested
                 within the prior saved exception.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Break and return statements within a finally clause will delete
                 the saved exception.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 If the Try-Except compound statement is in a loop, then the
                 Continue Keyword (continue) can be used to execute the finally
@@ -247,7 +247,7 @@ public class Exceptions extends CoursePage {
         sb.append("-->");
 
         sid = addSection("System Exit", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 To exit a program at any point, call the
                 '<a href="https://docs.python.org/3/library/sys.html#sys.exit">
@@ -255,20 +255,20 @@ public class Exceptions extends CoursePage {
                 from the
                 """);
         sb.append(index.getReference("Python sys", "sys module", sid));
-        addParagraphEnd(sb, ". For example:");
+        w.addPET(sb, ". For example:");
         addPythonCodeBlock(sb,
                 """
                 import sys
                 sys.exit()
                 """);
-        addParagraph(sb, "This has an arg option:");                      
+        w.addP(sb, "This has an arg option:");                      
         addPythonCodeBlock(sb, "sys.exit(arg)");
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Where arg is a number that the system will report. Zero is
                 usually regarded as exiting with no issues.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 For details on error codes, see:
                 <a href="https://docs.python.org/3/library/errno.html">errno</a>

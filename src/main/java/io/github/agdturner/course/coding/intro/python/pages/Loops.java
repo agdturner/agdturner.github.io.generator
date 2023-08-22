@@ -40,11 +40,11 @@ public class Loops extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, "Python has syntax for '");
+        w.addPST(sb, "Python has syntax for '");
         sb.append(index.getReference("While Loop", "while loops", sid));
         sb.append("' and '");
         sb.append(index.getReference("For Loop", "for loops", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 '. While loops are typically used to repeat something until a
                 condition is reached. For loops are typically used to repeat
@@ -53,9 +53,9 @@ public class Loops extends CoursePage {
                 """);
 
         sid = addSection("While", sb);
-        addParagraphStart(sb, "The following provides an example of a ");
+        w.addPST(sb, "The following provides an example of a ");
         sb.append(index.getReference("Python while", "while", sid));        
-        addParagraphEnd(sb, " statement:");
+        w.addPET(sb, " statement:");
         addPythonCodeBlock(sb,
                 """
                 x = 1
@@ -63,15 +63,15 @@ public class Loops extends CoursePage {
                     print(x)
                     x += 1
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 If a while loops condition never evaluates as 'False' then the
                 loop will continue indefinitely. This is sometimes a reason why
                 a program fails to terminate when you were expecting it to.
                 """);
-        addParagraphStart(sb, "A ");
+        w.addPST(sb, "A ");
         sb.append(index.getReference("Python break", "break", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  statement breaks out of a loop which is commonly done when some
                 other condition is reached. For example, consider the following
@@ -87,11 +87,11 @@ public class Loops extends CoursePage {
                     x -= 1
                 print(x)
                 """);
-        addParagraph(sb, "The output of which is:");
-        addPre(sb, "999991");
-        addParagraphStart(sb, "The ");
+        w.addP(sb, "The output of which is:");
+        w.addPRE(sb, "999991");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python continue", "continue", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  statement gets the program to return to the start of a loop
                 when a condition is reached:
@@ -106,15 +106,15 @@ public class Loops extends CoursePage {
                         continue
                     print(x, end =" ")
                 """);
-        addParagraph(sb, "The output of which is:");
-        addPre(sb, "1 3 5 7 9");
-        addParagraph(sb, 
+        w.addP(sb, "The output of which is:");
+        w.addPRE(sb, "1 3 5 7 9");
+        w.addP(sb, 
                 """
                 An 'else' clause can be used with a while loop and this code
                 within it is executed when the while condition evaluates as
                 'False'.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Note that in the above code snippet a 'keyword argument
                 (kwarg)' called 'end' is used in the print command to substitute
@@ -122,11 +122,11 @@ public class Loops extends CoursePage {
                 """);
 
         sid = addSection("For", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("For Loop", "For loops", sid));
         sb.append(" in Python (");
         sb.append(index.getReference("Python for", "for loop", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 ) are used with sequences that are 'iterable'. Iterable means
                 can be gone through one at a time. In the following example, the
@@ -139,10 +139,10 @@ public class Loops extends CoursePage {
                 for x in (0,1,2,3,4,5,6,7,8,9):
                     print(x)
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 "For sequences of numbers, it is much more common to use a ");
         sb.append(index.getReference("Python range", "range", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 , for example, the following does the same as the previous
                 example:
@@ -152,14 +152,14 @@ public class Loops extends CoursePage {
                 for x in range(10):
                     print(x)
                 """);
-        addParagraph(sb, "It is also common to use a slice, for example:");
+        w.addP(sb, "It is also common to use a slice, for example:");
         addPythonCodeBlock(sb,
                 """
                 names = ("Dale", "Albert", "Gordon", "Tamara", "Philip", "Chester", "Windom")
                 for name in names[1:5:2]:
                     print(name) # <-- Prints "Albert", "Tamara"
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Sometimes it is helpful to know the index in the sequence when
                 iterating, so alternatively we can do the following:
@@ -170,7 +170,7 @@ public class Loops extends CoursePage {
                 for i in range(len(names)):
                     print(i, names[i])
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Note, that 'i' cannot be changes within the loop to skip
                 objects. As assignment for 'i' would creates a new variable. So
@@ -184,8 +184,8 @@ public class Loops extends CoursePage {
                     i += 2
                     print(i)
                 """);
-        addParagraph(sb, "Produces:");
-        addPre(sb,
+        w.addP(sb, "Produces:");
+        w.addPRE(sb,
                 """
                 0 Dale
                 2
@@ -202,7 +202,7 @@ public class Loops extends CoursePage {
                 6 Windom
                 8
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Slices copy containers, while ranges are iterators that
                 actually generate the values one at a time. So, it is more
@@ -214,13 +214,13 @@ public class Loops extends CoursePage {
                 for i in range(2,len(names),2):
                     print(names[i])
                 """);
-        addParagraph(sb, "Instead of:");
+        w.addP(sb, "Instead of:");
         addPythonCodeBlock(sb,
                 """
                 for name in names[2::2]:
                     print(name)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A disadvantage of not having an index counter and using a
                 sequence is that it makes it harder to remove items from the
@@ -236,7 +236,7 @@ public class Loops extends CoursePage {
                     names.remove(name)
                 print(names)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A solution to this is to create a slice containing everything
                 and then remove from the original list:
@@ -248,33 +248,33 @@ public class Loops extends CoursePage {
                     names.remove(name)
                 print(names)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 It would though probably be better to simply reinitialise
                 'names' as an empty list.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 As with a while loop, an 'else' clause can be added to for loop
                 and is executed once the loop completes, or not at all if there
                 is a
                 """);
         sb.append(index.getReference("Python break", "break", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  statement that terminates the loop before the last iteration
                 completes.
                 """);
-        addParagraphStart(sb, "Also, a ");
+        w.addPST(sb, "Also, a ");
         sb.append(index.getReference("Python continue", "continue", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  statement can be used to skip to the start of the next loop
                 iteration in the same way as in a while loop.
                 """);
 
         sid = addSection("Nesting loops", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In spatial analysis it is common to want to go through two
                 dimensional (2D) raster data or tables of values. One way to do
@@ -293,13 +293,13 @@ public class Loops extends CoursePage {
                         print(value, end=" ")
                     print()
                 """);
-        addParagraph(sb, "The output of this program is:");
-        addPre(sb,
+        w.addP(sb, "The output of this program is:");
+        w.addPRE(sb,
                 """
                 0 1 2
                 3 4 5
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 It is often necessary to know and use the row and column
                 indexes. Another way to do this is as follows:
@@ -315,7 +315,7 @@ public class Loops extends CoursePage {
                         print(data[row][col], end=" ")
                     print()
                 """);
-        addParagraphStart(sb, "Recall that the ");
+        w.addPST(sb, "Recall that the ");
         sb.append(index.getReference("Python len", "len", sid));
         sb.append(
                 """
@@ -323,13 +323,13 @@ public class Loops extends CoursePage {
                 length of the sequence, and the
                 """);
         sb.append(index.getReference("Python range", "range", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  function turns an Integer argument into a sequence starting
                 from '0' and ending with one less than that argument stepping by
                 1.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 When processing raster data like this, care is needed not to
                 get rows and columns mixed up. This is easier to do if the data
@@ -337,7 +337,7 @@ public class Loops extends CoursePage {
                 """);
               
         sid = addSection("Moving Window Algorithms", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 These are commonly used in image processing and for surface
                 analysis. One of the difficulties in applying these concerns
@@ -371,8 +371,8 @@ public class Loops extends CoursePage {
                     print()
                 #print(result)
                 """);
-        addParagraph(sb, "The output of which is:<");
-        addPre(sb,
+        w.addP(sb, "The output of which is:<");
+        w.addPRE(sb,
                 """
                 14 15 16 17
                 20 21 22 23
@@ -381,7 +381,7 @@ public class Loops extends CoursePage {
                 """);
               
         sid = addSection("Next", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Use containers, branches and loops to simplify and extend the
                 Agent Based Model code.

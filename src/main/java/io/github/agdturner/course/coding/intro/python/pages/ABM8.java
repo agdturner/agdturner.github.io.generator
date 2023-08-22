@@ -39,18 +39,18 @@ public class ABM8 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This practical is about adding a Graphical User Interface (GUI).
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In your local code repository 'src' directory duplicate your
                 'abm7' directory and call the new directory 'abm8'.
                 """);
 
         sid = addSection("Setting up Tkinter", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Matplotlib has different 'backends' that allow it to render
                 graphics in different ways. As the GUI will be developed using
@@ -59,18 +59,18 @@ public class ABM8 extends CoursePage {
                 matplotlib imports:
                 """);
         addPythonCodeBlock(sb, "matplotlib.use('TkAgg')");
-        addParagraph(sb, "In Spyder, go to:");
-        addPre(sb, "Tools > Preferences > IPython console > Graphics tab");
-        addParagraph(sb,
+        w.addP(sb, "In Spyder, go to:");
+        w.addPRE(sb, "Tools > Preferences > IPython console > Graphics tab");
+        w.addP(sb,
                 """
                 Select 'Tkinter' from the 'Backend' drop down list. Click 'ok'.
                 Then select:
                 """);
-        addPre(sb, "File > Restart");
-        addParagraph(sb, "Save your files if prompted.");
+        w.addPRE(sb, "File > Restart");
+        w.addP(sb, "Save your files if prompted.");
 
         sid = addSection("Organising the GUI", sb);
-        addParagraph(sb, "Add the following function to 'model.py':");
+        w.addP(sb, "Add the following function to 'model.py':");
         addPythonCodeBlock(sb,
                 """
                 def run(canvas):
@@ -78,9 +78,9 @@ public class ABM8 extends CoursePage {
                     animation.new_frame_seq()
                     canvas.draw()
                 """);
-        addParagraph(sb, "Add the following import statement to 'model.py':");
+        w.addP(sb, "Add the following import statement to 'model.py':");
         addPythonCodeBlock(sb, "import tkinter as tk");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In 'model.py' replace the following line (not the line in the
                 new run function):
@@ -89,7 +89,7 @@ public class ABM8 extends CoursePage {
                 """
                 animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
                 """);
-        addParagraph(sb, "With:");
+        w.addP(sb, "With:");
         addPythonCodeBlock(sb,
                 """
                 # GUI
@@ -109,7 +109,7 @@ public class ABM8 extends CoursePage {
                 root.protocol('WM_DELETE_WINDOW', exiting)
                 tk.mainloop()
                 """);
-        addParagraph(sb, "Add the following functions to 'model.py':");
+        w.addP(sb, "Add the following functions to 'model.py':");
         addPythonCodeBlock(sb,
                 """
                 def output():
@@ -126,7 +126,7 @@ public class ABM8 extends CoursePage {
                     root.destroy()
                     #sys.exit(0)
                 """);
-        addParagraph(sb, "Change the 'gen_function' from:");
+        w.addP(sb, "Change the 'gen_function' from:");
         addPythonCodeBlock(sb,
                 """
                 def gen_function():
@@ -143,7 +143,7 @@ public class ABM8 extends CoursePage {
                         imageio.mimsave('../../data/output/out.gif', images, fps=3)
                         data_written = True
                 """);
-        addParagraph(sb, "To:");
+        w.addP(sb, "To:");
         addPythonCodeBlock(sb,
                 """
                 def gen_function():
@@ -158,19 +158,19 @@ public class ABM8 extends CoursePage {
                         menu_0.entryconfig("Write data", state="normal")
                         data_written = True
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Now if the window in which the animation runs is closed, the
                 program should exit and exiting the program is also added as a
                 menu option in the GUI.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The 'output' function now deals with writing the outputs and
                 this becomes actionable from the GUI once the simulation has
                 run.
                 """);
-        addParagraph(sb, "Run the program.");
+        w.addP(sb, "Run the program.");
         addParagraphCommitToGitHub(sb);
         sb.append("</div>\n");
         return sb.toString();

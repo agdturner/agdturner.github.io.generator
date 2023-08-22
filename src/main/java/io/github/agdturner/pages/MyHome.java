@@ -26,6 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uk.ac.leeds.ccg.web.core.Web_Strings;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -63,31 +64,31 @@ public class MyHome extends Page {
         sb.append("<div>");
         sb.append("<h1><img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" /></h1>");
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 In June 2023 I joined the <a href="
                 """);
         sb.append(Environment.HTTPS_ARC_LEEDS_AC_UK + "about/team/");
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 >Research Computing Team</a> at the University of Leeds as a
                 Research Software Engineer. I have worked at the University for
                 over 25 years mostly as a Research Office specialising in
                 computational geography.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 <a href="Python0/home/index.html">Python0</a>
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 <a href="Java0/home/index.html">Java0</a>
                 """);
-        addParagraph(sb, Web_ContentWriter.getLink(
+        w.addP(sb, Web_ContentWriter.getLink(
                         Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
                         "Github Profile"));
         // End WebPage
-        sb.append(Web_ContentWriter.DIVET);
+        sb.append(Web_Strings.DIV_ET);
         return sb.toString();
     }
 
@@ -112,20 +113,9 @@ public class MyHome extends Page {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    /**
-     * For writing the page to file. (This does not write out a contents.)
-     */
-    @Override
-    public void write() {
-        writeHeader();
-        writeH1();
-        String page = getMainContent();
-        w.add(page);
-    }
-
     @Override
     public String getPageContents() {
-        return "";
+        return null;
     }
 
 }

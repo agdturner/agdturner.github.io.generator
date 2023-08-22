@@ -39,63 +39,68 @@ public class ABM1 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, 
-                "This series of practicals develops a simple spatial ");
+        w.addPST(sb,
+                """
+                Part 1 in a series of 9 practicals with instructions to \
+                develop a simple spatial \
+                """);
         sb.append(index.getReference("ABM", "Agent Based Model", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb, 
                 """
-                 (ABM) - a model for simulating the actions and interactions of
-                entities (agents) located within an environment which may change
-                and be changed by the agents.
-                """);
-        addParagraph(sb,
+                 (ABM) - a model for simulating the actions and interactions \
+                of entities (agents) located within a spatial environment \
+                which may change and be changed by the agents.""");
+        w.addP(sb,
                 """
-                Initially the agents will simply have locations within the
-                environment and will move around randomly. The model will run
-                iteratively where each iteration is effectively a time step.
-                The enviornment might change in a time step, and the agents may
-                interact with the environment and each other in a time step.
-                """);
-        addParagraph(sb, "Following instructions, you get to learn about:");
-        addULStart(sb);
-        addLI(sb, "testing, debugging and refactoring code;");
-        addLI(sb, "using loops, conditionals and containers;");
-        addLI(sb, "defining and using functions and classes;");
-        addLI(sb, "reading and writing data files;");
-        addLI(sb, "organising code into modules;");
-        addLI(sb, "developing a simple Graphical User Interface (GUI); and,");
-        addLI(sb, "scraping and processing data from the Web.");
-        addULEnd(sb);
-        addParagraph(sb,
+                Agents will be located at coordinates in the environment and \
+                move around randomly interacting with the environment and each \
+                other. How the agents interact will be based on their \
+                characteristics, the characteristics of their environment, and \
+                the characteristics of other agents in their environment.""");
+        w.addP(sb,
                 """
-                The agents will have simple behaviours and will interact with
-                the environment. The model will be initialised by reading data
-                read from files. The model simulation will be visualised as an
-                animation. Model progress will be printed to the console.
-                Additional outputs from the model will be saved in files.
-                """);
+                The model will iterate with a regular time step in that all \
+                agents will have a turn at interacting in each iteration."""); 
+        w.addP(sb, "You will learn about:");
+        w.addULST(sb);
+        w.addLI(sb, "testing, debugging and refactoring code;");
+        w.addLI(sb, "using loops, conditionals and containers;");
+        w.addLI(sb, "defining and using functions and classes;");
+        w.addLI(sb, "reading and writing data files;");
+        w.addLI(sb, "organising code into modules;");
+        w.addLI(sb, "developing a simple Graphical User Interface (GUI); and,");
+        w.addLI(sb, "scraping and processing data from the Web.");
+        w.addULET(sb);
+        w.addP(sb, "The final version of will:");
+        w.addULST(sb);
+        w.addLI(sb, "initialise agents by reading data from the Web;");
+        w.addLI(sb, "initialise the environment with data read from a file;");
+        w.addLI(sb, "the simulation will be visualised as an animation;");
+        w.addLI(sb, "display information about the model as it runs;");
+        w.addLI(sb, "create output files; and,");
+        w.addLI(sb, "produce results that can easily be reproduced.");
+        w.addULET(sb);
 
-        sid = addSection("Getting started", sb);
-        addParagraph(sb,
+        addSection("Getting started", sb);
+        w.addP(sb,
                 """
-                Initially two agents are going to be represented in an abstract
-                two dimensional plane. The location of these agents will be
-                given by cartesian coordinates: (x0, y0) and (x1, y1). They will
-                be initialised at the same location and will move randomly one
-                step. Code will be written to calculate the distance between
-                coordinates.
-                """);
-        addParagraph(sb,
+                Initially two agents are going to be represented in an \
+                abstract two dimensional plane. The location of these agents \
+                will be given by the coordinates: (x0, y0) and (x1, y1). \
+                They will be initialised at the same location and will move \
+                randomly one step. Code will be written to calculate the \
+                distance between coordinates.""");
+        w.addP(sb,
                 """
-                The code will subsequently be refactored (rewritten) so it is
+                The code will subsequently be refactored (rewritten) so it is \
                 more concise and easier to understand, maintain and reuse.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                The algorithm to implement for this practical can be written as
-                follows:
+                The algorithm to implement for this practical can be written \
+                as follows:
                 """);
-        addPre(sb,
+        w.addPRE(sb,
                 """
                 # Initialise variable x0
                 # Initialise variable y0
@@ -105,98 +110,92 @@ public class ABM1 extends CoursePage {
                 # Change x1 and y1 randomly
                 # Calculate the Euclidean distance between (x0, y0) and (x1, y1)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                In your local code repository create a new directory called
-                'src' and within this create a new directory called 'abm1'.
+                In your local code repository create a new directory 'src' and \
+                within this create a new directory 'abm1'.
                 """);
-        addParagraph(sb,
+        w.addP(sb, "Create a file 'model.py' in the 'abm1' directory.");
+        w.addP(sb,
+                "Copy the algorithm above and paste it in.");
+        w.addP(sb,
                 """
-                Open Spyder and save the file as 'model.py' in the 'abm1'
-                directory.
-                """);
-        addParagraph(sb,
-                "Copy the algorithm above and paste it into the file.");
-        addParagraph(sb,
-                """
-                Add a line after the line "# Initialise a variable x0'", to
-                initialise a variable 'x0' with the value '0', then a line to
-                print 'x0':
-                """);
+                Add a line after the line "# Initialise a variable x0", to \
+                initialise a variable 'x0' with the value '0', then a line to \
+                print 'x0':""");
         addPythonCodeBlock(sb,
                 """
                 x0 = 0
                 print("x0", x0)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                Save and run the program. The output from running the program
+                Save and run the program. The output from running the program \
                 should be:
                 """);
-        addPre(sb, "x0 0");
-        addParagraphStart(sb, "Note that two parameters are passed into the ");
+        w.addPRE(sb, "x0 0");
+        w.addPST(sb, "Note that two parameters are passed into the ");
         sb.append(index.getReference("Python print", "print"));
-        addParagraphEnd(sb, 
+        w.addPET(sb,
                 """
-                function. These are printed out sequentially with a space
-                delimiter by default.
-                """);
-        addParagraph(sb, "Do the same for variable 'y0'.");
+                function. These are printed out sequentially with a space \
+                delimiter by default.""");
+        w.addP(sb, "Do similarly to initialise the variable 'y0'.");
 
         sid = addSection("Randomly changing values", sb);
-        addParagraphStart(sb, "The Python standard library ");
+        w.addPST(sb, "The Python standard library ");
         sb.append(index.getReference("Python random", "random module", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb,
                 """
-                 implements pseudo-random number generators for various
-                distributions and provides a way to change variable values
-                randomly. To use the module it has to be imported. Towards the
-                top of 'model.py' add the following import statement:
-                """);
+                 implements pseudo-random number generators for various \
+                distributions and provides a way to change variable values \
+                randomly. To use the module it has to be imported. Towards \
+                the top of 'model.py' add the following import statement:""");
         addPythonCodeBlock(sb, "import random");
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                It is good practice to organise import statements at the top of
-                files as this makes them easy to find and makes it less likely
-                that a module is imported multiple times, which does not raise
-                excpetions and stop code executing as expected, but clutters
-                code and makes it less efficient.
-                """);
-        addParagraphStart(sb, "Use an ");
+                It is good practice to organise import statements at the top \
+                of files as this makes them easy to find and makes it less \
+                likely that modules are imported multiple times. Whilst \
+                importing modules multiple time is not likely to result in \
+                errors, it is usually not necessary and generally \
+                inefficent.""");
+        w.addPST(sb, "Use an ");
         sb.append(index.getReference("Python if", "if statement", sid));
         sb.append(
                 """
-                 to determine whether to increase or decrease 'x0' based on the
-                value obtained from a call to the function
-                """);
+                 to determine whether to increase or decrease 'x0' based on \
+                the value obtained from a call to the function""");
         sb.append(index.getReference("Python random.random", "random", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
-                : First obtain and print a pseudo-random number in the range
-                [0, 1) as follows:
-                """);
+                : First obtain and print a pseudo-random number in the range \
+                [0, 1) as follows:""");
         addPythonCodeBlock(sb,
                 """
                 rn = random.random()
                 print(rn)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                Run your program a few times to observe that the value of 'rn'
-                varies randomly.
-                """);
-        addParagraph(sb,
+                Run your program a few times to observe that the value of 'rn' \
+                varies somewhat randomly.""");
+        w.addP(sb,
                 """
-                What is happening, is that the start (seed) of pseudo-random
-                sequence used to generate numbers randomly is being set from the
-                computer clock time (which moves on incrementally at a high
-                frequency.
-                """);
-        addParagraph(sb,
+                What is happening, is that the start (seed) of a pseudo-random \
+                sequence used to generate numbers randomly is being set from \
+                the computer clock time (which updates many times a second). \
+                So, each time the code is run, a different seed is set and the \
+                movement of the agents might be different. The seed set in \
+                this way would nearly always be different and so results will \
+                often be different and the more so, the more changes there \
+                were in the model. We will reconsider how to make results more \
+                reprocuible in due course.""");
+        w.addP(sb,
                 """
-                Declare an 'if statement' so that if the value 'rn' is less than
-                '0.5' increase 'x0' by '1', otherwise decrease "'x0' by '1':
-                """);
+                Declare an 'if statement' so that if the value 'rn' is less \
+                than '0.5' increase 'x0' by '1', otherwise decrease "'x0' by \
+                '1':""");
         addPythonCodeBlock(sb,
                 """
                 if rn < 0.5:
@@ -205,29 +204,26 @@ public class ABM1 extends CoursePage {
                     x0 = x0 - 1
                 print("x0", x0)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                Run your program a few times to observe that sometimes the
-                value of 'x0' increases and sometimes it decreases and this
-                corresponds to the value of 'rn'.
-                """);
-        addParagraph(sb,
+                Run your program a few times to observe that sometimes the \
+                value of 'x0' increases and sometimes it decreases and this \
+                corresponds to the value of 'rn'.""");
+        w.addP(sb,
                 """
-                When testing code, it is unhelpful for results to vary
-                randomly in ways that are difficult to repeat, as this makes
-                conditions that only occassionally happen difficult to
-                investigate. So, it is sensible to 'set the seed' of random
-                and in doing so ensure that the same results are produced each
-                time. After the import statements add the following:
-                """);
+                When testing code, it can be difficult if results vary from \
+                one run to the next, so it can be helpful to set the random \
+                seed to ensure that the same results are produced each time. \
+                At the top of your code, after the import statements add the \
+                following:""");
         addPythonCodeBlock(sb,
                 """
                 # Set the pseudo-random seed for reproducibility
                 random.seed(0)
                 """);
-        addParagraph(sb, 
+        w.addP(sb,
                 "When run, the program should generate the following output:");
-        addPre(sb,
+        w.addPRE(sb,
                 """
                 x0 0
                 y0 0
@@ -235,87 +231,75 @@ public class ABM1 extends CoursePage {
                 b False
                 x0 - 1
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                For different results pass in a different value into the 'seed'
-                function (e.g. random.seed(1)), for more random results the time
-                could be input as the 'seed'.
-                """);
-        addParagraph(sb,
+                To generate different results you pass in a different \
+                parameter value into the 'seed' function.""");
+        w.addP(sb,
                 """
-                Similarly modify the value of 'y0'. Then similarly initialise
-                the variables 'x1' and 'y1' and then similarly modify these
-                randomly. Test that the movements vary for different seeds and
-                that changes in each coordinate are independent of how the other
-                coordinates change.
-                """);
+                Similarly modify the value of 'y0'. Then similarly initialise \
+                the variables 'x1' and 'y1' and then similarly modify these \
+                randomly. Test that the movements vary for different seeds and \
+                that changes in each coordinate are independent of how the \
+                other coordinates change.""");
 
         addSection("Calculate the Euclidean distance", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                Use the
-                <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">
-                Pythogorean theorem</a> to calculate the distance between the
-                cartesian coordinates (x0, y0) and (x1, y1). The algorithm is:
-                """);
-        addPre(sb,
+                Use the \
+                <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem"> \
+                Pythogorean theorem</a> to calculate the distance between the \
+                coordinates (x0, y0) and (x1, y1). The algorithm is:""");
+        w.addPRE(sb,
                 """
                 # Calculate the difference in the x coordinates.
                 # Calculate the difference in the y coordinates.
                 # Square the differences and add the squares
-                # Calculate the square root</pre>
+                # Calculate the square root
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                At the end of your source code set: 'x0' and 'y0' to equal '0';
-                'x1' to equal '3', and 'y1' to equal '4'. Then add the algorithm
-                above into your source code and try to calculate the distance
-                between the cartesian coordinates(0, 0) and (3, 4). The symbol
-                '**' can be used to raise a number to the power of another
-                number. So, raising a number to the power of '0.5' calculates
-                the square root.
-                """);
-        addParagraphStart(sb, "(Alternatively, import the standard library ");
-        sb.append(index.getReference("Python math", "math module", sid));
-        addParagraphEnd(sb, 
-                """
-                 and use the
-                <a href="https://docs.python.org/3/library/math.html#math.sqrt">
-                sqrt</a> function. The expected distance between (0, 0) and
-                (3, 4) is 5.
-                """);
+                At the end of your source code set: 'x0' and 'y0' to equal \
+                '0'; 'x1' to equal '3', and 'y1' to equal '4'. Then copy and \
+                paste the Pythogorean theorem algorithm into your source code. \
+                Try to implement the algorithm, but spend no more than 5 \
+                minutes trying to do this. Hints: the distance between \
+                coordinates (0, 0) and (3, 4) is 5; the symbol '**' can be \
+                used to raise a number to the power of another number; raising \
+                a number to the power of '0.5' calculates the square root; \
+                testing can simply be done by printing out the result.""");
 
         sid = addSection("Review, commit and look ahead", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
-                Hopefully, you managed to develop code that produces the correct
-                answer. If not, do not worry, the important thing is to have
-                tried. Perhaps look ahead to the start of the next ABM practical
-                where some code that does everything is provided.
-                """);
-        addParagraph(sb,
+                Hopefully, you managed to develop code that produces the \
+                correct answer. If not, do not worry, the important thing is \
+                to have tried and not spent too long trying.""");
+        w.addP(sb,
                 """
-                There is a lot of repetition in the code. The agents are not
-                well defined. There are just some variables that have been
-                changed randomly. If the code that changes the variable randomly
-                was duplicated the coordinates would move as many times as that
-                code is duplicated. But, there is a better to do this with less
-                code repetition and that results in easier to understand and
-                maintain code.
+                There is a lot of repetition in the code.""");
+        w.addPST(sb, 
+                """
+                An alternative, to using '**0.5' to calculate a square root is \
+                to import the standard library \
                 """);
+        sb.append(index.getReference("Python math", "math module", sid));
+        w.addPET(sb,
+                """
+                 and use the \
+                <a href="https://docs.python.org/3/library/math.html#math.sqrt"> \
+                sqrt</a> function.""");
         addParagraphCommitToGitHub(sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
-                In the next ABM practical: Each pair of coordinates will be
-                stored together in a container,
+                In the next ABM practical: The code will be modified so the \
+                coordinates for each agent are stored together in a container; \
                 """);
         sb.append(index.getReference("Python for", "for loops"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
-                will be used to create and move more agents, and the model will
-                be visualised.
-                """);
-        sb.append("</div>\n");
+                will be used to create and move more agents, and the model \
+                will be visualised.""");
         return sb.toString();
     }
 }

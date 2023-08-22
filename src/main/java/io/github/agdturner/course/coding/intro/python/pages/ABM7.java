@@ -39,7 +39,7 @@ public class ABM7 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In this practical
                 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html">
@@ -47,21 +47,21 @@ public class ABM7 extends CoursePage {
                 will be used to animate the model in a separate window. Some
                 stopping conditions will be added to halt the model and exit.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In your local code repository 'src' directory duplicate your
                 'abm6' directory and name it 'abm7'.
                 """);
 
         sid = addSection("Animation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Open the new 'model.py' file from the 'abm7' directory in
                 Spyder.
                 """);
-        addParagraph(sb, "Add the following import statement:");
+        w.addP(sb, "Add the following import statement:");
         addPythonCodeBlock(sb, "import matplotlib.animation as anim");
-        addParagraph(sb,
+        w.addP(sb,
                 "After initialising agents add the following code block:");
         addPythonCodeBlock(sb,
                 """
@@ -73,7 +73,7 @@ public class ABM7 extends CoursePage {
                 data_written = False
                 animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Define a new function called 'plot' to contain the 'Plot agents'
                 code. Add a line to clear fig at the start of the function and
@@ -105,7 +105,7 @@ public class ABM7 extends CoursePage {
                 images.append(imageio.imread(filename))
                 plt.show()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the 'main simulation loop' code block into a function
                 called 'update' that has a parameter called 'frames'. At the end
@@ -155,7 +155,7 @@ public class ABM7 extends CoursePage {
                     # Plot
                     plot()
                 """);
-        addParagraph(sb, "Define a function called 'gen_function' as follows:");
+        w.addP(sb, "Define a function called 'gen_function' as follows:");
         addPythonCodeBlock(sb,
                 """
                 def gen_function():
@@ -172,23 +172,23 @@ public class ABM7 extends CoursePage {
                         imageio.mimsave('../../data/output/out.gif', images, fps=3)
                         data_written = True
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Before running the code, issue the following magic command in
                 the Spyder console so that rather than the plot being directed
                 to the plots pane (where") animation does not work), it is
                  directed to a pop-up window:
                 """);
-        addPre(sb, "%matplotlib qt");
-        addParagraph(sb,
+        w.addPRE(sb, "%matplotlib qt");
+        w.addP(sb,
                 """
                 If you want to revert this change so that plots are added to the
                  plot plane again issue the following magic command:
                 """);
-        addPre(sb, "%matplotlib inline");
-        addParagraphStart(sb, "The keyword '");
+        w.addPRE(sb, "%matplotlib inline");
+        w.addPST(sb, "The keyword '");
         sb.append(index.getReference("Python yield", "yield", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 ' is used to pass the value of the variable 'ite' back from
                 'gen_function' whilst continuing to run the while loop. The
@@ -198,18 +198,18 @@ public class ABM7 extends CoursePage {
         addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code and Model Review", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Most of your code should now be in functions and organised into
                 modules.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The model simulation runs in a loop until some condition is
                 reached, or until a predefined number of iterations
                 'n_iterations' is reached.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As yet, the model cannot be re-started. Some data is written to
                 file that could be used to restart the model, but this is
@@ -222,7 +222,7 @@ public class ABM7 extends CoursePage {
                 methods can be used to store the state of 'random' to get this
                 to work.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The simple agents in the model are not learning or adapting
                 their behaviour based on interaction or the state of the
@@ -230,32 +230,32 @@ public class ABM7 extends CoursePage {
                 adaptive/emergent behaviour from this model should not be
                 expected.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Whilst the model has been framed as an ecological model, the
                 agents could represent other things, they don't necessarily have
                 to communicate by sharing resources, they could share something
                 else, and they don't have to 'eat' the environment.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Some ideas for a more realistic ecological model are:");
-        addULStart(sb);
-        addLI(sb, 
+        w.addULST(sb);
+        w.addLI(sb, 
                 """
                 To have less resource that can be eaten by the agents, and
                 model this resource as vegetation that grows.
                 """);
-        addLI(sb, "Make movement cost some amount of store.");
-        addLI(sb, 
+        w.addLI(sb, "Make movement cost some amount of store.");
+        w.addLI(sb, 
                 """
                 Have those agents that are successful at finding resources
                 replicate and those unsuccessful die.
                 """);
-        addLI(sb, 
+        w.addLI(sb, 
                 """
                 Include predator agents that hunt/eat the other agents as prey.
                 """);
-        addULEnd(sb);
+        w.addULET(sb);
         return sb.toString();
     }
 }

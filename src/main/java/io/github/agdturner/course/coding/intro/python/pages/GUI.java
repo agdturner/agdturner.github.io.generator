@@ -39,9 +39,9 @@ public class GUI extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, "A ");
+        w.addPST(sb, "A ");
         sb.append(index.getReference("GUI", "Graphical User Interface", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  (GUI) is typically comprised of rectangular windows containing
                 panels and a menu bar. Panels can contain data displays which
@@ -51,7 +51,7 @@ public class GUI extends CoursePage {
                 cascading drop down menus that appear if the menu is somehow
                 selected.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Most programs with a GUI have a thread that 'listens' for
                 interaction and then changes variables and calls functions
@@ -59,7 +59,7 @@ public class GUI extends CoursePage {
                 keyboard or mouse actions. This is usually regarded as a
                 form of 'event-based' programming.
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 The Python standard library package and module for GUI
                 development is
@@ -68,15 +68,15 @@ public class GUI extends CoursePage {
         sb.append(" for which there is some ");
         sb.append(index.getReference("Python tk",
                         "additional reference documentation.", sid));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
         sb.append("<!--");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are various third party library alternatives, including:
                 <a href="https://www.wxpython.org/">wxpython</a>
                 """);
         sb.append("-->");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In tkinter, 'callbacks' are used to register a function with a
                 GUI component, so that when the GUI component is actioned, the
@@ -86,7 +86,7 @@ public class GUI extends CoursePage {
                 """);
 
         sid = addSection("Getting Started with tkinter", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following code sets up a main window called 'root', a
                 'Label' called 'label', a 'Button' to modify the label text via
@@ -131,7 +131,7 @@ public class GUI extends CoursePage {
                 """);
 
         sid = addSubsection("TTK", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A slightly different look is provided by a more recent "themed"
                 toolkit. The following does the same, but uses 'ttk' for the
@@ -176,7 +176,7 @@ public class GUI extends CoursePage {
                 """);
 
         sid = addSubsection("Menus", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following builds on the example setting up a menu and also
                 configuring so that if the window is closed, then the program
@@ -235,7 +235,7 @@ public class GUI extends CoursePage {
                 """);
 
         sid = addSection("Example scale or slider widget", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following sets up a scale or slider widget so that the user
                 can move the slider to change the power used to dynamically
@@ -386,7 +386,7 @@ public class GUI extends CoursePage {
                 """);
 
         sid = addSection("GUI Design and Development", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are various important things to consider in designing a
                 GUI. Usually the aim is to provide a GUI that is intuitive to
@@ -395,7 +395,7 @@ public class GUI extends CoursePage {
                 include a help system where users can search for infomration
                 about how to use the software.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In GUI design, it is often helpful to consider what are the
                 first and common things a user is likely to want to do. Also,

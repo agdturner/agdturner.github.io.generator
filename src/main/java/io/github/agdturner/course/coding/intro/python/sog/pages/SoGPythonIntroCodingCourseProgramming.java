@@ -33,7 +33,7 @@ public class SoGPythonIntroCodingCourseProgramming extends PythonIntroCodingCour
     @Override
     public SectionID getLearning0(StringBuilder sb) {
         SectionID sid = super.getLearning0(sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 You are at liberty to engage in online forums, but please do not
                 post questions about this course, particularly about the
@@ -45,7 +45,7 @@ public class SoGPythonIntroCodingCourseProgramming extends PythonIntroCodingCour
     @Override
     public SectionID getConsiderata0(StringBuilder sb) {
         SectionID sid = super.getConsiderata0(sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Keep in mind that it is important to keep track of what you
                 consult and avoid plagiarising (presenting other's work as your

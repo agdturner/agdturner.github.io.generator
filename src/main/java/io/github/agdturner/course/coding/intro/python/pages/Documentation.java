@@ -39,7 +39,7 @@ public class Documentation extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 <a href="https://docs.python.org/3/library/doctest.html">
                 PyDoc</a>
@@ -47,12 +47,12 @@ public class Documentation extends CoursePage {
                 the generation of a webpage from documentation, and can be run
                 from the Anaconda Prompt using:
                 """);
-        addPre(sb, "pydoc -w filename");
-        addParagraph(sb, 
+        w.addPRE(sb, "pydoc -w filename");
+        w.addP(sb, 
                 """
                 Where the filename is missing the ".py" part.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are other tools for helping to generate documentation,
                 including

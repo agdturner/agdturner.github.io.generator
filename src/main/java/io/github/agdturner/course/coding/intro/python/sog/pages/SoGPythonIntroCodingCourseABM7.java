@@ -40,7 +40,7 @@ public class SoGPythonIntroCodingCourseABM7 extends ABM7 {
         StringBuilder sb = new StringBuilder();
         sb.append(super.getMainContent());
         SectionID sid = addSection("Further Assignment 1 Coding Task", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Alter the stopping condition so that the model stops when the
                  average agent store is greater than 80.

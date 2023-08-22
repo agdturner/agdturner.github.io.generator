@@ -40,13 +40,13 @@ public class ABM5 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In this part the ABM environment entity will be initialise from
                 a file. The agents will interact with this environment in a
                 simplistic way, and an output file will be generated.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In your local code repository src directory create a new
                 directory called 'abm5'. Open Spyder and save 'model.py' and
@@ -59,24 +59,24 @@ public class ABM5 extends CoursePage {
                 """);
 
         sid = addSection("Input Data", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Download/save into your newly created input data directory the
                 text file:
                 <a href="../../resources/abm5/in.txt">in.txt</a>
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Open the file in a text editor. Note that the file comprises
                 lines of integer numbers delimited by commas. It is a
                 """);
         sb.append(index.getReference("CSV", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  format file. It is rectangular, indeed square and has 300 lines
                 each with 300 values.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Create a new source code file named 'io.py' in the 'abm5'
                 directory, add the following lines:
@@ -97,37 +97,37 @@ public class ABM5 extends CoursePage {
                 f.close()
                 print(data)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Run this new file. The output should correspond to the input
                 data file only the values are presented with '.0' appended (as
                 they have been loaded as Float and not Integer numbers).
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that the data variable is a list of lists. Essentially
                 the list is the rows of data and the lists contain the values in
                 the columns for each row.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the code block into a function called 'read_data' that
                 returns the data variable. Write code to call this function from
                 'model.py' by adding the following import statement:
                 """);
         addPythonCodeBlock(sb, "import io");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 After the import statements try to call the 'read_data' function
                 using:
                 """);
         addPythonCodeBlock(sb, "environment = io.read_data()");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 You should encounter an AttributeError along the lines of the
                 following:
                 """);
-        addPre(sb, 
+        w.addPRE(sb, 
                 """
                 Traceback (most recent call last):
               
@@ -136,7 +136,7 @@ public class ABM5 extends CoursePage {
               
                 AttributeError: module 'io' has no attribute 'read_data'
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This is somewhat confusing as the new 'io' module has a
                 function called 'read_data'! The exception is raised because
@@ -144,7 +144,7 @@ public class ABM5 extends CoursePage {
                 module which does not have an attribute named 'read_data'. It is
                 the standard library module called 'io' that is being imported!
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Either the non-standard library 'io' module needs to be
                 renamed, or it needs to be packaged - which involves creating a
@@ -159,12 +159,12 @@ public class ABM5 extends CoursePage {
                 import my_modules.agentframework as af
                 import my_modules.io as io
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Run 'model.py' and it should now run without the error. (If you
                 still get an error then restart Spyder.)
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Change the 'read_data' function so it checks that each row of
                 'data' contains the same number of values. Also change the
@@ -173,7 +173,7 @@ public class ABM5 extends CoursePage {
                 (Hint, pack these in a
                 """);
         sb.append(index.getReference("Python tuple", "tuple", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 , and unpack the returned tuple in the code that calls the
                 function initialising variables 'n_rows' and 'n_cols' as
@@ -181,18 +181,18 @@ public class ABM5 extends CoursePage {
                 """);
 
         sid = addSection("Plot environment", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Assume that each row of 'environment' aligns with a y-coordinate
                 and each column of 'environment' aligns with an x-coordinate.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To plot 'agents' on the 'environment' add the following at the
                 start of the plotting section:
                 """);
         addPythonCodeBlock(sb, "plt.imshow(environment)");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the initialisation of 'x_max' and 'y_max' to be as
                 follows:
@@ -204,13 +204,13 @@ public class ABM5 extends CoursePage {
                 # The maximum an agents y coordinate is allowed to be.
                 y_max = n_rows - 1
                 """);
-        addParagraph(sb, "A plot should be produced that looks like:");
-        addParagraph(sb,
+        w.addP(sb, "A plot should be produced that looks like:");
+        w.addP(sb,
                 """
                 <img src="../../resources/abm5/Figure_1.png"
                 alt="A plot of agents on the environment." />
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The pattern of agent locations is the same, although the plot
                 y-axis has flipped and the x-axis and y-axis now have the same
@@ -223,13 +223,13 @@ public class ABM5 extends CoursePage {
                 plt.ylim(y_min, y_max)
                 plt.xlim(x_min, x_max)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Run again and the output plot should look like:
                 <img src="../../resources/abm5/Figure_2.png"
                 alt="A plot of agents on a limited part of the environment." />
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Currently, the agents are being initialised in a corner of the
                 environment. Change the code so that they are initialised in the
@@ -262,7 +262,7 @@ public class ABM5 extends CoursePage {
                     tnr = int(n_rows / 3)
                     self.y = random.randint(tnr - 1, (2 * tnr) - 1)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the code that calls the constuctor method so it passes
                 in the variables 'n_rows' and 'ncols' approprately. Run
@@ -270,7 +270,7 @@ public class ABM5 extends CoursePage {
                 <img src="../../resources/abm5/Figure_3.png"
                 alt="A plot of agents on the environment in the middle." />
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that although the random seed has not changed, the pattern
                 of agent locations is different. This is because the calls to
@@ -290,12 +290,12 @@ public class ABM5 extends CoursePage {
                 """);
 
         sid = addSection("Agent-Environment Interaction", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Imagine that 'environment' values represent resources that
                 can be eaten or stored by agents.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the constructor method of the Agent class again so that
                 'environment' is also expected to be passed in and keep a
@@ -332,12 +332,12 @@ public class ABM5 extends CoursePage {
               self.y = random.randint(tnr - 1, (2 * tnr) - 1)
               self.store = 0
               """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change model.py so that environment is passed in correctly as
                 agents are initialised.
                 """);
-        addParagraph(sb, "In the Agent class define the following method:");
+        w.addP(sb, "In the Agent class define the following method:");
         addPythonCodeBlock(sb,
                 """
                 def eat(self):
@@ -345,22 +345,22 @@ public class ABM5 extends CoursePage {
                         self.environment[self.y][self.x] -= 10
                         self.store += 10
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This method checks the value of the 'environment' where the
                 agent is located and if this is greater than or equal to 10,
                 the value of 'environment' where the agent is located is reduced
                 by 10, and 10 is added to the 'store' attribute of the agent.
                 """);
-        addParagraph(sb, "Write a docstring for the 'eat' method.");
-        addParagraph(sb,
+        w.addP(sb, "Write a docstring for the 'eat' method.");
+        w.addP(sb,
                 """
                 In 'model.py' call the 'eat' method  after the move function and
                 run the program. Some values of 'environment' around where the
                 agents are should have changed, but this is difficult to see in
                 the plot.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the plot limits for a closer look at the centre of the
                 environment as follows:
@@ -370,19 +370,19 @@ public class ABM5 extends CoursePage {
               plt.ylim(y_max / 3, y_max * 2 / 3)
               plt.xlim(x_max / 3, x_max * 2 / 3)
               """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Run the program again and you should get the following image:
                 <img src="../../resources/abm5/Figure_4.png"
                 alt="A plot of agents on a limited part of the environment with
                 part of it eaten away and the agents centralised." />
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that two of the agents have moved to the right beyond the
                 limited area.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Increase 'n_iterations' to 100 and run again and you should get
                 the following image:
@@ -390,7 +390,7 @@ public class ABM5 extends CoursePage {
                 alt="A plot of agents on a limited part of the environment with
                 part of it eaten away." />
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note the checkered effect caused by the 'environment' being
                 eaten away. The checkering is a consequence of the way agents
@@ -399,7 +399,7 @@ public class ABM5 extends CoursePage {
         addParagraphCommitToGitHub(sb);
 
         sid = addSection("Further Assignment 1 Coding Tasks", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In the eat method of the Agent class, detail an 'else' clause of
                 the 'if' statement so that if the value of 'environment' where
@@ -407,24 +407,24 @@ public class ABM5 extends CoursePage {
                 there is removed and added to the store of the agent. Test this
                 works and write a few sentences about the testing in a document.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Define a function in 'model.py' that adds up all the values in
                 environment.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Define another function that adds up all the store values in
                 all the agents.
                 """);
         
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Print out these sums and check that the total amount of
                 resource and store in the system is not changing after each
                 iteration of the model.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Write a function called 'write_data' in 'io.py' to write out
                 the values of environment to a file and call this function after
@@ -433,7 +433,7 @@ public class ABM5 extends CoursePage {
         addParagraphCommitToGitHub(sb);
 
         sid = addSection("Code Review and Looking Forward", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Consider what happens when two or more agents are at the same
                 location and there is less resource at the location for all the

@@ -39,23 +39,23 @@ public class ABM9 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This practical is about using some data in an HTML file Table to
                 initialise part of the model.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In your local code repository 'src' directory duplicate your
                 'abm8' directory as 'abm9'.
                 """);
 
         sid = addSection("Parsing an HTML File", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 <a href="../../resources/abm9/data.html">The HTML to parse</a>.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Have a look at the source code for the file by either opening it
                 in a text editor or viewing the source in your Web browser.
@@ -64,13 +64,13 @@ public class ABM9 extends CoursePage {
                 <a href="../../resources/abm9/data.py">data.py</a>.)
                 -->
                 """);
-        addParagraph(sb, "Add the following import statements to 'model.py':");
+        w.addP(sb, "Add the following import statements to 'model.py':");
         addPythonCodeBlock(sb,
               """
               import requests
               import bs4
               """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Change the agent initialisation code block as follows:");
         String url = "https://" + site.env.domain + "/resources/abm9/data.html";
         addPythonCodeBlockStart(sb, 
@@ -95,7 +95,7 @@ public class ABM9 extends CoursePage {
                     agents.append(af.Agent(agents, i, environment, n_rows, n_cols, x, y))
                     print(agents[i].agents[i])
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Change the '__init__' function in 'agentframework.py' to:");
         addPythonCodeBlock(sb,
                 """

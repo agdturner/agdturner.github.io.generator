@@ -39,18 +39,18 @@ public class Branching extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 Branching controls the flow of a program. This part considers a
                 couple of ways of branching in Python. The main way uses an '
                 """);
         sb.append(index.getReference("Conditional", "if", sid));
-        addParagraphEnd(sb, "' statement.");
+        w.addPET(sb, "' statement.");
 
         sid = addSection("If", sb);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python if", "if statement", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  is a 'compound' statement (one that comprises groups of other
                 statements) that provides a means to branch based upon a
@@ -66,12 +66,12 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The if statement condition evaluates as False, so the result is:
                 """);
-        addPre(sb, "Weekday");
-        addParagraph(sb, "Changing the code slightly to:");
+        w.addPRE(sb, "Weekday");
+        w.addP(sb, "Changing the code slightly to:");
         addPythonCodeBlock(sb,
                 """
                 day_of_week = 6
@@ -81,9 +81,9 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day)
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb, "Weekend");
-        addParagraph(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb, "Weekend");
+        w.addP(sb,
                 """
                 An 'else' clause branches into two distinct paths which become
                 one again at the end of the compound if statement as in the
@@ -99,7 +99,7 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day) # <-- Prints Weekday
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 One or many 'elif' clauses can also be inserted between if and
                 else clauses. Elif is short for 'else if'. Consider the
@@ -123,7 +123,7 @@ public class Branching extends CoursePage {
                     day = "Weekend"
                 print(day) # <-- Prints Friday
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 It can be argued that it is better to store a dictionary to
                 look up the day from the day_of_week, but a simple look up does
@@ -132,9 +132,9 @@ public class Branching extends CoursePage {
                 """);
 
         sid = addSection("Match", sb);
-        addParagraphStart(sb, "Since Python 3.10 there is also a ");
+        w.addPST(sb, "Since Python 3.10 there is also a ");
         sb.append(index.getReference("Python match", "match", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  statement which can simplify if statements with many elif
                 clauses as a 'match-case' statement. The following example shows
@@ -158,35 +158,35 @@ public class Branching extends CoursePage {
                         day = "Weekend"
                 print(day) # <-- Prints Friday
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The final case is a catch all case using the anonymous variable
                 '_' which matches anything.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The match-case statement offers more than a syntactic variation,
                 as containers and other objects can be matched. Examples of
                 these and further details can be found in the relevant PEPS:
                 """);
-        addULStart(sb);
-        addLI(sb, 
+        w.addULST(sb);
+        w.addLI(sb, 
                 """
                 <a href="https://peps.python.org/pep-0634/">
                 PEP 634, Structural Pattern Matching: Specification</a>
                 """);
-        addLI(sb, 
+        w.addLI(sb, 
                 """
                 <a href="https://peps.python.org/pep-0635/">
                 PEP 635, Structural Pattern Matching: Motivation and Rationale
                 </a>
                 """);
-        addLI(sb, 
+        w.addLI(sb, 
                 """
                 <a href="https://peps.python.org/pep-0636/">
                 PEP 636, Structural Pattern Matching: Tutorial</a>
                 """);
-        addULEnd(sb);
+        w.addULET(sb);
         return sb.toString();
     }
 }

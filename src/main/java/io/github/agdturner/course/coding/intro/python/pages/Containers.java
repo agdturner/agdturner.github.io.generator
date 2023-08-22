@@ -39,7 +39,7 @@ public class Containers extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are various containers for data in Python including:
                 sequence objects (bytes, bytearrays, strings, tuples, ranges,
@@ -54,7 +54,7 @@ public class Containers extends CoursePage {
                 """);
 
         sid = addSection("Sequences", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Commonly used sequences include: strings, tuples, ranges, and
                 lists.
@@ -62,7 +62,7 @@ public class Containers extends CoursePage {
 
         sid = addSubsection("Bytes and Bytearray", sb);
         index.getReference("Bytes", "", sid);
-        addParagraphStart(sb, "A ");
+        w.addPST(sb, "A ");
         sb.append(index.getReference("Python bytes", "bytes", sid));
         sb.append(
                 """
@@ -77,19 +77,19 @@ public class Containers extends CoursePage {
                 related to
                 """);
         sb.append(index.getReference("Python strings", "strings", sid));
-        addParagraphEnd(sb, " in other ways.");
-        addParagraphStart(sb, "A ");
+        w.addPET(sb, " in other ways.");
+        w.addPST(sb, "A ");
         sb.append(index.getReference("Python bytearray", "bytearray", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 " is a mutable sequence of integers in the range [0, 255].");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 These are worth knowing about, but are not directly in this
                 course, so details are omitted.
                 """);
 
         sid = addSubsection("Strings", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python strings", "Strings", sid));
         sb.append(" are immutable sequences of ");
         sb.append(index.getReference("Unicode", sid));
@@ -105,13 +105,13 @@ public class Containers extends CoursePage {
                 quotation marks, or using the function
                 """);
         sb.append(index.getReference("Python str", "str", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  which allows strings to be constructed from other types of
                 object. Multiline strings are either encapsulated by triple
                 single quotes or triple double quotes.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Strings may contain quotation marks. If a string is encapsulated
                 using single quotes, then in order to contain single quote
@@ -121,7 +121,7 @@ public class Containers extends CoursePage {
                 symbols, then these need escaping. Also, if the string is to
                 include a backslash, then this also would need escaping.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As a string is a sequence, parts of it can be accessed using
                 indexes and it can also be 'sliced' (as explained in detail in
@@ -143,7 +143,7 @@ public class Containers extends CoursePage {
                 s9 = "strings " + "can be " + "concatenated using '+'"
                 print(s9) # <-- Prints strings can be concatenated using '+'
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A backslash can also ensure the continuation of a line. For
                 example:
@@ -154,13 +154,13 @@ public class Containers extends CoursePage {
                 all one line.
                 This is a second.''')
                 """);
-        addParagraph(sb, "Produces:");
-        addPre(sb,
+        w.addP(sb, "Produces:");
+        w.addPRE(sb,
                 """
                 This is all one line.
                 This is a second.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The symbol '#' can be included in a string. Source code
                 comments are only comments provided they are not in the string.
@@ -171,13 +171,13 @@ public class Containers extends CoursePage {
                 print('''This is \\ # Not a comment
                 all one line.''')
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb,
                 """
                 This is \\ # Not a comment
                 all one line.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 It is sometimes easier to use concatenation in order to add
                 source code comments:
@@ -188,13 +188,13 @@ public class Containers extends CoursePage {
                 "all one line.")
                 print("This is a second")
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb,
                 """
                 This is all one line.
                 This is a second.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The string class contains many useful
                 <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">
@@ -214,22 +214,22 @@ public class Containers extends CoursePage {
                 split1 = s.split(delimiter)
                 print(split1)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The two ways produce the same result. The delimeter is optional,
                 by default it is any blank space (a continuous sequence of
                 spaces, tabs and/or newlines).
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Search and replace is a common string operation as is finding
                 out if a string starts or ends with a particular string.
                 """);
 
         sid = addSubsection("Tuples", sb);
-        addParagraphStart(sb, "A ");
+        w.addPST(sb, "A ");
         sb.append(index.getReference("Python tuple", "tuple", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  is an immutable sequence that can be added to and nested. Like
                 strings, once created the items cannot be substituted and their
@@ -252,7 +252,7 @@ public class Containers extends CoursePage {
                 singleton = 'hello', # <-- Note the trailing comma.
                 print(len(singleton)) # Prints 1
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Try the code yourself, then consider the following code snippet
                 which generates part of a
@@ -269,9 +269,9 @@ public class Containers extends CoursePage {
                     a, b = b, a+b
                 print(b)
                 """);
-        addParagraph(sb, "The ");
+        w.addP(sb, "The ");
         sb.append(index.getReference("Python while", "while statement"));
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 is a loop with an expression that is evaluated each time around
                 the loop. While this expression 'b < 10' evaluates as 'True' the
@@ -283,15 +283,15 @@ public class Containers extends CoursePage {
                 """);
 
         sid = addSubsection("Ranges", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python range", "Ranges", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 " are a special type of immutable sequence created as follows:");
         addPythonCodeBlock(sb,
                 """
                 range(start, stop, step) # start and step are optional and default to 0 and 1 repectively
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The parameters: start, stop and step should be integers. The
                 range function generates numbers up to but not including stop,
@@ -302,8 +302,8 @@ public class Containers extends CoursePage {
                 for x in range(4):
                     print(x)
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb,
                 """
                 0
                 1
@@ -315,8 +315,8 @@ public class Containers extends CoursePage {
                 for x in range(2,8,2):
                     print(x)
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb,
                 """
                 2
                 4
@@ -327,8 +327,8 @@ public class Containers extends CoursePage {
                 for x in range(0,-5,-1)
                     print(x)
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb,
                 """
                 0
                 -1
@@ -336,12 +336,12 @@ public class Containers extends CoursePage {
                 -3
                 -4
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Try the code for yourself and then try to generate the following
                 using range and a for loop:
                 """);
-        addPre(sb,
+        w.addPRE(sb,
                 """
                 -10
                 -5
@@ -349,7 +349,7 @@ public class Containers extends CoursePage {
                 5
                 10
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A tuple can be constructed from a range or another sequence
                 producer:
@@ -362,10 +362,10 @@ public class Containers extends CoursePage {
                 t = tuple(r)
                 print(t) # <-- Prints (0, 1, 2, 3, 4)
                 """);
-        addParagraphStart(sb, "There are various ");
+        w.addPST(sb, "There are various ");
         sb.append(index.getReference("Python Built-in Functions",
                 "built-in functions", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  that process sequences, for example
                 <a href="https://docs.python.org/3/library/functions.html#min">
@@ -378,7 +378,7 @@ public class Containers extends CoursePage {
                 sum</a>
                 will add up all the values in a sequence.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Additionally, there are a number of
                 <a href="https://docs.python.org/3/library/stdtypes.html#common-sequence-operations">
@@ -402,16 +402,16 @@ public class Containers extends CoursePage {
                 """);
 
         sid = addSubsection("Lists", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python list", "Lists", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  are the mutable form of tuples. Lists have an order, different
                 types of thing can be stored in them, things can be appended,
                 inserted and removed from them. The elements within a list can
                 be reordered and there are various methods that help with this.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Lists are initialised with square brackets or using the
                 constructor that can take in some other container as an
@@ -431,12 +431,12 @@ public class Containers extends CoursePage {
                 print(type(b))
                 print(b)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Run this code and check if the output is what you expect and
                 then have a play around trying some different things.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A 'slice' of a sequence contains all those items at the indexes
                 given by a range:
@@ -455,18 +455,18 @@ public class Containers extends CoursePage {
                 d = a[:] # A complete slice i.e. all items of a
                 print("d", d)
                 """);
-        addParagraph(sb, "In slicing a list a using a[i:j:k]:");
-        addULStart(sb);
-        addLI(sb, "If j > len(a), the last position is used.");
-        addLI(sb, "If i is None or omitted, zero is used.");
-        addLI(sb, "If i > j, the slice is empty.");
-        addULEnd(sb);
-        addParagraph(sb, "Negative indexes can be used:");
-        addULStart(sb);
-        addLI(sb, "a[:2] # First two values.");
-        addLI(sb, "a[-2:] # Last two values.");
-        addULEnd(sb);
-        addParagraph(sb,
+        w.addP(sb, "In slicing a list a using a[i:j:k]:");
+        w.addULST(sb);
+        w.addLI(sb, "If j > len(a), the last position is used.");
+        w.addLI(sb, "If i is None or omitted, zero is used.");
+        w.addLI(sb, "If i > j, the slice is empty.");
+        w.addULET(sb);
+        w.addP(sb, "Negative indexes can be used:");
+        w.addULST(sb);
+        w.addLI(sb, "a[:2] # First two values.");
+        w.addLI(sb, "a[-2:] # Last two values.");
+        w.addULET(sb);
+        w.addP(sb,
                 """
                 Slices can be used with mutable sequences (like lists for
                 assignment). Consider the following example that replaces values
@@ -479,14 +479,14 @@ public class Containers extends CoursePage {
                 a[1:3] = b
                 print(a) # <-- Prints [0,10,20,30,3,4]
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Notice that the values '1' and '2' originally in index
                 positions 1 and 2 of 'a' are replaced by the three values in 'b'.
                 It is perhaps easier to thing of replacements as deletions and
                 insertions.
                 """);
-        addParagraph(sb, "The following example replaces 4 values with 2:");
+        w.addP(sb, "The following example replaces 4 values with 2:");
         addPythonCodeBlock(sb,
                 """
                 a = [0,1,2,3,4]
@@ -494,11 +494,11 @@ public class Containers extends CoursePage {
                 a[1:5] = b
                 print(a) # <-- Prints [0,10,20]
                 """);
-        addParagraphStart(sb,"<p>The ");
+        w.addPST(sb,"<p>The ");
         sb.append(index.getReference("Python builtins", "builtin module"));
         sb.append(" function ");
         sb.append(index.getReference("Python zip", "zip", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  can be used to combine lists into a sequence of tuples as
                 follows:
@@ -511,35 +511,35 @@ public class Containers extends CoursePage {
                 d = list(c)
                 print(d) # <-- Prints [(1,10),(2,20),(3,30),(4,40),(5,50)]
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The zip function pairs up the values by index. If the sequences
                 have different lengths then the paired up list is the length of
                 the shorter sequence and does not contain the end of the longer
                 sequence.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Command line arguments are passed in a list. For example, the
                 following command passes the filename 'HelloWorld.py' to the
                 Python interpreter which then loads the file of commands to
                 execute:
                 """);
-        addPre(sb, "python HelloWorld.py");
-        addParagraph(sb,
+        w.addPRE(sb, "python HelloWorld.py");
+        w.addP(sb,
                 """
                 More command line arguments can be passed, each one separated
                 by a space.
                 """);        
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The Python program receives the command line arguments as a
                 list. The first item in the list is the program filename. For
                 example, the following Python run command passes in four
                 arguments:
                 """);
-        addPre(sb, "python model.py arg1 arg2 arg3");
-        addParagraph(sb,
+        w.addPRE(sb, "python model.py arg1 arg2 arg3");
+        w.addP(sb,
                 """
                 Inside the program, these are made available in a list called
                 'sys.argv'. In the last example, sys.argv[0] is "model.py",
@@ -548,23 +548,23 @@ public class Containers extends CoursePage {
                 """);
 
         sid = addSubsection("Arrays", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python array", "Arrays", sid));
-        addParagraph(sb,
+        w.addP(sb,
                 """
                  are for storing and processing large collections of things of
                 the same type. Typically those things are numbers. An array is
                 like a list but it cannot be used to store anything, it can only
                 store things of a specific type.
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The following creates an array containing signed Integers and
                 inserts a new Integer value into the array. The attempts to
                 insert a Float into the array which results in a
                 """);
         sb.append(index.getReference("Python array", "TypeError", sid));
-        addParagraphEnd(sb, ":");
+        w.addPET(sb, ":");
         addPythonCodeBlock(sb,
                 """
                 import array
@@ -576,9 +576,9 @@ public class Containers extends CoursePage {
                 """);
 
         sid = addSection("Sets", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python set", "Sets", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  are unordered collections. Adding something into a set which
                 already contains that thing will not change the set. It is easy
@@ -594,7 +594,7 @@ public class Containers extends CoursePage {
                 if "orange" in a:
                     print('"or    ange" is in a')
                 """);
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 Traditional mathemetical set functions like union() and
                 intersection() are available for sets which can also be
@@ -603,9 +603,9 @@ public class Containers extends CoursePage {
                 """);
 
         sid = addSection("Dictionaries", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python dict", "Dictionaries", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  hold key-value pairs. The keys are unique, the values can be
                 anything. Dictionaries can be created using curly braces and
@@ -620,7 +620,7 @@ public class Containers extends CoursePage {
                 alias = dict([("rm", "remove"), ("cd", "change directory"), ("ls", "list")])
                 print(alias.get("rm")) # <-- This should print 'remove'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are functions that help with modifying and processing
                 dictionaries.
@@ -628,7 +628,7 @@ public class Containers extends CoursePage {
 
         
         sid = addSubsection("Further reading", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 <a href="https://docs.python.org/3/tutorial/datastructures.html">
                 Python documentation tutorial about data structures</a>.

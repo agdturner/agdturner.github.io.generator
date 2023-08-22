@@ -39,14 +39,14 @@ public class ABM6 extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction and Preparation", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To get agents communicating they need a way to refer to each
                 other. Code is going to be developed so that those agents that
                 are within a given distance are going to share some of their
                 store.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In your local code repository 'src' directory create a new
                 directory called 'abm6'. Open Spyder and use 'save as' to save
@@ -56,24 +56,24 @@ public class ABM6 extends CoursePage {
                 """);
 
         sid = addSection("Sharing", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Each agent is going to share their store equally amongst all
                 agents within a given distance. The algorithm is as follows:
                 """);
-        addPre(sb,
+        w.addPRE(sb,
                 """
                 # Calculate which other agents are within a given distance.
                 # Calculate shares.
                 # Distribute shares.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In order to share resources so that the order in which agents
                 are processed is irrelevant, there is a need to distinguish
                 those resources to be shared with those that have been shared.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change the Agent contructor to include 'agents' in the
                 parameters, store this as a variable, and add an attribute for
@@ -113,12 +113,12 @@ public class ABM6 extends CoursePage {
                     self.store = 0
                     self.store_shares = 0
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Change 'model.py' so that 'agents' is passed as a parameter in
                 the code that constructs each inidivual Agent class instance.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Test your code works and that from one agent you can access
                 another agent by printing out one agent from another agent. For
@@ -126,7 +126,7 @@ public class ABM6 extends CoursePage {
                 agent with i equal to 1 from the agent with i equal to 0:
                 """);
         addPythonCodeBlock(sb, "print(agents[0].agents[1])");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A way to use the 'get_distance' function in 'agentframework.py'
                 and avoid cyclic imports is to move the 'get_distance' function
@@ -138,7 +138,7 @@ public class ABM6 extends CoursePage {
                 operator. (In other words change 'get_distance' to
                 'geometry.get_distance').
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Import the geometry module into 'agentframework.py' and add the
                 following method:
@@ -162,7 +162,7 @@ public class ABM6 extends CoursePage {
                     for i in neighbours:
                         self.agents[i].store_shares += shares
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This code is using the fact that 'self.i' will be the same as
                 the index of an agent in the 'agents' list. In the first for
@@ -174,7 +174,7 @@ public class ABM6 extends CoursePage {
                 into 'shares' and added to the 'store_shares' attribute of all
                 the agents with indexes in 'neighbours'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Replace the 'main simulation loop' in 'model.py' file with:");
         addPythonCodeBlock(sb,
                 """
@@ -206,33 +206,33 @@ public class ABM6 extends CoursePage {
                     print("sum_environment", sum_e)
                     print("total resource", (sum_as + sum_e))
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Run 'model.py' and interpret the output. Add more print
                 statements to gain a clear understanding of how the code works.
                 """);
 
         sid = addSection("Organise module code", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Move all code in each 'my_modules' module that is not in
                 functions to be within if statement like the following at the
                 end of the file:
                 """);
         addPythonCodeBlock(sb, "if __name__ == '__main__':");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Recall that this isolates this code so it is only run if that
                 file is the one run and not when the module is imported.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Make sure to test that your code still produces the same
                 results.
                 """);
 
         sid = addSection("Output images and generate an animated Gif", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Add the following import statements to the 'model.py' placing
                 these with the other import statements as the first executable
@@ -243,7 +243,7 @@ public class ABM6 extends CoursePage {
                 import imageio
                 import os
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 "Before the main simulation loop add the following code:");
         addPythonCodeBlock(sb,
                 """
@@ -258,13 +258,13 @@ public class ABM6 extends CoursePage {
                 ite = 1
                 images = []
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Indent the plotting so that this occurs within the main
                 simulation loop and replace the following line:
                 """);
         addPythonCodeBlock(sb, "plot.show()");
-        addParagraph(sb, "With:");
+        w.addP(sb, "With:");
         addPythonCodeBlock(sb,
                 """
                 filename = '../../data/output/images/image' + str(ite) + '.png'
@@ -274,20 +274,20 @@ public class ABM6 extends CoursePage {
                 plt.close()
                 images.append(imageio.imread(filename))
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This code should: create plots; save these as images in PNG
                 format files; show and close them rapidly; then reload the PNG
                 format file and append the image to the images list.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 After the end of the main simulation loop the images can be
                 turned into an animated GIF format file using:
                 """);
         addPythonCodeBlock(sb,
                 "imageio.mimsave('../../data/output/out.gif', images, fps=3)");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The parameter 'fps' is the number of frames that are shown per
                  second.

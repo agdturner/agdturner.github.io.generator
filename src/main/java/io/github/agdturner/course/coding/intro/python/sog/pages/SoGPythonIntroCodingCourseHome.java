@@ -40,18 +40,18 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
 
     @Override
     public void getMaintainer(StringBuilder sb, SectionID sid) {
-        addParagraphStart(sb, "The website is maintained by ");
+        w.addPST(sb, "The website is maintained by ");
         sb.append(Web_ContentWriter.getLink(
                 "https://www.geog.leeds.ac.uk/people/a.turner/index.html",
                 "Andy Turner"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 " and comprises a set of webpages and file based resources.");
     }
 
     @Override
     public SectionID getLearningJourney0(StringBuilder sb) {
         SectionID sid = super.getLearningJourney0(sb);
-        addParagraph(sb,
+        w.addP(sb,
                 "If in doubt, please consult yout tutor.");
         return sid;
     }
@@ -59,7 +59,7 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     @Override
     public void getLearningJourney1(StringBuilder sb, SectionID sid) {
         super.getLearningJourney1(sb, sid);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 To complete the course, you are to undertake an independent
                 project to apply what you have learned to develop some
@@ -73,18 +73,18 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
     @Override
     public void getExpectations2(StringBuilder sb, SectionID sid) {
         super.getExpectations2(sb, sid);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 "You get to review some exemplar code that automates some ");
         sb.append(references.getReference("QGIS"));
         sb.append(" Desktop processing using ");
         sb.append(index.getReference("PyQGIS"));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
     }
 
     @Override
     public void getPlatform(StringBuilder sb) {
         super.getPlatform(sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 The software is available via 'AppsAnywhere' at the University
                 of Leeds which is accessible remotely via the 'Academic'
@@ -94,7 +94,7 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
         sb.append(references.getReference("Anaconda"));
         sb.append(" - a data science platform, ");
         sb.append(references.getReference("QGIS"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 Desktop - Geographical Information System software, and various
                 third party Python packages.
@@ -104,6 +104,5 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
 
     public void getAssignment(StringBuilder sb) {
         sb.append("");
-
     }
 }

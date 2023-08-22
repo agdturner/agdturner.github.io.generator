@@ -67,14 +67,14 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getIntroduction0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 This website is an open educational resource geared towards
                 helping researchers at the University of Leeds start learning
                 to program using the
                 """);
         sb.append(index.getReference("Python"));
-        addParagraphEnd(sb, " programming language.");
+        w.addPET(sb, " programming language.");
         return sid;
     }
 
@@ -85,18 +85,18 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getMaintainer(StringBuilder sb, SectionID sid) {
-        addParagraphStart(sb, "The website is maintained by the ");
+        w.addPST(sb, "The website is maintained by the ");
         sb.append(Web_ContentWriter.getLink(
                 Environment.HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM,
                 "Research Computing Team"));
         sb.append(" at the ");
         sb.append(Web_ContentWriter.getLink(Environment.HTTPS_WWW_LEEDS_AC_UK,
                 "University of Leeds"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "Please ");
+        w.addPET(sb, ".");
+        w.addPST(sb, "Please ");
         sb.append(Web_ContentWriter.getLink(Environment.GITHUB_REPO,
                 "raise issues and submit pull requests on GitHub"));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
     }
 
     /**
@@ -106,33 +106,33 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getNavigation(StringBuilder sb, SectionID sid) {
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Each web page has a button at the top to change between a
                 lighter and darker page style, then a navigation section that
                 links to the other pages. The pages are sequential and at the end of each webpage, there is a link to
                 the next webpage.
                 """);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(getLink(index, "index", "link", ""));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  webpage is a glossary of terms that links back to webpage
                 sections where terms are used.
                 """);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(getLink(references, "references", "link", ""));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  webpage is a useful list of references and links to other
                 resources.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Webpages with multiple sections have a contents towards the top
                 that links to those sections.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Essentially, taking the course involves working your way through
                 these webpages and undertaking practical exercises as directed.
@@ -194,8 +194,8 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getExpectations0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("Expectations", sb);
-        addParagraph(sb, "You will learn about:");
-        addULStart(sb);
+        w.addP(sb, "You will learn about:");
+        w.addULST(sb);
         return sid;
     }
 
@@ -214,7 +214,7 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getExpectationsN(StringBuilder sb, SectionID sid) {
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are some key concepts which may take a few attempts to get
                 used to and comprehensively understand.
@@ -238,9 +238,9 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getLearningJourney0(StringBuilder sb) {
         sb.append("<div>\n");
         SectionID sid = addSection("The Learning Journey", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 "Develop your understanding through practise and by reading.");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Be experimental - test your understanding by testing things do
                 what you expect. If things do not do what you expect, try to
@@ -259,13 +259,13 @@ public abstract class CourseHome extends CoursePage {
     public void getLearningJourneyN(StringBuilder sb, SectionID sid) {
         String courseName = getCourse().courseType;
         String courseNameUC = Strings.toUpperCaseFirstLetter(courseName);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Try to enjoy the learning journey, the challenges and the
                 rewards. Learning to program and learning
                 """);
         sb.append(index.getReference(courseName, courseNameUC));
-        addParagraphEnd(sb, " is empowering!");
+        w.addPET(sb, " is empowering!");
         sb.append("</div>\n");
     }
 
@@ -284,7 +284,7 @@ public abstract class CourseHome extends CoursePage {
      */
     public SectionID getPlatform0(StringBuilder sb) {
         SectionID sid = addSection("Platform/Software", sb);
-        addParagraphStart(sb, "All the software used in this course is ");
+        w.addPST(sb, "All the software used in this course is ");
         sb.append(index.getReference("Free and Open Source Software"));
         sb.append(" (FOSS) - available to download and install on ");
         sb.append(index.getReference("Linux"));
@@ -292,7 +292,7 @@ public abstract class CourseHome extends CoursePage {
         sb.append(index.getReference("Microsoft Windows"));
         sb.append(", and ");
         sb.append(index.getReference("MacOS"));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
         return sid;
     }
 

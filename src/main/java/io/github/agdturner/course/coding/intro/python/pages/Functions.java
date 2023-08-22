@@ -39,7 +39,7 @@ public class Functions extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Functions are a key part of many programming languages. These
                 are reusable code blocks that are called and which return. In
@@ -57,8 +57,8 @@ public class Functions extends CoursePage {
         sb.append(" are made available using ");
         sb.append(index.getReference("Python import", "import",
                         sid));
-        addParagraphEnd(sb, " statements.");
-        addParagraph(sb,
+        w.addPET(sb, " statements.");
+        w.addP(sb,
                 """
                 Python functions are defined in a code block that begins with a
                 definition or 'function declaration', and is followed by a set
@@ -75,7 +75,7 @@ public class Functions extends CoursePage {
                 def function_name(arg_0, arg_1):
                     # Function statements
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A function may return one thing which can be a tuple of things.
                 This is done with a return statement which starts with the
@@ -83,7 +83,7 @@ public class Functions extends CoursePage {
                 default, functions invisibly return 'None' - a special object of
                 type 'NoneType'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Functions are effectively blocks of code that can be used or
                 'called' repeatedly. Rather than repeat a block of code, it is
@@ -94,7 +94,7 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSection("Parameters", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Parameters or 'arguments' add flexibility and utility to
                 functions. Arguments can be variables or functions. Variables
@@ -102,14 +102,14 @@ public class Functions extends CoursePage {
                 are shared. Passing in a function as an argument allows that
                 function to be used within the function.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As with variable declarations, in Python there is no need to
                 declare the type of a parameter passed to a function.
                 """);
 
         sid = addSubsection("Positional Parameters", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Positional parameters or positional arguments are given in
                 order from left to right, so in the following 'add' function
@@ -121,20 +121,20 @@ public class Functions extends CoursePage {
                     return num1 + num2
                 print(add(20,30)) # Prints 50
                 """);
-        addParagraph(sb, "Default values can be specified as follows:");
+        w.addP(sb, "Default values can be specified as follows:");
         addPythonCodeBlock(sb,
                 """
                 def add(num1 = 0, num2 = 0):
                     return num1 + num2
                 print(add(3)) # Prints 3
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As arguments are ordered left to right, in the example, 'num1'
                 gets '3', and 'num2' gets nothing and so is set to the default
                 value '0'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In the absence of a default, an argument must be passed in.
                 For example the following code:
@@ -145,24 +145,24 @@ public class Functions extends CoursePage {
                     return num1 + num2
                 print(add(3))
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb, 
+        w.addP(sb, "Results in:");
+        w.addPRE(sb, 
                 "SyntaxError: non-default argument follows default argument");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Because of this, arguments with defaults are declared after
                 any undefaulted arguments in the function declaration.
                 """);
 
         sid = addSubsection("Keyword Arguments (kwargs)", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Arguments can also be named, these are called keyword arguments
                 or 'kwargs'. Note that this use of the term keyword has nothing
                 to do with the keywords that are special names for things that
                 can't be used as identifiers.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Consider the following which uses kwargs in the function call to
                 assign the parameter values:
@@ -173,12 +173,12 @@ public class Functions extends CoursePage {
                     return num1 + num2
                 print(add(num2 = 30, num1 = 50))
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that the order of the positional arguments is ignored:
                 'num2' gets '30'; and, 'num1' gets '50'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Having both positional arguments and kwargs is allowed, but
                 kwargs are declared after (i.e. to the right of) positional
@@ -186,7 +186,7 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSubsection("Flexibility using Tuples and Dictionaries", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 More positional arguments can be allowed using '*tuple_name',
                 as in the following example:
@@ -200,12 +200,12 @@ public class Functions extends CoursePage {
                     return r
                 print(add(1,2,3,4,5,6,7)) # <-- Prints 28
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The '*' used this way is known as the iterable (un)packing
                 operator. If nothing is allocated, the tuple is empty.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The '*' can be used with lists or tuples to generate parameters:
                 """);
@@ -220,7 +220,7 @@ public class Functions extends CoursePage {
                 print(add(*a)) # <-- Prints 10
                 print(add(1,*a, 2)) # <-- Prints 13
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The same can be done with dictionaries using '**dict_name'
                 (where '**' is the dictionary (un)packing operator) - which will
@@ -234,13 +234,13 @@ public class Functions extends CoursePage {
 
                 f1(1, b=2, c=3)
                 """);
-        addParagraph(sb, "Produces:");
-        addPre(sb,
+        w.addP(sb, "Produces:");
+        w.addPRE(sb,
                 """
                 1
                 {'b': 2, 'c': 3}
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The '**' dictionary operator can be used to generate kwargs.
                 The following code:
@@ -255,14 +255,14 @@ public class Functions extends CoursePage {
                 d = {'b':2, 'c':3}
                 f1(1,**d)
                 """);
-        addParagraph(sb, "Produces:");
-        addPre(sb,
+        w.addP(sb, "Produces:");
+        w.addPRE(sb,
                 """
                 1
                 2
                 3
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Similar to with standard arguments, '*tuple_name' arguments
                 must come before '**dict_name arguments' (if both are used). And
@@ -283,14 +283,14 @@ public class Functions extends CoursePage {
 
                 f1(1, 3, *l, **d)
                 """);
-        addParagraph(sb, "Produces:");
-        addPre(sb,
+        w.addP(sb, "Produces:");
+        w.addPRE(sb,
                 """
                 1 3
                 (10, 20, 30)
                 {'c': 100, 'd': 200}
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that the kwargs packed into the dictionary cannot have
                 name collisions with the other arguments. So, the following:
@@ -307,14 +307,14 @@ public class Functions extends CoursePage {
 
                 f1(1, 3, *l, **d)
                 """);
-        addParagraph(sb, "Results in:");
-        addPre(sb, "TypeError: f1() got multiple values for argument 'b'");
-        addParagraph(sb,
+        w.addP(sb, "Results in:");
+        w.addPRE(sb, "TypeError: f1() got multiple values for argument 'b'");
+        w.addP(sb,
                 """
                 For details on unpacking operators see:
                 <a href="https://peps.python.org/pep-0448/">PEP-0448</a>
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Another useful summary reference is the
                 <a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference">
@@ -322,7 +322,7 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSection("Scope", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The scope of a variable is from where in the code it can be
                 accessed. Scope was introduced in
@@ -339,7 +339,7 @@ public class Functions extends CoursePage {
                 f1()
                 print(a) # Prints 10.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The variable 'a' is declared and initialised prior to any call
                 to f1() and the variable can be accessed from within the
@@ -360,7 +360,7 @@ public class Functions extends CoursePage {
                 f1()
                 print(a) # Prints 20 as the function changes the global a.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 With nested functions there are situations where non local and
                 non global variables are wanted in the inner function such that
@@ -385,7 +385,7 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSection("Function Complexity", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As shown above, functions can be nested. In the example above,
                 'f2' is inside 'f1', so: f2 is an 'inner function'; and, f2 is
@@ -393,27 +393,27 @@ public class Functions extends CoursePage {
                 functions - they cannot be called directly from outside the
                 outer function. This is a way to make things appear simple.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Inner functions can be used to help unpack arguments and deal
                 with different types of argument passed to the outer function in
                 a function call.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 As mentioned, Python allows for functions to be passed into
                 functions as arguments. Functions can also be returned from
                 functions. An inner function can be returned in the output from
                 an outer function.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Functions are key to a lot of programming. Supporting nested
                 functions, being able to pass functions into other functions as
                 parameters, and returning functions from functions are useful
                 features of Python.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This section considers a number of other features of functions.
                 The detail might be better understood after gaining practise in
@@ -423,7 +423,7 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSubsection("Decorators", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Decorators are functions that aare applied to the outputs of
                 other functions using the '@' symbol as part of the
@@ -489,10 +489,10 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSubsection("Lambdas", sb);
-        addParagraph(sb, "");
+        w.addP(sb, "");
         sb.append(index.getReference("Python lambda", "Lambda expressions",
                         sid));
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 are used to create anonymous functions. They can have any
                 number of arguments, but the expression is made up of a single
@@ -505,7 +505,7 @@ public class Functions extends CoursePage {
 
                 print(x(1, 2)) # <-- Prints 0.5.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Note that: the lambda function is defined with the 'lambda'
                 keyword, the parameters are separated with commas, and a colon
@@ -514,7 +514,7 @@ public class Functions extends CoursePage {
                 """);
 
         sid = addSubsection("Callbacks", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A Python callback is a subroutine function which is passed as
                 an argument to be executed at some point in the future. Consider
@@ -585,7 +585,7 @@ public class Functions extends CoursePage {
                 print(caller(add, (1, 2, 3))) # Prints 6
                 print(caller(multiply, (1, 2, 3, 4, 5, 6))) # Prints 21
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following is another example which uses a callback to sort
                 items in a list:
@@ -615,14 +615,14 @@ public class Functions extends CoursePage {
                 for mark in marks:
                     print(mark)
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Often a callback is used in event based processing. It allows
                 other tasks to be done whilst waiting for an event to happen.
                 """);
 
         sid = addSubsection("Partial", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Functools <a href="https://docs.python.org/3/library/functools.html?highlight=partial#functools.partial">
                 partial</a> allows for arguments of a function to be set
@@ -644,40 +644,40 @@ public class Functions extends CoursePage {
         sid = addSection("Style and Documenting Functions", sb);
 
         sid = addSubsection("Style", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Good Python style is set out in
                 <a href="https://www.python.org/dev/peps/pep-0008/">PEP-0008</a>
                 which is worth finding time to read.
                 """);
-        addParagraph(sb, "The main style elements are:");
-        addULStart(sb);
-        addLI(sb, "Use 4 spaces per indent");
-        addLI(sb, 
+        w.addP(sb, "The main style elements are:");
+        w.addULST(sb);
+        w.addLI(sb, "Use 4 spaces per indent");
+        w.addLI(sb, 
                 """
                 Insert blank lines before function definitions and to separate
                 logical code units.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 function_names and variable_names should be lower case with
                 underscores separating words (snake case) as shown.
                 """);
-        addLI(sb, 
+        w.addLI(sb, 
                 """
                 ClassNames should be mostly lower case, but with capitalised
                 first letters of name parts (camel case) as shown.
                 """);
-        addLI(sb, "CONSTANT_NAMES should be upper case and snake case.");
-        addLI(sb, "Keep lines to 79 characters or less.");
-        addLI(sb, "Add spaces after commas");
-        addLI(sb, "Indent comments to the level of the code referred to.");
-        addULEnd(sb);
+        w.addLI(sb, "CONSTANT_NAMES should be upper case and snake case.");
+        w.addLI(sb, "Keep lines to 79 characters or less.");
+        w.addLI(sb, "Add spaces after commas");
+        w.addLI(sb, "Indent comments to the level of the code referred to.");
+        w.addULET(sb);
 
         sid = addSubsection("Documenting Functions", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python docstring", "Docstrings", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  are automatically extracted to describe code. They are added in
                 triple-double quote enclosed comments after, class or function
@@ -703,22 +703,22 @@ public class Functions extends CoursePage {
                     \"""
                     return num1 + num2
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 For details on docstrings see
                 <a href="https://www.python.org/dev/peps/pep-0257/">PEP-0257</a>
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 The help system will display docstrings. So, where "x" is a
                 function or module the following will display the docstring:
                 """);
-        addPre(sb, "help(x)");
-        addParagraph(sb, "The docstring can also be printed using:");
-        addPre(sb, "print(x.__doc__)");
+        w.addPRE(sb, "help(x)");
+        w.addP(sb, "The docstring can also be printed using:");
+        w.addPRE(sb, "print(x.__doc__)");
         
         sid = addSection("Next", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Refactoring the Agent Based Model code to use functions...
                 """);

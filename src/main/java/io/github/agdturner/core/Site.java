@@ -15,7 +15,6 @@
  */
 package io.github.agdturner.core;
 
-import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.Index;
 import io.github.agdturner.course.References;
 import java.io.IOException;
@@ -27,6 +26,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uk.ac.leeds.ccg.web.core.Web_Strings;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -175,7 +175,7 @@ public abstract class Site {
     public String getNavigationLinks(String linkClass) {
         StringBuilder sb = new StringBuilder(
                 """
-                <div class="nav">
+                <DIV class="navbar">
                 """);
         sb.append(Web_ContentWriter.getLink(getLinkPathString(homePage),
                 homePage.filename, linkClass, homePage.label));
@@ -190,7 +190,7 @@ public abstract class Site {
         sb.append(" ");
         sb.append(Web_ContentWriter.getLink(getLinkPathString(references),
                 references.filename, linkClass, references.label));
-        sb.append("</div>");
+        sb.append("\n").append(Web_Strings.DIV_ET);
         return sb.toString();
     }
 
@@ -220,12 +220,14 @@ public abstract class Site {
         page.write();
         // Write footer
         // Add navigation
-        page.w.add("<footer>");
+        page.w.add("""
+                   <DIV class="footer">
+                   """);
         page.w.add(page.getLinks("nav", false));
-        page.w.add("<p>Date last modified: " + LocalDate.now().toString() + ".</p>");
+        page.w.add(Web_Strings.P_ST + "Date last modified: " + LocalDate.now().toString() + ".Web_Strings.P_ET");
         String cc0 = "https://creativecommons.org/share-your-work/public-domain/cc0/";
-        page.w.add("<p>" + Web_ContentWriter.getLink(cc0, "CC0 Licence") + "</p>");
-        page.w.add("</footer>");
+        page.w.add(Web_Strings.P_ST + Web_ContentWriter.getLink(cc0, "CC0 Licence") + Web_Strings.P_ET);
+        page.w.add("</DIV>");
         // Write page
         try {
             page.w.writeHTML(page.path, "index", page.title + " Page", 

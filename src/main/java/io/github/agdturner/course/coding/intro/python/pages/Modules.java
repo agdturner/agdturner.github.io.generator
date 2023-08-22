@@ -39,7 +39,7 @@ public class Modules extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In Python a 'module' is a single file that may contain classes,
                 functions and variables. It has to be imported to make these
@@ -47,12 +47,12 @@ public class Modules extends CoursePage {
                 the module name or the alias defined in the import statement and
                 the dot operator '.'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 'Packages' are collections of modules structured using a
                 directory tree.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 A code 'library' is a generic name for a collection of code.
                 So, a Python library might contain a single module, or multiple
@@ -60,23 +60,23 @@ public class Modules extends CoursePage {
                 """);
 
         sid = addSection("Importing", sb);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python Module Index", sid));        
         sb.append(" is a useful look up for ");
         sb.append(references.getReference("Python 3 Documentation: Library",
                         "Python Standard Library"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 modules. These modules can be readily imported and used without
                 needing to customise the environment.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are two types of import statement, those that begin with
                 the keyword 'import' and others that begin with the keyword
                 'from' and also contain the keyword 'import'.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The following code imports a module called 'agentframework' and
                 then constructs an instance of the 'Agent' class as defined in
@@ -87,13 +87,13 @@ public class Modules extends CoursePage {
                 import agentframework
                 a = agentframework.Agent()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This is a very explicit style. There is little ambiguity about
                 which 'Agent' class is used - it is the one from the
                 'agentframework' module.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Another way to create instances of the 'Agent' class is as
                 follows:
@@ -104,7 +104,7 @@ public class Modules extends CoursePage {
                 from agentframework import Agent
                 a = Agent()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The advantage of this is that it is less verbose when it comes
                 to lines of code that instantiate instances of the Agent class.
@@ -112,14 +112,14 @@ public class Modules extends CoursePage {
                 that specific class from the 'agentframework' module rather than
                 keeping the entire module available.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 You may see imports of everything in a module using the star
                 operator '*', for example:
                 """);
                       
         addPythonCodeBlock(sb, "from agentframework import *");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This saves having to import multiple classes, but it can be
                 problematic as what gets imported can replace things imported
@@ -128,7 +128,7 @@ public class Modules extends CoursePage {
                 used and to check if an identifier is already in use and if so
                 use aliases.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The keyword 'as' can be used to alias a module or class on
                 import. This can also abbreviate a name, for example the
@@ -145,7 +145,7 @@ public class Modules extends CoursePage {
                 from agentframework import Agent as A
                 a = A()
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The Python interpreter parses modules on import initialising
                 variables and making functions and classes available for use.
@@ -155,7 +155,7 @@ public class Modules extends CoursePage {
                 effects of importing modules. It can be argued that the less
                 code that is run when the module is imported the better!
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 It is good practise to set up a module so that any code not in
                 functions is isolated and is not run when the module is
@@ -173,7 +173,7 @@ public class Modules extends CoursePage {
                 """);
 
         sid = addSection("Packages", sb);
-        addParagraph(sb, "Consider the following package file structure:");
+        w.addP(sb, "Consider the following package file structure:");
         addPythonCodeBlock(sb,
                 """
                 /abm
@@ -186,20 +186,20 @@ public class Modules extends CoursePage {
                         __init__.py
                         agentframework.py
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The '__init__.py' files can be empty, but they must exist so
                 the Python interpreter recognises these subdirectories as
                 subpackages and allows import statements to work as follows:
                 """);
         addPythonCodeBlock(sb, "import abm.my_modules.agentframework.Agent");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 This import statement will work so long as there is an 'Agent'
                 class within the 'agentframework' module
                 """);
         
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The base '__init__.py' file in the 'abm' directory can also
                 include a text representation of a specially named list which
@@ -207,29 +207,29 @@ public class Modules extends CoursePage {
                 used. For example, if the following were the contents of
                 '/abm/__init__.py':
                 """);
-        addPre(sb, """
+        w.addPRE(sb, """
                    __all__ = ["models", "my_modules"]
                    """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Then, the following import statement would import both the
                 'models' and 'my_modules' subpackages:
                 """);
         addPythonCodeBlock(sb, "from abm import *");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Packages are set to run as applications by placing startup
                 code in a file called '__main__.py'. The following command would
                 then run the application when issued at the prompt:
                 """);
-        addPre(sb,"python -m packagename");
+        w.addPRE(sb,"python -m packagename");
 
         sid = addSection("Third Party Libraries", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(references.getReference("Anaconda"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 " comes bundled with numerous third party libraries.");
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Exactly what Anaconda comes with varies with the version and
                 underlying operating system. Details can be found via the
@@ -237,98 +237,98 @@ public class Modules extends CoursePage {
                 <a href="https://docs.anaconda.com/anaconda/packages/pkg-docs/">
                 https://docs.anaconda.com/anaconda/packages/pkg-docs/</a>
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 There are many additional libraries that might be useful for
                 geographical data processing or whatever you may be doing.
                 """);
-        addParagraphStart(sb, "Many Python libraries are made available via ");
+        w.addPST(sb, "Many Python libraries are made available via ");
         sb.append(index.getReference("PyPI"));
-        addParagraphEnd(sb, " - the Python Package Index (PyPi) including:");
-        addULStart(sb);
-        addLI(sb,
+        w.addPET(sb, " - the Python Package Index (PyPi) including:");
+        w.addULST(sb);
+        w.addLI(sb,
                 """
                 <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm">
                 ArcPY</a>
                 - <a href="https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview">ArcGIS Pro</a> API.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://beautiful-soup-4.readthedocs.io/">
                 beautiful-soup</a>
                 - for parsing HTML and XML files.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="http://www.celeryproject.org/">celery</a>
                 - useful for distributed computing (splitting up programs and
                 running them on multiple computers).
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://contextily.readthedocs.io/">
                 Contextily</a>
                 - for retrieving tile maps from the Internet, then adding them
                 to matplotlib figures or writing them to files.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://github.com/Toblerity/Fiona">Fiona</a>
                 - reads and writes geographic data files.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://python-visualization.github.io/folium/">
                 Folium</a> - for visualising data on an interactive javascript
                 map.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://geopandas.org/">Geopandas</a>
                 - extends the data types used by 'pandas' to include geometry
                 (and has support for many geometry operations).
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://geopy.readthedocs.io/">GeoPy</a>
                 - a client for several popular geocoding web services.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://matplotlib.org/">matplotlib</a>
                 - a comprehensive library for creating static, animated, and
                 interactive visualizations.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="http://www.nltk.org/">nltk</a>
                 - a Natural Language Toolkit for parsing and analysing text.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="http://www.numpy.org/">numpy</a>
                 - useful for mathematics and statistics, especially
                 multi-dimensional array manipulation.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="http://pandas.pydata.org/">pandas</a>
                 - useful for a range of other things including time series
                 analysis.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/">
                 PyQGIS</a>
                 - <a href="https://www.qgis.org/">QGIS</a> API.
                 """);
-        addLI(sb,
+        w.addLI(sb,
                 """
                 <a href="http://scikit-learn.org/">scikit-learn</a>
                 - useful for scientific analysis and machine learning.
                 """);
-        addULEnd(sb);
-        addParagraph(sb,
+        w.addULET(sb);
+        w.addP(sb,
                 """
                 For details on installing packages see:
                 <a href="../python/index.html#9">Python Packages and Environment Management</a>.

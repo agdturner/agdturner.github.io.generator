@@ -26,25 +26,19 @@ import uk.ac.leeds.ccg.web.core.Web_Strings;
  */
 public class Strings extends Web_Strings {
 
-    
-    public static final String PYTHON_CODE_BLOCK_END
-            = SYMBOL_PRE_END_TAG + "</code>";
-
+    /**
+     * PYTHON CODE BLOCK START TAGS
+     */
     public static final String PYTHON_CODE_BLOCK_START
-            = SYMBOL_PRE_START_TAG + "<code class=\"language-python\">";
-
-    public static final String OL_END = getEndTag(s_ol);
-
-    public static final String OL_START = getStartTag(s_ol);
+            = PRE_ST + """
+                       <CODE class="language-python">\
+                       """;
     
-    public static final String UL_END = getEndTag(s_ul);
-
-    public static final String UL_START = getStartTag(s_ul);
-    
-    
-                
-    //public ArrayList<String> strings;
-    //public HashMap<String, Integer> stringToStringID;
+    /**
+     * PYTHON CODE BLOCK END TAGS
+     */
+    public static final String PYTHON_CODE_BLOCK_END
+            = PRE_ET + getEndTag("CODE");
 
     /**
      * Create a new instance.

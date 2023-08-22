@@ -55,26 +55,26 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     public void getSyllabusProgrammingPython(StringBuilder sb, SectionID sid) {
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python"));
-        addParagraphEnd(sb, " language development and limitations.");
-        addParagraphStart(sb, "The ");
+        w.addPET(sb, " language development and limitations.");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Python"));
         sb.append(" ");
         sb.append(index.getReference("REPL", "Read Evaluate Print Loop"));
-        addParagraphEnd(sb, " (REPL) environment.");
-        addParagraphStart(sb, "Running ");
+        w.addPET(sb, " (REPL) environment.");
+        w.addPST(sb, "Running ");
         sb.append(index.getReference("Python"));
-        addParagraphEnd(sb, " programs via the command line.");
-        addParagraphStart(sb, "Using ");
+        w.addPET(sb, " programs via the command line.");
+        w.addPST(sb, "Using ");
         sb.append(references.getReference("Jupyter Notebook"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "Using ");
+        w.addPET(sb, ".");
+        w.addPST(sb, "Using ");
         sb.append(references.getReference("IDLE"));
         sb.append(" and ");
         sb.append(references.getReference("Spyder"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "");
+        w.addPET(sb, ".");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python"));
         sb.append(" containers including; ");
         sb.append(index.getReference("Python list", "lists"));
@@ -82,10 +82,10 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         sb.append(index.getReference("Python tuple", "tuples"));
         sb.append(" and ");
         sb.append(index.getReference("Python dict", "dictionaries"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "");
+        w.addPET(sb, ".");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python docstring"));
-        addParagraphEnd(sb, " syntax.");
+        w.addPET(sb, " syntax.");
 //        sb.append("<p>Producing documentation using ")
 //                .append(references.getReference(
 //                        PythonIndex.PYTHON_DOCS_URL + "/library/pydoc.html",
@@ -94,10 +94,10 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
 //                .append(references.getReference(
 //                        "https://www.sphinx-dosite.org/", "Sphinx"))
 //                .append(".</p>\n");
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python"));
-        addParagraphEnd(sb, " program input and output.");
-        addParagraphStart(sb, "Structuring and organising ");
+        w.addPET(sb, " program input and output.");
+        w.addPST(sb, "Structuring and organising ");
         sb.append(index.getReference("Python"));
         sb.append(" code into ");
         sb.append(index.getReference("Python classes", "Classes"));
@@ -105,21 +105,21 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         sb.append(index.getReference("Python modules", "Modules"));
         sb.append(", and ");
         sb.append(index.getReference("Python packages", "Packages"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "");
+        w.addPET(sb, ".");
+        w.addPST(sb, "");
         sb.append(index.getReference("Python"));
         sb.append(" environment management using ");
         sb.append(references.getReference("Conda"));
         sb.append(" and ");
         sb.append(index.getReference("Python venv", "venv"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "Using the ");
+        w.addPET(sb, ".");
+        w.addPST(sb, "Using the ");
         sb.append(references.getReference("Python 3 Documentation: Library",
                 "Python 3 Library"));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb, "Using third party packages available via the ");
+        w.addPET(sb, ".");
+        w.addPST(sb, "Using third party packages available via the ");
         sb.append(index.getReference("Python Package Index"));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
     }
 
     @Override
@@ -132,21 +132,21 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
 
     @Override
     public void getExpectations1(StringBuilder sb, SectionID sid) {
-        addLIStart(sb, "Visualisation using ");
+        w.addLIST(sb, "Visualisation using ");
         sb.append(references.getReference("Matplotlib"));
-        addLIEnd(sb, "");
-        addLI(sb, "Processing raster data stored as lists of lists");
-        addLIStart(sb, "Developing a ");
+        w.addLIET(sb, "");
+        w.addLI(sb, "Processing raster data stored as lists of lists");
+        w.addLIST(sb, "Developing a ");
         sb.append(index.getReference("GUI", "Graphical User Interface"));
-        addLIEnd(sb, " (GUI)");
-        addLIStart(sb, "Developing and visualising a basic spatial ");
+        w.addLIET(sb, " (GUI)");
+        w.addLIST(sb, "Developing and visualising a basic spatial ");
         sb.append(index.getReference("ABM", "Agent Based Model"));
-        addLIEnd(sb, " (ABM)");
-        addULEnd(sb);
+        w.addLIET(sb, " (ABM)");
+        w.addULET(sb);
     }
 
     public void getExpectations2(StringBuilder sb, SectionID sid) {
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 Computer programming mostly involves computational thinking,
                 planning, problem solving and testing. It is often helpful to
@@ -154,18 +154,18 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
                 implementation. Often good solutions to coding tasks involve
                 doing things repeatedly for a given sequence of things.
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 If you are new to computer programming, there is quite a lot of
                 terminology to get used to, some is generic to programming, some
                 is specific to
                 """);
         sb.append(index.getReference("Python"));
-        addParagraphEnd(sb, ".");
+        w.addPET(sb, ".");
     }
 
     public void getExpectations3(StringBuilder sb, SectionID sid) {
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 There are some key concepts which may take a few attempts to get
                 used to and comprehensively understand.
@@ -181,31 +181,31 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     public void getLearningJourney1(StringBuilder sb, SectionID sid) {
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 The webpages with names starting 'ABM' are a sequence of
                 practicals that progress the development of a basic spatial
                 """);
         sb.append(index.getReference("ABM", "Agent Based Model"));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 . The ABM is a simple digital simulation model of
                 semi-autonomous spatial entities that move in an environment,
                  interacting with the environment and each other.
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 Developing the ABM by following instructions puts into practise
                 some of the theory encountered. By the end of the practicals,
                 you should have ABM model code that has a basic
                 """);
         sb.append(index.getReference("GUI"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 , reads in data from local files and from the Web, and produces
                 an animation, data files and user friendly messages.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The aim is that after completing the last ABM practical, you
                 will have sufficient knowledge and skill to develop the model in
@@ -214,9 +214,9 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     public void getLearningJourney2(StringBuilder sb, SectionID sid) {
-        addParagraphStart(sb, "Do not expect to master ");
+        w.addPST(sb, "Do not expect to master ");
         sb.append(index.getReference(getCourse().courseType));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                 by the end of this course. Usually this takes many thousands of
                 hours of practice over several years.

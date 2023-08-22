@@ -39,44 +39,44 @@ public class Variables extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        addParagraphStart(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("Variable", "Variables", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 " are a combination of an identifier (a name) and a value");
 
         sid = addSection("Python Variables", sb);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 In Python, the 'type' of a variable does not have to be declared
                 - it is effectively inferred by the value of the variable (if it
                 needs to be).
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 In Python, identifiers such as variable names can be reassigned.
                 A benefit of this is that
                 """);
         sb.append(index.getReference("API", "APIs"));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                 can be more stable (as there is no need to specify exactly what
                 types of things are input and output from functions). A downside
                 is that, it is easier to make mistakes and accidentally re-use
                 an identifier with unintended consequences.
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 The four primitive variable types in Python are: Integers,
                 Floats, Strings, and Booleans:
                 """);
-        addParagraphStart(sb,
+        w.addPST(sb,
                 """
                 Integers are whole numbers and are unbounded in Python. The
                 largest Integer is constrained by
                 """);
         sb.append(index.getReference("Memory", "memory", sid));
-        addParagraphEnd(sb, " availability.");
-        addParagraphStart(sb, "Floats are standard ");
+        w.addPET(sb, " availability.");
+        w.addPST(sb, "Floats are standard ");
         sb.append(index.getReference("Double-precision Floating-point", sid));
         sb.append(
                 """
@@ -85,7 +85,7 @@ public class Variables extends CoursePage {
                 which can be ascertained from the
                 """);
         sb.append(index.getReference("Python sys", "sys", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  module. There are Float values for positive and negative
                 infinity. Consider and run the following code:
@@ -124,8 +124,8 @@ public class Variables extends CoursePage {
                     print("min3 > min2")
                 print("min2", min2)
                 """);
-        addParagraph(sb, "This code generates the following output:");
-        addPre(sb,
+        w.addP(sb, "This code generates the following output:");
+        w.addPRE(sb,
                 """
                 max 1.7976931348623157e+308
                 min 2.2250738585072014e-308
@@ -137,34 +137,34 @@ public class Variables extends CoursePage {
                 max + d inf
                 min2 2.2250754194454158e-293
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 Float is very useful for approximate numerical calculations. Do
                 keep in mind that
                 """);
         sb.append(index.getReference("Floating-point",
                         "Floating Point Arithmetic", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  is approximate - so calculations that use it are not
                 necessarily accurate.
                 """);
-        addParagraphStart(sb, "The ");
+        w.addPST(sb, "The ");
         sb.append(references.getReference("Python 3 Documentation: Library",
                         "Python Standard Library"));
         sb.append(" has two modules that support more arithmetic accuracy: ");
         sb.append(index.getReference("Python decimal", "decimal", sid));
         sb.append("; and, ");
         sb.append(index.getReference("Python fractions", "fractions", sid));
-        addParagraphEnd(sb, ".");
-        addParagraphStart(sb,
+        w.addPET(sb, ".");
+        w.addPST(sb,
                 """
                 Strings are essentially blocks of text (which are sequences of
                 single character length Strings). Strings can be assigned using;
                 double or single quotes, or the constructor function
                 """);
         sb.append(index.getReference("Python str", "str", sid));
-        addParagraphEnd(sb,
+        w.addPET(sb,
                 """
                  (which can for example create a String from an Integer).
                 Strings can be compared and checked for equality using the
@@ -182,9 +182,9 @@ public class Variables extends CoursePage {
                 print(s < s2)  # Prints True
                 print(str(3))  # Prints 3
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 "Booleans are 'True' or 'False' and also equate to '0' or '1'.");
-        addParagraph(sb, "Consider and run the following code:");
+        w.addP(sb, "Consider and run the following code:");
         addPythonCodeBlock(sb, 
                 """
                 t = True
@@ -201,18 +201,18 @@ public class Variables extends CoursePage {
                 print("t or f", t or f)             # Prints True
                 print("not (t or f)", not (t or f)) # Prints False
                 """);
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 More complex objects have state given by multiple primitives
                 variables. Objects can also be comprised of multiple other
                 objects as defined by a class.
                 """);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 "The type of any object can be got using the function ");
         sb.append(index.getReference("Python type", "type", sid));
         sb.append(" from the ");
         sb.append(index.getReference("Python builtins", "builtins", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  module. Consider and run the following code that initialises a
                 variable named 'x' with the Integer value '1', then prints out
@@ -228,15 +228,15 @@ public class Variables extends CoursePage {
                 x = "1"
                 print(type(x)) # Prints &lt;class 'str'&gt;
                 """);
-        addParagraph(sb, "The output from running this code is:");
-        addPre(sb, 
+        w.addP(sb, "The output from running this code is:");
+        w.addPRE(sb, 
                 """
                 &lt;class 'int'&gt;
                 &lt;class 'str'&gt;
                 """);
 
         sid = addSection("Functions, Variable Scope and the Global Keyword", sb);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 When passed as parameters into functions, variables are shared
                 this is technically known as '
@@ -250,16 +250,16 @@ public class Variables extends CoursePage {
                 which is technically known as '
                 """);
         sb.append(index.getReference("Call By Value", sid));
-        addParagraphEnd(sb, "'.");
-        addParagraphStart(sb, "The ");
+        w.addPET(sb, "'.");
+        w.addPST(sb, "The ");
         sb.append(index.getReference("Scope", "scope", sid));
         sb.append(
                 """
                  of a variable is from where in the code it can be accessed. The
                 """);
         sb.append(index.getReference("Python keyword", "keyword", sid));
-        addParagraphEnd(sb, " 'global' can modify the scope.");
-        addParagraph(sb, "Consider the following:");
+        w.addPET(sb, " 'global' can modify the scope.");
+        w.addP(sb, "Consider the following:");
         addPythonCodeBlock(sb,
                 """
                 x = 1
@@ -267,9 +267,9 @@ public class Variables extends CoursePage {
                     y = 2
                 print(y) # Prints 2
                 """);
-        addParagraphStart(sb, "The code in the ");
+        w.addPST(sb, "The code in the ");
         sb.append(index.getReference("Python if", "if statement", sid));
-        addParagraphEnd(sb, 
+        w.addPET(sb, 
                 """
                  is executed as the condition 'x == 1' evaluates as 'True'. If
                 the condition were to evaluate as 'False', then the interpreter
@@ -283,14 +283,14 @@ public class Variables extends CoursePage {
                     y = 2
                 print(y)
                 """);
-        addParagraph(sb, "Which results in:");
-        addPre(sb, "NameError: name 'y' is not defined");
-        addParagraph(sb, 
+        w.addP(sb, "Which results in:");
+        w.addPRE(sb, "NameError: name 'y' is not defined");
+        w.addP(sb, 
                 """
                 This is because 'y' does not get initialised and so cannot be
                 passed into the print function.
                 """);
-        addParagraph(sb, "Consider the following code:");
+        w.addP(sb, "Consider the following code:");
         addPythonCodeBlock(sb,
                 """
                 x = 1
@@ -301,14 +301,14 @@ public class Variables extends CoursePage {
                 my_function()
                 print("c", x)
                 """);
-        addParagraph(sb, "That outputs:");
-        addPre(sb, 
+        w.addP(sb, "That outputs:");
+        w.addPRE(sb, 
                 """
                 a 1
                 b 2
                 c 1
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 At line 2, the interpreter reads a function definition for a
                 function called my_function(), then skips to the end of the
@@ -318,7 +318,7 @@ public class Variables extends CoursePage {
                 the function, the interpreter returns to line 6 and moves
                 directly on to line 7.
                 """);
-        addParagraph(sb, 
+        w.addP(sb, 
                 """
                 In this example, the variable inside the function called x is a
                 different variable to the variable called x that is referred to
@@ -337,8 +337,8 @@ public class Variables extends CoursePage {
                 my_function()
                 print("c", x)
                 """);
-        addParagraph(sb, "The output should be:");
-        addPre(sb,
+        w.addP(sb, "The output should be:");
+        w.addPRE(sb,
                 """
                 a 1
                 b 2
@@ -346,14 +346,14 @@ public class Variables extends CoursePage {
                 """);
 
         sid = addSection("Deleting variables", sb);
-        addParagraphStart(sb, 
+        w.addPST(sb, 
                 """
                 Variables can be deleted using the keyword 'del' followed by
                 the name of the variable or a
                 """);
         sb.append(index.getReference("Python tuple", "tuple", sid));
-        addParagraphEnd(sb, " of variables to delete.");
-        addParagraph(sb,
+        w.addPET(sb, " of variables to delete.");
+        w.addP(sb,
                 """
                 Deleting variables can free up memory for other things. The
                 following code snippets shows how to initialise and delete

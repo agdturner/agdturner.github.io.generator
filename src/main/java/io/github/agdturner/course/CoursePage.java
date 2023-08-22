@@ -24,6 +24,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import uk.ac.leeds.ccg.web.core.Web_Strings;
 
 /**
  * Course Page.
@@ -157,9 +158,10 @@ public abstract class CoursePage extends Page {
     public String getPageContents() {
         TreeSet<SectionID> sids = site.pageIDToSectionIDs.get(pageID);
         if (sids != null) {
-            StringBuilder sb = new StringBuilder("<div>\n");
+            StringBuilder sb = new StringBuilder();
+            w.addDIVST(sb);
             sb.append("<h2>Contents</h2>\n");
-            sb.append("<ul>\n");
+            w.addULST(sb);
             int level0 = 2;
             int level;
             for (var x : sids) {
@@ -169,25 +171,24 @@ public abstract class CoursePage extends Page {
                 } else {
                     level = section.level;
                     if (level > level0) {
-                        sb.append("<ul>\n");
-                        sb.append("<li>");
+                        w.addULST(sb);
                     } else if (level < level0) {
-                        sb.append("</li>");
-                        sb.append("</ul></li>\n");
-                        sb.append("<li>");
+                        w.addLIET(sb);
+                        w.addULET(sb);
+                        w.addLIET(sb);
                     } else {
-                        sb.append("<li>");
+                        w.addLIET(sb);
                     }
-                    sb.append(section.sectionLink);
+                    w.addLIST(sb, section.sectionLink);
                     level0 = level;
                 }
             }
             for (int i = 2; i <= level0; i++) {
-                sb.append("</li>\n");
-                sb.append("</ul>\n");
+                w.addLIET(sb);
+                w.addULET(sb);
             }
-
-            sb.append("</div>\n");
+            w.addDIVET(sb);
+            
             return sb.toString();
         }
         return "";
@@ -200,7 +201,7 @@ public abstract class CoursePage extends Page {
      * @param sb The StringBuilder to append to.
      */
     public void addParagraphCommitToGitHub(StringBuilder sb) {
-        addParagraph(sb,
+        w.addP(sb,
                 """
                 Add and commit to your local git repository and assuming you are
                 using GitHub - push your changes to GitHub.
