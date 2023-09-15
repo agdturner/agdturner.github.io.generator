@@ -303,7 +303,7 @@ public class Python extends CoursePage {
                  that is 'raised' in such circumstances. It is good to get \
                 familiar with error messages which are typically printed to \
                 the console. A key part of learning to program is about \
-                interpreting error messages and thinking about what to do to 
+                interpreting error messages and thinking about what to do to \
                 avoid and handle errors/exceptions.""");
         w.addP(sb,
                 """

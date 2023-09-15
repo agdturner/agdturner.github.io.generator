@@ -218,7 +218,7 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         sb.append(index.getReference(getCourse().courseType));
         w.addPET(sb, 
                 """
-                by the end of this course. Usually this takes many thousands of
+                 by the end of this course. Usually this takes many thousands of
                 hours of practice over several years.
                 """);
     }
