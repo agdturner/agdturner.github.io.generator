@@ -25,15 +25,26 @@ import java.nio.file.Paths;
  */
 public class Environment {
     
-    
     public static final String HTTPS_WWW_GITHUB_COM_AGDTURNER = "http://www.github.com/agdturner/";
     public static final String AGDTURNER_GITHUB_IO = "agdturner.github.io";
+    public static final String HTTPS_AGDTURNER_GITHUB_IO = "http://" + AGDTURNER_GITHUB_IO + "/";
     public static final String GITHUB_REPO = HTTPS_WWW_GITHUB_COM_AGDTURNER + AGDTURNER_GITHUB_IO;
+    
     public static final String ARCDOCS_GITHUB_IO = "arcdocs.github.io";
     public static final String HTTPS_ARC_LEEDS_AC_UK = "https://arc.leeds.ac.uk/";
-    public static final String HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM = "https://arc.leeds.ac.uk/about/team/";
-    public static final String HTTPS_WWW_LEEDS_AC_UK = "https://www.leeds.ac.uk/";
+    public static final String HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM = HTTPS_ARC_LEEDS_AC_UK + "about/team/";
     public static final String ARC_CONTACT = "https://it.leeds.ac.uk/it?id=sc_cat_item&sys_id=7587b2530f675f00a82247ece1050eda";
+
+    public static final String HTTPS_WWW_LEEDS_AC_UK = "https://www.leeds.ac.uk/";
+    
+    public static final String HTTPS_WWW_GEOG_LEEDS_AC_UK = "https://www.geog.leeds.ac.uk/";
+    public static final String HTTPS_WWW_GEOG_LEEDS_AC_UK_COURSES_COMPUTING = HTTPS_WWW_GEOG_LEEDS_AC_UK + "courses/computing/";
+    
+    public static final String HTTPS_WWW_CCG_LEEDS_AC_UK = "https://www.ccg.leeds.ac.uk/";
+    /**
+     * The default Wikipedia URL.
+     */
+    public static final String EN_WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
     
     /**
      * The domain for the website.
@@ -53,5 +64,13 @@ public class Environment {
     public Environment(String domain, Path dir) {
         this.domain = domain;
         this.dir = Paths.get(dir.toString(), domain);
+    }
+
+    /**
+     * @param article Appended to create what is returned.
+     * @return {@link #EN_WIKIPEDIA_URL} + article;
+     */
+    public static final String getWikipediaURL(String article) {
+        return EN_WIKIPEDIA_URL + article;
     }
 }

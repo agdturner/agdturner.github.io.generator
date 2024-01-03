@@ -283,13 +283,12 @@ public abstract class Page {
         r.add(
                 """
                 <!-- Styling -->
-                <!-- href to be populated by the script (once the DOM is fully loaded) -->
+                <!-- Some href attributes are to be set by scripts -->
                 <link id="css" rel="stylesheet" type="text/css" href="">
                 <script src="/scripts/style.js"></script>
                 <!-- For styling code -->
                 <script src="/tools/highlight/highlight.min.js"></script>
                 <script>hljs.highlightAll();</script>
-                <!-- href to be populated by the script (once the DOM is fully loaded) -->
                 <link id="code_theme" rel="stylesheet" type="text/css" href="">
                 <link id="css1" rel="stylesheet" type="text/css" href="">
                 <link id="css2" rel="stylesheet" type="text/css" href="">

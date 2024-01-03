@@ -138,10 +138,8 @@ public class Testing extends CoursePage {
         sb.append(index.getReference("Python Standard Library", sid));
         sb.append(" comes with ");
         sb.append(index.getReference("Python unittest", "unittest", sid));
-        w.addPET(sb,
-                """
-                a module providing tools for constructing and running tests.
-                """);
+        sb.append(" a module providing tools for constructing and running ");
+        w.addPET(sb, "tests.");
         w.addPST(sb,
                 """
                 Consider the following example. The functional code is in

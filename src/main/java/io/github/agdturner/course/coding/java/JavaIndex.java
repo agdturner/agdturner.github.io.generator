@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.coding.java;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.Index;
 import io.github.agdturner.course.IndexTerm;
@@ -44,7 +45,7 @@ public class JavaIndex extends Index {
         IndexTerm indexTerm;
 
         term = "Java bytecode";
-        url = getWikipediaURL("Java_bytecode");
+        url = Environment.getWikipediaURL("Java_bytecode");
         description = "the \"bytecode\" of the \"Java Virtual Machine\".";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
@@ -56,24 +57,24 @@ public class JavaIndex extends Index {
         addAlias(term, "Java classes", indexTerm);
         
         term = "Java class file";
-        url = getWikipediaURL("Java_class_file");
+        url = Environment.getWikipediaURL("Java_class_file");
         description = "A file containing \"Java bytecode\" that can be "
         + "executed on the \"Java Virtual Machine\".";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
         term = "Javadoc";
-        url = getWikipediaURL("Javadoc");
+        url = Environment.getWikipediaURL("Javadoc");
         description = "A documentation generator for \"Java\".";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
         term = "Java Platform, Standard Edition";
-        url = getWikipediaURL("Java_Platform,_Standard_Edition");
+        url = Environment.getWikipediaURL("Java_Platform,_Standard_Edition");
         description = "A computing platform for development and deployment of "
                 + "portable code for desktop and server environments.";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
         term = "Java Package";
-        url = getWikipediaURL("Java_package");
+        url = Environment.getWikipediaURL("Java_package");
         description = "A Java package organizes \"Java classes\" into "
                 + "namespaces, providing a unique namespace for each type it "
                 + "contains. Classes in the same package can access each "
@@ -81,7 +82,7 @@ public class JavaIndex extends Index {
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
 
         term = "Java Platform Module System";
-        url = getWikipediaURL("Java_Platform_Module_System");
+        url = Environment.getWikipediaURL("Java_Platform_Module_System");
         description = "The Java Platform Module System[1] specifies a "
                 + "distribution format for collections of Java code and "
                 + "associated resources. It also specifies a repository for "
@@ -90,14 +91,14 @@ public class JavaIndex extends Index {
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
 
         term = "Java (software platform)";
-        url = getWikipediaURL("Java (software platform)");
+        url = Environment.getWikipediaURL("Java (software platform)");
         description = "A set of computer software and specifications that "
                 + "provides a system for developing application software and "
                 + "deploying it in a cross-platform computing environment";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
         term = "Java Virtual Machine";
-        url = getWikipediaURL("Java_Virtual_Machine");
+        url = Environment.getWikipediaURL("Java_Virtual_Machine");
         description = "A virtual machine that enables a computer to run "
                 + "\"Java\" programs as well as programs written in other "
                 + "languages that are also compiled to \"Java bytecode\". "
@@ -119,7 +120,7 @@ public class JavaIndex extends Index {
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
                         
         term = "openJDK";
-        url = getWikipediaURL("OpenJDK");
+        url = Environment.getWikipediaURL("OpenJDK");
         description = "A free and open-source implementation of the "
                 + "\"Java Platform, Standard Edition\".";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);

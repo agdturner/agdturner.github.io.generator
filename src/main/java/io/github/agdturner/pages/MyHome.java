@@ -61,32 +61,34 @@ public class MyHome extends Page {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        w.addH1(sb, "Andy Turner GitHub Website");
+        //w.addH1(sb, "Andy Turner GitHub Website");
         sb.append("<img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" />");
-        w.addPST(sb, 
-                """
-                In June 2023 I joined the <a href="
-                """);
-        sb.append(Environment.HTTPS_ARC_LEEDS_AC_UK + "about/team/");
-        w.addPET(sb, 
-                """
-                >Research Computing Team</a> at the University of Leeds as a
-                Research Software Engineer. I have worked at the University for
-                over 25 years mostly as a Research Office specialising in
-                computational geography.
-                """);
-        w.addP(sb, 
-                """
-                <a href="Python0/home/index.html">Python0</a>
-                """);
-        w.addP(sb, 
-                """
-                <a href="Java0/home/index.html">Java0</a>
-                """);
+        w.addPST(sb, "In June 2023 I joined the ");
+        sb.append(Web_ContentWriter.getLink(
+                Environment.HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM,
+                "Research Computing Team"));
+        sb.append( " at the ");
+        sb.append(Web_ContentWriter.getLink(
+                Environment.HTTPS_WWW_LEEDS_AC_UK,
+                "University of Leeds"));
+        w.addPET(sb, " as a Research Software Engineer.");
+        w.addP(sb, """
+                   Previously, I was based in the School of Geography at the 
+                   University where I specialised in computational geography as
+                   a Research Officer for over 25 years.""");
+        w.addH2(sb, "Learning Resources");
         w.addP(sb, Web_ContentWriter.getLink(
-                        Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
-                        "Github Profile"));
+                Environment.HTTPS_AGDTURNER_GITHUB_IO 
+                        + "Python0/public_html/home/index.html",
+                "Introduction to Python"));
+        //w.addP(sb,
+        //        """
+        //        <a href="Java0/home/index.html">Java0</a>
+        //        """);
+        w.addH2(sb, Web_ContentWriter.getLink(
+                Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
+                "Github Profile"));
         // End WebPage
         sb.append(Web_Strings.DIV_ET);
         return sb.toString();
@@ -104,8 +106,20 @@ public class MyHome extends Page {
         MySite site = new MySite(
                 new Environment(Environment.AGDTURNER_GITHUB_IO, DIR),
                 localPaths);
-        MyHome myHome = new MyHome(site, name, id, DIR);
+        Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
+        String domain = Environment.AGDTURNER_GITHUB_IO;
+        Path local = Paths.get(dir.toString(), domain);
+        //Environment env = new Environment(domain, dir);
+        MyHome myHome = new MyHome(site, name, id, local);
         myHome.write();
+        // Write page
+        try {
+            myHome.w.writeHTML(myHome.path, "index", myHome.title + " Page", 
+                    myHome.getHeadElements());
+        } catch (IOException ex) {
+            Logger.getLogger(Site.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     @Override
