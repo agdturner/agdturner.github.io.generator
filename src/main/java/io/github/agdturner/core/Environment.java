@@ -28,7 +28,8 @@ public class Environment {
     public static final String HTTPS_WWW_GITHUB_COM_AGDTURNER = "http://www.github.com/agdturner/";
     public static final String AGDTURNER_GITHUB_IO = "agdturner.github.io";
     public static final String HTTPS_AGDTURNER_GITHUB_IO = "http://" + AGDTURNER_GITHUB_IO + "/";
-    public static final String GITHUB_REPO = HTTPS_WWW_GITHUB_COM_AGDTURNER + AGDTURNER_GITHUB_IO;
+    public static final String AGDTURNER_GITHUB_IO_REPO = HTTPS_WWW_GITHUB_COM_AGDTURNER + AGDTURNER_GITHUB_IO;
+    public static final String AGDTURNER_GITHUB_IO_GENERATOR_REPO = AGDTURNER_GITHUB_IO_REPO + ".generator";
     
     public static final String ARCDOCS_GITHUB_IO = "arcdocs.github.io";
     public static final String HTTPS_ARC_LEEDS_AC_UK = "https://arc.leeds.ac.uk/";

@@ -116,9 +116,14 @@ public abstract class CourseHome extends CoursePage {
         sb.append(Web_ContentWriter.getLink(
                 Environment.getWikipediaURL("JavaScript"), "JavaScript"));
         sb.append(". Please raise issues/submit pull requests via the ");
-        sb.append(Web_ContentWriter.getLink(Environment.GITHUB_REPO,
+        sb.append(Web_ContentWriter.getLink(
+                Environment.AGDTURNER_GITHUB_IO_REPO,
+                "agdturner-github-io GitHub repository"));
+        sb.append(" (which contains the generated output) and/or the ");
+        sb.append(Web_ContentWriter.getLink(
+                Environment.AGDTURNER_GITHUB_IO_GENERATOR_REPO,
                 "agdturner-github-io-generator GitHub repository"));
-        w.addPET(sb, " to help develop the website.");
+        w.addPET(sb, " (the Java that generates the website content) to help.");
     }
 
     /**
