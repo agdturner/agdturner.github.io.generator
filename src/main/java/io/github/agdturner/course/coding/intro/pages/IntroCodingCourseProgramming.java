@@ -33,13 +33,13 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
     @Override
     public SectionID getIntroduction0(StringBuilder sb) {
         SectionID sid = super.getIntroduction0(sb);
-        sb.append("<p>").append(index.getReference("Computer Programming",
-                "Computer programming"))
-                .append(" (coding) is the process of designing and building an")
-                .append(" executable computer program - a set of instruction")
-                .append(" fetched and executed sequentially.</p>\n");
-        sb.append("<p>Contemporary desktop and laptop computers typically have")
-                .append(" a ")
+        w.addPST(sb, index.getReference("Computer Programming",
+                "Computer programming"));
+        sb.append(" (coding) is the process of designing and building an")
+                .append(" executable computer program - a set of instruction");
+        w.addPET(sb, " fetched and executed sequentially.");
+        w.addPST(sb, "Contemporary desktop and laptop computers typically");
+        sb.append(" have a ")
                 .append(index.getReference("Keyboard", "keyboard"))
                 .append(" and ")
                 .append(index.getReference("Mouse", "mouse"))
@@ -66,15 +66,15 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                         "operating system"))
                 .append(" upon which additional ")
                 .append(index.getReference("Software", "software"))
-                .append(" can be installed, including software that can ")
-                .append("interpret more readable ")
+                .append(" can be installed, including software that can")
+                .append(" interpret more readable ")
                 .append(index.getReference("Source Code", "source code"))
-                .append(" into lower level less readable machine instructions.")
-                .append("</p>\n");
-        sb.append("<p>Programming can be done visually by arranging and")
-                .append(" connecting pre-built components into executable")
-                .append(" workflows. However, this course is about programming")
-                .append(" using text based command instructions.</p>\n");
+                .append(" into lower level (less human readable) machine");
+        w.addPET(sb, " instructions.");
+        w.addPST(sb, "Programming can be done visually by arranging and");
+        sb.append(" connecting pre-built components into executable")
+                .append(" workflows. However, this course focuses on");
+        w.addPET(sb, " programming using text based command instructions.");
         return sid;
     }
     

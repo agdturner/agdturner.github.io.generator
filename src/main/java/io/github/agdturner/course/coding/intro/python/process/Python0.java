@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Centre for Computational Geography.
+ * Copyright 2024 University of Leeds.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Java for generating GEOG5003M Website Content.
+ * Python0.
  *
  * @author Andy Turner
  */
@@ -38,15 +38,16 @@ public class Python0 extends PythonIntroCodingCourse {
      * @param args
      */
     public static void main(String[] args) {
-        String courseName = "Introduction to Python Programming";
+        String courseCode = "Python0";
+        String courseName = "Python for HPC Level 0";
         Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
         //Path local = Paths.get("courses", "computing");
         String domain = Environment.AGDTURNER_GITHUB_IO;
-        Path local = Paths.get(dir.toString(), domain, "Python0", "public_html");
+        Path local = Paths.get(dir.toString(), domain, courseCode, "public_html");
         Environment env = new Environment(domain, dir);
         // Set localPaths to false when deploying.
         boolean localPaths = false;
-        Python0 course = new Python0(env, "Python0", courseName, localPaths);
+        Python0 course = new Python0(env, courseCode, courseName, localPaths);
         course.write(local);
     }
 }

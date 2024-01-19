@@ -98,7 +98,13 @@ public class References extends CoursePage {
      * @return the link for the reference given by name.
      */
     public String getReference(String name, String linkText) {
-        return termToTerm.get(name).getLink(linkText);
+        Term t = termToTerm.get(name);
+        if (t == null) {
+            //throw new RuntimeException();
+            return null;
+        }
+        return t.getLink(linkText);
+//        return termToTerm.get(name).getLink(linkText);
     }
 
     @Override

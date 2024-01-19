@@ -43,8 +43,8 @@ public abstract class Site {
     public final Environment env;
 
     /**
-     * If true then this will map to local paths for resource
-     * files (including images, scripts, style sheets).
+     * If true then this is to map to local paths for resource files (including 
+     * images, scripts, style sheets).
      */
     public final boolean localPaths;
     

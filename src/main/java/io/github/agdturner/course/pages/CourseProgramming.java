@@ -32,7 +32,7 @@ public abstract class CourseProgramming extends CoursePage {
      */
     public CourseProgramming(Course course) {
         super(course, "programming", 
-                course.getCourseCode() + ": " + course.courseName, 
+                "Programming", 
                 "Programming");
     }
 }

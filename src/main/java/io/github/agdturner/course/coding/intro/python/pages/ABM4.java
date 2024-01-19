@@ -72,7 +72,7 @@ public class ABM4 extends CoursePage {
                 'agentframework.py', and add a class definition for an Agent
                 class in it as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     pass
@@ -87,7 +87,7 @@ public class ABM4 extends CoursePage {
                 In 'model.py' reduce 'n_iterations' to 10, and add the following
                 import statement:
                 """);
-        addPythonCodeBlock(sb, "import agentframework as af");
+        addCodeBlock(this.getCourse().courseType, sb, "import agentframework as af");
         w.addP(sb,
                 """
                 Note that this imports the agentframework module as loaded from
@@ -98,7 +98,7 @@ public class ABM4 extends CoursePage {
                 At the start of the '# Initialise agents' code block, add the
                 following:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = af.Agent()
                 print("type(a)", type(a))
@@ -120,7 +120,7 @@ public class ABM4 extends CoursePage {
                 and 'y' variable attributes to be random integers in the range
                 [0, 99]. The code in 'agentframework.py' should be:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import random
 
@@ -160,7 +160,7 @@ public class ABM4 extends CoursePage {
                 metaclass that all classes inherit from by default. Define the
                 method in the Agent class as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def __str__(self):
                    return self.__class__.__name__ + "(x=" + str(self.x) \\
@@ -184,7 +184,7 @@ public class ABM4 extends CoursePage {
                 """
                 Change the '# Initialise agents' code block in 'model.py' to:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 # Initialise agents
                 agents = []
@@ -245,7 +245,7 @@ public class ABM4 extends CoursePage {
                 function to print string representations when printing the
                 agents list:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 def __repr__(self):
                     return str(self)
@@ -265,10 +265,10 @@ public class ABM4 extends CoursePage {
                 change the following line of code in the 'get_max_distance()'
                 function:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 "distance = get_distance(a[0], a[1], b[0], b[1])");
         w.addP(sb, "<p>To be:</p>");
-        addPythonCodeBlock(sb, "distance = get_distance(a.x, a.y, b.x, by)");
+        addCodeBlock(this.getCourse().courseType, sb, "distance = get_distance(a.x, a.y, b.x, by)");
         w.addP(sb, 
                 "Appreciate that this is easier to read and understand.");
         w.addP(sb,
@@ -278,19 +278,19 @@ public class ABM4 extends CoursePage {
                 'model.py' to see where the next TypeError is raised.
                 """);
         w.addP(sb, "In the code change:");
-        addPythonCodeBlock(sb, "agents[i][0]");
+        addCodeBlock(this.getCourse().courseType, sb, "agents[i][0]");
         w.addP(sb, "To:");
-        addPythonCodeBlock(sb, "agents[i].x");
+        addCodeBlock(this.getCourse().courseType, sb, "agents[i].x");
         w.addP(sb, "And change:");
-        addPythonCodeBlock(sb, "agents[i][1]");
+        addCodeBlock(this.getCourse().courseType, sb, "agents[i][1]");
         w.addP(sb, "To:");
-        addPythonCodeBlock(sb, "agents[i].y");
+        addCodeBlock(this.getCourse().courseType, sb, "agents[i].y");
         w.addP(sb,
                 """
                 Make a further change in the code block that plots agents,
                 changing:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
               """
               # Plot the coordinate with the largest x red
               lx = max(agents, key=operator.itemgetter(0))
@@ -306,7 +306,7 @@ public class ABM4 extends CoursePage {
               plt.scatter(sy[0], sy[1], color='green')
               """);
         w.addP(sb, "To:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
               """
               # Plot the coordinate with the largest x red
               lx = max(agents, key=operator.attrgetter('x'))
@@ -333,7 +333,7 @@ public class ABM4 extends CoursePage {
         sid = addSection("Separation of Concerns", sb);
         w.addP(sb,
                 "Define a method called 'move' in the Agent class as follows:");
-        addPythonCodeBlock(sb, "def move(self, x_min, y_min, x_max, y_max):");
+        addCodeBlock(this.getCourse().courseType, sb, "def move(self, x_min, y_min, x_max, y_max):");
         w.addP(sb,
                 """
                 Cut the code that moves an individual agent from 'model.py' and
@@ -341,7 +341,7 @@ public class ABM4 extends CoursePage {
                 "agents[i]" with "self" in the method. Where the code was cut
                 from, add the following to call the move method:
                 """);
-        addPythonCodeBlock(sb, "agents[i].move(x_min, y_min, x_max, y_max)");
+        addCodeBlock(this.getCourse().courseType, sb, "agents[i].move(x_min, y_min, x_max, y_max)");
         w.addP(sb,
                 """
                 Note that in the Agent class, the 'move' method has a parameter
@@ -374,7 +374,7 @@ public class ABM4 extends CoursePage {
                 and a parameter to the '__init__' constructor method of Agent
                 so that the method is as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
               """
               def __init__(self, i):
               \"""

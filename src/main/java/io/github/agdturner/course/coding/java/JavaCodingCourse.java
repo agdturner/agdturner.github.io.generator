@@ -29,6 +29,11 @@ public abstract class JavaCodingCourse extends CodingCourse {
      * The course Type for setting {@link #courseType}.
      */
     protected static final String COURSE_TYPE = "java";
+
+    /**
+     * The course Type for setting {@link #courseTypeCapitalised}.
+     */
+    public static final String COURSE_TYPE2 = "Java";
     
     /**
      * Creates a new instance.courseType is set to "python".
@@ -40,9 +45,11 @@ public abstract class JavaCodingCourse extends CodingCourse {
      */
     public JavaCodingCourse(Environment env, String courseCode, 
             String courseName, boolean localPaths) {
-        super(env, COURSE_TYPE, courseCode, courseName, localPaths);
+        super(env, COURSE_TYPE, COURSE_TYPE2, courseCode, courseName,
+                localPaths);
         index = new JavaIndex(this, "index", "Index", "Index");
-        references = new JavaReferences(this, "references", "References", "References");
+        references = new JavaReferences(this, "references", "References",
+                "References");
     }
 
     @Override

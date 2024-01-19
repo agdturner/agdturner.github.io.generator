@@ -62,10 +62,10 @@ public class ABM7 extends CoursePage {
                 Spyder.
                 """);
         w.addP(sb, "Add the following import statement:");
-        addPythonCodeBlock(sb, "import matplotlib.animation as anim");
+        addCodeBlock(this.getCourse().courseType, sb, "import matplotlib.animation as anim");
         w.addP(sb,
                 "After initialising agents add the following code block:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Animate
                 # Initialise fig and carry_on
@@ -81,7 +81,7 @@ public class ABM7 extends CoursePage {
                 code. Add a line to clear fig at the start of the function and
                 specify 'ite' as a global variable before it is used:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 fig.clear()
                 plt.ylim(y_min, y_max)
@@ -114,7 +114,7 @@ public class ABM7 extends CoursePage {
                 of this call the 'plot' function. Specify 'carry_on' as a global
                 variable and add a random stopping condition as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def update(frames):
                     # Model loop
@@ -158,7 +158,7 @@ public class ABM7 extends CoursePage {
                     plot()
                 """);
         w.addP(sb, "Define a function called 'gen_function' as follows:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def gen_function():
                     global ite

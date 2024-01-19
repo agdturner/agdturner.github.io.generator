@@ -30,11 +30,18 @@ public abstract class PythonCodingCourse extends CodingCourse {
      */
     public static final String COURSE_TYPE = "python";
 
+    /**
+     * The course Type for setting {@link #courseTypeCapitalised}.
+     */
+    public static final String COURSE_TYPE2 = "Python";
+
     public PythonCodingCourse(Environment env, String courseCode,
             String courseName, boolean localPaths) {
-        super(env, COURSE_TYPE, courseCode, courseName, localPaths);
+        super(env, COURSE_TYPE, COURSE_TYPE2, courseCode, courseName,
+                localPaths);
         index = new PythonIndex(this, "index", "Index", "Index");
-        references = new PythonReferences(this, "references", "References", "References");
+        references = new PythonReferences(this, "references", "References",
+                "References");
     }
 
     @Override

@@ -130,7 +130,7 @@ public class Containers extends CoursePage {
                 <a href="#2.4">Section 2.4</a>). Strings can be concatenated
                 using the '+' symbol. Consider and try the following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 s0 = "this is a string"
                 s2 = 'this is also a string'
@@ -150,7 +150,7 @@ public class Containers extends CoursePage {
                 A backslash can also ensure the continuation of a line. For
                 example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 print('''This is \\
                 all one line.
@@ -168,7 +168,7 @@ public class Containers extends CoursePage {
                 comments are only comments provided they are not in the string.
                 So, running the following:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 print('''This is \\ # Not a comment
                 all one line.''')
@@ -184,7 +184,7 @@ public class Containers extends CoursePage {
                 It is sometimes easier to use concatenation in order to add
                 source code comments:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 print("This is " + # A comment
                 "all one line.")
@@ -205,7 +205,7 @@ public class Containers extends CoursePage {
                 a list using a delimiter. As it is a method, this functionality
                 can be used in a couple of ways:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 s = "A simple string to split."
                 delimiter = " " # What is used to split the String into parts
@@ -242,7 +242,7 @@ public class Containers extends CoursePage {
                 sequence of things together. Consider the following code where
                 there is some packing and unpacking of a tuple:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = () # A new empty tuple
                 print(len(a)) # <-- Prints 0
@@ -261,7 +261,7 @@ public class Containers extends CoursePage {
                 <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
                 Fibonacci series</a> of integer numbers:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Fibonacci series - the sum of the last two numbers in a sequence defines the next
                 a, b = 0, 1
@@ -289,7 +289,7 @@ public class Containers extends CoursePage {
         sb.append(index.getReference("Python range", "Ranges", sid));
         w.addPET(sb,
                 " are a special type of immutable sequence created as follows:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 range(start, stop, step) # start and step are optional and default to 0 and 1 repectively
                 """);
@@ -299,7 +299,7 @@ public class Containers extends CoursePage {
                 range function generates numbers up to but not including stop,
                 for example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 for x in range(4):
                     print(x)
@@ -312,7 +312,7 @@ public class Containers extends CoursePage {
                 2
                 3
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 for x in range(2,8,2):
                     print(x)
@@ -324,7 +324,7 @@ public class Containers extends CoursePage {
                 4
                 6
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 for x in range(0,-5,-1)
                     print(x)
@@ -356,7 +356,7 @@ public class Containers extends CoursePage {
                 A tuple can be constructed from a range or another sequence
                 producer:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 r = range(5)
                 type(r) # <-- Prints <class 'range'>
@@ -391,7 +391,7 @@ public class Containers extends CoursePage {
                 boolean values ('True' or 'False') the method 'any' will return
                 'True' if any of the items in the sequence are 'True'.
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = (1, 6, 9, 0, 6)
                 print(min(a))
@@ -419,7 +419,7 @@ public class Containers extends CoursePage {
                 constructor that can take in some other container as an
                 argument. For example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = [] # Create an empty list called a.
                 a.append("apple") # Append the String "apple" to the list a
@@ -443,7 +443,7 @@ public class Containers extends CoursePage {
                 A 'slice' of a sequence contains all those items at the indexes
                 given by a range:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = [0, 1, 2, 3, 4]
                 print("a", a)
@@ -474,7 +474,7 @@ public class Containers extends CoursePage {
                 assignment). Consider the following example that replaces values
                 from one list with the values from another:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = [0,1,2,3,4]
                 b = [10,20,30]
@@ -489,7 +489,7 @@ public class Containers extends CoursePage {
                 insertions.
                 """);
         w.addP(sb, "The following example replaces 4 values with 2:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = [0,1,2,3,4]
                 b = [10,20]
@@ -505,7 +505,7 @@ public class Containers extends CoursePage {
                  can be used to combine lists into a sequence of tuples as
                 follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = [1,2,3,4,5]
                 b = [10,20,30,40,50]
@@ -567,7 +567,7 @@ public class Containers extends CoursePage {
                 """);
         sb.append(index.getReference("Python array", "TypeError", sid));
         w.addPET(sb, ":");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import array
                 a = array.array('i', [1, 2, 3, 4])
@@ -590,7 +590,7 @@ public class Containers extends CoursePage {
                 creates an empty set, adds some things into it and then tests if
                 something is in the set.
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = set() # Empty set
                 a.add("apple")    # Add "apple" to a
@@ -621,7 +621,7 @@ public class Containers extends CoursePage {
                 used. The following code creates a dictionary and retrieves a
                 value for a particular key and prints it:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 alias = dict([("rm", "remove"), ("cd", "change directory"), ("ls", "list")])
                 print(alias.get("rm")) # <-- This should print 'remove'.

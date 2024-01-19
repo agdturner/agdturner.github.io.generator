@@ -79,7 +79,7 @@ public class IO extends CoursePage {
                 parameter is displayed to prompt user input. Run the following
                 at the Python prompt and enter some keyboard input:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 n_agents = input("Enter n_agents (a number between 10 and 100) and press the &lt;ENTER&gt; or &lt;RETURN&gt; key:")
                 print("The input detected is:", n_agents)
@@ -156,7 +156,7 @@ public class IO extends CoursePage {
                 and read the file one line at a time streaming the output to the
                 screen before then closing the file:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 f = open("a.in")
                 for line in f:
@@ -183,7 +183,7 @@ public class IO extends CoursePage {
                 the keyword 'with'. The following does effectively the same as
                 the previous snippet:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 with open("a.in") as f:
                     for line in f:
@@ -223,7 +223,7 @@ public class IO extends CoursePage {
                 Files are opened for writing in a similar way. Writing to a file
                 can be done as follows:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 # Create something to write
                 a = []
@@ -254,7 +254,7 @@ public class IO extends CoursePage {
                 An alternative using the keyword 'with' that does not
                 require closing the file is:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Create something to write
                 a = []
@@ -365,7 +365,7 @@ public class IO extends CoursePage {
                 Float which is appended to a list which is then appended to
                 another list called 'data':
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 with open("data.txt") as f:
                 data = []
@@ -388,7 +388,7 @@ public class IO extends CoursePage {
                  written specifically to do this. The following is an example of
                 reading some numeric data:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 import csv
                 f = open('data.csv', newline='')
@@ -409,7 +409,7 @@ public class IO extends CoursePage {
                 The following is an example of using the csv module to write
                 data:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 import csv
                 f = open('data.csv', 'w', newline='')
@@ -427,7 +427,7 @@ public class IO extends CoursePage {
         w.addPST(sb, "The following code uses the standard library ");
         sb.append(index.getReference("Python json", "json module", sid));
         w.addPET(sb, " to read a JSON file:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import json
                 f = open('data.json')
@@ -436,7 +436,7 @@ public class IO extends CoursePage {
                 print(data)
                 """);
         w.addP(sb, "The following code can be used to write a JSON file:");
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 import json
                 f = open('data.json', 'w')
@@ -489,7 +489,7 @@ public class IO extends CoursePage {
                 """);
         sb.append(index.getReference("PATH", sid));
         w.addPET(sb, ":");
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 import os
                 print(os.environ["PATH"])
@@ -499,7 +499,7 @@ public class IO extends CoursePage {
                 And the following will print a list of every file and directory
                 in the current working directory:
                 """);
-        addPythonCodeBlock(sb, "print os.listdir(path='.')");
+        addCodeBlock(this.getCourse().courseType, sb, "print os.listdir(path='.')");
         w.addP(sb,
                 """
                 The standard library

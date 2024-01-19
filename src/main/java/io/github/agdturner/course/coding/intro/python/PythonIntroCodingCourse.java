@@ -46,7 +46,7 @@ import io.github.agdturner.course.coding.intro.python.sog.pages.SoGPythonIntroCo
 import io.github.agdturner.course.coding.intro.python.sog.pages.SoGPythonIntroCodingCourseABM9;
 
 /**
- * Java for generating Python Intro Course  Website content.
+ * Python Intro Coding Course.
  *
  * @author Andy Turner
  */

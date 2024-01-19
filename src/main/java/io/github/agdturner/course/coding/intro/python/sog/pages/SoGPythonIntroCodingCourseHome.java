@@ -56,9 +56,7 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
         return sid;
     }
 
-    @Override
     public void getLearningJourney1(StringBuilder sb, SectionID sid) {
-        super.getLearningJourney1(sb, sid);
         w.addP(sb,
                 """
                 To complete the course, you are to undertake an independent
@@ -70,9 +68,9 @@ public class SoGPythonIntroCodingCourseHome extends PythonIntroCodingCourseHome 
                 """);
     }
 
-    @Override
+    //@Override
     public void getExpectations2(StringBuilder sb, SectionID sid) {
-        super.getExpectations2(sb, sid);
+        //super.getExpectations2(sb, sid);
         w.addPST(sb,
                 "You get to review some exemplar code that automates some ");
         sb.append(references.getReference("QGIS"));

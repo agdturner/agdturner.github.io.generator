@@ -83,7 +83,7 @@ public class ABM5 extends CoursePage {
                 Create a new source code file named 'io.py' in the 'abm5'
                 directory, add the following lines:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import csv
 
@@ -117,13 +117,13 @@ public class ABM5 extends CoursePage {
                 returns the data variable. Write code to call this function from
                 'model.py' by adding the following import statement:
                 """);
-        addPythonCodeBlock(sb, "import io");
+        addCodeBlock(this.getCourse().courseType, sb, "import io");
         w.addP(sb,
                 """
                 After the import statements try to call the 'read_data' function
                 using:
                 """);
-        addPythonCodeBlock(sb, "environment = io.read_data()");
+        addCodeBlock(this.getCourse().courseType, sb, "environment = io.read_data()");
         w.addP(sb,
                 """
                 You should encounter an AttributeError along the lines of the
@@ -156,7 +156,7 @@ public class ABM5 extends CoursePage {
                 'agentframework.py' into it. Change the respective import
                 statements in 'model.py' to be:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import my_modules.agentframework as af
                 import my_modules.io as io
@@ -195,13 +195,13 @@ public class ABM5 extends CoursePage {
                 To plot 'agents' on the 'environment' add the following at the
                 start of the plotting section:
                 """);
-        addPythonCodeBlock(sb, "plt.imshow(environment)");
+        addCodeBlock(this.getCourse().courseType, sb, "plt.imshow(environment)");
         w.addP(sb,
                 """
                 Change the initialisation of 'x_max' and 'y_max' to be as
                 follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # The maximum an agents x coordinate is allowed to be.
                 x_max = n_cols - 1
@@ -222,7 +222,7 @@ public class ABM5 extends CoursePage {
                 x-axis. Limit the plot axes and flip the y-axis back by adding
                 the following code before the plot.show() function is called:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 plt.ylim(y_min, y_max)
                 plt.xlim(x_min, x_max)
@@ -242,7 +242,7 @@ public class ABM5 extends CoursePage {
                 these parameters to initialise the x and y coordinates as
                 follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def __init__(self, i, n_rows, n_cols):
                     \"""
@@ -285,7 +285,7 @@ public class ABM5 extends CoursePage {
                 initialise agents in the central third of a similar rectangular
                 environment irrespective of the number of rows and columns:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 tnc = int(n_cols / 3)
                 self.x = random.randint(0, tnc - 1) + tnc
@@ -308,7 +308,7 @@ public class ABM5 extends CoursePage {
                 reference to this as a class attribute. Also create a 'store'
                 attribute and set this equal to zero:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
               """
               def __init__(self, i, environment, n_rows, n_cols):
               \"""
@@ -344,7 +344,7 @@ public class ABM5 extends CoursePage {
                 agents are initialised.
                 """);
         w.addP(sb, "In the Agent class define the following method:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def eat(self):
                     if self.environment[self.y][self.x] &gt;= 10:
@@ -371,7 +371,7 @@ public class ABM5 extends CoursePage {
                 Change the plot limits for a closer look at the centre of the
                 environment as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
               """
               plt.ylim(y_max / 3, y_max * 2 / 3)
               plt.xlim(x_max / 3, x_max * 2 / 3)

@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.process;
 
+import io.github.agdturner.course.coding.intro.cpp.process.CPP0;
 import io.github.agdturner.course.coding.intro.java.process.Java0;
 import io.github.agdturner.course.coding.intro.python.process.Python0;
 import io.github.agdturner.course.coding.intro.python.sog.process.GEOG5003M;
@@ -47,12 +48,13 @@ public class Process {
      * @param args Arguments are ignored.
     */
     public void run(String[] args) {
-        MyHome.main(args);
+        //MyHome.main(args);
         //GEOG5003M.main(args);
         //GEOG5990M.main(args);
         //GEOG5995M.main(args);
-        Python0.main(args);
+        //Python0.main(args);
         //Java0.main(args);
+        CPP0.main(args);
     }
     
     

@@ -36,22 +36,22 @@ public class Index extends CoursePage {
     /**
      * These are aliases included in the index.
      */
-    public final TreeSet<String> aliasesToIndex;
+    protected final TreeSet<String> aliasesToIndex;
 
     /**
      * A complete set of terms and aliases for the index.
      */
-    public final TreeSet<String> termsAndAliasesToIndex;
+    protected final TreeSet<String> termsAndAliasesToIndex;
 
     /**
      * To look up a term name from an alias.
      */
-    public final TreeMap<String, String> aliasToTerm;
+    protected final TreeMap<String, String> aliasToTerm;
 
     /**
      * To look up aliases from a term.
      */
-    public final TreeMap<String, TreeSet<String>> termToAliases;
+    protected final TreeMap<String, TreeSet<String>> termToAliases;
 
     /**
      * For checking and adding aliases.
@@ -77,6 +77,26 @@ public class Index extends CoursePage {
         }
         aliases.add(alias);
     }
+    
+    /**
+     * For checking and adding aliases.
+     *
+     * @param term The index term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasTermPlural(String term, IndexTerm indexTerm) {
+        addAlias(term, term + "s", indexTerm);
+    }
+    
+    /**
+     * For checking and adding aliases.
+     *
+     * @param term The index term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasTermLowerCase(String term, IndexTerm indexTerm) {
+        addAlias(term, term.toLowerCase(), indexTerm);
+    }
 
     /**
      * For checking and adding aliases.
@@ -85,9 +105,20 @@ public class Index extends CoursePage {
      * @param alias The alias to add for the term.
      * @param indexTerm The index term.
      */
-    public final void addAliasAndLowerCase(String term, String alias, IndexTerm indexTerm) {
+    public final void addAliasAndAliasLowerCase(String term, String alias, IndexTerm indexTerm) {
         addAlias(term, alias, indexTerm);
         addAlias(term, alias.toLowerCase(), indexTerm);
+    }
+    
+    /**
+     * For checking and adding aliases.
+     *
+     * @param term The index term.
+     * @param alias The alias to add for the term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasPlural(String term, String alias, IndexTerm indexTerm) {
+        addAlias(term, alias + "s", indexTerm);
     }
 
     /**
@@ -111,9 +142,10 @@ public class Index extends CoursePage {
      * @param alias The alias to add for the term.
      * @param indexTerm The index term.
      */
-    public final void addAliasAndAliasPlural(String term, String alias, IndexTerm indexTerm) {
+    public final void addAliasAndAliasPlural(String term, String alias, 
+            IndexTerm indexTerm) {
         addAliasToIndex(term, alias, indexTerm);
-        addAlias(term, alias + "s", indexTerm);
+        addAliasPlural(term, alias, indexTerm);
     }
 
     /**
@@ -125,12 +157,10 @@ public class Index extends CoursePage {
      * @param alias The alias to add for the term.
      * @param indexTerm The index term.
      */
-    public final void addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(String term, String alias, IndexTerm indexTerm) {
-        addAliasToIndex(term, alias, indexTerm);
-        addAlias(term, alias + "s", indexTerm);
-        String aliasLowerCase = alias.toLowerCase();
-        addAlias(term, aliasLowerCase, indexTerm);
-        addAlias(term, aliasLowerCase + "s", indexTerm);
+    public final void addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(
+            String term, String alias, IndexTerm indexTerm) {
+        addAliasAndAliasPlural(term, alias, indexTerm);
+        addAliasAndAliasPlural(term, alias.toLowerCase(), indexTerm);
     }
 
     /**
@@ -139,9 +169,10 @@ public class Index extends CoursePage {
      * @param term The term to add the aliases for.
      * @param indexTerm The index term.
      */
-    public final void addLowerCaseAlias(String term, IndexTerm indexTerm) {
+    public final void addAliasLowerCase(String term, IndexTerm indexTerm) {
         addAlias(term, term.toLowerCase(), indexTerm);
     }
+
 
     /**
      * Adds the plural, lower case and lower case plural of term as aliases.
@@ -149,22 +180,59 @@ public class Index extends CoursePage {
      * @param term The term to add the aliases for.
      * @param indexTerm The index term.
      */
-    public final void addLowerCaseAndPluralAliases(String term, IndexTerm indexTerm) {
-        addAlias(term, term + "s", indexTerm);
-        String lowerCaseTerm = term.toLowerCase();
-        addAlias(term, lowerCaseTerm, indexTerm);
-        addAlias(term, lowerCaseTerm + "s", indexTerm);
+    public final void addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(String term,
+            IndexTerm indexTerm) {
+        addAliasTermPlural(term, indexTerm);
+        addAliasAndAliasPlural(term, term.toLowerCase(), indexTerm);
     }
 
     /**
-     * Adds to {@link #termToIndexTerm} and {@link #termsAndAliasesToIndex}.
-     *
+     * Adds to {@link #termToIndexTerm} and {@link #termsAndAliasesToIndex}. If 
+     * the term already exists and the description is different, then an 
+     * RuntimeException is thrown.
+     * 
      * @param term The term to add.
      * @param indexTerm The IndexTerm.
      */
     public final void addIndexTerm(String term, IndexTerm indexTerm) {
+        if (termToIndexTerm.containsKey(term)) {
+            IndexTerm iT = termToIndexTerm.get(term);
+            if (!iT.description.equalsIgnoreCase(indexTerm.description)) {
+                throw new RuntimeException("Term " + term + " already defined"
+                        + " as " + iT.description + "!");
+            } else {
+                throw new RuntimeException("Term " + term + " already"
+                        + " defined!");
+            }
+        }
         termToIndexTerm.put(term, indexTerm);
         termsAndAliasesToIndex.add(term);
+    }
+
+    /**
+     * Adds to {@link #termToIndexTerm} and {@link #termsAndAliasesToIndex} and 
+     * adds plural alias.
+     *
+     * @param term The term to add.
+     * @param indexTerm The IndexTerm.
+     */
+    public final void addIndexTermAndTermPlural(String term,
+            IndexTerm indexTerm) {
+        addIndexTerm(term, indexTerm);
+        addAliasTermPlural(term, indexTerm);
+    }
+    
+    /**
+     * Adds to {@link #termToIndexTerm} and {@link #termsAndAliasesToIndex} and 
+     * adds plural alias.
+     *
+     * @param term The term to add.
+     * @param indexTerm The IndexTerm.
+     */
+    public final void addIndexTermAndTermLowerCase(String term,
+            IndexTerm indexTerm) {
+        addIndexTerm(term, indexTerm);
+        addAliasTermLowerCase(term, indexTerm);
     }
 
     /**
@@ -195,6 +263,14 @@ public class Index extends CoursePage {
         addIndexTerm(term, indexTerm);
         addAliasAndAliasPlural(term, "ABM", indexTerm);
 
+        term = "Apache Netbeans";
+        url = "https://netbeans.apache.org/";
+        description = "Development Environment, Tooling Platform and"
+                + " Application Framework.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Netbeans", indexTerm);
+
         term = "Application software";
         url = Environment.getWikipediaURL("Application_software");
         description = "A \"computer program\" designed to carry out a specific "
@@ -202,8 +278,10 @@ public class Index extends CoursePage {
                 + "computer itself, typically to be used by \"end users\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, "Application", indexTerm);
-        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term, "APP", indexTerm);
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, 
+                "Application", indexTerm);
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, 
+                "APP", indexTerm);
 
         term = "Application Programming Interface";
         url = Environment.getWikipediaURL("Application_Programming_Interface");
@@ -227,7 +305,7 @@ public class Index extends CoursePage {
                 + "legacy system";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
         addAlias(term, "backwards compatability", indexTerm);
 
         term = "Bit";
@@ -237,7 +315,7 @@ public class Index extends CoursePage {
                 + "two possible values";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Bug";
         url = Environment.getWikipediaURL("Bug_(engineering)");
@@ -248,7 +326,7 @@ public class Index extends CoursePage {
                 + "See also \"Software Bug\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Byte";
         url = Environment.getWikipediaURL("Byte");
@@ -256,7 +334,7 @@ public class Index extends CoursePage {
                 + " consists of eight \"bits\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Bytecode";
         url = Environment.getWikipediaURL("Bytecode");
@@ -264,30 +342,131 @@ public class Index extends CoursePage {
                 + "execution by a software \"interpreter\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
         
-        term = "C++";
+        term = "C++ Programming Language";
         url = Environment.getWikipediaURL("C%2B%2B");
         description = """
-                      A high-level, general-purpose "programming language". The
-                      latest standard version 'C++20' was published in December
-                      2020. The next is expected in December 2023
+                      A high-level, general-purpose "programming language". \
+                      The latest standard version "C++20" was published in \
+                      December 2020. The next is coming soon...
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        addAlias(term, "C++ programming language", indexTerm);
+        addAlias(term, "C++", indexTerm);
         addAlias(term, "CPP", indexTerm);
 
-        term = "C";
+        term = "C++98";
+        url = Environment.getWikipediaURL("C%2B%2B98");
+        description = """
+                      The first version of the "ISO"/"IEC" 14882 standard for \
+                      the "C++ programming language" superseeded by "C++03"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C++03";
+        url = Environment.getWikipediaURL("C%2B%2B03");
+        description = """
+                      A version of the "ISO"/"IEC" 14882 standard for the \
+                      "C++ programming language". C++03 superseeded "C++98", \
+                      and was superseeded by "C++11"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C++11";
+        url = Environment.getWikipediaURL("C%2B%2B11");
+        description = """
+                      A version of the "ISO"/"IEC" 14882 standard for the \
+                      "C++ programming language". C++11 superseeded "C++03", \
+                      and was superseeded by "C++14"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C++14";
+        url = Environment.getWikipediaURL("C%2B%2B14");
+        description = """
+                      A version of the "ISO"/"IEC" 14882 standard for the \
+                      "C++ programming language". C++14 superseeded "C++11", \
+                      and was superseeded by "C++17"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C++17";
+        url = Environment.getWikipediaURL("C%2B%2B17");
+        description = """
+                      A version of the "ISO"/"IEC" 14882 standard for the \
+                      "C++ programming language". C++17 superseeded "C++14", \
+                      and was superseeded by "C++20"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "ISO/IEC 14882:2020";
+        url = "https://www.iso.org/standard/79358.html";
+        description = """
+                      A standards document that specifies requirements for \
+                      implementations of the "C++ programming language"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C++20";
+        url = Environment.getWikipediaURL("C%2B%2B20");
+        description = """
+                      The "ISO/IEC 14882:2020" standard for the \
+                      "C++ programming language". C++20 superseeded \
+                      "C++17"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C Programming Language";
         url = Environment.getWikipediaURL("C_(programming_language)");
         description = """
-                      A general-purpose computer "programming language". The
-                      latest standard 'C17' was published in June 2018. The next
-                      is expected in 2024
+                      A general-purpose computer "programming language". The \
+                      latest standard "C17" was published in June 2018. The \
+                      next is coming soon...
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "C programming language", indexTerm);
+        addAlias(term, "C", indexTerm);
         addAlias(term, "C Standard", indexTerm);
+        
+        term = "C11";
+        url = Environment.getWikipediaURL("C11");
+        description = """
+                      The informal name for "ISO"/"IEC" 9899 standard for the \
+                      "C programming language" superseeded by "C17".
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "ISO/IEC 9899:2018";
+        url = "https://www.iso.org/standard/74528.html";
+        description = """
+                      A standards document that specifies the form and \
+                      establishes the interpretation of programs written in \
+                      the "C programming language"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "C17";
+        url = Environment.getWikipediaURL("C17");
+        description = """
+                      The informal name for "ISO/IEC 9899:2018" - the most \
+                      recent standard for the "C programming language", \
+                      published in June 2018. It replaces "C11" and will be \
+                      superseded soon...
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
 
         term = "Call By Sharing";
         url = Environment.getWikipediaURL("Evaluation_strategy#Call_by_sharing");
@@ -299,7 +478,7 @@ public class Index extends CoursePage {
                 + "\"scope\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Call By Value";
         url = Environment.getWikipediaURL("Evaluation_strategy#Call_by_value");
@@ -307,7 +486,7 @@ public class Index extends CoursePage {
                 + "\"scope\" remains unchanged";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Class";
         url = Environment.getWikipediaURL("Class_(computer_programming)");
@@ -317,8 +496,8 @@ public class Index extends CoursePage {
                 + "functions or methods)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
-        addAliasAndLowerCase(term, "Classes", indexTerm);
+        addAliasLowerCase(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Classes", indexTerm);
 
         term = "Client";
         url = Environment.getWikipediaURL("Client_(computing)");
@@ -326,7 +505,7 @@ public class Index extends CoursePage {
                 + "accesses a service made available by a \"server\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Computer";
         url = Environment.getWikipediaURL("Computer");
@@ -335,7 +514,17 @@ public class Index extends CoursePage {
                 + "automatically";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, 
+                "General-purpose computer", indexTerm);
+
+        term = "Computer cluster";
+        url = Environment.getWikipediaURL("Computer_cluster");
+        description = "A set of \"computers\" that work together so that they "
+                + "can be viewed as a single system";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Computer Hardware";
         url = Environment.getWikipediaURL("Computer_hardware");
@@ -345,7 +534,7 @@ public class Index extends CoursePage {
                 + "card, sound card, speakers and motherboard";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasAndLowerCase(term, "Hardware", indexTerm);
+        addAliasAndAliasLowerCase(term, "Hardware", indexTerm);
 
         term = "Command Line Interface";
         url = Environment.getWikipediaURL("Command-line_interface");
@@ -364,7 +553,7 @@ public class Index extends CoursePage {
                 + "\"programming language\" for a \"computer\" to execute";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Computer Programming";
         url = Environment.getWikipediaURL("Computer_programming");
@@ -372,7 +561,7 @@ public class Index extends CoursePage {
                 + "computer program";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Conditional";
         url = Environment.getWikipediaURL("Conditional_(computer_programming)");
@@ -380,7 +569,7 @@ public class Index extends CoursePage {
                 + " evaluation to determine what code is executed next";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Control Flow";
         url = Environment.getWikipediaURL("Control_flow");
@@ -389,7 +578,7 @@ public class Index extends CoursePage {
                 + "evaluated";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "CSS";
         url = Environment.getWikipediaURL("CSS");
@@ -416,7 +605,7 @@ public class Index extends CoursePage {
                       "computer programs", "software", or systems""";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Deprecation";
         url = Environment.getWikipediaURL("Deprecation");
@@ -426,7 +615,7 @@ public class Index extends CoursePage {
                 + "without completely removing it or prohibiting its use";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Disk";
         url = Environment.getWikipediaURL("Computer_memory");
@@ -435,7 +624,7 @@ public class Index extends CoursePage {
                 + "to the next)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Double-precision Floating-point";
         url = Environment.getWikipediaURL("Double-precision_floating-point_format");
@@ -445,7 +634,7 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "End user";
         url = Environment.getWikipediaURL("End_user");
@@ -453,7 +642,7 @@ public class Index extends CoursePage {
                 + "ultimately use a product";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "File Format";
         url = Environment.getWikipediaURL("File_format");
@@ -461,7 +650,7 @@ public class Index extends CoursePage {
                 + "in a computer file";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "File System";
         url = Environment.getWikipediaURL("File_system");
@@ -469,7 +658,7 @@ public class Index extends CoursePage {
                 + "system uses to control how data is stored and retrieved";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Floating-point";
         url = Environment.getWikipediaURL("Floating-point_arithmetic");
@@ -480,7 +669,7 @@ public class Index extends CoursePage {
                       base""";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "For Loop";
         url = Environment.getWikipediaURL("For_loop");
@@ -489,7 +678,7 @@ public class Index extends CoursePage {
                 + "and/or until a condition is met";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Fortran";
         url = Environment.getWikipediaURL("Fortran");
@@ -498,7 +687,7 @@ public class Index extends CoursePage {
                 + "new standard is expected for publication in July 2023";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Free and Open Source Software";
         url = Environment.getWikipediaURL("Free_and_open-source_software");
@@ -521,7 +710,7 @@ public class Index extends CoursePage {
                 + "specific task";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "GeoJSON";
         url = Environment.getWikipediaURL("GeoJSON");
@@ -542,7 +731,7 @@ public class Index extends CoursePage {
 
         term = "Git";
         url = Environment.getWikipediaURL("Git");
-        description = "a distributed version control system";
+        description = "a distributed \"version control\" system";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
@@ -560,7 +749,7 @@ public class Index extends CoursePage {
                 + "troubleshoot";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "GML";
         url = Environment.getWikipediaURL("Geography_Markup_Language");
@@ -576,6 +765,14 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasAndAliasPlural(term, "GUI", indexTerm);
+        
+        term = "High Performance Computing";
+        url = Environment.getWikipediaURL("High-performance_computing");
+        description = "Uses \"supercomputers\" and \"computer clusters\" to"
+                + " solve advanced computation problems.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasPlural(term, "HPC", indexTerm);
 
         term = "HTML";
         url = Environment.getWikipediaURL("HTML");
@@ -607,7 +804,20 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
+        
+        term = "IEC";
+        url = Environment.getWikipediaURL("ISO");
+        description = """
+                       the International Electrotechnical Commission is an
+                      international standards organization that prepares and
+                      publishes international standards for all electrical,
+                      electronic and related technologies – collectively known
+                      as electrotechnology.""";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "International Electrotechnical Commission",
+                indexTerm);
         
         term = "Integrated Development Environment";
         url = Environment.getWikipediaURL("Integrated_development_environment");
@@ -615,7 +825,7 @@ public class Index extends CoursePage {
                 + "make writing code and developing \"software\" easier";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
         addAlias(term, "IDE", indexTerm);
 
         term = "Interpreter";
@@ -626,7 +836,7 @@ public class Index extends CoursePage {
                 + "machine language program";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Internet";
         url = Environment.getWikipediaURL("Internet");
@@ -635,18 +845,31 @@ public class Index extends CoursePage {
                 + "communicate between networks and devices";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
+        
+        term = "ISO";
+        url = Environment.getWikipediaURL("ISO");
+        description = """
+                      the International Organization for Standardization is an \
+                      international standard development organization composed \
+                      of representatives from the national standards \
+                      organizations of member countries""";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "International Organization for Standardization",
+                indexTerm);
 
         term = "Java";
         url = Environment.getWikipediaURL("Java_(programming_language)");
-        description = "A high-level general pupose \"programming language\". "
-                + "The latest version is Java 20, released in March 2023. "
-                + "The latest long-term support (LTS) version is Java 17, "
-                + "released in September 2021. Java 21 is scheduled for "
-                + "release in September 2023 as a LTS version.";
+        description = "A high-level general purpose \"programming language\". "
+                + "The latest version is Java 21, released in September 2023. "
+                + "Java 21 is also the latest long-term support (LTS) version. "
+                + "Java 22 is scheduled for release in March 2024.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
+        addAlias(term, "Java programming language", indexTerm);
+        addAlias(term, "Java Programming Language", indexTerm);
 
         term = "JavaScript";
         url = Environment.getWikipediaURL("Javascript");
@@ -656,7 +879,9 @@ public class Index extends CoursePage {
                 + "on user devices";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
+        addAlias(term, "JavaScript programming language", indexTerm);
+        addAlias(term, "JavaScript Programming Language", indexTerm);
 
         term = "JSON";
         url = Environment.getWikipediaURL("JSON");
@@ -673,7 +898,7 @@ public class Index extends CoursePage {
                 + "keyboard";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Linux";
         url = Environment.getWikipediaURL("Linux");
@@ -688,7 +913,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "macOS", indexTerm);
-        addAliasAndLowerCase(term, "OSX", indexTerm);
+        addAliasAndAliasLowerCase(term, "OSX", indexTerm);
 
         term = "Magic Number";
         url = Environment.getWikipediaURL("File_format#Magic_number");
@@ -696,7 +921,7 @@ public class Index extends CoursePage {
                 + "at the start";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Markdown";
         url = Environment.getWikipediaURL("Markdown");
@@ -704,14 +929,20 @@ public class Index extends CoursePage {
                 + "text using a plain-text editor";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
-
+        addAliasLowerCase(term, indexTerm);
+       
+        term = "Apache Maven";
+        url = "https://maven.apache.org/";
+        description = "a software project management and comprehension tool";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Maven", indexTerm);
+        
         term = "Metadata";
         url = Environment.getWikipediaURL("Metadata");
         description = "Data that provides information about other data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Memory";
         url = Environment.getWikipediaURL("Computer_memory");
@@ -720,7 +951,7 @@ public class Index extends CoursePage {
                 + "data for immediate use";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Microsoft Windows";
         url = Environment.getWikipediaURL("Microsoft_Windows");
@@ -736,7 +967,7 @@ public class Index extends CoursePage {
                 + "or textual form";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Mouse";
         url = Environment.getWikipediaURL("Computer_mouse");
@@ -744,7 +975,7 @@ public class Index extends CoursePage {
                 + "two-dimensional motion relative to a surface";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Name Binding";
         url = Environment.getWikipediaURL("Name_binding");
@@ -752,14 +983,14 @@ public class Index extends CoursePage {
                 + "identifiers";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
         
         term = "Natural number";
         url = Environment.getWikipediaURL("Natural_number");
         description = "the numbers 1, 2, 3, etc.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
         
         term = "Network Socket";
         url = Environment.getWikipediaURL("Network_socket");
@@ -768,7 +999,7 @@ public class Index extends CoursePage {
                 + "receiving data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Object Oriented Programming";
         url = Environment.getWikipediaURL("Object-oriented_programming");
@@ -777,7 +1008,7 @@ public class Index extends CoursePage {
                 + "(functionality)";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
         addAlias(term, "object-oriented", indexTerm);
 
         term = "Open Source Software";
@@ -795,8 +1026,28 @@ public class Index extends CoursePage {
                 + "computer programs";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
         addAlias(term, "OS", indexTerm);
+        
+        term = "Parallel programming";
+        url = Environment.getWikipediaURL("Parallel_computing");
+        description = """
+                      A type of computation in which many calculations or \
+                      processes are carried out simultaneously
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndTermLowerCase(term, indexTerm);
+
+        term = "Parallelisation";
+        url = Environment.getWikipediaURL("Parallel_computing");
+        description = """
+                      The process of changing a "computer program" from a serial \
+                      execution (where procesing tasks are completed one after \
+                      another), to a parallel execution (where numerous tasks) \
+                      are carried out simultaneously
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "PATH";
         url = Environment.getWikipediaURL("PATH_(variable)");
@@ -811,22 +1062,29 @@ public class Index extends CoursePage {
         description = "A number assigned to uniquely identify a connection "
                 + "endpoint and to direct data to a specific service";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
+        
+        term = "Profiling";
+        url = Environment.getWikipediaURL("Profiling_(computer_programming)");
+        description = """
+                      A form of dynamic program analysis that measures, for \
+                      example, the memory requirments or processing time of \
+                      parts of a "computer program"
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Programming Language";
         url = Environment.getWikipediaURL("Programming_language");
         description = "A system of notation for writing computer programs";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Python";
         url = Environment.getWikipediaURL("Python_(programming_language)");
         description = "A high-level, general-purpose \"programming language\"";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
         
         term = "Rational number";
         url = Environment.getWikipediaURL("Rational_number");
@@ -836,7 +1094,7 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAndPluralAliases(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Regression test";
         url = Environment.getWikipediaURL("Regression_testing");
@@ -846,8 +1104,7 @@ public class Index extends CoursePage {
                       change
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Regression testing";
         url = Environment.getWikipediaURL("Regression_testing");
@@ -855,8 +1112,7 @@ public class Index extends CoursePage {
                 + "and tested \"software\" still performs as expected after a "
                 + "change";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "REPL";
         url = Environment.getWikipediaURL("Read%E2%80%93eval%E2%80%93print_loop");
@@ -864,16 +1120,18 @@ public class Index extends CoursePage {
                 + "programming environment that takes single user inputs, "
                 + "executes them, and returns the result to the user";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Reproducibility";
         url = Environment.getWikipediaURL("Reproducibility");
-        description = "In computational sciences, reporducibility means "
-                + "results should be documented by making all data and code "
-                + "available in such a way that the computations can be "
-                + "executed again with identical end results";
+        description = """
+                      In computational sciences, reproducibility means results \
+                      should be documented by making all data and code \
+                      available in such a way that the computations can be \
+                      executed again with identical end results
+                      """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Server";
         url = Environment.getWikipediaURL("Server_(computing)");
@@ -881,7 +1139,7 @@ public class Index extends CoursePage {
                 + "functionality for other programs or devices, called "
                 + "\"clients\"";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Scope";
         url = Environment.getWikipediaURL("Scope_(computer_science)");
@@ -892,22 +1150,20 @@ public class Index extends CoursePage {
                 + "to refer to the entity. In other parts of the program, the "
                 + "name may refer to a different entity";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Single-precision Floating-point";
         url = Environment.getWikipediaURL("Single-precision_floating-point_format");
         description = "A \"computer\" number format, usually occupying 32 "
                 + "\"bits\" of computer memory";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Software";
         url = Environment.getWikipediaURL("Software");
         description = "computer programs and associated documentation and data";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Software Bug";
         url = Environment.getWikipediaURL("Software_bug");
@@ -916,16 +1172,23 @@ public class Index extends CoursePage {
                 + "incorrect or unexpected result, or to behave in unintended "
                 + "ways. See also \"bug\"";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Source Code";
         url = Environment.getWikipediaURL("Source_code");
         description = "Text written using a human-readable \"programming "
                 + "language\"";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        aliasToTerm.put(term.toLowerCase(), term);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
+        term = "Supercomputer";
+        url = Environment.getWikipediaURL("Supercomputer");
+        description = "A computer with a high level of performance as compared "
+                + "to a \"general-purpose computer\"";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
+        
         term = "Syntax Error";
         url = Environment.getWikipediaURL("Syntax_error");
         description = "An error in the syntax of a sequence of characters or "
@@ -933,7 +1196,7 @@ public class Index extends CoursePage {
                 + "\"programming language\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        aliasToTerm.put(term.toLowerCase(), term);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "TCP/IP";
         url = Environment.getWikipediaURL("Internet_protocol_suite");
@@ -942,14 +1205,24 @@ public class Index extends CoursePage {
                 + "networks according to functional criteria";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasAndAliasPluralAndAliasLowerCaseAndAliasLowerCaseAndPlural(term,
-                "Internet protocol suite", indexTerm);
+        addAliasAndAliasLowerCase(term, "Internet protocol suite", indexTerm);
 
+        term = "The GNU Compiler Collection";
+        url = "https://gcc.gnu.org/";
+        description = """
+                      Includes front ends for "C", "C++", Objective-C, \
+                      "Fortran", Ada, Go, and D, as well as libraries for \
+                      these languages (libstdc++,...)
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "GCC", indexTerm);
+        
         term = "Touchscreen";
         url = Environment.getWikipediaURL("Touchscreen");
         description = "Both an input touch panel and output display device";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
+        addIndexTermAndTermLowerCase(term, indexTerm);
 
         term = "Unicode";
         url = Environment.getWikipediaURL("Unicode");
@@ -969,7 +1242,8 @@ public class Index extends CoursePage {
                 + "\"regression testing\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-
+        addAlias(term, "Unit testing", indexTerm);
+        
         term = "University of Leeds";
         url = Environment.getWikipediaURL("University_of_Leeds");
         description = "A public research university in Leeds, West Yorkshire, "
@@ -991,15 +1265,24 @@ public class Index extends CoursePage {
                 + "of data";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
         term = "Version Control";
         url = Environment.getWikipediaURL("Version_control");
         description = "A class of systems responsible for managing changes to "
-                + "computer programs, documents, \"Web\" sites, or other "
-                + "collections of information.";
+                + "data";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndTermLowerCase(term, indexTerm);
+
+        term = "Visual Studio Code";
+        url = "https://code.visualstudio.com/";
+        description = """
+                      A code editor with support for development operations \
+                      like debugging, task running, and version control
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(term, indexTerm);
+        addAlias(term, "VSCode", indexTerm);
 
         term = "Web Accessibility";
         url = Environment.getWikipediaURL("Web_accessibility");
@@ -1018,7 +1301,7 @@ public class Index extends CoursePage {
                 + "over the \"Internet\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasAndLowerCase(term, "Web", indexTerm);
+        addAliasAndAliasLowerCase(term, "Web", indexTerm);
 
         term = "While Loop";
         url = Environment.getWikipediaURL("While_loop");
@@ -1105,9 +1388,9 @@ public class Index extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<ul>");
+        w.addULST(sb);
         for (String aliasOrTerm : termsAndAliasesToIndex) {
-            sb.append("<li>");
+            w.addLIST(sb);
             IndexTerm indexTerm;
             if (aliasesToIndex.contains(aliasOrTerm)) {
                 indexTerm = termToIndexTerm.get(aliasToTerm.get(aliasOrTerm));
@@ -1133,10 +1416,10 @@ public class Index extends CoursePage {
                     sb.append(")");
                 }
             }
-            sb.append("</li>\n");
+            w.addLIET(sb);
         }
-        sb.append("</ul>\n");
-        sb.append("</div>\n");
+        w.addULET(sb);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

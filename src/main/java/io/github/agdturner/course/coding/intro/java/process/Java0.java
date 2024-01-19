@@ -22,7 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Java for generating Java0 Website Content.
+ * Java0.
  *
  * @author Andy Turner
  */
@@ -36,7 +36,7 @@ public class Java0 extends JavaIntroCodingCourse {
      * @param courseName What {@link #courseName} is set to.
      * @param localPaths What {@link #localPaths} is set to.
      */
-    public Java0(Environment env, String courseCode, String courseName,
+    public Java0(Environment env, String courseCode, String courseName, 
             boolean localPaths) {
         super(env, courseCode, courseName, localPaths);
     }
@@ -47,11 +47,15 @@ public class Java0 extends JavaIntroCodingCourse {
      * @param args
      */
     public static void main(String[] args) {
-        String courseName = "Introduction to Programming in Java";
+        String courseCode = "Java0";
+        String courseName = "Java for HPC Level 0";
         Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
+        //Path local = Paths.get("courses", "computing");
         String domain = Environment.AGDTURNER_GITHUB_IO;
+        Path local = Paths.get(dir.toString(), domain, courseCode, "public_html");
         Environment env = new Environment(domain, dir);
-        boolean localPaths = true;
+        // Set localPaths to false when deploying.
+        boolean localPaths = false;
         Java0 course = new Java0(env, "Java0", courseName, localPaths);
         course.write(dir);
     }

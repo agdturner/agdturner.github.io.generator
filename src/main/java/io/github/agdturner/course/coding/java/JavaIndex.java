@@ -97,6 +97,45 @@ public class JavaIndex extends Index {
                 + "deploying it in a cross-platform computing environment";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         
+        term = "Java ArrayList";
+        url = Environment.getJavaDocURL("util", "ArrayList.html");
+        description = "A resizable-array implementation of the \"List\" interface";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAlias(term, "ArrayList", indexTerm);
+        
+        term = "Java Keyword";
+        url = Environment.getWikipediaURL("List_of_Java_keywords");
+        description = "One of 68 reserved words that have a predefined meaning "
+                + "and cannot be used to as identifiers such as to name "
+                + "variables, methods or classes";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAliasTermPlural(term, indexTerm);
+        addAliasAndAliasPlural(term, "Java keyword", indexTerm);
+        
+        term = "Java List";
+        url = Environment.getJavaDocURL("util", "List.html");
+        description = "An ordered collection, where the user has precise "
+                + "control over where in the list each element is inserted. "
+                + "The user can access elements by their integer index "
+                + "(position in the list), and search for elements in the "
+                + "list";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAlias(term, "List", indexTerm);
+        
+        term = "Java Map";
+        url = Environment.getJavaDocURL("util", "Map.html");
+        description = "An object that maps keys to values. A map cannot "
+                + "contain duplicate keys; each key can map to at most one "
+                + "value";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAlias(term, "Map", indexTerm);
+        
+        term = "Java Set";
+        url = Environment.getJavaDocURL("util", "Set.html");
+        description = "A collection that contains no duplicate elements";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+        addAlias(term, "Set", indexTerm);
+                
         term = "Java Virtual Machine";
         url = Environment.getWikipediaURL("Java_Virtual_Machine");
         description = "A virtual machine that enables a computer to run "
@@ -106,7 +145,7 @@ public class JavaIndex extends Index {
                 + "specification that formally describes what is required in a "
                 + "JVM implementation. It reduces the need of program authors "
                 + "to worry about idiosyncrasies of underlying hardware "
-                + "platforms.";
+                + "platforms";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
         addAlias(term, "JVM", indexTerm);
         
@@ -116,9 +155,15 @@ public class JavaIndex extends Index {
                 + "and prototyping. The Java Shell tool (JShell) is a \"REPL\" "
                 + "tool, which evaluates declarations, statements, and "
                 + "expressions as they are entered and immediately shows the "
-                + "results.";
+                + "results";
         indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
-                        
+        
+        term = "JUnit";
+        url = "https://junit.org/";
+        description = "A testing framework, which provides a modern foundation "
+                + "for developer-side testing on the \"JVM\".";
+        indexTerm = new IndexTerm(this, description, url); addIndexTerm(term, indexTerm);
+       
         term = "openJDK";
         url = Environment.getWikipediaURL("OpenJDK");
         description = "A free and open-source implementation of the "

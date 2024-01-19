@@ -29,15 +29,9 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
     public IntroCodingCourseHome(Course course) {
         super(course);
     }
-    
-    @Override
-    public SectionID getExpectations0(StringBuilder sb) {
-        SectionID sid = super.getExpectations0(sb);
-        sb.append("<li>")
-                .append(references.getReference("GitHub"))
-                .append(" as a source code repository and for website hosting")
-                .append("</li>");
-        return sid;
+
+    public void getSyllabusOrganisational(StringBuilder sb, SectionID sid) {
+        w.addP(sb, index.getReference("Version Control"));
     }
     
 }

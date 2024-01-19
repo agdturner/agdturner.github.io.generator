@@ -20,7 +20,7 @@ import io.github.agdturner.course.coding.intro.python.PythonIntroCodingCourse;
 import io.github.agdturner.course.CoursePage;
 
 /**
- * For Python Intro Course Branching and Loops Page.
+ * For Python Intro Course Documentation Page.
  *
  * @author Andy Turner
  */

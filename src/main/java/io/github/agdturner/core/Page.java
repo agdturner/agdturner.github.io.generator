@@ -299,25 +299,26 @@ public abstract class Page {
     /**
      * Wraps a code block for Python code.
      *
+     * @param type The name of the programming language of the code block to be 
+     * styled.
      * @param sb The StringBuilder to append to.
      * @param s The code block to wrap.
      */
-    public void addPythonCodeBlock(StringBuilder sb, String s) {
-        addPythonCodeBlockStart(sb, s);
-        addPythonCodeBlockEnd(sb, "");
+    public void addCodeBlock(String type, StringBuilder sb, String s) {
+        addCodeBlockStart(type, sb, s);
+        addCodeBlockEnd(sb, "");
     }
 
     /**
-     * Appends {@code <pre><code class="language-python">} to sb.
+     * Appends {@code <pre><code class=\"language-" + type + "\">} to sb.
      *
+     * @param type The name of the programming language of the code block to be 
+     * styled.
      * @param sb The StringBuilder to append to.
      * @param s The string to add after the start tag.
      */
-    public void addPythonCodeBlockStart(StringBuilder sb, String s) {
-        sb.append(
-                """
-                <pre><code class="language-python">
-                """);
+    public void addCodeBlockStart(String type, StringBuilder sb, String s) {
+        w.addPREST(sb, "<code class=\"language-" + type + "\">");
         sb.append(s);
     }
 
@@ -327,9 +328,8 @@ public abstract class Page {
      * @param sb The StringBuilder to append to.
      * @param s The string to add before the end tag.
      */
-    public void addPythonCodeBlockEnd(StringBuilder sb, String s) {
-        sb.append(s);
-        sb.append("</code></pre>");
+    public void addCodeBlockEnd(StringBuilder sb, String s) {
+        w.addPREET(sb, s + "</code>");
     }
 
 }

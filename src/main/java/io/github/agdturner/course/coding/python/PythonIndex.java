@@ -86,7 +86,7 @@ public class PythonIndex extends Index {
         description = "The Package Installer for \"Python\"";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addLowerCaseAlias(url, indexTerm);
+        addAliasLowerCase(url, indexTerm);
 
         term = "Python Package Index";
         url = "https://pypi.org/";
@@ -94,7 +94,7 @@ public class PythonIndex extends Index {
                 + "language.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasAndLowerCase(term, "PyPi", indexTerm);
+        addAliasAndAliasLowerCase(term, "PyPi", indexTerm);
 
         term = "PyQGIS";
         url = "https://qgis.org/pyqgis/";
@@ -107,6 +107,14 @@ public class PythonIndex extends Index {
         description = "A tutorial and a reference guide to the PyQGIS API";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+
+        term = "Pytest";
+        url = "https://docs.pytest.org/";
+        description = "A framework for writing small, readable unit tests for "
+                + "\"python\" code.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasLowerCase(term, indexTerm);
 
         term = "Python array";
         url = getPythonDocsLibraryURL("array.html");
@@ -412,6 +420,16 @@ public class PythonIndex extends Index {
         description = "A way of structuring using 'dotted module names'.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        
+        term = "Python pydoc";
+        url = getPythonDocsLibraryURL("pydoc.html");
+        description = "A \"standard library\" module automatically generates "
+                + "documentation from \"Python modules\". The documentation "
+                + "can be presented as pages of text on the console, served to "
+                + "a web browser, or saved to HTML files.";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Pydoc", indexTerm);
 
         term = "Python random";
         url = getPythonDocsLibraryURL("random.html");
@@ -593,6 +611,13 @@ public class PythonIndex extends Index {
                 + "argument of a division or modulo operation is zero";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        
+        term = "Sphinx";
+        url = "https://www.sphinx-doc.org/";
+        description = "A tool for creating documentation";
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
     }
 
     /**

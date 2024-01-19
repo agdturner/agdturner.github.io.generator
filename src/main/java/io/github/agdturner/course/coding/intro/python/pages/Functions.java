@@ -70,7 +70,7 @@ public class Functions extends CoursePage {
                 function declaration ends with a colon ':'. The following gives
                 the general form:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def function_name(arg_0, arg_1):
                     # Function statements
@@ -117,14 +117,14 @@ public class Functions extends CoursePage {
                 order from left to right, so in the following 'add' function
                 'num1' is the first argument and 'num2' is the second argument:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def add(num1, num2):
                     return num1 + num2
                 print(add(20,30)) # Prints 50
                 """);
         w.addP(sb, "Default values can be specified as follows:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def add(num1 = 0, num2 = 0):
                     return num1 + num2
@@ -141,7 +141,7 @@ public class Functions extends CoursePage {
                 In the absence of a default, an argument must be passed in.
                 For example the following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def add(num1 = 0, num2):
                     return num1 + num2
@@ -169,7 +169,7 @@ public class Functions extends CoursePage {
                 Consider the following which uses kwargs in the function call to
                 assign the parameter values:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 def add(num1, num2):
                     return num1 + num2
@@ -193,7 +193,7 @@ public class Functions extends CoursePage {
                 More positional arguments can be allowed using '*tuple_name',
                 as in the following example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def add(*nums):
                     r = 0
@@ -211,7 +211,7 @@ public class Functions extends CoursePage {
                 """
                 The '*' can be used with lists or tuples to generate parameters:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def add(*nums):
                     r = 0
@@ -228,7 +228,7 @@ public class Functions extends CoursePage {
                 (where '**' is the dictionary (un)packing operator) - which will
                 make a dictionary from unallocated kwargs. The following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def f1(a, **details):
                     print(a)
@@ -247,7 +247,7 @@ public class Functions extends CoursePage {
                 The '**' dictionary operator can be used to generate kwargs.
                 The following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def f1(a, b, c):
                     print(a)
@@ -273,7 +273,7 @@ public class Functions extends CoursePage {
                 therefore usual to place them after their associated variables
                 or together at the end. The following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def f1(a, b=2, *args, **kwargs):
                     print(a, b)
@@ -297,7 +297,7 @@ public class Functions extends CoursePage {
                 Note that the kwargs packed into the dictionary cannot have
                 name collisions with the other arguments. So, the following:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def f1(a, b=2, *args, **kwargs):
                     print(a, b)
@@ -334,7 +334,7 @@ public class Functions extends CoursePage {
                 where there is an explanation of changing a variable scope using
                 the 'global' keyword. To recap, consider the following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = 10
                 def f1():
@@ -353,7 +353,7 @@ public class Functions extends CoursePage {
                 assignment to a global variable, use the global keyword as
                 follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 a = 10
                 def f1():
@@ -373,7 +373,7 @@ public class Functions extends CoursePage {
                 broader scope from where the function is called. To do this the
                 'nonlocal' keyword can be used, as in the following example:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 a = 1
                 def f1():
@@ -440,7 +440,7 @@ public class Functions extends CoursePage {
                 decorators have been applied. A decorator function can be used for
                 reporting the time it takes to run a function:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import random
                 import time
@@ -504,7 +504,7 @@ public class Functions extends CoursePage {
                 number of arguments, but the expression is made up of a single
                 non-compound statement. Consider the following example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # A lambda to return the result of dividing a by b.
                 x = lambda a, b : a / b
@@ -529,7 +529,7 @@ public class Functions extends CoursePage {
                 called in the lines that print out the results returned from the
                 function calls):
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 def add(x):
                     \"""
@@ -596,7 +596,7 @@ public class Functions extends CoursePage {
                 The following is another example which uses a callback to sort
                 items in a list:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 class Mark:
                     def __init__(self, name, grade):
@@ -634,7 +634,7 @@ public class Functions extends CoursePage {
                 partial</a> allows for arguments of a function to be set
                 partially. For example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 from functools import partial
 
@@ -696,7 +696,7 @@ public class Functions extends CoursePage {
                 are and what if anything is returned from the function. For
                 example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 def add (num1, num2):
                     \"""

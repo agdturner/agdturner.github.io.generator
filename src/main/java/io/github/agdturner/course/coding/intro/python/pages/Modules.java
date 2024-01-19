@@ -84,7 +84,7 @@ public class Modules extends CoursePage {
                 then constructs an instance of the 'Agent' class as defined in
                 the 'agentframework' module:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import agentframework
                 a = agentframework.Agent()
@@ -101,7 +101,7 @@ public class Modules extends CoursePage {
                 follows:
                 """);
                       
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 from agentframework import Agent
                 a = Agent()
@@ -120,7 +120,7 @@ public class Modules extends CoursePage {
                 operator '*', for example:
                 """);
                       
-        addPythonCodeBlock(sb, "from agentframework import *");
+        addCodeBlock(this.getCourse().courseType, sb, "from agentframework import *");
         w.addP(sb,
                 """
                 This saves having to import multiple classes, but it can be
@@ -137,12 +137,12 @@ public class Modules extends CoursePage {
                 following are alternatives for creating 'agentframework' 'Agent'
                 class instances:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import agentframework as af
                 a = af.Agent()
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 from agentframework import Agent as A
                 a = A()
@@ -167,7 +167,7 @@ public class Modules extends CoursePage {
                 """);
                       
                       
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 if __name__ == "__main__":
                     # All code in this is only run when the module is run as a script.
@@ -178,7 +178,7 @@ public class Modules extends CoursePage {
 
         sid = addSection("Packages", sb);
         w.addP(sb, "Consider the following package file structure:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 /abm
                     __init__.py
@@ -196,7 +196,7 @@ public class Modules extends CoursePage {
                 the Python interpreter recognises these subdirectories as
                 subpackages and allows import statements to work as follows:
                 """);
-        addPythonCodeBlock(sb, "import abm.my_modules.agentframework.Agent");
+        addCodeBlock(this.getCourse().courseType, sb, "import abm.my_modules.agentframework.Agent");
         w.addP(sb,
                 """
                 This import statement will work so long as there is an 'Agent'
@@ -219,7 +219,7 @@ public class Modules extends CoursePage {
                 Then, the following import statement would import both the
                 'models' and 'my_modules' subpackages:
                 """);
-        addPythonCodeBlock(sb, "from abm import *");
+        addCodeBlock(this.getCourse().courseType, sb, "from abm import *");
         w.addP(sb,
                 """
                 Packages are set to run as applications by placing startup

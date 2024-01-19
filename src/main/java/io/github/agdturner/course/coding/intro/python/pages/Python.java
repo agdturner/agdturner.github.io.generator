@@ -1042,7 +1042,7 @@ public class Python extends CoursePage {
                 following is the same code, but coloured to make different
                 things in the code easier to identify:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 x = 0
                 y = 1
@@ -1796,7 +1796,7 @@ public class Python extends CoursePage {
                 If for some reason that does not work, then try something
                 simpler and copy the code below into a cell and run it.
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Simple example code
                 import folium

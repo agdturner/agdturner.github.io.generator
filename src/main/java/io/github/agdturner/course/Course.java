@@ -29,9 +29,13 @@ import java.nio.file.Paths;
 public abstract class Course extends Site {
 
     /**
-     * For storing the course Type e.g. python.
+     * For storing the course Type e.g. python, java, cpp.
      */
     public final String courseType;
+    /**
+     * For storing the course Type e.g. Python, Java, CPP.
+     */
+    public final String courseTypeCaptialised;
 
     /**
      * For storing the course code e.g. Java0.
@@ -53,14 +57,17 @@ public abstract class Course extends Site {
      *
      * @param env What {@link #env} is set to.
      * @param courseType What {@link #courseType} is set to.
+     * @param courseTypeCaptialised 
      * @param courseCode What {@link #courseCode} is set to.
      * @param courseName What {@link #courseName} is set to.
      * @param localPaths What {@link #localPaths} is set to.
      */
-    public Course(Environment env, String courseType, String courseCode, 
+    public Course(Environment env, String courseType,
+            String courseTypeCaptialised, String courseCode, 
             String courseName, boolean localPaths) {
         super(env, localPaths);
         this.courseType = courseType;
+        this.courseTypeCaptialised = courseTypeCaptialised;
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.courseDir = Paths.get(env.dir.toString(), courseCode, "public_html");

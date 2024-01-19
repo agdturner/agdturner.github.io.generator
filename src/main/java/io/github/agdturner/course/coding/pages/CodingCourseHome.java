@@ -29,7 +29,17 @@ public abstract class CodingCourseHome extends CourseHome {
     public CodingCourseHome(Course course) {
         super(course);
     }
-
+    
+    @Override
+    public final void getSyllabus(StringBuilder sb) {
+        SectionID sid = getSyllabus0(sb);
+        getSyllabusProgrammingStart(sb, sid);
+        getSyllabusObjectOrientation(sb, sid);
+        getSyllabusProgrammingEnd(sb, sid);
+        getSyllabusLanguage(sb, sid);
+        getSyllabusN(sb, sid);
+    }
+    
     public void getSyllabusProgrammingStart(StringBuilder sb, SectionID sid) {
         w.addP(sb,
                 "General computer programming language concepts, including:");
@@ -50,32 +60,22 @@ public abstract class CodingCourseHome extends CourseHome {
         w.addLI(sb, "Testing");
     }
     
+    public void getSyllabusLanguage0(StringBuilder sb, SectionID sid) {
+        String language = getCourse().courseTypeCaptialised;
+        w.addP(sb, index.getReference(language) + " specifics:");
+        w.addULST(sb);
+    }
+        
     public void getSyllabusObjectOrientation(StringBuilder sb, SectionID sid) {
-        w.addLIST(sb, index.getReference("Class", "Classes"));
-        sb.append(" and ");
-        w.addLIET(sb, index.getReference("Object Oriented Programming"));
+        w.addLI(sb, index.getReference("Object Oriented Programming"));
     }
     
     public void getSyllabusProgrammingEnd(StringBuilder sb, SectionID sid) {
+        w.addLI(sb, index.getReference("Version Control"));
+        w.addLI(sb, references.getReference("GitHub") 
+                + " as a source code repository and for website hosting");
         w.addULET(sb);
     }
-
-    public void getSyllabusOrganisational(StringBuilder sb, SectionID sid) {
-        w.addP(sb, index.getReference("Version Control") + ".");
-    }
     
-    @Override
-    public SectionID getLearningJourney0(StringBuilder sb) {
-        SectionID sid = super.getLearningJourney0(sb);
-        w.addP(sb, 
-                """
-                A key to coding is learning to be able to interpret error
-                messages and understand why they occur. If a program
-                unexpectedly raises an exception, then try to diagnose why this
-                occurred. Ignoring error messages is nearly always a mistake!
-                """);
-        w.addP(sb, 
-                "Be cautious and only run code you trust.");
-        return sid;
-    }
+    public abstract void getSyllabusLanguage(StringBuilder sb, SectionID sid);
 }

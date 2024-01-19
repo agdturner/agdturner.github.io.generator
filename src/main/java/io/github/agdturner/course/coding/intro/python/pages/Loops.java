@@ -58,7 +58,7 @@ public class Loops extends CoursePage {
         w.addPST(sb, "The following provides an example of a ");
         sb.append(index.getReference("Python while", "while", sid));        
         w.addPET(sb, " statement:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 x = 1
                 while (x < 10):
@@ -79,7 +79,7 @@ public class Loops extends CoursePage {
                 other condition is reached. For example, consider the following
                 code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Print the largest number less than 1 million that is divisible by 17
                 x = 1000000
@@ -98,7 +98,7 @@ public class Loops extends CoursePage {
                  statement gets the program to return to the start of a loop
                 when a condition is reached:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Print odd numbers from 1 to 10
                 x = 0
@@ -138,7 +138,7 @@ public class Loops extends CoursePage {
                 value '0', the second time around the loop x is assigned the
                 value '1' and so on:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 for x in (0,1,2,3,4,5,6,7,8,9):
                     print(x)
@@ -151,13 +151,13 @@ public class Loops extends CoursePage {
                 , for example, the following does the same as the previous
                 example:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 for x in range(10):
                     print(x)
                 """);
         w.addP(sb, "It is also common to use a slice, for example:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 names = ("Dale", "Albert", "Gordon", "Tamara", "Philip", "Chester", "Windom")
                 for name in names[1:5:2]:
@@ -168,7 +168,7 @@ public class Loops extends CoursePage {
                 Sometimes it is helpful to know the index in the sequence when
                 iterating, so alternatively we can do the following:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 names = ("Dale", "Albert", "Gordon", "Tamara", "Philip", "Chester", "Windom")
                 for i in range(len(names)):
@@ -180,7 +180,7 @@ public class Loops extends CoursePage {
                 objects. As assignment for 'i' would creates a new variable. So
                 the following code:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 names = ("Dale", "Albert", "Gordon", "Tamara", "Philip", "Chester", "Windom")
                 for i in range(len(names)):
@@ -212,14 +212,14 @@ public class Loops extends CoursePage {
                 actually generate the values one at a time. So, it is more
                 efficient to do the following:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 names = ("Dale", "Albert", "Gordon", "Tamara", "Philip", "Chester", "Windom")
                 for i in range(2,len(names),2):
                     print(names[i])
                 """);
         w.addP(sb, "Instead of:");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 for name in names[2::2]:
                     print(name)
@@ -233,7 +233,7 @@ public class Loops extends CoursePage {
                 thing in the list, everything else moves to a new position and
                 the iterator skips over a value each time:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 names = ["Dale","Albert","Gordon","Tamara","Philip", "Chester","Windom"]
                 for name in names:
@@ -245,7 +245,7 @@ public class Loops extends CoursePage {
                 A solution to this is to create a slice containing everything
                 and then remove from the original list:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 names = ["Dale","Albert","Gordon","Tamara","Philip", "Chester","Windom"]
                 for name in names[:]:
@@ -288,7 +288,7 @@ public class Loops extends CoursePage {
                 goes through all the rows in 'data' and for each 'row', goes
                 through the values (one for each 'column'):
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 data = [
                 [0,1,2],
@@ -310,7 +310,7 @@ public class Loops extends CoursePage {
                 It is often necessary to know and use the row and column
                 indexes. Another way to do this is as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 data = [
                 [0,1,2],
@@ -355,7 +355,7 @@ public class Loops extends CoursePage {
                 the latter of these solutions we could calculate the maximum
                 value in a 3x3 neighbourhood as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 data = [
                 [0,1,2,3,4,5],

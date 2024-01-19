@@ -125,7 +125,7 @@ public class ABM1 extends CoursePage {
                 Add a line after the line "# Initialise a variable x0", to \
                 initialise a variable 'x0' with the value '0', then a line to \
                 print 'x0':""");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 x0 = 0
                 print("x0", x0)
@@ -155,7 +155,7 @@ public class ABM1 extends CoursePage {
                 distributions and provides a way to change variable values \
                 randomly. To use the module it has to be imported. Towards \
                 the top of 'model.py' add the following import statement:""");
-        addPythonCodeBlock(sb, "import random");
+        addCodeBlock(this.getCourse().courseType, sb, "import random");
         w.addP(sb,
                 """
                 It is good practice to organise import statements at the top \
@@ -175,7 +175,7 @@ public class ABM1 extends CoursePage {
                 """
                 : First obtain and print a pseudo-random number in the range \
                 [0, 1) as follows:""");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 rn = random.random()
                 print(rn)
@@ -200,7 +200,7 @@ public class ABM1 extends CoursePage {
                 Declare an 'if statement' so that if the value 'rn' is less \
                 than '0.5' increase 'x0' by '1', otherwise decrease "'x0' by \
                 '1':""");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 if rn < 0.5:
                     x0 = x0 + 1
@@ -220,7 +220,7 @@ public class ABM1 extends CoursePage {
                 seed to ensure that the same results are produced each time. \
                 At the top of your code, after the import statements add the \
                 following:""");
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 # Set the pseudo-random seed for reproducibility
                 random.seed(0)

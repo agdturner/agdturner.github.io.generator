@@ -83,7 +83,7 @@ public class Classes extends CoursePage {
                 A class is defined using the keyword 'class' followed by the
                 name of the class, parentheses, and a colon, for example:
                 """);
-        addPythonCodeBlock(sb, "class Agent():");
+        addCodeBlock(this.getCourse().courseType, sb, "class Agent():");
         sb.append(
                 """
                 Class names separated by commas can be added in the parentheses
@@ -104,7 +104,7 @@ public class Classes extends CoursePage {
                 'x' and 'y' attribute variables that are initially set to be
                 zero:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self):
@@ -118,7 +118,7 @@ public class Classes extends CoursePage {
                 instantiated from a script in the same directory as
                 'agentframework.py' as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import agentframework
                 a = agentframework.Agent()
@@ -129,7 +129,7 @@ public class Classes extends CoursePage {
                 of the class could then be accessed using the dot operator '.'
                 as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 print(a.x) # <-- Prints the value of a.x
                 print(a.y) # <-- Prints the value of a.y
@@ -142,7 +142,7 @@ public class Classes extends CoursePage {
                 example, the initial values for 'x' and 'y' could be passed in
                 as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self, x, y):
@@ -157,7 +157,7 @@ public class Classes extends CoursePage {
                 instantiate an Agent object using the latest class definition
                 above:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import agents
                 a = agents.Agent(0, 0)
@@ -169,7 +169,7 @@ public class Classes extends CoursePage {
                 values making it optional as to whether these are supplied, by
                 changing the constructor method as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self, x = 0, y = 0):
@@ -220,7 +220,7 @@ public class Classes extends CoursePage {
                 The following defines 'Goat' and 'Wolf' as classes that inherit
                 from the 'Agent' class:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self, x, y):
@@ -283,7 +283,7 @@ public class Classes extends CoursePage {
                 function property() is set up to pass, modify and delete the
                 attribute _x:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self, ax, ay):
@@ -302,7 +302,7 @@ public class Classes extends CoursePage {
                     x = property(getx, setx, delx, "I'm the 'x' property.")
                 """);
         w.addP(sb, "This could be used from another module as follows:");        
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import agents:
                 a = agent.Agent(0, 0):
@@ -319,7 +319,7 @@ public class Classes extends CoursePage {
                 Decorators can alternatively be used to achieve the same thing
                 as follows:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self, ax, ay):
@@ -358,7 +358,7 @@ public class Classes extends CoursePage {
                 provide a more useful string representation of an object, for
                 example:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 class Agent():
                     def __init__(self, x, y):

@@ -78,7 +78,7 @@ public class Web extends CoursePage {
                 In Python, to open a network socket and send some data, the
                 following code can be used:
                 """);
-        addPythonCodeBlock(sb, 
+        addCodeBlock(this.getCourse().courseType, sb, 
                 """
                 import socket
 
@@ -104,7 +104,7 @@ public class Web extends CoursePage {
                 port, the server code is set to receive 30 bytes of data and
                 then print this after converting the bytes to a String:
                 """);
-        addPythonCodeBlock(sb,
+        addCodeBlock(this.getCourse().courseType, sb,
                 """
                 import socket
 

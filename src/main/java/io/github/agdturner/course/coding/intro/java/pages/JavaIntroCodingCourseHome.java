@@ -44,57 +44,51 @@ public class JavaIntroCodingCourseHome extends IntroCodingCourseHome {
     }
 
     @Override
-    public void getSyllabus(StringBuilder sb) {
-        SectionID sid = getSyllabus0(sb);
-        getSyllabusProgrammingStart(sb, sid);
-        getSyllabusObjectOrientation(sb, sid);
-        getSyllabusProgrammingEnd(sb, sid);
-        getSyllabusProgrammingJava(sb, sid);
-        getSyllabusOrganisational(sb, sid);
-        getSyllabusN(sb, sid);
-    }
-    
-    public void getSyllabusProgrammingJava(StringBuilder sb, SectionID sid) {
-        sb.append("<p>").append(index.getReference("Java"))
-                .append(" language development and limitations</p>");
-        sb.append("<p>Structuring and organising code into ")
-                .append(index.getReference("Java Class", "Java Classes"))
-                .append(", ")
-                .append(index.getReference("Java Package", "Packages"))
-                .append(", and ")
-                .append(index.getReference("Java Platform Module System",
-                        "Modules"))
-                .append("</p>\n");
-        sb.append("<p>Using the ")
-                .append(index.getReference("JShell"))
+    public void getSyllabusLanguage(StringBuilder sb, SectionID sid) {
+        getSyllabusLanguage0(sb, sid);
+        
+        w.addLI(sb, "Language development");
+        
+        w.addLIST(sb, "Structuring and organising code:");
+        w.addULST(sb);
+        w.addLI(sb, index.getReference("Java Class", "Classes"));
+        w.addLI(sb, index.getReference("Java Package", "Packages"));
+        w.addLI(sb, index.getReference("Java Platform Module System", 
+                "Modules"));
+        w.addULET(sb);
+        w.addLIET(sb);
+        
+        w.addLIST(sb, "Using the ");
+        sb.append(index.getReference("JShell"))
                 .append(" ")
-                .append(index.getReference("REPL", "Read Evaluate Print Loop"))
-                .append(" environment</p>");
-        sb.append("<p>Running programs via the command line</p>");
-        sb.append("<li>Java collections:")
-                .append(index.getReference("Java ArrayList", "ArrayList"))
-                .append(", ")
-                .append(index.getReference("Java Set", "Set"))
-                .append(" and ")
-                .append(index.getReference("Java Map", "Map"))
-                .append("</li>");
-        sb.append("<p>Using third party libraries;</p>");
-        sb.append("<p>Creating ")
-                .append(index.getReference("Javadoc"))
-                .append(" documentation</p>");
-        sb.append("<p>Testing code</p>");
-    }
-
-    @Override
-    public void getExpectations(StringBuilder sb) {
-        SectionID sid = getExpectations0(sb);
-        getExpectations1(sb, sid);
-        getExpectationsN(sb, sid);
-    }
-    
-    @Override
-    public void getExpectations1(StringBuilder sb, SectionID sid) {
-        sb.append("</ul>\n");
+                .append(index.getReference("REPL", "Read Evaluate Print Loop"));
+        w.addLIET(sb, " environment");
+        
+        w.addLI(sb, "Compiling and running programs from the command line");
+        
+        w.addLI(sb, "Using " + index.getReference("Apache Netbeans"));
+        
+        w.addLIST(sb, "Collections including:");
+        w.addULST(sb);
+        w.addLI(sb, index.getReference("Java Array", "Array"));
+        w.addLI(sb, index.getReference("Java ArrayList", "ArrayList"));
+        w.addLI(sb, index.getReference("Java Set", "Set"));
+        w.addLI(sb, index.getReference("Java Map", "Map"));
+        w.addULET(sb);
+        w.addLIET(sb);
+        
+        w.addLI(sb, index.getReference("Javadoc"));
+        
+        w.addLI(sb, "Program input and output");
+        
+        w.addLI(sb, index.getReference("Maven"));
+        
+        w.addLI(sb, "Using third party libraries");
+        
+        w.addLIST(sb, index.getReference("Unit testing") + " with ");
+        w.addLIET(sb, index.getReference("JUnit"));
+        
+        w.addULET(sb);
     }
 
     @Override
