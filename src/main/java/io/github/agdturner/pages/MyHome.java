@@ -74,9 +74,9 @@ public class MyHome extends Page {
                 "University of Leeds"));
         w.addPET(sb, " as a Research Software Engineer.");
         w.addP(sb, """
-                   Previously, I was based in the School of Geography at the 
-                   University where I specialised in computational geography as
-                   a Research Officer for over 25 years.""");
+                   From October 1997 until June 2023 I was a Research Officer \
+                   based in the School of Geography at the University where I \
+                   specialised in computational geography.""");
         w.addH2(sb, "Learning Resources");
         w.addP(sb, Web_ContentWriter.getLink(
                 Environment.HTTPS_AGDTURNER_GITHUB_IO 
