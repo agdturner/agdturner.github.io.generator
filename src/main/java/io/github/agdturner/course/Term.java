@@ -62,6 +62,25 @@ public class Term {
     }
     
     /**
+     * Uses linkName for an internal link.
+     * @param linkName
+     * @return A HTML link.
+     */
+    public String getLinkWithin(String linkName) {
+        return Web_ContentWriter.getLink("#" + linkName, linkName);
+    }
+    
+    /**
+     * Uses linkName for an internal link using linkText.
+     * @param linkName The id or target of the link.
+     * @param linkText The text displayed.
+     * @return A HTML link.
+     */
+    public String getLinkWithin(String linkName, String linkText) {
+        return Web_ContentWriter.getLink("#" + linkName, linkText);
+    }
+    
+    /**
      * If there is text marked up with double quotes in the description, then an 
      * attempt is made to additionally insert a link for that text. This also 
      * looks to use any alias set up for these terms.

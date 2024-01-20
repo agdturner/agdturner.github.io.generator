@@ -49,8 +49,7 @@ public class References extends CoursePage {
         name = "GitHub";
         url = "https://github.com/";
         description = """
-                      An "Internet" hosting service for "software" development
-                      and "version control"
+                      A platform to build, scale, and deliver secure "software".
                       """;
         termToTerm.put(name, new Term(index, description, url));
 

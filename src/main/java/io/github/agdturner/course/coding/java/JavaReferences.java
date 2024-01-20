@@ -41,10 +41,11 @@ public class JavaReferences extends References {
         String url;
         String description;
         
-        term = "Apache Maven";
-        url = "https://en.wikipedia.org/wiki/Apache_Maven";
-        description = "A build automation tool used primarily for \"Java\" "
-                + "projects";
+        term = "Maven";
+        url = "https://maven.apache.org/";
+        description = """
+                      A "software" project management and comprehension tool.
+                      """;
         termToTerm.put(term, new Term(index, description, url));
         
     }
