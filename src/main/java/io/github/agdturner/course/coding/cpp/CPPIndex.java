@@ -67,7 +67,7 @@ public class CPPIndex extends Index {
                       in a single variable
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         
         term = "C++ Class";
         url = getCPPReferenceLanguageURL("class");
@@ -88,7 +88,7 @@ public class CPPIndex extends Index {
                       pairs with unique keys. Keys are sorted.
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ map", indexTerm);
 
         term = "C++ Module";
@@ -98,7 +98,7 @@ public class CPPIndex extends Index {
                       and definitions across translation units
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ module", indexTerm);
                 
         term = "C++ Namespace";
@@ -121,14 +121,14 @@ public class CPPIndex extends Index {
                       declared in the same namespace scope
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ namespace", indexTerm);
                 
         term = "C++ Reference";
         url = getCPPReferenceLanguageURL("reference");
         description = "An alias to an already-existing object or function";
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ reference", indexTerm);
         
         term = "C++ Set";
@@ -138,7 +138,7 @@ public class CPPIndex extends Index {
                       unique objects of type Key
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ set", indexTerm);
 
         term = "C++ Standard Library";
@@ -156,7 +156,7 @@ public class CPPIndex extends Index {
                       A sequence container that encapsulates dynamic size arrays
                       """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndTermPlural(term, indexTerm);
+        addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ vector", indexTerm);
 
         term = "GoogleTest";

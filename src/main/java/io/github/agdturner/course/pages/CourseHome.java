@@ -66,18 +66,25 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getIntroduction0(StringBuilder sb) {
         w.addDIVST(sb);
         SectionID sid = addSection("Introduction", sb);
-        w.addPST(sb, "This is a course to help researchers develop ");        
-        sb.append(index.getReference("High Performance Computing"));
-        sb.append(" software using the ");
+        w.addPST(sb, """
+                     This is a course to help researchers develop software in \
+                     the
+                     """);
         sb.append(index.getReference(getCourse().courseTypeCaptialised));
+        sb.append(" programming language that can take advantage of ");        
+        sb.append(index.getReference("High Performance Computing"));
         sb.append("""
-                   programming language. It is a precursor to a Level 1 course
-                  that focuses more on
+                   (HPC) resources. It assumes no knowledge of computer \
+                  programming (coding) and is a precursor to a Level 1 course \
+                  that focuses more on \
                   """);
         sb.append(index.getReference("profiling"));
-        sb.append(" and ");
-        sb.append(index.getReference("parallelisation"));
-        w.addPET(sb, ".");
+        sb.append(", ");
+        sb.append(index.getReference("parallelisation")).append(", ");
+        sb.append(index.getReference("multithreading")).append(", ");
+        sb.append(index.getReference("multiprocessing")).append(", ");
+        sb.append(index.getReference("distributed computing"));
+        w.addPET(sb, ", and running programs on HPC resources.");
         return sid;
     }
 
@@ -102,10 +109,11 @@ public abstract class CourseHome extends CoursePage {
         sb.append(Web_ContentWriter.getLink(
                 Environment.HTTPS_AGDTURNER_GITHUB_IO,
                 "Andy Turner"));
-        sb.append(". Please suggest improvements via the ");
+        sb.append(". ");
         sb.append(Web_ContentWriter.getLink(
-                Environment.AGDTURNER_GITHUB_IO_REPO,
-                "GitHub repository"));
+                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
+                        + getCourse().courseCode + "/public_html",
+                "Please report issues and suggest improvements here"));
         w.addPET(sb, ".");
     }
 
