@@ -48,5 +48,12 @@ public class JavaReferences extends References {
                       """;
         termToTerm.put(term, new Term(index, description, url));
         
+        term = "Netbeans";
+        url = "https://netbeans.apache.org/";
+        description = """
+                      An "Integrated Development Environment", tooling \
+                      platform and "application" framework.
+                      """;
+        termToTerm.put(term, new Term(index, description, url));
     }
 }
