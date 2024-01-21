@@ -44,18 +44,18 @@ public abstract class CodingCourseHome extends CourseHome {
         w.addP(sb,
                 "General computer programming language concepts, including:");
         w.addULST(sb);
-        w.addLI(sb, index.getReference("Variable", "Variables"));
-        w.addLIST(sb, index.getReference("Control Flow"));
+        w.addLI(sb, index.getReference("Variables"));
+        w.addLIST(sb, index.getReference("Control flow"));
         sb.append(" (");
-        sb.append(index.getReference("Conditional", "conditionals"));
+        sb.append(index.getReference("conditionals"));
         sb.append("/");
-        sb.append(index.getReference("For Loop", "for loops"));
+        sb.append(index.getReference("For loops"));
         sb.append("/");
-        sb.append(index.getReference("While Loop", "while loops"));
+        sb.append(index.getReference("While loops"));
         w.addLIET(sb, ")");
-        w.addLI(sb, index.getReference("Function", "Functions"));
+        w.addLI(sb, index.getReference("Functions"));
         w.addLIST(sb, "Data encoding and ");
-        w.addLIET(sb, index.getReference("File Format", "file formats"));
+        w.addLIET(sb, index.getReference("File formats"));
         w.addLI(sb, "Documentation");
         w.addLI(sb, "Testing");
     }
@@ -71,7 +71,7 @@ public abstract class CodingCourseHome extends CourseHome {
     }
     
     public void getSyllabusProgrammingEnd(StringBuilder sb, SectionID sid) {
-        w.addLI(sb, index.getReference("Version Control"));
+        w.addLI(sb, index.getReference("Version control"));
         w.addLI(sb, references.getReference("GitHub") 
                 + " as a source code repository and for website hosting");
         w.addULET(sb);

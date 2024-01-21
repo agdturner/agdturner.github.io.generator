@@ -51,10 +51,9 @@ public class PythonIndex extends Index {
         String description;
         IndexTerm indexTerm;
 
-        
         term = "Anaconda";
         url = "https://www.anaconda.com/";
-        description = "a data science platform";
+        description = "A data science platform.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         
@@ -62,81 +61,97 @@ public class PythonIndex extends Index {
         url = "https://beautiful-soup-4.readthedocs.io/";
         description = """
                       A "Python" library for pulling data out of "HTML" and
-                      "XML" files
+                      "XML" files.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Conda";
         url = "https://docs.conda.io/";
-        description = "an open source package management system and "
-                + "environment management system";
+        description = """
+                      An open source package management system and environment \
+                      management system.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         
         term = "IDLE";
         url = PythonIndex.getPythonDocsLibraryURL("idle.html");
-        description = "an Integrated Development and Learning Environment "
-                + "distributed with Python";
+        description = """
+                      An "Integrated Development Environment" and learning \
+                      environment distributed with Python.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "PIP";
         url = "https://pip.pypa.io";
-        description = "The Package Installer for \"Python\"";
+        description = """
+                      The package installer for "Python".
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasLowerCase(url, indexTerm);
 
         term = "Python Package Index";
         url = "https://pypi.org/";
-        description = "A repository of software for the Python programming "
-                + "language.";
+        description = """
+                      A repository of "software" for "Python".
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasAndAliasLowerCase(term, "PyPi", indexTerm);
 
         term = "PyQGIS";
         url = "https://qgis.org/pyqgis/";
-        description = "QGIS Python API";
+        description = """
+                      "QGIS" Python API.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "PyQGIS Developer Cookbook";
         url = "https://docs.qgis.org/latest/en/docs/pygqis_developer_cookbook/";
-        description = "A tutorial and a reference guide to the PyQGIS API";
+        description = "A tutorial and a reference guide to the PyQGIS API.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Pytest";
         url = "https://docs.pytest.org/";
-        description = "A framework for writing small, readable unit tests for "
-                + "\"python\" code.";
+        description = """
+                      A framework for writing small, readable unit tests for \
+                      "Python" code.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasLowerCase(term, indexTerm);
 
         term = "Python array";
         url = getPythonDocsLibraryURL("array.html");
-        description = "A \"standard library\" module that defines an object "
-                + "type which can compactly represent a sequence of values all "
-                + "of the same type. An array behaves like a \"list\", except "
-                + "that the type of objects stored in them is "
-                + "restricted/constrained";
+        description = """
+                      A "Python standard library" module that defines an \
+                      "array" - an object type which can compactly represent \
+                      a sequence of values all of the same type. It behaves \
+                      like a "list", except that the type of objects stored in \
+                      them is restricted.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 
         term = "Python BaseException";
         url = getPythonDocsLibraryURL("exceptions.html#BaseException");
-        description = "The base class for all \"Python Built-in Exceptions\"";
+        description = """
+                      The base class for all "Python Built-in Exceptions".
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         
         term = "Python break";
         url = getPythonDocsReferenceURL("simple_stmts.html#break");
-        description = "A \"keyword\" that terminates the nearest enclosing "
-                + "loop, skipping the optional 'else' clause if the loop has "
-                + "one";
+        description = """
+                      A "keyword" that terminates the nearest enclosing loop, \
+                      skipping the optional 'else' clause if the loop has one
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
 

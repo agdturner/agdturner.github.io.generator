@@ -99,6 +99,18 @@ public class Index extends CoursePage {
     }
 
     /**
+     * Adds alias term plural and lower case.
+     *
+     * @param term The index term.
+     * @param indexTerm The index term.
+     */
+    public final void addAliasTermPluralAndLowerCase(String term, 
+            IndexTerm indexTerm) {
+        addAliasTermPlural(term, indexTerm);
+        addAliasTermLowerCase(term, indexTerm);
+    }
+    
+    /**
      * For checking and adding aliases.
      *
      * @param term The index term.
@@ -597,13 +609,13 @@ public class Index extends CoursePage {
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
         addAliasAndAliasLowerCase(term, "Classes", indexTerm);
 
-        term = "Class-based programming";
+        term = "Class Based Programming";
         url = Environment.getWikipediaURL("Class-based_programming");
         description = """
-                      A style of "object-oriented programming" in which \
+                      A style of "Object Oriented Programming" in which \
                       "inheritance" occurs via defining classes of "objects", \
                       instead of inheritance occurring via the objects alone \
-                      (as in "prototype-based programming").
+                      (as in "Prototype Based Programming").
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -686,7 +698,7 @@ public class Index extends CoursePage {
         description = """
                       Technology consisting of "computer" components and \
                       recording media that are used to retain "digital data".
-                      (See also: "Memory")
+                      (See also: "Random Access Memory")
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -995,6 +1007,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
         addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "Data format", indexTerm);
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "File type", indexTerm);
 
         term = "Filename";
         url = Environment.getWikipediaURL("File_format");
@@ -1087,7 +1100,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Free_and_open-source_software");
         description = """
                       "Software" which anyone is freely licensed to use, copy \
-                      copy, study, change and share
+                      copy, study, change and share.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -1097,7 +1110,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Functional_programming");
         description = """
                       A "programming paradigm" where "programs" are \
-                      constructed by applying and composing "functions"
+                      constructed by applying and composing "functions".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -1287,9 +1300,9 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Inheritance_(object-oriented_programming)");
         description = """
                       The mechanism of basing an "object" or "class" upon \
-                      another object ("prototype-based programming" \
-                      inheritance) or class ("class-based programming" \
-                      inheritance.
+                      another object ("Prototype Based Programming" \
+                      inheritance) or class ("Class Based Programming" \
+                      inheritance).
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -1329,7 +1342,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Integrated_development_environment");
         description = """
                       A collection of "software" tools used to make writing \
-                      "code" and developing software easier
+                      "code" and developing software easier.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -1351,7 +1364,7 @@ public class Index extends CoursePage {
                       A "computer program" that directly executes instructions \
                       written in a programming or scripting language, without \
                       requiring them previously to have been compiled into \
-                      "machine code"
+                      "machine code".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1416,7 +1429,7 @@ public class Index extends CoursePage {
                       A high-level "programming language" that is one of the \
                       core technologies of the "Web". All major "Web browsers" \
                       have a dedicated JavaScript engine to execute code on \
-                      user devices
+                      user devices.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -1437,7 +1450,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Computer_keyboard");
         description = """
                       A peripheral input device modeled after the typewriter \
-                      keyboard
+                      keyboard.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -1491,19 +1504,21 @@ public class Index extends CoursePage {
 
         term = "Magic Number";
         url = Environment.getWikipediaURL("File_format#Magic_number");
-        description = "File type metadata incorporated into the file - usually "
-                + "at the start";
+        description = """
+                      "File type" metadata incorporated into the file - \
+                      usually at the start.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addAliasLowerCase(term, indexTerm);
+        addIndexTermAndAliasTermLowerCase(term, indexTerm);
 
         term = "Markdown";
         url = Environment.getWikipediaURL("Markdown");
-        description = "A lightweight markup language for creating formatted "
-                + "text using a plain-text editor";
+        description = """
+                      A lightweight markup language for creating formatted \
+                      text using a plain-text editor.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addAliasLowerCase(term, indexTerm);
+        addIndexTermAndAliasTermLowerCase(term, indexTerm);
 
         term = "Maven";
         url = "https://maven.apache.org/";
@@ -1518,7 +1533,7 @@ public class Index extends CoursePage {
         description = """
                       Stores "information", such as "data" and "programs" for \
                       immediate use in a "computer". (See also: "Computer data \
-                      storage")
+                      storage", "Random Access Memory")
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -1536,14 +1551,14 @@ public class Index extends CoursePage {
 
         term = "Metadata";
         url = Environment.getWikipediaURL("Metadata");
-        description = "Data that provides information about other data";
+        description = "Data that provides information about other data.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
 
         term = "Method";
         url = Environment.getWikipediaURL("Method_(computer_programming)");
         description = """
-                      A method in "object-oriented programming" is a \
+                      A method in "Object Oriented Programming" is a \
                       "procedure" associated with an "object", and generally \
                       also a "message". An object consists of state data and \
                       behavior; these compose an "interface", which specifies \
@@ -1557,7 +1572,7 @@ public class Index extends CoursePage {
                       state (whether it is open or closed at any given point \
                       in time) would be a property.
                       
-                      In "class-based programming", methods are defined within \
+                      In "Class Based Programming", methods are defined within \
                       a "class", and objects are instances of a given class.
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -1568,7 +1583,7 @@ public class Index extends CoursePage {
         description = """
                       A group of several proprietary graphical "operating \
                       system" families developed and marketed by the company \
-                      Microsoft
+                      Microsoft.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -1610,11 +1625,14 @@ public class Index extends CoursePage {
                       "threads" to exist within the context of one "process". \
                       These threads share the process's resources, but are \
                       able to execute independently. Multithreading can be \
-                      applied to one process to enable "parallel execution" on \
+                      applied to one process to enable parallel execution on \
                       a "multiprocessing" system.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Multithreaded", indexTerm);
+        addAliasAndAliasLowerCase(term, "Multi-threading", indexTerm);
+        addAliasAndAliasLowerCase(term, "Multi-threaded", indexTerm);
 
         term = "Multiprocessing";
         url = Environment.getWikipediaURL("Multiprocessing");
@@ -1624,6 +1642,9 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Multiprocessor", indexTerm);
+        addAliasAndAliasLowerCase(term, "Multi-processing", indexTerm);
+        addAliasAndAliasLowerCase(term, "Multi-processor", indexTerm);
 
         term = "Multi-user";
         url = Environment.getWikipediaURL("Multi-user_software");
@@ -1634,28 +1655,26 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
         
-        term = "Name Binding";
+        term = "Name binding";
         url = Environment.getWikipediaURL("Name_binding");
-        description = "The association of entities (data and/or code) with "
-                + "identifiers";
+        description = "The association of entities with identifiers.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAliasLowerCase(term, indexTerm);
+        addAliasTermPluralAndLowerCase(term, indexTerm);
         
         term = "Namespace";
         url = Environment.getWikipediaURL("Namespace");
         description = """
-                      A set of signs (names) that are used to identify and \
-                      refer to objects of various kinds. A namespace ensures \
-                      that all of a given set of objects have unique names so \
-                      that they can be easily identified.
+                      A set of names used to identify and refer to objects of \
+                      various kinds. Namespaces ensure objects have unique \
+                      names so that they can be easily identified.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
         
         term = "Natural number";
         url = Environment.getWikipediaURL("Natural_number");
-        description = "the numbers 1, 2, 3, etc.";
+        description = "the numbers 1, 2, 3, etc...";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1671,9 +1690,11 @@ public class Index extends CoursePage {
         
         term = "Network socket";
         url = Environment.getWikipediaURL("Network_socket");
-        description = "A \"software\" structure within a network node of a "
-                + "computer network that serves as an endpoint for sending and "
-                + "receiving data";
+        description = """
+                      A "software" structure within a network node of a \
+                      "computer" network that serves as an endpoint for \
+                      sending and receiving "data".
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasLowerCase(term, indexTerm);
@@ -1691,7 +1712,7 @@ public class Index extends CoursePage {
         term = "Object Oriented Programming";
         url = Environment.getWikipediaURL("Object-oriented_programming");
         description = """
-                      A programming paradigm based on the concept of \
+                      A "programming paradigm" based on the concept of \
                       "objects" which have "data" (state), and "methods" \
                       (functionality).
                       """;
@@ -1703,7 +1724,7 @@ public class Index extends CoursePage {
         term = "Open Geospatial Consortium";
         url = Environment.getWikipediaURL("Open_Geospatial_Consortium");
         description = """
-                      An international voluntary consensus standards \
+                      An international voluntary consensus "standards" \
                       organization for geospatial content and location-based \
                       services, sensor web and Internet of Things, "GIS" data \
                       processing and data sharing.
@@ -1738,7 +1759,8 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Parallel_computing");
         description = """
                       A type of computation in which many calculations or \
-                      "processes" are carried out simultaneously.
+                      "processes" are carried out simultaneously. (See also: \
+                      "Multi-threading", "Multi-processing")
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -1754,7 +1776,6 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
-        addAliasAndAliasLowerCase(term, "Parallel execution", indexTerm);
 
         term = "Parameter";
         url = Environment.getWikipediaURL("Parameter_(computer_programming)");
@@ -1789,7 +1810,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Port_(computer_networking)");
         description = """
                       A number assigned to uniquely identify a connection \
-                      endpoint and to direct data to a specific service
+                      endpoint and to direct "data" to a specific "service".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1820,7 +1841,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Processor_(computing)");
         description = """
                       An electrical component (digital circuit) that performs \
-                      operations on an data source, usually "memory" or some \
+                      operations on an data source, usually "RAM" or some \
                       other data stream.
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -1840,9 +1861,9 @@ public class Index extends CoursePage {
         term = "Profiling";
         url = Environment.getWikipediaURL("Profiling_(computer_programming)");
         description = """
-                      A form of dynamic program analysis that measures, for \
-                      example, the memory requirments or processing time of \
-                      parts of a "computer program"
+                      A form of dynamic program analysis that measures \
+                      performance, for example, the memory requirments or \
+                      processing time of parts of a "computer program".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -1901,7 +1922,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
 
-        term = "Prototype-based programming";
+        term = "Prototype Based Programming";
         url = Environment.getWikipediaURL("Prototype-based_programming");
         description = """
                       A style of "object-oriented programming" in which \
@@ -1934,7 +1955,7 @@ public class Index extends CoursePage {
         term = "Rational number";
         url = Environment.getWikipediaURL("Rational_number");
         description = """
-                      A number that can be expressed as the quotient or
+                      A number that can be expressed as the quotient or \
                       fraction of two "integers".
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -1944,8 +1965,8 @@ public class Index extends CoursePage {
         term = "Regression test";
         url = Environment.getWikipediaURL("Regression_testing");
         description = """
-                      A test rerun to ensure that previously developed and
-                      tested "software" still performs as expected after a
+                      A test rerun to ensure that previously developed and \
+                      tested "software" still performs as expected after a \
                       change.
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -2060,7 +2081,7 @@ public class Index extends CoursePage {
                       An error, flaw or fault in the design, development, or \
                       operation of "software" that causes it to produce an \
                       incorrect or unexpected result, or to behave in \
-                      unintended ways. (See also: "bug")
+                      unintended ways. (See also: "Bug")
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -2077,7 +2098,7 @@ public class Index extends CoursePage {
         description = """
                       "Computer hardware" that provides input and output of \
                       audio signals to and from a computer under the control \
-                      of "computer programs"
+                      of "computer programs".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -2154,7 +2175,7 @@ public class Index extends CoursePage {
         description = """
                       An "error" in the "syntax" of a sequence of characters \
                       or tokens that is intended to be written in a particular \
-                      "programming language"
+                      "programming language".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -2165,7 +2186,7 @@ public class Index extends CoursePage {
         description = """
                       A framework for organizing the set of communication \
                       "protocols" used in the "Internet" and similar computer \
-                      networks according to functional criteria
+                      networks according to functional criteria.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -2206,7 +2227,7 @@ public class Index extends CoursePage {
         description = """
                       An "information" technology "standard" for the \
                       consistent "encoding", representation, and handling of \
-                      text expressed in most writing systems
+                      text expressed in most writing systems.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -2219,7 +2240,7 @@ public class Index extends CoursePage {
                       modules together with associated control data, usage \
                       procedures, and operating procedures - are tested to \
                       determine whether they are fit for use. (See also: \
-                      "regression testing"
+                      "regression testing")
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -2275,7 +2296,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Version_control");
         description = """
                       A class of systems responsible for managing changes to \
-                      "data"
+                      "data".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -2352,7 +2373,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("While_loop");
         description = """
                       A control flow statement that allows code to be executed \
-                      repeatedly or until a condition evaluates as false
+                      repeatedly or until a condition evaluates as false.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
