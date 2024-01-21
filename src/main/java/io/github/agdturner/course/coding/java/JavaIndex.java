@@ -58,7 +58,7 @@ public class JavaIndex extends Index {
         term = "Java bytecode";
         url = Environment.getWikipediaURL("Java_bytecode");
         description = """
-                      the "bytecode" of the "Java Virtual Machine"
+                      The "bytecode" of the "Java Virtual Machine".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -67,7 +67,7 @@ public class JavaIndex extends Index {
         url = DOCS_ORACLE_COM_EN_JAVA_JAVASE + "docs/api/java.base/java/lang/Class.html";
         description = """
                       Instances of a class are <code>Class</code> represent \
-                      classes and interfaces in a running Java "application"
+                      classes and interfaces in a running Java "application".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -77,7 +77,7 @@ public class JavaIndex extends Index {
         url = Environment.getWikipediaURL("Java_class_file");
         description = """
                       A file containing "Java bytecode" that can be executed \
-                      on the "Java Virtual Machine"
+                      on the "Java Virtual Machine".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -85,7 +85,7 @@ public class JavaIndex extends Index {
         term = "Javadoc";
         url = Environment.getWikipediaURL("Javadoc");
         description = """
-                      A documentation generator for "Java"
+                      A documentation generator for "Java".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -94,7 +94,7 @@ public class JavaIndex extends Index {
         url = Environment.getWikipediaURL("Java_Platform,_Standard_Edition");
         description = """
                       A "computing" platform for development and deployment of \
-                      portable code for desktop and server environments
+                      portable code for desktop and server environments.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -105,7 +105,7 @@ public class JavaIndex extends Index {
                       Organizes "Java classes" into "namespaces", providing a \
                       unique namespace for each type it contains. Classes in \
                       the same package can access each other's package-private \
-                      and protected members
+                      and protected members.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -128,23 +128,28 @@ public class JavaIndex extends Index {
                       A set of "computer" "software" and specifications that \
                       provides a system for developing "application" \
                       "software" and deploying it in a cross-platform \
-                      computing environment
+                      computing environment.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         
         term = "Java ArrayList";
         url = Environment.getJavaDocURL("util", "ArrayList.html");
-        description = "A resizable-array implementation of the \"List\" interface";
+        description = """
+                      A resizable-array implementation of the "List" \
+                      interface.
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "ArrayList", indexTerm);
         
         term = "Java Keyword";
         url = Environment.getWikipediaURL("List_of_Java_keywords");
-        description = "One of 68 reserved words that have a predefined meaning "
-                + "and cannot be used to as identifiers such as to name "
-                + "variables, methods or classes";
+        description = """
+                      One of 68 reserved words that have a predefined meaning \
+                      and cannot be used to as identifiers such as to name \
+                      "variables", "methods" or "classes"
+                      """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "Java keyword", indexTerm);
@@ -155,29 +160,31 @@ public class JavaIndex extends Index {
                       An ordered collection, where the user has precise \
                       control over where in the list each element is inserted. \
                       The user can access elements by their integer index \
-                      (position in the list), and search for elements within
+                      (position in the list), and search for elements within.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "Java list", indexTerm);
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "List", indexTerm);
         
         term = "Java Map";
         url = Environment.getJavaDocURL("util", "Map.html");
         description = """
                       An object that maps keys to values. A map cannot \
                       contain duplicate keys; each key can map to at most one \
-                      value
+                      value.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "Java map", indexTerm);
-        
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "Map", indexTerm);
+                
         term = "Java Set";
         url = Environment.getJavaDocURL("util", "Set.html");
-        description = "A collection that contains no duplicate elements";
+        description = "A collection that contains no duplicate elements.";
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
-        addAliasAndAliasPlural(term, "Java set", indexTerm);
+        addAliasAndAliasPlural(term, "Set", indexTerm);
                 
         term = "Java Virtual Machine";
         url = Environment.getWikipediaURL("Java_Virtual_Machine");
@@ -188,8 +195,8 @@ public class JavaIndex extends Index {
                       Virtual Machine (JVM) is detailed by a specification \
                       that formally describes what is required in a JVM \
                       implementation. It reduces the need of program authors \
-                      to worry about idiosyncrasies of underlying hardware \
-                      "platforms
+                      to worry about idiosyncrasies of underlying "hardware" \
+                      platforms.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -202,7 +209,7 @@ public class JavaIndex extends Index {
                       and prototyping. The Java Shell tool (JShell) is a \
                       "REPL" tool, which evaluates declarations, statements, \
                       and expressions as they are entered and immediately \
-                      shows the results
+                      shows the results.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -211,7 +218,7 @@ public class JavaIndex extends Index {
         url = "https://junit.org/";
         description = """
                       A testing framework, which provides a modern foundation \
-                      for developer-side testing on the "JVM"
+                      for developer-side testing on the "JVM".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -220,7 +227,7 @@ public class JavaIndex extends Index {
         url = Environment.getWikipediaURL("OpenJDK");
         description = """
                       A free and open-source implementation of the "Java \
-                      Platform, Standard Edition"
+                      Platform, Standard Edition".
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);

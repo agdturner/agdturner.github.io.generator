@@ -754,6 +754,7 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
+        addAliasToIndexAndAliasLowerCase(term, "Programming", indexTerm);
         addAliasToIndexAndAliasLowerCase(term, "Coding", indexTerm);
 
         term = "Computing";
@@ -904,6 +905,17 @@ public class Index extends CoursePage {
         addIndexTerm(term, indexTerm);
         addAliasLowerCase(term, indexTerm);
         
+        term = "Documentation";
+        url = Environment.getWikipediaURL("Documentation");
+        description = """
+                      Any communicable material that is used to describe, \
+                      explain or instruct regarding some attributes of an \
+                      object, system or procedure, such as its parts, \
+                      assembly, installation, maintenance, and use.
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
+
         term = "Domain name";
         url = Environment.getWikipediaURL("Domain_name");
         description = """
@@ -1098,17 +1110,7 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
-        addAliasToIndexAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "Subroutine", indexTerm);
-
-        term = "Functionality";
-        url = Environment.getWikipediaURL("Function_(computer_programming)");
-        description = """
-                      A sequence of "program" instructions that performs a \
-                      specific task.
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
-        addAliasToIndexAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "Subroutine", indexTerm);
+        addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "Subroutine", indexTerm);
         addAliasAndAliasLowerCase(term, "Functionality", indexTerm);
                  
         term = "GeoJSON";
@@ -1261,7 +1263,7 @@ public class Index extends CoursePage {
         term = "Imperative program";
         url = Environment.getWikipediaURL("Imperative_programming");
         description = """
-                      A "programming" paradigm of software that uses \
+                      A "programming paradigm" of "software" that uses \
                       statements that change a program's state. An imperative \
                       program consists of commands for the "computer" to \
                       perform. Imperative programming focuses on describing \
@@ -1270,6 +1272,7 @@ public class Index extends CoursePage {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
+        addAliasAndAliasLowerCase(term, "Imperative programming", indexTerm);
 
         term = "Information";
         url = Environment.getWikipediaURL("Information");
@@ -1356,8 +1359,8 @@ public class Index extends CoursePage {
         term = "International Electrotechnical Commission";
         url = Environment.getWikipediaURL("IEC");
         description = """
-                      An international "standards organization" that prepares \
-                      and publishes "standards" for electrical, electronic and \
+                      An international "standards" organization that prepares \
+                      and publishes standards for electrical, electronic and \
                       related technologies – collectively known as \
                       electrotechnology.
                       """;
@@ -1368,7 +1371,7 @@ public class Index extends CoursePage {
         term = "International Organization for Standardization";
         url = Environment.getWikipediaURL("ISO");
         description = """
-                      An international "standard organization" composed \
+                      An international "standards" organization composed \
                       of representatives from the national standards \
                       organizations of member countries.
                       """;
@@ -1555,7 +1558,7 @@ public class Index extends CoursePage {
                       in time) would be a property.
                       
                       In "class-based programming", methods are defined within \
-                      a "class", and objects are "instances" of a given class.
+                      a "class", and objects are instances of a given class.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1638,7 +1641,18 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAliasLowerCase(term, indexTerm);
-
+        
+        term = "Namespace";
+        url = Environment.getWikipediaURL("Namespace");
+        description = """
+                      A set of signs (names) that are used to identify and \
+                      refer to objects of various kinds. A namespace ensures \
+                      that all of a given set of objects have unique names so \
+                      that they can be easily identified.
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
+        
         term = "Natural number";
         url = Environment.getWikipediaURL("Natural_number");
         description = "the numbers 1, 2, 3, etc.";
@@ -1746,7 +1760,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Parameter_(computer_programming)");
         description = """
                       A special kind of "variable" used in a "subroutine" to \
-                      refer to one of the pieces of "data" provided as "input" \
+                      refer to one of the pieces of "data" provided as input \
                       to the subroutine.
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -1794,8 +1808,8 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Procedural_programming");
         description = """
                       A "programming paradigm", derived from "imperative \
-                      programming", based on the concept of the "procedure \
-                      call". Procedures (a type of "subroutine") contain a \
+                      programming", based on the concept of the "procedure" \
+                      call. Procedures (a type of "subroutine") contain a \
                       series of computational steps to be carried out.
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -2079,8 +2093,8 @@ public class Index extends CoursePage {
         term = "Statement";
         url = Environment.getWikipediaURL("Statement_(computer_science)");
         description = """
-                      A "syntactic" unit of an "imperative programming \
-                      language" that expresses some action to be carried out. \
+                      A "syntactic" unit of an "imperative programming" \
+                      language that expresses some action to be carried out. \
                       A "program" written in such a language is formed by a \
                       sequence of one or more statements. A statement may have \
                       internal components (e.g. "expressions").
@@ -2117,7 +2131,7 @@ public class Index extends CoursePage {
         term = "Symbol";
         url = Environment.getWikipediaURL("Symbol_(programming)");
         description = """
-                      A "primitive data type" whose "instances" have a \
+                      A "primitive data type" whose instances have a \
                       human-readable form.
                       """;
         indexTerm = new IndexTerm(this, description, url);
@@ -2222,7 +2236,7 @@ public class Index extends CoursePage {
         term = "Unix";
         url = Environment.getWikipediaURL("Unix");
         description = """
-                      A family of "multitasking", "multi-user" "computer" \
+                      A family of multi-tasking, "multi-user" "computer" \
                       "operating systems".
                       """;
         indexTerm = new IndexTerm(this, description, url);
