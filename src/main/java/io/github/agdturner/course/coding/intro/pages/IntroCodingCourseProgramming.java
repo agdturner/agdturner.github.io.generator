@@ -35,15 +35,38 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
         SectionID sid = super.getIntroduction0(sb);
         
         w.addPST(sb, index.getReference("Computer programming"));
-        sb.append(" (coding) is the process of designing and building an ")
-                .append(index.getReference("executable"))
-                .append(" ")
-                .append(index.getReference("computer program"))
-                .append(" to achieve an outcome via a series of ")
-                .append(index.getReference("commands"))
-                .append(" to be processed by a ")
-                .append(index.getReference("processor"));
-        w.addPET(sb, ".");
+        sb.append(" is the process of designing and building ");
+        sb.append(index.getReference("executable")).append(" ");
+        sb.append(index.getReference("computer programs"));
+        w.addPET(sb,
+                """
+                . Many researchers develop programs that process and \
+                visualise data and automate aspects of analysis. Some \
+                contribute to the development of sophisticated software \
+                tools that support diverse research communities. Sometimes \
+                the software takes on a life of its own and evolves myriad \
+                uses beyond research. Software development and software \
+                engineering skills can be key, like softtware itself to \
+                developing understanding and generating research results and \
+                knowledge.
+                """);
+        
+        w.addP(sb,
+                """
+                In most research domains there are well established software \
+                development projects and much research is about using these \
+                tools and is less about developing these tools. But there are \
+                always better tools and better ways awaiting discovery, and \
+                those with the skills to create the next generation of \
+                software technology hold the keys to unlocking new \
+                understanding and producing ground breaking research.
+                """);
+        
+        w.addP(sb,
+                """
+                The demand for well tested, sustainably produced research \
+                software is high.
+                """);
         
         w.addPST(sb, 
                 """
@@ -53,19 +76,21 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(" and ")
                 .append(index.getReference("mouse"))
                 .append(" for user input, a visual display screen (")
-                .append(index.getReference("monitor"))
-                .append("), smaller amounts of faster more volatile data")
-                .append(" storage (")
-                .append(index.getReference("memory"))
-                .append("), and larger amounts of more persistent data storage")
-                .append(" (")
-                .append(index.getReference("disk"))
+                .append(index.getReference("monitor"));
+        sb.append("""
+                  , smaller amounts of faster more volatile data storage (\
+                  """);
+        sb.append(index.getReference("memory"));
+        sb.append("""
+                  , and larger amounts of more persistent data storage (\
+                  """);
+        sb.append(index.getReference("disk"))
                 .append(" that is organised using a ")
-                .append(index.getReference("file system"))
-                .append("""
-                        . Computers may have inbuilt or perpherally connected \
-                        devices such as \
-                        """)
+                .append(index.getReference("file system"));
+        sb.append("""
+                  . Computers may have inbuilt or perpherally connected \
+                  devices such as \
+                  """)
                 .append(index.getReference("microphones"))
                 .append(", ")
                 .append(index.getReference("speakers"))
@@ -74,11 +99,11 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(", and additional ")
                 .append(index.getReference("data storage"))
                 .append(". The monitor may also be an ")
-                .append(index.getReference("touchscreen"))
-                .append("""
-                         for user input. Networked computers typically \
-                        communicate using standard \
-                        """)
+                .append(index.getReference("touchscreen"));
+        sb.append("""
+                  for user input. Networked computers typically communicate \
+                  using standard \
+                  """)
                 .append(index.getReference("Internet"))
                 .append(" protocols. The basic functioning of a ")
                 .append(index.getReference("computer"))
