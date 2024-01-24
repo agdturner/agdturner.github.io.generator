@@ -164,11 +164,11 @@ public abstract class CoursePage extends Page {
             boolean first = true;
             int level0 = 2;
             int level;
+            int count = 0;
             for (var x : sids) {
                 Section section = sections.get(x);
-                if (section == null) {
-                    int debug = 1;
-                } else {
+                if (section != null) {
+                    count ++;
                     level = section.level;
                     if (level > level0) {
                         sb.append("\n");
@@ -197,6 +197,9 @@ public abstract class CoursePage extends Page {
                 w.addULET(sb);
             }
             w.addDIVET(sb);
+            if (count == 0) {
+                return "";
+            }
             return sb.toString();
         }
         return "";

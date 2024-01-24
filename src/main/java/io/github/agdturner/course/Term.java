@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course;
 
+import io.github.agdturner.core.Environment;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
 
 /**
@@ -77,7 +78,7 @@ public class Term {
      * @return A HTML link.
      */
     public String getLinkWithin(String linkName, String linkText) {
-        return Web_ContentWriter.getLink("#" + linkName, linkText);
+        return Web_ContentWriter.getLink(index.path + "/index.html#" + linkName, linkText);
     }
     
     /**

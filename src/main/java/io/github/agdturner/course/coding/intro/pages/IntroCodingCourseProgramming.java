@@ -33,48 +33,72 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
     @Override
     public SectionID getIntroduction0(StringBuilder sb) {
         SectionID sid = super.getIntroduction0(sb);
-        w.addPST(sb, index.getReference("Computer Programming",
-                "Computer programming"));
-        sb.append(" (coding) is the process of designing and building an")
-                .append(" executable computer program - a set of instruction");
-        w.addPET(sb, " fetched and executed sequentially.");
-        w.addPST(sb, "Contemporary desktop and laptop computers typically");
-        sb.append(" have a ")
-                .append(index.getReference("Keyboard", "keyboard"))
+        
+        w.addPST(sb, index.getReference("Computer programming"));
+        sb.append(" (coding) is the process of designing and building an ")
+                .append(index.getReference("executable"))
+                .append(" ")
+                .append(index.getReference("computer program"))
+                .append(" to achieve an outcome via a series of ")
+                .append(index.getReference("commands"))
+                .append(" to be processed by a ")
+                .append(index.getReference("processor"));
+        w.addPET(sb, ".");
+        
+        w.addPST(sb, 
+                """
+                Contemporary desktop and laptop computers typically have a \
+                """);
+        sb.append(index.getReference("keyboard"))
                 .append(" and ")
-                .append(index.getReference("Mouse", "mouse"))
+                .append(index.getReference("mouse"))
                 .append(" for user input, a visual display screen (")
-                .append(index.getReference("Monitor", "monitor"))
+                .append(index.getReference("monitor"))
                 .append("), smaller amounts of faster more volatile data")
                 .append(" storage (")
-                .append(index.getReference("Memory", "memory"))
+                .append(index.getReference("memory"))
                 .append("), and larger amounts of more persistent data storage")
                 .append(" (")
-                .append(index.getReference("Disk", "disk"))
+                .append(index.getReference("disk"))
                 .append(" that is organised using a ")
-                .append(index.getReference("File System", "file system"))
-                .append(". Computers may have inbuilt or perpherally connected")
-                .append(" devices such as microphones, cameras, and additional")
-                .append(" data  storage. The monitor may also be an ")
-                .append(index.getReference("Touchscreen", "touchscreen"))
-                .append(" for user input. Networked computers typically")
-                .append(" communicate using standard ")
+                .append(index.getReference("file system"))
+                .append("""
+                        . Computers may have inbuilt or perpherally connected \
+                        devices such as \
+                        """)
+                .append(index.getReference("microphones"))
+                .append(", ")
+                .append(index.getReference("speakers"))
+                .append(", ")
+                .append(index.getReference("cameras"))
+                .append(", and additional ")
+                .append(index.getReference("data storage"))
+                .append(". The monitor may also be an ")
+                .append(index.getReference("touchscreen"))
+                .append("""
+                         for user input. Networked computers typically \
+                        communicate using standard \
+                        """)
                 .append(index.getReference("Internet"))
-                .append(" protocols. The basic functioning of a computer is")
-                .append(" handled by an ")
-                .append(index.getReference("Operating System", 
-                        "operating system"))
+                .append(" protocols. The basic functioning of a ")
+                .append(index.getReference("computer"))
+                .append(" is handled by an ")
+                .append(index.getReference("operating system"))
                 .append(" upon which additional ")
-                .append(index.getReference("Software", "software"))
-                .append(" can be installed, including software that can")
-                .append(" interpret more readable ")
-                .append(index.getReference("Source Code", "source code"))
-                .append(" into lower level (less human readable) machine");
-        w.addPET(sb, " instructions.");
-        w.addPST(sb, "Programming can be done visually by arranging and");
-        sb.append(" connecting pre-built components into executable")
-                .append(" workflows. However, this course focuses on");
-        w.addPET(sb, " programming using text based command instructions.");
+                .append(index.getReference("software"))
+                .append(" can be installed, including software  ")
+                .append(index.getReference("compilers"))
+                .append(" and ")
+                .append(index.getReference("interpreters"))
+                .append(" that convert more readable ")
+                .append(index.getReference("source code"))
+                .append(" into ")
+                .append(index.getReference("machine code"))
+                .append(" ")
+                .append(index.getReference("instructions"))
+                .append(" executed by a ")
+                .append(index.getReference("processor"));
+        w.addPET(sb, ".");
         return sid;
     }
     

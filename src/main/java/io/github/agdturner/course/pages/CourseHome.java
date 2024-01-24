@@ -17,7 +17,6 @@ package io.github.agdturner.course.pages;
 
 import io.github.agdturner.core.Environment;
 import io.github.agdturner.core.SectionID;
-import io.github.agdturner.core.Strings;
 import io.github.agdturner.course.CoursePage;
 import io.github.agdturner.course.Course;
 import uk.ac.leeds.ccg.web.io.Web_ContentWriter;
@@ -67,14 +66,14 @@ public abstract class CourseHome extends CoursePage {
         w.addDIVST(sb);
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, """
-                     This is a course to help researchers develop software in \
-                     the
-                     """);
-        sb.append(index.getReference(getCourse().courseTypeCaptialised));
-        sb.append(" programming language that can take advantage of ");        
+                     This is a course to help researchers develop software \
+                     that can take advantage of \
+                     """);        
         sb.append(index.getReference("High Performance Computing"));
+        sb.append(" (HPC) resources in the ");
+        sb.append(index.getReference(getCourse().courseTypeCaptialised));
         sb.append("""
-                   (HPC) resources. It assumes no knowledge of computer \
+                   programming language. It assumes no knowledge of computer \
                   programming (coding) and is a precursor to a Level 1 course \
                   that focuses more on \
                   """);
@@ -125,9 +124,9 @@ public abstract class CourseHome extends CoursePage {
      */
     public void getNavigation(StringBuilder sb, SectionID sid) {
         w.addPST(sb, """
-                     Up top of each page is a button to change between a \
-                     lighter and darker page style, and a navigation section \
-                     that links to other pages. The \
+                     Each page starts with a button to change between a \
+                     lighter and darker page style, and a main navigation \
+                     section that links to other pages. The \
                      """);
         sb.append(getLink(index, "index", "link", ""));
         sb.append(
@@ -138,15 +137,10 @@ public abstract class CourseHome extends CoursePage {
         sb.append(getLink(references, "references", "link", ""));
         w.addPET(sb,
                 """
-                 page is a useful list of references and links to other \
-                resources. Pages with multiple sections have a contents \
-                towards the top linking to sections within the page.
+                 page provides a list of references and links to other \
+                relevant resources. Pages with multiple sections have a \
+                contents (below the main navigation section) linking to them.
                 """);
-//        w.addP(sb,
-//                """
-//                To get the most from the learning resources, work your way 
-//                through the pages and undertake practical exercises as directed.
-//                """);
     }
 
     /**
@@ -238,19 +232,29 @@ public abstract class CourseHome extends CoursePage {
                 Pages with names starting 'Prac' are a sequence of \
                 practicals that progress the development of a basic spatial \
                 """);
-        sb.append(index.getReference("ABM", "Agent Based Model"));
+        sb.append(index.getReference("ABM", "Agent Based Model"))
+                .append(" - a simple digital ")
+                .append(index.getReference("simulation"))
+                .append(" ")
+                .append(index.getReference("model"))
+                .append(
+                """
+                 of semi-autonomous spatial entities that move in an \
+                environment, interacting with the environment and each other. \
+                Developing the code by following instructions puts into \
+                practise some of the theory. By the end of the practicals, you \
+                should have code that reads in data from local files and from \
+                the \
+                """)
+                .append(index.getReference("Web"));
+        
         w.addPET(sb,
                 """
-                - a simple digital simulation model of semi-autonomous spatial \
-                entities that move in an environment, interacting with the \
-                environment and each other. Developing the code by following \
-                instructions puts into practise some of the theory. By the end \
-                of the practicals, you should have code that reads in data \
-                from local files and from the Web, and produces an animation, \
-                data files and user friendly messages. After completing the \
-                last practical, you will hopefully have sufficient knowledge, \
-                skills and ideas to develop the model in interesting ways \
-                without further detailed instructions.
+                 and produces an animation, data files, log files and messages \
+                for the user. The aim is that, after completing the final \
+                practical, you will have sufficient knowledge, skills and \
+                ideas to develop the model in interesting ways without further \
+                detailed instructions.
                 """);
         return sid;
     }

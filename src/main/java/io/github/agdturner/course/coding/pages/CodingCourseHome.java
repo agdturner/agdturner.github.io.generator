@@ -47,7 +47,7 @@ public abstract class CodingCourseHome extends CourseHome {
         w.addLI(sb, index.getReference("Variables"));
         w.addLIST(sb, index.getReference("Control flow"));
         sb.append(" (");
-        sb.append(index.getReference("conditionals"));
+        sb.append(index.getReference("Conditionals"));
         sb.append("/");
         sb.append(index.getReference("For loops"));
         sb.append("/");

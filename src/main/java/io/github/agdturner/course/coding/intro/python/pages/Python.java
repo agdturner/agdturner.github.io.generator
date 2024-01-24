@@ -40,78 +40,93 @@ public class Python extends CoursePage {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
-        w.addPST(sb, "");
-        sb.append(index.getReference("Python"));
+        w.addPST(sb, index.getReference("Python"));
         sb.append(
                 """
-                 is a popular and powerful high-level programming language \
+                 is a popular and powerful high-level "programming language" \
                 supported and developed by the
                 """);
         sb.append(references.getReference("Python Software Foundation"));
         w.addPET(sb,
                 """
-                 - an organisation with a mission to promote, protect, and \
-                advance the language, and support and facilitate the growth of \
-                a diverse and international community of Python programmers.
+                 (PSF) - an organisation with a mission to promote, protect, \
+                and advance the language, and support and facilitate the \
+                growth of a diverse and international community of Python \
+                programmers.
                 """);
+        w.addP(sb, 
+                """
+                Python 1.0 was released in January 1994. The first version of \
+                Python 2 (Python 2.0) was released in October 2000. The first \
+                version of Python 3 (Python 3.0) was released in December \
+                2008. PSF support for Python 2 ended in 2020 with Python 2.7. \
+                By that time Python 3.8 had been released.
+                """);
+        w.addP(sb, 
+                """
+                This course focuses on supported versions of Python 3, and \
+                does not detail differences between Python 2 and Python 3.
+                """);
+        w.addDIVET(sb);
+
+        sid = addSection("Python 3", sb);
         w.addPST(sb, "The ");
         sb.append(references.getReference("Python 3 Documentation: Library",
                 "Python 3 Library"));
         sb.append(" and various Python ");
-        sb.append(index.getReference("Source Code", "source code"));
+        sb.append(index.getReference("source Code"));
         sb.append(
                 """
-                 interpreters are freely available in source and binary forms \
-                for all major platforms from the \
+                 interpreters are freely available for all major platforms \
+                from the
                 """);
         sb.append(references.getReference("Python Website"));
         w.addPET(sb,
                 """
                 , and these may be freely distributed. Python interpreters \
-                translate Python source code into machine instructions that \
-                work at a much lower level. The need for interpretation is \
-                what classifies Python as a high-level language.
+                translate "source code" written in Python to "machine code". \
+                There are a variety of different Python interpreters. \
+                "CPython" is the reference implementation of Python. CPython \
+                can be defined as both an interpreter and a compiler as it \
+                compiles Python code into "bytecode" before interpreting it.
                 """);
+//        sb.append("""
+//                  The need for interpretation is what classifies Python as a \
+//                  high-level language.
+//                  """);
+
         w.addPST(sb, "The ");
         sb.append(references.getReference("Python Website"));
         w.addPET(sb,
                 """
                  contains distributions of and pointers to many third party \
-                Python libraries, tools, and additional documentation. \
+                Python libraries, tools, and additional documentation.
                 """);
+        
         w.addPST(sb,
                 "A particularly useful page for beginners is the ");
         sb.append(references.getReference("Python 3 Documentation"));
         w.addPET(sb, ".");
-        w.addDIVET(sb);
-        sb.append("\n");
-
-        sid = addSection("Python 3", sb);
-        w.addP(sb,
-                """
-                Python 3 was first released in 2008. For several years both \
-                Python 2 and Python 3 were developed and supported, but \
-                eventually in January 2020 development and maintenance of \
-                Python 2 ceased. We will not look at the differences between \
-                Python 2 and Python 3 in this course and will focus just on \
-                Python 3. \
-                """);
+        
         w.addPST(sb,
                 """
-                Python 3.10 was released on the 4th of October 2021. \
-                Python 3.11 was released on the 24th of October 2022. \
-                Python 3.12 is due for release in October 2023. \
+                Python 3.10 was released in October 2021. \
+                Python 3.11 was released in October 2022. \
+                Python 3.12 was released in December 2023. \
+                Python 3.13 is due for release in October 2024. \
                 For each major incremental Python 3 release there is a \
                 """);
         sb.append(references.getReference("Python 3 Documentation: What's New"));
         w.addPET(sb, " that introduces what's new:");
+        
         w.addULST(sb);
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
             w.addLI(sb, Web_ContentWriter.getLink(
                     "https://docs.python.org/3/whatsnew/3." + i + ".html",
                     "What's New In Python 3." + i));
         }
         w.addULET(sb);
+        
         w.addPST(sb,
                 """
                 Changes are marked against numbered Python Enhancement \
@@ -125,26 +140,20 @@ public class Python extends CoursePage {
                 new feature for Python or its processes or environment. A PEP \
                 should provide a concise technical specification of the \
                 feature and a rationale for the feature. PEPs allow the \
-                community of Python users to plan ahead and  get involved in \
-                language development. \
+                community of Python users to plan ahead and get involved in \
+                language development.
                 """);
-        w.addPST(sb, "Most changes in a major version of Python are ");
-        sb.append(index.getReference("Backward Compatibility",
-                "backward compatible", sid));
-        w.addPET(sb, ", but some are not.");
-        w.addPST(sb,
+        
+        w.addPST(sb, "Most changes in Python are ");
+        sb.append(index.getReference("backward compatible", sid));
+        sb.append(" but some are not. So, ");
+        sb.append(index.getReference("regression testing", sid));
+        w.addPET(sb, 
                 """
-                 Usually, a new interpreter is needed to take advantage of new \
-                language features, whereas a newer interpreter will often \
-                produce the same results from code interpreted with an older \
-                interpreter. However, it is important to bear in mind that \
-                code run with one interpreter might behave differently or \
-                produce different results when run with another interpreter. \
+                 tends to be important in developing scientific software in \
+                Python.
                 """);
-        sb.append(index.getReference("Regression testing", sid));
-        sb.append(" which checks key results are ");
-        sb.append(index.getReference("Reproducibility", "reproducibile", sid));
-        w.addPET(sb, " is generally important in scientific research.");
+        
         w.addPST(sb,
                 """
                  There is a vast ecosystem of third party Python libraries. \
@@ -216,7 +225,8 @@ public class Python extends CoursePage {
         w.addP(sb,
                 """
                 Open an 'Anaconda prompt'. On Windows the prompt should look \
-                something like:""");
+                something like:
+                """);
         w.addPRE(sb, "(base) C:\\>");
         w.addP(sb,
                 """

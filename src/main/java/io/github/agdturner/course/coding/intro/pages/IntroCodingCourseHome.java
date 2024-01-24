@@ -31,7 +31,7 @@ public abstract class IntroCodingCourseHome extends CodingCourseHome {
     }
 
     public void getSyllabusOrganisational(StringBuilder sb, SectionID sid) {
-        w.addP(sb, index.getReference("Version Control"));
+        w.addP(sb, index.getReference("Version control"));
     }
     
 }

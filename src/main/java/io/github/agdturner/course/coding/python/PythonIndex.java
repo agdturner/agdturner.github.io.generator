@@ -15,6 +15,7 @@
  */
 package io.github.agdturner.course.coding.python;
 
+import io.github.agdturner.core.Environment;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.Index;
 import io.github.agdturner.course.IndexTerm;
@@ -71,6 +72,16 @@ public class PythonIndex extends Index {
         description = """
                       An open source package management system and environment \
                       management system.
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "CPython";
+        url = Environment.getWikipediaURL(term);
+        description = """
+                      The reference implementation of "Python". Written in "C" \
+                      and Python, CPython is the default and most widely used \
+                      Python implementation.
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -505,7 +516,6 @@ public class PythonIndex extends Index {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        addAlias(term, "string", indexTerm);
 
         term = "Python SyntaxError";
         url = getPythonDocsLibraryURL("exceptions.html#SyntaxError");

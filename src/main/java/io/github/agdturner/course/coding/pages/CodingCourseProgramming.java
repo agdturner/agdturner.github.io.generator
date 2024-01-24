@@ -68,18 +68,18 @@ public class CodingCourseProgramming extends CourseProgramming {
                 In most modern computers, data is encoded in binary: the
                 smallest unit is a
                 """);
-        sb.append(index.getReference("Bit", "bit", sid));
+        sb.append(index.getReference("bit", sid));
         w.addPET(sb,
                 """
-                 which encodes one of two possible states, which - for simplicity
-                and brevity - are denoted '0' and '1'.
+                 which encodes two possible states, denoted '0' and '1'.
                 """);
+        w.addCODE()
         w.addPST(sb,
                 """
                 Typically computers work with fixed size collections of bits
                 called
                 """);
-        sb.append(index.getReference("Byte", "bytes", sid));
+        sb.append(index.getReference("bytes", sid));
         w.addPET(sb, ".");
         w.addP(sb,
                 """
@@ -101,16 +101,16 @@ public class CodingCourseProgramming extends CourseProgramming {
                 64 other symbols.
                 """);
         w.addPST(sb, "7 bit bytes is the basis of ");
-        sb.append(index.getReference("ASCII", "ASCII", sid));
+        sb.append(index.getReference("ASCII", sid));
         sb.append(
                 """
                  - a data encoding which is used often used for text, and is the
                  basis of a number of different
                 """);
-        sb.append(index.getReference("File Format", "file formats"));
+        sb.append(index.getReference("file formats"));
         w.addPET(sb, ".");
         w.addPST(sb, "");
-        sb.append(index.getReference("Unicode", "Unicode", sid));
+        sb.append(index.getReference("Unicode", sid));
         w.addPET(sb,
                 """
                  is another commonly used encoding. As of Unicode version 15.0,
@@ -129,18 +129,20 @@ public class CodingCourseProgramming extends CourseProgramming {
         SectionID sid = addSubsection("File Formats", sb);
         w.addPST(sb,
                 "Data stored in a file is often stored in a standard ");
-        sb.append(index.getReference("File Format", "file format", sid));
+        sb.append(index.getReference("file format", sid));
         w.addPET(sb,
                 """
                  - typically based on a versioned specification which details
                 the encodings used and how data gets arranged.
                 """);
-        w.addPST(sb,
+
+        w.addP(sb,
                 """
                 Some file formats use different encodings in different parts, a
                 complication that makes the data more usable and more compact
                 - requiring less storage space.
                 """);
+
         w.addPST(sb,
                 """
                 Often the suffix of a filename indicates the file format, for
@@ -150,14 +152,15 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("HTML", sid));
         sb.append(
                 ". Some file formats contain an identifying code (known as a ");
-        sb.append(index.getReference("Magic Number", "magic number", sid));
+        sb.append(index.getReference("magic number", sid));
         sb.append(
                 """
-                 typically at the start of the file which specify the format.
+                 typically at the start of the file which specifies the format.
                 File format can also be detailed in external
                 """);
-        sb.append(index.getReference("Metadata", "metadata", sid));
+        sb.append(index.getReference("metadata", sid));
         w.addPET(sb, ".");
+
         w.addP(sb,
                 """
                 File formats are revisited in
@@ -167,58 +170,52 @@ public class CodingCourseProgramming extends CourseProgramming {
 
     public void getDataIntegersAndFloatingPoint(StringBuilder sb) {
         SectionID sid = addSubsection("Integers and Floating Point", sb);
-        w.addP(sb,
+
+        w.addPST(sb, "All the ");
+        sb.append(index.getReference("integer", sid));
+        sb.append(
                 """
-                All the integer numbers in a specific range are often
-                represented individually using bytes of a length sufficient for
-                that range. The encoding will detail how this is done. Usually,
-                zero is either in the middle or at the start of the range. If
-                the byte size is minimal, to represent integer numbers in a
-                wider range, either the byte size must increase, or multiple
-                bytes must be used in a more complicated encoding.
+                 numbers in a specific range are often represented \
+                individually using \
                 """);
-        w.addP(sb,
+        sb.append(index.getReference("bytes", sid));
+        w.addPET(sb,
                 """
-                Floating point numbers are a subset of fractions typically
-                encoded using bytes of length 32 or 64. The density of fractions
-                within any part of the range varies. In general, the density is
-                greater towards the centre of the range, which with standard
-                floating point numbers is zero.
+                 of a length sufficient for that range. An encoding will \
+                detail how this is done. Often, zero is either in the middle \
+                or at the start of the range. If the byte size is minimal, to \
+                represent integer numbers in a wider range, either the byte \
+                size must increase, or multiple bytes must be used in a more \
+                complicated encoding.
                 """);
-        w.addPST(sb, "");
-        sb.append(index.getReference("Floating-point",
+
+        w.addPST(sb, "Floating point numbers are a subset of ");
+        sb.append(index.getReference("fractions", sid));
+        sb.append(" often encoded using bytes of length 32 or 64. ");
+        sb.append(index.getReference("Single-precision floating-point", sid));
+        sb.append(" is a standard encoding that uses 32 bit bytes. ");
+        sb.append(index.getReference("Double-precision Floating-point", sid));
+        w.addPET(sb,
+                """
+                 is a standard encoding that uses 64 bit bytes. The density of \
+                fractions within any part of the range varies. In general, the \
+                density is greater towards the centre of the range, which with \
+                standard floating point numbers is zero.
+                """);
+
+        w.addPST(sb, index.getReference("Floating-point",
                 "Floating point arithmetic", sid));
-        sb.append(
+        w.addPET(sb,
                 """
-                 is standardised and the result of a calculation gets rounded to
-                the nearest value. Most of the time, the standardisation has
-                ensured that calculations on different computers are the same,
-                but there can be variation. Anyway, for some floating point
-                calculations the result is completely accurate and precise,
-                other times it is rounded either up or down. It is important to
-                be aware that there can be significant error in this
-                standardised arithmetic.
+                 is standardised. The result of a calculation gets rounded to \
+                the nearest value that can be represented in the encoding. \
+                Most of the time, the standardisation results in the same \
+                calculations on different computers, but there can be \
+                variation. For some calculations the result is completely \
+                accurate and precise, for others the result is effectively \
+                rounded either up or down. It is important to be aware that \
+                there can be significant error in this standardised arithmetic.
                 """);
-        w.addPST(sb, "");
-        sb.append(index.getReference("Single-precision Floating-point",
-                "Single precision floating point", sid));
-        sb.append(
-                """
-                 is a standard encoding that uses 32 bit bytes to represent a
-                subset of
-                """);
-        sb.append(index.getReference("rational numbers", sid));
-        w.addPET(sb, ".");
-        w.addPST(sb, "");
-        sb.append(index.getReference("Double-precision Floating-point",
-                "Double precision floating point", sid));
-        sb.append(
-                """
-                 is a standard encoding that uses 64 bit bytes to represent a
-                subset of
-                """);
-        sb.append(index.getReference("rational numbers", sid));
-        w.addPET(sb, ".");
     }
 
     public void getLearning(StringBuilder sb) {
@@ -243,7 +240,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 learning experience more healthy and enjoyable.
                 """);
         w.addPST(sb, "Save your work often and use ");
-        sb.append(index.getReference("Version Control", "version control", sid));
+        sb.append(index.getReference("version control", sid));
         w.addPET(sb,
                 """
                  as this avoids losing work and provides a track of progress
@@ -255,8 +252,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 should have after this course), good ways to improve your skills
                 are by getting involved in
                 """);
-        sb.append(index.getReference("Open Source Software",
-                "open source software", sid));
+        sb.append(index.getReference("open source software", sid));
         w.addPET(sb,
                 """
                  development projects, reviewing code, writing code, reading
@@ -318,14 +314,14 @@ public class CodingCourseProgramming extends CourseProgramming {
                 way that things are set up to work is somehow causing the issue.
                 """);
         w.addPST(sb, "Sometimes the issue is a result of a '");
-        sb.append(index.getReference("Software Bug", "software bug", sid));
+        sb.append(index.getReference("software bug", sid));
         sb.append("""
                 ' - an error, flaw or fault in the design, development, or
                 operation that causes incorrect or unexpected things to happen.
                 Sometimes issues happen in the same way each time something is
                 attempted, other times the fault only sometimes happens. A
                 fault that only sometimes happens is known as a '""");
-        sb.append(index.getReference("Glitch", "glitch", sid));
+        sb.append(index.getReference("glitch", sid));
         w.addPET(sb, "' and these can be difficult to troubleshoot.");
         w.addP(sb,
                 """
@@ -383,9 +379,9 @@ public class CodingCourseProgramming extends CourseProgramming {
                 releases are of different kinds which are supported for
                 different periods.
                 """);
+
         w.addPST(sb, "Supporting ");
-        sb.append(index.getReference("Backward Compatibility",
-                "backward compatibility", sid));
+        sb.append(index.getReference("backward compatibility", sid));
         w.addPET(sb,
                 """
                  - interoperability with older versions - has both costs and
@@ -393,6 +389,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 developing languages that tyically have a process of deciding
                 how things change.
                 """);
+
         w.addP(sb,
                 """
                 Changes that are not backward compatible can create a lot of
@@ -401,6 +398,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 versions which can be problematic and have cyber security
                 implications.
                 """);
+
         w.addP(sb,
                 """
                 Languages compete for users and developers. Often new features
@@ -409,6 +407,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 investment in resources, and the skill, and design decisions
                 taken by the developer community.
                 """);
+
         w.addP(sb,
                 """
                 As new syntax, new functionality and more efficient ways of
@@ -416,6 +415,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 obsolete, or is best changed to use the new ways. This can
                 require considerable effort to retire or update (refactor) code.
                 """);
+
         w.addP(sb,
                 """
                 Fundamental changes in language syntax are associated with
@@ -423,6 +423,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 language features. Minor-minor version changes are usually
                 associated with one or more bug fix.
                 """);
+
         w.addPST(sb, "");
         sb.append(index.getReference("Deprecation", sid));
         w.addPET(sb,
@@ -446,7 +447,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 For many reasons, a key one in science and for evidence
                 based policy being '
                 """);
-        sb.append(index.getReference("Reproducibility", "reproducibility", sid));
+        sb.append(index.getReference("reproducibility", sid));
         w.addPET(sb,
                 """
                 ', it is important to know what version of a language and any
@@ -491,6 +492,6 @@ public class CodingCourseProgramming extends CourseProgramming {
     }
 
     public void getConsiderataN(StringBuilder sb, SectionID sid) {
-        sb.append("</div>\n");
+        w.addDIVET(sb);
     }
 }

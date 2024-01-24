@@ -49,7 +49,7 @@ public class Variables extends CoursePage {
         sid = addSection("C++ Variables", sb);
         w.addP(sb,
                 """
-                In C++, the 'type' of a variable has to be declared before it / 
+                In C++, the 'type' of a variable has to be declared before it \
                 is initialised).
                 """);
         

@@ -44,33 +44,44 @@ public class CPPReferences extends References {
         
         term = "C++ Standard Library";
         url = Environment.getWikipediaURL("C%2B%2B_Standard_Library");
-        description = """
-                       a collection of classes and functions, which are in the 
-                      core ISO/IEC 14882 C++ standard.""";
+        description =
+                """
+                A collection of classes and functions, which are in the core \
+                ISO/IEC 14882 C++ standard.
+                """;
         termToTerm.put(term, new Term(index, description, url));
         
         term = "cppreference.com";
         url = "https://en.cppreference.com/";
-        description = " a community generated online reference for the C and"
-                + " C++ languages and standard libraries.";
+        description = 
+                """
+                A community generated online reference for "C" and "C++".
+                """;
         termToTerm.put(term, new Term(index, description, url));
         
         term = "Matplot++";
         url = "https://alandefreitas.github.io/matplotplusplus/";
-        description = " a C++ Graphics Library for Data Visualization.";
+        description = 
+                """
+                A "C++" graphics library for data visualization.
+                """;
         termToTerm.put(term, new Term(index, description, url));
         
         term = "The GNU Compiler Collection";
         url = "https://gcc.gnu.org/";
-        description = """
-                      Includes front ends for C, C++, Objective-C, Fortran, Ada,
-                      Go, and D, as well as libraries for these languages 
-                      (libstdc++,...)""";
+        description = 
+                """
+                Includes front ends for "C", "C++", Objective-C, "Fortran", \
+                Ada, Go, and D, as well as libraries for these languages.
+                """;
         termToTerm.put(term, new Term(index, description, url));
         
         term = "cppreference.com links libs";
         url = "https://en.cppreference.com/w/cpp/links/libs";
-        description = " a list of open-source C++ libraries.";
+        description = 
+                """
+                A list of "open-source" "C++" libraries.
+                """;
         termToTerm.put(term, new Term(index, description, url));
         
     }

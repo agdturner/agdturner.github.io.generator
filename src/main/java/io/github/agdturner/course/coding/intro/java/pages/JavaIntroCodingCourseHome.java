@@ -66,7 +66,7 @@ public class JavaIntroCodingCourseHome extends IntroCodingCourseHome {
         
         w.addLI(sb, "Compiling and running programs from the command line");
         
-        w.addLI(sb, "Using " + index.getReference("Apache Netbeans"));
+        w.addLI(sb, "Using " + index.getReference("Netbeans"));
         
         w.addLIST(sb, "Collections including:");
         w.addULST(sb);
