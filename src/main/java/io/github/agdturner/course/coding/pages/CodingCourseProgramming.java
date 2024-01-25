@@ -65,92 +65,101 @@ public class CodingCourseProgramming extends CourseProgramming {
         SectionID sid = addSubsection("Bits and Bytes", sb);
         w.addPST(sb,
                 """
-                In most modern computers, data is encoded in binary: the
-                smallest unit is a
+                In most modern computers, data is encoded in binary: the \
+                smallest unit is a \
                 """);
         sb.append(index.getReference("bit", sid));
         sb.append(
                 """
-                 which encodes two possible states, denoted '0' and '1'.
+                 which encodes two possible states, denoted \
                 """);
         w.addCODE(sb, null, "0");
         sb.append(" and ");
         w.addCODE(sb, null, "1");
         w.addPET(sb, ".");
+        
         w.addPST(sb,
                 """
-                Typically computers work with fixed size collections of bits
-                called
+                Typically computers work with fixed size collections of bits \
+                called \
                 """);
         sb.append(index.getReference("bytes", sid));
         w.addPET(sb, ".");
+        
+        w.addPST(sb,
+                """
+                The more bits there are in a byte, the more different unique \
+                combinations or arrangements of bits there can be. With each \
+                added bit, there are double the number of combinations. So, \
+                with 2 bits there are 4 possible combinations \
+                """);
+        w.addCODE(sb, null, "[00, 01, 10, 11]");
+        sb.append("; with 3 bits there are 8 combinations ");
+        w.addCODE(sb, null, "[000, 001, 010, 100, 011, 101, 110, 111]");
+        w.addPET(sb,
+                """
+                 with 4, 16 combinations; with 5, 32 combination, and so on. \
+                With each added bit in a byte there are twice as many \
+                combinations compared to the smaller sizes byte. This doubling \
+                adds up exponentially and soon provides many combinations...\
+                """);
+        
         w.addP(sb,
                 """
-                The more bits there are in a byte, the more different unique
-                combinations or arrangements of bits there can be. With each
-                added bit, there are double the number of combinations. So, with
-                2 bits there are 4 possible combinations [00, 01, 10, 11]; with
-                3 bits there are 8 combinations [000, 001, 010, 100, 011, 101,
-                110, 111]; with 4, 16 combinations; with 5, 32 combination, and
-                so on. With each added bit in a byte there are twice as many
-                combinations compared to the smaller sizes byte. This doubling
-                adds up exponentially and soon provides many combinations...
+                7 bits in a byte allows for (128 combinations) which is \
+                sufficient to represent all the letters in the English \
+                alphabet in both lower and upper case, the ten numeric digits \
+                0 to 9, and 64 other symbols.\
                 """);
-        w.addP(sb,
-                """
-                7 bits in a byte allows for (128 combinations) which is
-                sufficient to represent all the letters in the English alphabet
-                in both lower and upper case, the ten numeric digits 0 to 9, and
-                64 other symbols.
-                """);
+        
         w.addPST(sb, "7 bit bytes is the basis of ");
         sb.append(index.getReference("ASCII", sid));
         sb.append(
                 """
-                 - a data encoding which is used often used for text, and is the
-                 basis of a number of different
+                 - a data encoding which is used often used for text, and is \
+                the basis of a number of different \
                 """);
         sb.append(index.getReference("file formats"));
         w.addPET(sb, ".");
-        w.addPST(sb, "");
-        sb.append(index.getReference("Unicode", sid));
+        
+        w.addPST(sb, index.getReference("Unicode", sid));
         w.addPET(sb,
                 """
-                 is another commonly used encoding. As of Unicode version 15.0,
-                there are 149,186 characters that are uniquely encoded,
-                including various alphabets, mathematical symbols and emojis.
-                Unicode uses between 1 and 4 bytes of length 8 for encoding.
+                 is another commonly used encoding. As of Unicode version \
+                15.0, there are 149,186 characters that are uniquely encoded, \
+                including various alphabets, mathematical symbols and emojis. \
+                Unicode uses between 1 and 4 bytes of length 8 for encoding.\
                 """);
+        
         w.addP(sb,
                 """
-                Commonly, there are multiples of 8 bits in a byte, but there can
-                be any number.
+                Commonly, there are multiples of 8 bits in a byte, but there \
+                can be any number.\
                 """);
     }
 
     public void getDataFileFormats(StringBuilder sb) {
         SectionID sid = addSubsection("File Formats", sb);
-        w.addPST(sb,
-                "Data stored in a file is often stored in a standard ");
+        w.addPST(sb, "Data stored in a file is often stored in a standard ");
         sb.append(index.getReference("file format", sid));
         w.addPET(sb,
                 """
-                 - typically based on a versioned specification which details
-                the encodings used and how data gets arranged.
+                 - typically based on a versioned specification which details \
+                the encodings used and how data gets arranged.\
                 """);
 
         w.addP(sb,
                 """
-                Some file formats use different encodings in different parts, a
-                complication that makes the data more usable and more compact
-                - requiring less storage space.
+                Some file formats use different encodings in different parts, \
+                a complication that makes the data more usable and more \
+                compact - requiring less storage space.\
                 """);
 
         w.addPST(sb,
                 """
-                Often the suffix of a filename indicates the file format, for
-                example the file format of a file named "index.html" is expected
-                to be
+                Often the suffix of a filename indicates the file format, for \
+                example the file format of a file named "index.html" is \
+                expected to be \
                 """);
         sb.append(index.getReference("HTML", sid));
         sb.append(
@@ -158,15 +167,15 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("magic number", sid));
         sb.append(
                 """
-                 typically at the start of the file which specifies the format.
-                File format can also be detailed in external
+                 typically at the start of the file which specifies the \
+                format. The file format can also be detailed in external \
                 """);
         sb.append(index.getReference("metadata", sid));
         w.addPET(sb, ".");
 
         w.addP(sb,
                 """
-                File formats are revisited in
+                File formats are revisited in \
                 <a href=\"../io/index.html#5\">IO Section 5.</a>
                 """);
     }
@@ -189,7 +198,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 or at the start of the range. If the byte size is minimal, to \
                 represent integer numbers in a wider range, either the byte \
                 size must increase, or multiple bytes must be used in a more \
-                complicated encoding.
+                complicated encoding.\
                 """);
 
         w.addPST(sb, "Floating point numbers are a subset of ");
@@ -203,7 +212,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                  is a standard encoding that uses 64 bit bytes. The density of \
                 fractions within any part of the range varies. In general, the \
                 density is greater towards the centre of the range, which with \
-                standard floating point numbers is zero.
+                standard floating point numbers is zero.\
                 """);
 
         w.addPST(sb, index.getReference("Floating-point",
@@ -217,7 +226,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 variation. For some calculations the result is completely \
                 accurate and precise, for others the result is effectively \
                 rounded either up or down. It is important to be aware that \
-                there can be significant error in this standardised arithmetic.
+                there can be significant error in this standardised arithmetic.\
                 """);
     }
 
@@ -230,65 +239,65 @@ public class CodingCourseProgramming extends CourseProgramming {
         SectionID sid = addSection("Learning to Program", sb);
         w.addP(sb,
                 """
-                Learning to program takes time and energy. It is highly
-                recommended that you organise to learn new programming concepts
-                when you are well rested and have good concentration. Mistakes
-                and misunderstandings are more likely if you are tired or
-                distracted.
+                Learning to program takes time and energy. It is highly \
+                recommended that you organise to learn new programming \
+                concepts when you are well rested and have good concentration. \
+                Mistakes and misunderstandings are more likely if you are \
+                tired or distracted.\
                 """);
         w.addP(sb,
                 """
-                Take breaks as you learn. They do more than help avoid fatigue
-                - they can save a lot more time than they take, and make the
-                learning experience more healthy and enjoyable.
+                Take breaks as you learn. They do more than help avoid fatigue \
+                - they can save a lot more time than they take, and make the \
+                learning experience healthier and more enjoyable.\
                 """);
         w.addPST(sb, "Save your work often and use ");
         sb.append(index.getReference("version control", sid));
         w.addPET(sb,
                 """
-                 as this avoids losing work and provides a track of progress
-                that you and others might find useful.
+                 as this avoids losing work and provides a track of progress \
+                that you and others might find useful.\
                 """);
         w.addPST(sb,
                 """
-                Once you have a good grip of programming basics, (which you
-                should have after this course), good ways to improve your skills
-                are by getting involved in
+                Once you have a good grip of programming basics, (which you \
+                should have after this course), good ways to improve your \
+                skills are by getting involved in \
                 """);
         sb.append(index.getReference("open source software", sid));
         w.addPET(sb,
                 """
-                 development projects, reviewing code, writing code, reading
-                documentation and doing other programming courses.
+                 development projects, reviewing code, writing code, reading \
+                documentation and doing other programming courses.\
                 """);
         w.addP(sb,
                 """
-                Being familiar with one programming language helps in learning
-                another. Many concepts are shared and the language syntax and
-                workflows are often similar.
+                Being familiar with one programming language helps in learning \
+                another. Many concepts are shared and the language syntax and \
+                workflows are often similar.\
                 """);
         w.addP(sb,
                 """
-                Some programming languages are particularly well geared for
-                particular types of application. This can be a consequence of
-                the language fundamentals, but often it is because something
-                similar has already been done with that language.
+                Some programming languages are particularly well geared for \
+                particular types of application. This may be because of the \
+                language fundamentals, but often it is because something \
+                similar has already been done with that language.\
                 """);
         w.addP(sb,
                 """
-                When given a choice, experienced programmers will often choose
-                a language for an implementation because they either know that
-                language well - and can envisage what to do, or because they
-                know that a particular language is well suited to the task, or
-                because they want to learn/try something new/different.
+                When given a choice, experienced programmers will often choose \
+                a language for an implementation because they either know that \
+                language well - and can envisage what to do, or because they \
+                know that a particular language is well suited to the task, or \
+                because they want to learn/try something new/different.\
                 """);
         w.addP(sb,
                 """
-                Programming and programming language development are typically
-                community activities. It is normal to ask others for help and to
-                provide others with help and work collaboratively to develop
-                software. There are various online systems that help with this
-                including online forums.
+                Programming and programming language development are typically \
+                community activities. It is normal to ask others for help and \
+                to provide others with help and work collaboratively to \
+                develop software. There are various online systems that help \
+                with this including online forums.\
                 """);
         return sid;
     }
@@ -296,51 +305,62 @@ public class CodingCourseProgramming extends CourseProgramming {
     public void getLearning1(StringBuilder sb, SectionID sid) {
         w.addP(sb,
                 """
-                Asking for help with programming is a skill. Whilst it may be
-                easiest for you to show someone what is happening and talk about
-                it. It is often not so easy to arrange an interactive help
-                session. Often the best way to get help is to document the issue
-                - describe and detail with text and pictures what is happeneing
-                and why this is confusing or not what you expect/want to happen.
-                Often the act of describing and detailing the issue can help with
-                understanding and trying different things which may ultimately
-                resolve the issue before you ask for help. Don't see this as
-                wasted effort, the more you practise preparing to ask for help,
-                the better you should be at it when you do!
+                Asking for help with programming is a skill in itself. Whilst \
+                it may be easiest for you to show someone what is happening \
+                and talk about it. It is often not so easy to arrange an \
+                interactive help session. Often the best way to get help is to \
+                document the issue - describe and explain with text and \
+                pictures what you are trying to do, what happens, and why this \
+                is confusing or not what you expect/want to happen. Often \
+                documenting the issue can help you better understand and come \
+                up with ideas of different things to try, which may ultimately \
+                resolve the issue before you ask for help. Don't see this as \
+                wasted effort, the more you practise preparing to ask for \
+                help, the better you should be at it when you do!\
                 """);
         w.addP(sb,
                 """
-                Often detailing an issue involves consulting documentation
-                and providing information about your environment. Sometimes the
-                issue is not that you have done something wrong, but that some
-                other code or software is not working as it should, or that the
-                way that things are set up to work is somehow causing the issue.
+                Often detailing an issue involves consulting documentation \
+                and providing information about your environment. Sometimes \
+                the issue is not that you have done something wrong, but that \
+                some other code or software is not working as it should, or \
+                that the way that things are set up to work is somehow causing \
+                the issue.\
                 """);
+        
         w.addPST(sb, "Sometimes the issue is a result of a '");
         sb.append(index.getReference("software bug", sid));
-        sb.append("""
-                ' - an error, flaw or fault in the design, development, or
-                operation that causes incorrect or unexpected things to happen.
-                Sometimes issues happen in the same way each time something is
-                attempted, other times the fault only sometimes happens. A
-                fault that only sometimes happens is known as a '""");
+        sb.append(
+                """
+                ' - an error, flaw or fault in the design, development, or \
+                operation that causes incorrect or unexpected things to \
+                happen. Sometimes issues happen in the same way each time \
+                something is attempted, other times the fault only sometimes \
+                happens. A fault that only sometimes happens is known as a '\
+                """);
         sb.append(index.getReference("glitch", sid));
         w.addPET(sb, "' and these can be difficult to troubleshoot.");
-        w.addP(sb,
+        
+        w.addPST(sb,
                 """
-                Often it is worth restarting software or rebooting the
-                operating system to attempt to stop unexpected behaviour
-                happening. If you start having to do this frequently it becomes
-                more of a pain, so that you either want a better work around, or
-                for the bug to get fixed.
+                Often it is worth restarting software or rebooting the \
+                computer \
+                """);
+        sb.append(index.getReference("operating system", sid));
+        w.addPET(sb,
+                """
+                 to attempt to stop unexpected behaviour happening. Having to \
+                do this frequently becomes annoying, and it can be worth \
+                spending time trying to get a better workaround in place, or \
+                to report and help fix the bug.\
                 """);
         w.addP(sb,
                 """
-                Reporting a bug is an important activity in software and
-                language development. Many bug reports are made openly
-                available. A 'known bug' is one that has been reported already.
-                This may already be being worked on or be 'resolved' or 'fixed'
-                or there may be 'workarounds' - ways of coping.
+                Reporting a bug is an important activity in software and \
+                language development. Many bug reports are made openly \
+                available. A 'known bug' is one that has been reported \
+                already. This may already be being worked on or be 'resolved' \
+                or 'fixed' or there may be 'workarounds' - ways of coping.
                 """);
         w.addP(sb,
                 """

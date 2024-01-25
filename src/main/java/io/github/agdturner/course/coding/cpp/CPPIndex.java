@@ -45,9 +45,10 @@ public class CPPIndex extends Index {
         term = "Boost.Test";
         url = "https://www.boost.org/doc/libs/1_84_0/libs/test/doc/html/index.html";
         description = """
-                      A library that provides interfaces for writing test \
-                      programs, organizing tests into simple test cases and \
-                      test suites, and controlling their runtime execution
+                      A "software library" that provides interfaces for \
+                      writing test programs, organizing tests into simple test \
+                      cases and test suites, and controlling their runtime \
+                      execution.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -55,7 +56,7 @@ public class CPPIndex extends Index {
         term = "Catch2";
         url = "https://github.com/catchorg/Catch2";
         description = """
-                      A unit testing framework for "C++"
+                      A unit testing framework for "C++".\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -64,7 +65,7 @@ public class CPPIndex extends Index {
         url = getCPPReferenceLanguageURL("array");
         description = """
                       A construct for storing multiple values of the same type \
-                      in a single variable
+                      in a single variable.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
@@ -73,7 +74,7 @@ public class CPPIndex extends Index {
         url = getCPPReferenceLanguageURL("class");
         description = """
                       A user-defined type, defined by class-specifier, which \
-                      appears in decl-specifier-seq of the declaration syntax.
+                      appears in decl-specifier-seq of the declaration syntax.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -85,7 +86,7 @@ public class CPPIndex extends Index {
         url = getCPPReferenceContainerURL("map");
         description = """
                       A sorted associative container that contains key-value \
-                      pairs with unique keys. Keys are sorted.
+                      pairs with unique keys. Keys are sorted.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
@@ -95,7 +96,7 @@ public class CPPIndex extends Index {
         url = getCPPReferenceLanguageURL("modules");
         description = """
                       A language feature since "C++20" to share declarations \
-                      and definitions across translation units
+                      and definitions across translation units.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
@@ -108,17 +109,17 @@ public class CPPIndex extends Index {
                       Entities declared inside a namespace block are placed in \
                       a namespace scope, which prevents them from being \
                       mistaken for identically-named entities in other \
-                      scopes.
+                      scopes.\
                       
                       Entities declared outside all namespace blocks belong to \
                       the global namespace. The global namespace belongs to \
                       the global scope, and can be referred to explicitly with \
                       a leading ::. While it has no declaration, the global \
-                      namespace is not an unnamed namespace.
+                      namespace is not an unnamed namespace.\
                       
                       Multiple namespace blocks with the same name are \
                       allowed. All declarations within these blocks are \
-                      declared in the same namespace scope
+                      declared in the same namespace scope.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
@@ -135,7 +136,7 @@ public class CPPIndex extends Index {
         url = getCPPReferenceContainerURL("set");
         description = """
                       An associative container that contains a sorted set of \
-                      unique objects of type Key
+                      unique objects of type Key.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
@@ -144,8 +145,8 @@ public class CPPIndex extends Index {
         term = "C++ Standard Library";
         url = Environment.getWikipediaURL("C%2B%2B_Standard_Library");
         description = """
-                      A collection of classes and functions in the core "C++"
-                      "ISO"/"IEC" 14882 standard
+                      A collection of classes and functions in the core "C++" \
+                      "ISO"/"IEC" 14882 standard.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -153,7 +154,8 @@ public class CPPIndex extends Index {
         term = "C++ Vector";
         url = getCPPReferenceContainerURL("vector");
         description = """
-                      A sequence container that encapsulates dynamic size arrays
+                      A sequence container that encapsulates dynamic size \
+                      "arrays".\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
@@ -162,7 +164,7 @@ public class CPPIndex extends Index {
         term = "GoogleTest";
         url = "https://google.github.io/googletest/";
         description = """
-                      Google’s "C++" testing and mocking framework
+                      Google’s "C++" testing and mocking framework.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
@@ -171,7 +173,7 @@ public class CPPIndex extends Index {
         url = "https://vcpkg.io/";
         description = """
                       "C"/"C++" dependency manager for all platforms, \
-                      buildsystems, and workflows
+                      build systems, and workflows.\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
