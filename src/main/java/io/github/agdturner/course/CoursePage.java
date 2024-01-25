@@ -218,4 +218,24 @@ public abstract class CoursePage extends Page {
                 using GitHub - push your changes to GitHub.
                 """);
     }
+    
+    /**
+     * Appends {@code <pre><code class=\"language-" + language + "\">} to sb.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to add after the start tag.
+     */
+    public void addCodeBlockStart(StringBuilder sb, String s) {
+        addCodeBlockStart(sb, getCourse().courseType, s);
+    }
+    
+    /**
+     * Appends {@code <pre><code class=\"language-" + language + "\">} to sb.
+     *
+     * @param sb The StringBuilder to append to.
+     * @param s The string to add after the start tag.
+     */
+    public void addCodeBlock(StringBuilder sb, String s) {
+        addCodeBlock(sb, getCourse().courseType, s);
+    }
 }

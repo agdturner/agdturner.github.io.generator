@@ -60,7 +60,7 @@ public class ABM8 extends CoursePage {
                 adding the following at the top of 'model.py' before any other
                 matplotlib imports:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "matplotlib.use('TkAgg')");
+        addCodeBlock(sb, "matplotlib.use('TkAgg')");
         w.addP(sb, "In Spyder, go to:");
         w.addPRE(sb, "Tools > Preferences > IPython console > Graphics tab");
         w.addP(sb,
@@ -75,7 +75,7 @@ public class ABM8 extends CoursePage {
 
         sid = addSection("Organising the GUI", sb);
         w.addP(sb, "Add the following function to 'model.py':");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def run(canvas):
                     animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
@@ -83,18 +83,18 @@ public class ABM8 extends CoursePage {
                     canvas.draw()
                 """);
         w.addP(sb, "Add the following import statement to 'model.py':");
-        addCodeBlock(this.getCourse().courseType, sb, "import tkinter as tk");
+        addCodeBlock(sb, "import tkinter as tk");
         w.addP(sb,
                 """
                 In 'model.py' replace the following line (not the line in the
                 new run function):
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 animation = anim.FuncAnimation(fig, update, init_func=plot, frames=gen_function, repeat=False)
                 """);
         w.addP(sb, "With:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # GUI
                 root = tk.Tk()
@@ -114,7 +114,7 @@ public class ABM8 extends CoursePage {
                 tk.mainloop()
                 """);
         w.addP(sb, "Add the following functions to 'model.py':");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def output():
                     # Write data
@@ -131,7 +131,7 @@ public class ABM8 extends CoursePage {
                     #sys.exit(0)
                 """);
         w.addP(sb, "Change the 'gen_function' from:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def gen_function():
                     global ite
@@ -148,7 +148,7 @@ public class ABM8 extends CoursePage {
                         data_written = True
                 """);
         w.addP(sb, "To:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def gen_function():
                     global ite

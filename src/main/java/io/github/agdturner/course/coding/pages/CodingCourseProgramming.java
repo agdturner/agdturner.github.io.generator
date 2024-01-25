@@ -69,11 +69,14 @@ public class CodingCourseProgramming extends CourseProgramming {
                 smallest unit is a
                 """);
         sb.append(index.getReference("bit", sid));
-        w.addPET(sb,
+        sb.append(
                 """
                  which encodes two possible states, denoted '0' and '1'.
                 """);
-        w.addCODE()
+        w.addCODE(sb, null, "0");
+        sb.append(" and ");
+        w.addCODE(sb, null, "1");
+        w.addPET(sb, ".");
         w.addPST(sb,
                 """
                 Typically computers work with fixed size collections of bits

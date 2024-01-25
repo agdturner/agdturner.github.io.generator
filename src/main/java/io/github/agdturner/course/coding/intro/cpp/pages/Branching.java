@@ -59,7 +59,7 @@ public class Branching extends CoursePage {
                 condition which evaluates to either 'True' or" " 'False'.
                 Consider the following example:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 day_of_week = 5
                 day = "Weekday"
@@ -74,7 +74,7 @@ public class Branching extends CoursePage {
                 """);
         w.addPRE(sb, "Weekday");
         w.addP(sb, "Changing the code slightly to:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 day_of_week = 6
                 # A simple If Statement
@@ -91,7 +91,7 @@ public class Branching extends CoursePage {
                 one again at the end of the compound if statement as in the
                 following example.
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 day_of_week = 5
                 # An If-else  Statement
@@ -107,7 +107,7 @@ public class Branching extends CoursePage {
                 else clauses. Elif is short for 'else if'. Consider the
                 following example:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 day_of_week = 5
                 # An If-elif-else Statement
@@ -144,7 +144,7 @@ public class Branching extends CoursePage {
                 clauses as a 'match-case' statement. The following example shows
                 the equivalent of the example from the end of previous section:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 day_of_week = 5
                 match day_of_week:

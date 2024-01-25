@@ -297,28 +297,27 @@ public abstract class Page {
     }
 
     /**
-     * Wraps a code block for Python code.
-     *
-     * @param type The name of the programming language of the code block to be 
-     * styled.
+     * Wraps a code block.
+     * Appends {@code <pre><code class=\"language-" + language + "\">s</code></pre>} to sb.
      * @param sb The StringBuilder to append to.
+     * @param language The name of the programming language of the code block.
      * @param s The code block to wrap.
      */
-    public void addCodeBlock(String type, StringBuilder sb, String s) {
-        addCodeBlockStart(type, sb, s);
+    public void addCodeBlock(StringBuilder sb, String language, String s) {
+        addCodeBlockStart(sb, language, s);
         addCodeBlockEnd(sb, "");
     }
 
     /**
-     * Appends {@code <pre><code class=\"language-" + type + "\">} to sb.
+     * Appends {@code <pre><code class=\"language-" + language + "\">} to sb.
      *
-     * @param type The name of the programming language of the code block to be 
-     * styled.
      * @param sb The StringBuilder to append to.
+     * @param language The name of the programming language of the code block.
      * @param s The string to add after the start tag.
      */
-    public void addCodeBlockStart(String type, StringBuilder sb, String s) {
-        w.addPREST(sb, "<code class=\"language-" + type + "\">");
+    public void addCodeBlockStart(StringBuilder sb, String language, String s) {
+        sb.append(Web_Strings.PRE_ST);
+        w.addCODEST(sb, "class=\"language-" + language + "\"", s);
         sb.append(s);
     }
 
@@ -329,7 +328,8 @@ public abstract class Page {
      * @param s The string to add before the end tag.
      */
     public void addCodeBlockEnd(StringBuilder sb, String s) {
-        w.addPREET(sb, s + "</code>");
+        w.addCODEET(sb, s);
+        sb.append(Web_Strings.PRE_ET);
     }
 
 }

@@ -41,7 +41,7 @@ public class ABM3 extends CoursePage {
         SectionID sid = addSection("Recap and preparation", sb);
         w.addP(sb,
                 "Your ABM code should look something like the following:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import random
                 import math
@@ -209,7 +209,7 @@ public class ABM3 extends CoursePage {
                 builtin max function</a> can be used to calculate the maximum
                 distance encountered yet. The following code does this:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 max_distance = 0 # Initialise max_distance
                 for a in agents:
@@ -236,7 +236,7 @@ public class ABM3 extends CoursePage {
                 """);
         sb.append(index.getReference("Python range", "range function"));
         w.addPET(sb, " to get a sequence of indexes:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 max_distance = 0
                 for i in range(len(agents)):
@@ -269,7 +269,7 @@ public class ABM3 extends CoursePage {
                 """);
         w.addP(sb,
                 "Your 'get_distance' function should look something like:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def get_distance(x0, y0, x1, y1):
                     \"""
@@ -330,13 +330,13 @@ public class ABM3 extends CoursePage {
                 Add the following import statement along with the others
                 towards the top of the source code:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "import time");
+        addCodeBlock(sb, "import time");
         w.addP(sb,
                 """
                 Before calculating the maximum distance between the initialised
                 agents add the following line:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "start = time.perf_counter()");
+        addCodeBlock(sb, "start = time.perf_counter()");
         w.addP(sb,
                 """
                 This sets the variable 'start' to a time variable which is the
@@ -344,7 +344,7 @@ public class ABM3 extends CoursePage {
                 calculating the maximum distance add the following code to
                 calculate and report a time interval:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 end = time.perf_counter()
                 print("Time taken to calculate maximum distance", end - start,
@@ -482,7 +482,7 @@ public class ABM3 extends CoursePage {
                 that is only run when 'i' does not equal 'j' using the operator
                 '!='. The 'if statement' will look like:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 if i != j:
                 """);
@@ -526,7 +526,7 @@ public class ABM3 extends CoursePage {
                 statement that was commented out is no longer commented out;
                 and, so that the operator in the 'if statement' is a '&lt;'):
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "if i < j:");
+        addCodeBlock(sb, "if i < j:");
         w.addP(sb,
                 """
                 Run the program again and you should get the following output:
@@ -588,7 +588,7 @@ public class ABM3 extends CoursePage {
         sb.append(index.getReference("Python math", "math module", sid));
         w.addPET(sb,
                 " the following can be used for positive infinity:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 math.inf
                 """);
@@ -686,7 +686,7 @@ public class ABM3 extends CoursePage {
                 rectangular area by limiting the x and y coordinates using the
                 following code blocks:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Variables for constraining movement.
                 # The minimum x coordinate.
@@ -698,7 +698,7 @@ public class ABM3 extends CoursePage {
                 # The maximum y coordinate.
                 y_max = 99
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Apply movement constraints.
                 if agents[i][0] < x_min:

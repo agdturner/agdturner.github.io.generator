@@ -67,7 +67,7 @@ public class ABM9 extends CoursePage {
                 -->
                 """);
         w.addP(sb, "Add the following import statements to 'model.py':");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
               """
               import requests
               import bs4
@@ -75,7 +75,7 @@ public class ABM9 extends CoursePage {
         w.addP(sb,
                 "Change the agent initialisation code block as follows:");
         String url = "https://" + site.env.domain + "/resources/abm9/data.html";
-        addCodeBlockStart(this.getCourse().courseType, sb, 
+        addCodeBlockStart(sb, 
                 """
                 # Initialise agents
                 """);
@@ -99,7 +99,7 @@ public class ABM9 extends CoursePage {
                 """);
         w.addP(sb,
                 "Change the '__init__' function in 'agentframework.py' to:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def __init__(self, agents, i, environment, n_rows, n_cols, x = None, y = None):
                 \"""

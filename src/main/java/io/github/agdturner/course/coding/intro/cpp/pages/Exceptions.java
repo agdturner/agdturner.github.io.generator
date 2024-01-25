@@ -72,7 +72,7 @@ public class Exceptions extends CoursePage {
                 run.
                 """);
         w.addP(sb, "Consider the following example:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Catch an exception
                 import random
@@ -101,7 +101,7 @@ public class Exceptions extends CoursePage {
         sb.append(index.getReference("Python ZeroDivisionError", 
                         "ZeroDivisionError", sid));
         w.addPET(sb, ".");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Catch a specific exception:
                 import random
@@ -137,7 +137,7 @@ public class Exceptions extends CoursePage {
         w.addOLST(sb);
         w.addLIST(sb, 
                 "The except clause can contain a tuple of types, for example:");
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 import random
                 try:
@@ -148,7 +148,7 @@ public class Exceptions extends CoursePage {
                 """);
         w.addLIET(sb, "");
         w.addLIST(sb, "Using multiple except clauses, for example:");
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 import random
                 try:
@@ -178,7 +178,7 @@ public class Exceptions extends CoursePage {
                 """);
         sb.append(index.getReference("SystemError", sid));
         w.addPET(sb, ".");
-        addCodeBlock(this.getCourse().courseType, sb, "raise SystemError");
+        addCodeBlock(sb, "raise SystemError");
         w.addP(sb,
                 """
                 New types of exception can be defined by subclassing an
@@ -193,7 +193,7 @@ public class Exceptions extends CoursePage {
                 To run something only if exceptions are not raised, add an
                 'else' clause, for example:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import random
                 try:
@@ -210,7 +210,7 @@ public class Exceptions extends CoursePage {
                 To run code whether an exception is raised or not, then add a
                 'finally' clause, for example:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import random
                 try:
@@ -264,13 +264,13 @@ public class Exceptions extends CoursePage {
                 """);
         sb.append(index.getReference("Python sys", "sys module", sid));
         w.addPET(sb, ". For example:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import sys
                 sys.exit()
                 """);
         w.addP(sb, "This has an arg option:");                      
-        addCodeBlock(this.getCourse().courseType, sb, "sys.exit(arg)");
+        addCodeBlock(sb, "sys.exit(arg)");
         w.addP(sb, 
                 """
                 Where arg is a number that the system will report. Zero is

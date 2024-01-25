@@ -96,7 +96,7 @@ public class GUI extends CoursePage {
                 the 'exiting' function. This code is also available in a file:
                 <a href="../../resources/gui/gui1.py">gui1.py</a>
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 import tkinter as tk
 
@@ -140,7 +140,7 @@ public class GUI extends CoursePage {
                 widgets. This code is also available in a file:
                 <a href="../../resources/gui/gui2.py">gui2.py</a>
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 import tkinter as tk
                 import tkinter.ttk as ttk
@@ -185,7 +185,7 @@ public class GUI extends CoursePage {
                 exits. This code is also available in a file:
                 <a href="../../resources/gui/gui3.py">gui3.py</a>
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import tkinter as tk
                 import tkinter.ttk as ttk
@@ -247,7 +247,7 @@ public class GUI extends CoursePage {
                 file:
                 <a href="../../resources/gui/gui4.py">gui4.py</a>
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import tkinter as tk
                 import tkinter.ttk as ttk

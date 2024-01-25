@@ -41,7 +41,7 @@ public class ABM2 extends CoursePage {
         SectionID sid = addSection("Recap and preparation", sb);
         w.addP(sb,
                 "Your ABM1 'model.py' code should look something like:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import random
                 import math
@@ -173,7 +173,7 @@ public class ABM2 extends CoursePage {
                 setting of the random seed) add the following to create a new
                 empty list called 'agents':
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Create a list to store agents
                 agents = []
@@ -183,7 +183,7 @@ public class ABM2 extends CoursePage {
                 Next, add coordinates to this list: First add one pair after
                 initialising 'y0' and 'x0', by adding the following:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 "agents.append([x0,y0]) # Append to the list agents");
         w.addP(sb,
                 """
@@ -205,7 +205,7 @@ public class ABM2 extends CoursePage {
                 The code that creates the first agent and adds this to the
                 agents list should be as follows:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Initialise variable x0
                 x0 = random.randint(0, 99)
@@ -228,14 +228,14 @@ public class ABM2 extends CoursePage {
         w.addPST(sb, "To plot the agents using ");
         sb.append(references.getReference("Matplot++"));
         w.addPET(sb, " add the following import statements:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import matplotlib.pyplot as plt
                 import operator
                 """);
         w.addP(sb,
                 "And adding the following code to the end of 'model.py':");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Plot the agents
                 plt.scatter(agents[0][0], agents[0][1], color='black')
@@ -293,7 +293,7 @@ public class ABM2 extends CoursePage {
                 """);
         sb.append(index.getReference("Python for", "for loop", sid));
         w.addP(sb, " that uses n_agents to create 10 agents as follows:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 n_agents = 10
                 for i in range(n_agents):

@@ -53,7 +53,7 @@ public class Variables extends CoursePage {
                 is initialised).
                 """);
         
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import sys
 
@@ -121,7 +121,7 @@ public class Variables extends CoursePage {
                 Strings can be compared and checked for equality using the
                 operator '=='. Consider and run the following code:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 s = "A"
                 s2 = "a"
@@ -136,7 +136,7 @@ public class Variables extends CoursePage {
         w.addP(sb, 
                 "Booleans are 'True' or 'False' and also equate to '0' or '1'.");
         w.addP(sb, "Consider and run the following code:");
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 t = True
                 f = False
@@ -171,7 +171,7 @@ public class Variables extends CoursePage {
                 String value, then again prints out the type of the variable
                 'x'.
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 # Set x = 1 and print the type of x")
                 x = 1
@@ -213,7 +213,7 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Python keyword", "keyword", sid));
         w.addPET(sb, " 'global' can modify the scope.");
         w.addP(sb, "Consider the following:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 x = 1
                 if x == 1:
@@ -229,7 +229,7 @@ public class Variables extends CoursePage {
                 would skip to the end of the if statement, as happens running
                 the following code:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 x = 1
                 if x == 0:
@@ -244,7 +244,7 @@ public class Variables extends CoursePage {
                 passed into the print function.
                 """);
         w.addP(sb, "Consider the following code:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 x = 1
                 def my_function():
@@ -279,7 +279,7 @@ public class Variables extends CoursePage {
                 Using the keyword 'global', we can make these variables the same
                 as follows:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, 
+        addCodeBlock(sb, 
                 """
                 x = 1
                 def my_function():
@@ -314,7 +314,7 @@ public class Variables extends CoursePage {
                 following code snippets shows how to initialise and delete
                 variables:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 a = 1
                 del a # <-- deletes a

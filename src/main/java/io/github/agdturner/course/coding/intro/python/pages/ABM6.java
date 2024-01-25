@@ -81,7 +81,7 @@ public class ABM6 extends CoursePage {
                 parameters, store this as a variable, and add an attribute for
                 storing the shares 'store_shares' so it is as follows:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def __init__(self, agents, i, environment, n_rows, n_cols):
                     \"""
@@ -127,7 +127,7 @@ public class ABM6 extends CoursePage {
                 example after all the agents are initialised try printing the
                 agent with i equal to 1 from the agent with i equal to 0:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "print(agents[0].agents[1])");
+        addCodeBlock(sb, "print(agents[0].agents[1])");
         w.addP(sb,
                 """
                 A way to use the 'get_distance' function in 'agentframework.py'
@@ -145,7 +145,7 @@ public class ABM6 extends CoursePage {
                 Import the geometry module into 'agentframework.py' and add the
                 following method:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 def share(self, neighbourhood):
                     # Create a list of agents in neighbourhood
@@ -178,7 +178,7 @@ public class ABM6 extends CoursePage {
                 """);
         w.addP(sb,
                 "Replace the 'main simulation loop' in 'model.py' file with:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Main simulation loop
                 for ite in range(1, n_iterations + 1):
@@ -223,7 +223,7 @@ public class ABM6 extends CoursePage {
                 functions to be within if statement like the following at the
                 end of the file:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "if __name__ == '__main__':");
+        addCodeBlock(sb, "if __name__ == '__main__':");
         w.addP(sb,
                 """
                 Recall that this isolates this code so it is only run if that
@@ -244,14 +244,14 @@ public class ABM6 extends CoursePage {
                 these with the other import statements as the first executable
                 statements in the code:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 import imageio
                 import os
                 """);
         w.addP(sb,
                 "Before the main simulation loop add the following code:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 # Create directory to write images to.
                 try:
@@ -269,9 +269,9 @@ public class ABM6 extends CoursePage {
                 Indent the plotting so that this occurs within the main
                 simulation loop and replace the following line:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb, "plot.show()");
+        addCodeBlock(sb, "plot.show()");
         w.addP(sb, "With:");
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 """
                 filename = '../../data/output/images/image' + str(ite) + '.png'
                 #filename = '../../data/output/images/image' + str(ite) + '.gif'
@@ -291,7 +291,7 @@ public class ABM6 extends CoursePage {
                 After the end of the main simulation loop the images can be
                 turned into an animated GIF format file using:
                 """);
-        addCodeBlock(this.getCourse().courseType, sb,
+        addCodeBlock(sb,
                 "imageio.mimsave('../../data/output/out.gif', images, fps=3)");
         w.addP(sb,
                 """
