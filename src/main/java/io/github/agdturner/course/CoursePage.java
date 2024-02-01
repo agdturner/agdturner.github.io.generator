@@ -51,7 +51,7 @@ public abstract class CoursePage extends Page {
      * Course Home Page for convenience.
      */
     protected final CourseHome homePage;
-
+    
     /**
      * Create a new instance.
      *
@@ -72,6 +72,11 @@ public abstract class CoursePage extends Page {
         sectionNo = 1;
     }
 
+    public String getLanguageReference() {
+        Course c = getCourse();
+        return getIndex(c).getReference(c.courseTypeCaptialised);
+    }
+    
     /**
      * @return {@link #site} cast as a Course.
      */

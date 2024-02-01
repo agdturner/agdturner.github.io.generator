@@ -35,42 +35,29 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
         SectionID sid = super.getIntroduction0(sb);
         
         w.addPST(sb, index.getReference("Computer programming"));
-        sb.append(" is the process of designing and building ");
-        sb.append(index.getReference("executable")).append(" ");
+        sb.append(" is the process of developing and running ");
         sb.append(index.getReference("computer programs"));
-        w.addPET(sb,
+        sb.append(
                 """
-                . Many researchers develop programs that process and \
-                visualise data and automate aspects of analysis. Some \
-                contribute to the development of sophisticated software \
-                tools that support diverse research communities. Sometimes \
-                the software takes on a life of its own and evolves myriad \
-                uses beyond research. Software development and software \
-                engineering skills can be key, like softtware itself to \
-                developing understanding and generating research results and \
-                knowledge.
+                , and is often simply called 'programming' and sometimes \
+                'coding' (although coding has several other meanings too). \
+                Computer progams are often called simply 'programs' or are \
+                sometimes called '\
                 """);
-        
-        w.addP(sb,
-                """
-                In most research domains there are well established software \
-                development projects and much research is about using these \
-                tools and is less about developing these tools. But there are \
-                always better tools and better ways awaiting discovery, and \
-                those with the skills to create the next generation of \
-                software technology hold the keys to unlocking new \
-                understanding and producing ground breaking research.
-                """);
-        
-        w.addP(sb,
-                """
-                The demand for well tested, sustainably produced research \
-                software is high.
-                """);
-        
+        sb.append(index.getReference("executables"));
+        sb.append("' or '");
+        sb.append(index.getReference("software"));
+        sb.append("'. Programs run in an ");
+        sb.append(index.getReference("operating system"));
+        sb.append(" environment on computational ");
+        sb.append(index.getReference("hardware"));
+        w.addPET(sb,".");
+                
         w.addPST(sb, 
                 """
-                Contemporary desktop and laptop computers typically have a \
+                A contemporary general-purpose computer is sometimes called a \
+                workstation and may be a desktop or more compact and portable \
+                laptop. These typically have a \
                 """);
         sb.append(index.getReference("keyboard"))
                 .append(" and ")
@@ -78,18 +65,18 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(" for user input, a visual display screen (")
                 .append(index.getReference("monitor"));
         sb.append("""
-                  , smaller amounts of faster more volatile data storage (\
+                  ), smaller amounts of faster more volatile data storage (\
                   """);
         sb.append(index.getReference("memory"));
         sb.append("""
-                  , and larger amounts of more persistent data storage (\
+                  ), and larger amounts of more persistent data storage (\
                   """);
         sb.append(index.getReference("disk"))
-                .append(" that is organised using a ")
+                .append(") that is organised using a ")
                 .append(index.getReference("file system"));
         sb.append("""
-                  . Computers may have inbuilt or perpherally connected \
-                  devices such as \
+                  . Such computers may have other inbuilt or perpherally \
+                  connected devices such as \
                   """)
                 .append(index.getReference("microphones"))
                 .append(", ")
@@ -98,20 +85,17 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(index.getReference("cameras"))
                 .append(", and additional ")
                 .append(index.getReference("data storage"))
-                .append(". The monitor may also be an ")
+                .append(". The monitor may also be a ")
                 .append(index.getReference("touchscreen"));
-        sb.append("""
-                  for user input. Networked computers typically communicate \
-                  using standard \
-                  """)
-                .append(index.getReference("Internet"))
-                .append(" protocols. The basic functioning of a ")
-                .append(index.getReference("computer"))
-                .append(" is handled by an ")
+        w.addPET(sb, " user interface.");
+                
+        w.addPST(sb, "The basic functioning of a ");
+        sb.append(index.getReference("computer"))
+                .append(" is handled by the ")
                 .append(index.getReference("operating system"))
                 .append(" upon which additional ")
                 .append(index.getReference("software"))
-                .append(" can be installed, including software  ")
+                .append(" can be installed for programming, including  ")
                 .append(index.getReference("compilers"))
                 .append(" and ")
                 .append(index.getReference("interpreters"))
@@ -121,8 +105,29 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(index.getReference("machine code"))
                 .append(" ")
                 .append(index.getReference("instructions"))
-                .append(" executed by a ")
-                .append(index.getReference("processor"));
+                .append(" executed by ")
+                .append(index.getReference("processors"));
+        w.addPET(sb,
+                """
+                . Contemporary general-purpose workstations are typically \
+                multi-core - in that they contain multiple processors.
+                """);
+        
+        w.addPST(sb, 
+                """
+                Networked computers typically communicate using standard \
+                """);
+        sb.append(index.getReference("Internet"));
+        sb.append(
+                """
+                 protocols and can be organised to work together. Whilst \
+                networked general purpose computers collectively have a lot of \
+                power. It is not easy to utilise this power efficiently, so \
+                research facilities often make available \
+                """);
+        sb.append(index.getReference("Supercomputers"));
+        sb.append(" for ");
+        sb.append(index.getReference("High Performance Computing"));
         w.addPET(sb, ".");
         return sid;
     }

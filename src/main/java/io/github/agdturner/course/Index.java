@@ -1422,8 +1422,8 @@ public class Index extends CoursePage {
         term = "High Performance Computing";
         url = Environment.getWikipediaURL("High-performance_computing");
         description = """
-                      Uses "supercomputers" and "computer clusters" to solve \
-                      advanced computation problems.\
+                      Uses "supercomputers" and "computer clusters" to run \
+                      computationationally demanding "programs".\
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);

@@ -65,28 +65,31 @@ public abstract class CourseHome extends CoursePage {
     public SectionID getIntroduction0(StringBuilder sb) {
         w.addDIVST(sb);
         SectionID sid = addSection("Introduction", sb);
-        w.addPST(sb, """
-                     This is a course to help researchers develop software \
-                     that can take advantage of \
-                     """);        
-        sb.append(index.getReference("High Performance Computing"));
-        sb.append(" (HPC) resources in the ");
-        sb.append(index.getReference(getCourse().courseTypeCaptialised));
-        sb.append("""
-                   programming language. It assumes no knowledge of computer \
-                  programming (coding) and is a precursor to a Level 1 course \
-                  that focuses more on \
-                  """);
-        sb.append(index.getReference("profiling"));
-        sb.append(", ");
+        w.addPST(sb, 
+                """
+                These learning resources are to help researchers develop \
+                computational thinking and software development skills in the \
+                """);
+        sb.append(getLanguageReference());
+        sb.append(
+                """
+                 programming language. It is a beginner level course and \
+                assumes no computer programming knowledge.
+                """);
+        return sid;
+    }
+
+    public void getIntroduction1(StringBuilder sb) {
+        sb.append(" which considers ");
         sb.append(index.getReference("parallelisation")).append(", ");
         sb.append(index.getReference("multithreading")).append(", ");
         sb.append(index.getReference("multiprocessing")).append(", ");
         sb.append(index.getReference("distributed computing"));
-        w.addPET(sb, ", and running programs on HPC resources.");
-        return sid;
+        sb.append(", and running programs on ");
+        sb.append(index.getReference("High Performance Computing"));
+        sb.append(" (HPC) resources.");
     }
-
+    
     /**
      * Maintainer.
      *
@@ -104,7 +107,7 @@ public abstract class CourseHome extends CoursePage {
 //        sb.append(Web_ContentWriter.getLink(
 //                Environment.getWikipediaURL("JavaScript"), "JavaScript"));
 //        sb.append(", image, and data files are maintained by ");
-        w.addPST(sb, "The website is maintained by ");
+        w.addPST(sb, "The learning resources are maintained by ");
         sb.append(Web_ContentWriter.getLink(
                 Environment.HTTPS_AGDTURNER_GITHUB_IO,
                 "Andy Turner"));
@@ -124,15 +127,15 @@ public abstract class CourseHome extends CoursePage {
      */
     public void getNavigation(StringBuilder sb, SectionID sid) {
         w.addPST(sb, """
-                     Each page starts with a button to change between a \
-                     lighter and darker page style, and a main navigation \
-                     section that links to other pages. The \
+                     Each page of the website starts with a button to change \
+                     between a lighter and darker page style, and a main \
+                     navigation section that links to all other pages. The \
                      """);
         sb.append(getLink(index, "index", "link", ""));
         sb.append(
                 """
-                 page is a glossary of terms that links back to sections where \
-                specific terms are used. The \
+                 page is a glossary of terms that links back page sections \
+                where specific terms are used. The \
                 """);
         sb.append(getLink(references, "references", "link", ""));
         w.addPET(sb,
@@ -201,50 +204,32 @@ public abstract class CourseHome extends CoursePage {
         
         w.addPST(sb, 
                 """
-                Computer programming involves computational thinking, \
-                planning, problem solving and testing. It is often helpful to \
-                break a task into smaller subtasks, and gradually develop an \
-                implementation. Often good solutions to coding tasks involve \
-                doing things repeatedly for a given sequence of things. If you \
-                are new to computer programming, there is quite a lot of \
-                terminology to get used to, some is generic to programming, \
-                some is specific to \
+                These learning resources focus on the basics. You will be \
+                introduced to general computer programming terms, and terms \
+                specific to \
                 """);
         sb.append(index.getReference(getCourse().courseTypeCaptialised));
-        w.addPET(sb, 
-                """
-                . There are some key concepts which may take a few attempts to \
-                get used to and comprehensively understand. Develop your \
-                understanding through practise and by reading.
-                """);
+        w.addPET(sb, ".");
         
-        w.addP(sb, 
-                """
-                A key to coding is interpretting error messages, understanding \
-                why they occur and thinking about how to handle errors.
-                """);
-        
-        w.addP(sb, 
-                "Be cautious and only run code you trust.");
         
         w.addPST(sb,
                 """
-                Pages with names starting 'Prac' are a sequence of \
-                practicals that progress the development of a basic spatial \
+                Pages with names starting 'ABM' are a sequence of practicals \
+                that help you learn to develop an \
                 """);
         sb.append(index.getReference("ABM", "Agent Based Model"))
-                .append(" - a simple digital ")
+                .append(" a simple ")
                 .append(index.getReference("simulation"))
                 .append(" ")
                 .append(index.getReference("model"))
                 .append(
                 """
-                 of semi-autonomous spatial entities that move in an \
+                 that represents a set of entities that move around in an \
                 environment, interacting with the environment and each other. \
                 Developing the code by following instructions puts into \
-                practise some of the theory. By the end of the practicals, you \
-                should have code that reads in data from local files and from \
-                the \
+                practise some of the theory introduced in other pages. By the \
+                end of the practicals, you should have code that reads in data \
+                from local files and from the \
                 """)
                 .append(index.getReference("Web"));
         
@@ -253,8 +238,14 @@ public abstract class CourseHome extends CoursePage {
                  and produces an animation, data files, log files and messages \
                 for the user. The aim is that, after completing the final \
                 practical, you will have sufficient knowledge, skills and \
-                ideas to develop the model in interesting ways without further \
-                detailed instructions.
+                ideas to develop the model in interesting ways to create more \
+                reproducible results without further detailed instructions.
+                """);
+        
+        w.addP(sb, 
+                """
+                Be experimental, but be cautious and recall your training on \
+                the safe and secure use of computer systems.
                 """);
         return sid;
     }

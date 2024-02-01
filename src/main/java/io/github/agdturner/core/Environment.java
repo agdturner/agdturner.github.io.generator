@@ -98,10 +98,10 @@ public class Environment {
      * @param tpackage Appended to create what is returned.
      * @param tclass Appended to create what is returned.
      * @return {@link #DOCS_ORACLE_COM_EN_JAVA_JAVASE} +
-     * tpackage.replaceAll(".", "/") + "/" + tclass;
+     * tpackage.replaceAll("\\.", "/") + "/" + tclass;
      */
     public static final String getJavaDocURL(String tpackage, String tclass) {
-        return DOCS_ORACLE_COM_EN_JAVA_JAVASE + tpackage.replaceAll(".", "/")
+        return DOCS_ORACLE_COM_EN_JAVA_JAVASE + tpackage.replaceAll("\\.", "/")
                 + "/" + tclass;
     }
 }

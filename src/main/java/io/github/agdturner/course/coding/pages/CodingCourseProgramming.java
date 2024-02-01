@@ -91,17 +91,15 @@ public class CodingCourseProgramming extends CourseProgramming {
                 The more bits there are in a byte, the more different unique \
                 combinations or arrangements of bits there can be. With each \
                 added bit, there are double the number of combinations. So, \
-                with 2 bits there are 4 possible combinations \
+                with 2 bits there are 4 possible combinations - \
                 """);
         w.addCODE(sb, null, "[00, 01, 10, 11]");
-        sb.append("; with 3 bits there are 8 combinations ");
-        w.addCODE(sb, null, "[000, 001, 010, 100, 011, 101, 110, 111]");
+        sb.append("; with 3 bits there are 8 possible combinations - ");
+        w.addCODE(sb, null, "[000, 001, 010, 100, 011, 101, 110, 111] ");
         w.addPET(sb,
                 """
-                 with 4, 16 combinations; with 5, 32 combination, and so on. \
-                With each added bit in a byte there are twice as many \
-                combinations compared to the smaller sizes byte. This doubling \
-                adds up exponentially and soon provides many combinations...\
+                , and so on. With each added bit in a byte there are twice as \
+                many combinations, soon provides many combinations...\
                 """);
         
         w.addP(sb,
@@ -109,27 +107,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 7 bits in a byte allows for (128 combinations) which is \
                 sufficient to represent all the letters in the English \
                 alphabet in both lower and upper case, the ten numeric digits \
-                0 to 9, and 64 other symbols.\
-                """);
-        
-        w.addPST(sb, "7 bit bytes is the basis of ");
-        sb.append(index.getReference("ASCII", sid));
-        sb.append(
-                """
-                 - a data encoding which is used often used for text, and is \
-                the basis of a number of different \
-                """);
-        sb.append(index.getReference("file formats"));
-        w.addPET(sb, ".");
-        
-        w.addPST(sb, index.getReference("Unicode", sid));
-        w.addPET(sb,
-                """
-                 is another commonly used encoding. As of Unicode version \
-                15.0, there are 149,186 characters that are uniquely encoded, \
-                including various alphabets, mathematical symbols and emojis. \
-                Unicode uses between 1 and 4 bytes of length 8 for encoding.\
-                """);
+                0 to 9, and 64 other symbols.""");
         
         w.addP(sb,
                 """
@@ -140,34 +118,48 @@ public class CodingCourseProgramming extends CourseProgramming {
 
     public void getDataFileFormats(StringBuilder sb) {
         SectionID sid = addSubsection("File Formats", sb);
-        w.addPST(sb, "Data stored in a file is often stored in a standard ");
+        w.addPST(sb, "Data stored in the ");
+        sb.append(index.getReference("file system"));
+        sb.append(" is often encoded using a standard ");
         sb.append(index.getReference("file format", sid));
         w.addPET(sb,
                 """
-                 - typically based on a versioned specification which details \
-                the encodings used and how data gets arranged.\
+                 - a specification which details the encodings used and how \
+                data are arranged.\
                 """);
 
+        w.addPST(sb, "Text is commonly encoded as ");
+        sb.append(index.getReference("ASCII", sid));
+        sb.append(" or ");
+        sb.append(index.getReference("Unicode", sid));
+        w.addPET(sb,
+                """
+                . (ASCII encoding uses 7 bit bytes. Unicode uses between \
+                1 and 4 bytes of length 8 for encoding. As of Unicode verson \
+                15.0, there are 149,186 characters that are uniquely encoded, \
+                including various alphabets, mathematical symbols and emojis.)\
+                """);
+        
         w.addP(sb,
                 """
                 Some file formats use different encodings in different parts, \
-                a complication that makes the data more usable and more \
-                compact - requiring less storage space.\
+                a complication that can make the data more usable and more \
+                compact.\
                 """);
 
         w.addPST(sb,
                 """
                 Often the suffix of a filename indicates the file format, for \
-                example the file format of a file named "index.html" is \
-                expected to be \
+                example the file format of a file with a name ending ".html" \
+                is expected to be in \
                 """);
         sb.append(index.getReference("HTML", sid));
         sb.append(
-                ". Some file formats contain an identifying code (known as a ");
+                "format. Some file formats contain an identifying code (known as a ");
         sb.append(index.getReference("magic number", sid));
         sb.append(
                 """
-                 typically at the start of the file which specifies the \
+                 (typically at the start of the file) which specifies the \
                 format. The file format can also be detailed in external \
                 """);
         sb.append(index.getReference("metadata", sid));

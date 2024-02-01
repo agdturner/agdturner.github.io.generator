@@ -44,6 +44,17 @@ public class JavaIndex extends Index {
         String description;
         IndexTerm indexTerm;
 
+        term = "Java (software platform)";
+        url = Environment.getWikipediaURL("Java (software platform)");
+        description = """
+                      A set of "computer" "software" and specifications that \
+                      provides a system for developing "application" \
+                      "software" and deploying it in a cross-platform \
+                      computing environment.\
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
         term = "Java Array";
         url = "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html";
         description = """
@@ -54,6 +65,16 @@ public class JavaIndex extends Index {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
+        
+        term = "Java ArrayList";
+        url = Environment.getJavaDocURL("util", "ArrayList.html");
+        description = """
+                      A resizable "array" implementation of the "List" \
+                      interface.\
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        addAlias(term, "ArrayList", indexTerm);
         
         term = "Java bytecode";
         url = Environment.getWikipediaURL("Java_bytecode");
@@ -81,67 +102,6 @@ public class JavaIndex extends Index {
                       """;
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
-        
-        term = "Javadoc";
-        url = Environment.getWikipediaURL("Javadoc");
-        description = """
-                      A documentation generator for "Java".\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
-        
-        term = "Java Platform, Standard Edition";
-        url = Environment.getWikipediaURL("Java_Platform,_Standard_Edition");
-        description = """
-                      A "computing" platform for development and deployment of \
-                      portable code for desktop and server environments.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        
-        term = "Java Package";
-        url = Environment.getWikipediaURL("Java_package");
-        description = """
-                      Organizes "Java classes" into "namespaces", providing a \
-                      unique namespace for each type it contains. Classes in \
-                      the same package can access each other's package-private \
-                      and protected members.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-
-        term = "Java Platform Module System";
-        url = Environment.getWikipediaURL("Java_Platform_Module_System");
-        description = """
-                      Specifies a distribution format for collections of Java \
-                      code and associated resources. It also specifies a \
-                      repository for storing these collections, or modules, \
-                      and identifies how they can be discovered, loaded and \
-                      checked for integrity.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-
-        term = "Java (software platform)";
-        url = Environment.getWikipediaURL("Java (software platform)");
-        description = """
-                      A set of "computer" "software" and specifications that \
-                      provides a system for developing "application" \
-                      "software" and deploying it in a cross-platform \
-                      computing environment.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        
-        term = "Java ArrayList";
-        url = Environment.getJavaDocURL("util", "ArrayList.html");
-        description = """
-                      A resizable "array" implementation of the "List" \
-                      interface.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
-        addIndexTerm(term, indexTerm);
-        addAlias(term, "ArrayList", indexTerm);
         
         term = "Java Keyword";
         url = Environment.getWikipediaURL("List_of_Java_keywords");
@@ -178,6 +138,38 @@ public class JavaIndex extends Index {
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "Java map", indexTerm);
         addAliasAndAliasPluralAndAliasAndAliasPluralLowerCase(term, "Map", indexTerm);
+        
+        term = "Java Package";
+        url = Environment.getWikipediaURL("Java_package");
+        description = """
+                      Organizes "Java classes" into "namespaces", providing a \
+                      unique namespace for each type it contains. Classes in \
+                      the same package can access each other's package-private \
+                      and protected members.\
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "Java Platform Module System";
+        url = Environment.getWikipediaURL("Java_Platform_Module_System");
+        description = """
+                      Specifies a distribution format for collections of Java \
+                      code and associated resources. It also specifies a \
+                      repository for storing these collections, or modules, \
+                      and identifies how they can be discovered, loaded and \
+                      checked for integrity.\
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
+        
+        term = "Java Platform, Standard Edition";
+        url = Environment.getWikipediaURL("Java_Platform,_Standard_Edition");
+        description = """
+                      A "computing" platform for development and deployment of \
+                      portable code for desktop and server environments.\
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTerm(term, indexTerm);
                 
         term = "Java Set";
         url = Environment.getJavaDocURL("util", "Set.html");
@@ -201,6 +193,14 @@ public class JavaIndex extends Index {
         indexTerm = new IndexTerm(this, description, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "JVM", indexTerm);
+        
+        term = "Javadoc";
+        url = Environment.getWikipediaURL("Javadoc");
+        description = """
+                      A documentation generator for "Java".\
+                      """;
+        indexTerm = new IndexTerm(this, description, url);
+        addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
         
         term = "JShell";
         url = DOCS_ORACLE_COM_EN_JAVA_JAVASE + "jshell/introduction-jshell.html";

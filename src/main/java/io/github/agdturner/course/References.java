@@ -52,7 +52,50 @@ public class References extends CoursePage {
                       A platform to build, scale, and deliver secure "software".
                       """;
         termToTerm.put(name, new Term(index, description, url));
-
+        
+        
+        name = "CPP0";
+        url = "https://agdturner.github.io/CPP0/public_html/home/index.html";
+        description = """
+                      CPP0: C++ for HPC Level 0.
+                      """;
+        termToTerm.put(name, new Term(index, description, url));
+        
+        name = "CPP1";
+        url = "https://agdturner.github.io/CPP1/public_html/home/index.html";
+        description = """
+                      CPP1: C++ for HPC Level 0.
+                      """;
+        termToTerm.put(name, new Term(index, description, url));
+        
+        name = "Python0";
+        url = "https://agdturner.github.io/Python0/public_html/home/index.html";
+        description = """
+                      Python0: Python for HPC Level 0.
+                      """;
+        termToTerm.put(name, new Term(index, description, url));
+        
+        name = "Python1";
+        url = "https://agdturner.github.io/Python1/public_html/home/index.html";
+        description = """
+                      Python1: Python for HPC Level 1.
+                      """;
+        termToTerm.put(name, new Term(index, description, url));
+        
+        name = "Java0";
+        url = "https://agdturner.github.io/Java0/public_html/home/index.html";
+        description = """
+                      Java0: Java for HPC Level 0.
+                      """;
+        termToTerm.put(name, new Term(index, description, url));
+        
+        name = "Java1";
+        url = "https://agdturner.github.io/Java1/public_html/home/index.html";
+        description = """
+                      Java1: Java for HPC Level 1.
+                      """;
+        termToTerm.put(name, new Term(index, description, url));
+        
     }
 
     /**

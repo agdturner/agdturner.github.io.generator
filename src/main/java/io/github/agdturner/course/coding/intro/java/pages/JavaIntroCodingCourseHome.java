@@ -43,6 +43,32 @@ public class JavaIntroCodingCourseHome extends IntroCodingCourseHome {
         getIntroductionN(sb, sid);
     }
 
+    /**
+     * Introduction 0.
+     *
+     * @param sb The StringBuilder to append to.
+     * @return SectionID for indexing terms.
+     */
+    public SectionID getIntroduction0(StringBuilder sb) {
+        SectionID sid = super.getIntroduction0(sb);
+        sb.append(" It is a precursor to ");
+        sb.append(references.getReference("Java1"));
+        super.getIntroduction1(sb);
+        
+//        w.addPST(sb, references.getReference("Python0"));
+//        sb.append(" and ");
+//        sb.append(references.getReference("CPP0"));
+//        sb.append(
+//                """
+//                 are similar learning resources that respectively focus on the \
+//                """);
+//        sb.append(index.getReference("Python")).append(" and ");
+//        sb.append(index.getReference("C++"));
+//        w.addPET(sb, " programming languages.");
+        
+        return sid;
+    }
+    
     @Override
     public void getSyllabusLanguage(StringBuilder sb, SectionID sid) {
         getSyllabusLanguage0(sb, sid);
