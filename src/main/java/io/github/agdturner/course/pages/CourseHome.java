@@ -118,11 +118,11 @@ public abstract class CourseHome extends CoursePage {
                 "Andy Turner"));
         sb.append("""
                   , but they have not been tested since they were re-engineered
-                  in 2023 and may be outdated and contain broken links. 
-                  Generally, if you come across "null" in a sentence where this 
-                  does not make sense, you have found a broken link. The way 
-                  the web content is generated was re-engineered as a prototype 
-                  for developing a suite of learning resources for training 
+                  in 2023 and may be outdated and contain broken links.
+                  Generally, if you come across "null" in a sentence where this
+                  does not make sense, you have found a broken link. The way
+                  the web content is generated was re-engineered as a prototype
+                  for developing a suite of learning resources for training
                   researchers, but this is not currently being taken forward...
                   """);
 //        sb.append(Web_ContentWriter.getLink(

@@ -124,16 +124,16 @@ public class CPPIndex extends Index {
         url = Environment.getWikipediaURL("C%2B%2B20");
         desc = """
                The current "open standard" for the "C++ programming language".
-                """;
+               """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
         
         term = "C++ Array";
         url = getCPPReferenceLanguageURL("array");
         desc = """
-                A construct for storing multiple values of the same type
-                in a single variable.
-                """;
+               A construct for storing multiple values of the same type
+               in a single variable.
+               """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
 

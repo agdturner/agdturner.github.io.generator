@@ -1374,7 +1374,7 @@ public class Python extends CoursePage {
         w.addPET(sb, " with a menu, panels and toolbars.");
         w.addP(sb,
                 """
-                If you want to try QGIS Desktop, please download and install it 
+                If you want to try QGIS Desktop, please download and install it
                 on your device.
                 """);
         w.addP(sb,
@@ -1382,7 +1382,7 @@ public class Python extends CoursePage {
                 As QGIS Desktop software loads, a splash screen should appear.
                 When fully loaded the GUI should appear. The GUI may have
                 changed since these learning resources were written/used, so
-                things may now be different! 
+                things may now be different!
                 """);
         w.addP(sb, "From the GUI Menu select:");
         w.addPRE(sb, "Plugins > Python Console");

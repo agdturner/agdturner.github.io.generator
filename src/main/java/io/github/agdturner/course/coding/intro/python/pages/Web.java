@@ -125,7 +125,7 @@ public class Web extends CoursePage {
         sb.append(index.getReference("TCP/IP"));
         w.addPET(sb,
                 """
-                when communicating on the Internet. The Internet Protocol (IP)
+                 when communicating on the Internet. The Internet Protocol (IP)
                 is used to split data into small chunks called "packets" and
                 address them to a specific destination computer. The Transport
                 Control Protocol (TCP) routes packets, and ensures they reach

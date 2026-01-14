@@ -612,16 +612,15 @@ public class Index extends CoursePage {
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
         addAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
-        //addAliasToIndexAndAliasLowerCase(term, "Coding", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Coded", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Encoding", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Encode", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Encoded", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Decoding", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Decode", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Decoded", indexTerm);
+        addAliasAndAliasLowerCase(term, "Coded", indexTerm);
+        addAliasAndAliasLowerCase(term, "Encoding", indexTerm);
+        addAliasAndAliasLowerCase(term, "Encode", indexTerm);
+        addAliasAndAliasLowerCase(term, "Encoded", indexTerm);
+        addAliasAndAliasLowerCase(term, "Decoding", indexTerm);
+        addAliasAndAliasLowerCase(term, "Decode", indexTerm);
+        addAliasAndAliasLowerCase(term, "Decoded", indexTerm);
         
-        term = "Code refactor";
+        term = "Code refactoring";
         url = Environment.getWikipediaURL("Code_refactoring");
         desc = """
                The process of restructuring existing "source code"  - changing
@@ -629,8 +628,8 @@ public class Index extends CoursePage {
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Refactor", indexTerm);
-        addAliasToIndexAndAliasLowerCase(term, "Code refactoring", indexTerm);
+        addAliasAndAliasLowerCase(term, "Refactor", indexTerm);
+        addAliasAndAliasLowerCase(term, "Code refactor", indexTerm);
         addAliasToIndexAndAliasLowerCase(term, "Refactoring", indexTerm);
         
         term = "Command";
@@ -765,12 +764,11 @@ public class Index extends CoursePage {
         term = "Command Line Interface";
         url = Environment.getWikipediaURL("Command-line_interface");
         desc = """
-               A command-line "interpreter" or command-line "processor"
-               uses a command-line interface (CLI) to receive
-               "commands" from a user in the form of "strings". This
-               provides a means of setting "parameters" for the
-               environment, invoking "executables" and providing
-               "information" to the user.
+               A command-line "interpreter" or command-line "processor" uses a
+               command-line interface (CLI) to receive "commands" from a user in
+               the form of "strings". This provides a means of setting
+               "parameters" for the environment, invoking "executables" and
+               providing "information" to the user.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -800,8 +798,8 @@ public class Index extends CoursePage {
         term = "Computing";
         url = Environment.getWikipediaURL("Computing");
         desc = """
-               A goal-oriented activity requiring, benefiting from, or
-               creating "computing machinery".
+               A goal-oriented activity requiring, benefiting from, or creating
+               "computing machinery".
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -810,10 +808,9 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Containerization_(computing)");
         desc = """
                A "virtual machine" that shares more of the underlying
-               "operating system" which typically makes them more
-               lightweight and less demanding of system resources.
-               Containerisation technology is widely adopted by 
-               "cloud computing" platforms.
+               "operating system" which typically makes them more lightweight
+               and less demanding of system resources. Containerisation
+               technology is widely adopted by "cloud computing" platforms.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -822,8 +819,8 @@ public class Index extends CoursePage {
         term = "Conditional";
         url = Environment.getWikipediaURL("Conditional_(computer_programming)");
         desc = """
-               A "control flow" switch that performs some kind of
-               evaluation to determine what is run next.
+               A "control flow" switch that performs some kind of evaluation to
+               determine what is run next.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -832,8 +829,8 @@ public class Index extends CoursePage {
         term = "Control flow";
         url = Environment.getWikipediaURL("Control_flow");
         desc = """
-               The order in which individual "statements" or "function"
-               calls of an "imperative program" are run.
+               The order in which individual "statements" or "function" calls of
+               an "imperative program" are run.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -842,9 +839,8 @@ public class Index extends CoursePage {
         term = "CSS";
         url = Environment.getWikipediaURL("CSS");
         desc = """
-               A style sheet language used for describing the
-               presentation of a document written in a markup language
-               such as "HTML" or "XML".
+               A style sheet language used for describing the presentation of a
+               document written in a markup language such as "HTML" or "XML".
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -852,8 +848,8 @@ public class Index extends CoursePage {
         term = "CSV";
         url = Environment.getWikipediaURL("Comma-separated_values");
         desc = """
-               A delimited text "file format" that uses commas to
-               separate "values".
+               A delimited text "file format" that uses commas to separate
+               "values".
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -862,11 +858,11 @@ public class Index extends CoursePage {
         term = "Data";
         url = Environment.getWikipediaURL("Data");
         desc = """
-               A collection of discrete or continuous "values" that
-               convey "information", describing the quantity, quality,
-               fact, statistics, other basic units of meaning, or
-               simply sequences of symbols that may be further
-               interpreted formally. (See also: "Digital data")
+               A collection of discrete or continuous "values" that convey
+               "information", describing the quantity, quality, fact,
+               statistics, other basic units of meaning, or simply sequences of
+               symbols that may be further interpreted formally. (See also:
+               "Digital data")
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -883,10 +879,9 @@ public class Index extends CoursePage {
         term = "Data type";
         url = Environment.getWikipediaURL("Data_type");
         desc = """
-               A collection or grouping of data "values", usually
-               specified by a set of possible values, a set of allowed
-               operations on these values, and/or a representation of
-               these values as machine types.
+               A collection or grouping of data "values", usually specified by a
+               set of possible values, a set of allowed operations on these
+               values, and/or a representation of these values as machine types.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -907,9 +902,9 @@ public class Index extends CoursePage {
         term = "Debugging";
         url = Environment.getWikipediaURL("Debugging");
         desc = """
-               The process of finding and resolving "bugs" (defects or
-               problems that prevent correct operation) within
-               "computer programs", "software", or systems.
+               The process of finding and resolving "bugs" (defects or problems
+               that prevent correct operation) within "computer programs",
+               "software", or systems.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -918,10 +913,10 @@ public class Index extends CoursePage {
         term = "Deprecation";
         url = Environment.getWikipediaURL("Deprecation");
         desc = """
-               The discouragement of use of some terminology, feature,
-               design, or practice, typically because it has been
-               superseded or is no longer considered efficient or safe,
-               without removing it or prohibiting its use.
+               The discouragement of use of some terminology, feature, design,
+               or practice, typically because it has been superseded or is no
+               longer considered efficient or safe, without removing it or
+               prohibiting its use.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -930,9 +925,9 @@ public class Index extends CoursePage {
         term = "Digital data";
         url = Environment.getWikipediaURL("Digital_data");
         desc = """
-               "Information" represented as a string of discrete
-               symbols, each of which can take on one of only a finite
-               number of values from an "alphabet". (See also: "Data")
+               "Information" represented as a string of discrete symbols, each
+               of which can take on one of only a finite number of values from
+               an "alphabet". (See also: "Data")
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -941,9 +936,8 @@ public class Index extends CoursePage {
         term = "Digital footprint";
         url = Environment.getWikipediaURL("Digital_footprint");
         desc = """
-               Traceable digital activities, actions, contributions,
-               and communications manifested on the "Internet" or
-               digital devices.
+               Traceable digital activities, actions, contributions, and
+               communications manifested on the "Internet" or digital devices.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -951,8 +945,8 @@ public class Index extends CoursePage {
         term = "Digital model";
         url = Environment.getWikipediaURL("Digital_twin");
         desc = """
-               An informative "computer" based representation of an
-               individual object or system.
+               An informative "computer" based representation of an individual
+               object or system.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -961,10 +955,10 @@ public class Index extends CoursePage {
         term = "Digital shadow";
         url = Environment.getWikipediaURL("Digital_twin");
         desc = """
-               A digital "model" of a physical product, system, or
-               process. The abstract model represents the real thing
-               using observations, measurents and scientific
-               understanding. (See also: "Digital footprint")
+               A digital "model" of a physical product, system, or process. The
+               abstract model represents the real thing using observations,
+               measurents and scientific understanding. (See also:
+               "Digital footprint")
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1001,7 +995,7 @@ public class Index extends CoursePage {
         term = "Disk storage";
         url = Environment.getWikipediaURL("Disk_storage");
         desc = """
-               "Computer" "data storage" that is slower than 
+               "Computer" "data storage" that is slower than
                "Random Access Memory" and is used to store data persistently
                (from one session to the next).
                """;
@@ -1013,10 +1007,9 @@ public class Index extends CoursePage {
         term = "Distributed computing";
         url = Environment.getWikipediaURL("Distributed_computing");
         desc = """
-               A distributed system is a system whose components are
-               located on different networked "computers", which
-               communicate and coordinate their actions by passing
-               "messages" to one another.
+               A distributed system is a system whose components are located on
+               different networked "computers", which communicate and coordinate
+               their actions by passing "messages" to one another.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -1025,10 +1018,10 @@ public class Index extends CoursePage {
         term = "Documentation";
         url = Environment.getWikipediaURL("Documentation");
         desc = """
-               Any communicable material that is used to describe,
-               explain or instruct regarding some attributes of an
-               object, system or procedure, such as its parts,
-               assembly, installation, maintenance, and use.
+               Any communicable material that is used to describe, explain or
+               instruct regarding some attributes of an object, system or
+               procedure, such as its parts, assembly, installation,
+               maintenance, and use.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1036,8 +1029,8 @@ public class Index extends CoursePage {
         term = "Domain name";
         url = Environment.getWikipediaURL("Domain_name");
         desc = """
-               A "string" that identifies a realm of administrative
-               autonomy, authority or control.
+               A "string" that identifies a realm of administrative autonomy,
+               authority or control.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1055,8 +1048,8 @@ public class Index extends CoursePage {
         term = "End user";
         url = Environment.getWikipediaURL("End_user");
         desc = """
-               A person who ultimately uses or is intended to
-               ultimately use a product.
+               A person who ultimately uses or is intended to ultimately use a
+               product.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
@@ -1065,10 +1058,10 @@ public class Index extends CoursePage {
         term = "Environment variable";
         url = Environment.getWikipediaURL("Environment_variable");
         desc = """
-               A "variable" that can affect the way running "processes"
-               behave on a "computer". For example, a running process
-               may query the value of an environment variable to
-               discover a suitable location to store temporary files.
+               A "variable" that can affect the way running "processes" behave
+               on a "computer". For example, a running process may query the
+               value of an environment variable to discover a suitable location
+               to store temporary files.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1101,9 +1094,9 @@ public class Index extends CoursePage {
         term = "Expression";
         url = Environment.getWikipediaURL("Expression_(computer_science)");
         desc = """
-               A "syntactic" entity in a "programming language" that
-               may be evaluated to determine its "value" or fail to
-               terminate, in which case the expression is undefined.
+               A "syntactic" entity in a "programming language" that  may be
+               evaluated to determine its "value" or fail to terminate, in which
+               case the expression is undefined.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1111,8 +1104,8 @@ public class Index extends CoursePage {
         term = "File format";
         url = Environment.getWikipediaURL("File_format");
         desc = """
-               A standard way that "information" is "encoded" for
-               storage in a "computer file".
+               A standard way that "information" is "encoded" for storage in a
+               "computer file".
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1132,8 +1125,8 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("File_system");
         desc = """
                A "method" and "data structure" that a "computer"
-               "operating system" uses to control how data is stored
-               and retrieved.
+               "operating system" uses to control how data is stored and
+               retrieved.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPluralAndAliasAndAliasPluralTermLowerCase(term, indexTerm);
@@ -1705,7 +1698,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Computer_memory");
         desc = """
                Stores "information", such as "data" and "programs" for
-               immediate use in a "computer". (See also: 
+               immediate use in a "computer". (See also:
                "Computer data storage", "Random Access Memory")
                """;
         indexTerm = new IndexTerm(this, desc, url);
@@ -1768,7 +1761,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Motherboard");
         desc = """
                The main printed circuit board in "general-purpose computers" and
-               other expandable systems. It holds and allows communication 
+               other expandable systems. It holds and allows communication
                between components of a system, such as the
                "Central Processing Unit" and "memory", and provides connectors
                for other "peripherals".
@@ -2290,7 +2283,7 @@ public class Index extends CoursePage {
         url = Environment.getWikipediaURL("Software_testing");
         desc = """
                Checking whether "software" meets intended objectives and
-               satisfies expectations. 
+               satisfies expectations.
                """;
         indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermLowerCase(term, indexTerm);
@@ -2543,7 +2536,7 @@ public class Index extends CoursePage {
         term = "Visual Studio Code";
         url = "https://code.visualstudio.com/";
         desc = """
-               A code editor with support for development operations like 
+               A code editor with support for development operations like
                "debugging", task running, and "version control".
                """;
         indexTerm = new IndexTerm(this, desc, url);

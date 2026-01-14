@@ -74,7 +74,7 @@ public class CIndex extends Index {
         url = Environment.getWikipediaURL("C_standard_library");
         desc = """
                Provides macros, type definitions and functions for tasks such as
-               string manipulation, mathematical computation, input/output 
+               string manipulation, mathematical computation, input/output
                processing, memory management, and input/output.
                """;
         indexTerm = new IndexTerm(this, desc, url);

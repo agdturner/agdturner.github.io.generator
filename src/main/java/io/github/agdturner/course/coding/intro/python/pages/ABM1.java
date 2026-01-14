@@ -172,7 +172,7 @@ public class ABM1 extends CoursePage {
                 """
                  to determine whether to increase or decrease 'x0' based on
                 the value obtained from a call to the function random function
-                in 
+                in
                 """);
         sb.append(index.getReference("Python random", "random", sid));
         w.addPET(sb,
