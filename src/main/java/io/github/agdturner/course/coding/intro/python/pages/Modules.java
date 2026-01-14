@@ -69,7 +69,7 @@ public class Modules extends CoursePage {
                         "Python Standard Library"));
         w.addPET(sb,
                 """
-                modules. These modules can be readily imported and used without
+                 modules. These modules can be readily imported and used without
                 needing to customise the environment.
                 """);
         w.addP(sb,

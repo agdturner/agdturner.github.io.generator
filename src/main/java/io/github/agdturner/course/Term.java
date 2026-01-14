@@ -78,7 +78,11 @@ public class Term {
      * @return A HTML link.
      */
     public String getLinkWithin(String linkName, String linkText) {
-        return Web_ContentWriter.getLink(index.path + "/index.html#" + linkName, linkText);
+        if (index.site.localPaths) {
+            return Web_ContentWriter.getLink(index.path + "/index.html#" + linkName, linkText);
+        } else {
+            return Web_ContentWriter.getLink("../index/index.html#" + linkName, linkText);
+        }
     }
     
     /**

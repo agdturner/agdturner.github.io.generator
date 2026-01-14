@@ -52,9 +52,9 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
     @Override
     public SectionID getIntroduction0(StringBuilder sb) {
         SectionID sid = super.getIntroduction0(sb);
-        sb.append(" It is a precursor to ");
-        sb.append(references.getReference("Python1"));
-        super.getIntroduction1(sb);
+        //sb.append(" It is a precursor to ");
+        //sb.append(references.getReference("Python1"));
+        //super.getIntroduction1(sb);
         
 //        w.addPST(sb, references.getReference("Java0"));
 //        sb.append(" and ");
@@ -92,13 +92,14 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
 
         w.addLI(sb, "Running programs from the command line");
 
-        w.addLI(sb, references.getReference("Anaconda"));
-
         w.addLI(sb, "Using " + references.getReference("Jupyter Notebook"));
-        
+ 
         w.addLI(sb, "Using " + references.getReference("IDLE"));
         
         w.addLI(sb, "Using " + references.getReference("Spyder"));
+        
+//        w.addLI(sb, "Using an " + index.getReference("Integrated Development Environment"));
+//        w.addLI(sb, index.getReference("Anaconda"));
         
         w.addLIST(sb, "Containers including:");
         w.addULST(sb);

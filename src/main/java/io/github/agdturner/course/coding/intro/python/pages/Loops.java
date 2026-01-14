@@ -41,9 +41,9 @@ public class Loops extends CoursePage {
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, "Python has syntax for '");
-        sb.append(index.getReference("While Loop", "while loops", sid));
+        sb.append(index.getReference("While loop", "while loops", sid));
         sb.append("' and '");
-        sb.append(index.getReference("For Loop", "for loops", sid));
+        sb.append(index.getReference("For loop", "for loops", sid));
         w.addPET(sb,
                 """
                 '. While loops are typically used to repeat something until a
@@ -127,7 +127,7 @@ public class Loops extends CoursePage {
 
         sid = addSection("For", sb);
         w.addPST(sb, "");
-        sb.append(index.getReference("For Loop", "For loops", sid));
+        sb.append(index.getReference("For loop", "For loops", sid));
         sb.append(" in Python (");
         sb.append(index.getReference("Python for", "for loop", sid));
         w.addPET(sb, 

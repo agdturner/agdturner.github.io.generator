@@ -227,9 +227,9 @@ public class ABM5 extends CoursePage {
                 plt.ylim(y_min, y_max)
                 plt.xlim(x_min, x_max)
                 """);
+        w.addP(sb, "Run again and the output plot should look like:");
         w.addP(sb,
                 """
-                Run again and the output plot should look like:
                 <img src="../../resources/abm5/Figure_2.png"
                 alt="A plot of agents on a limited part of the environment." />
                 """);
@@ -271,6 +271,9 @@ public class ABM5 extends CoursePage {
                 Change the code that calls the constuctor method so it passes
                 in the variables 'n_rows' and 'ncols' approprately. Run
                 'model.py'. The output plot should look like the following:
+                """);
+        w.addP(sb,
+                """
                 <img src="../../resources/abm5/Figure_3.png"
                 alt="A plot of agents on the environment in the middle." />
                 """);
@@ -379,6 +382,9 @@ public class ABM5 extends CoursePage {
         w.addP(sb, 
                 """
                 Run the program again and you should get the following image:
+                """);
+        w.addP(sb,
+                """
                 <img src="../../resources/abm5/Figure_4.png"
                 alt="A plot of agents on a limited part of the environment with
                 part of it eaten away and the agents centralised." />
@@ -392,6 +398,9 @@ public class ABM5 extends CoursePage {
                 """
                 Increase 'n_iterations' to 100 and run again and you should get
                 the following image:
+                """);
+        w.addP(sb,
+                """
                 <img src="../../resources/abm5/Figure_5.png"
                 alt="A plot of agents on a limited part of the environment with
                 part of it eaten away." />
@@ -406,7 +415,7 @@ public class ABM5 extends CoursePage {
         w.addDIVET(sb);
         sb.append("\n");
 
-        sid = addSection("Further Assignment 1 Coding Tasks", sb);
+        sid = addSection("Further Coding Tasks", sb);
         w.addP(sb,
                 """
                 In the eat method of the Agent class, detail an 'else' clause of

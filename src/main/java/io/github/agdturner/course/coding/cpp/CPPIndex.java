@@ -26,7 +26,7 @@ import io.github.agdturner.course.IndexTerm;
  * @author Andy Turner
  */
 public class CPPIndex extends Index {
-    
+
     /**
      * Create a new instance.
      *
@@ -37,145 +37,221 @@ public class CPPIndex extends Index {
      */
     public CPPIndex(Course course, String filename, String title, String label) {
         super(course, filename, title, label);
-        String term;
-        String url;
-        String description;
+        String term; // The term.
+        String url;  // The URL.
+        String desc; // A description.
         IndexTerm indexTerm;
-        
+
         term = "Boost.Test";
         url = "https://www.boost.org/doc/libs/1_84_0/libs/test/doc/html/index.html";
-        description = """
-                      A "software library" that provides interfaces for \
-                      writing test programs, organizing tests into simple test \
-                      cases and test suites, and controlling their runtime \
-                      execution.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A "software library" that provides interfaces for
+                writing test programs, organizing tests into simple test
+                cases and test suites, and controlling their runtime
+                execution.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
-        
+
         term = "Catch2";
         url = "https://github.com/catchorg/Catch2";
-        description = """
-                      A unit testing framework for "C++".\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A unit testing framework for "C++".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++98";
+        url = Environment.getWikipediaURL("C%2B%2B98");
+        desc = """
+                A version of the "ISO"/"IEC" 14882 "standard" for "C++".
+                C++98 was superseeded by "C++03".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++03";
+        url = Environment.getWikipediaURL("C%2B%2B03");
+        desc = """
+                A version of the "ISO"/"IEC" 14882 "standard" for "C++".
+                C++03 superseeded "C++98", and was superseeded by
+                "C++11".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++11";
+        url = Environment.getWikipediaURL("C%2B%2B11");
+        desc = """
+                A version of the "ISO"/"IEC" 14882 "standard" for "C++".
+                C++11 superseeded "C++03", and was superseeded by
+                "C++14".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++14";
+        url = Environment.getWikipediaURL("C%2B%2B14");
+        desc = """
+                A version of the "ISO"/"IEC" 14882 "standard" for "C++".
+                C++14 superseeded "C++11", and was superseeded by
+                "C++17".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++17";
+        url = Environment.getWikipediaURL("C%2B%2B17");
+        desc = """
+                A version of the "ISO"/"IEC" 14882 "standard" for "C++".
+                C++17 superseeded "C++14", and was superseeded by
+                "C++20".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++20";
+        url = Environment.getWikipediaURL("C%2B%2B20");
+        desc = """
+                The "ISO/IEC 14882:2020" "standard" for "C++".
+                C++20 superseeded "C++17" and was superseeded by
+                "C++23".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
+        term = "C++23";
+        url = Environment.getWikipediaURL("C%2B%2B20");
+        desc = """
+               The current "open standard" for the "C++ programming language".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
         
         term = "C++ Array";
         url = getCPPReferenceLanguageURL("array");
-        description = """
-                      A construct for storing multiple values of the same type \
-                      in a single variable.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A construct for storing multiple values of the same type
+                in a single variable.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
-        
+
         term = "C++ Class";
         url = getCPPReferenceLanguageURL("class");
-        description = """
-                      A user-defined type, defined by class-specifier, which \
-                      appears in decl-specifier-seq of the declaration syntax.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A user-defined type, defined by class-specifier, which
+                appears in decl-specifier-seq of the declaration syntax.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
         addAlias(term, "C++ class", indexTerm);
         addAlias(term, "C++ Classes", indexTerm);
         addAlias(term, "C++ classes", indexTerm);
-        
+
         term = "C++ Map";
         url = getCPPReferenceContainerURL("map");
-        description = """
-                      A sorted associative container that contains key-value \
-                      pairs with unique keys. Keys are sorted.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A sorted associative container that contains key-value
+                pairs with unique keys. Keys are sorted.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ map", indexTerm);
 
         term = "C++ Module";
         url = getCPPReferenceLanguageURL("modules");
-        description = """
-                      A language feature since "C++20" to share declarations \
-                      and definitions across translation units.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A language feature since "C++20" to share declarations
+                and definitions across translation units.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ module", indexTerm);
-                
+
         term = "C++ Namespace";
         url = getCPPReferenceLanguageURL("namespace");
-        description = """
-                      A way to prevent name conflicts in large projects. \
-                      Entities declared inside a namespace block are placed in \
-                      a namespace scope, which prevents them from being \
-                      mistaken for identically-named entities in other \
-                      scopes.\
-                      
-                      Entities declared outside all namespace blocks belong to \
-                      the global namespace. The global namespace belongs to \
-                      the global scope, and can be referred to explicitly with \
-                      a leading ::. While it has no declaration, the global \
-                      namespace is not an unnamed namespace.\
-                      
-                      Multiple namespace blocks with the same name are \
-                      allowed. All declarations within these blocks are \
-                      declared in the same namespace scope.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A way to prevent name conflicts in large projects.
+                Entities declared inside a namespace block are placed in
+                a namespace scope, which prevents them from being
+                mistaken for identically-named entities in other
+                scopes.
+                
+                Entities declared outside all namespace blocks belong to
+                the global namespace. The global namespace belongs to
+                the global scope, and can be referred to explicitly with
+                a leading ::. While it has no declaration, the global
+                namespace is not an unnamed namespace.
+                
+                Multiple namespace blocks with the same name are
+                allowed. All declarations within these blocks are
+                declared in the same namespace scope.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ namespace", indexTerm);
-                
+
         term = "C++ Reference";
         url = getCPPReferenceLanguageURL("reference");
-        description = "An alias to an already-existing object or function";
-        indexTerm = new IndexTerm(this, description, url);
+        desc = "An alias to an already-existing object or function";
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ reference", indexTerm);
-        
+
         term = "C++ Set";
         url = getCPPReferenceContainerURL("set");
-        description = """
-                      An associative container that contains a sorted set of \
-                      unique objects of type Key.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                An associative container that contains a sorted set of
+                unique objects of type Key.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ set", indexTerm);
 
         term = "C++ Standard Library";
         url = Environment.getWikipediaURL("C%2B%2B_Standard_Library");
-        description = """
-                      A collection of classes and functions in the core "C++" \
-                      "ISO"/"IEC" 14882 standard.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A collection of classes and functions in the core "C++"
+                "ISO"/"IEC" 14882 standard.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
-        
+
         term = "C++ Vector";
         url = getCPPReferenceContainerURL("vector");
-        description = """
-                      A sequence container that encapsulates dynamic size \
-                      "arrays".\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                A sequence container that encapsulates dynamic size
+                "arrays".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTermAndAliasTermPlural(term, indexTerm);
         addAliasAndAliasPlural(term, "C++ vector", indexTerm);
 
+        term = "ISO/IEC 14882:2020";
+        url = "https://www.iso.org/standard/79358.html";
+        desc = """
+                A "standards" document that specifies requirements for
+                implementations of "C++20".
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
+        addIndexTerm(term, indexTerm);
+
         term = "GoogleTest";
         url = "https://google.github.io/googletest/";
-        description = """
-                      Google’s "C++" testing and mocking framework.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                Google’s "C++" testing and mocking framework.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
-        
+
         term = "VCPKG";
         url = "https://vcpkg.io/";
-        description = """
-                      "C"/"C++" dependency manager for all platforms, \
-                      build systems, and workflows.\
-                      """;
-        indexTerm = new IndexTerm(this, description, url);
+        desc = """
+                "C"/"C++" dependency manager for all platforms,
+                build systems, and workflows.
+                """;
+        indexTerm = new IndexTerm(this, desc, url);
         addIndexTerm(term, indexTerm);
     }
 
@@ -183,10 +259,10 @@ public class CPPIndex extends Index {
      * The default CPPReference URL.
      */
     public static final String EN_CPPREFERENCE_URL = "https://en.cppreference.com/w/cpp/";
-    
+
     /**
      * @param article Appended to create what is returned.
-     * @return {@link #EN_CPPREFERENCE_URL} + "language/"  + article;
+     * @return {@link #EN_CPPREFERENCE_URL} + "language/" + article;
      */
     public static final String getCPPReferenceLanguageURL(String article) {
         return EN_CPPREFERENCE_URL + "language/" + article;
@@ -194,7 +270,7 @@ public class CPPIndex extends Index {
 
     /**
      * @param article Appended to create what is returned.
-     * @return {@link #EN_CPPREFERENCE_URL} + "container/"  + article;
+     * @return {@link #EN_CPPREFERENCE_URL} + "container/" + article;
      */
     public static final String getCPPReferenceContainerURL(String article) {
         return EN_CPPREFERENCE_URL + "container/" + article;

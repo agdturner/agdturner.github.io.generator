@@ -39,11 +39,14 @@ public class Python0 extends PythonIntroCodingCourse {
      */
     public static void main(String[] args) {
         String courseCode = "Python0";
-        String courseName = "Python for HPC Level 0";
+        //String courseCode = "PyGIS";
+        String courseName = "An Introduction to Programming with Python for GIS";
+        //String courseName = "Python for HPC Level 0";
         Path dir = Paths.get("C:", "Users", "geoagdt", "src", "agdt");
         //Path local = Paths.get("courses", "computing");
         String domain = Environment.AGDTURNER_GITHUB_IO;
         Path local = Paths.get(dir.toString(), domain, courseCode, "public_html");
+        //Path local = 
         Environment env = new Environment(domain, dir);
         // Set localPaths to false when deploying.
         boolean localPaths = false;

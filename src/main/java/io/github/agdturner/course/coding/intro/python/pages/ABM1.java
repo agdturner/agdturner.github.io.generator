@@ -41,25 +41,25 @@ public class ABM1 extends CoursePage {
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb,
                 """
-                Part 1 in a series of 9 practicals with instructions to \
-                develop a simple spatial \
+                Part 1 in a series of 9 practicals with instructions to
+                develop a simple spatial
                 """);
         sb.append(index.getReference("ABM", "Agent Based Model", sid));
         w.addPET(sb, 
                 """
-                 (ABM) - a model for simulating the actions and interactions \
-                of entities (agents) located within a spatial environment \
+                 (ABM) - a model for simulating the actions and interactions
+                of entities (agents) located within a spatial environment
                 which may change and be changed by the agents.""");
         w.addP(sb,
                 """
-                Agents will be located at coordinates in the environment and \
-                move around randomly interacting with the environment and each \
-                other. How the agents interact will be based on their \
-                characteristics, the characteristics of their environment, and \
+                Agents will be located at coordinates in the environment and
+                move around randomly interacting with the environment and each
+                other. How the agents interact will be based on their
+                characteristics, the characteristics of their environment, and
                 the characteristics of other agents in their environment.""");
         w.addP(sb,
                 """
-                The model will iterate with a regular time step in that all \
+                The model will iterate with a regular time step in that all
                 agents will have a turn at interacting in each iteration."""); 
         w.addP(sb, "You will learn about:");
         w.addULST(sb);
@@ -86,20 +86,20 @@ public class ABM1 extends CoursePage {
         addSection("Getting started", sb);
         w.addP(sb,
                 """
-                Initially two agents are going to be represented in an \
-                abstract two dimensional plane. The location of these agents \
-                will be given by the coordinates: (x0, y0) and (x1, y1). \
-                They will be initialised at the same location and will move \
-                randomly one step. Code will be written to calculate the \
+                Initially two agents are going to be represented in an
+                abstract two dimensional plane. The location of these agents
+                will be given by the coordinates: (x0, y0) and (x1, y1).
+                They will be initialised at the same location and will move
+                randomly one step. Code will be written to calculate the
                 distance between coordinates.""");
         w.addP(sb,
                 """
-                The code will subsequently be refactored (rewritten) so it is \
+                The code will subsequently be refactored (rewritten) so it is
                 more concise and easier to understand, maintain and reuse.
                 """);
         w.addP(sb,
                 """
-                The algorithm to implement for this practical can be written \
+                The algorithm to implement for this practical can be written
                 as follows:
                 """);
         w.addPRE(sb,
@@ -114,7 +114,7 @@ public class ABM1 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                In your local code repository create a new directory 'src' and \
+                In your local code repository create a new directory 'src' and
                 within this create a new directory 'abm1'.
                 """);
         w.addP(sb, "Create a file 'model.py' in the 'abm1' directory.");
@@ -122,8 +122,8 @@ public class ABM1 extends CoursePage {
                 "Copy the algorithm above and paste it in.");
         w.addP(sb,
                 """
-                Add a line after the line "# Initialise a variable x0", to \
-                initialise a variable 'x0' with the value '0', then a line to \
+                Add a line after the line "# Initialise a variable x0", to
+                initialise a variable 'x0' with the value '0', then a line to
                 print 'x0':""");
         addCodeBlock(sb,
                 """
@@ -132,7 +132,7 @@ public class ABM1 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                Save and run the program. The output from running the program \
+                Save and run the program. The output from running the program
                 should be:
                 """);
         w.addPRE(sb, "x0 0");
@@ -140,7 +140,7 @@ public class ABM1 extends CoursePage {
         sb.append(index.getReference("Python print", "print"));
         w.addPET(sb,
                 """
-                function. These are printed out sequentially with a space \
+                function. These are printed out sequentially with a space
                 delimiter by default.""");
         w.addP(sb, "Do similarly to initialise the variable 'y0'.");
         w.addDIVET(sb);
@@ -151,29 +151,33 @@ public class ABM1 extends CoursePage {
         sb.append(index.getReference("Python random", "random module", sid));
         w.addPET(sb,
                 """
-                 implements pseudo-random number generators for various \
-                distributions and provides a way to change variable values \
-                randomly. To use the module it has to be imported. Towards \
-                the top of 'model.py' add the following import statement:""");
+                 implements pseudo-random number generators for various
+                distributions and provides a way to change variable values
+                randomly. To use the module it has to be imported. Towards
+                the top of 'model.py' add the following import statement:
+                """);
         addCodeBlock(sb, "import random");
         w.addP(sb,
                 """
-                It is good practice to organise import statements at the top \
-                of files as this makes them easy to find and makes it less \
-                likely that modules are imported multiple times. Whilst \
-                importing modules multiple time is not likely to result in \
-                errors, it is usually not necessary and generally \
-                inefficent.""");
+                It is good practice to organise import statements at the top
+                of files as this makes them easy to find and makes it less
+                likely that modules are imported multiple times. Whilst
+                importing modules multiple time is not likely to result in
+                errors, it is usually not necessary and generally
+                inefficent.
+                """);
         w.addPST(sb, "Use an ");
         sb.append(index.getReference("Python if", "if statement", sid));
         sb.append(
                 """
-                 to determine whether to increase or decrease 'x0' based on \
-                the value obtained from a call to the function""");
-        sb.append(index.getReference("Python random.random", "random", sid));
+                 to determine whether to increase or decrease 'x0' based on
+                the value obtained from a call to the function random function
+                in 
+                """);
+        sb.append(index.getReference("Python random", "random", sid));
         w.addPET(sb,
                 """
-                : First obtain and print a pseudo-random number in the range \
+                . Obtain and print a pseudo-random number in the range
                 [0, 1) as follows:""");
         addCodeBlock(sb,
                 """
@@ -182,23 +186,23 @@ public class ABM1 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                Run your program a few times to observe that the value of 'rn' \
+                Run your program a few times to observe that the value of 'rn'
                 varies somewhat randomly.""");
         w.addP(sb,
                 """
-                What is happening, is that the start (seed) of a pseudo-random \
-                sequence used to generate numbers randomly is being set from \
-                the computer clock time (which updates many times a second). \
-                So, each time the code is run, a different seed is set and the \
-                movement of the agents might be different. The seed set in \
-                this way would nearly always be different and so results will \
-                often be different and the more so, the more changes there \
-                were in the model. We will reconsider how to make results more \
+                What is happening, is that the start (seed) of a pseudo-random
+                sequence used to generate numbers randomly is being set from
+                the computer clock time (which updates many times a second).
+                So, each time the code is run, a different seed is set and the
+                movement of the agents might be different. The seed set in
+                this way would nearly always be different and so results will
+                often be different and the more so, the more changes there
+                were in the model. We will reconsider how to make results more
                 reprocuible in due course.""");
         w.addP(sb,
                 """
-                Declare an 'if statement' so that if the value 'rn' is less \
-                than '0.5' increase 'x0' by '1', otherwise decrease "'x0' by \
+                Declare an 'if statement' so that if the value 'rn' is less
+                than '0.5' increase 'x0' by '1', otherwise decrease "'x0' by
                 '1':""");
         addCodeBlock(sb,
                 """
@@ -210,15 +214,15 @@ public class ABM1 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                Run your program a few times to observe that sometimes the \
-                value of 'x0' increases and sometimes it decreases and this \
+                Run your program a few times to observe that sometimes the
+                value of 'x0' increases and sometimes it decreases and this
                 corresponds to the value of 'rn'.""");
         w.addP(sb,
                 """
-                When testing code, it can be difficult if results vary from \
-                one run to the next, so it can be helpful to set the random \
-                seed to ensure that the same results are produced each time. \
-                At the top of your code, after the import statements add the \
+                When testing code, it can be difficult if results vary from
+                one run to the next, so it can be helpful to set the random
+                seed to ensure that the same results are produced each time.
+                At the top of your code, after the import statements add the
                 following:""");
         addCodeBlock(sb,
                 """
@@ -237,14 +241,14 @@ public class ABM1 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                To generate different results you pass in a different \
+                To generate different results you pass in a different
                 parameter value into the 'seed' function.""");
         w.addP(sb,
                 """
-                Similarly modify the value of 'y0'. Then similarly initialise \
-                the variables 'x1' and 'y1' and then similarly modify these \
-                randomly. Test that the movements vary for different seeds and \
-                that changes in each coordinate are independent of how the \
+                Similarly modify the value of 'y0'. Then similarly initialise
+                the variables 'x1' and 'y1' and then similarly modify these
+                randomly. Test that the movements vary for different seeds and
+                that changes in each coordinate are independent of how the
                 other coordinates change.""");
         w.addDIVET(sb);
         sb.append("\n");
@@ -252,9 +256,9 @@ public class ABM1 extends CoursePage {
         addSection("Calculate the Euclidean distance", sb);
         w.addP(sb,
                 """
-                Use the \
-                <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem"> \
-                Pythogorean theorem</a> to calculate the distance between the \
+                Use the
+                <a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">
+                Pythogorean theorem</a> to calculate the distance between the
                 coordinates (x0, y0) and (x1, y1). The algorithm is:""");
         w.addPRE(sb,
                 """
@@ -265,14 +269,14 @@ public class ABM1 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                At the end of your source code set: 'x0' and 'y0' to equal \
-                '0'; 'x1' to equal '3', and 'y1' to equal '4'. Then copy and \
-                paste the Pythogorean theorem algorithm into your source code. \
-                Try to implement the algorithm, but spend no more than 5 \
-                minutes trying to do this. Hints: the distance between \
-                coordinates (0, 0) and (3, 4) is 5; the symbol '**' can be \
-                used to raise a number to the power of another number; raising \
-                a number to the power of '0.5' calculates the square root; \
+                At the end of your source code set: 'x0' and 'y0' to equal
+                '0'; 'x1' to equal '3', and 'y1' to equal '4'. Then copy and
+                paste the Pythogorean theorem algorithm into your source code.
+                Try to implement the algorithm, but spend no more than 5
+                minutes trying to do this. Hints: the distance between
+                coordinates (0, 0) and (3, 4) is 5; the symbol '**' can be
+                used to raise a number to the power of another number; raising
+                a number to the power of '0.5' calculates the square root;
                 testing can simply be done by printing out the result.""");
         w.addDIVET(sb);
         sb.append("\n");
@@ -280,33 +284,32 @@ public class ABM1 extends CoursePage {
         sid = addSection("Review, commit and look ahead", sb);
         w.addP(sb,
                 """
-                Hopefully, you managed to develop code that produces the \
-                correct answer. If not, do not worry, the important thing is \
+                Hopefully, you managed to develop code that produces the
+                correct answer. If not, do not worry, the important thing is
                 to have tried and not spent too long trying.""");
         w.addP(sb,
                 """
                 There is a lot of repetition in the code.""");
         w.addPST(sb, 
                 """
-                An alternative, to using '**0.5' to calculate a square root is \
-                to import the standard library \
+                An alternative, to using '**0.5' to calculate a square root is
+                to import the standard library
                 """);
         sb.append(index.getReference("Python math", "math module", sid));
         w.addPET(sb,
                 """
-                 and use the \
-                <a href="https://docs.python.org/3/library/math.html#math.sqrt"> \
-                sqrt</a> function.""");
+                 and use the
+                <a href="https://docs.python.org/3/library/math.html#math.sqrt">sqrt</a> function.""");
         addCommitToGitHub(sb);
         w.addPST(sb,
                 """
-                In the next ABM practical: The code will be modified so the \
-                coordinates for each agent are stored together in a container; \
+                In the next ABM practical: The code will be modified so the
+                coordinates for each agent are stored together in a container;
                 """);
         sb.append(index.getReference("Python for", "for loops"));
         w.addPET(sb,
                 """
-                will be used to create and move more agents, and the model \
+                will be used to create and move more agents, and the model
                 will be visualised.""");
         w.addDIVET(sb);
         sb.append("\n");

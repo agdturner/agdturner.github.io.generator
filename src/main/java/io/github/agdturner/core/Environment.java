@@ -33,25 +33,20 @@ public class Environment {
 
     public static final String ARCDOCS_GITHUB_IO = "arcdocs.github.io";
     public static final String HTTPS_ARC_LEEDS_AC_UK = "https://arc.leeds.ac.uk/";
-    public static final String HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM = HTTPS_ARC_LEEDS_AC_UK + "about/team/";
+    public static final String HTTPS_ARC_LEEDS_AC_UK_TEAM = HTTPS_ARC_LEEDS_AC_UK + "team/";
     public static final String ARC_CONTACT = "https://it.leeds.ac.uk/it?id=sc_cat_item&sys_id=7587b2530f675f00a82247ece1050eda";
 
     public static final String HTTPS_WWW_LEEDS_AC_UK = "https://www.leeds.ac.uk/";
 
-    public static final String HTTPS_WWW_GEOG_LEEDS_AC_UK = "https://www.geog.leeds.ac.uk/";
-    public static final String HTTPS_WWW_GEOG_LEEDS_AC_UK_COURSES_COMPUTING = HTTPS_WWW_GEOG_LEEDS_AC_UK + "courses/computing/";
-
-    public static final String HTTPS_WWW_CCG_LEEDS_AC_UK = "https://www.ccg.leeds.ac.uk/";
-
     /**
      * The latest version of Java.
      */
-    public static final String JAVA_LATEST_VERSION = "21";
+    public static final String JAVA_LATEST_VERSION = "25";
 
     /**
      * The latest Long Term Support version of Java.
      */
-    public static final String JAVA_LATEST_LTS_VERSION = "21";
+    public static final String JAVA_LATEST_LTS_VERSION = "25";
 
     /**
      * The default Wikipedia URL.

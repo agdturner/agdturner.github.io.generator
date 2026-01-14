@@ -318,7 +318,7 @@ public abstract class Page {
     public void addCodeBlockStart(StringBuilder sb, String language, String s) {
         sb.append(Web_Strings.PRE_ST);
         w.addCODEST(sb, "class=\"language-" + language + "\"", s);
-        sb.append(s);
+        //sb.append(s);
     }
 
     /**
@@ -330,6 +330,7 @@ public abstract class Page {
     public void addCodeBlockEnd(StringBuilder sb, String s) {
         w.addCODEET(sb, s);
         sb.append(Web_Strings.PRE_ET);
+        sb.append("\n");
     }
 
 }

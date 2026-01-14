@@ -61,7 +61,7 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("API", "APIs"));
         w.addPET(sb,
                 """
-                can be more stable (as there is no need to specify exactly what
+                 can be more stable (as there is no need to specify exactly what
                 types of things are input and output from functions). A downside
                 is that, it is easier to make mistakes and accidentally re-use
                 an identifier with unintended consequences.
@@ -79,11 +79,11 @@ public class Variables extends CoursePage {
         sb.append(index.getReference("Memory", "memory", sid));
         w.addPET(sb, " availability.");
         w.addPST(sb, "Floats are standard ");
-        sb.append(index.getReference("Double-precision Floating-point", sid));
+        sb.append(index.getReference("double precision", sid));
         sb.append(
                 """
-                 numbers - a special subset of fractions. These have a 'Maximum
-                Value' and a 'Minimum Normal Value' (smallest number &gt; 0)
+                 numbers. These have a 'Maximum Value' and a
+                'Minimum Normal Value' (smallest number &gt; 0)
                 which can be ascertained from the
                 """);
         sb.append(index.getReference("Python sys", "sys", sid));
@@ -141,8 +141,8 @@ public class Variables extends CoursePage {
                 """);
         w.addPST(sb, 
                 """
-                Float is very useful for approximate numerical calculations. Do
-                keep in mind that
+                Float is very useful for approximate numerical calculations.
+                Keep in mind that
                 """);
         sb.append(index.getReference("Floating-point",
                         "Floating Point Arithmetic", sid));

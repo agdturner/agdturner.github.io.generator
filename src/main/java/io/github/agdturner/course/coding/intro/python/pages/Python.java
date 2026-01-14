@@ -43,28 +43,28 @@ public class Python extends CoursePage {
         w.addPST(sb, index.getReference("Python"));
         sb.append(
                 """
-                 is a popular and powerful high-level "programming language" \
+                 is a popular and powerful high-level "programming language"
                 supported and developed by the
                 """);
         sb.append(references.getReference("Python Software Foundation"));
         w.addPET(sb,
                 """
-                 (PSF) - an organisation with a mission to promote, protect, \
-                and advance the language, and support and facilitate the \
-                growth of a diverse and international community of Python \
+                 (PSF) - an organisation with a mission to promote, protect,
+                and advance the language, and support and facilitate the
+                growth of a diverse and international community of Python
                 programmers.
                 """);
         w.addP(sb, 
                 """
-                Python 1.0 was released in January 1994. The first version of \
-                Python 2 (Python 2.0) was released in October 2000. The first \
-                version of Python 3 (Python 3.0) was released in December \
-                2008. PSF support for Python 2 ended in 2020 with Python 2.7. \
+                Python 1.0 was released in January 1994. The first version of
+                Python 2 (Python 2.0) was released in October 2000. The first
+                version of Python 3 (Python 3.0) was released in December
+                2008. PSF support for Python 2 ended in 2020 with Python 2.7.
                 By that time Python 3.8 had been released.
                 """);
         w.addP(sb, 
                 """
-                This course focuses on supported versions of Python 3, and \
+                This course focuses on supported versions of Python 3, and
                 does not detail differences between Python 2 and Python 3.
                 """);
         w.addDIVET(sb);
@@ -74,24 +74,24 @@ public class Python extends CoursePage {
         sb.append(references.getReference("Python 3 Documentation: Library",
                 "Python 3 Library"));
         sb.append(" and various Python ");
-        sb.append(index.getReference("source Code"));
+        sb.append(index.getReference("source code"));
         sb.append(
                 """
-                 interpreters are freely available for all major platforms \
+                 interpreters are freely available for all major platforms
                 from the
                 """);
         sb.append(references.getReference("Python Website"));
         w.addPET(sb,
                 """
-                , and these may be freely distributed. Python interpreters \
-                translate "source code" written in Python to "machine code". \
-                There are a variety of different Python interpreters. \
-                "CPython" is the reference implementation of Python. CPython \
-                can be defined as both an interpreter and a compiler as it \
+                , and these may be freely distributed. Python interpreters
+                translate "source code" written in Python to "machine code".
+                There are a variety of different Python interpreters.
+                "CPython" is the reference implementation of Python. CPython
+                can be defined as both an interpreter and a compiler as it
                 compiles Python code into "bytecode" before interpreting it.
                 """);
 //        sb.append("""
-//                  The need for interpretation is what classifies Python as a \
+//                  The need for interpretation is what classifies Python as a
 //                  high-level language.
 //                  """);
 
@@ -99,7 +99,7 @@ public class Python extends CoursePage {
         sb.append(references.getReference("Python Website"));
         w.addPET(sb,
                 """
-                 contains distributions of and pointers to many third party \
+                 contains distributions of and pointers to many third party
                 Python libraries, tools, and additional documentation.
                 """);
         
@@ -110,38 +110,35 @@ public class Python extends CoursePage {
         
         w.addPST(sb,
                 """
-                Python 3.10 was released in October 2021. \
-                Python 3.11 was released in October 2022. \
-                Python 3.12 was released in December 2023. \
-                Python 3.13 is due for release in October 2024. \
-                For each major incremental Python 3 release there is a \
+                A new version of Python 3 has been released once a year for
+                a decade. Python 3.14 was released in October 2025. The
                 """);
         sb.append(references.getReference("Python 3 Documentation: What's New"));
-        w.addPET(sb, " that introduces what's new:");
+        w.addPET(sb, " page introduces what's new in each release.");
         
-        w.addULST(sb);
-        for (int i = 0; i < 13; i++) {
-            w.addLI(sb, Web_ContentWriter.getLink(
-                    "https://docs.python.org/3/whatsnew/3." + i + ".html",
-                    "What's New In Python 3." + i));
-        }
-        w.addULET(sb);
+//        w.addULST(sb);
+//        for (int i = 0; i < 15; i++) {
+//            w.addLI(sb, Web_ContentWriter.getLink(
+//                    "https://docs.python.org/3/whatsnew/3." + i + ".html",
+//                    "What's New In Python 3." + i));
+//        }
+//        w.addULET(sb);
         
         w.addPST(sb,
                 """
-                Changes are marked against numbered Python Enhancement \
-                Proposals (PEPs). There is a \
+                Changes are marked against numbered Python Enhancement
+                Proposals (PEPs). There is a
                 """);
         sb.append(references.getReference("Python Enhancement Proposal Website"));
         w.addPET(sb,
                 """
-                 which has existed since July 2000. PEPs are design documents \
-                providing information to the Python community, or describing a \
-                new feature for Python or its processes or environment. A PEP \
-                should provide a concise technical specification of the \
-                feature and a rationale for the feature. PEPs allow the \
-                community of Python users to plan ahead and get involved in \
-                language development.
+                 which has existed since July 2000. PEPs are design documents
+                providing information to the Python community, or describing a
+                new feature for Python, it's processes or environment. Each
+                PEP aims to provide a concise technical specification of the
+                feature and a rationale for it. PEPs allow the Python user
+                community to plan ahead and get involved in language
+                development.
                 """);
         
         w.addPST(sb, "Most changes in Python are ");
@@ -150,23 +147,23 @@ public class Python extends CoursePage {
         sb.append(index.getReference("regression testing", sid));
         w.addPET(sb, 
                 """
-                 tends to be important in developing scientific software in \
+                 tends to be important in developing scientific software in
                 Python.
                 """);
         
         w.addPST(sb,
                 """
-                 There is a vast ecosystem of third party Python libraries. \
-                Much of this is made available as packages via the \
+                 There is a vast ecosystem of third party Python libraries.
+                Much of this is made available as packages via the
                 """);
         sb.append(index.getReference("PyPI", "Python Package Index"));
         w.addPET(sb, " (PyPI).");
         w.addP(sb,
                 """
-                 Below, in <A href="#9">Section 9</A>, there is an exercise \
-                that involves installing Python packages from PyPI and that \
-                links to details about how to package code and make it \
-                available via PyPI. \
+                 Below, in <A href="#9">Section 9</A>, there is an exercise
+                that involves installing Python packages from PyPI and that
+                links to details about how to package code and make it
+                available via PyPI.
                 """);
         w.addPST(sb, "The ");
         sb.append(references.getReference("Python 3 Documentation: Tutorial"));
@@ -180,7 +177,7 @@ public class Python extends CoursePage {
         sid = addSection("Running Python", sb);
         w.addPST(sb,
                 """
-                Python instructions also known as 'commands' or 'statements', \
+                Python instructions also known as 'commands' or 'statements',
                 can be entered one at a time at a
                 """);
         sb.append(index.getReference("Command Line Interface",
@@ -191,14 +188,14 @@ public class Python extends CoursePage {
         sb.append(index.getReference("PATH", sid));
         w.addPET(sb,
                 """
-                 by running a 'Terminal' or 'Command Window' and entering the \
+                 by running a 'Terminal' or 'Command Window' and entering the
                 following at the prompt:
                 """);
         w.addPRE(sb, "python --version");
         w.addP(sb,
                 """
-                If 'python' cannot be found, then it is most likely that \
-                Python is not installed. If a version of Python is available, \
+                If 'python' cannot be found, then it is most likely that
+                Python is not installed. If a version of Python is available,
                 then the version of it should be reported.""");
         w.addPST(sb, "");
         sb.append(index.getReference("Anaconda", sid));
@@ -206,41 +203,38 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Conda", sid));
         w.addPET(sb,
                 """
-                 - an environment manager; a Python interpreter; some commonly \
-                used third party Python packages; and, some useful additional \
-                tools. It is available at the University of Leeds via \
-                'AppsAnywhere' using machines on campus or the 'Academic' \
-                <A href="https://wvd.leeds.ac.uk">University Windows Virtual \
-                Desktop</A>.""");
+                 - an environment manager; a Python interpreter; some commonly
+                used third party Python packages; and, some useful additional
+                tools.""");
         w.addP(sb,
                 """
-                 Anaconda can also be download and installed. If you choose to \
-                do this, then it is recommended to select the default install \
-                options to avoid interfering with any other version of Python \
-                already installed. By default, Anaconda installs into the user \
+                Anaconda can also be download and installed. If you choose to
+                do this, then it is recommended to select the default install
+                options to avoid interfering with any other version of Python
+                already installed. By default, Anaconda installs into the user
                 home directory.""");
 
         sid = addSubsection("Python REPL", sb);
         sid = addSubsubsection("Hello World", sb);
         w.addP(sb,
                 """
-                Open an 'Anaconda prompt'. On Windows the prompt should look \
+                Open an 'Anaconda prompt'. On Windows the prompt should look
                 something like:
                 """);
         w.addPRE(sb, "(base) C:\\>");
         w.addP(sb,
                 """
-                Here, 'base' is the activated Python environment and 'C:\\' is \
+                Here, 'base' is the activated Python environment and 'C:\\' is
                 the current drive and working directory. Enter:""");
         w.addPRE(sb, "python --version");
         w.addP(sb,
                 """
-                This should inform you about the version of Python that came \
+                This should inform you about the version of Python that came
                 with Anaconda. Enter:""");
         w.addPRE(sb, "python");
         w.addP(sb,
                 """
-                You should arrive at the 'Python prompt' that looks something \
+                You should arrive at the 'Python prompt' that looks something
                 like:""");
         w.addPRE(sb, ">>>");
         w.addPST(sb, "This is a Python ");
@@ -256,34 +250,34 @@ public class Python extends CoursePage {
         sid = addSubsubsection("Numerical calculations", sb);
         w.addP(sb,
                 """
-                The Python prompt can be used for some basic calculations. \
+                The Python prompt can be used for some basic calculations.
                 Enter:
                 """);
         w.addPRE(sb, "2 + 3");
         w.addP(sb,
                 """
-                You should see the result of adding the number 2 to the number \
+                You should see the result of adding the number 2 to the number
                 3:
                 """);
         w.addPRE(sb, "5");
         w.addPST(sb,
                 """
-                The plus symbol '+' in this instance acts as an addition \
-                operator. This is a '
+                The plus symbol '+' in this instance acts as an addition
+                operator. This is a
                 """);
-        sb.append(index.getReference("Python Built-in Types",
+        sb.append(index.getReference("Python built-in type",
                 "Built-in Type", sid));
         w.addPET(sb,
                 """
-                ' operator that works with specific types of variables. \
-                Multiplication can be done similarly using an asterix '*' \
-                symbol; and division can be done using the forward slash \
+                 operator that works with specific types of variables.
+                Multiplication can be done similarly using an asterix '*'
+                symbol; and division can be done using the forward slash
                 '/' symbol.""");
         w.addP(sb,
                 """
-                Dividing '3' by '2' in this way results not in an integer, but \
-                in '1.5'. In some programming languages dividing by an integer \
-                will result in an integer. Indeed this used to be the case in \
+                Dividing '3' by '2' in this way results not in an integer, but
+                in '1.5'. In some programming languages dividing by an integer
+                will result in an integer. Indeed this used to be the case in
                 an old version of Python!""");
         w.addPST(sb,
                 "Trying to evaluate a division by zero results in a ");
@@ -292,7 +286,7 @@ public class Python extends CoursePage {
         w.addPET(sb, ".");
         w.addP(sb,
                 """
-                Try multiplying and dividing some numbers. Try dividing one by \
+                Try multiplying and dividing some numbers. Try dividing one by
                 zero:""");
         w.addPRE(sb, "1 / 0");
         w.addP(sb, "Which should result in:");
@@ -305,15 +299,15 @@ public class Python extends CoursePage {
         w.addPST(sb, "A ");
         sb.append(index.getReference("Python ZeroDivisionError",
                 "ZeroDivisionError", sid));
-        sb.append(" is an ");
-        sb.append(index.getReference("Python Built-in Exceptions",
+        sb.append(" is a ");
+        sb.append(index.getReference("Python built-in exception",
                 "exception", sid));
         w.addPET(sb,
                 """
-                 that is 'raised' in such circumstances. It is good to get \
-                familiar with error messages which are typically printed to \
-                the console. A key part of learning to program is about \
-                interpreting error messages and thinking about what to do to \
+                 that is 'raised' in such circumstances. It is good to get
+                familiar with error messages which are typically printed to
+                the console. A key part of learning to program is about
+                interpreting error messages and thinking about what to do to
                 avoid and handle errors/exceptions.""");
         w.addP(sb,
                 """
@@ -324,12 +318,12 @@ public class Python extends CoursePage {
         w.addPRE(sb, "2 ** 1000000");
         w.addP(sb,
                 """
-                The result is an integer with '301030' digits. It may take \
+                The result is an integer with '301030' digits. It may take
                 noticeably longer to compute and display this number...""");
         w.addPST(sb,
                 """
-                One way to calculate how many digits there are is to pass the \
-                result into the \
+                One way to calculate how many digits there are is to pass the
+                result into the
                 """);
         sb.append(index.getReference("Python str", "str", sid));
         sb.append(" function and to pass the result of this into the ");
@@ -340,13 +334,13 @@ public class Python extends CoursePage {
                 "Note how things are passed into the two functions.");
         w.addP(sb,
                 """
-                Increasing the exponent power by a further multiple of ten \
-                should give ten times more digits and take significantly \
+                Increasing the exponent power by a further multiple of ten
+                should give ten times more digits and take significantly
                 longer to compute and display. try it:""");
         w.addPRE(sb, "len(str(2 ** 10000000))");
         w.addP(sb,
                 """
-                While waiting for an answer, open another Anaconda prompt to \
+                While waiting for an answer, open another Anaconda prompt to
                 look at some small numbers close to zero. Enter:
                 """);
         w.addPRE(sb,
@@ -359,9 +353,9 @@ public class Python extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                Notice how the format of the number printed out changes with \
-                the last command. '1e-05 ' is '0.00001' in scientific notation \
-                where the letter 'e' stands for 'multiply by 10 raised to \
+                Notice how the format of the number printed out changes with
+                the last command. '1e-05 ' is '0.00001' in scientific notation
+                where the letter 'e' stands for 'multiply by 10 raised to
                 the power of'. Try:""");
         w.addPRE(sb, "1/(2**1074)");
         w.addP(sb, "This will probably result in:");
@@ -372,15 +366,15 @@ public class Python extends CoursePage {
         w.addPRE(sb, "0.0");
         w.addP(sb,
                 """
-                The result is rounded down to 0.0 as this is the nearest \
+                The result is rounded down to 0.0 as this is the nearest
                 'Float' type number value to the true value!""");
 
         sid = addSubsection("Loading Modules and Using Functions", sb);
         w.addPST(sb,
                 """
-                Some mathematical operators are built-in as delimiters. Others \
-                can be found in the , but they are  '+' and '*' are shorthand \
-                for functions that reside in the \
+                Some mathematical operators are built-in as delimiters. Others
+                can be found in the , but they are  '+' and '*' are shorthand
+                for functions that reside in the
                 """);
         sb.append(index.getReference("Python operator", "operator", sid));
         w.addPET(sb, " module.");
@@ -397,7 +391,7 @@ public class Python extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                The NameError is raised as the operator module has not been \
+                The NameError is raised as the operator module has not been
                 imported.
                 """);
         w.addP(sb, "Enter:");
@@ -406,24 +400,24 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python dir", "dir", sid));
         w.addPET(sb,
                 """
-                '. Function calls are easy to spot as after the function name \
-                there are start and end parentheses. In this function call the \
-                function is passed no arguments - as there is nothing between \
-                the start and end parentheses. The output is a list of names \
+                '. Function calls are easy to spot as after the function name
+                there are start and end parentheses. In this function call the
+                function is passed no arguments - as there is nothing between
+                the start and end parentheses. The output is a list of names
                 in the current local scope:""");
         w.addPRE(sb,
                 """
-                ['__annotations__', '__builtins__', '__doc__', '__loader__', \
+                ['__annotations__', '__builtins__', '__doc__', '__loader__',
                 '__name__', '__package__', '__spec__']""");
         w.addP(sb,
                 """
-                The list is alphabetically ordered. You can tell it is a list \
-                as it starts with an open square bracket '[' and ends with \
-                a closing square bracket ']', and each item is separated with \
+                The list is alphabetically ordered. You can tell it is a list
+                as it starts with an open square bracket '[' and ends with
+                a closing square bracket ']', and each item is separated with
                 a comma ','.""");
         w.addP(sb,
                 """
-                To import and load the operator module and see that it is \
+                To import and load the operator module and see that it is
                 loaded, enter:""");
         w.addPRE(sb,
                 """
@@ -435,16 +429,16 @@ public class Python extends CoursePage {
         w.addPRE(sb, "operator.add(2, 3)");
         w.addP(sb,
                 """
-                Now, you should not get the NameError encountered before the \
+                Now, you should not get the NameError encountered before the
                 operator module was imported, but a result.""");
         w.addP(sb,
                 """
-                The dot '.' in this command effectively instructs the Python \
-                interpreter to look in the thing on the left (of the dot) to \
-                find the thing on the right (of the dot). So, the expression \
-                looks inside the operator module for the function 'add', and \
-                passes into it the two parameters in the given order. The \
-                function returns the result of summing these two parameters as \
+                The dot '.' in this command effectively instructs the Python
+                interpreter to look in the thing on the left (of the dot) to
+                find the thing on the right (of the dot). So, the expression
+                looks inside the operator module for the function 'add', and
+                passes into it the two parameters in the given order. The
+                function returns the result of summing these two parameters as
                 they are numbers, and the result is displayed.""");
         w.addP(sb,
                 "To list the identifiers in the operator module, enter:");
@@ -452,23 +446,23 @@ public class Python extends CoursePage {
         w.addP(sb, "It is quite a long list!");
         w.addP(sb,
                 """
-                There are numerous functions that have a name starting and \
-                ending with a double underscore '__'. These are not normally \
+                There are numerous functions that have a name starting and
+                ending with a double underscore '__'. These are not normally
                 called directly, but they can be.""");
         w.addP(sb, "Enter:");
         w.addPRE(sb, "operator.__add__(2, 3)");
         w.addP(sb,
                 """
-                Python does not exert access control on variables and \
-                functions. A naming convention is used to indicate to users \
-                whether a variable or function is meant to be accessed from \
-                outside the module. Underscores '_' and double underscores \
-                '__' at the start and/or end of identifiers have a special \
-                meaning in Python. As a general rule, you should not modify \
+                Python does not exert access control on variables and
+                functions. A naming convention is used to indicate to users
+                whether a variable or function is meant to be accessed from
+                outside the module. Underscores '_' and double underscores
+                '__' at the start and/or end of identifiers have a special
+                meaning in Python. As a general rule, you should not modify
                 anything with these in their name directly.""");
         w.addP(sb,
                 """
-                Have a play and use some other functions from the operator \
+                Have a play and use some other functions from the operator
                 module.
                 """);
 
@@ -995,7 +989,7 @@ public class Python extends CoursePage {
                 """);
         index.getReference("Syntax Error", "", sid);
         w.addPST(sb, "Attempting to ");
-        sb.append(index.getReference("Name Binding", "use", sid));
+        sb.append(index.getReference("Name binding", "use", sid));
         sb.append(
                 """
                  a keyword as an identifier such as a variable name typically
@@ -1127,7 +1121,7 @@ public class Python extends CoursePage {
 
         sid = addSection("Jupyter Notebook", sb);
         w.addPST(sb, "");
-        sb.append(index.getReference("Jupyter Notebook"));
+        sb.append(index.getReference("Jupyter Notebook", sid));
         sb.append(", is a ");
         sb.append(index.getReference("REPL", sid));
         w.addPET(sb,
@@ -1276,7 +1270,7 @@ public class Python extends CoursePage {
 
         sid = addSubsection("Spyder", sb);
         w.addPST(sb, "");
-        sb.append(index.getReference("Spyder"));
+        sb.append(references.getReference("Spyder"));
         w.addPET(sb,
                 """
                 - the Scientific PYthon Development EnviRonment, is an IDE that
@@ -1334,14 +1328,14 @@ public class Python extends CoursePage {
         sid = addSubsection("Other IDEs", sb);
         w.addP(sb,
                 """
-                There are other IDEs that support Python code development. If \
-                you are already familiar with an IDE that supports Python code \
-                development, then you might like to give it a try. Other IDEs \
-                that might be useful to you in future include: \
+                There are other IDEs that support Python code development. If
+                you are already familiar with an IDE that supports Python code
+                development, then you might like to give it a try. Other IDEs
+                that might be useful to you in future include:
                 <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>\
-                , and \
-                <a href="https://www.pydev.org">PyDev</a>. \
-                <!-- Eclipse, Netbeans and VS Code are other IDEs that may \
+                , and
+                <a href="https://www.pydev.org">PyDev</a>.
+                <!-- Eclipse, Netbeans and VS Code are other IDEs that may
                 support Python -->""");
         w.addDIVET(sb);
         sb.append("\n");
@@ -1352,7 +1346,7 @@ public class Python extends CoursePage {
                 sid));
         sb.append(
                 """
-                (GIS) software are used to create, manage, process, model,
+                 (GIS) software are used to create, manage, process, model,
                 visualise and distribute geographical data and information.
                 """);
         sb.append(references.getReference("QGIS"));
@@ -1361,36 +1355,34 @@ public class Python extends CoursePage {
                 "free and open source"));
         sb.append(
                 """
-                 GIS software. It has a thriving developer and user community and
-                a Python
+                 GIS software. It has a thriving developer and user community
+                and a Python
                 """);
         sb.append(index.getReference("API"));
         sb.append(". QGIS is mostly written in mixture of ");
         sb.append(index.getReference("C++", sid));
         w.addPET(sb,
                 """
-                 and Python and there is are distinct client and server software.
-                The operation of both these can be automated using Python.
+                 and Python. QGIS operations can be automated using Python.
                 """);
         w.addPST(sb,
                 """
-                QGIS Server is geared for serving out data. QGIS Desktop is both
-                client and server software. The client software can consume data
-                that is served out and is a general desktop application for
-                processing geographical data. QGIS Desktop is often controlled
-                by users via a
+                QGIS has both a Server and Desktop interface. QGIS Desktop is
+                typically controlled by users via a
                 """);
         sb.append(index.getReference("GUI"));
         w.addPET(sb, " with a menu, panels and toolbars.");
         w.addP(sb,
                 """
-                Load QGIS Desktop via AppsAnywhere or download, install and run
-                it on your own device.
+                If you want to try QGIS Desktop, please download and install it 
+                on your device.
                 """);
         w.addP(sb,
                 """
                 As QGIS Desktop software loads, a splash screen should appear.
-                When fully loaded the GUI should appear.
+                When fully loaded the GUI should appear. The GUI may have
+                changed since these learning resources were written/used, so
+                things may now be different! 
                 """);
         w.addP(sb, "From the GUI Menu select:");
         w.addPRE(sb, "Plugins > Python Console");
@@ -1401,7 +1393,7 @@ public class Python extends CoursePage {
                 alt="QGIS Desktop Python Console basic interface" />
                 """);
         w.addP(sb,
-                "There are 5 buttons, a display area and a Python prompt:");
+                "Perhaps some buttons, a display area and a Python prompt:");
         w.addPRE(sb, ">>>");
         w.addP(sb, "At the Python prompt enter:");
         w.addPRE(sb, "dir()");
@@ -1471,18 +1463,17 @@ public class Python extends CoursePage {
                 <br /><img src="../../resources/python/qgis2.png"
                 alt="QGIS Python Console after having run QGISExample.py" />
                 """);
-        w.addP(sb,
+        w.addPST(sb,
                 """
-                QGIS Desktop Plugins can be written in both C++ and Python.
-                This course does not explore this further. For details see the
+                QGIS Desktop Plugins can be written in both
+                """);
+        sb.append(index.getReference("C++", sid));
+         w.addPET(sb,
+                """
+                 and Python. For further information about this please see the
                 following:
                 """);
         w.addULST(sb);
-        w.addLI(sb,
-                """
-                <a href="https://www.qgis.org/en/site/getinvolved/development/development.html">
-                QGIS Development Web Page</a>
-                """);
         w.addLI(sb,
                 """
                 <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/index.html#developing-python-plugins">

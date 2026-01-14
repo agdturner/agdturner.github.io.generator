@@ -39,10 +39,10 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
         sb.append(index.getReference("computer programs"));
         sb.append(
                 """
-                , and is often simply called 'programming' and sometimes \
-                'coding' (although coding has several other meanings too). \
-                Computer progams are often called simply 'programs' or are \
-                sometimes called '\
+                , and is often abbreviated to 'programming' and sometimes
+                referred to as 'coding' (although coding is perhaps a more
+                general term). Computer progams are often referred to as
+                'programs' or '\
                 """);
         sb.append(index.getReference("executables"));
         sb.append("' or '");
@@ -55,9 +55,8 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 
         w.addPST(sb, 
                 """
-                A contemporary general-purpose computer is sometimes called a \
-                workstation and may be a desktop or more compact and portable \
-                laptop. These typically have a \
+                A contemporary general-purpose computer is sometimes called a
+                workstation, desktop or laptop. These typically have a
                 """);
         sb.append(index.getReference("keyboard"))
                 .append(" and ")
@@ -75,8 +74,8 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(") that is organised using a ")
                 .append(index.getReference("file system"));
         sb.append("""
-                  . Such computers may have other inbuilt or perpherally \
-                  connected devices such as \
+                  . Such computers may have other inbuilt or perpherally
+                  connected devices such as
                   """)
                 .append(index.getReference("microphones"))
                 .append(", ")
@@ -109,21 +108,21 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
                 .append(index.getReference("processors"));
         w.addPET(sb,
                 """
-                . Contemporary general-purpose workstations are typically \
+                . Contemporary general-purpose workstations are typically
                 multi-core - in that they contain multiple processors.
                 """);
         
         w.addPST(sb, 
                 """
-                Networked computers typically communicate using standard \
+                Networked computers typically communicate using standard
                 """);
         sb.append(index.getReference("Internet"));
         sb.append(
                 """
-                 protocols and can be organised to work together. Whilst \
-                networked general purpose computers collectively have a lot of \
-                power. It is not easy to utilise this power efficiently, so \
-                research facilities often make available \
+                 protocols and can be organised to work together. Whilst
+                networked general purpose computers collectively have a lot of
+                power. It is not easy to utilise this power efficiently, so
+                research facilities often make available
                 """);
         sb.append(index.getReference("Supercomputers"));
         sb.append(" for ");

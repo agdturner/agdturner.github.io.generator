@@ -133,17 +133,17 @@ public class Containers extends CoursePage {
         addCodeBlock(sb,
                 """
                 s0 = "this is a string"
-                s2 = 'this is also a string'
-                s3 = "string encapsulated with double quotes and containing single 'quotes'"
-                s4 = 'string encapsulated with single quotes and containing double "quotes"'
-                s5 = "string encapsulated with double quotes and containing double \"quotes\""
-                s6 = 'string encapsulated with single quotes and containing single \'quotes\''
-                s7 = str(s0) # A string constructed from another string
-                print(s7) # < prints this is a string
-                s8 = str(s0[8:]) # A string constructed from a slice of another string
-                print(s8) # <-- Prints a string
-                s9 = "strings " + "can be " + "concatenated using '+'"
-                print(s9) # <-- Prints strings can be concatenated using '+'
+                s1 = 'this is also a string'
+                s2 = "string encapsulated with double quotes and containing single 'quotes'"
+                s3 = 'string encapsulated with single quotes and containing double "quotes"'
+                s4 = "string encapsulated with double quotes and containing double \"quotes\""
+                s5 = 'string encapsulated with single quotes and containing single \'quotes\''
+                s6 = str(s0) # A string constructed from another string
+                print(s6) # < prints \"this is a string\"
+                s7 = str(s0[8:]) # A string constructed from a slice of another string
+                print(s7) # <-- Prints \"a string\"
+                s8 = "strings " + "can be " + "concatenated using '+'"
+                print(s8) # <-- Prints \"strings can be concatenated using '+'\"
                 """);
         w.addP(sb,
                 """
@@ -365,7 +365,7 @@ public class Containers extends CoursePage {
                 print(t) # <-- Prints (0, 1, 2, 3, 4)
                 """);
         w.addPST(sb, "There are various ");
-        sb.append(index.getReference("Python Built-in Functions",
+        sb.append(index.getReference("Python built-in functions",
                 "built-in functions", sid));
         w.addPET(sb,
                 """

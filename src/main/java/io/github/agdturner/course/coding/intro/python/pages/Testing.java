@@ -55,7 +55,8 @@ public class Testing extends CoursePage {
                 different ways to do this in Python that goes beyond the use of
                 """);
         sb.append(index.getReference("Python print", "print", sid));
-        w.addPST(sb,
+        w.addPET(sb, ".");
+        w.addP(sb,
                 """
                 statements which are also fundamental for a lot of testing and
                 issue diagnosis. As you should know by now, testing is key to
@@ -71,7 +72,7 @@ public class Testing extends CoursePage {
         sb.append(index.getReference("Python doctest", "doctest", sid));
         sb.append(
                 """
-                a module that can be used to search for text that looks like
+                 a module that can be used to search for text that looks like
                 interactive Python sessions, and then executes those sessions to
                 verify that they work as shown. Such text is sometimes placed in
                 a
@@ -108,7 +109,7 @@ public class Testing extends CoursePage {
         sb.append(index.getReference("Unit Testing", sid));
         w.addPET(sb,
                 """
-                is where individual units of source code - together with
+                 is where individual units of source code - together with
                 associated control data, usage procedures, and operating
                 procedures - are tested to determine whether they are fit for
                 use. It aims to reduce software development risks, time, and
@@ -146,7 +147,7 @@ public class Testing extends CoursePage {
                 'calculator.py', the module contains a single function 'add'
                 which adds up numbers provided as Integer or Float
                 """);
-        sb.append(index.getReference("Python Numeric Types", "Numeric Types ", sid));
+        sb.append(index.getReference("Python Numeric Types", "Numeric Types", sid));
         sb.append(" using ");
         sb.append(index.getReference("Python decimal", "decimal", sid));
         sb.append(" to avoid some ");

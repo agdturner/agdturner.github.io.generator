@@ -42,8 +42,7 @@ public class ABM7 extends CoursePage {
         w.addP(sb,
                 """
                 In this practical
-                <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html">
-                matplotlib.animation.FuncAnimation</a>
+                <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.animation.FuncAnimation.html">matplotlib.animation.FuncAnimation</a>
                 will be used to animate the model in a separate window. Some
                 stopping conditions will be added to halt the model and exit.
                 """);
@@ -77,9 +76,10 @@ public class ABM7 extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                Define a new function called 'plot' to contain the 'Plot agents'
-                code. Add a line to clear fig at the start of the function and
-                specify 'ite' as a global variable before it is used:
+                Define a new function called 'plot' to contain the
+                'Plot agents' code. Add a line to clear fig at the start of
+                the function and specify 'ite' as a global variable before it
+                is used:
                 """);
         addCodeBlock(sb,
                 """
@@ -253,7 +253,7 @@ public class ABM7 extends CoursePage {
         w.addLI(sb, 
                 """
                 Have those agents that are successful at finding resources
-                replicate and those unsuccessful die.
+                duplicate and those unsuccessful die.
                 """);
         w.addLI(sb, 
                 """

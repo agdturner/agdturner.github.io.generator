@@ -242,5 +242,6 @@ public abstract class CoursePage extends Page {
      */
     public void addCodeBlock(StringBuilder sb, String s) {
         addCodeBlock(sb, getCourse().courseType, s);
+        sb.append("\n");
     }
 }

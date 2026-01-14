@@ -123,22 +123,22 @@ public class ABM6 extends CoursePage {
         w.addP(sb,
                 """
                 Test your code works and that from one agent you can access
-                another agent by printing out one agent from another agent. For
-                example after all the agents are initialised try printing the
-                agent with i equal to 1 from the agent with i equal to 0:
+                another agent by printing out one agent from another agent.
+                For example after all the agents are initialised try printing
+                the agent with i equal to 1 from the agent with i equal to 0:
                 """);
         addCodeBlock(sb, "print(agents[0].agents[1])");
         w.addP(sb,
                 """
-                A way to use the 'get_distance' function in 'agentframework.py'
-                and avoid cyclic imports is to move the 'get_distance' function
-                to a new module. Create a new file called 'geometry.py' in the
-                'my_modules' directory, and move the 'get_distance' method from
-                'model.py' to it. Add an import statement for the new geometry
-                module in 'model.py' and change the function call to look for
-                the function in the new geometry module by using the dot
-                operator. (In other words change 'get_distance' to
-                'geometry.get_distance').
+                A way to use the 'get_distance' function in
+                'agentframework.py' and avoid cyclic imports is to move the
+                'get_distance' function to a new module. Create a new file
+                called 'geometry.py' in the 'my_modules' directory, and move
+                the 'get_distance' method from 'model.py' to it. Add an import
+                statement for the new geometry module in 'model.py' and change
+                the function call to look for the function in the new geometry
+                module by using the dot operator. (In other words change
+                'get_distance' to 'geometry.get_distance').
                 """);
         w.addP(sb,
                 """
@@ -169,12 +169,12 @@ public class ABM6 extends CoursePage {
                 This code is using the fact that 'self.i' will be the same as
                 the index of an agent in the 'agents' list. In the first for
                 loop of the 'share' function the distance between 'self' and
-                each agent in the agents list is calculated and if this is less
-                than 'neighbourhood' (a parameter that is passed in), then the
-                index of the agent from the agents list is stored in the
-                'neighbours' list. The attribute 'self.store' is then divided
-                into 'shares' and added to the 'store_shares' attribute of all
-                the agents with indexes in 'neighbours'.
+                each agent in the agents list is calculated and if this is
+                less than 'neighbourhood' (a parameter that is passed in),
+                then the index of the agent from the agents list is stored in
+                the 'neighbours' list. The attribute 'self.store' is then
+                divided into 'shares' and added to the 'store_shares'
+                attribute of all the agents with indexes in 'neighbours'.
                 """);
         w.addP(sb,
                 "Replace the 'main simulation loop' in 'model.py' file with:");
@@ -302,13 +302,19 @@ public class ABM6 extends CoursePage {
         w.addDIVET(sb);
         sb.append("\n");
 
-        sid = addSection("Further Assignment 1 Coding Tasks", sb);
-        sb.append("<p>Create some more variable results by randomly setting the"
-                + " 'store' of each agent in initialisation to be a value in"
-                + " the range [0, 99].</p>");
-        sb.append("<p>Change the 'eat' function so that if an agent 'store'"
-                + " goes above 99, then half the store is added to"
-                + " 'environment' where the agent is located.</p>");
+        sid = addSection("Further Coding Tasks", sb);
+        w.addP(sb,
+                """
+                Create some more variable results by randomly setting the
+                'store' of each agent in initialisation to be a value in the
+                range [0, 99].
+                """);
+        w.addP(sb,
+                """
+                Change the 'eat' function so that if an agent 'store' goes
+                above 99, then half the store is added to 'environment' where
+                the agent is located.
+                """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
         return sb.toString();

@@ -67,14 +67,19 @@ public abstract class CourseHome extends CoursePage {
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, 
                 """
-                These learning resources are to help researchers develop \
-                computational thinking and software development skills in the \
+                These learning resources were original developed to help
+                students of Geographical Information Systems (GIS) learn generic
+                computer programming skills and knowledge of the
                 """);
         sb.append(getLanguageReference());
-        sb.append(
+        sb.append(" programming language at the ");
+        sb.append(index.getReference("University of Leeds"));
+        w.addPET(sb, ".");
+        w.addP(sb, 
                 """
-                 programming language. It is a beginner level course and \
-                assumes no computer programming knowledge.
+                Some learning resources introduce GIS elements, but the
+                resources are for the most part general and not particularly
+                geographically focussed.
                 """);
         return sid;
     }
@@ -111,11 +116,19 @@ public abstract class CourseHome extends CoursePage {
         sb.append(Web_ContentWriter.getLink(
                 Environment.HTTPS_AGDTURNER_GITHUB_IO,
                 "Andy Turner"));
-        sb.append(". ");
-        sb.append(Web_ContentWriter.getLink(
-                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
-                        + getCourse().courseCode + "/public_html",
-                "Please report issues and suggest improvements here"));
+        sb.append("""
+                  , but they have not been tested since they were re-engineered
+                  in 2023 and may be outdated and contain broken links. 
+                  Generally, if you come across "null" in a sentence where this 
+                  does not make sense, you have found a broken link. The way 
+                  the web content is generated was re-engineered as a prototype 
+                  for developing a suite of learning resources for training 
+                  researchers, but this is not currently being taken forward...
+                  """);
+//        sb.append(Web_ContentWriter.getLink(
+//                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
+//                        + getCourse().courseCode + "/public_html",
+//                "Please report issues and suggest improvements here"));
         w.addPET(sb, ".");
     }
 
@@ -127,22 +140,22 @@ public abstract class CourseHome extends CoursePage {
      */
     public void getNavigation(StringBuilder sb, SectionID sid) {
         w.addPST(sb, """
-                     Each page of the website starts with a button to change \
-                     between a lighter and darker page style, and a main \
-                     navigation section that links to all other pages. The \
+                     Each page has a button up top to change between a lighter
+                     and darker page style, and a main navigation section that
+                     links to all other pages. The
                      """);
         sb.append(getLink(index, "index", "link", ""));
         sb.append(
                 """
-                 page is a glossary of terms that links back page sections \
-                where specific terms are used. The \
+                 page is a glossary of terms that links to page sections
+                where specific terms are used. The
                 """);
         sb.append(getLink(references, "references", "link", ""));
         w.addPET(sb,
                 """
-                 page provides a list of references and links to other \
-                relevant resources. Pages with multiple sections have a \
-                contents (below the main navigation section) linking to them.
+                 page provides a list of references and links to further
+                resources. Pages with multiple sections have a contents (below
+                the main navigation section) linking to them.
                 """);
     }
 
@@ -204,9 +217,8 @@ public abstract class CourseHome extends CoursePage {
         
         w.addPST(sb, 
                 """
-                These learning resources focus on the basics. You will be \
-                introduced to general computer programming terms, and terms \
-                specific to \
+                These learning resources introduce and use general computer
+                programming terms, and terms specific to
                 """);
         sb.append(index.getReference(getCourse().courseTypeCaptialised));
         w.addPET(sb, ".");
@@ -214,38 +226,36 @@ public abstract class CourseHome extends CoursePage {
         
         w.addPST(sb,
                 """
-                Pages with names starting 'ABM' are a sequence of practicals \
-                that help you learn to develop an \
+                Pages with names starting 'ABM' are a series of practicals
+                for developing a simple
                 """);
         sb.append(index.getReference("ABM", "Agent Based Model"))
-                .append(" a simple ")
-                .append(index.getReference("simulation"))
-                .append(" ")
-                .append(index.getReference("model"))
                 .append(
                 """
-                 that represents a set of entities that move around in an \
-                environment, interacting with the environment and each other. \
-                Developing the code by following instructions puts into \
-                practise some of the theory introduced in other pages. By the \
-                end of the practicals, you should have code that reads in data \
-                from local files and from the \
+                 that represents a set of entities that move around in an
+                environment, interacting with the environment and each other.
+                Developing the code by following instructions puts into
+                practise some of the theory introduced in other pages. If you
+                follow the instructions, by the end of the practicals, you
+                should have code that reads in data from local files and from
+                the
                 """)
                 .append(index.getReference("Web"));
-        
         w.addPET(sb,
                 """
-                 and produces an animation, data files, log files and messages \
-                for the user. The aim is that, after completing the final \
-                practical, you will have sufficient knowledge, skills and \
-                ideas to develop the model in interesting ways to create more \
-                reproducible results without further detailed instructions.
+                , and produces an animation, data files, log files and
+                messages. The idea as that you will then be capable of
+                develop the model in interesting ways without needing
+                detailed instructions, and furthermore using and developing
+                your programming skills in other ways.
                 """);
         
         w.addP(sb, 
                 """
-                Be experimental, but be cautious and recall your training on \
-                the safe and secure use of computer systems.
+                You are encouraged to be experimental, but cautious, as there
+                are cyber security concerns to be aware of. If you have not had
+                training on safe and secure use of computer systems, then you
+                are advised to get some.
                 """);
         return sid;
     }

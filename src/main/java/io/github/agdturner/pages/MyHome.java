@@ -64,15 +64,31 @@ public class MyHome extends Page {
         //w.addH1(sb, "Andy Turner GitHub Website");
         sb.append("<img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
                 + "picture head and shoulders\" />");
+        w.addH2(sb, Web_ContentWriter.getLink(
+                Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
+                "Github Profile"));
         w.addPST(sb, "In June 2023 I joined the ");
-        sb.append(Web_ContentWriter.getLink(
-                Environment.HTTPS_ARC_LEEDS_AC_UK_ABOUT_TEAM,
+        sb.append(Web_ContentWriter.getLink(Environment.HTTPS_ARC_LEEDS_AC_UK_TEAM,
                 "Research Computing Team"));
-        sb.append( " at the ");
+        sb.append(" at the ");
         sb.append(Web_ContentWriter.getLink(
                 Environment.HTTPS_WWW_LEEDS_AC_UK,
                 "University of Leeds"));
         w.addPET(sb, " as a Research Software Engineer.");
+        w.addPST(sb, "In 2025 I helped develop the ");
+        sb.append(Web_ContentWriter.getLink(
+                "https://ribocode.org/",
+                "Ribocode Project"));
+        sb.append(" ribosome visualisation tool also called ");
+        sb.append(Web_ContentWriter.getLink(
+                "https://github.com/ribocode-slola/ribocode1/",
+                "Ribocode"));
+        w.addPET(sb, ".");
+        w.addPST(sb, "In 2024 I helped develop ");
+        sb.append(Web_ContentWriter.getLink(
+                "https://github.com/MESMER-kinetics/mxg",
+                "MXG"));
+        w.addPET(sb, ".");
         w.addP(sb, """
                    From October 1997 until June 2023 I was a Research Officer \
                    based in the School of Geography at the University where I \
@@ -81,14 +97,11 @@ public class MyHome extends Page {
         w.addP(sb, Web_ContentWriter.getLink(
                 Environment.HTTPS_AGDTURNER_GITHUB_IO 
                         + "Python0/public_html/home/index.html",
-                "Introduction to Python"));
+                "An Introduction to Programming with Python for GIS"));
         //w.addP(sb,
         //        """
         //        <a href="Java0/home/index.html">Java0</a>
         //        """);
-        w.addH2(sb, Web_ContentWriter.getLink(
-                Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
-                "Github Profile"));
         // End WebPage
         sb.append(Web_Strings.DIV_ET);
         return sb.toString();

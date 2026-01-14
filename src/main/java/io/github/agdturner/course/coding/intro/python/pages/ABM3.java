@@ -125,9 +125,9 @@ public class ABM3 extends CoursePage {
                 distance 5.0
                 distance 5.0
                 """);
+        w.addP(sb,"And this plot:");
         w.addP(sb,
                 """
-                And this plot:
                 <img src="../../resources/abm2/Figure_1.png" alt="ABM2 Output Plot" />
                 """);
         w.addP(sb,

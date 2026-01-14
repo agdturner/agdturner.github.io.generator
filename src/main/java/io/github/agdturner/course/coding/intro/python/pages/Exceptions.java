@@ -176,7 +176,7 @@ public class Exceptions extends CoursePage {
                 The keyword 'raise' can be used to raise an exception by simply
                 giving the exception type. The following raises a
                 """);
-        sb.append(index.getReference("SystemError", sid));
+        sb.append(index.getReference("Python SystemError", sid));
         w.addPET(sb, ".");
         addCodeBlock(sb, "raise SystemError");
         w.addP(sb,
