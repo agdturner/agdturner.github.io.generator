@@ -62,19 +62,12 @@ public class MyHome extends Page {
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
         //w.addH1(sb, "Andy Turner GitHub Website");
-        sb.append("<img src=\"./images/a.turner.png\" alt=\"Andy Turner profile "
+        sb.append("<img src=\"./images/a.turner.png\" alt=\"Andy Turner\""
+                + " width: 100px, height: auto"
                 + "picture head and shoulders\" />");
         w.addH2(sb, Web_ContentWriter.getLink(
                 Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
                 "Github Profile"));
-        w.addPST(sb, "In June 2023 I joined the ");
-        sb.append(Web_ContentWriter.getLink(Environment.HTTPS_ARC_LEEDS_AC_UK_TEAM,
-                "Research Computing Team"));
-        sb.append(" at the ");
-        sb.append(Web_ContentWriter.getLink(
-                Environment.HTTPS_WWW_LEEDS_AC_UK,
-                "University of Leeds"));
-        w.addPET(sb, " as a Research Software Engineer.");
         w.addPST(sb, "In 2025 I helped develop the ");
         sb.append(Web_ContentWriter.getLink(
                 "https://ribocode.org/",
@@ -89,6 +82,14 @@ public class MyHome extends Page {
                 "https://github.com/MESMER-kinetics/mxg",
                 "MXG"));
         w.addPET(sb, ".");
+        w.addPST(sb, "In June 2023 I joined the ");
+        sb.append(Web_ContentWriter.getLink(Environment.HTTPS_ARC_LEEDS_AC_UK_TEAM,
+                "Research Computing Team"));
+        sb.append(" at the ");
+        sb.append(Web_ContentWriter.getLink(
+                Environment.HTTPS_WWW_LEEDS_AC_UK,
+                "University of Leeds"));
+        w.addPET(sb, " as a Research Software Engineer.");
         w.addP(sb, """
                    From October 1997 until June 2023 I was a Research Officer \
                    based in the School of Geography at the University where I \

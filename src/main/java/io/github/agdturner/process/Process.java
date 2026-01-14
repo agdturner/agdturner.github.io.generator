@@ -46,9 +46,6 @@ public class Process {
     */
     public void run(String[] args) {
         MyHome.main(args);
-        //GEOG5003M.main(args);
-        //GEOG5990M.main(args);
-        //GEOG5995M.main(args);
         Python0.main(args);
         //Java0.main(args);
         //CPP0.main(args);
