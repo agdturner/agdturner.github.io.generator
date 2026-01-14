@@ -1381,8 +1381,8 @@ public class Python extends CoursePage {
                 """
                 As QGIS Desktop software loads, a splash screen should appear.
                 When fully loaded the GUI should appear. The GUI may have
-                changed since these learning resources were written/used, so
-                things may now be different!
+                changed since version 3.22 which was the version used when this
+                was last checked.
                 """);
         w.addP(sb, "From the GUI Menu select:");
         w.addPRE(sb, "Plugins > Python Console");
