@@ -63,8 +63,7 @@ public class MyHome extends Page {
         StringBuilder sb = new StringBuilder();
         //w.addH1(sb, "Andy Turner GitHub Website");
         sb.append("<img src=\"./images/a.turner.png\" alt=\"Andy Turner\""
-                + " width: 50px, height: auto"
-                + "picture head and shoulders\" />");
+                + " width: 50px, height: auto />");
         w.addH2(sb, Web_ContentWriter.getLink(
                 Environment.HTTPS_WWW_GITHUB_COM_AGDTURNER,
                 "Github Profile"));
