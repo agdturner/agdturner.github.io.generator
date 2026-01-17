@@ -140,10 +140,6 @@ public class PythonIntroCodingCourseHome extends IntroCodingCourseHome {
         w.addLI(sb, index.getReference("pytest"));
         w.addULET(sb);
         w.addLIET(sb);
-        
-        w.addULET(sb);
-        w.addLIET(sb);
-        
     }
 
     @Override

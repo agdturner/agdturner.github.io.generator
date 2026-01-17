@@ -63,7 +63,6 @@ public abstract class CourseHome extends CoursePage {
      * @return SectionID for indexing terms.
      */
     public SectionID getIntroduction0(StringBuilder sb) {
-        w.addDIVST(sb);
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, 
                 """
@@ -117,13 +116,11 @@ public abstract class CourseHome extends CoursePage {
                 Environment.HTTPS_AGDTURNER_GITHUB_IO,
                 "Andy Turner"));
         sb.append("""
-                  , but they have not been tested since they were re-engineered
-                  in 2023 and may be outdated and contain broken links.
-                  Generally, if you come across "null" in a sentence where this
-                  does not make sense, you have found a broken link. The way
-                  the web content is generated was re-engineered as a prototype
-                  for developing a suite of learning resources for training
-                  researchers, but this is not currently being taken forward...
+                  , but they have not knowingly been used since being
+                  re-engineered in 2023. The re-engineering created a prototype
+                  designed to developing a suite of learning resources for
+                  training researchers how to program in different langauges,
+                  but this is not currently being taken forward...
                   """);
 //        sb.append(Web_ContentWriter.getLink(
 //                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
@@ -144,13 +141,13 @@ public abstract class CourseHome extends CoursePage {
                      and darker page style, and a main navigation section that
                      links to all other pages. The
                      """);
-        sb.append(getLink(index, "index", "link", ""));
+        sb.append(getLink(index, "indexIntro", "link", ""));
         sb.append(
                 """
                  page is a glossary of terms that links to page sections
                 where specific terms are used. The
                 """);
-        sb.append(getLink(references, "references", "link", ""));
+        sb.append(getLink(references, "referencesIntro", "link", ""));
         w.addPET(sb,
                 """
                  page provides a list of references and links to further
@@ -183,7 +180,6 @@ public abstract class CourseHome extends CoursePage {
      * @return SectionID for indexing terms.
      */
     public SectionID getSyllabus0(StringBuilder sb) {
-        w.addDIVST(sb);
         SectionID sid = addSection("Syllabus", sb);
         return sid;
     }
@@ -195,6 +191,7 @@ public abstract class CourseHome extends CoursePage {
      * @param sid For indexing terms.
      */
     public void getSyllabusN(StringBuilder sb, SectionID sid) {
+        w.addULET(sb);
         w.addDIVET(sb);
     }
 
@@ -212,7 +209,6 @@ public abstract class CourseHome extends CoursePage {
      * @return SectionID for indexing terms.
      */
     public SectionID getLearningJourney0(StringBuilder sb) {
-        w.addDIVST(sb);
         SectionID sid = addSection("The Learning Journey", sb);
         
         w.addPST(sb, 

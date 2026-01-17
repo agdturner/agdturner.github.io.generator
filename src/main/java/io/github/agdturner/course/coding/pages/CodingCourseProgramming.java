@@ -45,13 +45,12 @@ public class CodingCourseProgramming extends CourseProgramming {
         return sb.toString();
     }
 
-    public void getIntroduction(StringBuilder sb) {
-        SectionID sid = getIntroduction0(sb);
+    public SectionID getIntroduction(StringBuilder sb) {
+        return getIntroduction0(sb);
     }
 
     public SectionID getIntroduction0(StringBuilder sb) {
-        SectionID sid = addSection("Introduction", sb);
-        return sid;
+        return addSection("Introduction", sb);
     }
 
     public void getData(StringBuilder sb) {

@@ -232,6 +232,7 @@ public abstract class Page {
      */
     private SectionID addSection(String inPageID, String sectionName,
             StringBuilder sb, int level) {
+        sb.append("\n");
         w.addDIVST(sb);
         SectionID sid = new SectionID(site.sectionIDs.size(), this, inPageID);
         site.sectionIDs.add(sid);

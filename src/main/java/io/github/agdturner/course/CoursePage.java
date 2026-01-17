@@ -24,6 +24,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import uk.ac.leeds.ccg.web.core.Web_Strings;
 
 /**
  * Course Page.
@@ -51,7 +52,7 @@ public abstract class CoursePage extends Page {
      * Course Home Page for convenience.
      */
     protected final CourseHome homePage;
-    
+
     /**
      * Create a new instance.
      *
@@ -76,7 +77,7 @@ public abstract class CoursePage extends Page {
         Course c = getCourse();
         return getIndex(c).getReference(c.courseTypeCaptialised);
     }
-    
+
     /**
      * @return {@link #site} cast as a Course.
      */
@@ -109,7 +110,7 @@ public abstract class CoursePage extends Page {
      */
     @Override
     public String getLinks(String linkClass, boolean addPrevious) {
-        StringBuilder sb = new StringBuilder("<div>\n<p>");
+        StringBuilder sb = new StringBuilder(Web_Strings.P_ST);
         if (this instanceof CourseHome) {
             sb.append(getLinkNext(pages.get(0), linkClass));
         } else {
@@ -117,14 +118,16 @@ public abstract class CoursePage extends Page {
             if (this instanceof Index) {
                 if (addPrevious) {
                     sb.append(getLinkPrev(pages.get(n - 1), linkClass));
-                    sb.append("</p>\n<p>");
+                    sb.append(Web_Strings.P_ET);
+                    sb.append(Web_Strings.P_ST);
                     sb.append(getLinkNext(references, linkClass));
                 }
             } else if (this instanceof References) {
                 sb.append(getLinkPrev(index, linkClass));
                 if (addPrevious) {
                     sb.append(getLinkPrev(pages.get(n - 1), linkClass));
-                    sb.append("</p>\n<p>");
+                    sb.append(Web_Strings.P_ET);
+                    sb.append(Web_Strings.P_ST);
                     sb.append(getLinkNext(references, linkClass));
                 }
             } else {
@@ -132,10 +135,12 @@ public abstract class CoursePage extends Page {
                     if (this.pageID.id > 0) {
                         sb.append(getLinkPrev(pages.get(this.pageID.id - 1),
                                 linkClass));
-                        sb.append("</p>\n<p>");
+                        sb.append(Web_Strings.P_ET);
+                        sb.append(Web_Strings.P_ST);
                     } else if (this.pageID.id == 0) {
                         sb.append(getLinkPrev(homePage, linkClass));
-                        sb.append("</p>\n<p>");
+                        sb.append(Web_Strings.P_ET);
+                        sb.append(Web_Strings.P_ST);
                     }
                 }
                 if (this.pageID.id < n - 1) {
@@ -149,7 +154,7 @@ public abstract class CoursePage extends Page {
 //                }
             }
         }
-        sb.append("</p>\n</div>");
+        sb.append(Web_Strings.P_ET);
         return sb.toString();
     }
 
@@ -173,7 +178,7 @@ public abstract class CoursePage extends Page {
             for (var x : sids) {
                 Section section = sections.get(x);
                 if (section != null) {
-                    count ++;
+                    count++;
                     level = section.level;
                     if (level > level0) {
                         sb.append("\n");
@@ -223,9 +228,9 @@ public abstract class CoursePage extends Page {
                 using GitHub - push your changes to GitHub.
                 """);
     }
-    
+
     /**
-     * Appends {@code <pre><code class=\"language-" + language + "\">} to sb.
+     * Adds Code Block Start.
      *
      * @param sb The StringBuilder to append to.
      * @param s The string to add after the start tag.
@@ -233,9 +238,9 @@ public abstract class CoursePage extends Page {
     public void addCodeBlockStart(StringBuilder sb, String s) {
         addCodeBlockStart(sb, getCourse().courseType, s);
     }
-    
+
     /**
-     * Appends {@code <pre><code class=\"language-" + language + "\">} to sb.
+     * Adds Code Block.
      *
      * @param sb The StringBuilder to append to.
      * @param s The string to add after the start tag.
