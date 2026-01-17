@@ -173,10 +173,8 @@ public abstract class Site {
      * @return The navigation links HTML.
      */
     public String getNavigationLinks(String linkClass) {
-        StringBuilder sb = new StringBuilder(
-                """
-                <DIV class="navbar">
-                """);
+        StringBuilder sb = new StringBuilder(Web_Strings.getStartTag(
+                Web_Strings.DIV, "navigation", "navbar"));
         sb.append(Web_ContentWriter.getLink(getLinkPathString(homePage),
                 homePage.filename, linkClass, homePage.label));
         sb.append(" ");

@@ -54,6 +54,14 @@ public class Index extends CoursePage {
     protected final TreeMap<String, TreeSet<String>> termToAliases;
 
     /**
+     * @param alias A string possibly containing white space.
+     * @return A string with white space replaced by underscores.
+     */
+    public final String getId(String alias) {
+        return alias.strip().replaceAll("\\s+", "_");
+    }
+    
+    /**
      * For checking and adding aliases.
      *
      * @param term The index term.
@@ -61,21 +69,23 @@ public class Index extends CoursePage {
      * @param indexTerm The index term.
      */
     public final void addAlias(String term, String alias, IndexTerm indexTerm) {
-        if (aliasToTerm.containsKey(alias)) {
-            throw new RuntimeException("Alias " + alias + " already in use!");
+        String st = getId(term);
+        String sa = getId(alias);
+        if (aliasToTerm.containsKey(sa)) {
+            throw new RuntimeException("Alias " + sa + " already in use!");
             /**
              * Could add in logic to warn about/refer to other uses/ambiguity of
              * a term/alias.
              */
         }
-        aliasToTerm.put(alias, term);
+        aliasToTerm.put(sa, term);
         TreeSet<String> aliases;
         if (termToAliases.containsKey(term)) {
             aliases = termToAliases.get(term);
         } else {
             aliases = new TreeSet<>();
         }
-        aliases.add(alias);
+        aliases.add(sa);
     }
 
     /**
@@ -1550,7 +1560,7 @@ public class Index extends CoursePage {
         addAlias(term, "Java programming language", indexTerm);
 
         term = "Java (software platform)";
-        url = Environment.getWikipediaURL("Java (software platform)");
+        url = Environment.getWikipediaURL("Java_(software_platform)");
         desc = """
                A set of "computer" "software" and specifications that provides a
                system for developing "application" "software" and deploying it
@@ -2687,9 +2697,13 @@ public class Index extends CoursePage {
      * @return the link for the reference given by name.
      */
     public String getReference(String name, String linkText, SectionID sid) {
+        
+        String id = getId(name);
+        
         IndexTerm r = termToIndexTerm.get(name);
         if (r == null) {
-            String term = aliasToTerm.get(name);
+            String term = aliasToTerm.get(id);
+            
             if (term != null) {
                 return getReference(term, linkText, sid);
             }
@@ -2697,7 +2711,7 @@ public class Index extends CoursePage {
             if (sid != null) {
                 r.sectionIDs.add(sid);
             }
-            return r.getLinkWithin(name, linkText);
+            return r.getLinkWithin(id, linkText);
             //return r.getLink(linkText);
         }
         return null;
@@ -2706,19 +2720,21 @@ public class Index extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
+        w.addDIVST(sb);
         w.addULST(sb);
         for (String aliasOrTerm : termsAndAliasesToIndex) {
             IndexTerm indexTerm;
             if (aliasesToIndex.contains(aliasOrTerm)) {
                 w.addLIST(sb);
-                indexTerm = termToIndexTerm.get(aliasToTerm.get(aliasOrTerm));
+                String term = aliasToTerm.get(aliasOrTerm);
+                indexTerm = termToIndexTerm.get(term);
                 sb.append(aliasOrTerm)
                         .append(" - See: ")
-                        .append(indexTerm.getLinkWithin(aliasToTerm.get(aliasOrTerm)));
+                        .append(indexTerm.getLinkWithin(getId(term), term));
                 //.append(indexTerm.getLink(aliasToTerm.get(aliasOrTerm)));
             } else {
                 indexTerm = termToIndexTerm.get(aliasOrTerm);
-                w.addLIIDST(sb, aliasOrTerm);
+                w.addLIIDST(sb, getId(aliasOrTerm));
                 sb.append(indexTerm.getLinkAndDescription(aliasOrTerm));
                 //sb.append(".");
                 if (!indexTerm.sectionIDs.isEmpty()) {

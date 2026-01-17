@@ -282,7 +282,7 @@ public abstract class CourseHome extends CoursePage {
      */
     public SectionID getPlatform0(StringBuilder sb) {
         SectionID sid = addSection("Platform/Software", sb);
-        w.addPST(sb, "All the software used in this course is ");
+        w.addPST(sb, "The software introduced in these learning resources are ");
         sb.append(index.getReference("Free and Open Source Software"));
         sb.append(" (FOSS) - available to download and install on ");
         sb.append(index.getReference("Linux"));

@@ -62,26 +62,27 @@ public class Term {
         return Web_ContentWriter.getLink(url, linkText);
     }
     
-    /**
-     * Uses linkName for an internal link.
-     * @param linkName
-     * @return A HTML link.
-     */
-    public String getLinkWithin(String linkName) {
-        return Web_ContentWriter.getLink("#" + linkName, linkName);
-    }
+//    /**
+//     * Uses linkName for an internal link.
+//     * @param linkName
+//     * @return A HTML link.
+//     */
+//    public String getLinkWithin(String linkName) {
+//        String sa = getId(linkName);
+//        return Web_ContentWriter.getLink("#" + linkName, linkName);
+//    }
     
     /**
      * Uses linkName for an internal link using linkText.
-     * @param linkName The id or target of the link.
+     * @param id The id or target of the link.
      * @param linkText The text displayed.
      * @return A HTML link.
      */
-    public String getLinkWithin(String linkName, String linkText) {
+    public String getLinkWithin(String id, String linkText) {
         if (index.site.localPaths) {
-            return Web_ContentWriter.getLink(index.path + "/index.html#" + linkName, linkText);
+            return Web_ContentWriter.getLink(index.path + "/index.html#" + id, linkText);
         } else {
-            return Web_ContentWriter.getLink("../index/index.html#" + linkName, linkText);
+            return Web_ContentWriter.getLink("../index/index.html#" + id, linkText);
         }
     }
     
