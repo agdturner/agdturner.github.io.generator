@@ -18,6 +18,7 @@ package io.github.agdturner.course.coding.pages;
 import io.github.agdturner.core.SectionID;
 import io.github.agdturner.course.Course;
 import io.github.agdturner.course.pages.CourseProgramming;
+import uk.ac.leeds.ccg.web.core.Web_Strings;
 
 /**
  * Coding Course Programming Page.
@@ -42,11 +43,14 @@ public class CodingCourseProgramming extends CourseProgramming {
         getData(sb);
         getLearning(sb);
         getLanguageEvolution(sb);
+        getConsiderata(sb);
         return sb.toString();
     }
 
     public SectionID getIntroduction(StringBuilder sb) {
-        return getIntroduction0(sb);
+        SectionID sid = getIntroduction0(sb);
+        w.addDIVET(sb);
+        return sid;
     }
 
     public SectionID getIntroduction0(StringBuilder sb) {
@@ -58,6 +62,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         getDataBitsAndBytes(sb);
         getDataFileFormats(sb);
         getDataIntegersAndFloatingPoint(sb);
+        w.addDIVET(sb);
     }
 
     public void getDataBitsAndBytes(StringBuilder sb) {
@@ -113,6 +118,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 Commonly, there are multiples of 8 bits in a byte, but there
                 can be any number.
                 """);
+        w.addDIVET(sb);
     }
 
     public void getDataFileFormats(StringBuilder sb) {
@@ -169,6 +175,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 File formats are revisited in
                 <a href=\"../io/index.html#5\">IO Section 5.</a>
                 """);
+        w.addDIVET(sb);
     }
 
     public void getDataIntegersAndFloatingPoint(StringBuilder sb) {
@@ -217,11 +224,14 @@ public class CodingCourseProgramming extends CourseProgramming {
                 be stored exactly in the encoding and is effectively rounded
                 either up or down.
                 """);
+        w.addDIVET(sb);
     }
 
     public void getLearning(StringBuilder sb) {
         SectionID sid = getLearning0(sb);
         getLearning1(sb, sid);
+        //sb.append(Web_Strings.DIV_ET);
+        w.addDIVET(sb);
     }
 
     public SectionID getLearning0(StringBuilder sb) {
@@ -371,17 +381,27 @@ public class CodingCourseProgramming extends CourseProgramming {
     public void getLanguageEvolution(StringBuilder sb) {
         SectionID sid = addSection("Language Evolution, Deprecation and Versions", sb);
         w.addPST(sb, "High level computer programming languages like ");
+        sb.append(index.getReference("Python", sid));
+        sb.append(", ");
         sb.append(index.getReference("Java", sid));
         sb.append(" and ");
-        sb.append(index.getReference("Python", sid));
+        sb.append(index.getReference("C++", sid));
+        sb.append(" tend to evolve more rapidly than lower level languages like ");
+        sb.append(index.getReference("C", sid));
         w.addPET(sb,
                 """
-                 can evolve rapidly. Occasionally new languages are developed.
-                Some programming languages are retired or become obsolete, and
-                some older versions of languages become unsupported over time.
-                The release cadence is how often releases are made. Sometimes
-                releases are of different kinds which are supported for
-                different periods.
+                . New languages get developed and released which is exciting,
+                but keep up with all developments is challenging! Why develop
+                new languages rather than modify existing ones? Well, it depends
+                on what the goals are and to some extent who is in control. Some
+                programming languages get retired or become obsolete. Most old
+                versions of languages become unsupported in time. How often a
+                new version of a language or some software is release is
+                referred to as the "release cadence". The more rapid the release
+                cadence, the faster a language is evolving. Some changes though
+                are breaking changes and whilst multiple releases might be
+                supported for a time, old versions typically become obsolete
+                after a few years.
                 """);
 
         w.addPST(sb, "Supporting ");
@@ -397,10 +417,9 @@ public class CodingCourseProgramming extends CourseProgramming {
         w.addP(sb,
                 """
                 Changes that are not backward compatible can create a lot of
-                work! It is also discouraging if old code does not work with
-                newer language interpreters as this results in reliance on old
-                versions which can be problematic and have cyber security
-                implications.
+                work! Also, old code that does not work with newer language
+                interpreters can result in reliance on old versions which is
+                problematic and can have cyber security implications.
                 """);
 
         w.addP(sb,
@@ -417,7 +436,8 @@ public class CodingCourseProgramming extends CourseProgramming {
                 As new syntax, new functionality and more efficient ways of
                 doing things evolve in a language, some code either becomes
                 obsolete, or is best changed to use the new ways. This can
-                require considerable effort to retire or update (refactor) code.
+                require considerable effort although there are often tools that
+                help.
                 """);
 
         w.addP(sb,
@@ -437,6 +457,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 are first marked as deprecated in a version, then in subsequent
                 versions the things are removed.
                 """);
+        w.addDIVET(sb);
     }
 
     public void getConsiderata(StringBuilder sb) {
@@ -455,7 +476,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         w.addPET(sb,
                 """
                 ', it is important to know what version of a language and any
-                third party components a program has been tested with and
+                third party components a program has been tested with, and
                 results have been produced with.
                 """);
         w.addP(sb,
@@ -465,10 +486,10 @@ public class CodingCourseProgramming extends CourseProgramming {
                 larger volumes of data, or might be more concise in terms of the
                 amount of source code. There might be no obvious right way to do
                 something - so sometimes, independent programming efforts
-                produce significantly different source code that essentially
-                does the same thing. In other instances, and especially where
+                produce significantly different code that essentially does the
+                same thing. In other instances, and especially where
                 there are style and naming guidelines, source code produced
-                independently may be identical.
+                independently may be almost identical.
                 """);
         w.addP(sb,
                 """
@@ -478,10 +499,10 @@ public class CodingCourseProgramming extends CourseProgramming {
                 """);
         w.addP(sb,
                 """
-                Throughout this course, you are encouraged to produce easy to
-                understand, easy to maintain, efficient, reliable, well tested
-                and well documented code/software. Not all code and software in
-                use today is like this!
+                Scientific research software source code should be easy to
+                understand, easy to maintain, efficient, reliable, well tested,
+                well documented and open source. Not all scientific research
+                software in use today is like this!
                 """);
         w.addP(sb,
                 """

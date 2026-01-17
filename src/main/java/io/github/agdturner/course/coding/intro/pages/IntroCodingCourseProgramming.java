@@ -39,10 +39,10 @@ public class IntroCodingCourseProgramming extends CodingCourseProgramming {
         sb.append(index.getReference("computer programs"));
         sb.append(
                 """
-                , and is often abbreviated to 'programming' and sometimes
+                , and is often abbreviated to 'programming' anprogad sometimes
                 referred to as 'coding' (although coding is perhaps a more
-                general term). Computer progams are often referred to as
-                'programs' or '\
+                general term). Computer programs are often referred to as
+                'programs', '\
                 """);
         sb.append(index.getReference("executables"));
         sb.append("' or '");
