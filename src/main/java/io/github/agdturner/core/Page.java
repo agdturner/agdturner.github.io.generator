@@ -282,19 +282,18 @@ public abstract class Page {
     public List<String> getHeadElements() {
         ArrayList<String> r = new ArrayList<>();
         r.add(
-                """
-                <!-- Styling -->
-                <!-- Some href attributes are to be set by scripts -->
-                <!--<link id="css" rel="stylesheet" type="text/css" href="">-->
-                <link id="css" rel="stylesheet" type="text/css" href="/tools/highlight/styles/default.min.css">
-                <script src="/scripts/style.js"></script>
-                <!-- For styling code -->
-                <script src="/tools/highlight/highlight.min.js"></script>
-                <script>hljs.highlightAll();</script>
-                <link id="code_theme" rel="stylesheet" type="text/css" href="/css/style.css">
-                <link id="css1" rel="stylesheet" type="text/css" href="/tools/highlight/styles/github-dark.min.css">
-                <link id="css2" rel="stylesheet" type="text/css" href="/css/style_dark.css">
-                """);
+            """
+            <!-- Styling -->
+            <!-- Some href attributes are changed by scripts -->
+            <link id="css" rel="stylesheet" type="text/css" href="/tools/highlight/styles/default.min.css">
+            <script src="/scripts/style.js"></script>
+            <!-- For styling code -->
+            <script src="/tools/highlight/highlight.min.js"></script>
+            <script>hljs.highlightAll();</script>
+            <link id="code_theme" rel="stylesheet" type="text/css" href="/css/style.css">
+            <link id="css1" rel="stylesheet" type="text/css" href="/tools/highlight/styles/github-dark.min.css">
+            <link id="css2" rel="stylesheet" type="text/css" href="/css/style_dark.css">
+            """);
         return r;
     }
 

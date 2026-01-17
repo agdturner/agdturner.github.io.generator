@@ -47,7 +47,6 @@ public class Branching extends CoursePage {
         sb.append(index.getReference("Conditional", "if", sid));
         w.addPET(sb, "' statement.");
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("If", sb);
         w.addPST(sb, "The ");
@@ -95,11 +94,11 @@ public class Branching extends CoursePage {
                 """
                 day_of_week = 5
                 # An If-else  Statement
-                if day_of_week < 6:
+                if day_of_week &lt; 6:
                     day = "Weekday"
                 else:
                     day = "Weekend"
-                print(day) # <-- Prints Weekday
+                print(day) # &lt;-- Prints Weekday
                 """);
         w.addP(sb,
                 """
@@ -123,7 +122,7 @@ public class Branching extends CoursePage {
                     day = "Friday"
                 else:
                     day = "Weekend"
-                print(day) # <-- Prints Friday
+                print(day) # &lt;-- Prints Friday
                 """);
         w.addP(sb,
                 """
@@ -133,7 +132,6 @@ public class Branching extends CoursePage {
                 so this can do more than just look up a value from a key.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Match", sb);
         w.addPST(sb, "Since Python 3.10 there is also a ");
@@ -160,7 +158,7 @@ public class Branching extends CoursePage {
                         day = "Friday"
                     case _:
                         day = "Weekend"
-                print(day) # <-- Prints Friday
+                print(day) # &lt;-- Prints Friday
                 """);
         w.addP(sb,
                 """

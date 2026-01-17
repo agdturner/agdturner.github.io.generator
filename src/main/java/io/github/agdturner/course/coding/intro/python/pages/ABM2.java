@@ -59,14 +59,14 @@ public class ABM2 extends CoursePage {
                 # Change x0 and y0 randomly
                 rn = random.random()
                 print("rn", rn)
-                if rn < 0.5:
+                if rn &lt; 0.5:
                     x0 = x0 + 1
                 else:
                     x0 = x0 - 1
                 print("x0", x0)
                 rn = random.random()
                 print("rn", rn)
-                if rn < 0.5:
+                if rn &lt; 0.5:
                     y0 = y0 + 1
                 else:
                     y0 = y0 - 1
@@ -82,14 +82,14 @@ public class ABM2 extends CoursePage {
                 # Change x1 and y1 randomly
                 rn = random.random()
                 print("rn", rn)
-                if rn < 0.5:
+                if rn &lt; 0.5:
                     x1 = x1 + 1
                 else:
                     x1 = x1 - 1
                 print("x1", x1)
                 rn = random.random()
                 print("rn", rn)
-                if rn < 0.5:
+                if rn &lt; 0.5:
                     y1 = y1 + 1
                 else:
                     y1 = y1 - 1
@@ -141,7 +141,6 @@ public class ABM2 extends CoursePage {
                 the 'abm2' directory.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Using Lists", sb);
         w.addPST(sb,
@@ -222,7 +221,6 @@ public class ABM2 extends CoursePage {
                 do the initialition more succinctly?
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Plotting", sb);
         w.addPST(sb, "To plot the agents using ");
@@ -266,7 +264,6 @@ public class ABM2 extends CoursePage {
         w.addP(sb,
                 "Have a try and don't worry if you don't get this to work.");
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Using Loops", sb);
         w.addP(sb,
@@ -313,7 +310,6 @@ public class ABM2 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("More Plotting", sb);        
         w.addP(sb,
@@ -325,7 +321,6 @@ public class ABM2 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Code Review and Looking Forward", sb);
         w.addP(sb,

@@ -53,7 +53,6 @@ public class Containers extends CoursePage {
                 unordered. A dictionary is a mapping of keys to values.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Sequences", sb);
         w.addP(sb,
@@ -139,11 +138,11 @@ public class Containers extends CoursePage {
                 s4 = "string encapsulated with double quotes and containing double \"quotes\""
                 s5 = 'string encapsulated with single quotes and containing single \'quotes\''
                 s6 = str(s0) # A string constructed from another string
-                print(s6) # < prints \"this is a string\"
+                print(s6) # &lt;-- prints \"this is a string\"
                 s7 = str(s0[8:]) # A string constructed from a slice of another string
-                print(s7) # <-- Prints \"a string\"
+                print(s7) # &lt;-- Prints \"a string\"
                 s8 = "strings " + "can be " + "concatenated using '+'"
-                print(s8) # <-- Prints \"strings can be concatenated using '+'\"
+                print(s8) # &lt;-- Prints \"strings can be concatenated using '+'\"
                 """);
         w.addP(sb,
                 """
@@ -245,13 +244,13 @@ public class Containers extends CoursePage {
         addCodeBlock(sb,
                 """
                 a = () # A new empty tuple
-                print(len(a)) # <-- Prints 0
+                print(len(a)) # &lt;-- Prints 0
                 b = (1, "two", 4) # Pack 3 things into b
                 print(len(b)) # Prints 3
                 c, d, e = b # unpack b into three things (c will refer to 1, d to "two" and e to 4)
-                print(c) # <-- Prints 1
-                print(d) # <-- Prints 'two'
-                singleton = 'hello', # <-- Note the trailing comma.
+                print(c) # &lt;-- Prints 1
+                print(d) # &lt;-- Prints 'two'
+                singleton = 'hello', # &lt;-- Note the trailing comma.
                 print(len(singleton)) # Prints 1
                 """);
         w.addP(sb,
@@ -266,7 +265,7 @@ public class Containers extends CoursePage {
                 # Fibonacci series - the sum of the last two numbers in a sequence defines the next
                 a, b = 0, 1
                 print(a)
-                while b < 10:
+                while b &lt; 10:
                     print(b)
                     a, b = b, a+b
                 print(b)
@@ -276,7 +275,7 @@ public class Containers extends CoursePage {
         w.addP(sb,
                 """
                 is a loop with an expression that is evaluated each time around
-                the loop. While this expression 'b < 10' evaluates as 'True' the
+                the loop. While this expression 'b &lt; 10' evaluates as 'True' the
                 loop continues to run, when it evaluates as 'False', the program
                 continues by executing the next line after the loop. Notice in
                 the example how things are packed and unpacked in the tuples.
@@ -359,10 +358,10 @@ public class Containers extends CoursePage {
         addCodeBlock(sb,
                 """
                 r = range(5)
-                type(r) # <-- Prints <class 'range'>
-                print(r) # <-- Prints range(0, 5)
+                type(r) # &lt;-- Prints <class 'range'>
+                print(r) # &lt;-- Prints range(0, 5)
                 t = tuple(r)
-                print(t) # <-- Prints (0, 1, 2, 3, 4)
+                print(t) # &lt;-- Prints (0, 1, 2, 3, 4)
                 """);
         w.addPST(sb, "There are various ");
         sb.append(index.getReference("Python built-in functions",
@@ -479,7 +478,7 @@ public class Containers extends CoursePage {
                 a = [0,1,2,3,4]
                 b = [10,20,30]
                 a[1:3] = b
-                print(a) # <-- Prints [0,10,20,30,3,4]
+                print(a) # &lt;-- Prints [0,10,20,30,3,4]
                 """);
         w.addP(sb,
                 """
@@ -494,9 +493,9 @@ public class Containers extends CoursePage {
                 a = [0,1,2,3,4]
                 b = [10,20]
                 a[1:5] = b
-                print(a) # <-- Prints [0,10,20]
+                print(a) # &lt;-- Prints [0,10,20]
                 """);
-        w.addPST(sb,"<p>The ");
+        w.addPST(sb,"The ");
         sb.append(index.getReference("Python builtins", "builtin module"));
         sb.append(" function ");
         sb.append(index.getReference("Python zip", "zip", sid));
@@ -511,7 +510,7 @@ public class Containers extends CoursePage {
                 b = [10,20,30,40,50]
                 c = zip(a,b)
                 d = list(c)
-                print(d) # <-- Prints [(1,10),(2,20),(3,30),(4,40),(5,50)]
+                print(d) # &lt;-- Prints [(1,10),(2,20),(3,30),(4,40),(5,50)]
                 """);
         w.addP(sb,
                 """
@@ -577,7 +576,6 @@ public class Containers extends CoursePage {
                 a.insert(2, 2.5)
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Sets", sb);
         w.addPST(sb, "");
@@ -606,7 +604,6 @@ public class Containers extends CoursePage {
                 elements.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Dictionaries", sb);
         w.addPST(sb, "");
@@ -624,7 +621,7 @@ public class Containers extends CoursePage {
         addCodeBlock(sb,
                 """
                 alias = dict([("rm", "remove"), ("cd", "change directory"), ("ls", "list")])
-                print(alias.get("rm")) # <-- This should print 'remove'.
+                print(alias.get("rm")) # &lt;-- This should print 'remove'.
                 """);
         w.addP(sb,
                 """

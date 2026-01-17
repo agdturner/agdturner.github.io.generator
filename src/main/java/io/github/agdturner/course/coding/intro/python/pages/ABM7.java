@@ -52,7 +52,6 @@ public class ABM7 extends CoursePage {
                 'abm6' directory and name it 'abm7'.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Animation", sb);
         w.addP(sb,
@@ -149,7 +148,7 @@ public class ABM7 extends CoursePage {
                     # Stopping condition
                     global carry_on
                     # Random
-                    if random.random() < 0.1:
+                    if random.random() &lt; 0.1:
                         #if sum_as / n_agents > 80:
                         carry_on = False
                         print("stopping condition")
@@ -163,7 +162,7 @@ public class ABM7 extends CoursePage {
                 def gen_function():
                     global ite
                     global carry_on
-                    while (ite <= n_iterations) & (carry_on) :
+                    while (ite &lt;= n_iterations) & (carry_on) :
                         yield ite # Returns control and waits next call.
                         ite = ite + 1
                     global data_written
@@ -199,7 +198,6 @@ public class ABM7 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Code and Model Review", sb);
         w.addP(sb,

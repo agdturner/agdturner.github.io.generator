@@ -50,11 +50,11 @@ public class Conclusion extends CoursePage {
                  that represents a set of entities that move around in an
                 environment, interacting with the environment and each other.
                 """);
-        w.addP(sb, """
-                   Here is a link to a GitHub repository with some example code:
-                   <a href="https://github.com/agdturner/ccg-course-python-intro">https://github.com/agdturner/ccg-course-python-intro</a>
-                   """);
-        
+        w.addP(sb, 
+                """
+                Here is a link to a GitHub repository with some example code:
+                <a href="https://github.com/agdturner/ccg-course-python-intro">https://github.com/agdturner/ccg-course-python-intro</a>
+                """);
         w.addP(sb,
                 """
                 Developing the code by following instructions puts into
@@ -68,6 +68,7 @@ public class Conclusion extends CoursePage {
                 I hope you found these learning resources useful and that you
                 put you coding skills to good use :)
                 """);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

@@ -63,7 +63,6 @@ public class ABM4 extends CoursePage {
                 your 'model.py' file from abm3 into the abm4 directory.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Define an Agent class", sb);
         w.addP(sb,
@@ -108,7 +107,7 @@ public class ABM4 extends CoursePage {
                 Run 'model.py' and examine the output. It should contain the
                 following line:
                 """);
-        w.addPRE(sb, "type(a) <class 'agentframework.Agent'>");
+        w.addPRE(sb, "type(a) &lt;class 'agentframework.Agent'>");
         w.addP(sb,
                 """
                 This indicates that an instance of the class Agent as defined
@@ -267,7 +266,7 @@ public class ABM4 extends CoursePage {
                 """);
         addCodeBlock(sb, 
                 "distance = get_distance(a[0], a[1], b[0], b[1])");
-        w.addP(sb, "<p>To be:</p>");
+        w.addP(sb, "To be:");
         addCodeBlock(sb, "distance = get_distance(a.x, a.y, b.x, by)");
         w.addP(sb, 
                 "Appreciate that this is easier to read and understand.");
@@ -328,7 +327,6 @@ public class ABM4 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Separation of Concerns", sb);
         w.addP(sb,
@@ -359,7 +357,6 @@ public class ABM4 extends CoursePage {
                 a reasonable separation of concerns.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Give each agent a unique name", sb);
         w.addP(sb,

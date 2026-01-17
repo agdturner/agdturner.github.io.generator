@@ -55,7 +55,6 @@ public class ABM6 extends CoursePage {
                 'agentframework.py' and 'io.py' files there.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Sharing", sb);
         w.addP(sb,
@@ -153,7 +152,7 @@ public class ABM6 extends CoursePage {
                     #print(self.agents[self.i])
                     for a in self.agents:
                         distance = geometry.get_distance(a.x, a.y, self.x, self.y)
-                        if distance < neighbourhood:
+                        if distance &lt; neighbourhood:
                             neighbours.append(a.i)
                     # Calculate amount to share
                     n_neighbours = len(neighbours)
@@ -214,7 +213,6 @@ public class ABM6 extends CoursePage {
                 statements to gain a clear understanding of how the code works.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Organise module code", sb);
         w.addP(sb,
@@ -235,7 +233,6 @@ public class ABM6 extends CoursePage {
                 results.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Output images and generate an animated Gif", sb);
         w.addP(sb,
@@ -300,7 +297,6 @@ public class ABM6 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Further Coding Tasks", sb);
         w.addP(sb,

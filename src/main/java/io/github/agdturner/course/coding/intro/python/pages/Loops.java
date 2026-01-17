@@ -52,7 +52,6 @@ public class Loops extends CoursePage {
                  sequence).
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("While", sb);
         w.addPST(sb, "The following provides an example of a ");
@@ -61,7 +60,7 @@ public class Loops extends CoursePage {
         addCodeBlock(sb,
                 """
                 x = 1
-                while (x < 10):
+                while (x &lt; 10):
                     print(x)
                     x += 1
                 """);
@@ -102,7 +101,7 @@ public class Loops extends CoursePage {
                 """
                 # Print odd numbers from 1 to 10
                 x = 0
-                while x < 10:
+                while x &lt; 10:
                     x += 1
                     if (x % 2) == 0:
                         continue
@@ -123,7 +122,6 @@ public class Loops extends CoursePage {
                 the normal end of print statement - a newline - with a space.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("For", sb);
         w.addPST(sb, "");
@@ -161,7 +159,7 @@ public class Loops extends CoursePage {
                 """
                 names = ("Dale", "Albert", "Gordon", "Tamara", "Philip", "Chester", "Windom")
                 for name in names[1:5:2]:
-                    print(name) # <-- Prints "Albert", "Tamara"
+                    print(name) # &lt;-- Prints "Albert", "Tamara"
                 """);
         w.addP(sb, 
                 """
@@ -277,7 +275,6 @@ public class Loops extends CoursePage {
                 iteration in the same way as in a while loop.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Nesting loops", sb);
         w.addP(sb,
@@ -339,10 +336,9 @@ public class Loops extends CoursePage {
                 """
                 When processing raster data like this, care is needed not to
                 get rows and columns mixed up. This is easier to do if the data
-                have the same number of rows and columns!<
+                have the same number of rows and columns!
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
               
         sid = addSection("Moving Window Algorithms", sb);
         w.addP(sb,
@@ -379,7 +375,7 @@ public class Loops extends CoursePage {
                     print()
                 #print(result)
                 """);
-        w.addP(sb, "The output of which is:<");
+        w.addP(sb, "The output of which is:");
         w.addPRE(sb,
                 """
                 14 15 16 17
@@ -388,7 +384,6 @@ public class Loops extends CoursePage {
                 32 33 34 35
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
               
         sid = addSection("Next", sb);
         w.addP(sb,

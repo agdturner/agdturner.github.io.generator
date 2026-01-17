@@ -63,7 +63,6 @@ public class Github extends CoursePage {
                 recommended.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("Getting Started with GitHub", sb);
         w.addP(sb,
@@ -83,7 +82,7 @@ public class Github extends CoursePage {
                 University Windows Virtual Desktop</a>.
                 Alternatively,
                 <a href="https://docs.github.com/en/get-started/quickstart/set-up-git#setting-up-git">
-                follow these instructions to setup a
+                follow these instructions</a> to setup a
                 <a href="https://git-scm.com/downloads">Git Client<a> on your
                 local machine</a>.
                 """);
@@ -194,7 +193,6 @@ public class Github extends CoursePage {
                 in a more manual way.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("Python Code Repository Setup", sb);
         w.addP(sb,
@@ -231,7 +229,6 @@ public class Github extends CoursePage {
                 directory contents to GitHub - which is what is wanted.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("GitHub Pages", sb);
         w.addP(sb,
@@ -242,7 +239,6 @@ public class Github extends CoursePage {
                 GitHub Pages Quickstart Tutorial</a>
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("Taking Stock", sb);
         w.addP(sb,

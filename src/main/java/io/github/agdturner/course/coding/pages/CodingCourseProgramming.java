@@ -140,7 +140,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         w.addPET(sb,
                 """
                 . (ASCII encoding uses 7 bit bytes. Unicode uses between
-                1 and 4 bytes of length 8 for encoding. As of Unicode verson
+                1 and 4 bytes of length 8 for encoding. As of Unicode version
                 15.0, there are 149,186 characters that are uniquely encoded,
                 including various alphabets, mathematical symbols and emojis.)\
                 """);
@@ -253,7 +253,7 @@ public class CodingCourseProgramming extends CourseProgramming {
         sb.append(index.getReference("version control", sid));
         w.addPET(sb,
                 """
-                 as approriate to avoid losing work and to help you and other
+                 as appropriate to avoid losing work and to help you and other
                 track progress.
                 """);
         w.addPST(sb,
@@ -410,7 +410,7 @@ public class CodingCourseProgramming extends CourseProgramming {
                 """
                  - interoperability with older versions - has both costs and
                 benefits. These costs and benefits are weighed up by those
-                developing languages that tyically have a process of deciding
+                developing languages that typically have a process of deciding
                 how things change.
                 """);
 
@@ -470,12 +470,12 @@ public class CodingCourseProgramming extends CourseProgramming {
         w.addPST(sb,
                 """
                 For many reasons, a key one in science and for evidence
-                based policy being '
+                based policy being
                 """);
         sb.append(index.getReference("reproducibility", sid));
         w.addPET(sb,
                 """
-                ', it is important to know what version of a language and any
+                , it is important to know what version of a language and any
                 third party components a program has been tested with, and
                 results have been produced with.
                 """);

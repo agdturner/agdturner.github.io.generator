@@ -153,16 +153,17 @@ public class References extends CoursePage {
     @Override
     public String getMainContent() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<ul>");
+        w.addDIVST(sb);
+        w.addULST(sb);
         for (String name : termToTerm.keySet()) {
             Term term = termToTerm.get(name);
-            sb.append("<li>");
+            w.addLIST(sb);
             sb.append(term.getLinkAndDescription(name));
-            sb.append(".");            
-            sb.append("</li>\n");
+            sb.append(".");
+            w.addLIET(sb);
         }
-        sb.append("</ul>\n");
-        sb.append("</div>\n");
+        w.addULET(sb);
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

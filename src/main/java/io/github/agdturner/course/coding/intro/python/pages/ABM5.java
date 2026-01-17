@@ -58,7 +58,6 @@ public class ABM5 extends CoursePage {
                 source code in different directories.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Input Data", sb);
         w.addP(sb,
@@ -133,7 +132,7 @@ public class ABM5 extends CoursePage {
                 """
                 Traceback (most recent call last):
               
-                File "\\src\\abm5\\model.py", line 19, in <module>
+                File "\\src\\abm5\\model.py", line 19, in &lt;module>
                   environment = io.read_data('../../data/input/in.txt')
               
                 AttributeError: module 'io' has no attribute 'read_data'
@@ -182,7 +181,6 @@ public class ABM5 extends CoursePage {
                 well as 'environment'.)
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Plot environment", sb);
         w.addP(sb,
@@ -296,7 +294,6 @@ public class ABM5 extends CoursePage {
                 self.y = random.randint(0, tnr - 1) + tnr
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Agent-Environment Interaction", sb);
         w.addP(sb,
@@ -413,7 +410,6 @@ public class ABM5 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Further Coding Tasks", sb);
         w.addP(sb,
@@ -449,7 +445,6 @@ public class ABM5 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Code Review and Looking Forward", sb);
         w.addP(sb,

@@ -172,7 +172,6 @@ public class Python extends CoursePage {
                  is another useful learning resource for learning Python.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Running Python", sb);
         w.addPST(sb,
@@ -246,6 +245,7 @@ public class Python extends CoursePage {
                 """);
         w.addP(sb, "You should see the following output:");
         w.addPRE(sb, "Hello World");
+        w.addDIVET(sb);
 
         sid = addSubsubsection("Numerical calculations", sb);
         w.addP(sb,
@@ -270,7 +270,7 @@ public class Python extends CoursePage {
         w.addPET(sb,
                 """
                  operator that works with specific types of variables.
-                Multiplication can be done similarly using an asterix '*'
+                Multiplication can be done similarly using an asterisk '*'
                 symbol; and division can be done using the forward slash
                 '/' symbol.""");
         w.addP(sb,
@@ -293,7 +293,7 @@ public class Python extends CoursePage {
         w.addPRE(sb,
                 """
                 Traceback (most recent call last):
-                    File "&lt;stdin>", line 1, in <module>
+                    File "&lt;stdin>", line 1, in &lt;module>
                   ZeroDivisionError: division by zero
                 """);
         w.addPST(sb, "A ");
@@ -465,6 +465,7 @@ public class Python extends CoursePage {
                 Have a play and use some other functions from the operator
                 module.
                 """);
+        w.addDIVET(sb);
 
         sid = addSubsection("The Help System", sb);
         sb.append(index.getReference("Python help", "", sid));
@@ -767,8 +768,10 @@ public class Python extends CoursePage {
                 be written.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
+        
+        w.addDIVET(sb);
 
+        
         sid = addSection("Basic Python Syntax", sb);
 
         sid = addSubsection("Syntax Errors", sb);
@@ -796,6 +799,7 @@ public class Python extends CoursePage {
                 is incomplete: There should be something on the right of the
                 equals sign '='.
                 """);
+        w.addDIVET(sb);
 
         sid = addSubsection("Statements", sb);
         w.addP(sb,
@@ -828,6 +832,7 @@ public class Python extends CoursePage {
                 Python does not have a special symbol to end a statement like
                 many other languages do.
                 """);
+        w.addDIVET(sb);
 
         sid = addSubsection("Comments", sb);
         w.addP(sb,
@@ -934,6 +939,7 @@ public class Python extends CoursePage {
                 """);
         sb.append(index.getReference("Python NameError", "NameError"));
         w.addPET(sb, " will be raised.");
+        w.addDIVET(sb);
 
         sid = addSubsection("Delimiters, Literals and Operators", sb);
         w.addPST(sb,
@@ -948,7 +954,7 @@ public class Python extends CoursePage {
                 (       )       [       ]       {       }      :
                 .       ;       @       =       ->      +=     -=
                 *=      /=      //=     %=      @=      &=     |=
-                ^=      >>=     <<=     **=
+                ^=      >>=     &lt;&lt;=     **=
                 """);
         w.addP(sb,
                 """
@@ -973,6 +979,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python operator", "operator", sid));
         w.addPET(sb, " module functions (e.g. +, -, *, /, %)");
         w.addP(sb, "Literals are specific numerical or text values.");
+        w.addDIVET(sb);
 
         sid = addSubsection("Identifiers and Keywords", sb);
         w.addP(sb,
@@ -1017,6 +1024,7 @@ public class Python extends CoursePage {
         sb.append(references.getReference(
                 "Python Lexical Analysis Documentation"));
         w.addPET(sb, ".");
+        w.addDIVET(sb);
 
         sid = addSubsection("Style", sb);
         w.addPST(sb, "The following code block is a ");
@@ -1068,8 +1076,10 @@ public class Python extends CoursePage {
                 be colourfully styled as above.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
+        
+        w.addDIVET(sb);
 
+        
         sid = addSection("Running a file of Python commands", sb);
         w.addP(sb,
                 "Create a new ASCII text file, add to it the following line:");
@@ -1117,7 +1127,6 @@ public class Python extends CoursePage {
                 directory.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Jupyter Notebook", sb);
         w.addPST(sb, "");
@@ -1161,14 +1170,16 @@ public class Python extends CoursePage {
                 """
                 The New Button is highlighted with a red oval in the following
                 image of the interface:
-                <br /><img src="../../resources/python/jupyter1.png"
+                <br />
+                <img src="../../resources/python/jupyter1.png"
                 alt="Jupyter Notebook Interface 1" />
                 """);
         w.addP(sb,
                 """
                 A Python REPL environment should appear in another browser tab
                 like shown in the following image:
-                <br /><img src="../../resources/python/jupyter2.png"
+                <br />
+                <img src="../../resources/python/jupyter2.png"
                 alt="Jupyter Notebook Interface 2" />
                 """);
         w.addP(sb, "Enter the following in a cell and action run:");
@@ -1179,7 +1190,8 @@ public class Python extends CoursePage {
         w.addP(sb,
                 """
                 You should see something like:
-                <br /><img src="../../resources/python/jupyter3.png"
+                <br />
+                <img src="../../resources/python/jupyter3.png"
                 alt="Jupyter Notebook Interface 3" />
                 """);
         w.addPST(sb,
@@ -1204,10 +1216,9 @@ public class Python extends CoursePage {
                 some other ways...
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Integrated Development Environments", sb);
-        w.addPET(sb, "");
+        w.addPST(sb, "");
         sb.append(index.getReference("IDE",
                 "Integrated Development Environments", sid));
         sb.append(
@@ -1237,7 +1248,8 @@ public class Python extends CoursePage {
                 """
                 This should open up the IDLE console window that should look
                 something like the image below:
-                <br /><img src="../../resources/python/idle1.png"
+                <br />
+                <img src="../../resources/python/idle1.png"
                 alt="The IDLE interface" />
                 """);
         w.addPST(sb,
@@ -1247,26 +1259,29 @@ public class Python extends CoursePage {
         w.addPRE(sb, "File -> Open...");
         w.addP(sb,
                 """
-              Open your HelloWorld.py file. IDLE should open the file in the
-              editor window that looks something like:
-              <br /><img src="../../resources/python/idle2.png"
-              alt="The IDLE file editor window interface" />
-              """);
+                Open your HelloWorld.py file. IDLE should open the file in the
+                editor window that looks something like:
+                <br />
+                <img src="../../resources/python/idle2.png"
+                alt="The IDLE file editor window interface" />
+                """);
         w.addP(sb,
                 """
-              Notice that as with a Jupyter Notebook, the code appearing in
-              the IDLE editor window is styled.
-              """);
+                Notice that as with a Jupyter Notebook, the code appearing in
+                the IDLE editor window is styled.
+                """);
         w.addP(sb, "The editor window has other menu options. Select:");
         w.addPRE(sb, "Run -> Run Module");
         w.addP(sb,
                 """
                 This should run the HelloWorld.py file, and output to the
                 console in the other window which should appear something like:
-                <br /><img src="../../resources/python/idle3.png"
+                <br />
+                <img src="../../resources/python/idle3.png"
                 alt="The IDLE interface having run the Hello World program" />
                 """);
         w.addP(sb, "Close the instance of IDLE that is running.");
+        w.addDIVET(sb);
 
         sid = addSubsection("Spyder", sb);
         w.addPST(sb, "");
@@ -1282,7 +1297,8 @@ public class Python extends CoursePage {
                 """
                 It may take a couple of minutes to load, when you should see
                 something like this:
-                <br /><img src="../../resources/python/spyder1.png"
+                <br />
+                <img src="../../resources/python/spyder1.png"
                 alt="The Spyder interface" />
                 """);
         w.addP(sb,
@@ -1304,7 +1320,8 @@ public class Python extends CoursePage {
                 If a popup box appears choose the default and this should run
                 your program and output should appear in the console like in the
                 following image:
-                <br /><img src="../../resources/python/spyder2.png"
+                <br />
+                <img src="../../resources/python/spyder2.png"
                 alt="The Spyder interface showing the Hello World program
                 successfully ran" />
                 """);
@@ -1318,12 +1335,14 @@ public class Python extends CoursePage {
                 and right of the editor pane. Hover your mouse cursor over the
                 mark on the left. You should see something similar to the image
                 below:
-                <br /><img src="../../resources/python/spyder3.png"
+                <br />
+                <img src="../../resources/python/spyder3.png"
                 alt="The Spyder interface showing an error." />
                 """);
         w.addPST(sb, "Have a look at the latest ");
         sb.append(references.getReference("Spyder Documentation"));
         w.addPET(sb, ".");
+        w.addDIVET(sb);
 
         sid = addSubsection("Other IDEs", sb);
         w.addP(sb,
@@ -1338,7 +1357,10 @@ public class Python extends CoursePage {
                 <!-- Eclipse, Netbeans and VS Code are other IDEs that may
                 support Python -->""");
         w.addDIVET(sb);
-        sb.append("\n");
+        w.addDIVET(sb);
+        
+        w.addDIVET(sb);
+        
 
         sid = addSection("QGIS Desktop Python Console", sb);
         w.addPST(sb, "");
@@ -1389,7 +1411,8 @@ public class Python extends CoursePage {
         w.addP(sb,
                 """
                 You should see something like:
-                <br /><img src="../../resources/python/qgis1.png"
+                <br />
+                <img src="../../resources/python/qgis1.png"
                 alt="QGIS Desktop Python Console basic interface" />
                 """);
         w.addP(sb,
@@ -1460,7 +1483,8 @@ public class Python extends CoursePage {
                 """
                 Once the program has run the QGIS Desktop GUI should look
                 something like:
-                <br /><img src="../../resources/python/qgis2.png"
+                <br />
+                <img src="../../resources/python/qgis2.png"
                 alt="QGIS Python Console after having run QGISExample.py" />
                 """);
         w.addPST(sb,
@@ -1481,8 +1505,8 @@ public class Python extends CoursePage {
                 """);
         w.addULET(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
+        
         sid = addSection("Python Packages and Environment Management", sb);
         w.addPST(sb,
                 """
@@ -1821,7 +1845,8 @@ public class Python extends CoursePage {
                 """
                 This should produce a slippy map with an icon on it that looks
                 something like:
-                <br /><img src="../../resources/python/jupyter4.png"
+                <br />
+                <img src="../../resources/python/jupyter4.png"
                 alt="Jupyter Notebook Interface 4" />
                 """);
         w.addP(sb, "From the Jupyter Notebook interface choose:");
@@ -1836,7 +1861,7 @@ public class Python extends CoursePage {
                 """
                 ---------------------------------------------------------------------------
                 ModuleNotFoundError                       Traceback (most recent call last)
-                Input In [1], in <cell line: 1>()
+                Input In [1], in &lt;cell line: 1>()
                 ----> 1 import folium
                       3 map = folium.Map(
                       4     location=(53.804, -1.555),
@@ -1880,9 +1905,8 @@ public class Python extends CoursePage {
                 """);
         w.addULET(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
-        sid = addSection("Recap and Expectations", sb);
+        sid = addSection("Recap", sb);
         w.addP(sb,
                 """
                 This section of the course introduced some basic Python syntax
@@ -1903,8 +1927,7 @@ public class Python extends CoursePage {
         sb.append(index.getReference("Python for", "for loops"));
         w.addPET(sb,
                 """
-                 were provided. These key things will be used many times, so do
-                not worry if you have not fully understood these yet.
+                 were provided.
                 """);
         w.addP(sb,
                 """
@@ -1921,13 +1944,11 @@ public class Python extends CoursePage {
                 """);
         w.addP(sb,
                 """
-                This has been a broad brush overview. You might benefit from
-                revisiting parts of this learning once you are more familiar
-                with developing Python code and as you think about undertaking
-                projects.
+                Parts of this extensive broad brush overview could be worth
+                revisiting after gaining more familiarity with developing Python
+                code.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         return sb.toString();
     }
 

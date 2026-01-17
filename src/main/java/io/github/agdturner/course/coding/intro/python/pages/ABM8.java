@@ -49,7 +49,6 @@ public class ABM8 extends CoursePage {
                 'abm7' directory and call the new directory 'abm8'.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Setting up Tkinter", sb);
         w.addP(sb,
@@ -71,7 +70,6 @@ public class ABM8 extends CoursePage {
         w.addPRE(sb, "File > Restart");
         w.addP(sb, "Save your files if prompted.");
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Organising the GUI", sb);
         w.addP(sb, "Add the following function to 'model.py':");
@@ -136,7 +134,7 @@ public class ABM8 extends CoursePage {
                 def gen_function():
                     global ite
                     global carry_on
-                    while (ite <= n_iterations) & (carry_on) :
+                    while (ite &lt;= n_iterations) & (carry_on) :
                         yield ite # Returns control and waits next call.
                         ite = ite + 1
                     global data_written
@@ -153,7 +151,7 @@ public class ABM8 extends CoursePage {
                 def gen_function():
                     global ite
                     global carry_on
-                    while (ite <= n_iterations) & (carry_on) :
+                    while (ite &lt;= n_iterations) & (carry_on) :
                         yield ite # Returns control and waits next call.
                         ite = ite + 1
                     global data_written

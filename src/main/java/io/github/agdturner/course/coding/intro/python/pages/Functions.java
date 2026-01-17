@@ -93,7 +93,6 @@ public class Functions extends CoursePage {
                 understand, maintain and use.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Parameters", sb);
         w.addP(sb,
@@ -200,7 +199,7 @@ public class Functions extends CoursePage {
                     for num in nums:
                         r += num
                     return r
-                print(add(1,2,3,4,5,6,7)) # <-- Prints 28
+                print(add(1,2,3,4,5,6,7)) # &lt;-- Prints 28
                 """);
         w.addP(sb,
                 """
@@ -219,8 +218,8 @@ public class Functions extends CoursePage {
                         r += num
                     return r
                 a = [1,2,3,4]
-                print(add(*a)) # <-- Prints 10
-                print(add(1,*a, 2)) # <-- Prints 13
+                print(add(*a)) # &lt;-- Prints 10
+                print(add(1,*a, 2)) # &lt;-- Prints 13
                 """);
         w.addP(sb,
                 """
@@ -323,7 +322,6 @@ public class Functions extends CoursePage {
                 Python documentation: Outline of how to get output from a function documentation</a>
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Scope", sb);
         w.addP(sb,
@@ -388,7 +386,6 @@ public class Functions extends CoursePage {
                 print(a) # Prints 1.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Function Complexity", sb);
         w.addP(sb,
@@ -509,7 +506,7 @@ public class Functions extends CoursePage {
                 # A lambda to return the result of dividing a by b.
                 x = lambda a, b : a / b
 
-                print(x(1, 2)) # <-- Prints 0.5.
+                print(x(1, 2)) # &lt;-- Prints 0.5.
                 """);
         w.addP(sb,
                 """
@@ -647,7 +644,6 @@ public class Functions extends CoursePage {
                 print(pf(3)) # Prints 6
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Style and Documenting Functions", sb);
 
@@ -725,7 +721,6 @@ public class Functions extends CoursePage {
         w.addP(sb, "The docstring can also be printed using:");
         w.addPRE(sb, "print(x.__doc__)");
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("Next", sb);
         w.addP(sb,

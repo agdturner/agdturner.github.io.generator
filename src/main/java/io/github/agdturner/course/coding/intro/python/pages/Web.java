@@ -37,6 +37,7 @@ public class Web extends CoursePage {
 
     @Override
     public String getMainContent() {
+        String language_html = "language-html";
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, "The ");
@@ -62,7 +63,6 @@ public class Web extends CoursePage {
                 works...
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("Network Sockets, Port Numbers, Addresses and Protocols", sb);
         w.addPST(sb, "A '");
@@ -152,7 +152,6 @@ public class Web extends CoursePage {
                 suspicious behaviour.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("The World Wide Web", sb);
         w.addPST(sb,
@@ -183,6 +182,7 @@ public class Web extends CoursePage {
                 <a href="https://www.w3.org:443/People/Berners-Lee/Overview.html">
                 https://www.w3.org:443/People/Berners-Lee/Overview.html</a>
                 """);
+        w.addDIVET(sb);
         
         sid = addSubsection("Web Pages", sb);
         w.addPST(sb,
@@ -202,9 +202,9 @@ public class Web extends CoursePage {
                 named "index.html" if it exists.
                 """);
         w.addP(sb, "A basic webpage:");
-        w.addPRE(sb, 
+        addCodeBlock(sb, language_html,
                 """
-                <code>&lt;!DOCTYPE html>
+                &lt;!DOCTYPE html>
                 &lt;HTML lang="en-GB">
                 &lt;HEAD>
                 &lt;TITLE>Title for top of browser&lt;/TITLE>
@@ -212,7 +212,7 @@ public class Web extends CoursePage {
                 &lt;BODY>
                 &lt;!-- Page content goes here; this is a comment -->
                 &lt;/BODY>
-                &lt;/HTML></code>
+                &lt;/HTML>
                 """);
         w.addP(sb, 
                 """
@@ -247,9 +247,11 @@ public class Web extends CoursePage {
                 (names specific to themselves) as attributes. These are declared
                 in the start tag for the element, for example:
                 """);
-        w.addPRE(sb, """
-                   <code>&lt;TABLE class="data" id="table_1"></code>
-                   """);
+        addCodeBlock(sb, language_html,
+                """
+                &lt;TABLE class="data" id="table_1">
+                """);
+        w.addDIVET(sb);
         
         sid = addSubsection("Web Page Design", sb);
         w.addPST(sb, 
@@ -265,9 +267,9 @@ public class Web extends CoursePage {
                  (CSS). These are linked to the HTML in the 'HEAD' section with
                 the following tag:
                 """);
-        w.addPRE(sb, 
+        addCodeBlock(sb, language_html,
                 """
-                <code>&lt;link rel="stylesheet" href="url_to_css_file"></code>
+                &lt;link rel="stylesheet" href="url_to_css_file">
                 """);
         w.addP(sb,
                 """
@@ -286,6 +288,7 @@ public class Web extends CoursePage {
                 . If you are working for a public organisation, accessibility
                 should be a major design driver.
                 """);
+        w.addDIVET(sb);
         
         sid = addSubsection("Processing Web Pages", sb);
         w.addPST(sb,
@@ -305,7 +308,6 @@ public class Web extends CoursePage {
                         "Beautiful Soup library", sid));
         w.addPET(sb, "");
         w.addDIVET(sb);
-        sb.append("\n");
         return sb.toString();
     }
 }

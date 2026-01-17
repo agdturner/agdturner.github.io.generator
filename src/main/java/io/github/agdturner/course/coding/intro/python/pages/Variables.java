@@ -44,7 +44,6 @@ public class Variables extends CoursePage {
         w.addPET(sb, 
                 " are a combination of an identifier (a name) and a value");
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Python Variables", sb);
         w.addP(sb,
@@ -181,7 +180,7 @@ public class Variables extends CoursePage {
                 print(s == s2) # Prints False (case sensitive)
                 print(s == s3) # Prints False
                 print(s > s2)  # Prints False
-                print(s < s2)  # Prints True
+                print(s &lt; s2)  # Prints True
                 print(str(3))  # Prints 3
                 """);
         w.addP(sb, 
@@ -237,7 +236,6 @@ public class Variables extends CoursePage {
                 &lt;class 'str'&gt;
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Functions, Variable Scope and the Global Keyword", sb);
         w.addPST(sb, 
@@ -349,7 +347,6 @@ public class Variables extends CoursePage {
                 c 2
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Deleting variables", sb);
         w.addPST(sb, 
@@ -368,11 +365,11 @@ public class Variables extends CoursePage {
         addCodeBlock(sb,
                 """
                 a = 1
-                del a # <-- deletes a
-                #print(a) # <-- Would result in: NameError: name 'a' is not defined.
+                del a # &lt;-- deletes a
+                #print(a) # &lt;-- Would result in: NameError: name 'a' is not defined.
                 b = 2
                 c = 3
-                del(b, c) # <-- Deletes b and site.
+                del(b, c) # &lt;-- Deletes b and site.
                 """);
         return sb.toString();
     }

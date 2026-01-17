@@ -81,7 +81,6 @@ public class ABM1 extends CoursePage {
         w.addLI(sb, "produce results that can easily be reproduced.");
         w.addULET(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         addSection("Getting started", sb);
         w.addP(sb,
@@ -144,7 +143,6 @@ public class ABM1 extends CoursePage {
                 delimiter by default.""");
         w.addP(sb, "Do similarly to initialise the variable 'y0'.");
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Randomly changing values", sb);
         w.addPST(sb, "The Python standard library ");
@@ -206,7 +204,7 @@ public class ABM1 extends CoursePage {
                 '1':""");
         addCodeBlock(sb,
                 """
-                if rn < 0.5:
+                if rn &lt; 0.5:
                     x0 = x0 + 1
                 else:
                     x0 = x0 - 1
@@ -251,7 +249,6 @@ public class ABM1 extends CoursePage {
                 that changes in each coordinate are independent of how the
                 other coordinates change.""");
         w.addDIVET(sb);
-        sb.append("\n");
 
         addSection("Calculate the Euclidean distance", sb);
         w.addP(sb,
@@ -279,7 +276,6 @@ public class ABM1 extends CoursePage {
                 a number to the power of '0.5' calculates the square root;
                 testing can simply be done by printing out the result.""");
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Review, commit and look ahead", sb);
         w.addP(sb,
@@ -312,7 +308,6 @@ public class ABM1 extends CoursePage {
                 will be used to create and move more agents, and the model
                 will be visualised.""");
         w.addDIVET(sb);
-        sb.append("\n");
         return sb.toString();
     }
 }

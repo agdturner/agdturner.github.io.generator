@@ -75,7 +75,6 @@ public class Classes extends CoursePage {
                 for capitalised first letters for each word).
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Class Definitions, Constructors, Attributes and Methods", sb);
         w.addP(sb,
@@ -131,10 +130,10 @@ public class Classes extends CoursePage {
                 """);
         addCodeBlock(sb,
                 """
-                print(a.x) # <-- Prints the value of a.x
-                print(a.y) # <-- Prints the value of a.y
-                a.x = 3 # <-- Sets the values of a.x to be 3
-                a.y = a.y + 1 # <-- Increases the value of a.y by 1
+                print(a.x) # &lt;-- Prints the value of a.x
+                print(a.y) # &lt;-- Prints the value of a.y
+                a.x = 3 # &lt;-- Sets the values of a.x to be 3
+                a.y = a.y + 1 # &lt;-- Increases the value of a.y by 1
                 """);
         w.addP(sb,
                 """
@@ -177,7 +176,6 @@ public class Classes extends CoursePage {
                         self.y = y
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Inheritance", sb);
         w.addP(sb,
@@ -258,7 +256,6 @@ public class Classes extends CoursePage {
                 The Python Tutorial on Classes Section on Multiple Inheritance</a>.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Access Control", sb);
         w.addP(sb,
@@ -307,7 +304,7 @@ public class Classes extends CoursePage {
                 import agents:
                 a = agent.Agent(0, 0):
                 a.x = 3
-                print(a.x) # <-- Prints 3
+                print(a.x) # &lt;-- Prints 3
                 """);
         w.addP(sb,
                 """
@@ -346,7 +343,6 @@ public class Classes extends CoursePage {
                 The Python Library Documentation Chapter on Functions Section on Property</a>.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Customisation", sb);
         w.addPST(sb, "By default, when printing an object using the ");
@@ -383,7 +379,6 @@ public class Classes extends CoursePage {
                 The Python 3 Language Reference Data Model Chapter Section on Basic Customization</a>.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
         
         sid = addSection("Further learning", sb);
         w.addP(sb,

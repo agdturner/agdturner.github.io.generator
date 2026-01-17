@@ -66,14 +66,14 @@ public class ABM3 extends CoursePage {
                     # x-coordinate
                     rn = random.random()
                     #print("rn", rn)
-                    if rn < 0.5:
+                    if rn &lt; 0.5:
                         agents[i][0] = agents[i][0] + 1
                     else:
                         agents[i][0] = agents[i][0] - 1
                     # y-coordinate
                     rn = random.random()
                     #print("rn", rn)
-                    if rn < 0.5:
+                    if rn &lt; 0.5:
                         agents[i][1] = agents[i][1] + 1
                     else:
                         agents[i][1] = agents[i][1] - 1
@@ -152,7 +152,6 @@ public class ABM3 extends CoursePage {
                 your "model.py" file into the abm3 directory.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Distance Calculations", sb);
 
@@ -177,7 +176,7 @@ public class ABM3 extends CoursePage {
                 your code in other ways too...
                 """);
         w.addPST(sb,
-                "<p>Change the comment that describes the function into a ");
+                "Change the comment that describes the function into a ");
         sb.append(index.getReference("Python docstring", "docstring", sid));
         w.addPET(sb,
                 " clarifying what the function inputs and outputs are.");
@@ -314,7 +313,6 @@ public class ABM3 extends CoursePage {
                 code so that the function is defined before it is called.
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Timing", sb);
         w.addPST(sb, "This section is about using the ");
@@ -526,7 +524,7 @@ public class ABM3 extends CoursePage {
                 statement that was commented out is no longer commented out;
                 and, so that the operator in the 'if statement' is a '&lt;'):
                 """);
-        addCodeBlock(sb, "if i < j:");
+        addCodeBlock(sb, "if i &lt; j:");
         w.addP(sb,
                 """
                 Run the program again and you should get the following output:
@@ -571,7 +569,6 @@ public class ABM3 extends CoursePage {
                 alt="Another graph of time (y axis) and n_agents (x axis)" />
                 """);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Other distance statistics", sb);
         w.addP(sb,
@@ -652,7 +649,6 @@ public class ABM3 extends CoursePage {
                 """);
         addCommitToGitHub(sb);
         w.addDIVET(sb);
-        sb.append("\n");
 
         sid = addSection("Movement", sb);
         w.addP(sb,
@@ -701,9 +697,9 @@ public class ABM3 extends CoursePage {
         addCodeBlock(sb,
                 """
                 # Apply movement constraints.
-                if agents[i][0] < x_min:
+                if agents[i][0] &lt; x_min:
                     agents[i][0] = x_min
-                if agents[i][1] < y_min:
+                if agents[i][1] &lt; y_min:
                     agents[i][1] = y_min
                 if agents[i][0] > x_max:
                     agents[i][0] = x_max
@@ -724,7 +720,7 @@ public class ABM3 extends CoursePage {
                 agent.
                 """);
         addCommitToGitHub(sb);
-        sb.append("</div>\n");
+        w.addDIVET(sb);
         return sb.toString();
     }
 }

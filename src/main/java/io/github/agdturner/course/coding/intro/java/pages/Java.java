@@ -208,7 +208,7 @@ public class Java extends CoursePage {
                 + site.index.getReference("Python Built-in Types",
                         "Built-in Type", s.sid)
                 + "' operator that works with specific types of variables."
-                + " Multiplication can be done similarly using an asterix '*'"
+                + " Multiplication can be done similarly using an asterisk '*'"
                 + " symbol; and division can be done using the forward slash "
                 + "'/' symbol.<p>");
         sb.append("""
