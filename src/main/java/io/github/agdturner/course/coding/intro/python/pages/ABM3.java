@@ -180,6 +180,7 @@ public class ABM3 extends CoursePage {
         sb.append(index.getReference("Python docstring", "docstring", sid));
         w.addPET(sb,
                 " clarifying what the function inputs and outputs are.");
+        w.addDIVET(sb);
 
         sid = addSubsection("Calculate the maximum distance", sb);
         w.addP(sb,
@@ -313,7 +314,10 @@ public class ABM3 extends CoursePage {
                 code so that the function is defined before it is called.
                 """);
         w.addDIVET(sb);
+        
+        w.addDIVET(sb);
 
+        
         sid = addSection("Timing", sb);
         w.addPST(sb, "This section is about using the ");
         sb.append(index.getReference("Python time", "time module", sid));

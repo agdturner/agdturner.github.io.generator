@@ -37,7 +37,7 @@ public class Web extends CoursePage {
 
     @Override
     public String getMainContent() {
-        String language_html = "language-html";
+        String s_html = "html";
         StringBuilder sb = new StringBuilder();
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, "The ");
@@ -202,7 +202,7 @@ public class Web extends CoursePage {
                 named "index.html" if it exists.
                 """);
         w.addP(sb, "A basic webpage:");
-        addCodeBlock(sb, language_html,
+        addCodeBlock(sb, s_html,
                 """
                 &lt;!DOCTYPE html>
                 &lt;HTML lang="en-GB">
@@ -247,7 +247,7 @@ public class Web extends CoursePage {
                 (names specific to themselves) as attributes. These are declared
                 in the start tag for the element, for example:
                 """);
-        addCodeBlock(sb, language_html,
+        addCodeBlock(sb, s_html,
                 """
                 &lt;TABLE class="data" id="table_1">
                 """);
@@ -267,7 +267,7 @@ public class Web extends CoursePage {
                  (CSS). These are linked to the HTML in the 'HEAD' section with
                 the following tag:
                 """);
-        addCodeBlock(sb, language_html,
+        addCodeBlock(sb, s_html,
                 """
                 &lt;link rel="stylesheet" href="url_to_css_file">
                 """);
