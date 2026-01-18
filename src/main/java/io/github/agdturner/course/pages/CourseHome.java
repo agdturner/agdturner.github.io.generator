@@ -80,6 +80,16 @@ public abstract class CourseHome extends CoursePage {
                 resources are for the most part general and not particularly
                 geographically focussed.
                 """);
+        w.addP(sb, 
+                """
+                The hope is that these learning resources are accessible and
+                helpful.
+                """);
+        w.addP(sb, 
+                """
+                The <a href="https://github.com/highlightjs/highlight.js">highlight.js</a>
+                library is used for code linting.
+                """);
         return sid;
     }
 
@@ -139,8 +149,7 @@ public abstract class CourseHome extends CoursePage {
                    systems. Currently there are no plans to use this protoype...
                   """);
         sb.append(Web_ContentWriter.getLink(
-                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
-                        + getCourse().courseCode + "/public_html",
+                Environment.AGDTURNER_GITHUB_IO_REPO,
                 "Please report issues and suggest improvements here"));
         w.addPET(sb, ".");
     }
