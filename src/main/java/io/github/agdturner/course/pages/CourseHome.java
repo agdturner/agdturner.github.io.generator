@@ -66,8 +66,8 @@ public abstract class CourseHome extends CoursePage {
         SectionID sid = addSection("Introduction", sb);
         w.addPST(sb, 
                 """
-                These learning resources were original developed to help
-                students of Geographical Information Systems (GIS) learn generic
+                These learning resources are based on learning resources used to
+                teach students of Geographical Information Systems (GIS)
                 computer programming skills and knowledge of the
                 """);
         sb.append(getLanguageReference());
@@ -116,16 +116,32 @@ public abstract class CourseHome extends CoursePage {
                 Environment.HTTPS_AGDTURNER_GITHUB_IO,
                 "Andy Turner"));
         sb.append("""
-                  , but they have not knowingly been used since being
-                  re-engineered in 2023. The re-engineering created a prototype
-                  designed to developing a suite of learning resources for
-                  training researchers how to program in different langauges,
-                  but this is not currently being taken forward...
+                  . They were re-designed to be learning resources that learners
+                  could more easily follow without a tutor in 2003. Effectively,
+                  a code base was engineered to generate most of the content
+                  including an index page and a reference page:
                   """);
-//        sb.append(Web_ContentWriter.getLink(
-//                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
-//                        + getCourse().courseCode + "/public_html",
-//                "Please report issues and suggest improvements here"));
+        sb.append("""
+                  https://github.com/agdturner/agdturner.github.io.generator
+                  """);
+        sb.append("""
+                  The idea was to
+                  make it easy to developing a suite of learning resources for
+                  helping researchers to learn how to program in different
+                  languages. It was envisaged that there would be a level 0
+                  cource like this one to teach about the language fundamentals,
+                  a level 1 course that would focus more on collaborative
+                  software development and a level 3 course that would focus on
+                  developing software capable of utilising multiple nodes of
+                  """);
+        sb.append(index.getReference("High Performance Computing"));
+        sb.append("""    
+                   systems. Currently there are no plans to use this protoype...
+                  """);
+        sb.append(Web_ContentWriter.getLink(
+                Environment.AGDTURNER_GITHUB_IO_REPO + "/" 
+                        + getCourse().courseCode + "/public_html",
+                "Please report issues and suggest improvements here"));
         w.addPET(sb, ".");
     }
 

@@ -313,7 +313,10 @@ public abstract class Page {
      * Appends {@code <pre><code class=\"language-" + language + "\">} to sb.
      *
      * @param sb The StringBuilder to append to.
-     * @param language The name of the programming language of the code block.
+     * @param language The name of the programming language of the code block,
+     * e.g "html", "c++", "java", "python". For a list of supported languages
+     * see https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md
+     * 
      * @param s The string to add after the start tag.
      */
     public void addCodeBlockStart(StringBuilder sb, String language, String s) {
@@ -331,7 +334,6 @@ public abstract class Page {
     public void addCodeBlockEnd(StringBuilder sb, String s) {
         w.addCODEET(sb, s);
         sb.append(Web_Strings.PRE_ET);
-        sb.append("\n");
     }
 
 }
