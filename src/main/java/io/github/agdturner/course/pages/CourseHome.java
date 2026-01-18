@@ -64,31 +64,47 @@ public abstract class CourseHome extends CoursePage {
      */
     public SectionID getIntroduction0(StringBuilder sb) {
         SectionID sid = addSection("Introduction", sb);
-        w.addPST(sb, 
+        w.addPST(sb,
                 """
-                These learning resources are based on learning resources used to
-                teach students of Geographical Information Systems (GIS)
-                computer programming skills and knowledge of the
+                These learning resources are based on learning resources that
+                were developed and used to teach students of Geographical
+                Information Systems (GIS) computer programming skills and
+                knowledge of the
                 """);
         sb.append(getLanguageReference());
         sb.append(" programming language at the ");
         sb.append(index.getReference("University of Leeds"));
-        w.addPET(sb, ".");
-        w.addP(sb, 
+        sb.append(". ");
+        sb.append(Web_ContentWriter.getLink(
+                "https://ajevans.github.io/",
+                "Andrew Evans"));
+        w.addPET(sb,
                 """
-                Some learning resources introduce GIS elements, but the
-                resources are for the most part general and not particularly
-                geographically focussed.
+                 initially developed those learning resources. They were
+                iteratively refined with the help of several cohorts of
+                learners that tested them out. Thanks to all those that were
+                part of that journey.
                 """);
-        w.addP(sb, 
+        w.addP(sb,
                 """
-                The hope is that these learning resources are accessible and
-                helpful.
+                Some GIS specific things are introduced in the learning
+                resources, but for the most part they are general and not
+                particularly geographically focussed.
                 """);
-        w.addP(sb, 
+        w.addP(sb,
                 """
-                The <a href="https://github.com/highlightjs/highlight.js">highlight.js</a>
-                library is used for code linting.
+                The hope is that these learning resources are accessible,
+                helpful and interesting and that the effort of refining them has
+                been worthwhile.
+                """);
+        w.addPST(sb, "The ");
+        sb.append(
+                Web_ContentWriter.getLink(
+                        "https://github.com/highlightjs/highlight.js",
+                        "highlight.js"));
+        w.addPET(sb,
+                """
+                 library is used for code linting.
                 """);
         return sid;
     }
@@ -103,7 +119,7 @@ public abstract class CourseHome extends CoursePage {
         sb.append(index.getReference("High Performance Computing"));
         sb.append(" (HPC) resources.");
     }
-    
+
     /**
      * Maintainer.
      *
@@ -125,28 +141,47 @@ public abstract class CourseHome extends CoursePage {
         sb.append(Web_ContentWriter.getLink(
                 Environment.HTTPS_AGDTURNER_GITHUB_IO,
                 "Andy Turner"));
-        sb.append("""
-                  . They were re-designed to be learning resources that learners
-                  could more easily follow without a tutor in 2003. Effectively,
-                  a code base was engineered to generate most of the content
-                  including an index page and a reference page:
-                  """);
-        sb.append("""
-                  https://github.com/agdturner/agdturner.github.io.generator
-                  """);
-        sb.append("""
-                  The idea was to
-                  make it easy to developing a suite of learning resources for
-                  helping researchers to learn how to program in different
-                  languages. It was envisaged that there would be a level 0
-                  cource like this one to teach about the language fundamentals,
-                  a level 1 course that would focus more on collaborative
-                  software development and a level 3 course that would focus on
-                  developing software capable of utilising multiple nodes of
-                  """);
+        w.addPET(sb, ".");
+        w.addPST(sb,
+                """
+                They were re-designed to be learning resources that learners
+                could more easily follow without the help of a tutor in 2023. As
+                part of this, the way the content was generated was
+                re-engineered. Previously, content had been generated using
+                """);
+        sb.append(Web_ContentWriter.getLink(
+                "https://en.wikipedia.org/wiki/Jekyll_(software)",
+                "Jekyll"));
+        w.addPET(sb, ".");
+        w.addPST(sb,
+                """
+                For the re-engineering, Andy used
+                """);
+        sb.append(index.getReference("Java"));
+        sb.append(
+                """
+                . The repository that generates most of the website content
+                is open source and available via:
+                """);
+        w.addPET(sb, Web_ContentWriter.getLink(
+                "https://github.com/agdturner/agdturner.github.io.generator",
+                "https://github.com/agdturner/agdturner.github.io.generator"));
+        w.addPST(sb,
+                """
+                As well as providing a useful index page and more accessible
+                content, the re-engineering helps pave the way for generating a
+                suite of learning resources for training researchers to program
+                in different languages. It was envisaged that there would be
+                basic learning resources for a number of key language focussing
+                on the language fundamentals, and essentially creating something
+                very similar to what is created in this learning journey.
+                Furthermore, the idea was to produce learning resources for each
+                language that would focus on collaborative software development
+                and developing research software to take advantage of
+                """);
         sb.append(index.getReference("High Performance Computing"));
-        sb.append("""    
-                   systems. Currently there are no plans to use this protoype...
+        sb.append("""
+                   systems.
                   """);
         sb.append(Web_ContentWriter.getLink(
                 Environment.AGDTURNER_GITHUB_IO_REPO,
@@ -235,16 +270,15 @@ public abstract class CourseHome extends CoursePage {
      */
     public SectionID getLearningJourney0(StringBuilder sb) {
         SectionID sid = addSection("The Learning Journey", sb);
-        
-        w.addPST(sb, 
+
+        w.addPST(sb,
                 """
                 These learning resources introduce and use general computer
                 programming terms, and terms specific to
                 """);
         sb.append(index.getReference(getCourse().courseTypeCaptialised));
         w.addPET(sb, ".");
-        
-        
+
         w.addPST(sb,
                 """
                 Pages with names starting 'ABM' are a series of practicals
@@ -252,7 +286,7 @@ public abstract class CourseHome extends CoursePage {
                 """);
         sb.append(index.getReference("ABM", "Agent Based Model"))
                 .append(
-                """
+                        """
                  that represents a set of entities that move around in an
                 environment, interacting with the environment and each other.
                 Developing the code by following instructions puts into
@@ -270,8 +304,8 @@ public abstract class CourseHome extends CoursePage {
                 detailed instructions, and furthermore using and developing
                 your programming skills in other ways.
                 """);
-        
-        w.addP(sb, 
+
+        w.addP(sb,
                 """
                 You are encouraged to be experimental, but cautious, as there
                 are cyber security concerns to be aware of. If you have not had
